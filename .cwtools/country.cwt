@@ -1,0 +1,9 @@
+enums = {
+	complex_enum[country_tag] = {
+		path = "game/common/country_tags"
+		start_from_root = yes
+		name = {
+			enum_name = "filepath"
+		}
+	}
+}

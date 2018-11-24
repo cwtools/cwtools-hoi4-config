@@ -1,0 +1,5 @@
+alias[trigger:scope_field] = { alias_name[trigger] = alias_match_left[trigger] }
+alias[trigger:NOT] = { alias_name[trigger] = alias_match_left[trigger] }
+alias[trigger:OR] = { alias_name[trigger] = alias_match_left[trigger] }
+alias[trigger:AND] = { alias_name[trigger] = alias_match_left[trigger] }
+alias[trigger:AND] = { alias_name[trigger] = alias_match_left[trigger] }

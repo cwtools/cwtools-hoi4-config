@@ -1,0 +1,73 @@
+types = {
+	type[ideology] = {
+		skip_root_key = ideologies
+		path = "game/common/ideologies"
+	}
+}
+
+ideology = {
+	types = {
+		## cardinality = 1..100
+		scalar = {
+
+		}
+	}
+	dynamic_faction_names = {
+		## cardinality = 0..100
+		localisation
+		## cardinality = 0..100
+		scalar
+	}
+	### RGB color of ideology
+	color = {
+		## cardinality = 3..3
+		int
+	}
+	rules = {
+		can_force_government = bool
+		can_puppet = bool
+		can_send_volunteers = bool
+		## cardinality = 0..10
+		enum[game_rules] = bool
+	}
+	war_impact_on_world_tension = float
+	faction_impact_on_world_tension = float
+	
+	### modifiers applied to countries with this ideology
+	modifiers = {
+		alias_name[modifier] = alias_match_left[modifier]
+	}
+	### modifiers applied to countries with a faction leader of this ideology
+	faction_modifiers = {
+		alias_name[modifier] = alias_match_left[modifier]
+	}
+	## cardinality = 0..1
+	can_be_boosted = bool
+	## cardinality = 0..1
+	can_collaborate = bool
+	## cardinality = 0..1
+	### AI playstyle
+	enum[ai_ideology] = bool
+}
+
+enums = {
+	enum[game_rules] = {
+		can_declare_war_on_same_ideology
+		can_lower_tension
+		can_only_justify_war_on_threat_country
+		can_guarantee_other_ideologies
+		can_force_government
+		can_puppet
+		can_send_volunteers
+	}
+	enum[ai_ideology] = {
+		# most aggressive
+		ai_fascist
+		# less aggressive
+		ai_communist
+		# defensive/guarantees
+		ai_democratic
+		# passive
+		ai_neutral
+	}
+}

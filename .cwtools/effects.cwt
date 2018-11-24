@@ -1,0 +1,29 @@
+alias[effect:if] = {
+	limit = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	alias_name[effect] = alias_match_left[effect]
+}
+alias[effect:else_if] = {
+	# severity = info
+	limit = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	alias_name[effect] = alias_match_left[effect]
+}
+
+alias[effect:else] = { alias_name[effect] = alias_match_left[effect] }
+alias[effect:hidden_effect] = {
+	alias_name[effect] = alias_match_left[effect]
+}
+alias[effect:modify_building_resources] = {
+	building = <building>
+	resource = <resource>
+	amount = int
+}
+
+alias[effect:add_ideas] = {
+	enum[idea_name]
+}
+alias[effect:add_ideas] = enum[idea_name]
+alias[scope_field] = { alias_name[effect] = alias_match_left[effect] }

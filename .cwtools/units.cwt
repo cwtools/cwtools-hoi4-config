@@ -1,0 +1,171 @@
+types = {
+	type[unit] = {
+		skip_root_key = sub_units
+		path = "game/common/units"
+		path_strict = yes
+		subtype[air_unit] = {
+			type = {
+				## cardinality = 1..10
+				enum[air_units]
+			}
+		}
+		subtype[ship_unit] = {
+			type = {
+				## cardinality = 1..10
+				enum[ship_units]
+			}
+		}
+		subtype[land_unit] = {
+			type = {
+				## cardinality = 1..10
+				enum[land_units]
+			}
+		}
+		subtype[catch] = {
+
+		}
+	}
+}
+
+unit = {
+	### 3d map asset
+	sprite = enum[unit_sprites]
+	subtype[land_unit] = {
+		ai_priority = int
+		### map icon
+		map_icon_category = enum[land_map_icons]
+		## cardinality = 0..1
+		### Cavalry
+		cavalry = bool
+		## cardinality = 0..1
+		### counts against special forces limit
+		special_forces = bool
+		## cardinality = 0..1
+		### Marines ooh-rah
+		marines = bool
+		## cardinality = 0..1
+		### Mountaineers
+		mountaineers = bool
+		## cardinality = 0..1
+		### Paratroopers
+		can_be_parachuted = bool
+		## cardinality = 0..1
+		### use this equipment for speed
+		transport = <equipment>
+		## cardinality = 0..1
+		### division designer group
+		group = enum[unit_groups]
+		### unit type
+		type = {
+			## cardinality = 1..2
+			enum[land_units]
+		}
+	}
+	subtype[ship_unit] = {
+		### map icon
+		map_icon_category = enum[ship_map_icons]
+		type = {
+			## cardinality = 1..1
+			enum[ship_units]
+		}
+	}
+	subtype[air_unit] = {
+		type = {
+			## cardinality = 1..1
+			enum[air_units]
+		}
+	}
+	subtype[catch] = {
+		test = int
+	}
+	### weighting for mixed divisions
+	priority = int
+
+	### whether needs tech to create
+	active = bool
+
+	need = {
+		## cardinality = 1..100
+		<equipment> = int
+	}
+	## cardinality = 0..1
+	categories = {
+		## cardinality = 0..100
+		enum[unit_category]
+	}
+
+}
+
+enums = {
+	enum[land_map_icons] = {
+		infantry
+		armored
+		other
+	}
+	enum[ship_map_icons] = {
+		ship
+		transport
+		uboat
+	}
+	enum[unit_groups] = {
+		infantry
+		support
+		mobile
+		armor
+	}
+	enum[unit_types] = {
+		infantry
+		support
+		artillery
+		anti_tank
+		anti_air
+		armor
+		fighter
+		cas
+		naval_bomber
+		interceptor
+		suicide
+		tactical_bomber
+		strategic_bomber
+		air_transport
+		missile
+		submarine
+		screen_ship
+		capital_ship
+		carrier
+	}
+	enum[land_units] = {
+		infantry
+		support
+		artillery
+		anti_tank
+		anti_air
+		armor
+	}
+	enum[air_units] = {
+		fighter
+		cas
+		naval_bomber
+		interceptor
+		suicide
+		tactical_bomber
+		strategic_bomber
+		air_transport
+		missile
+	}
+	enum[ship_units] = {
+		submarine
+		screen_ship
+		capital_ship
+		carrier
+	}
+	complex_enum[unit_category] = {
+		path = "game/common/unit_tags"
+		start_from_root = yes
+		name = {
+			sub_unit_categories = {
+				enum_name
+			}
+		}
+	}
+}

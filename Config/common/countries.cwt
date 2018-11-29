@@ -1,0 +1,50 @@
+types = {
+	type[cosmetic_tag] = {
+		path = "game/common/countries/cosmetic.txt"		
+	}
+	type[country_file] = {
+		path = "game/common/countries"
+		name_from_file = yes
+        type_per_file = yes
+	}
+}
+
+country_file = {
+	graphical_culture = scalar
+	graphical_culture_2d = scalar
+	color = {
+		## cardinality = 3..3
+		int
+	}
+}
+cosmetic_tag = {
+	color = {
+		rgb {
+			## cardinality = 3..3
+			int
+		}
+	}
+	color_ui = {
+		rgb {
+			## cardinality = 3..3
+			int
+		}
+	}
+}
+enums = {
+	complex_enum[country_tag] = {
+		path = "game/common/country_tags"
+		start_from_root = yes
+		name = {
+			enum_name = filepath
+		}
+	}
+	complex_enum[comsmetic_tag] = {
+		path = "game/common/countries/cosmetic.txt"
+		start_from_root = yes
+		name = {
+			enum_name = {
+			}
+		}
+	}
+}

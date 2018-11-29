@@ -1,0 +1,40 @@
+types = {
+	type[autonomy] = {
+		path = "game/common/autonomous_states"
+		name_field = "id"
+	}
+}
+autonomy = {
+	id = localisation
+	## cardinality = 0..1
+	default = bool
+	## cardinality = 0..1
+	is_puppet = bool
+
+	min_freedom_level = float[0..0.99]
+	rule = {
+		## cardinality = 0..20
+		enum[game_rules] = bool
+	}
+	modifier = {
+		alias_name[modifier] = alias_match_left[modifier]
+	}
+	ai_subject_wants_higher = {
+		factor = float
+	}
+	ai_overlord_wants_lower = {
+		factor = float
+	}
+	ai_overlord_wants_garrison = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	allowed = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	can_take_level = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	can_lose_level = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+}

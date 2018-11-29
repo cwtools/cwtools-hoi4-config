@@ -1,0 +1,65 @@
+types = {
+	type[country_history] = {
+		path = "game/history/countries"
+		name_from_file = yes
+        type_per_file = yes
+	}
+}
+
+country_history = {
+	capital = scope[state]
+
+	## cardinality = 0..10
+	oob = <oob>
+	## cardinality = 0..1
+	set_technology = {
+		## cardinality = 1..100
+		<technology> = 1
+	}
+	## cardinality = 0..1
+	set_convoys = int
+
+	set_politics = {
+		## cardinality = 0..1
+		parties = {
+			## cardinality = 1..100
+			<ideology> = {
+				## cardinality = 0..1
+				popularity = float[0..100]
+				## cardinality = 0..1
+				banned = bool
+			}
+		}
+		## cardinality = 0..1
+		ruling_party = <ideology>
+		## cardinality = 0..1
+		elections_allowed = bool
+		## cardinality = 0..1
+		last_election = date_field
+		## cardinality = 0..1
+		election_frequency = int
+	}
+
+	add_ideas = {
+		## cardinality = 1..100
+		enum[idea_name]
+	}
+	## cardinality = 0..1
+	set_stability = float
+	## cardinality = 0..1
+	set_war_support = float
+
+	## cardinality = 0..10
+	create_country_leader = {
+		name = scalar
+		desc = localisation
+		picture = scalar
+		ideology = enum[sub_ideology]
+		## cardinality = 0..1
+		expire = date_field
+		traits = {
+			## cardinality = 0..100
+			<trait>
+		}
+	}
+}

@@ -1,0 +1,277 @@
+types = {
+	type[focus_tree] = {
+		type_key_filter = focus_tree
+		path = "game/common/national_focus"
+		name_field = "id"
+	}
+	type[focus] = {
+		path = "game/common/national_focus"
+		skip_root_key = focus_tree
+		type_key_filter = focus
+		name_field = "id"
+	}
+	type[shared_focus] = {
+		path = "game/common/national_focus"
+		name_field = "id"
+		type_key_filter = shared_focus
+	}
+}
+
+focus_tree = {
+	id = localisation
+	country = {
+		factor = int
+		## cardinality = 0..10
+		modifier = {
+			add = int
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+		## cardinality = 0..10
+		modifier = {
+			factor = int
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+	}
+	default = bool
+	## cardinality = 0..10
+	shared_focus = <shared_focus>
+	## cardinality = 1..1000
+	focus = {
+		id = localisation
+		## cardinality = 0..1
+		text = localisation
+		icon = scalar
+		cost = float
+		x = int
+		y = int
+		## cardinality = 0..1
+		relative_position_id = <focus>
+		### used for focuses that can change title/desc
+		## cardinality = 0..1
+		dynamic = bool
+		## cardinality = 0..1
+		available_if_capitulated = bool
+		## cardinality = 0..1
+		cancel_if_invalid = bool
+		## cardinality = 0..1
+		continue_if_invalid = bool
+		## cardinality = 0..10
+		will_lead_to_war_with = scope[country]
+		## cardinality = 0..50
+		prerequisite = {
+			## cardinality = 1..50
+			focus = <focus>
+		}
+		## cardinality = 0..1
+		mutually_exclusive = {
+			## cardinality = 1..50
+			focus = <focus>
+		}
+		## cardinality = 0..1
+		bypass = {
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+		## cardinality = 0..1
+		allow_branch = {
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+		## cardinality = 0..1
+		available = {
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+		## cardinality = 0..1
+		cancel = {
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+		## cardinality = 0..1
+		historical_ai = {
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+		## cardinality = 0..1
+		select_effect = {
+			alias_name[effect] = alias_match_left[effect]
+		}
+		## cardinality = 0..1
+		complete_tooltip = {
+			alias_name[effect] = alias_match_left[effect]
+		}
+		completion_reward = {
+			alias_name[effect] = alias_match_left[effect]
+		}
+		## cardinality = 0..1
+		ai_will_do = {
+			factor = float
+			## cardinality = 0..100
+			modifier = {
+				alias_name[trigger] = alias_match_left[trigger]
+				## cardinality = 0..1
+				factor = float
+				## cardinality = 0..1
+				add = float
+			}
+		}
+	}
+}
+
+focus = {
+	id = localisation
+	## cardinality = 0..1
+	text = localisation
+	icon = scalar
+	cost = float
+	x = int
+	y = int
+	## cardinality = 0..1
+	relative_position_id = <focus>
+	### used for focuses that can change title/desc
+	## cardinality = 0..1
+	dynamic = bool
+	## cardinality = 0..1
+	available_if_capitulated = bool
+	## cardinality = 0..1
+	cancel_if_invalid = bool
+	## cardinality = 0..1
+	continue_if_invalid = bool
+	## cardinality = 0..10
+	will_lead_to_war_with = scope[country]
+	## cardinality = 0..50
+	prerequisite = {
+		## cardinality = 1..50
+		focus = <focus>
+	}
+	## cardinality = 0..1
+	mutually_exclusive = {
+		## cardinality = 1..50
+		focus = <focus>
+	}
+	## cardinality = 0..1
+	bypass = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	## cardinality = 0..1
+	allow_branch = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	## cardinality = 0..1
+	available = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	## cardinality = 0..1
+	cancel = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	## cardinality = 0..1
+	historical_ai = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	## cardinality = 0..1
+	select_effect = {
+		alias_name[effect] = alias_match_left[effect]
+	}
+	## cardinality = 0..1
+	complete_tooltip = {
+		alias_name[effect] = alias_match_left[effect]
+	}
+	completion_reward = {
+		alias_name[effect] = alias_match_left[effect]
+	}
+	## cardinality = 0..1
+	ai_will_do = {
+		factor = float
+		## cardinality = 0..100
+		modifier = {
+			alias_name[trigger] = alias_match_left[trigger]
+			## cardinality = 0..1
+			factor = float
+			## cardinality = 0..1
+			add = float
+		}
+	}
+}
+
+shared_focus = {
+	id = localisation
+	## cardinality = 0..1
+	text = localisation
+	icon = scalar
+	cost = float
+	x = int
+	y = int
+	## cardinality = 0..1
+	relative_position_id = <focus>
+	### used for focuses that can change title/desc
+	## cardinality = 0..1
+	dynamic = bool
+	## cardinality = 0..1
+	available_if_capitulated = bool
+	## cardinality = 0..1
+	cancel_if_invalid = bool
+	## cardinality = 0..1
+	continue_if_invalid = bool
+	## cardinality = 0..10
+	will_lead_to_war_with = scope[country]
+	## cardinality = 0..50
+	prerequisite = {
+		## cardinality = 1..50
+		focus = <focus>
+	}
+	## cardinality = 0..1
+	mutually_exclusive = {
+		## cardinality = 1..50
+		focus = <focus>
+	}
+	## cardinality = 0..1
+	bypass = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	## cardinality = 0..1
+	allow_branch = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	## cardinality = 0..1
+	available = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	## cardinality = 0..1
+	cancel = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	## cardinality = 0..1
+	historical_ai = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	## cardinality = 0..1
+	select_effect = {
+		alias_name[effect] = alias_match_left[effect]
+	}
+	## cardinality = 0..1
+	complete_tooltip = {
+		alias_name[effect] = alias_match_left[effect]
+	}
+	completion_reward = {
+		alias_name[effect] = alias_match_left[effect]
+	}
+	## cardinality = 0..1
+	ai_will_do = {
+		factor = float
+		## cardinality = 0..100
+		modifier = {
+			alias_name[trigger] = alias_match_left[trigger]
+			## cardinality = 0..1
+			factor = float
+			## cardinality = 0..1
+			add = float
+		}
+	}
+}
+
+enums = {
+	complex_enum[focuses] = {
+		path = "game/common/national_focus"
+		name = {
+			focus = {
+				id = enum_name
+			}
+		}
+	}
+}

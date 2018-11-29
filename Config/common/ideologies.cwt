@@ -2,10 +2,21 @@ types = {
 	type[ideology] = {
 		skip_root_key = ideologies
 		path = "game/common/ideologies"
+		subtype[regular] = {
+			## cardinality = 1..1
+			types = {
+			}
+		}
+		subtype[predefined] = {
+			## cardinality = 0..0
+			types = {
+			}
+		}
 	}
 }
 
 ideology = {
+	subtype[regular] = {
 	types = {
 		## cardinality = 1..100
 		scalar = {
@@ -27,7 +38,7 @@ ideology = {
 		can_force_government = bool
 		can_puppet = bool
 		can_send_volunteers = bool
-		## cardinality = 0..10
+		## cardinality = 0..20
 		enum[game_rules] = bool
 	}
 	war_impact_on_world_tension = float
@@ -49,6 +60,7 @@ ideology = {
 	### AI playstyle
 	enum[ai_ideology] = bool
 }
+}
 
 enums = {
 	enum[game_rules] = {
@@ -59,6 +71,19 @@ enums = {
 		can_force_government
 		can_puppet
 		can_send_volunteers
+		can_be_called_to_war
+		can_boost_other_ideologies
+		can_create_factions
+		can_declare_war_without_wargoal_when_in_war
+		can_decline_call_to_war
+		can_generate_female_aces
+		can_join_factions
+		can_join_factions_not_allowed_diplomacy
+		can_join_opposite_factions
+		can_not_declare_war
+		can_occupy_non_war
+		can_use_kamikaze_pilots
+		units_deployed_to_overlord
 	}
 	enum[ai_ideology] = {
 		# most aggressive
@@ -69,5 +94,16 @@ enums = {
 		ai_democratic
 		# passive
 		ai_neutral
+	}
+	complex_enum[sub_ideology] = {
+		path = "game/common/ideologies"
+		name = {
+			scalar = {
+				types = {
+					enum_name = {
+					}
+				}
+			}
+		}
 	}
 }

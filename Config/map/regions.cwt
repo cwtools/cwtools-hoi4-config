@@ -1,0 +1,66 @@
+types = {
+	type[supply_area] = {
+		path = "game/map/supplyareas"
+		name_field = "id"
+	}
+	type[strategic_region] = {
+		path = "game/map/strategicregions"
+		name_field = "id"
+	}
+}
+
+supply_area = {
+	id = int
+	name = localisation
+	value = int
+	states = {
+		## cardinality = 1..100
+		scope[state]
+	}
+}
+
+strategic_region = {
+	id = int
+	name = localisation
+	provinces = {
+		## cardinality = 1..500
+		enum[provinces]
+	}
+	### black magic
+	weather = {
+		## cardinality = 0..100
+		### periods of weather, months in vanilla
+		period = {
+			between = {
+				### day.month (both start at 0)
+				# float hacks as dates ftw
+				## cardinality = 2..2
+				"float[0.0..30.11]"
+			}
+			temperature = {
+				## cardinality = 2..2
+				"float"
+			}
+			temperature_day_night = {
+				## cardinality = 2..2
+				"float"
+			}
+			#hacks
+			## cardinality = 7..7
+			enum[region_weather] = float[0..1]
+			min_snow_level = float
+		}
+	}
+}
+
+enums = {
+	enum[region_weather] = {
+		no_phenomenon
+		rain_light
+		rain_heavy
+		snow
+		blizzard
+		mud
+		sandstorm
+	}
+}

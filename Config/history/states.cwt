@@ -1,0 +1,65 @@
+types = {
+	type[state] = {
+		path = "game/history/states"
+		name_field = "id"
+	}
+	type[state_category] = {
+		path = "game/common/state_category"
+		skip_root_key = state_categories
+	}
+}
+
+state = {
+	id = int
+	name = localisation
+	## cardinality = 0..1
+	resources = {
+		## cardinality = 1..100
+		<resource> = float
+	}
+	history = {
+		owner = enum[country_tag]
+		## cardinality = 0..100
+		victory_points = {
+			enum[provinces] int[0..1000]
+		}
+		## cardinality = 0..1
+		buildings = {
+			## cardinality = 0..100
+			<building> = int[0..20]
+			## cardinality = 0..100
+			enum[provinces] = {
+				## cardinality = 0..100
+				<building> = int[0..20]
+			}
+		}
+		## cardinality = 0..100
+		add_core_of = enum[country_tag]
+		## cardinality = 0..100
+		add_claim_by = enum[country_tag]
+	}
+	provinces = {
+		## cardinality = 0..100
+		enum[provinces]
+	}
+	manpower = int[0..inf]
+	buildings_max_level_factor = float
+	state_category = <state_category>
+}
+
+state_category = {
+	local_building_slots = int
+	color = {
+		## cardinality = 3..3
+		int
+	}
+}
+
+enums = {
+	complex_enum[states] = {
+		path = "game/history/states"
+		name = {
+			id = enum_name
+		}
+	}
+}

@@ -95,6 +95,7 @@ technology = {
 	## cardinality = 0..1
 	### modifies ai willingness for categories
 	ai_research_weights = {
+		## cardinality = 1..10
 		enum[tech_category] = float
 	}
 	## cardinality = 0..1

@@ -69,17 +69,15 @@ equipment = {
 
 upgrade = {
 	max_level = int
+	alias_name[modifier] = alias_match_left[modifier]
 	subtype[naval_upgrade] = {
 		cost = naval
-		alias_name[modifier] = alias_match_left[modifier]
 	}
 	subtype[air_upgrade] = {
 		cost = air
-		alias_name[modifier] = alias_match_left[modifier]
 	}
 	subtype[land_upgrade] = {
 		cost = land
-		alias_name[modifier] = alias_match_left[modifier]
 	}
 }
 enums = {

@@ -1,0 +1,21 @@
+enums = {
+	enum[dlc] = {
+		"Together for Victory"
+		"Death or Dishonor"
+		"Waking the Tiger"
+	}
+	enum[hours_days] = {
+		hours
+		days
+	}
+	enum[tech_bonus] = {
+		bonus
+		ahead_reduction
+	}
+	enum[diplomatic_relations] = {
+		non_aggression_pact
+		guarantee
+		puppet
+		military_access
+	}
+}

@@ -1,0 +1,96 @@
+types = {
+	type[equipment] = {
+		skip_root_key = equipments
+		path = "game/common/units/equipment"
+		subtype[archetype_equip] = {
+			is_archetype = yes
+		}
+		subtype[regular_equip] = {
+			## cardinality = 0..1
+			is_archetype = no
+		}
+	}
+	type[upgrade] = {
+		skip_root_key = upgrades
+		path = "game/common/units/equipment/upgrades"
+		subtype[naval_upgrade] = {
+			cost = naval
+		}
+		subtype[air_upgrade] = {
+			cost = air
+		}
+		subtype[land_upgrade] = {
+			cost = land
+		}
+	}
+}
+
+equipment = {
+	year = int
+
+	## cardinality = 0..1
+	is_archetype = bool
+	## cardinality = 0..1
+	is_buildable = bool
+	## cardinality = 0..1
+	active = bool
+
+	subtype[archetype_equip] = {
+		picture = scalar
+		## cardinality = 0..1
+		type = enum[unit_types]
+		## cardinality = 0..1
+		type = {
+			## cardinality = 1..10
+			enum[unit_types]
+		}
+		group_by = enum[equip_group_by]
+		interface_category = enum[interface_category]
+	}
+	subtype[regular_equip] = {
+		archetype = <equipment.archetype_equip>
+		## cardinality = 0..1
+		parent = <equipment.regular_equip>
+		priority = int
+		## cardinality = 0..1
+		visual_level = int
+	}
+	alias_name[modifier] = alias_match_left[modifier]
+	resources = {
+		## cardinality = 0..3
+		<resource> = int
+	}
+	## cardinality = 0..3
+	upgrades = {
+		## cardinality = 0..4
+		<upgrade>
+	}
+}
+
+upgrade = {
+	max_level = int
+	alias_name[modifier] = alias_match_left[modifier]
+	subtype[naval_upgrade] = {
+		cost = naval
+	}
+	subtype[air_upgrade] = {
+		cost = air
+	}
+	subtype[land_upgrade] = {
+		cost = land
+	}
+}
+enums = {
+	enum[equip_group_by] = {
+		archetype
+		type
+	}
+	enum[interface_category] = {
+		interface_category_land
+		interface_category_armor
+		interface_category_capital_ships
+		interface_category_screen_ships
+		interface_category_other_ships
+		interface_category_air
+	}
+}

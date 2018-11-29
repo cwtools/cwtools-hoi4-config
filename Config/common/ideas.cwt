@@ -1,0 +1,141 @@
+types = {
+	type[idea] = {
+		path = "game/common/ideas"
+	}
+}
+
+idea = {
+	## cardinality = 0..2
+	enum[hardcode_ideas] = {
+		## cardinality = 0..100
+		scalar = {
+			## cardinality = 0..1
+			cancel_if_invalid = bool
+			## cardinality = 0..1
+			allowed = {
+				alias_name[trigger] = alias_match_left[trigger]
+			}
+			## cardinality = 0..1
+			available = {
+				alias_name[trigger] = alias_match_left[trigger]
+			}
+			## cardinality = 0..1
+			allowed_civil_war = {
+				alias_name[trigger] = alias_match_left[trigger]
+			}
+			## cardinality = 0..1
+			picture = scalar
+			## cardinality = 0..1
+			cost = int
+			## cardinality = 0..1
+			removal_cost = int
+			## cardinality = 0..1
+			modifier = {
+				alias_name[modifier] = alias_match_left[modifier]
+			}
+			## cardinality = 0..1
+			rule = {
+				## cardinality = 0..100
+				enum[game_rules] = bool
+			}
+		}
+	}
+	## cardinality = 0..100
+	enum[idea_categories] = {
+		## cardinality = 0..1
+		law = bool
+		## cardinality = 0..1
+		designer = bool
+		## cardinality = 0..100
+		scalar = {
+
+			## cardinality = 0..1
+			level = int
+			## cardinality = 0..1
+			default = bool
+			## cardinality = 0..1
+			cancel_if_invalid = bool
+			## cardinality = 0..1
+			allowed = {
+				alias_name[trigger] = alias_match_left[trigger]
+			}
+			## cardinality = 0..1
+			available = {
+				alias_name[trigger] = alias_match_left[trigger]
+			}
+			## cardinality = 0..1
+			allowed_civil_war = {
+				alias_name[trigger] = alias_match_left[trigger]
+			}
+			## cardinality = 0..1
+			picture = scalar
+			## cardinality = 0..1
+			cost = int
+			## cardinality = 0..1
+			removal_cost = int
+			## cardinality = 0..1
+			modifier = {
+				alias_name[modifier] = alias_match_left[modifier]
+			}
+			## cardinality = 0..1
+			rule = {
+				## cardinality = 0..100
+				enum[game_rules] = bool
+			}
+			## cardinality = 0..1
+			ai_will_do = {
+				factor = float
+				## cardinality = 0..100
+				modifier = {
+					## cardinality = 0..100
+					alias_name[trigger] = alias_match_left[trigger]
+					## cardinality = 0..1
+					factor = float
+					## cardinality = 0..1
+					add = float
+				}
+			}
+			## cardinality = 0..1
+			traits = {
+				## cardinality = 0..100
+				<trait>
+			}
+			## cardinality = 0..1
+			on_add = {
+				alias_name[effect] = alias_match_left[effect]
+			}
+			## cardinality = 0..1
+			do_effect = {
+				alias_name[trigger] = alias_match_left[trigger]
+			}
+			## cardinality = 0..1
+			research_bonus = {
+				enum[tech_category] = float
+			}
+		}
+	}
+}
+
+enums = {
+	enum[hardcode_ideas] = {
+		hidden_ideas
+		country
+	}
+	complex_enum[idea_categories] = {
+		path = "game/common/idea_tags"
+		name = {
+			scalar = {
+				slot = enum_name
+			}
+		}
+	}
+	complex_enum[idea_name] = {
+		path = "game/common/ideas"
+		name = {
+			scalar = {
+				enum_name = {
+				}
+			}
+		}
+	}
+}

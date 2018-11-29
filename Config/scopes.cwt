@@ -1,0 +1,12 @@
+alias[trigger:scope_field] = { alias_name[trigger] = alias_match_left[trigger] }
+alias[trigger:NOT] = { alias_name[trigger] = alias_match_left[trigger] }
+alias[trigger:OR] = { alias_name[trigger] = alias_match_left[trigger] }
+alias[trigger:AND] = { alias_name[trigger] = alias_match_left[trigger] }
+alias[trigger:AND] = { alias_name[trigger] = alias_match_left[trigger] }
+
+
+alias[effect:scope_field] = { alias_name[effect] = alias_match_left[effect] }
+alias[effect:NOT] = { alias_name[effect] = alias_match_left[effect] }
+alias[effect:OR] = { alias_name[effect] = alias_match_left[effect] }
+alias[effect:AND] = { alias_name[effect] = alias_match_left[effect] }
+alias[effect:AND] = { alias_name[effect] = alias_match_left[effect] }

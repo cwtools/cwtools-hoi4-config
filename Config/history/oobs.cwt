@@ -1,0 +1,56 @@
+types = {
+	type[oob] = {
+		path = "game/history/units"
+		name_from_file = yes
+        type_per_file = yes
+	}
+}
+
+oob = {
+	start_equipment_factor = float
+	## cardinality = 0..100
+	division_template = {
+		name = localisation
+		regiments = {
+			## cardinality = 1..25
+			<unit> = { x = int[0..5] y = int[0..5] }
+		}
+		## cardinality = 0..1
+		support = {
+			## cardinality = 0..5
+			<unit> = { x = 0 y = int[0..5] }
+		}
+	}
+	## cardinality = 0..1
+	instant_effect = {
+		## cardinality = 0..100
+		add_equipment_production = {
+			equipment = {
+				type = <equipment.regular_equip>
+				## cardinality = 0..1
+				creator = "enum[country_tag]"
+				## cardinality = 0..1
+				version_name = localisation
+			}
+			## cardinality = 0..1
+			amount = int
+			## cardinality = 0..1
+			requested_factories = int[1..150]
+			## cardinality = 0..1
+			progress = float[0..1]
+			## cardinality = 0..1
+			efficiency = int[0..100]
+		}
+	}
+
+	## cardinality = 0..1
+	units = {
+		## cardinality = 0..500
+		division = {
+			name = localisation
+			location = enum[provinces]
+			division_template = localisation
+			start_experience_factor = float
+		}
+	}
+}

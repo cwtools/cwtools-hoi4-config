@@ -19,16 +19,10 @@ country_file = {
 }
 cosmetic_tag = {
 	color = {
-		rgb {
-			## cardinality = 3..3
-			int
-		}
+		colour[rgb]
 	}
 	color_ui = {
-		rgb {
-			## cardinality = 3..3
-			int
-		}
+		colour[rgb]
 	}
 }
 enums = {

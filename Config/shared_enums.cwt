@@ -18,4 +18,8 @@ enums = {
 		puppet
 		military_access
 	}
+	enum[add_factor] = {
+		add
+		factor
+	}
 }

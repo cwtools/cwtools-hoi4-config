@@ -1,8 +1,7 @@
 types = {
 	type[oob] = {
 		path = "game/history/units"
-		name_from_file = yes
-        type_per_file = yes
+		type_per_file = yes
 	}
 }
 

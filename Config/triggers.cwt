@@ -4,6 +4,9 @@ alias[trigger:<scripted_trigger>] = yes
 ### check state id
 ## scopes = { state }
 alias[trigger:state] = scope[state]
+### check state id
+## scopes = { state }
+alias[trigger:state] = <state>
 
 ### if_, CIfTrigger, A conditional trigger
 ## scopes = { test }
@@ -62,6 +65,8 @@ alias[trigger:any_neighbor_country] = {
     alias_name[trigger] = alias_match_left[trigger]
 }
 
+### check amount of resource country has
+alias[trigger:<resource>] = int
 
 ### has country flag been set.Check flag val date set and days since set.
 ## scopes = { country }
@@ -236,6 +241,9 @@ alias[trigger:skill_advantage] = int
 ### check owner for state(s)
 ## scopes = { country }
 alias[trigger:owns_state] = scope[state]
+### check owner for state(s)
+## scopes = { country }
+alias[trigger:owns_state] = enum[state_ids]
 
 ### check controller for state(s)
 ## scopes = { country }
@@ -472,7 +480,7 @@ alias[trigger:has_deployed_air_force_size] = {
 }
 
 ### check what terrain is in combat
-alias[trigger:is_fighting_in_terrain] = enum[terrain]
+alias[trigger:is_fighting_in_terrain] = <terrain>
 
 ### check if defender side in combat
 alias[trigger:is_defender] = bool
@@ -734,7 +742,7 @@ alias[trigger:hardness] = float
 
 ### check if country has a division template that contains a specific unit
 ## scopes = { country }
-alias[trigger:has_template_containing_unit] = enum[unit_category]
+alias[trigger:has_template_containing_unit] = <unit>
 
 ### Checks if the first province in the state is connected to the capital of its owner
 ## scopes = { state }
@@ -1450,3 +1458,11 @@ alias[trigger:<building>] = int
 ### checks ideology popularity
 ## scopes = { country }
 alias[trigger:<ideology>] = float
+
+### changes scope to opposing army/navy
+## scopes = { unit_leader }
+alias[trigger:opponent] = { alias_name[trigger] = alias_match_left[trigger] }
+
+### check ratio of this type of unit for commander
+## scopes = { unit_leader }
+alias[trigger:enum[unit_types]] = float

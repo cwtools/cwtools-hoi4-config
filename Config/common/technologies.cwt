@@ -11,6 +11,11 @@ types = {
 
 technology = {
 	## cardinality = 0..1
+	show_equipment_icon = bool
+	## cardinality = 0..1
+	desc = localisation
+	
+	## cardinality = 0..1
 	### hides technology unless trigger is true
 	allow = {
 		## cardinality = 0..100
@@ -46,6 +51,8 @@ technology = {
 		building = <building>
 		level = int
 	}
+	## cardinality = 0..1
+	enable_tactic = <combat_tactic>
 	## cardinality = 0..1
 	### technologies directly dependent on this tech
 	sub_technologies = {
@@ -107,12 +114,16 @@ technology = {
 	## cardinality = 0..100
 	enum[unit_category] = {
 		## cardinality = 0..100
-		enum[unit_stats] = float
+		alias_name[unit_stat] = alias_match_left[unit_stat]
+		alias_name[naval_stat] = alias_match_left[naval_stat]
+		alias_name[air_stat] = alias_match_left[air_stat]
 	}
 	## cardinality = 0..100
 	<unit> = {
 		## cardinality = 0..100
-		enum[unit_stats] = float
+		alias_name[unit_stat] = alias_match_left[unit_stat]
+		alias_name[naval_stat] = alias_match_left[naval_stat]
+		alias_name[air_stat] = alias_match_left[air_stat]
 	}
 
 	## cardinality = 0..1

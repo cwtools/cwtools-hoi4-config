@@ -17,6 +17,7 @@ types = {
 		}
 		subtype[assignable_trait] = {
 			trait_type = assignable_trait
+			trait_type = assignable_terrain_trait
 		}
 		subtype[gainable_trait] = {
 			gain_xp = {
@@ -33,7 +34,9 @@ trait = {
 	alias_name[modifier] = alias_match_left[modifier]
 	## cardinality = 0..100
 	ai_strategy = {
-
+		type = enum[ai_strategies]
+		id = scope[country]
+		value = int
 	}
 	## cardinality = 0..1
 	equipment_bonus = {
@@ -41,13 +44,17 @@ trait = {
 		<equipment> = {
 			## cardinality = 0..1
 			instant = bool
-			alias_name[modifier] = alias_match_left[modifier]
+			alias_name[unit_stat] = alias_match_left[unit_stat]
+			alias_name[naval_stat] = alias_match_left[naval_stat]
+			alias_name[air_stat] = alias_match_left[air_stat]
 		}
 		## cardinality = 0..100
 		enum[unit_types] = {
 			## cardinality = 0..1
 			instant = bool
-			alias_name[modifier] = alias_match_left[modifier]
+			alias_name[unit_stat] = alias_match_left[unit_stat]
+			alias_name[naval_stat] = alias_match_left[naval_stat]
+			alias_name[air_stat] = alias_match_left[air_stat]
 		}
 	}
 	## cardinality = 0..1
@@ -107,6 +114,13 @@ unit_leader_trait = {
 	subtype[field_marshal] = {
 		field_marshal_modifier = {
 			alias_name[modifier] = alias_match_left[modifier]
+			alias_name[unit_leader_modifier] = alias_match_left[unit_leader_modifier]
+		}
+	}
+	subtype[corps_commander] = {
+		corps_commander_modifier = {
+			alias_name[modifier] = alias_match_left[modifier]
+			alias_name[unit_leader_modifier] = alias_match_left[unit_leader_modifier]
 		}
 	}
 	## cardinality = 0..1
@@ -120,10 +134,12 @@ unit_leader_trait = {
 	## cardinality = 0..1
 	modifier = {
 		alias_name[modifier] = alias_match_left[modifier]
+		alias_name[unit_leader_modifier] = alias_match_left[unit_leader_modifier]
 	}
 	## cardinality = 0..1
 	non_shared_modifier = {
 		alias_name[modifier] = alias_match_left[modifier]
+		alias_name[unit_leader_modifier] = alias_match_left[unit_leader_modifier]
 	}
 	## cardinality = 0..5
 	enable_ability = <ability>

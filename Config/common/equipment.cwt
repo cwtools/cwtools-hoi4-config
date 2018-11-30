@@ -9,6 +9,12 @@ types = {
 			## cardinality = 0..1
 			is_archetype = no
 		}
+		subtype[naval_equip] = {
+			type = enum[ship_units]
+		}
+		subtype[air_equip] = {
+			interface_category = interface_category_air
+		}
 	}
 	type[upgrade] = {
 		skip_root_key = upgrades
@@ -33,20 +39,25 @@ equipment = {
 	## cardinality = 0..1
 	is_buildable = bool
 	## cardinality = 0..1
+	is_convertable = bool
+	## cardinality = 0..1
 	active = bool
-
+	## cardinality = 0..1
+	can_license = bool
+	## cardinality = 0..1
+	sprite = enum[unit_sprites]
 	subtype[archetype_equip] = {
 		picture = scalar
-		## cardinality = 0..1
-		type = enum[unit_types]
-		## cardinality = 0..1
-		type = {
-			## cardinality = 1..10
-			enum[unit_types]
-		}
 		group_by = enum[equip_group_by]
 		interface_category = enum[interface_category]
+		## cardinality = 0..1
+		family = <equipment.archetype_equip>
 	}
+	subtype[air_equip] = {
+		air_map_icon_frame = int
+		interface_overview_category_index = int
+	}
+
 	subtype[regular_equip] = {
 		archetype = <equipment.archetype_equip>
 		## cardinality = 0..1
@@ -54,8 +65,29 @@ equipment = {
 		priority = int
 		## cardinality = 0..1
 		visual_level = int
+		## cardinality = 0..1
+		one_use_only = bool
+		## cardinality = 0..1
+		family = <equipment.regular_equip>
+		## cardinality = 0..1
+		can_convert_from = {
+			## cardinality = 1..5
+			<equipment.regular_equip>
+		}
 	}
-	alias_name[modifier] = alias_match_left[modifier]
+	## cardinality = 0..1
+	type = enum[unit_types]
+	## cardinality = 0..1
+	type = {
+		## cardinality = 1..10
+		enum[unit_types]
+	}
+	alias_name[unit_stat] = alias_match_left[unit_stat]
+	alias_name[naval_stat] = alias_match_left[naval_stat]
+	alias_name[air_stat] = alias_match_left[air_stat]
+	## cardinality = 0..1
+	offensive_weapons = bool
+	## cardinality = 0..1
 	resources = {
 		## cardinality = 0..3
 		<resource> = int
@@ -69,12 +101,14 @@ equipment = {
 
 upgrade = {
 	max_level = int
-	alias_name[modifier] = alias_match_left[modifier]
+	alias_name[unit_stat] = alias_match_left[unit_stat]
 	subtype[naval_upgrade] = {
 		cost = naval
+		alias_name[naval_stat] = alias_match_left[naval_stat]
 	}
 	subtype[air_upgrade] = {
 		cost = air
+		alias_name[air_stat] = alias_match_left[air_stat]
 	}
 	subtype[land_upgrade] = {
 		cost = land

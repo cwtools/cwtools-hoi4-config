@@ -21,7 +21,8 @@ state = {
 		owner = enum[country_tag]
 		## cardinality = 0..100
 		victory_points = {
-			enum[provinces] int[0..1000]
+			enum[provinces]
+			int[0..1000]
 		}
 		## cardinality = 0..1
 		buildings = {
@@ -43,6 +44,7 @@ state = {
 		enum[provinces]
 	}
 	manpower = int[0..inf]
+	## cardinality = 0..1
 	buildings_max_level_factor = float
 	state_category = <state_category>
 }
@@ -60,6 +62,13 @@ enums = {
 		path = "game/history/states"
 		name = {
 			id = enum_name
+		}
+	}
+	complex_enum[state_ids] = {
+		path = "game/map/airports.txt"
+		start_from_root = yes
+		name = {
+			enum_name = { }
 		}
 	}
 }

@@ -245,11 +245,14 @@ alias[effect:remove_opinion_modifier] = {
 ## scopes = { country }
 alias[effect:create_country_leader] = {
 	name = scalar
+	## cardinality = 0..1
 	desc = localisation
+	## cardinality = 0..1
 	picture = scalar
 	ideology = enum[sub_ideology]
 	## cardinality = 0..1
 	expire = date_field
+	## cardinality = 0..1
 	traits = {
 		## cardinality = 0..100
 		<trait>

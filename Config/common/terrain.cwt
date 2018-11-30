@@ -1,0 +1,61 @@
+types = {
+	type[terrain] = {
+		path = "game/common/terrain"
+		skip_root_key = categories
+		subtype[unknown] = {
+			## cardinality = 0..0
+			movement_cost = float
+		}
+		subtype[water] = {
+			is_water = yes
+		}
+		subtype[land] = {
+			## cardinality = 0..1
+			is_water = no
+		}
+	}
+	type[graphical_terrain] = {
+		path = "game/common/terrain"
+		skip_root_key = terrain
+	}
+}
+
+terrain = {
+	color = {
+		## cardinality = 3..3
+		int
+
+	}
+	subtype[!unknown] = {
+		movement_cost = float
+		sound_type = scalar
+	}
+	subtype[water] = {
+		is_water = yes
+	}
+	subtype[land] = {
+		## cardinality = 0..1
+		combat_width = float
+		## cardinality = 0..1
+		attrition = float
+		ai_terrain_importance_factor = float
+		## cardinality = 0..1
+		units = {
+			alias_name[unit_stat] = alias_match_left[unit_stat]
+		}
+		## cardinality = 0..1
+		enemy_army_bonus_air_superiority_factor = float
+		## cardinality = 0..1
+		sickness_chance = float
+	}
+}
+
+graphical_terrain = {
+	type = <terrain>
+	color = { int }
+	texture = { int }
+	## cardinality = 0..1
+	spawn_city = bool
+	## cardinality = 0..1
+	perm_snow = bool
+}

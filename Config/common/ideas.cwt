@@ -16,6 +16,10 @@ idea = {
 				alias_name[trigger] = alias_match_left[trigger]
 			}
 			## cardinality = 0..1
+			cancel = {
+				alias_name[trigger] = alias_match_left[trigger]
+			}
+			## cardinality = 0..1
 			available = {
 				alias_name[trigger] = alias_match_left[trigger]
 			}
@@ -38,6 +42,39 @@ idea = {
 				## cardinality = 0..100
 				enum[game_rules] = bool
 			}
+			## cardinality = 0..1
+			research_bonus = {
+				enum[tech_category] = float
+			}
+			## cardinality = 0..1
+			equipment_bonus = {
+				## cardinality = 0..100
+				<equipment> = {
+					## cardinality = 0..1
+					instant = bool
+					alias_name[unit_stat] = alias_match_left[unit_stat]
+					alias_name[naval_stat] = alias_match_left[naval_stat]
+					alias_name[air_stat] = alias_match_left[air_stat]
+				}
+				## cardinality = 0..100
+				enum[unit_types] = {
+					## cardinality = 0..1
+					instant = bool
+					alias_name[unit_stat] = alias_match_left[unit_stat]
+					alias_name[naval_stat] = alias_match_left[naval_stat]
+					alias_name[air_stat] = alias_match_left[air_stat]
+				}
+			}
+			## cardinality = 0..1
+			ai_will_do = {
+				factor = float
+				## cardinality = 0..100
+				modifier = {
+					## cardinality = 0..100
+					alias_name[trigger] = alias_match_left[trigger]
+					enum[add_factor] = float
+				}
+			}
 		}
 	}
 	## cardinality = 0..100
@@ -48,7 +85,6 @@ idea = {
 		designer = bool
 		## cardinality = 0..100
 		scalar = {
-
 			## cardinality = 0..1
 			level = int
 			## cardinality = 0..1
@@ -89,10 +125,7 @@ idea = {
 				modifier = {
 					## cardinality = 0..100
 					alias_name[trigger] = alias_match_left[trigger]
-					## cardinality = 0..1
-					factor = float
-					## cardinality = 0..1
-					add = float
+					enum[add_factor] = float
 				}
 			}
 			## cardinality = 0..1

@@ -23,12 +23,7 @@ focus_tree = {
 		factor = int
 		## cardinality = 0..10
 		modifier = {
-			add = int
-			alias_name[trigger] = alias_match_left[trigger]
-		}
-		## cardinality = 0..10
-		modifier = {
-			factor = int
+			enum[add_factor] = int
 			alias_name[trigger] = alias_match_left[trigger]
 		}
 	}
@@ -104,10 +99,7 @@ focus_tree = {
 			## cardinality = 0..100
 			modifier = {
 				alias_name[trigger] = alias_match_left[trigger]
-				## cardinality = 0..1
-				factor = float
-				## cardinality = 0..1
-				add = float
+				enum[add_factor] = float
 			}
 		}
 	}
@@ -181,10 +173,7 @@ focus = {
 		## cardinality = 0..100
 		modifier = {
 			alias_name[trigger] = alias_match_left[trigger]
-			## cardinality = 0..1
-			factor = float
-			## cardinality = 0..1
-			add = float
+			enum[add_factor] = float
 		}
 	}
 }
@@ -198,7 +187,7 @@ shared_focus = {
 	x = int
 	y = int
 	## cardinality = 0..1
-	relative_position_id = <focus>
+	relative_position_id = <shared_focus>
 	### used for focuses that can change title/desc
 	## cardinality = 0..1
 	dynamic = bool
@@ -213,12 +202,12 @@ shared_focus = {
 	## cardinality = 0..50
 	prerequisite = {
 		## cardinality = 1..50
-		focus = <focus>
+		focus = <shared_focus>
 	}
 	## cardinality = 0..1
 	mutually_exclusive = {
 		## cardinality = 1..50
-		focus = <focus>
+		focus = <shared_focus>
 	}
 	## cardinality = 0..1
 	bypass = {
@@ -257,10 +246,7 @@ shared_focus = {
 		## cardinality = 0..100
 		modifier = {
 			alias_name[trigger] = alias_match_left[trigger]
-			## cardinality = 0..1
-			factor = float
-			## cardinality = 0..1
-			add = float
+			enum[add_factor] = float
 		}
 	}
 }

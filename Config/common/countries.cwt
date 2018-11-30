@@ -1,11 +1,11 @@
 types = {
 	type[cosmetic_tag] = {
-		path = "game/common/countries/cosmetic.txt"		
+		path = "game/common/countries"
+		path_file = "cosmetic.txt"
 	}
 	type[country_file] = {
 		path = "game/common/countries"
-		name_from_file = yes
-        type_per_file = yes
+		type_per_file = yes
 	}
 }
 
@@ -36,7 +36,7 @@ enums = {
 		path = "game/common/country_tags"
 		start_from_root = yes
 		name = {
-			enum_name = filepath
+			enum_name = scalar
 		}
 	}
 	complex_enum[comsmetic_tag] = {

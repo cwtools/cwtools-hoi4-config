@@ -7,15 +7,11 @@ types = {
 }
 
 country_history = {
-	capital = scope[state]
+	capital = <state>
 
 	## cardinality = 0..10
 	oob = <oob>
-	## cardinality = 0..1
-	set_technology = {
-		## cardinality = 1..100
-		<technology> = 1
-	}
+	alias_name[effect] = alias_match_left[effect]
 	## cardinality = 0..1
 	set_convoys = int
 
@@ -39,27 +35,13 @@ country_history = {
 		## cardinality = 0..1
 		election_frequency = int
 	}
+}
 
-	add_ideas = {
-		## cardinality = 1..100
-		enum[idea_name]
-	}
-	## cardinality = 0..1
-	set_stability = float
-	## cardinality = 0..1
-	set_war_support = float
-
-	## cardinality = 0..10
-	create_country_leader = {
-		name = scalar
-		desc = localisation
-		picture = scalar
-		ideology = enum[sub_ideology]
-		## cardinality = 0..1
-		expire = date_field
-		traits = {
-			## cardinality = 0..100
-			<trait>
+enums = {
+	complex_enum[unit_leader_ids] = {
+		path = "game/history/countries"
+		name = {
+			id = enum_name
 		}
 	}
 }

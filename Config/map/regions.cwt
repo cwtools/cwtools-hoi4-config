@@ -15,7 +15,7 @@ supply_area = {
 	value = int
 	states = {
 		## cardinality = 1..100
-		scope[state]
+		<state>
 	}
 }
 
@@ -35,7 +35,7 @@ strategic_region = {
 				### day.month (both start at 0)
 				# float hacks as dates ftw
 				## cardinality = 2..2
-				"float[0.0..30.11]"
+				"float[0.0..30.9]"
 			}
 			temperature = {
 				## cardinality = 2..2
@@ -63,4 +63,12 @@ enums = {
 		mud
 		sandstorm
 	}
+	#complex_enum[province_ids] = {
+	#	path = "game/map/strategicregions"
+	#	name = {
+	#		provinces = {
+	#			enum_name
+	#		}
+	#	}
+	#}
 }

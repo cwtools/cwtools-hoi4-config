@@ -4,6 +4,9 @@ alias[trigger:<scripted_trigger>] = yes
 ### check state id
 ## scopes = { state }
 alias[trigger:state] = scope[state]
+### check state id
+## scopes = { state }
+alias[trigger:state] = <state>
 
 ### if_, CIfTrigger, A conditional trigger
 ## scopes = { test }
@@ -19,12 +22,23 @@ alias[trigger:else] = {
 	alias_name[trigger] = alias_match_left[trigger]
 }
 
+alias[trigger:enum[country_tag]] = {
+	alias_name[trigger] = alias_match_left[trigger]
+}
+alias[trigger:<state>] = {
+	alias_name[trigger] = alias_match_left[trigger]
+}
+alias[trigger:capital_scope] = {
+	alias_name[trigger] = alias_match_left[trigger]
+}
+
+
 ### compare leader skill levels
 ## scopes = { unit_leader }
 alias[trigger:skill] = int
 
 ### check if we are in this combat phase
-alias[trigger:phase] = replace_me
+alias[trigger:phase] = enum[phases]
 
 ### all inside trigger must be true
 ## scopes = { state country unit_leader }
@@ -46,7 +60,7 @@ alias[trigger:not] = {
 
 ### Check if the current country exist. The country of the scope you are in. Example: DEN = { exists = yes }
 ## scopes = { country }
-alias[trigger:exists] = scope[country]
+alias[trigger:exists] = bool
 
 ### check if the difficulty is above or below specified value 0-2 (difficulty enum). Example: difficulty > 0 (above easy)
 ## scopes = { any }
@@ -62,10 +76,23 @@ alias[trigger:any_neighbor_country] = {
     alias_name[trigger] = alias_match_left[trigger]
 }
 
+### check amount of resource country has
+alias[trigger:<resource>] = int
 
 ### has country flag been set.Check flag val date set and days since set.
 ## scopes = { country }
 alias[trigger:has_country_flag] = scalar
+### has country flag been set.Check flag val date set and days since set.
+## scopes = { country }
+alias[trigger:has_country_flag] = {
+	flag = scalar
+	## cardinality = 0..1
+	value = int
+	## cardinality = 0..1
+	date = date_field
+	## cardinality = 0..1
+	days = int
+}
 
 ### check amount of reserves
 alias[trigger:reserves] = int
@@ -73,6 +100,9 @@ alias[trigger:reserves] = int
 ### country tag trigger
 ## scopes = { country }
 alias[trigger:tag] = scope[country]
+### country tag trigger
+## scopes = { country }
+alias[trigger:tag] = enum[country_tag]
 
 ### check if any country meets the trigger
 ## scopes = { any }
@@ -130,6 +160,17 @@ alias[trigger:is_capital] = bool
 ### has global flag been set.Check flag val date set and days since set.
 ## scopes = { any }
 alias[trigger:has_global_flag] = scalar
+### has global flag been set.Check flag val date set and days since set.
+## scopes = { any }
+alias[trigger:has_global_flag] = {
+	flag = scalar
+	## cardinality = 0..1
+	value = int
+	## cardinality = 0..1
+	date = date_field
+	## cardinality = 0..1
+	days = int
+}
 
 ### check if attacker side in combat
 alias[trigger:is_attacker] = bool
@@ -162,25 +203,33 @@ alias[trigger:any_enemy_country] = {
 ### check if neighbor ( controlled territory ) with specified country
 ## scopes = { country }
 alias[trigger:is_neighbor_of] = scope[country]
+### check if neighbor ( controlled territory ) with specified country
+## scopes = { country }
+alias[trigger:is_neighbor_of] = enum[country_tag]
 
 ### check what opinion the country has towards a specified country
 ## scopes = { country }
 alias[trigger:has_opinion] = {
 	target = scope[country]
+	target = enum[country_tag]
 	value = int
 }
 
 ### check if a country has the opinion modifier
 ## scopes = { country }
-alias[trigger:has_opinion_modifier] = replace_me
+alias[trigger:has_opinion_modifier] = <opinion>
 
 ### Checks if the country is subject of specified country
 ## scopes = { country }
 alias[trigger:is_subject_of] = scope[country]
+### Checks if the country is subject of specified country
+## scopes = { country }
+alias[trigger:is_subject_of] = enum[country_tag]
 
 ### check if all neighbor countries meet the trigger
 ## scopes = { country }
 alias[trigger:all_neighbor_country] = {
+    ## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
@@ -190,6 +239,7 @@ alias[trigger:all_neighbor_country] = {
 ### check if all countries meets the trigger
 ## scopes = { any }
 alias[trigger:all_country] = {
+    ## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
@@ -199,6 +249,7 @@ alias[trigger:all_country] = {
 ### check if all enemy countries meet the trigger
 ## scopes = { country }
 alias[trigger:all_enemy_country] = {
+    ## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
@@ -224,10 +275,16 @@ alias[trigger:has_war] = bool
 ### check if state is controlled by
 ## scopes = { state }
 alias[trigger:is_controlled_by] = scope[country]
+### check if state is controlled by
+## scopes = { state }
+alias[trigger:is_controlled_by] = enum[country_tag]
 
 ### check if state is owned by
 ## scopes = { state }
 alias[trigger:is_owned_by] = scope[country]
+### check if state is owned by
+## scopes = { state }
+alias[trigger:is_owned_by] = enum[country_tag]
 
 ### compare leader skill levels
 ## scopes = { unit_leader }
@@ -236,10 +293,16 @@ alias[trigger:skill_advantage] = int
 ### check owner for state(s)
 ## scopes = { country }
 alias[trigger:owns_state] = scope[state]
+### check owner for state(s)
+## scopes = { country }
+alias[trigger:owns_state] = <state>
 
 ### check controller for state(s)
 ## scopes = { country }
 alias[trigger:controls_state] = scope[state]
+### check controller for state(s)
+## scopes = { country }
+alias[trigger:controls_state] = <state>
 
 ### does country government (ruling party) belong to ideology group
 ## scopes = { country }
@@ -248,23 +311,41 @@ alias[trigger:has_government] = <ideology>
 ### has state flag been setCheck flag val date set and days since set.
 ## scopes = { state }
 alias[trigger:has_state_flag] = scalar
+### has state flag been setCheck flag val date set and days since set.
+## scopes = { state }
+alias[trigger:has_state_flag] = {
+	flag = scalar
+	## cardinality = 0..1
+	value = int
+	## cardinality = 0..1
+	date = date_field
+	## cardinality = 0..1
+	days = int
+}
 
 ### is countries at war
 ## scopes = { country }
 alias[trigger:has_war_with] = scope[country]
+### is countries at war
+## scopes = { country }
+alias[trigger:has_war_with] = enum[country_tag]
 
 ### checks for amount of divisions in specified state owned by current country.
 ## scopes = { country }
 alias[trigger:divisions_in_state] = {
 	size = float
 	state = scope[state]
+	state = <state>
 	## cardinality = 0..1
 	type = enum[land_units]
 }
 
 ### check if the specified country exist
 ## scopes = { any }
-alias[trigger:country_exists] = bool
+alias[trigger:country_exists] = scope[country]
+### check if the specified country exist
+## scopes = { any }
+alias[trigger:country_exists] = enum[country_tag]
 
 ### checks for amount of ships in specified area
 ## scopes = { country }
@@ -328,6 +409,9 @@ alias[trigger:num_of_available_civilian_factories] = int
 ### check if member of same faction as specified country
 ## scopes = { country }
 alias[trigger:is_in_faction_with] = scope[country]
+### check if member of same faction as specified country
+## scopes = { country }
+alias[trigger:is_in_faction_with] = enum[country_tag]
 
 ### check if member of any faction
 ## scopes = { country }
@@ -340,18 +424,30 @@ alias[trigger:is_faction_leader] = bool
 ### check if guaranteed by specified country
 ## scopes = { country }
 alias[trigger:is_guaranteed_by] = scope[country]
+### check if guaranteed by specified country
+## scopes = { country }
+alias[trigger:is_guaranteed_by] = enum[country_tag]
 
 ### check if country has guaranteed specified country
 ## scopes = { country }
 alias[trigger:has_guaranteed] = scope[country]
+### check if country has guaranteed specified country
+## scopes = { country }
+alias[trigger:has_guaranteed] = enum[country_tag]
 
 ### check country has military access to specified country
 ## scopes = { country }
 alias[trigger:has_military_access_to] = scope[country]
+### check country has military access to specified country
+## scopes = { country }
+alias[trigger:has_military_access_to] = enum[country_tag]
 
 ### check if country gives military access to specified country
 ## scopes = { country }
 alias[trigger:gives_military_access_to] = scope[country]
+### check if country gives military access to specified country
+## scopes = { country }
+alias[trigger:gives_military_access_to] = enum[country_tag]
 
 ### check if any state meets the trigger
 ## scopes = { any }
@@ -400,6 +496,7 @@ alias[trigger:any_allied_country] = {
 ### check if all states meets the trigger
 ## scopes = { any }
 alias[trigger:all_state] = {
+    ## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
@@ -409,6 +506,7 @@ alias[trigger:all_state] = {
 ### check if all owned states meets the trigger
 ## scopes = { country }
 alias[trigger:all_owned_state] = {
+    ## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
@@ -418,6 +516,7 @@ alias[trigger:all_owned_state] = {
 ### check if all neighbor states meets the trigger
 ## scopes = { state }
 alias[trigger:all_neighbor_state] = {
+    ## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
@@ -427,6 +526,7 @@ alias[trigger:all_neighbor_state] = {
 ### Check if all allied countries meet the trigger. Does not include the country itself
 ## scopes = { country }
 alias[trigger:all_allied_country] = {
+    ## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
@@ -445,6 +545,7 @@ alias[trigger:political_power_daily] = float
 ## scopes = { country }
 alias[trigger:ic_ratio] = {
 	tag = scope[country]
+	tag = enum[country_tag]
 	ratio = float
 }
 
@@ -472,7 +573,7 @@ alias[trigger:has_deployed_air_force_size] = {
 }
 
 ### check what terrain is in combat
-alias[trigger:is_fighting_in_terrain] = enum[terrain]
+alias[trigger:is_fighting_in_terrain] = <terrain>
 
 ### check if defender side in combat
 alias[trigger:is_defender] = bool
@@ -526,10 +627,16 @@ alias[trigger:has_available_idea_with_traits] = {
 ### Checks if state is claimed by country
 ## scopes = { state }
 alias[trigger:is_claimed_by] = scope[country]
+### Checks if state is claimed by country
+## scopes = { state }
+alias[trigger:is_claimed_by] = enum[country_tag]
 
 ### Checks if state is core of country
 ## scopes = { state }
 alias[trigger:is_core_of] = scope[country]
+### Checks if state is core of country
+## scopes = { state }
+alias[trigger:is_core_of] = enum[country_tag]
 
 ### Checks if country is AI controlled.
 ## scopes = { country }
@@ -573,10 +680,16 @@ alias[trigger:has_completed_focus] = <focus>
 ### One country has offensive war against other country.
 ## scopes = { country }
 alias[trigger:has_offensive_war_with] = scope[country]
+### One country has offensive war against other country.
+## scopes = { country }
+alias[trigger:has_offensive_war_with] = enum[country_tag]
 
 ### One country has defensive war against other country.
 ## scopes = { country }
 alias[trigger:has_defensive_war_with] = scope[country]
+### One country has defensive war against other country.
+## scopes = { country }
+alias[trigger:has_defensive_war_with] = enum[country_tag]
 
 ### is country at offensive war
 ## scopes = { country }
@@ -603,7 +716,7 @@ alias[trigger:custom_trigger_tooltip] = {
 
 ### checks for amount of equipment stored
 ## scopes = { country }
-alias[trigger:has_equipment] = { <equipment.regular_equip> = int }
+alias[trigger:has_equipment] = { <equipment> = int }
 
 ### check amount of total factories
 ## scopes = { country }
@@ -623,11 +736,15 @@ alias[trigger:is_puppet] = bool
 ### Checks if the country is puppet of specified country
 ## scopes = { country }
 alias[trigger:is_puppet_of] = scope[country]
+### Checks if the country is puppet of specified country
+## scopes = { country }
+alias[trigger:is_puppet_of] = enum[country_tag]
 
 ### checks for amount of ships in specified state's ports
 ## scopes = { country }
 alias[trigger:ships_in_state_ports] = {
 	state = scope[state]
+	state = <state>
 	size = float
 	## cardinality = 0..1
 	type = enum[ship_units]
@@ -648,6 +765,7 @@ alias[trigger:is_amphibious_invasion] = bool
 ## scopes = { country }
 alias[trigger:strength_ratio] = {
 	tag = scope[country]
+	tag = enum[country_tag]
 	ratio = float
 }
 
@@ -685,6 +803,7 @@ alias[trigger:any_claim] = {
 ## scopes = { country }
 alias[trigger:has_volunteers_amount_from] = {
 	tag = scope[country]
+	tag = enum[country_tag]
 	count = int
 }
 
@@ -695,6 +814,9 @@ alias[trigger:num_of_controlled_states] = int
 ### original tag is ( for civil wars checks )
 ## scopes = { country }
 alias[trigger:original_tag] = scope[country]
+### original tag is ( for civil wars checks )
+## scopes = { country }
+alias[trigger:original_tag] = enum[country_tag]
 
 ### Compare if the country has added above or below the specified ammount of tension
 ## scopes = { country }
@@ -711,14 +833,16 @@ alias[trigger:has_manpower_for_recruit_change_to] = {
 ## scopes = { country }
 alias[trigger:ai_liberate_desire] = {
 	target = scope[country]
-	count = float
+	target = enum[country_tag]
+	value = float
 }
 
 ### check distance between two states
 ## scopes = { state }
 alias[trigger:distance_to] = {
 	value = float
-	state = scope[state]
+	target = scope[state]
+	target = <state>
 }
 
 ### check if country can research technology
@@ -728,13 +852,16 @@ alias[trigger:can_research] = <technology>
 ### Checks a country has annex war goal on another country
 ## scopes = { country }
 alias[trigger:has_annex_war_goal] = scope[country]
+### Checks a country has annex war goal on another country
+## scopes = { country }
+alias[trigger:has_annex_war_goal] = enum[country_tag]
 
 ### check lowest/highest hardness level on combatant
 alias[trigger:hardness] = float
 
 ### check if country has a division template that contains a specific unit
 ## scopes = { country }
-alias[trigger:has_template_containing_unit] = enum[unit_category]
+alias[trigger:has_template_containing_unit] = <unit>
 
 ### Checks if the first province in the state is connected to the capital of its owner
 ## scopes = { state }
@@ -751,6 +878,9 @@ alias[trigger:ai_irrationality] = int
 ### Are the countries fighting on the same side of a war
 ## scopes = { country }
 alias[trigger:has_war_together_with] = scope[country]
+### Are the countries fighting on the same side of a war
+## scopes = { country }
+alias[trigger:has_war_together_with] = enum[country_tag]
 
 ### checks if the country has capitulated
 ## scopes = { country }
@@ -765,6 +895,9 @@ alias[trigger:has_army_manpower] = {
 ### check if state is owned by
 ## scopes = { state }
 alias[trigger:is_owned_and_controlled_by] = scope[country]
+### check if state is owned by
+## scopes = { state }
+alias[trigger:is_owned_and_controlled_by] = enum[country_tag]
 
 ### check if the tutorial is active
 ## scopes = { any }
@@ -781,14 +914,23 @@ alias[trigger:original_research_slots] = int
 ### Checks if country has a wargoal against the target.
 ## scopes = { country }
 alias[trigger:has_wargoal_against] = scope[country]
+### Checks if country has a wargoal against the target.
+## scopes = { country }
+alias[trigger:has_wargoal_against] = enum[country_tag]
 
 ### Checks if country is justifying a wargoal against the target.
 ## scopes = { country }
 alias[trigger:is_justifying_wargoal_against] = scope[country]
+### Checks if country is justifying a wargoal against the target.
+## scopes = { country }
+alias[trigger:is_justifying_wargoal_against] = enum[country_tag]
 
 ### check if neighbor ( owned territory ) with specified country
 ## scopes = { country }
 alias[trigger:is_owner_neighbor_of] = scope[country]
+### check if neighbor ( owned territory ) with specified country
+## scopes = { country }
+alias[trigger:is_owner_neighbor_of] = enum[country_tag]
 
 ### Will compare towards the amount of divisions an ai wants to have.
 ## scopes = { country }
@@ -797,11 +939,15 @@ alias[trigger:ai_wants_divisions] = int
 ### Checks if a state has been claimed by target country in an ongoing peace conference
 ## scopes = { state }
 alias[trigger:has_claimed_state_in_peace_conference] = scope[country]
+### Checks if a state has been claimed by target country in an ongoing peace conference
+## scopes = { state }
+alias[trigger:has_claimed_state_in_peace_conference] = enum[country_tag]
 
 ### Checks if a country owns the amount of states neighbouring the scoped state
 ## scopes = { state }
 alias[trigger:num_owned_neighbour_states] = {
 	owner = scope[country]
+	owner = enum[country_tag]
 	count = int
 }
 
@@ -809,6 +955,7 @@ alias[trigger:num_owned_neighbour_states] = {
 ## scopes = { state }
 alias[trigger:num_claimed_peace_conference_neighbour_states] = {
 	owner = scope[country]
+	owner = enum[country_tag]
 	count = int
 }
 
@@ -827,6 +974,9 @@ alias[trigger:alliance_strength_ratio] = float
 ### civilwar target is ( for civil wars checks )
 ## scopes = { country }
 alias[trigger:civilwar_target] = scope[country]
+### civilwar target is ( for civil wars checks )
+## scopes = { country }
+alias[trigger:civilwar_target] = enum[country_tag]
 
 ### Checks if the country is currently in a peaceconference
 ## scopes = { country }
@@ -862,6 +1012,7 @@ alias[trigger:any_other_country] = {
 ### check if all other countries meets the trigger. Excludes current country
 ## scopes = { country }
 alias[trigger:all_other_country] = {
+	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
@@ -871,6 +1022,9 @@ alias[trigger:all_other_country] = {
 ### Check if country has non aggression pact with the specified country
 ## scopes = { country }
 alias[trigger:has_non_aggression_pact_with] = scope[country]
+### Check if country has non aggression pact with the specified country
+## scopes = { country }
+alias[trigger:has_non_aggression_pact_with] = enum[country_tag]
 
 ### Compares the number of members in the faction for the current country.
 ## scopes = { country }
@@ -950,6 +1104,7 @@ alias[trigger:has_resources_amount] = {
 	resource = <resource>
 	amount = int
 	state = scope[state]
+	state = <state>
 }
 
 ### checks if the country has a bonus for the specified technology or category
@@ -999,7 +1154,10 @@ alias[trigger:has_navy_experience] = float
 
 ### check controller for state(s)
 ## scopes = { country }
-alias[trigger:has_full_control_of_state] = bool
+alias[trigger:has_full_control_of_state] = scope[state]
+### check controller for state(s)
+## scopes = { country }
+alias[trigger:has_full_control_of_state] = <state>
 
 ### Will compare towards the amount of divisions a country has control over, if strength matters use has_army_size.
 ## scopes = { country }
@@ -1036,12 +1194,14 @@ alias[trigger:has_any_license] = bool
 ## scopes = { country }
 alias[trigger:has_license] = {
 	from = scope[country]
+	from = enum[country_tag]
 	archetype = <equipment.archetype_equip>
 }
 ### Country has specific active license
 ## scopes = { country }
 alias[trigger:has_license] = {
 	from = scope[country]
+	from = enum[country_tag]
 	equipment = {
 		type = <equipment.regular_equip>
 		version = int
@@ -1052,12 +1212,14 @@ alias[trigger:has_license] = {
 ## scopes = { country }
 alias[trigger:is_licensing_to]  = {
 	target = scope[country]
+	target = enum[country_tag]
 	archetype = <equipment.archetype_equip>
 }
 ### Country is licensing specific equipment to target. License is active
 ## scopes = { country }
 alias[trigger:is_licensing_to]  = {
 	target = scope[country]
+	target = enum[country_tag]
 	equipment = {
 		type = <equipment.regular_equip>
 		version = int
@@ -1067,6 +1229,9 @@ alias[trigger:is_licensing_to]  = {
 ### Current country is licensing something to target country
 ## scopes = { country }
 alias[trigger:is_licensing_any_to] = scope[country]
+### Current country is licensing something to target country
+## scopes = { country }
+alias[trigger:is_licensing_any_to] = enum[country_tag]
 
 ### check if the ai controlled country has any template for a specific role
 ## scopes = { country }
@@ -1081,6 +1246,7 @@ alias[trigger:ai_has_role_division] = enum[unit_role]
 ## scopes = { country }
 alias[trigger:has_relation_modifier] = {
 	target = scope[country]
+	target = enum[country_tag]
 	modifier = <relation_modifier>
 }
 
@@ -1101,6 +1267,7 @@ alias[trigger:any_province_building_level] = {
 ## scopes = { country }
 alias[trigger:estimated_intel_max_armor] = {
 	tag = scope[country]
+	tag = enum[country_tag]
 	value = float
 }
 
@@ -1108,6 +1275,7 @@ alias[trigger:estimated_intel_max_armor] = {
 ## scopes = { country }
 alias[trigger:estimated_intel_max_piercing] = {
 	tag = scope[country]
+	tag = enum[country_tag]
 	value = float
 }
 
@@ -1119,11 +1287,12 @@ alias[trigger:amount_research_slots] = int
 ## scopes = { country }
 alias[trigger:manpower_per_military_factory] = float
 
-### has current country picked specified amount of ideas. Category and slot is optional.
+### has current country picked specified amount of ideas. Category and slots is optional.
 ## scopes = { country }
 alias[trigger:amount_taken_ideas] = {
 	amount = int
-	slot = {
+	## cardinality = 0..1
+	slots = {
 		enum[idea_categories]
 	}
 }
@@ -1135,6 +1304,7 @@ alias[trigger:has_carrier_airwings_in_own_combat] = bool
 ## scopes = { country }
 alias[trigger:naval_strength_ratio] = {
 	tag = scope[country]
+	tag = enum[country_tag]
 	ratio = float
 }
 
@@ -1157,6 +1327,7 @@ alias[trigger:has_war_support] = float
 ### check if all unit leaders meets the trigger.
 ## scopes = { country }
 alias[trigger:all_unit_leader] = {
+	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
@@ -1177,6 +1348,7 @@ alias[trigger:any_unit_leader] = {
 ### check if all unit leaders meets the trigger.
 ## scopes = { country }
 alias[trigger:all_army_leader] = {
+	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
@@ -1197,6 +1369,7 @@ alias[trigger:any_army_leader] = {
 ### check if all unit leaders meets the trigger.
 ## scopes = { country }
 alias[trigger:all_navy_leader] = {
+    ## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
@@ -1229,6 +1402,17 @@ alias[trigger:is_field_marshal] = bool
 ### has unit leader flag been setCheck flag val date set and days since set.
 ## scopes = { unit_leader }
 alias[trigger:has_unit_leader_flag] = scalar
+### has unit leader flag been setCheck flag val date set and days since set.
+## scopes = { unit_leader }
+alias[trigger:has_unit_leader_flag] = {
+	flag = scalar
+	## cardinality = 0..1
+	value = int
+	## cardinality = 0..1
+	date = date_field
+	## cardinality = 0..1
+	days = int
+}
 
 ### check if country has active selected decision
 ## scopes = { country }
@@ -1245,6 +1429,9 @@ alias[trigger:command_power_daily] = float
 ### Checks if state is fully controlled by specified tag
 ## scopes = { state }
 alias[trigger:is_fully_controlled_by] = scope[country]
+### Checks if state is fully controlled by specified tag
+## scopes = { state }
+alias[trigger:is_fully_controlled_by] = enum[country_tag]
 
 ### does unit leader have the abilityCheck if a unit leader has the ability.
 ## scopes = { unit_leader }
@@ -1353,12 +1540,17 @@ alias[trigger:is_border_war] = bool
 ## scopes = { state country }
 alias[trigger:has_border_war_between] = {
 	attacker = scope[state]
+	attacker = <state>
 	defender = scope[state]
+	defender = <state>
 }
 
 ### Checks if a there is a border against a state/country
 ## scopes = { state country }
 alias[trigger:has_border_war_with] = scope[country]
+### Checks if a there is a border against a state/country
+## scopes = { state country }
+alias[trigger:has_border_war_with] = enum[country_tag]
 
 ### Compares the average stats for a unit leader.
 ## scopes = { unit_leader }
@@ -1404,7 +1596,7 @@ alias[trigger:print_variables] = {
 
 ### check if country has an active mission with specified ID. has_active_mission = my_test_mission
 ## scopes = { country }
-alias[trigger:has_active_mission] = <mission>
+alias[trigger:has_active_mission] = <decision.mission>
 
 ### Has attache from any other country
 ## scopes = { country }
@@ -1413,6 +1605,9 @@ alias[trigger:has_attache] = yes
 ### Has attache from specified country
 ## scopes = { country }
 alias[trigger:has_attache_from] = scope[country]
+### Has attache from specified country
+## scopes = { country }
+alias[trigger:has_attache_from] = enum[country_tag]
 
 ### Checks for amount manpower currently in deploymentview. amount_manpower_in_training > 10
 ## scopes = { country }
@@ -1425,7 +1620,9 @@ alias[trigger:divisions_in_border_state] = {
 	type = enum[land_units]
 	size = int
 	state = scope[state]
+	state = <state>
 	border_state = scope[state]
+	border_state = <state>
 }
 
 ### Compares the ratio of equipment archetype in stockpile vs used. a value of 2 means we have double in stockpile of what is fielded or in training.
@@ -1450,3 +1647,11 @@ alias[trigger:<building>] = int
 ### checks ideology popularity
 ## scopes = { country }
 alias[trigger:<ideology>] = float
+
+### changes scope to opposing army/navy
+## scopes = { unit_leader }
+alias[trigger:opponent] = { alias_name[trigger] = alias_match_left[trigger] }
+
+### check ratio of this type of unit for commander
+## scopes = { unit_leader }
+alias[trigger:enum[unit_types]] = float

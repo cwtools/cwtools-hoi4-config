@@ -68,12 +68,14 @@ unit = {
 			## cardinality = 1..1
 			enum[ship_units]
 		}
+		alias_name[naval_stat] = alias_match_left[naval_stat]
 	}
 	subtype[air_unit] = {
 		type = {
 			## cardinality = 1..1
 			enum[air_units]
 		}
+		alias_name[air_stat] = alias_match_left[air_stat]
 	}
 	subtype[catch] = {
 		test = int
@@ -84,9 +86,16 @@ unit = {
 	### whether needs tech to create
 	active = bool
 
+	alias_name[unit_stat] = alias_match_left[unit_stat]
+
 	need = {
 		## cardinality = 1..100
 		<equipment> = int
+	}
+	## cardinality = 0..1
+	essential = {
+		## cardinality = 1..100
+		<equipment>
 	}
 	## cardinality = 0..1
 	categories = {
@@ -117,8 +126,11 @@ enums = {
 		infantry
 		support
 		artillery
+		rocket
 		anti_tank
 		anti_air
+		motorized
+		mechanized
 		armor
 		fighter
 		cas
@@ -133,13 +145,17 @@ enums = {
 		screen_ship
 		capital_ship
 		carrier
+		convoy
 	}
 	enum[land_units] = {
 		infantry
 		support
 		artillery
+		rocket
 		anti_tank
 		anti_air
+		motorized
+		mechanized
 		armor
 	}
 	enum[air_units] = {
@@ -158,6 +174,7 @@ enums = {
 		screen_ship
 		capital_ship
 		carrier
+		convoy
 	}
 	complex_enum[unit_category] = {
 		path = "game/common/unit_tags"

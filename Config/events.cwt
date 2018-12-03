@@ -2,14 +2,17 @@ types = {
 	type[event] = {
 		path = "game/events"
 		name_field = "id"
+		## type_key_filter = country_event
 		subtype[country_event] = {
-			type_key_filter = country_event
 		}
+		## type_key_filter = state_event
 		subtype[state_event] = {
-			type_key_filter = state_event
 		}
+		## type_key_filter = news_event
 		subtype[news_event] = {
-			type_key_filter = news_event
+		}
+		## type_key_filter = unit_leader_event
+		subtype[unit_leader_event] = {
 		}
 		subtype[hidden] = {
 			hidden = yes
@@ -55,11 +58,7 @@ event = {
 	## cardinality = 0..1
 	mean_time_to_happen = {
 		days = int
-		## cardinality = 0..100
-		modifier = {
-			factor = float
-			alias_name[trigger] = alias_match_left[trigger]
-		}
+		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	}
 	## cardinality = 0..1
 	immediate = {
@@ -76,15 +75,7 @@ event = {
 		## cardinality = 0..1
 		ai_chance = {
 			enum[ai_chance_base] = float
-			## cardinality = 0..100
-			modifier = {
-				## cardinality = 0..100
-				alias_name[trigger] = alias_match_left[trigger]
-				## cardinality = 0..1
-				factor = float
-				## cardinality = 0..1
-				add = float
-			}
+			alias_name[modifier_rule] = alias_match_left[modifier_rule]
 		}
 	}
 }

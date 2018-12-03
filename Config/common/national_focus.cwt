@@ -1,19 +1,19 @@
 types = {
+	## type_key_filter = focus_tree
 	type[focus_tree] = {
-		type_key_filter = focus_tree
 		path = "game/common/national_focus"
 		name_field = "id"
 	}
+	## type_key_filter = focus
 	type[focus] = {
 		path = "game/common/national_focus"
 		skip_root_key = focus_tree
-		type_key_filter = focus
 		name_field = "id"
 	}
+	## type_key_filter = shared_focus
 	type[shared_focus] = {
 		path = "game/common/national_focus"
 		name_field = "id"
-		type_key_filter = shared_focus
 	}
 }
 
@@ -21,16 +21,7 @@ focus_tree = {
 	id = localisation
 	country = {
 		factor = int
-		## cardinality = 0..10
-		modifier = {
-			add = int
-			alias_name[trigger] = alias_match_left[trigger]
-		}
-		## cardinality = 0..10
-		modifier = {
-			factor = int
-			alias_name[trigger] = alias_match_left[trigger]
-		}
+		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	}
 	default = bool
 	## cardinality = 0..10
@@ -101,14 +92,7 @@ focus_tree = {
 		## cardinality = 0..1
 		ai_will_do = {
 			factor = float
-			## cardinality = 0..100
-			modifier = {
-				alias_name[trigger] = alias_match_left[trigger]
-				## cardinality = 0..1
-				factor = float
-				## cardinality = 0..1
-				add = float
-			}
+			alias_name[modifier_rule] = alias_match_left[modifier_rule]
 		}
 	}
 }
@@ -178,14 +162,7 @@ focus = {
 	## cardinality = 0..1
 	ai_will_do = {
 		factor = float
-		## cardinality = 0..100
-		modifier = {
-			alias_name[trigger] = alias_match_left[trigger]
-			## cardinality = 0..1
-			factor = float
-			## cardinality = 0..1
-			add = float
-		}
+		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	}
 }
 
@@ -198,7 +175,7 @@ shared_focus = {
 	x = int
 	y = int
 	## cardinality = 0..1
-	relative_position_id = <focus>
+	relative_position_id = <shared_focus>
 	### used for focuses that can change title/desc
 	## cardinality = 0..1
 	dynamic = bool
@@ -213,12 +190,12 @@ shared_focus = {
 	## cardinality = 0..50
 	prerequisite = {
 		## cardinality = 1..50
-		focus = <focus>
+		focus = <shared_focus>
 	}
 	## cardinality = 0..1
 	mutually_exclusive = {
 		## cardinality = 1..50
-		focus = <focus>
+		focus = <shared_focus>
 	}
 	## cardinality = 0..1
 	bypass = {
@@ -254,14 +231,7 @@ shared_focus = {
 	## cardinality = 0..1
 	ai_will_do = {
 		factor = float
-		## cardinality = 0..100
-		modifier = {
-			alias_name[trigger] = alias_match_left[trigger]
-			## cardinality = 0..1
-			factor = float
-			## cardinality = 0..1
-			add = float
-		}
+		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	}
 }
 

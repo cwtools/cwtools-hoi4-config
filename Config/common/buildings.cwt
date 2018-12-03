@@ -71,10 +71,14 @@ building = {
 	## cardinality = 0..1
 	rocket_launch_capacity = int
 
-	## cardinality = 0..1
+	## cardinality = 0..6
 	local_resources_<resource> = int
 	## cardinality = 0..1
 	air_defence = float
 	## cardinality = 0..1
 	nuclear_production_factor = float
+}
+
+enums = {
+
 }

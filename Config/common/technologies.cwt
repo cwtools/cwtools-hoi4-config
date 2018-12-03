@@ -2,6 +2,9 @@ types = {
 	type[technology] = {
 		skip_root_key = technologies
 		path = "game/common/technologies"
+		subtype[doctrine] = {
+			doctrine = yes
+		}
 	}
 	type[tech_sharing_group] = {
 		path = "game/common/technology_sharing"
@@ -10,6 +13,11 @@ types = {
 }
 
 technology = {
+	## cardinality = 0..1
+	show_equipment_icon = bool
+	## cardinality = 0..1
+	desc = localisation
+	
 	## cardinality = 0..1
 	### hides technology unless trigger is true
 	allow = {
@@ -47,6 +55,8 @@ technology = {
 		level = int
 	}
 	## cardinality = 0..1
+	enable_tactic = <combat_tactic>
+	## cardinality = 0..1
 	### technologies directly dependent on this tech
 	sub_technologies = {
 		# vanila defines limit sub techs to three
@@ -82,21 +92,17 @@ technology = {
 	### ai weights for research
 	ai_will_do = {
 		factor = float
-		## cardinality = 0..100
-		modifier = {
-			## cardinality = 0..100
-			alias_name[trigger] = alias_match_left[trigger]
-			## cardinality = 0..1
-			factor = float
-			## cardinality = 0..1
-			add = float
-		}
+		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	}
 	## cardinality = 0..1
 	### modifies ai willingness for categories
 	ai_research_weights = {
-		## cardinality = 1..10
+		## cardinality = 0..100
+		enum[ai_research_areas] = float
+		## cardinality = 0..100
 		enum[tech_category] = float
+		## cardinality = 0..100
+		enum[unit_types] = float
 	}
 	## cardinality = 0..1
 	### categories for tech
@@ -107,12 +113,20 @@ technology = {
 	## cardinality = 0..100
 	enum[unit_category] = {
 		## cardinality = 0..100
-		enum[unit_stats] = float
+		alias_name[unit_stat] = alias_match_left[unit_stat]
+		alias_name[naval_stat] = alias_match_left[naval_stat]
+		alias_name[air_stat] = alias_match_left[air_stat]
 	}
 	## cardinality = 0..100
 	<unit> = {
 		## cardinality = 0..100
-		enum[unit_stats] = float
+		alias_name[unit_stat] = alias_match_left[unit_stat]
+		alias_name[naval_stat] = alias_match_left[naval_stat]
+		alias_name[air_stat] = alias_match_left[air_stat]
+	}
+	## cardinality = 0..1
+	modifier = {
+		alias_name[modifier] = alias_match_left[modifier]
 	}
 
 	## cardinality = 0..1

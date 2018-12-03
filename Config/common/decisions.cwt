@@ -1,0 +1,171 @@
+types = {
+	type[decision_category] = {
+		path = "game/common/decisions/categories"
+	}
+	type[decision] = {
+		path = "game/common/decisions"
+		path_strict = yes
+		skip_root_key = any
+		subtype[mission] = {
+			days_mission_timeout = int
+		}
+		subtype[targeted] = {
+			target_trigger = {
+
+			}
+		}
+		subtype[custom_cost] = {
+			custom_cost_trigger = {
+
+			}
+		}
+		subtype[timed] = {
+			days_remove = int
+		}
+		subtype[timed] = {
+			days_mission_timeout = int
+		}
+	}
+}
+
+decision_category = {
+	## cardinality = 0..1
+	icon = scalar
+	## cardinality = 0..1
+	picture = scalar
+	## cardinality = 0..1
+	priority = int
+
+	### check if decisions in this category can be activated
+	## cardinality = 0..1
+	available = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	### check if who can use decisions in this category
+	## cardinality = 0..1
+	allowed = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	### can the player see decisions in this category
+	## cardinality = 0..1
+	visible = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	### check whether to cancel missions in this category
+	## cardinality = 0..1
+	cancel_trigger = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+}
+
+decision = {
+	## cardinality = 0..1
+	icon = scalar
+	## cardinality = 0..1
+	fire_only_once = bool
+	### can the player see this decision
+	## cardinality = 0..1
+	visible = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	## cardinality = 0..1
+	cancel_if_not_visible = bool
+	### who can use this decision
+	## cardinality = 0..1
+	allowed = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	### check if this decision can be activated
+	## cardinality = 0..1
+	available = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	## cardinality = 0..1
+	cost = int
+	subtype[custom_cost] = {
+		custom_cost_trigger = {
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+		custom_cost_text = localisation
+	}
+	## cardinality = 0..1
+	highlight_states = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	## cardinality = 0..1
+	complete_effect = {
+		alias_name[effect] = alias_match_left[effect]
+	}
+	## cardinality = 0..1
+	remove_effect = {
+		alias_name[effect] = alias_match_left[effect]
+	}
+	subtype[timed] = {
+		## cardinality = 0..1
+		cancel_trigger = {
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+		## cardinality = 0..1
+		remove_trigger = {
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+		## cardinality = 0..1
+		days_remove = int
+		## cardinality = 0..1
+		modifier = {
+			alias_name[modifier] = alias_match_left[modifier]
+		}
+	}
+	subtype[mission] = {
+		activation = {
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+		is_good = bool
+		days_mission_timeout = int
+		## cardinality = 0..1
+		timeout_effect = {
+			alias_name[effect] = alias_match_left[effect]
+		}
+		### can select this mission like a regular decision
+		## cardinality = 0..1
+		selectable_mission = bool
+		## cardinality = 0..1
+		cancel_trigger = {
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+	}
+	subtype[targeted] = {
+		target_trigger = {
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+	}
+	## cardinality = 0..3
+	enum[war_with_on] = scope[country]
+	## cardinality = 0..3
+	enum[war_with_on] = enum[country_tag]
+	## cardinality = 0..3
+	enum[war_with_target_on] = bool
+
+	## cardinality = 0..1
+	days_re_enable = int
+
+	## cardinality = 0..1
+	ai_will_do = {
+		enum[ai_chance_base] = float
+		alias_name[modifier_rule] = alias_match_left[modifier_rule]
+	}
+
+
+}
+enums = {
+	enum[war_with_on] = {
+		war_with_on_remove
+		war_with_on_complete
+		war_with_on_timeout
+	}
+	enum[war_with_target_on] = {
+		war_with_target_on_remove
+		war_with_target_on_complete
+		war_with_target_on_timeout
+	}
+}

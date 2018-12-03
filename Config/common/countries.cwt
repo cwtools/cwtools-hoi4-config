@@ -20,9 +20,11 @@ country_file = {
 cosmetic_tag = {
 	color = {
 		colour[rgb]
+		colour[hsv]
 	}
 	color_ui = {
 		colour[rgb]
+		colour[hsv]
 	}
 }
 enums = {

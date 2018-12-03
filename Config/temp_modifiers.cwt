@@ -1,22 +1,11 @@
-#vanila ideologies
-alias[modifier:fascism_drift] = float
-alias[modifier:democratic_drift] = float
-alias[modifier:communism_drift] = float
-alias[modifier:neutrality_drift] = float
-alias[modifier:fascism_acceptance] = int
-alias[modifier:democratic_acceptance] = int
-alias[modifier:communism_acceptance] = int
-alias[modifier:neutrality_acceptance] = int
+alias[modifier_rule:modifier] = {
+	enum[add_factor] = float
+	alias_name[trigger] = alias_match_left[trigger]
+}
 
-#CaesarVincens' mod ideologies
-alias[modifier:liberal_drift] = float
-alias[modifier:radical_drift] = float
-alias[modifier:absolutist_drift] = float
-alias[modifier:constitutionalist_drift] = float
-alias[modifier:liberal_acceptance] = int
-alias[modifier:radical_acceptance] = int
-alias[modifier:absolutist_acceptance] = int
-alias[modifier:constitutionalist_acceptance] = int
+#vanila ideologies
+alias[modifier:<ideology>_drift] = float
+alias[modifier:<ideology>_acceptance] = int
 
 #modifiers not listed in wiki
 alias[modifier:justify_war_goal_when_in_major_war_time] = float
@@ -32,14 +21,7 @@ alias[modifier:research_sharing_per_country_bonus_factor] = float
 alias[modifier:autonomy_gain_global_factor] = float
 
 #local_resources_<resource>
-alias[modifier:local_resources_oil] = int
-alias[modifier:local_resources_aluminium] = int
-alias[modifier:local_resources_rubber] = int
-alias[modifier:local_resources_tungsten] = int
-alias[modifier:local_resources_steel] = int
-alias[modifier:local_resources_chromium] = int
-#CaesarVincens' mod resource
-alias[modifier:local_resources_combustion_engine] = int
+alias[modifier:local_resources_<resource>] = int
 
 alias[modifier:transport_capacity] = float
 alias[modifier:amphibious_invasion_defence] = float
@@ -57,9 +39,13 @@ alias[modifier:air_strategic_bomber_night_penalty] = float
 alias[modifier:air_escort_efficiency] = float
 alias[modifier:air_cas_efficiency] = float
 alias[modifier:strategic_bomb_visibility] = float
+alias[modifier:port_strike] = float
+alias[modifier:carrier_capacity_penalty_reduction] = float
 
 alias[modifier:mechanized_attack_factor] = float
 alias[modifier:mechanized_defence_factor] = float
+alias[modifier:org_loss_when_moving] = float
+alias[modifier:land_night_attack] = float
 
 alias[modifier:take_states_cost_factor] = float
 alias[modifier:ai_focus_defense_factor] = float
@@ -99,6 +85,15 @@ alias[unit_stat:reliability_factor] = float
 alias[unit_stat:equipment_capture_factor] = float
 alias[unit_stat:recon] = float
 alias[unit_stat:initiative] = float
+
+alias[unit_stat:fortification_damage] = float
+alias[unit_stat:fortification_collateral_chance] = float
+alias[unit_stat:paratrooper_count_per_plane] = float
+alias[unit_stat:paradrop_organization_factor] = float
+alias[unit_stat:paratrooper_aa_defense] = float
+alias[unit_stat:naval_invasion_prep_speed] = float
+alias[unit_stat:dont_lose_dig_in_on_attack] = float
+alias[unit_stat:river_crossing_factor] = float
 #naval stats
 alias[naval_stat:naval_speed] = float
 alias[naval_stat:fire_range] = float

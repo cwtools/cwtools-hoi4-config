@@ -68,12 +68,7 @@ idea = {
 			## cardinality = 0..1
 			ai_will_do = {
 				factor = float
-				## cardinality = 0..100
-				modifier = {
-					## cardinality = 0..100
-					alias_name[trigger] = alias_match_left[trigger]
-					enum[add_factor] = float
-				}
+				alias_name[modifier_rule] = alias_match_left[modifier_rule]
 			}
 		}
 	}
@@ -121,12 +116,7 @@ idea = {
 			## cardinality = 0..1
 			ai_will_do = {
 				factor = float
-				## cardinality = 0..100
-				modifier = {
-					## cardinality = 0..100
-					alias_name[trigger] = alias_match_left[trigger]
-					enum[add_factor] = float
-				}
+				alias_name[modifier_rule] = alias_match_left[modifier_rule]
 			}
 			## cardinality = 0..1
 			traits = {

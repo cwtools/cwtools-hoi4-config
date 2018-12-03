@@ -72,7 +72,7 @@ building = {
 	rocket_launch_capacity = int
 
 	## cardinality = 0..6
-	enum[local_resource] = int
+	local_resources_<resource> = int
 	## cardinality = 0..1
 	air_defence = float
 	## cardinality = 0..1
@@ -80,14 +80,5 @@ building = {
 }
 
 enums = {
-	enum[local_resource] = {
-		local_resources_oil
-		local_resources_aluminium
-		local_resources_rubber
-		local_resources_tungsten
-		local_resources_steel
-		local_resources_chromium
-		#CaesarVincens' mod resource
-		local_resources_combustion_engine
-	}
+
 }

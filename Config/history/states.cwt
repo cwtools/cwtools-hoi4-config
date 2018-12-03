@@ -64,11 +64,4 @@ enums = {
 			id = enum_name
 		}
 	}
-	complex_enum[state_ids] = {
-		path = "game/map/airports.txt"
-		start_from_root = yes
-		name = {
-			enum_name = { }
-		}
-	}
 }

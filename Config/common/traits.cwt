@@ -60,15 +60,7 @@ trait = {
 	## cardinality = 0..1
 	ai_will_do = {
 		factor = float
-		## cardinality = 0..100
-		modifier = {
-			## cardinality = 0..100
-			alias_name[trigger] = alias_match_left[trigger]
-			## cardinality = 0..1
-			factor = float
-			## cardinality = 0..1
-			add = float
-		}
+		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	}
 }
 
@@ -155,14 +147,7 @@ unit_leader_trait = {
 	ai_will_do = {
 		factor = float
 		## cardinality = 0..100
-		modifier = {
-			## cardinality = 0..100
-			alias_name[trigger] = alias_match_left[trigger]
-			## cardinality = 0..1
-			factor = float
-			## cardinality = 0..1
-			add = float
-		}
+		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	}
 }
 
@@ -191,6 +176,12 @@ enums = {
 		personality_trait
 		assignable_trait
 		status_trait
+	}
+	enum[combat_modifiers] = {
+		fort_attack
+		river_crossing
+		amphibious_attack
+		paradrop
 	}
 
 }

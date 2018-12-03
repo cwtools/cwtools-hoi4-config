@@ -1,19 +1,19 @@
 types = {
+	## type_key_filter = focus_tree
 	type[focus_tree] = {
-		type_key_filter = focus_tree
 		path = "game/common/national_focus"
 		name_field = "id"
 	}
+	## type_key_filter = focus
 	type[focus] = {
 		path = "game/common/national_focus"
 		skip_root_key = focus_tree
-		type_key_filter = focus
 		name_field = "id"
 	}
+	## type_key_filter = shared_focus
 	type[shared_focus] = {
 		path = "game/common/national_focus"
 		name_field = "id"
-		type_key_filter = shared_focus
 	}
 }
 
@@ -21,11 +21,7 @@ focus_tree = {
 	id = localisation
 	country = {
 		factor = int
-		## cardinality = 0..10
-		modifier = {
-			enum[add_factor] = int
-			alias_name[trigger] = alias_match_left[trigger]
-		}
+		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	}
 	default = bool
 	## cardinality = 0..10
@@ -96,11 +92,7 @@ focus_tree = {
 		## cardinality = 0..1
 		ai_will_do = {
 			factor = float
-			## cardinality = 0..100
-			modifier = {
-				alias_name[trigger] = alias_match_left[trigger]
-				enum[add_factor] = float
-			}
+			alias_name[modifier_rule] = alias_match_left[modifier_rule]
 		}
 	}
 }
@@ -170,11 +162,7 @@ focus = {
 	## cardinality = 0..1
 	ai_will_do = {
 		factor = float
-		## cardinality = 0..100
-		modifier = {
-			alias_name[trigger] = alias_match_left[trigger]
-			enum[add_factor] = float
-		}
+		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	}
 }
 
@@ -243,11 +231,7 @@ shared_focus = {
 	## cardinality = 0..1
 	ai_will_do = {
 		factor = float
-		## cardinality = 0..100
-		modifier = {
-			alias_name[trigger] = alias_match_left[trigger]
-			enum[add_factor] = float
-		}
+		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	}
 }
 

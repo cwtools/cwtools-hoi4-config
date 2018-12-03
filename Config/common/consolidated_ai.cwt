@@ -1,0 +1,102 @@
+types = {
+	type[ai_area] = {
+		path = "game/common/ai_areas"
+		skip_root_key = areas
+	}
+	type[ai_focus] = {
+		path = "game/common/ai_focuses"
+		subtype[research] = {
+			research = {
+
+			}
+		}
+		subtype[national_focuses] = {
+			ai_national_focuses = {
+
+			}
+		}
+	}
+	type[ai_peace] = {
+		path = "game/common/ai_peace"
+	}
+}
+
+ai_area = {
+	## cardinality = 0..1
+	continents = {
+		enum[continents]
+	}
+	## cardinality = 0..1
+	strategic_regions = {
+		## cardinality = 1..100
+		<strategic_region>
+	}
+}
+
+ai_focus = {
+	subtype[research] = {
+		research = {
+			## cardinality = 0..100
+			enum[ai_research_areas] = float
+			## cardinality = 0..100
+			enum[tech_category] = float
+		}
+	}
+	subtype[national_focuses] = {
+		ai_national_focuses = {
+			## cardinality = 1..100
+			<focus>
+		}
+	}
+
+}
+
+ai_peace = {
+	enable = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	annex_randomness = int
+	liberate_randomness = int
+	puppet_randomness = int
+	take_states_randomness = int
+	force_government_randomness = int
+	# ROOT = Taker, FROM = Giver
+	annex = {
+		factor = int
+		alias_name[modifier_rule] = alias_match_left[modifier_rule]
+	}
+
+	# ROOT = Taker, FROM = Liberated
+	liberate = {
+		factor = int
+		alias_name[modifier_rule] = alias_match_left[modifier_rule]
+	}
+
+	# ROOT = Taker, FROM = Giver
+	puppet = {
+		factor = int
+		alias_name[modifier_rule] = alias_match_left[modifier_rule]
+	}
+
+	# ROOT = Taker, FROM = State
+	take_states = {
+		factor = int
+		alias_name[modifier_rule] = alias_match_left[modifier_rule]
+	}
+
+	# ROOT = Taker, FROM = Giver
+	force_government = {
+		factor = int
+		alias_name[modifier_rule] = alias_match_left[modifier_rule]
+	}
+}
+enums = {
+	enum[ai_research_areas] = {
+		defensive
+		offensive
+		#unit types?
+		carrier
+		battleship
+		cruiser
+	}
+}

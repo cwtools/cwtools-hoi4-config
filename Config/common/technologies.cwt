@@ -12,6 +12,7 @@ types = {
 	}
 }
 
+## replace_scope = { this = country root = country }
 technology = {
 	## cardinality = 0..1
 	show_equipment_icon = bool

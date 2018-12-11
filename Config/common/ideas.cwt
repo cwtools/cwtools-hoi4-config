@@ -4,6 +4,7 @@ types = {
 	}
 }
 
+## replace_scope = { this = country root = country }
 idea = {
 	## cardinality = 0..2
 	enum[hardcode_ideas] = {

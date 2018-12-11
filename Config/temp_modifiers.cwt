@@ -46,9 +46,16 @@ alias[modifier:mechanized_attack_factor] = float
 alias[modifier:mechanized_defence_factor] = float
 alias[modifier:org_loss_when_moving] = float
 alias[modifier:land_night_attack] = float
+alias[modifier:special_forces_cap] = float
+alias[modifier:special_forces_out_of_supply_factor] = float
+alias[modifier:special_forces_training_time_factor] = float
+alias[modifier:special_forces_no_supply_grace] = int
 
 alias[modifier:take_states_cost_factor] = float
 alias[modifier:ai_focus_defense_factor] = float
+alias[modifier:ai_license_acceptance] = float
+alias[modifier:ai_call_ally_desire_factor] = int
+alias[modifier:ai_join_ally_desire_factor] = int
 
 #unit stats
 alias[unit_stat:max_organisation] = float
@@ -94,6 +101,8 @@ alias[unit_stat:paratrooper_aa_defense] = float
 alias[unit_stat:naval_invasion_prep_speed] = float
 alias[unit_stat:dont_lose_dig_in_on_attack] = float
 alias[unit_stat:river_crossing_factor] = float
+alias[unit_stat:acclimatization_hot_climate_gain_factor] = float
+alias[unit_stat:acclimatization_cold_climate_gain_factor] = float
 #naval stats
 alias[naval_stat:naval_speed] = float
 alias[naval_stat:fire_range] = float

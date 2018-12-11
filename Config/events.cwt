@@ -3,15 +3,19 @@ types = {
 		path = "game/events"
 		name_field = "id"
 		## type_key_filter = country_event
+		## push_scope = country
 		subtype[country_event] = {
 		}
 		## type_key_filter = state_event
+		## push_scope = country
 		subtype[state_event] = {
 		}
 		## type_key_filter = news_event
+		## push_scope = country
 		subtype[news_event] = {
 		}
 		## type_key_filter = unit_leader_event
+		## push_scope = country
 		subtype[unit_leader_event] = {
 		}
 		subtype[hidden] = {

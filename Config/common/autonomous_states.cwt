@@ -4,6 +4,8 @@ types = {
 		name_field = "id"
 	}
 }
+
+## replace_scope = { this = country root = country }
 autonomy = {
 	id = localisation
 	## cardinality = 0..1

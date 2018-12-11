@@ -9,6 +9,7 @@ types = {
 	}
 }
 
+## replace_scope = { this = state root = state }
 state = {
 	id = int
 	name = localisation
@@ -38,6 +39,30 @@ state = {
 		add_core_of = enum[country_tag]
 		## cardinality = 0..100
 		add_claim_by = enum[country_tag]
+		## cardinality = 0..5
+		date_field = {
+			## cardinality = 0..1
+			owner = enum[country_tag]
+			## cardinality = 0..100
+			victory_points = {
+				enum[provinces]
+				int[0..1000]
+			}
+			## cardinality = 0..1
+			buildings = {
+				## cardinality = 0..100
+				<building> = int[0..20]
+				## cardinality = 0..100
+				enum[provinces] = {
+					## cardinality = 0..100
+					<building> = int[0..20]
+				}
+			}
+			## cardinality = 0..100
+			add_core_of = enum[country_tag]
+			## cardinality = 0..100
+			add_claim_by = enum[country_tag]			
+		}
 	}
 	provinces = {
 		## cardinality = 0..100
@@ -58,10 +83,5 @@ state_category = {
 }
 
 enums = {
-	complex_enum[states] = {
-		path = "game/history/states"
-		name = {
-			id = enum_name
-		}
-	}
+
 }

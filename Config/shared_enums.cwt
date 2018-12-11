@@ -22,4 +22,8 @@ enums = {
 		add
 		factor
 	}
+	enum[base_factor] = {
+		base
+		factor
+	}
 }

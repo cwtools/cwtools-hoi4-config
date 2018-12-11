@@ -5,6 +5,7 @@ types = {
 	}
 }
 
+## replace_scope = { this = unit_leader root = unit_leader from = country }
 ability = {
 	name = localisation
 	desc = localisation

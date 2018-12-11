@@ -29,7 +29,8 @@ types = {
 
 unit = {
 	### 3d map asset
-	sprite = enum[unit_sprites]
+	sprite = scalar
+	#enum[unit_sprites]
 	subtype[land_unit] = {
 		ai_priority = int
 		### map icon

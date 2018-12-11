@@ -19,6 +19,9 @@ types = {
 	type[ai_peace] = {
 		path = "game/common/ai_peace"
 	}
+	type[ai_template] = {
+		path = "game/common/ai_templates"
+	}
 }
 
 ai_area = {
@@ -46,11 +49,14 @@ ai_focus = {
 		ai_national_focuses = {
 			## cardinality = 1..100
 			<focus>
+			## cardinality = 0..100
+			<shared_focus>
 		}
 	}
 
 }
 
+## replace_scope = { this = country root = country from = country }
 ai_peace = {
 	enable = {
 		alias_name[trigger] = alias_match_left[trigger]
@@ -62,34 +68,144 @@ ai_peace = {
 	force_government_randomness = int
 	# ROOT = Taker, FROM = Giver
 	annex = {
-		factor = int
+		enum[base_factor] = int
 		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	}
 
 	# ROOT = Taker, FROM = Liberated
 	liberate = {
-		factor = int
+		enum[base_factor] = int
 		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	}
 
 	# ROOT = Taker, FROM = Giver
 	puppet = {
-		factor = int
+		enum[base_factor] = int
 		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	}
-
+	## replace_scope = { this = country root = country from = state }
 	# ROOT = Taker, FROM = State
 	take_states = {
-		factor = int
+		enum[base_factor] = int
 		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	}
 
 	# ROOT = Taker, FROM = Giver
 	force_government = {
-		factor = int
+		enum[base_factor] = int
 		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	}
 }
+
+ai_template = {
+	roles = {
+		enum[template_roles]
+	}
+	# Restricts the template to only the specified tags. Optional.
+	## cardinality = 0..1
+	available_for = {
+		## cardinality = 1..100
+		enum[country_tag]
+	}
+
+	# Blocks the template for the specified tags. Optional.
+	## cardinality = 0..1
+	blocked_for = {
+		## cardinality = 1..100
+		enum[country_tag]
+	}
+
+	match_to_count = float
+
+	upgrade_prio = {
+		enum[base_factor] = float
+		alias_name[modifier_rule] = alias_match_left[modifier_rule]
+	}
+	## cardinality = 1..10
+	scalar = {
+		upgrade_prio = {
+			enum[base_factor] = float
+			alias_name[modifier_rule] = alias_match_left[modifier_rule]
+		}
+		## cardinality = 0..1
+		production_prio = {
+			enum[base_factor] = float
+			alias_name[modifier_rule] = alias_match_left[modifier_rule]
+		}
+		## cardinality = 0..1
+		can_upgrade_in_field = {
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+		## cardinality = 0..1
+		custom_icon = int
+		## cardinality = 0..1
+		reinforce_prio = int
+
+		target_width = float
+		width_weight = float
+		column_swap_factor = float
+
+		stat_weights = {
+			## cardinality = 26..26
+			float
+			#<float> #-- default_morale
+			#<float> #-- defense
+			#<float> #-- breakthrough
+			#<float> #-- hardness
+			#<float> #-- soft_attack
+			#<float> #-- hard_attack
+			#<float> #-- recon
+			#<float> #-- entrenchment
+			#<float> #-- initiative
+			#<float> #-- casualty_trickleback
+			#<float> #-- supply_consumption_factor
+			#<float> #-- supply_consumption
+			#<float> #-- suppression
+			#<float> #-- suppression_factor
+			#<float> #-- experience_loss_factor
+			#<float> #-- equipment_capture_factor
+			
+			#-- Air Values
+			#<float> #-- air_attack
+			
+			#-- Common Values
+			#<float> #-- max_organisation
+			#<float> #-- max_strength
+			#<float> #-- maximum_speed
+			#<float> #-- armor_value
+			#<float> #-- ap_attack
+			#<float> #-- reliability
+			#<float> #-- reliability_factor
+			#<float> #-- weight
+			#<float> #-- build_cost_ic
+		}
+		target_template = {
+			weight = float
+			match_value = float
+
+			regiments = {
+				## cardinality = 1..25
+				<unit> = int
+			}
+			## cardinality = 0..1
+			support = {
+				## cardinality = 0..5
+				<unit> = int
+			}
+		}
+		allowed_types = {
+			## cardinality = 1..100
+			<unit>
+		}
+		## cardinality = 0..1
+		replace_at_match = float
+		## cardinality = 0..1
+		replace_with = enum[ai_templates]
+		## cardinality = 0..1
+        target_min_match = float
+	}
+}
+
 enums = {
 	enum[ai_research_areas] = {
 		defensive
@@ -98,5 +214,23 @@ enums = {
 		carrier
 		battleship
 		cruiser
+	}
+	complex_enum[template_roles] = {
+		path = "game/common/ai_templates"
+		name = {
+			roles = {
+				enum_name
+			}
+		}
+	}
+	complex_enum[ai_templates] = {
+		path = "game/common/ai_templates"
+		name = {
+			enum_name = {
+				target_template = {
+					
+				}
+			}
+		}
 	}
 }

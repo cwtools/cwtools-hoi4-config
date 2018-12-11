@@ -17,6 +17,7 @@ types = {
 	}
 }
 
+## replace_scope = { root = country this = country }
 focus_tree = {
 	id = localisation
 	country = {
@@ -97,6 +98,7 @@ focus_tree = {
 	}
 }
 
+## replace_scope = { root = country this = country }
 focus = {
 	id = localisation
 	## cardinality = 0..1
@@ -166,6 +168,7 @@ focus = {
 	}
 }
 
+## replace_scope = { root = country this = country }
 shared_focus = {
 	id = localisation
 	## cardinality = 0..1

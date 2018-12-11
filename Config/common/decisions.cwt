@@ -28,6 +28,7 @@ types = {
 	}
 }
 
+## replace_scope = { this = country root = country from = country }
 decision_category = {
 	## cardinality = 0..1
 	icon = scalar
@@ -58,6 +59,7 @@ decision_category = {
 	}
 }
 
+## replace_scope = { this = country root = country from = country }
 decision = {
 	## cardinality = 0..1
 	icon = scalar
@@ -89,6 +91,7 @@ decision = {
 		custom_cost_text = localisation
 	}
 	## cardinality = 0..1
+	## push_scope = state
 	highlight_states = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}

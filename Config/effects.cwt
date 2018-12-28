@@ -7,7 +7,7 @@ alias[effect:add_stability] = float[-1.0..1.0]
 
 ### Adds manpower to the country in scope or locally on a state if in state scope
 ## scope = { state country }
-alias[effect:add_manpower] = int
+alias[effect:add_manpower] = int_variable_field
 
 ### Shows just a custom tooltip
 ## scope = any
@@ -79,7 +79,7 @@ alias[effect:clr_global_flag] = value[global_flag]
 ## scope = state
 alias[effect:remove_building] = {
 	type = <building>
-	level = int
+	level = int_variable_field
 }
 
 ### releases specified country as a free country
@@ -852,7 +852,7 @@ alias[effect:add_threat] = float
 ## scope = country
 alias[effect:send_equipment] = {
 	type = <equipment>
-	amount = int
+	amount = int_variable_field
 	target = scope[country]
 	target = enum[country_tag]
 }
@@ -1010,7 +1010,7 @@ alias[effect:set_party_name] = {
 
 ### add extra shared building slot to state
 ## scope = state
-alias[effect:add_extra_state_shared_building_slots] = int
+alias[effect:add_extra_state_shared_building_slots] = int_variable_field
 
 ### Add opinion modifier(s) to target(s)
 ## scope = country

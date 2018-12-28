@@ -364,7 +364,7 @@ alias[trigger:num_of_nukes] = int
 
 ### check amount of manpower
 ## scope = country
-alias[trigger:has_manpower] = float
+alias[trigger:has_manpower] = variable_field
 
 ### check amount of political power
 ## scope = country
@@ -700,7 +700,7 @@ alias[trigger:custom_trigger_tooltip] = {
 
 ### checks for amount of equipment stored
 ## scope = country
-alias[trigger:has_equipment] = { <equipment> = int }
+alias[trigger:has_equipment] = { <equipment> = int_variable_field }
 
 ### check amount of total factories
 ## scope = country
@@ -1129,15 +1129,15 @@ alias[trigger:has_country_leader] = {
 
 ### Compares current country's army experience with right side value.
 ## scope = country
-alias[trigger:has_army_experience] = float
+alias[trigger:has_army_experience] = variable_field
 
 ### Compares current country's air experience with right side value.
 ## scope = country
-alias[trigger:has_air_experience] = float
+alias[trigger:has_air_experience] = variable_field
 
 ### Compares current country's navy experience with right side value.
 ## scope = country
-alias[trigger:has_navy_experience] = float
+alias[trigger:has_navy_experience] = variable_field
 
 ### check controller for state(s)
 ## scope = country

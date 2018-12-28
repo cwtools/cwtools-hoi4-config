@@ -2,12 +2,12 @@ alias[trigger:scope_field] = { alias_name[trigger] = alias_match_left[trigger] }
 ## scope = country
 ## push_scope = country
 alias[trigger:OVERLORD] = { alias_name[trigger] = alias_match_left[trigger] }
-## scope = any
-## push_scope = country
-alias[trigger:enum[country_tag]] = { alias_name[trigger] = alias_match_left[trigger] }
-## scope = any
-## push_scope = state
-alias[trigger:<state>] = { alias_name[trigger] = alias_match_left[trigger] }
+# ## scope = any
+# ## push_scope = country
+# alias[trigger:enum[country_tag]] = { alias_name[trigger] = alias_match_left[trigger] }
+# ## scope = any
+# ## push_scope = state
+# alias[trigger:<state>] = { alias_name[trigger] = alias_match_left[trigger] }
 ## scope = country
 ## push_scope = state
 alias[trigger:capital_scope] = { alias_name[trigger] = alias_match_left[trigger] }
@@ -16,12 +16,12 @@ alias[effect:scope_field] = { alias_name[effect] = alias_match_left[effect] }
 ## scope = country
 ## push_scope = country
 alias[effect:OVERLORD] = { alias_name[effect] = alias_match_left[effect] }
-## scope = any
-## push_scope = country
-alias[effect:enum[country_tag]] = { alias_name[effect] = alias_match_left[effect] }
-## scope = any
-## push_scope = state
-alias[effect:<state>] = { alias_name[effect] = alias_match_left[effect] }
+# ## scope = any
+# ## push_scope = country
+# alias[effect:enum[country_tag]] = { alias_name[effect] = alias_match_left[effect] }
+# ## scope = any
+# ## push_scope = state
+# alias[effect:<state>] = { alias_name[effect] = alias_match_left[effect] }
 ## scope = country
 ## push_scope = state
 alias[effect:capital_scope] = { alias_name[effect] = alias_match_left[effect] }

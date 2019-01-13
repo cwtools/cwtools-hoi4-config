@@ -315,6 +315,10 @@ alias[effect:create_country_leader] = {
 		## cardinality = 0..100
 		<trait>
 	}
+	## cardinality = 0..1
+	id = int
+	## cardinality = 0..1
+	female = bool
 }
 
 ### Print message to game.log - Can be localized

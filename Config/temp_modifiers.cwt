@@ -3,6 +3,10 @@ alias[modifier_rule:modifier] = {
 	alias_name[trigger] = alias_match_left[trigger]
 }
 
+#vanila ideologies
+alias[modifier:<ideology>_drift] = float
+alias[modifier:<ideology>_acceptance] = int
+
 #modifiers not listed in wiki
 alias[modifier:justify_war_goal_when_in_major_war_time] = float
 alias[modifier:puppet_cost_factor] = float
@@ -38,252 +42,20 @@ alias[modifier:strategic_bomb_visibility] = float
 alias[modifier:port_strike] = float
 alias[modifier:carrier_capacity_penalty_reduction] = float
 
+alias[modifier:mechanized_attack_factor] = float
+alias[modifier:mechanized_defence_factor] = float
 alias[modifier:org_loss_when_moving] = float
 alias[modifier:land_night_attack] = float
+alias[modifier:special_forces_cap] = float
 alias[modifier:special_forces_out_of_supply_factor] = float
 alias[modifier:special_forces_training_time_factor] = float
 alias[modifier:special_forces_no_supply_grace] = int
 
 alias[modifier:take_states_cost_factor] = float
-alias[modifier:ai_license_acceptance] = int
-
-#WTT modifiers
-alias[modifier:stability_factor] = float
-alias[modifier:stability_weekly] = float
-alias[modifier:war_support_factor] = float
-alias[modifier:war_support_weekly] = float
-alias[modifier:cic_to_target_factor] = float
-alias[modifier:mic_to_target_factor] = float
-alias[modifier:extra_trade_to_target_factor] = float
-alias[modifier:trade_cost_for_target_factor] = float
-alias[modifier:max_command_power] = int
-alias[modifier:command_power_gain] = float
-alias[modifier:command_power_gain_mult] = float
-alias[modifier:targeted_modifier] = float
-alias[modifier:attack_bonus_against] = float
-alias[modifier:defense_bonus_against] = float
-alias[modifier:special_forces_cap] = float
-alias[modifier:special_forces_min] = int
-alias[modifier:civilian_factory_use] = int
-alias[modifier:mobilization_speed] = float
-alias[modifier:defensive_war_stability_factor] = float
-alias[modifier:offensive_war_stability_factor] = float
-alias[modifier:surrender_limit] = float
-
-#country modifiers
-alias[modifier:<ideology>_drift] = float
-alias[modifier:drift_defence_factor] = float
-alias[modifier:political_power_gain] = float
-alias[modifier:political_power_factor] = float
-alias[modifier:political_advisor_cost_factor] = float
-alias[modifier:trade_laws_cost_factor] = float
-alias[modifier:mobilization_laws_cost_factor] = float
-alias[modifier:economy_cost_factor] = float
-alias[modifier:high_command_cost_factor] = float
-alias[modifier:air_chief_cost_factor] = float
-alias[modifier:army_chief_cost_factor] = float
-alias[modifier:navy_chief_cost_factor] = float
-alias[modifier:foreign_subversive_activites] = float
-alias[modifier:subversive_activites_upkeep] = float
-alias[modifier:lend_lease_tension] = float
-alias[modifier:send_volunteers_tension] = float
-alias[modifier:send_volunteer_divisions_required] = float
-alias[modifier:send_volunteer_size] = int
-alias[modifier:trade_opinion_factor] = float
-alias[modifier:join_faction_tension] = float
-alias[modifier:justify_war_goal_time] = float
-alias[modifier:generate_wargoal_tension] = float
-alias[modifier:<ideology>_acceptance] = int
-alias[modifier:guarantee_tension] = float
-alias[modifier:guarantee_cost] = float
-alias[modifier:license_purchase_cost] = float
-alias[modifier:license_<equipment>_purchase_cost] = float
-alias[modifier:license_production_speed] = float
-alias[modifier:license_tech_difference_speed] = float
-alias[modifier:improve_relations_maintain_cost_factor] = float
-alias[modifier:enemy_justify_war_goal_time] = float
-alias[modifier:autonomy_gain] = float
-alias[modifier:subjects_autonomy_gain] = float
-alias[modifier:resistance_tick_auto] = float
-alias[modifier:opinion_gain_monthly_factor] = float
-alias[modifier:opinion_gain_monthly_same_ideology_factor] = float
-alias[modifier:military_leader_cost_factor] = float
-alias[modifier:army_leader_start_level] = int
-alias[modifier:army_leader_start_attack_level] = int
-alias[modifier:army_leader_start_planning_level] = int
-alias[modifier:army_leader_start_defense_level] = int
-alias[modifier:army_leader_start_logistics_level] = int
-
-#AI modifiers
 alias[modifier:ai_focus_defense_factor] = float
-alias[modifier:ai_focus_aggressive_factor] = float
-alias[modifier:ai_get_ally_desire_factor] = int
+alias[modifier:ai_license_acceptance] = float
 alias[modifier:ai_call_ally_desire_factor] = int
 alias[modifier:ai_join_ally_desire_factor] = int
-alias[modifier:ai_badass_factor] = float
-
-#generic army modifiers
-alias[modifier:conscription_factor] = float
-alias[modifier:conscription] = float
-alias[modifier:non_core_manpower] = float
-alias[modifier:army_core_attack_factor] = float
-alias[modifier:army_core_defence_factor] = float
-alias[modifier:training_time_army_factor] = float
-alias[modifier:training_time_factor] = float
-alias[modifier:planning_speed] = float
-alias[modifier:max_planning] = float
-alias[modifier:army_org_factor] = float
-alias[modifier:army_org] = int
-alias[modifier:recon_factor] = float
-alias[modifier:army_morale_factor] = float
-alias[modifier:partisan_effect] = float
-alias[modifier:enemy_partisan_effect] = float
-alias[modifier:decryption_factor] = float
-alias[modifier:encryption_factor] = float
-alias[modifier:amphibious_invasion] = float
-alias[modifier:invasion_preparation] = float
-alias[modifier:land_reinforce_rate] = float
-alias[modifier:defence] = float
-alias[modifier:offence] = float
-alias[modifier:army_defence_factor] = float
-alias[modifier:army_attack_factor] = float
-alias[modifier:army_speed_factor] = float
-alias[modifier:attrition] = float
-alias[modifier:heat_attrition_factor] = float
-alias[modifier:winter_attrition_factor] = float
-alias[modifier:acclimatization_cold_climate_gain_factor] = float
-alias[modifier:acclimatization_hot_climate_gain_factor] = float
-alias[modifier:terrain_penalty_reduction] = float
-alias[modifier:max_dig_in] = int
-alias[modifier:dig_in_speed] = float
-alias[modifier:dig_in_speed_factor] = float
-alias[modifier:supply_consumption_factor] = float
-alias[modifier:out_of_supply_factor] = float
-alias[modifier:experience_gain_army] = float
-alias[modifier:experience_gain_army_factor] = float
-alias[modifier:experience_loss_factor] = float
-alias[modifier:minimum_training_level] = float
-alias[modifier:no_supply_grace] = int
-
-#specific army modifiers
-alias[modifier:army_armor_speed_factor] = float
-alias[modifier:army_armor_attack_factor] = float
-alias[modifier:army_armor_defence_factor] = float
-alias[modifier:army_artillery_attack_factor] = float
-alias[modifier:army_artillery_defence_factor] = float
-alias[modifier:army_infantry_attack_factor] = float
-alias[modifier:army_infantry_defence_factor] = float
-alias[modifier:special_forces_attack_factor] = float
-alias[modifier:special_forces_defence_factor] = float
-alias[modifier:cavalry_attack_factor] = float
-alias[modifier:cavalry_defence_factor] = float
-alias[modifier:mechanized_attack_factor] = float
-alias[modifier:mechanized_defence_factor] = float
-alias[modifier:motorized_attack_factor] = float
-alias[modifier:motorized_defence_factor] = float
-alias[modifier:air_paradrop_attack_factor] = float
-alias[modifier:air_paradrop_defence_factor] = float
-alias[modifier:air_paradrop_agility_factor] = float
-
-#generic air modifiers
-alias[modifier:air_ace_generation_chance_factor] = float
-alias[modifier:enemy_army_bonus_air_superiority_factor] = float
-alias[modifier:army_bonus_air_superiority_factor] = float
-alias[modifier:air_accidents_factor] = float
-alias[modifier:air_night_penalty] = float
-alias[modifier:air_weather_penalty] = float
-alias[modifier:experience_gain_air] = float
-alias[modifier:experience_gain_air_factor] = float
-
-#specific air modifiers
-alias[modifier:naval_strike_attack_factor] = float
-alias[modifier:naval_strike_targetting_factor] = float
-alias[modifier:naval_strike_agility_factor] = float
-alias[modifier:air_interception_attack_factor] = float
-alias[modifier:air_interception_defence_factor] = float
-alias[modifier:air_interception_agility_factor] = float
-alias[modifier:air_air_superiority_attack_factor] = float
-alias[modifier:air_air_superiority_defence_factor] = float
-alias[modifier:air_air_superiority_agility_factor] = float
-alias[modifier:air_close_air_support_attack_factor] = float
-alias[modifier:air_close_air_support_defence_factor] = float
-alias[modifier:air_close_air_support_agility_factor] = float
-alias[modifier:air_strategic_bomber_attack_factor] = float
-alias[modifier:air_strategic_bomber_defence_factor] = float
-alias[modifier:air_strategic_bomber_agility_factor] = float
-alias[modifier:air_strategic_bomber_bombing_factor] = float
-alias[modifier:air_cas_present_factor] = float
-
-#generic naval modifiers
-alias[modifier:convoy_escort_efficiency] = float
-alias[modifier:naval_retreat_chance] = float
-alias[modifier:naval_retreat_speed] = float
-alias[modifier:ships_at_battle_start] = float
-alias[modifier:spotting_chance] = float
-alias[modifier:navy_anti_air_attack_factor] = float
-alias[modifier:sortie_efficiency] = float
-alias[modifier:naval_hit_chance] = float
-alias[modifier:naval_coordination] = float
-alias[modifier:convoy_raiding_efficiency_factor] = float
-alias[modifier:naval_speed_factor] = float
-alias[modifier:navy_submarine_detection_factor] = float
-alias[modifier:navy_max_range_factor] = float
-alias[modifier:experience_gain_navy] = float
-alias[modifier:experience_gain_navy_factor] = float
-
-#specific naval modifiers
-alias[modifier:navy_carrier_air_attack_factor] = float
-alias[modifier:navy_carrier_air_targetting_factor] = float
-alias[modifier:navy_carrier_air_agility_factor] = float
-alias[modifier:navy_capital_ship_attack_factor] = float
-alias[modifier:navy_capital_ship_defence_factor] = float
-alias[modifier:navy_submarine_attack_factor] = float
-alias[modifier:navy_submarine_defence_factor] = float
-alias[modifier:navy_screen_attack_factor] = float
-alias[modifier:navy_screen_defence_factor] = float
-alias[modifier:naval_torpedo_range_factor] = float
-
-#generic industry modifiers
-alias[modifier:production_factory_max_efficiency_factor] = float
-alias[modifier:line_change_production_efficiency_factor] = float
-alias[modifier:production_speed_buildings_factor] = float
-alias[modifier:conversion_cost_civ_to_mil_factor] = float
-alias[modifier:industrial_capacity_factory] = float
-alias[modifier:industrial_capacity_dockyard] = float
-alias[modifier:consumer_goods_factor] = float
-alias[modifier:production_factory_efficiency_gain_factor] = float
-alias[modifier:production_factory_start_efficiency_factor] = float
-alias[modifier:local_resources_factor] = float
-alias[modifier:production_oil_factor] = float
-alias[modifier:equipment_conversion_speed] = float
-alias[modifier:min_export] = float
-alias[modifier:global_building_slots_factor] = float
-alias[modifier:industry_air_damage_factor] = float
-alias[modifier:industry_free_repair_factor] = float
-alias[modifier:industry_repair_factor] = float
-
-#specific industry modifiers
-alias[modifier:production_speed_<building>] = float
-alias[modifier:production_speed_arms_factory_factor] = float
-alias[modifier:production_speed_industrial_complex_factor] = float
-alias[modifier:production_speed_bunker_factor] = float
-alias[modifier:production_speed_coastal_bunker_factor] = float
-alias[modifier:production_speed_anti_air_building_factor] = float
-alias[modifier:production_speed_dockyard_factor] = float
-alias[modifier:production_speed_naval_base_factor] = float
-alias[modifier:production_speed_air_base_factor] = float
-alias[modifier:production_speed_rocket_site_factor] = float
-alias[modifier:production_speed_radar_station_factor] = float
-alias[modifier:production_speed_infrastructure_factor] = float
-alias[modifier:production_speed_nuclear_reactor_factor] = float
-alias[modifier:production_speed_synthetic_refinery_factor] = float
-
-#research modifiers
-alias[modifier:research_time_factor] = float
-
-#other modifiers
-alias[modifier:MONTHLY_POPULATION] = float
-alias[modifier:nuclear_production_factor] = float
 
 #unit stats
 alias[unit_stat:max_organisation] = float
@@ -291,6 +63,7 @@ alias[unit_stat:reliability] = float
 alias[unit_stat:weight] = float
 alias[unit_stat:maximum_speed] = float
 alias[unit_stat:supply_consumption] = float
+alias[unit_stat:supply_consumption_factor] = float
 alias[unit_stat:default_morale] = float
 alias[unit_stat:combat_width] = float
 alias[unit_stat:lend_lease_cost] = float
@@ -311,6 +84,7 @@ alias[unit_stat:armor_value] = float
 alias[unit_stat:hardness] = float
 alias[unit_stat:entrenchment] = float
 alias[unit_stat:movement] = float
+alias[unit_stat:experience_loss_factor] = float
 alias[unit_stat:casualty_trickleback] = float
 alias[unit_stat:suppression_factor] = float
 alias[unit_stat:suppression] = float
@@ -327,6 +101,8 @@ alias[unit_stat:paratrooper_aa_defense] = float
 alias[unit_stat:naval_invasion_prep_speed] = float
 alias[unit_stat:dont_lose_dig_in_on_attack] = float
 alias[unit_stat:river_crossing_factor] = float
+alias[unit_stat:acclimatization_hot_climate_gain_factor] = float
+alias[unit_stat:acclimatization_cold_climate_gain_factor] = float
 #naval stats
 alias[naval_stat:naval_speed] = float
 alias[naval_stat:fire_range] = float

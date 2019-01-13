@@ -93,13 +93,13 @@ alias[trigger:any_country] = {
 ### Compares a variable to a number or variable
 ## scope = any
 alias[trigger:check_variable] = {
-	value[variable] = value[variable]
+	variable_field = variable_field
 }
 ### Compares a variable to a number or variable
 ## scope = any
 alias[trigger:check_variable] = {
 	var = value[variable]
-	value = value[variable]
+	value = variable_field
 	compare = less_than
 	compare = less_than_or_equals
 	compare = greater_than
@@ -364,7 +364,7 @@ alias[trigger:num_of_nukes] = int
 
 ### check amount of manpower
 ## scope = country
-alias[trigger:has_manpower] = float
+alias[trigger:has_manpower] = variable_field
 
 ### check amount of political power
 ## scope = country
@@ -700,7 +700,7 @@ alias[trigger:custom_trigger_tooltip] = {
 
 ### checks for amount of equipment stored
 ## scope = country
-alias[trigger:has_equipment] = { <equipment> = int }
+alias[trigger:has_equipment] = { <equipment> = int_variable_field }
 
 ### check amount of total factories
 ## scope = country
@@ -1129,15 +1129,15 @@ alias[trigger:has_country_leader] = {
 
 ### Compares current country's army experience with right side value.
 ## scope = country
-alias[trigger:has_army_experience] = float
+alias[trigger:has_army_experience] = variable_field
 
 ### Compares current country's air experience with right side value.
 ## scope = country
-alias[trigger:has_air_experience] = float
+alias[trigger:has_air_experience] = variable_field
 
 ### Compares current country's navy experience with right side value.
 ## scope = country
-alias[trigger:has_navy_experience] = float
+alias[trigger:has_navy_experience] = variable_field
 
 ### check controller for state(s)
 ## scope = country
@@ -1445,69 +1445,69 @@ alias[trigger:can_select_trait] = <unit_leader_trait>
 ### Adds a value or a variable to a temporary variable
 ## scope = any
 alias[trigger:add_to_temp_variable] = {
-	value_set[variable] = value[variable]
+	value_set[variable] = variable_field
 }
 ### Adds a value or a variable to a temporary variable
 ## scope = any
 alias[trigger:add_to_temp_variable] = {
 	var = value_set[variable]
-	value = value[variable]
+	value = variable_field
 }
 
 ### Subtracts a value or a variable to a temporary variable
 ## scope = any
 alias[trigger:subtract_from_temp_variable] = {
-	value_set[variable] = value[variable]
+	value_set[variable] = variable_field
 }
 ### Subtracts a value or a variable to a temporary variable
 ## scope = any
 alias[trigger:subtract_from_temp_variable] = {
 	var = value_set[variable]
-	value = value[variable]
+	value = variable_field
 }
 
 ### Multiplies a temporary variable by a value or another variable
 ## scope = any
 alias[trigger:multiply_temp_variable] = {
-	value_set[variable] = value[variable]
+	value_set[variable] = variable_field
 }
 ### Multiplies a temporary variable by a value or another variable
 ## scope = any
 alias[trigger:multiply_temp_variable] = {
 	var = value_set[variable]
-	value = value[variable]
+	value = variable_field
 }
 
 ### Divies a temporary variable by a value or another variable
 ## scope = any
 alias[trigger:divide_temp_variable] = {
-	value_set[variable] = value[variable]
+	value_set[variable] = variable_field
 }
 ### Divies a temporary variable by a value or another variable
 ## scope = any
 alias[trigger:divide_temp_variable] = {
 	var = value_set[variable]
-	value = value[variable]
+	value = variable_field
 }
 
 ### Sets a temporary variable to a value or another variable
 ## scope = any
 alias[trigger:set_temp_variable] = {
-	value_set[variable] = value[variable]
+	value_set[variable] = variable_field
 }
 ### Sets a temporary variable to a value or another variable
 ## scope = any
 alias[trigger:set_temp_variable] = {
 	var = value_set[variable]
-	value = value[variable]
+	value = variable_field
 }
 
 ### clamps a temp variable between two values/variables
 ## scope = any
 alias[trigger:clamp_temp_variable] = {
 	var = value_set[variable]
-	min = value[variable]
-	max = value[variable]
+	min = variable_field
+	max = variable_field
 }
 
 ### check amount of civilian factories available for a new project to use

@@ -7,7 +7,7 @@ alias[effect:add_stability] = float[-1.0..1.0]
 
 ### Adds manpower to the country in scope or locally on a state if in state scope
 ## scope = { state country }
-alias[effect:add_manpower] = int
+alias[effect:add_manpower] = int_variable_field
 
 ### Shows just a custom tooltip
 ## scope = any
@@ -79,7 +79,7 @@ alias[effect:clr_global_flag] = value[global_flag]
 ## scope = state
 alias[effect:remove_building] = {
 	type = <building>
-	level = int
+	level = int_variable_field
 }
 
 ### releases specified country as a free country
@@ -171,6 +171,10 @@ alias[effect:country_event] = {
 	random = int
 }
 
+### fires a country event
+## scope = country
+alias[effect:country_event] = <event.country_event>
+
 ### fires a state event
 ## scope = state
 alias[effect:state_event] = {
@@ -183,16 +187,22 @@ alias[effect:state_event] = {
 	trigger_for = enum[country_tag]
 }
 
+### fires a state event
+## scope = state
+alias[effect:state_event] = <event.state_event>
+
+
 ### Sets a variable to a value or another variable
 ## scope = any
 alias[effect:set_variable] = {
-	value_set[variable] = value[variable]
+	value_set[variable] = variable_field
 }
 ### Sets a variable to a value or another variable
 ## scope = any
 alias[effect:set_variable] = {
 	var = value_set[variable]
-	value = value[variable]
+	value = variable_field
+	value = float
 }
 
 ### Adds strategy entry to country AI
@@ -305,6 +315,10 @@ alias[effect:create_country_leader] = {
 		## cardinality = 0..100
 		<trait>
 	}
+	## cardinality = 0..1
+	id = int
+	## cardinality = 0..1
+	female = bool
 }
 
 ### Print message to game.log - Can be localized
@@ -743,6 +757,8 @@ alias[effect:create_wargoal] = {
 		## cardinality = 0..100
 		<state>
 	}
+	## cardinality = 0..1
+	generator = owned_states
 }
 
 ### Add state claim by country.
@@ -814,6 +830,7 @@ alias[effect:unlock_national_focus] = <focus>
 alias[effect:add_tech_bonus] = {
 	## cardinality = 1..2
 	enum[tech_bonus] = float
+	## cardinality = 0..1
 	uses = int[1..100]
 	## cardinality = 0..100
 	category = enum[tech_category]
@@ -837,7 +854,7 @@ alias[effect:set_research_slots] = int
 
 ### starts a border war in a state with neighbouring state that also has border war
 ## scope = state
-alias[effect:set_border_war] = yes
+alias[effect:set_border_war] = bool
 
 ### Modify allequipments by factor
 ## scope = country
@@ -851,7 +868,7 @@ alias[effect:add_threat] = float
 ## scope = country
 alias[effect:send_equipment] = {
 	type = <equipment>
-	amount = int
+	amount = int_variable_field
 	target = scope[country]
 	target = enum[country_tag]
 }
@@ -1009,7 +1026,7 @@ alias[effect:set_party_name] = {
 
 ### add extra shared building slot to state
 ## scope = state
-alias[effect:add_extra_state_shared_building_slots] = int
+alias[effect:add_extra_state_shared_building_slots] = int_variable_field
 
 ### Add opinion modifier(s) to target(s)
 ## scope = country
@@ -1529,54 +1546,54 @@ alias[effect:global_every_army_leader] = {
 ### Adds a value or a variable to another one
 ## scope = any
 alias[effect:add_to_variable] = {
-	value_set[variable] = value[variable]
+	value_set[variable] = variable_field
 }
 ### Adds a value or a variable to another one
 ## scope = any
 alias[effect:add_to_variable] = {
 	var = value_set[variable]
-	value = value[variable]
+	value = variable_field
 }
 
 ### Subtracts a value or a variable to another one
 ## scope = any
 alias[effect:subtract_from_variable] = {
-	value_set[variable] = value[variable]
+	value_set[variable] = variable_field
 }
 ### Subtracts a value or a variable to another one
 ## scope = any
 alias[effect:subtract_from_variable] = {
 	var = value_set[variable]
-	value = value[variable]
+	value = variable_field
 }
 
 ### Multiplies a variable to a value or another variable
 ## scope = any
 alias[effect:multiply_variable] = {
-	value_set[variable] = value[variable]
+	value_set[variable] = variable_field
 }
 ### Multiplies a variable to a value or another variable
 ## scope = any
 alias[effect:multiply_variable] = {
 	var = value_set[variable]
-	value = value[variable]
+	value = variable_field
 }
 
 ### Divies a variable to a value or another variable
 ## scope = any
 alias[effect:divide_variable] = {
-	value_set[variable] = value[variable]
+	value_set[variable] = variable_field
 }
 ### Divies a variable to a value or another variable
 ## scope = any
 alias[effect:divide_variable] = {
 	var = value_set[variable]
-	value = value[variable]
+	value = variable_field
 }
 
 ### Clears a variable
 ## scope = any
-alias[effect:clear_variable] = value[variable]
+alias[effect:clear_variable] = variable_field
 
 ### Adds attack skill to a unit leader
 ## scope = unit_leader
@@ -1629,61 +1646,61 @@ alias[effect:add_skill_level] = int
 ### Adds a value or a variable to a temp variable
 ## scope = any
 alias[effect:add_to_temp_variable] = {
-	value_set[variable] = value[variable]
+	value_set[variable] = variable_field
 }
 ### Adds a value or a variable to a temp variable
 ## scope = any
 alias[effect:add_to_temp_variable] = {
 	var = value_set[variable]
-	value = value[variable]
+	value = variable_field
 }
 
 ### Subtracts a value or a variable to a temp variable
 ## scope = any
 alias[effect:subtract_from_temp_variable] = {
 	var = value_set[variable]
-	value = value[variable]
+	value = variable_field
 }
 ### Subtracts a value or a variable to a temp variable
 ## scope = any
 alias[effect:subtract_from_temp_variable] = {
-	value_set[variable] = value[variable]
+	value_set[variable] = variable_field
 }
 
 ### Multiplies a temp variable to a value or another variable
 ## scope = any
 alias[effect:multiply_temp_variable] = {
-	value_set[variable] = value[variable]
+	value_set[variable] = variable_field
 }
 ### Multiplies a temp variable to a value or another variable
 ## scope = any
 alias[effect:multiply_temp_variable] = {
 	var = value_set[variable]
-	value = value[variable]
+	value = variable_field
 }
 
 ### Divies a temp variable to a value or another variable
 ## scope = any
 alias[effect:divide_temp_variable] = {
-	value_set[variable] = value[variable]
+	value_set[variable] = variable_field
 }
 ### Divies a temp variable to a value or another variable
 ## scope = any
 alias[effect:divide_temp_variable] = {
 	var = value_set[variable]
-	value = value[variable]
+	value = variable_field
 }
 
 ### Sets a temp variable to a value or another variable
 ## scope = any
 alias[effect:set_temp_variable] = {
-	value_set[variable] = value[variable]
+	value_set[variable] = variable_field
 }
 ### Sets a temp variable to a value or another variable
 ## scope = any
 alias[effect:set_temp_variable] = {
 	var = value_set[variable]
-	value = value[variable]
+	value = variable_field
 }
 
 ### add a timed trait to unit leader
@@ -1697,16 +1714,16 @@ alias[effect:add_timed_unit_leader_trait] = {
 ## scope = any
 alias[effect:clamp_variable] = {
 	var = value_set[variable]
-	min = value[variable]
-	max = value[variable]
+	min = variable_field
+	max = variable_field
 }
 
 ### Clamps a temp variable a variable bet ween two a values or another variables
 ## scope = any
 alias[effect:clamp_temp_variable] = {
 	var = value_set[variable]
-	min = value[variable]
-	max = value[variable]
+	min = variable_field
+	max = variable_field
 }
 
 ### start a border war between two states
@@ -1840,7 +1857,7 @@ alias[effect:set_truce] = {
 
 ### Rounds a variable
 ## scope = any
-alias[effect:round_variable] = value[variable]
+alias[effect:round_variable] = variable_field
 
 ### fires a unit leader event for owner country
 ## scope = unit_leader

@@ -26,6 +26,7 @@ types = {
 	}
 }
 
+## push_scope = unit_leader
 trait = {
 	## cardinality = 0..1
 	random = bool
@@ -58,6 +59,7 @@ trait = {
 		}
 	}
 	## cardinality = 0..1
+	## replace_scope = { ROOT = country THIS = country }
 	ai_will_do = {
 		factor = float
 		alias_name[modifier_rule] = alias_match_left[modifier_rule]
@@ -124,11 +126,13 @@ unit_leader_trait = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 	## cardinality = 0..1
+	## replace_scope = { ROOT = unit_leader THIS = unit_leader }
 	modifier = {
 		alias_name[modifier] = alias_match_left[modifier]
 		alias_name[unit_leader_modifier] = alias_match_left[unit_leader_modifier]
 	}
 	## cardinality = 0..1
+	## replace_scope = { ROOT = unit_leader THIS = unit_leader }
 	non_shared_modifier = {
 		alias_name[modifier] = alias_match_left[modifier]
 		alias_name[unit_leader_modifier] = alias_match_left[unit_leader_modifier]

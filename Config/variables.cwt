@@ -131,7 +131,8 @@ values = {
 		threat
 		id
 
-		#ai_will_do modifiers
+		#Random variables
+		random
 		ai_random
 	}
 }

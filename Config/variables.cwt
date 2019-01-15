@@ -130,5 +130,8 @@ values = {
 		difficulty
 		threat
 		id
+
+		#ai_will_do modifiers
+		ai_random
 	}
 }

@@ -41,6 +41,10 @@ alias[effect:change_tag_from] = scope[country]
 ## scope = country
 alias[effect:change_tag_from] = enum[country_tag]
 
+### Adds static modifiers to specified province.
+## scopes = { state }
+alias[effect:add_province_modifier] = replace_me
+
 ### set country flag
 ## scope = country
 alias[effect:set_country_flag] = value_set[country_flag]
@@ -517,6 +521,10 @@ alias[effect:clr_state_flag] = value[state_flag]
 ### create faction of specified name
 ## scope = country
 alias[effect:create_faction] = localisation
+
+### add nukes to country
+## scopes = { country }
+alias[effect:add_nuclear_bombs] = replace_me
 
 ### annex the target country
 ## scope = country
@@ -1881,6 +1889,182 @@ alias[effect:finalize_border_war] = {
 	## cardinality = 0..1
 	defender_win = bool
 }
+
+### Remove specified active decision for scope country - Does not run the remove_effect or put the decision on cooldown. Ignores fire_only_once
+## scopes = { country }
+alias[effect:remove_decision] = replace_me
+
+### swap 2 traits on current ruler.
+## scopes = { country }
+alias[effect:swap_ruler_traits] = replace_me
+
+### add random trait from specified list to unit leader. add_random_trait = { old_guard brilliant_strategist inflexible_strategist }
+alias[effect:add_random_trait] = replace_me
+
+### remove exile tag from scope unit leader. remove_exile_tag = yes
+alias[effect:remove_exile_tag] = replace_me
+
+### set_legitimacy = 10. Sets legitimacy on scope country to specified value. Value has to be 0-100.
+## scopes = { country }
+alias[effect:set_legitimacy] = replace_me
+
+### Become exile in target nation. become_exiled_in = { target = TAG legitimacy = 0-100 (optional) }
+## scopes = { country }
+alias[effect:become_exiled_in] = replace_me
+
+### set_faction_name = NEW_LOC_KEY. Sets the faction name to whatever the new key localises to.
+## scopes = { state country }
+alias[effect:set_faction_name] = replace_me
+
+### Adds maneuver skill to a unit leader
+alias[effect:add_maneuver] = replace_me
+
+### Adds maneuver skill to a unit leader
+alias[effect:add_coordination] = replace_me
+
+### Gives rights to take resources from specified state. give_resource_rights = { receiver = <TAG> state = <id> }
+## scopes = { country }
+alias[effect:give_resource_rights] = replace_me
+
+### Remove resource right to state for scope country. remove_resource_rights = ID
+## scopes = { country }
+alias[effect:remove_resource_rights] = replace_me
+
+### Copies over technology state from target
+## scopes = { country }
+alias[effect:inherit_technology] = replace_me
+
+### Rounds a temporary variable
+## scopes = { ??? }
+alias[effect:round_temp_variable] = replace_me
+
+### set current country as leader of its faction
+## scopes = { country }
+alias[effect:set_faction_leader] = replace_me
+
+### Registers an Order of Battle (OOB) file to be loaded for a country at game start, replacing any previously registered OOB (with the given key) on that country.
+## scopes = { country }
+alias[effect:set_keyed_oob] = replace_me
+
+### Registers an Order of Battle (OOB) file to be loaded for a country at game start, replacing any previously registered OOB (with no key) on that country.
+## scopes = { country }
+alias[effect:set_oob] = replace_me
+
+### Registers an Order of Battle (OOB) file to be loaded for a country at game start, replacing any previously registered OOB (with key "naval") on that country.
+## scopes = { country }
+alias[effect:set_naval_oob] = replace_me
+
+### Adds an element to an array
+## scopes = { ??? }
+alias[effect:add_to_array] = replace_me
+
+### Removes an element from an array using value or index
+## scopes = { ??? }
+alias[effect:remove_from_array] = replace_me
+
+### Clears the contents of array
+## scopes = { ??? }
+alias[effect:clear_array] = replace_me
+
+### Resizes array
+## scopes = { ??? }
+alias[effect:resize_array] = replace_me
+
+### Adds an element to a temporary array
+## scopes = { ??? }
+alias[effect:add_to_temp_array] = replace_me
+
+### Removes an element from a temporary array using value or index
+## scopes = { ??? }
+alias[effect:remove_from_temp_array] = replace_me
+
+### Clears the contents of a temporary array
+## scopes = { ??? }
+alias[effect:clear_temp_array] = replace_me
+
+### Resizes a temp array
+## scopes = { ??? }
+alias[effect:resize_temp_array] = replace_me
+
+### Runs a loop on for each element of an array
+## scopes = { ??? }
+alias[effect:for_each_loop] = replace_me
+
+### add fuel to the country
+## scopes = { country }
+alias[effect:add_fuel] = replace_me
+
+### set fuel for country
+## scopes = { country }
+alias[effect:set_fuel] = replace_me
+
+### Runs a loop on for each element of an array and changes scope to current element in each iteration
+## scopes = { ??? }
+alias[effect:for_each_scope_loop] = replace_me
+
+### Runs the effect for a random element in array
+## scopes = { ??? }
+alias[effect:random_scope_in_array] = {
+    ## cardinality = 0..1
+    limit = {
+        alias_name[trigger] = alias_match_left[trigger]
+    }
+    alias_name[effect] = alias_match_left[effect]
+}
+
+
+### updates the modifiers in current scope (use if you don't want to wait for daily update to update them):
+## scopes = { state country }
+alias[effect:force_update_dynamic_modifier] = replace_me
+
+### removes a dynamic modifier from country/state/unit leader:
+## scopes = { state country }
+alias[effect:remove_dynamic_modifier] = replace_me
+
+### adds a dynamic modifier to country/state/unit leader:
+## scopes = { state country }
+alias[effect:add_dynamic_modifier] = replace_me
+
+### Runs a same effects through a loop. example will run the effects for value_name = -3, 0, 3, 6, 9 and then terminate
+## scopes = { ??? }
+alias[effect:for_loop_effect] = replace_me
+
+### Runs the effect as long as a trigger is true
+## scopes = { ??? }
+alias[effect:while_loop_effect] = replace_me
+
+### meta effects can be used for building effects from strings and running them. following example will give Germany 42 pp:
+## scopes = { ??? }
+alias[effect:meta_effect] = replace_me
+
+### launch nuke at a state. usage :
+## scopes = { country }
+alias[effect:launch_nuke] = replace_me
+
+### Plays sound effect only on in current scope's player
+## scopes = { country }
+alias[effect:scoped_sound_effect] = replace_me
+
+### Runs a loop on for each element of an array, finds the lowest value and stores result in temp variables
+## scopes = { ??? }
+alias[effect:find_lowest_in_array] = replace_me
+
+### Runs a loop on for each element of an array, finds the highest value and stores result in temp variables
+## scopes = { ??? }
+alias[effect:find_highest_in_array] = replace_me
+
+### Add mines to a strategic region for scoped country.
+## scopes = { country }
+alias[effect:add_mines] = replace_me
+
+### Set country's current fuel ratio relative to its capacity
+## scopes = { country }
+alias[effect:set_fuel_ratio] = replace_me
+
+### Ends the exile of of the current scope's country
+## scopes = { country }
+alias[effect:end_exile] = replace_me
+
 
 ### Give supply to units being controlled by this leader.
 ## scope = unit_leader

@@ -1607,6 +1607,32 @@ alias[trigger:has_attache_from] = enum[country_tag]
 ## scope = country
 alias[trigger:amount_manpower_in_deployment_queue] = float
 
+### Checks for amount manpower currently the target state with option to specify a type.
+## scopes = { country }
+alias[trigger:army_manpower_in_state] = replace_me
+
+### Checks if scope leader is from an exiled government. is_exiled_leader = yes
+alias[trigger:is_exiled_leader] = replace_me
+
+### Checks if scope country is a government in exile in target tag. is_exiled_in = ENG
+## scopes = { country }
+alias[trigger:is_exiled_in] = replace_me
+
+### Checks if scope country is hosting target tag as an exile. is_hosting_exile = FRA
+## scopes = { country }
+alias[trigger:is_hosting_exile] = replace_me
+
+### Checks if scope leader is from specified exiled government. is_exiled_leader_from = FRA
+alias[trigger:is_exiled_leader_from] = replace_me
+
+### Checks if scope country is hosting an exile. is_exile_host = yes
+## scopes = { country }
+alias[trigger:is_exile_host] = replace_me
+
+### Checks if scope country an exiled government. is_government_in_exile = yes
+## scopes = { country }
+alias[trigger:is_government_in_exile] = replace_me
+
 ### checks for amount of divisions in specified state owned by current country.
 ## scope = country
 alias[trigger:divisions_in_border_state] = {
@@ -1633,6 +1659,144 @@ alias[trigger:state_strategic_value] = int
 ### Checks for state strategic value
 ## scope = state
 alias[trigger:state_and_terrain_strategic_value] = int
+
+### Rounds a temporary variable
+## scopes = { ??? }
+alias[trigger:round_temp_variable] = replace_me
+
+### Checks if the country has for subject the given country
+## scopes = { country }
+alias[trigger:has_subject] = replace_me
+
+### Checks if a game rule is set to a particular option.
+## scopes = { ??? }
+alias[trigger:has_game_rule] = replace_me
+
+### Returns true if all of the active game rule options allow achievements.
+## scopes = { ??? }
+alias[trigger:game_rules_allow_achievements] = replace_me
+
+### Checks if an element is in array
+## scopes = { ??? }
+alias[trigger:is_in_array] = replace_me
+
+### Adds an element to a temporary array
+## scopes = { ??? }
+alias[trigger:add_to_temp_array] = replace_me
+
+### Removes an element from a temporary array using value or index
+## scopes = { ??? }
+alias[trigger:remove_from_temp_array] = replace_me
+
+### Clears the contents of a temporary array
+## scopes = { ??? }
+alias[trigger:clear_temp_array] = replace_me
+
+### Resizes a temp array
+## scopes = { ??? }
+alias[trigger:resize_temp_array] = replace_me
+
+### Runs a loop on an array and check a trigger for each value, if any true returns true. otherwise returns false
+## scopes = { ??? }
+alias[trigger:any_of] = {
+    alias_name[effect] = alias_match_left[effect]
+}
+
+
+### Runs a loop on an array and check a trigger for each value, if any false returns false. otherwise returns true
+## scopes = { ??? }
+alias[trigger:all_of] = replace_me
+
+### check amount of fuel
+## scopes = { country }
+alias[trigger:has_fuel] = replace_me
+
+### Runs a loop on an array and check a trigger for each scope in it, if any true returns true. otherwise returns false
+## scopes = { ??? }
+alias[trigger:any_of_scopes] = {
+    alias_name[effect] = alias_match_left[effect]
+}
+
+
+### Runs a loop on an array and check a trigger for each scope in it, if any false returns false. otherwise returns true
+## scopes = { ??? }
+alias[trigger:all_of_scopes] = replace_me
+
+### check if current country has specified trait.
+## scopes = { country }
+alias[trigger:has_country_leader_with_trait] = replace_me
+
+### Check scope country legitimacy 0-100: Example has_legitimacy < 60
+## scopes = { country }
+alias[trigger:has_legitimacy] = replace_me
+
+### Checks if a rule set for a country.
+## scopes = { ??? }
+alias[trigger:has_rule] = replace_me
+
+### check the population in the state in thousands (use to avoid variable overflows)
+## scopes = { state }
+alias[trigger:state_population_k] = replace_me
+
+### Check the amount of casualties in thousands a country has suffered in all of it's wars
+## scopes = { country }
+alias[trigger:casualties_k] = replace_me
+
+### meta triggers can be used for building triggers from strings and running them. following example will test if Germany has 42 pp:
+## scopes = { country }
+alias[trigger:meta_trigger] = replace_me
+
+### Checks if scope has a dynamic modifier.
+## scopes = { state country }
+alias[trigger:has_dynamic_modifier] = replace_me
+
+### Runs a loop on for each element of an array, finds the lowest value and stores result in temp variables
+## scopes = { ??? }
+alias[trigger:find_lowest_in_array] = replace_me
+
+### Runs a loop on for each element of an array, finds the highest value and stores result in temp variables
+## scopes = { ??? }
+alias[trigger:find_highest_in_array] = replace_me
+
+### Checks if a region has amount of mines.
+## scopes = { country }
+alias[trigger:has_mines] = replace_me
+
+### Compares navies of two sides.
+## scopes = { country }
+alias[trigger:naval_strength_comparison] = replace_me
+
+### Compares the fuel ratio to a variable.
+## scopes = { country }
+alias[trigger:fuel_ratio] = replace_me
+
+### Checks the days since last strategic bombing.
+## scopes = { state }
+alias[trigger:days_since_last_strategic_bombing] = replace_me
+
+### A trigger to check how dangerous enemy mines are for a country. Controlled by NAVAL_MINE_DANGER defines. Returns a value between 0 and 1. Example mine_threat > 0.5
+## scopes = { country }
+alias[trigger:mine_threat] = replace_me
+
+### A trigger to check convoy threat for a country. Controlled by NAVAL_CONVOY_DANGER defines. Returns a value between 0 and 1. Example convoy_threat > 0.5
+## scopes = { country }
+alias[trigger:convoy_threat] = replace_me
+
+### Checks the casualties infliced by the speficied country to the scopped country.
+## scopes = { country }
+alias[trigger:casualties_inflicted_by] = replace_me
+
+### Checks the mines planted by the country of the parent scope on the coastline of the target countryE.g. true if Germany has more than 1000 mines around Poland coast:
+## scopes = { country }
+alias[trigger:has_mined] = replace_me
+
+### Checks that the country in scope has received the specified amount of expeditionary forces from the specified country
+## scopes = { country }
+alias[trigger:received_expeditionary_forces] = replace_me
+
+### Checks the weather on a combat
+alias[trigger:is_fighting_in_weather] = replace_me
+
 
 ### checks building level in state
 ## scope = state

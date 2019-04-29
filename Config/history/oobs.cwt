@@ -58,15 +58,15 @@ oob = {
 		## cardinality = 0..500
 		<state> = {
 			<equipment.air_equip> = {
-				owner = enum[country_tags]
+				owner = "enum[country_tags]"
 				amount = int[1..1000]
 			}
 			## cardinality 0..1
 			ace = {
-				modifier = <ace>
-				name = scalar
-				surname = scalar
-				callsign = scalar
+				modifier = "<ace>"
+				name = "scalar"
+				surname = "scalar"
+				callsign = "scalar"
 				# cardinality 0..1
 				is_female = bool
 			}

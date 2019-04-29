@@ -34,6 +34,89 @@ country_history = {
 		## cardinality = 0..1
 		election_frequency = int
 	}
+	
+	## cardinality = 0..1
+	set_stability = float[-1.0..1.0]
+	## cardinality = 0..1
+	set_war_support = float[-1.0..1.0]
+	
+	## cardinality = 0..1
+	set_technology = {
+		## cardinality = 0..500
+		<technology> = int[0..1]
+	}
+
+	## cardinality = 0..1
+	add_ideas = {
+		## cardinality = 0..100
+		<idea>
+	}
+
+	## cardinality = 0..20
+	create_country_leader = {
+		name = "scalar"
+		expire = "date"
+		picture = "scalar"
+		ideology = <ideology.regular>
+		## cardinality = 0..1
+		desc = "localisation"
+		## cardinality = 0..1
+		traits = {
+			## cardinality = 0..10
+			<trait>
+		}
+	}
+
+	## cardinality = 0..20
+	create_field_marshal = {
+		name = "scalar"
+		portrait_path = "filepath"
+		## cardinality = 0..1
+		traits = {
+			## cardinality = 0..20
+			<unit_leader_trait.field_marshal>
+		}
+		## cardinality = 0..1
+		id = enum[unit_leader_ids]
+		attack_skill = int[0..9]
+		defense_skill = int[0..9]
+		planning_skill = int[0..9]
+		logistics_skill = int[0..9]
+	}
+
+	## cardinality = 0..20
+	create_corps_commander = {
+		name = "scalar"
+		portrait_path = "filepath"
+		## cardinality = 0..1
+		traits = {
+			## cardinality = 0..20
+			<unit_leader_trait.corps_commander>
+		}
+		## cardinality = 0..1
+		id = enum[unit_leader_ids]
+		attack_skill = int[0..9]
+		defense_skill = int[0..9]
+		planning_skill = int[0..9]
+		logistics_skill = int[0..9]
+	}
+
+	## cardinality = 0..20
+	create_navy_leader = {
+		name = "scalar"
+		portrait_path = "filepath"
+		## cardinality = 0..1
+		traits = {
+			## cardinality = 0..20
+			<unit_leader_trait.naval_commander>
+		}
+		## cardinality = 0..1
+		id = enum[unit_leader_ids]
+		attack_skill = int[0..9]
+		defense_skill = int[0..9]
+		maneuvering_skill = int[0..9]
+		coordination_skill = int[0..9]
+	}
 }
 
 enums = {

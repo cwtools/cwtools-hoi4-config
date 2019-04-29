@@ -39,7 +39,7 @@ alias[effect:remove_state_core] = <state>
 alias[effect:change_tag_from] = scope[country]
 ### Changes player to other country
 ## scope = country
-alias[effect:change_tag_from] = enum[country_tag]
+alias[effect:change_tag_from] = enum[country_tags]
 
 ### Adds static modifiers to specified province.
 ## scopes = { state }
@@ -91,7 +91,7 @@ alias[effect:remove_building] = {
 alias[effect:release] = scope[country]
 ### releases specified country as a free country
 ## scope = country
-alias[effect:release] = enum[country_tag]
+alias[effect:release] = enum[country_tags]
 
 ### Executes children effects on every country that fulfills the "limit" trigger.
 ## scope = any
@@ -188,7 +188,7 @@ alias[effect:state_event] = {
 	## cardinality = 0..1
 	random = int
 	trigger_for = scope[country]
-	trigger_for = enum[country_tag]
+	trigger_for = enum[country_tags]
 }
 
 ### fires a state event
@@ -214,7 +214,7 @@ alias[effect:set_variable] = {
 alias[effect:add_ai_strategy] = {
 	type = enum[ai_strategies]
 	id = scope[country]
-	id = enum[country_tag]
+	id = enum[country_tags]
 	value = int
 }
 
@@ -241,13 +241,13 @@ alias[effect:random_list] = {
 alias[effect:white_peace] = scope[country]
 ### white peaces the two countries if at war
 ## scope = country
-alias[effect:white_peace] = enum[country_tag]
+alias[effect:white_peace] = enum[country_tags]
 
 ### white peaces the two countries if at war
 ## scope = country
 alias[effect:white_peace] = {
 	tag = scope[country]
-	tag = enum[country_tag]
+	tag = enum[country_tags]
 	message = localisation
 }
 
@@ -291,7 +291,7 @@ alias[effect:remove_state_claim] = <state>
 ## scope = country
 alias[effect:add_opinion_modifier] = {
 	target = scope[country]
-	target = enum[country_tag]
+	target = enum[country_tags]
 	modifier = <opinion>
 }
 
@@ -299,7 +299,7 @@ alias[effect:add_opinion_modifier] = {
 ## scope = country
 alias[effect:remove_opinion_modifier] = {
 	target = scope[country]
-	target = enum[country_tag]
+	target = enum[country_tags]
 	modifier = <opinion>
 }
 
@@ -335,7 +335,7 @@ alias[effect:log] = localisation
 alias[effect:create_unit] = {
 	division = scalar
 	owner = scope[country]
-	owner = enum[country_tag]
+	owner = enum[country_tags]
 }
 
 ### Plays sound effect
@@ -485,7 +485,7 @@ alias[effect:set_state_owner] = <state>
 alias[effect:puppet] = scope[country]
 ### puppets specified country
 ## scope = country
-alias[effect:puppet] = enum[country_tag]
+alias[effect:puppet] = enum[country_tags]
 
 ### set controller for state
 ## scope = country
@@ -530,7 +530,7 @@ alias[effect:add_nuclear_bombs] = replace_me
 ## scope = country
 alias[effect:annex_country] = {
 	target = scope[country]
-	target = enum[country_tag]
+	target = enum[country_tags]
 	## cardinality = 0..1
 	transfer_troops = bool
 }
@@ -568,28 +568,28 @@ alias[effect:dismantle_faction] = bool
 alias[effect:add_to_faction] = scope[country]
 ### adds specified country to faction
 ## scope = country
-alias[effect:add_to_faction] = enum[country_tag]
+alias[effect:add_to_faction] = enum[country_tags]
 
 ### removes specified country from faction
 ## scope = country
 alias[effect:remove_from_faction] = scope[country]
 ### removes specified country from faction
 ## scope = country
-alias[effect:remove_from_faction] = enum[country_tag]
+alias[effect:remove_from_faction] = enum[country_tags]
 
 ### guarantees specified country
 ## scope = country
 alias[effect:give_guarantee] = scope[country]
 ### guarantees specified country
 ## scope = country
-alias[effect:give_guarantee] = enum[country_tag]
+alias[effect:give_guarantee] = enum[country_tags]
 
 ### gives military access to the specified country
 ## scope = country
 alias[effect:give_military_access] = scope[country]
 ### gives military access to the specified country
 ## scope = country
-alias[effect:give_military_access] = enum[country_tag]
+alias[effect:give_military_access] = enum[country_tags]
 
 ### Executes children effects on random state that fulfills the "limit" trigger.
 ## scope = any
@@ -677,7 +677,7 @@ alias[effect:news_event] = {
 ## scope = country
 alias[effect:declare_war_on] = {
     target = scope[country]
-    target = enum[country_tag]
+    target = enum[country_tags]
     type = <wargoal>
 }
 
@@ -691,7 +691,7 @@ alias[effect:add_scaled_political_power] = replace_me
 alias[effect:hold_election] = scope[country]
 ### Immediately holds an election in the target country
 ## scope = country
-alias[effect:hold_election] = enum[country_tag]
+alias[effect:hold_election] = enum[country_tags]
 
 ### add popularity to an ideology in a country
 ## scope = country
@@ -750,13 +750,13 @@ alias[effect:kill_country_leader] = bool
 alias[effect:release_puppet] = scope[country]
 ### releases specified country as puppet
 ## scope = country
-alias[effect:release_puppet] = enum[country_tag]
+alias[effect:release_puppet] = enum[country_tags]
 
 ### creates wargoal for country in scope
 ## scope = country
 alias[effect:create_wargoal] = {
 	target = scope[country]
-	target = enum[country_tag]
+	target = enum[country_tags]
 	type = <wargoal>
 	## cardinality = 0..1
 	generator = {
@@ -774,28 +774,28 @@ alias[effect:create_wargoal] = {
 alias[effect:add_claim_by] = scope[country]
 ### Add state claim by country.
 ## scope = state
-alias[effect:add_claim_by] = enum[country_tag]
+alias[effect:add_claim_by] = enum[country_tags]
 
 ### Removes state claim by country.
 ## scope = state
 alias[effect:remove_claim_by] = scope[country]
 ### Removes state claim by country.
 ## scope = state
-alias[effect:remove_claim_by] = enum[country_tag]
+alias[effect:remove_claim_by] = enum[country_tags]
 
 ### Add state as core of country
 ## scope = state
 alias[effect:add_core_of] = scope[country]
 ### Add state as core of country
 ## scope = state
-alias[effect:add_core_of] = enum[country_tag]
+alias[effect:add_core_of] = enum[country_tags]
 
 ### Removes state as core of country
 ## scope = state
 alias[effect:remove_core_of] = scope[country]
 ### Removes state as core of country
 ## scope = state
-alias[effect:remove_core_of] = enum[country_tag]
+alias[effect:remove_core_of] = enum[country_tags]
 
 ### add army experience for country
 ## scope = country
@@ -878,7 +878,7 @@ alias[effect:send_equipment] = {
 	type = <equipment>
 	amount = int_variable_field
 	target = scope[country]
-	target = enum[country_tag]
+	target = enum[country_tags]
 }
 
 ### Adds rule to country
@@ -892,7 +892,7 @@ alias[effect:set_rule] = {
 ## scope = country
 alias[effect:diplomatic_relation] = {
 	country = scope[country]
-	country = enum[country_tag]
+	country = enum[country_tags]
 	relation = enum[diplomatic_relations]
 	active = bool
 }
@@ -932,7 +932,7 @@ alias[effect:add_timed_idea] = {
 alias[effect:end_puppet] = scope[country]
 ### Stops specefied country being a puppet of current country
 ## scope = country
-alias[effect:end_puppet] = enum[country_tag]
+alias[effect:end_puppet] = enum[country_tags]
 
 ### Loads a OOB file instantly
 ## scope = country
@@ -944,7 +944,7 @@ alias[effect:create_import] = {
 	amount = int
 	resource = <resource>
 	exporter = scope[country]
-	exporter = enum[country_tag]
+	exporter = enum[country_tags]
 }
 
 ### Adds country threat
@@ -1040,7 +1040,7 @@ alias[effect:add_extra_state_shared_building_slots] = int_variable_field
 ## scope = country
 alias[effect:reverse_add_opinion_modifier] = {
 	target = scope[country]
-	target = enum[country_tag]
+	target = enum[country_tags]
 	modifier = <opinion>
 }
 
@@ -1048,9 +1048,9 @@ alias[effect:reverse_add_opinion_modifier] = {
 ## scope = country
 alias[effect:add_to_war] = {
 	targeted_alliance = scope[country]
-	targeted_alliance = enum[country_tag]
+	targeted_alliance = enum[country_tags]
 	enemy = scope[country]
-	enemy = enum[country_tag]
+	enemy = enum[country_tags]
 	## cardinality = 0..1
 	hostility_reason = localisation
 }
@@ -1079,7 +1079,7 @@ alias[effect:add_equipment_production] = {
 	equipment = {
 		type = <equipment.regular_equip>
 		## cardinality = 0..1
-		creator = "enum[country_tag]"
+		creator = "enum[country_tags]"
 		## cardinality = 0..1
 		version_name = localisation
 	}
@@ -1153,7 +1153,7 @@ alias[effect:add_equipment_to_stockpile] = {
 	## cardinality = 0..1
     producer = scope[country]
 	## cardinality = 0..1
-    producer = enum[country_tag]
+    producer = enum[country_tags]
 }
 
 ### swap 2 ideas.
@@ -1176,7 +1176,7 @@ alias[effect:damage_building] = {
 ## scope = country
 alias[effect:release_autonomy] = {
     target = scope[country]
-    target = enum[country_tag]
+    target = enum[country_tags]
 	autonomy_state = <autonomy>
 	## cardinality = 0..1
     freedom_level = float[0..1]
@@ -1186,7 +1186,7 @@ alias[effect:release_autonomy] = {
 ## scope = country
 alias[effect:set_autonomy] = {
     target = scope[country]
-    target = enum[country_tag]
+    target = enum[country_tags]
 	autonomy_state = <autonomy>
 	## cardinality = 0..1
     freedom_level = float[0..1]
@@ -1235,7 +1235,7 @@ alias[effect:transfer_ship] = {
 	prefer_name = scalar
 	type = <unit.ship_unit>
 	target = scope[country]
-	target = enum[country_tag]
+	target = enum[country_tags]
 }
 
 ### Sets the category of a state
@@ -1303,7 +1303,7 @@ alias[effect:reset_state_name] = yes
 ## scope = country
 alias[effect:create_production_license] = {
     target = scope[country]
-    target = enum[country_tag]
+    target = enum[country_tags]
     equipment = {
         type = <equipment.regular_equip>
     }
@@ -1314,7 +1314,7 @@ alias[effect:create_production_license] = {
 ## scope = country
 alias[effect:add_relation_modifier] = {
     target = scope[country]
-    target = enum[country_tag]
+    target = enum[country_tags]
     modifier = <relation_modifier>
 }
 
@@ -1323,7 +1323,7 @@ alias[effect:add_relation_modifier] = {
 ## scope = country
 alias[effect:remove_relation_modifier] = {
     target = scope[country]
-    target = enum[country_tag]
+    target = enum[country_tags]
     modifier = <relation_modifier>
 }
 
@@ -1439,7 +1439,7 @@ alias[effect:every_navy_leader] = {
 ## scope = country
 alias[effect:transfer_navy] = {
 	target = scope[country]
-	target = enum[country_tag]
+	target = enum[country_tags]
 }
 
 ### Destroys ships of specified country and amount
@@ -1482,7 +1482,7 @@ alias[effect:clr_unit_leader_flag] = value[leader_flag]
 alias[effect:set_nationality] = scope[country]
 ### Sets the country that owns current scope general
 ## scope = unit_leader
-alias[effect:set_nationality] = enum[country_tag]
+alias[effect:set_nationality] = enum[country_tags]
 
 ### Demotes field marshal to general
 ## scope = unit_leader
@@ -1821,13 +1821,13 @@ alias[effect:remove_mission] = <decision.mission>
 alias[effect:recall_attache] = scope[country]
 ### Scope country recalls attache from target country. Example: GER = { recall_attache = CHI } means Germany recalls attache from China.
 ## scope = country
-alias[effect:recall_attache] = enum[country_tag]
+alias[effect:recall_attache] = enum[country_tags]
 
 ### Activates targeted decisions or mission, ignoring its normal trigger conditions, cooldown and fire only once. Cannot activate if active in interface.
 ## scope = country
 alias[effect:activate_targeted_decision] = {
 	target = scope[country]
-	target = enum[country_tag]
+	target = enum[country_tags]
 	decision = <decision>
 }
 
@@ -1839,7 +1839,7 @@ alias[effect:remove_targeted_decision] = <decision>
 ## scope = country
 alias[effect:remove_targeted_decision] = {
 	target = scope[country]
-	target = enum[country_tag]
+	target = enum[country_tags]
 	decision = <decision>
 }
 
@@ -1858,7 +1858,7 @@ alias[effect:activate_decision] = <decision>
 ## scope = country
 alias[effect:set_truce] = {
 	target = scope[country]
-	target = enum[country_tag]
+	target = enum[country_tags]
 	days = int
 }
 

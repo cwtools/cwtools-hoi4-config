@@ -27,7 +27,7 @@ oob = {
 			equipment = {
 				type = <equipment.regular_equip>
 				## cardinality = 0..1
-				creator = "enum[country_tag]"
+				creator = "enum[country_tags]"
 				## cardinality = 0..1
 				version_name = localisation
 			}

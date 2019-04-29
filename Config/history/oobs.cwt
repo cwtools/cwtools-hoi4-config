@@ -49,7 +49,18 @@ oob = {
 			name = localisation
 			location = enum[provinces]
 			division_template = localisation
-			start_experience_factor = float
+			## cardinality 0..1
+			start_experience_factor = float[0.0..1.0]
+			## cardinality 0..1
+			start_equipment_factor = float[0.0..1.0]
+			## cardinality 0..1
+			force_equipment_variants = {
+				## cardinality 0..20
+				<equipment> = {
+					owner = "enum[country_tags]"
+					creator = "enum[country_tags]"
+				}
+			}
 		}
 	}
 	

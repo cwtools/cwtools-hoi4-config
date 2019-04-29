@@ -52,4 +52,24 @@ oob = {
 			start_experience_factor = float
 		}
 	}
+	
+	## cardinality = 0..1
+	air_wings = {
+		## cardinality = 0..500
+		<state> = {
+			<equipment.air_equip> = {
+				owner = enum[country_tags]
+				amount = int[1..1000]
+			}
+			## cardinality 0..1
+			ace = {
+				modifier = <ace>
+				name = scalar
+				surname = scalar
+				callsign = scalar
+				# cardinality 0..1
+				is_female = bool
+			}
+		}
+	}
 }

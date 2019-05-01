@@ -3,6 +3,7 @@ enums = {
 		"Together for Victory"
 		"Death or Dishonor"
 		"Waking the Tiger"
+		"Man the Guns"
 	}
 	enum[hours_days] = {
 		hours
@@ -25,5 +26,11 @@ enums = {
 	enum[base_factor] = {
 		base
 		factor
+	}
+	enum[naval_missions] = {
+		"MISSION_CONVOY_ESCORT"
+	}
+	enum[equipment_categories] = {
+		naval
 	}
 }

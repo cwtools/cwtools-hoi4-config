@@ -61,7 +61,7 @@ state = {
 			## cardinality = 0..100
 			add_core_of = enum[country_tags]
 			## cardinality = 0..100
-			add_claim_by = enum[country_tags]			
+			add_claim_by = enum[country_tags]
 		}
 	}
 	provinces = {

@@ -17,6 +17,8 @@ ai_strategy = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 	## cardinality = 0..1
+	abort_when_not_enabled = bool
+	## cardinality = 0..1
 	reversed = bool
 	alias_name[ai_strategy_rule] = alias_match_left[ai_strategy_rule]
 }
@@ -47,6 +49,16 @@ ai_strategy_plan = {
 alias[ai_strategy_rule:ai_strategy] = {
 	type = role_ratio
 	id = enum[template_roles]
+	value = int
+}
+alias[ai_strategy_rule:ai_strategy] = {
+	type = role_ratio
+	id = enum[equipment_roles]
+	value = int
+}
+alias[ai_strategy_rule:ai_strategy] = {
+	type = role_ratio
+	id = <unit>
 	value = int
 }
 alias[ai_strategy_rule:ai_strategy] = {
@@ -84,6 +96,16 @@ alias[ai_strategy_rule:ai_strategy] = {
 	type = enum[no_id_strats]
 	value = int
 }
+alias[ai_strategy_rule:ai_strategy] = {
+	type = enum[state_strats]
+	target = int
+	value = int
+}
+alias[ai_strategy_rule:ai_strategy] = {
+	type = enum[naval_mission_strats]
+	id = enum[naval_missions]
+	value = int
+}
 enums = {
 	enum[ai_diplo_strats] = {
 		alliance
@@ -104,6 +126,7 @@ enums = {
 		protect
 		send_volunteers_desire
 		support
+		force_defend_ally_borders
 	}
 	enum[equipment_strats] = {
 		equipment_variant_production_factor
@@ -117,6 +140,7 @@ enums = {
 		ignore_army_incompetence
 		spare_unit_factor
 		template_xp_reserve
+		force_build_armies
 	}
 	enum[pp_strats] = {
 		pp_spend_amount
@@ -135,5 +159,12 @@ enums = {
 		equipment_production_min_factories
 		template_prio
 		unit_ratio
+	}
+	enum[state_strats] = {
+		build_building
+		factory_build_score_factor
+	}
+	enum[naval_mission_strats] = {
+		naval_mission_threshold
 	}
 }

@@ -9,6 +9,8 @@ types = {
 ability = {
 	name = localisation
 	desc = localisation
+	## cardinality = 0..1
+	icon = scalar
 
 	## cardinality = 0..1
 	sound_effect = scalar

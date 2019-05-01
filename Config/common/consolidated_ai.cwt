@@ -164,10 +164,10 @@ ai_template = {
 			#<float> #-- suppression_factor
 			#<float> #-- experience_loss_factor
 			#<float> #-- equipment_capture_factor
-			
+
 			#-- Air Values
 			#<float> #-- air_attack
-			
+
 			#-- Common Values
 			#<float> #-- max_organisation
 			#<float> #-- max_strength
@@ -202,7 +202,62 @@ ai_template = {
 		## cardinality = 0..1
 		replace_with = enum[ai_templates]
 		## cardinality = 0..1
-        target_min_match = float
+		target_min_match = float
+	}
+}
+
+ai_equipment_design = {
+	# Only category = naval is currently supported, starting with version 1.6.0
+	category = enum[equipment_categories]
+
+	# Blocks the template for the specified tags. Optional.
+	## cardinality = 0..1
+	blocked_for = {
+		## cardinality = 1..100
+		enum[country_tags]
+	}
+
+	# Restricts the template to only the specified tags. Optional.
+	## cardinality = 0..1
+	available_for = {
+		## cardinality = 1..100
+		enum[country_tags]
+	}
+
+	roles = {
+		enum[equipment_roles]
+	}
+
+	priority = {
+		factor = float
+		## cardinality = 0..100
+		alias_name[modifier_rule] = alias_match_left[modifier_rule]
+	}
+
+	## cardinality = 1..10
+	scalar = {
+		priority = {
+			factor = float
+			## cardinality = 0..100
+			alias_name[modifier_rule] = alias_match_left[modifier_rule]
+		}
+
+		role_icon_index = int
+
+		enable = {
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+
+		target_variant = {
+			match_value = float
+
+			type = <unit>
+
+			modules = {
+
+			}
+		}
+
 	}
 }
 
@@ -228,8 +283,15 @@ enums = {
 		name = {
 			enum_name = {
 				target_template = {
-					
 				}
+			}
+		}
+	}
+	complex_enum[equipment_roles] = {
+		path = "game/common/ai_equipment"
+		name = {
+			roles = {
+				enum_name
 			}
 		}
 	}

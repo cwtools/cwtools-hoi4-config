@@ -1,7 +1,7 @@
 types = {
 	type[country_history] = {
 		path = "game/history/countries"
-        type_per_file = yes
+		type_per_file = yes
 	}
 }
 

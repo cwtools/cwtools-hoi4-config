@@ -45,7 +45,7 @@ equipment = {
 	## cardinality = 0..1
 	can_license = bool
 	## cardinality = 0..1
-	sprite = enum[unit_sprites]
+	sprite = scalar # enum[unit_sprites]
 	subtype[archetype_equip] = {
 		picture = scalar
 		group_by = enum[equip_group_by]
@@ -97,6 +97,35 @@ equipment = {
 		## cardinality = 0..4
 		<upgrade>
 	}
+
+	subtype[naval_equip] = {
+		## cardinality = 0..1
+		alias = <unit>
+		## cardinality = 0..1
+		priority = int
+		## cardinality = 0..1
+		module_slots = {
+			## cardinality = 1..100
+			enum[module_slots] = {
+				required = bool
+				allowed_module_categories = {
+					## cardinality = 1..100
+					enum[module_categories]
+				}
+				## cardinality = 0..1
+				gfx = scalar
+			}
+		}
+
+		## cardinality = 0..100
+		module_count_limit = {
+			## cardinality = 0..1
+			category = enum[module_categories]
+			## cardinality = 0..1
+			module = enum[modules]
+			count = int
+		}
+	}
 }
 
 upgrade = {
@@ -126,5 +155,25 @@ enums = {
 		interface_category_screen_ships
 		interface_category_other_ships
 		interface_category_air
+	}
+	complex_enum[module_slots] = {
+		path = "game/common/units/equipment"
+		name = {
+			module_slots = {
+				enum_name = {}
+			}
+		}
+	}
+	complex_enum[modules] = {
+		path = "game/common/units/modules"
+		name = {
+			enum_name = {}
+		}
+	}
+	complex_enum[module_categories] = {
+		path = "game/common/units/equipment/modules"
+		name = {
+			category = enum_name
+		}
 	}
 }

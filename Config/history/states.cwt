@@ -19,7 +19,7 @@ state = {
 		<resource> = float
 	}
 	history = {
-		owner = enum[country_tag]
+		owner = enum[country_tags]
 		## cardinality = 0..100
 		victory_points = {
 			enum[provinces]
@@ -36,13 +36,13 @@ state = {
 			}
 		}
 		## cardinality = 0..100
-		add_core_of = enum[country_tag]
+		add_core_of = enum[country_tags]
 		## cardinality = 0..100
-		add_claim_by = enum[country_tag]
+		add_claim_by = enum[country_tags]
 		## cardinality = 0..5
 		date_field = {
 			## cardinality = 0..1
-			owner = enum[country_tag]
+			owner = enum[country_tags]
 			## cardinality = 0..100
 			victory_points = {
 				enum[provinces]
@@ -59,9 +59,9 @@ state = {
 				}
 			}
 			## cardinality = 0..100
-			add_core_of = enum[country_tag]
+			add_core_of = enum[country_tags]
 			## cardinality = 0..100
-			add_claim_by = enum[country_tag]			
+			add_claim_by = enum[country_tags]			
 		}
 	}
 	provinces = {

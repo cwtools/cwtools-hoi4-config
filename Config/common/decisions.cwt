@@ -145,7 +145,7 @@ decision = {
 	## cardinality = 0..3
 	enum[war_with_on] = scope[country]
 	## cardinality = 0..3
-	enum[war_with_on] = enum[country_tag]
+	enum[war_with_on] = enum[country_tags]
 	## cardinality = 0..3
 	enum[war_with_target_on] = bool
 

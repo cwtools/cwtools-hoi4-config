@@ -105,14 +105,14 @@ ai_template = {
 	## cardinality = 0..1
 	available_for = {
 		## cardinality = 1..100
-		enum[country_tag]
+		enum[country_tags]
 	}
 
 	# Blocks the template for the specified tags. Optional.
 	## cardinality = 0..1
 	blocked_for = {
 		## cardinality = 1..100
-		enum[country_tag]
+		enum[country_tags]
 	}
 
 	match_to_count = float

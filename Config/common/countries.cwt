@@ -28,14 +28,14 @@ cosmetic_tag = {
 	}
 }
 enums = {
-	complex_enum[country_tag] = {
+	complex_enum[country_tags] = {
 		path = "game/common/country_tags"
 		start_from_root = yes
 		name = {
 			enum_name = scalar
 		}
 	}
-	complex_enum[comsmetic_tag] = {
+	complex_enum[comsmetic_tags] = {
 		path = "game/common/countries/cosmetic.txt"
 		start_from_root = yes
 		name = {

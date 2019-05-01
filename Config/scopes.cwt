@@ -4,7 +4,7 @@ alias[trigger:scope_field] = { alias_name[trigger] = alias_match_left[trigger] }
 alias[trigger:OVERLORD] = { alias_name[trigger] = alias_match_left[trigger] }
 # ## scope = any
 # ## push_scope = country
-# alias[trigger:enum[country_tag]] = { alias_name[trigger] = alias_match_left[trigger] }
+# alias[trigger:enum[country_tags]] = { alias_name[trigger] = alias_match_left[trigger] }
 # ## scope = any
 # ## push_scope = state
 # alias[trigger:<state>] = { alias_name[trigger] = alias_match_left[trigger] }
@@ -18,7 +18,7 @@ alias[effect:scope_field] = { alias_name[effect] = alias_match_left[effect] }
 alias[effect:OVERLORD] = { alias_name[effect] = alias_match_left[effect] }
 # ## scope = any
 # ## push_scope = country
-# alias[effect:enum[country_tag]] = { alias_name[effect] = alias_match_left[effect] }
+# alias[effect:enum[country_tags]] = { alias_name[effect] = alias_match_left[effect] }
 # ## scope = any
 # ## push_scope = state
 # alias[effect:<state>] = { alias_name[effect] = alias_match_left[effect] }

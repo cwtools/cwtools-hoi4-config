@@ -29,6 +29,14 @@ types = {
 			cost = land
 		}
 	}
+	type[module] = {
+		skip_root_key = equipment_modules
+		path = "game/common/units/equipment/modules"
+	}
+	type[critical_part] = {
+		skip_root_key = critical_parts
+		path = "game/common/units/critical_parts"
+	}
 }
 
 equipment = {
@@ -143,6 +151,62 @@ upgrade = {
 		cost = land
 	}
 }
+
+module = {
+	category = enum[module_categories]
+	## cardinality = 0..1
+	parent = scalar
+	sfx = scalar
+	add_stats = {
+		alias_name[naval_stat] = alias_match_left[naval_stat]
+		build_cost_ic = int
+	}
+	## cardinality = 0..1
+	build_cost_resources = {
+		## cardinality = 1..100
+		<resource> = int
+	}
+	add_average_stats = {
+		alias_name[naval_stat] = alias_match_left[naval_stat]
+	}
+	## cardinality = 1..100
+	can_convert_from = {
+		module_category = enum[module_categories]
+		module = enum[modules]
+		convert_cost_ic = int
+	}
+	critical_parts = enum[critical_parts]
+}
+
+critical_part = {
+	icon = scalar
+	frame = int
+	## cardinality = 0..1
+	stat_penalties = {
+		alias_name[naval_stat] = alias_match_left[naval_stat]
+	}
+	## cardinality = 0..1
+	modifier = {
+		alias_name[naval_stat] = alias_match_left[naval_stat]
+	}
+	## cardinality = 0..1
+	str_damage = float
+	## cardinality = 0..1
+	org_damage = float
+	## cardinality = 0..1
+	str_damage_multiplier = float
+	## cardinality = 0..1
+	org_damage_multiplier = float
+	## cardinality = 0..1
+	chance = float
+	## cardinality = 0..1
+	base_damage_instance = float
+	## cardinality = 0..1
+	damage_instance_per_added_module = float
+	## cardinality = 0..1
+	max_damage_instance = float
+}
+
 enums = {
 	enum[equip_group_by] = {
 		archetype
@@ -174,6 +238,12 @@ enums = {
 		path = "game/common/units/equipment/modules"
 		name = {
 			category = enum_name
+		}
+	}
+	complex_enum[critical_parts] = {
+		path = "game/common/units/critical_parts"
+		name = {
+			enum_name = {}
 		}
 	}
 }

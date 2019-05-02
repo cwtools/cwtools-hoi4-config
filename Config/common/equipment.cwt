@@ -153,12 +153,18 @@ upgrade = {
 }
 
 module = {
-	category = enum[module_categories]
+	category = value_set[module_categories]
 	## cardinality = 0..1
-	parent = scalar
+	parent = <module>
+	## cardinality = 0..1
+	gfx = scalar
 	sfx = scalar
+	## cardinality = 0..1
+	add_equipment_type = enum[unit_types]
 	add_stats = {
+		alias_name[unit_stat] = alias_match_left[naval_stat]
 		alias_name[naval_stat] = alias_match_left[naval_stat]
+		## cardinality = 0..1
 		build_cost_ic = int
 	}
 	## cardinality = 0..1
@@ -166,16 +172,29 @@ module = {
 		## cardinality = 1..100
 		<resource> = int
 	}
+	## cardinality = 0..1
 	add_average_stats = {
 		alias_name[naval_stat] = alias_match_left[naval_stat]
 	}
-	## cardinality = 1..100
+	## cardinality = 0..1
+	multiply_stats = {
+
+	}
+
+	## cardinality = 0..100
 	can_convert_from = {
-		module_category = enum[module_categories]
-		module = enum[modules]
+		## cardinality = 0..1
+		module_category = value[module_categories]
+		## cardinality = 0..1
+		module = <module>
 		convert_cost_ic = int
 	}
-	critical_parts = enum[critical_parts]
+	## cardinality = 0..1
+	critical_parts = {
+		enum[critical_parts]
+	}
+	## cardinality = 0..1
+	dismantle_cost_ic = int
 }
 
 critical_part = {
@@ -229,9 +248,9 @@ enums = {
 		}
 	}
 	complex_enum[modules] = {
-		path = "game/common/units/modules"
+		path = "game/common/units/equipment/modules"
 		name = {
-			enum_name = {}
+			enum_name = { }
 		}
 	}
 	complex_enum[module_categories] = {

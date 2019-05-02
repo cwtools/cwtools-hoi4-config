@@ -1222,12 +1222,11 @@ alias[trigger:is_licensing_any_to] = enum[country_tags]
 
 ### check if the ai controlled country has any template for a specific role
 ## scope = country
-# <template_roles>?
-alias[trigger:ai_has_role_template] = enum[template_roles]
+alias[trigger:ai_has_role_template] = value[ai_roles]
 
 ### check if the ai controlled country has any fielded divisions for a specific role
 ## scope = country
-alias[trigger:ai_has_role_division] = enum[template_roles]
+alias[trigger:ai_has_role_division] = value[ai_roles]
 
 ### Country has specified relation modifier when dealing with _target_ county
 ## scope = country
@@ -1714,7 +1713,8 @@ alias[trigger:has_fuel] = replace_me
 ### Runs a loop on an array and check a trigger for each scope in it, if any true returns true. otherwise returns false
 ## scopes = { ??? }
 alias[trigger:any_of_scopes] = {
-	alias_name[effect] = alias_match_left[effect]
+	array = scalar
+	alias_name[trigger] = alias_match_left[trigger]
 }
 
 

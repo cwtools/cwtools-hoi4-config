@@ -22,6 +22,9 @@ types = {
 	type[ai_template] = {
 		path = "game/common/ai_templates"
 	}
+	type[ai_equipment_design_group] = {
+		path = "game/common/ai_equipment"
+	}
 }
 
 ai_area = {
@@ -99,7 +102,7 @@ ai_peace = {
 
 ai_template = {
 	roles = {
-		enum[template_roles]
+		value_set[ai_roles]
 	}
 	# Restricts the template to only the specified tags. Optional.
 	## cardinality = 0..1
@@ -111,7 +114,7 @@ ai_template = {
 	# Blocks the template for the specified tags. Optional.
 	## cardinality = 0..1
 	blocked_for = {
-		## cardinality = 1..100
+		## cardinality = 0..100
 		enum[country_tags]
 	}
 
@@ -206,14 +209,14 @@ ai_template = {
 	}
 }
 
-ai_equipment_design = {
+ai_equipment_design_group = {
 	# Only category = naval is currently supported, starting with version 1.6.0
 	category = enum[equipment_categories]
 
 	# Blocks the template for the specified tags. Optional.
 	## cardinality = 0..1
 	blocked_for = {
-		## cardinality = 1..100
+		## cardinality = 0..100
 		enum[country_tags]
 	}
 
@@ -225,7 +228,7 @@ ai_equipment_design = {
 	}
 
 	roles = {
-		enum[equipment_roles]
+		value_set[ai_roles]
 	}
 
 	priority = {
@@ -235,7 +238,7 @@ ai_equipment_design = {
 	}
 
 	## cardinality = 1..10
-	scalar = {
+	enum[ai_equipment_design] = {
 		priority = {
 			factor = float
 			## cardinality = 0..100
@@ -251,11 +254,10 @@ ai_equipment_design = {
 		target_variant = {
 			match_value = float
 
-			type = <unit>
+			type = <equipment>
 
-			modules = {
-
-			}
+			# modules = {
+			# }
 		}
 	}
 }
@@ -269,14 +271,6 @@ enums = {
 		battleship
 		cruiser
 	}
-	complex_enum[template_roles] = {
-		path = "game/common/ai_templates"
-		name = {
-			roles = {
-				enum_name
-			}
-		}
-	}
 	complex_enum[ai_templates] = {
 		path = "game/common/ai_templates"
 		name = {
@@ -286,11 +280,12 @@ enums = {
 			}
 		}
 	}
-	complex_enum[equipment_roles] = {
+	complex_enum[ai_equipment_design] = {
 		path = "game/common/ai_equipment"
 		name = {
-			roles = {
-				enum_name
+			enum_name = {
+				target_variant = {
+				}
 			}
 		}
 	}

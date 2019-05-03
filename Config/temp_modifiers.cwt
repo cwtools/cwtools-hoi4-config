@@ -1,3 +1,11 @@
+### Applies modifiers only in relation to a specified other country.
+## scope = country
+alias[targeted_modifier_rule:targeted_modifier] = {
+	tag = scope[country]
+	tag = enum[country_tags]
+	alias_name[modifier] = alias_match_left[modifier]
+}
+
 alias[modifier_rule:modifier] = {
 	enum[add_factor] = float
 	alias_name[trigger] = alias_match_left[trigger]
@@ -19,6 +27,7 @@ alias[modifier:cic_to_overlord_factor] = float
 alias[modifier:mic_to_overlord_factor] = float
 alias[modifier:research_sharing_per_country_bonus_factor] = float
 alias[modifier:autonomy_gain_global_factor] = float
+alias[modifier:generate_wargoal_tension_against] = float
 
 #local_resources_<resource>
 alias[modifier:local_resources_<resource>] = int
@@ -129,6 +138,8 @@ alias[naval_stat:navy_org_factor] = float
 alias[naval_stat:naval_morale_factor] = float
 alias[naval_stat:naval_speed_factor] = float
 alias[naval_stat:naval_retreat_chance] = float
+alias[naval_stat:mines_planting] = float
+alias[naval_stat:mines_sweeping] = float
 #air stats
 alias[air_stat:air_attack] = float
 alias[air_stat:air_ground_attack] = float

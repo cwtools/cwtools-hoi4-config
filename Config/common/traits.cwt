@@ -15,6 +15,9 @@ types = {
 		subtype[naval_commander] = {
 			type = navy
 		}
+		subtype[land_commander] = {
+			type = land
+		}
 		subtype[assignable_trait] = {
 			trait_type = assignable_trait
 			trait_type = assignable_terrain_trait
@@ -26,8 +29,10 @@ types = {
 	}
 }
 
-## push_scope = unit_leader
+## push_scope = country
 trait = {
+	## cardinality = 0..1
+	name = scalar
 	## cardinality = 0..1
 	random = bool
 	## cardinality = 0..1
@@ -58,6 +63,10 @@ trait = {
 			alias_name[air_stat] = alias_match_left[air_stat]
 		}
 	}
+	## cardinality = 0..100
+	# targeted_modifier = single_alias_right[targeted_modifier]
+	alias_name[targeted_modifier_rule] = alias_match_left[targeted_modifier_rule]
+	alias_name[ai_strategy_rule] = alias_match_left[ai_strategy_rule]
 	## cardinality = 0..1
 	## replace_scope = { ROOT = country THIS = country }
 	ai_will_do = {
@@ -66,10 +75,12 @@ trait = {
 	}
 }
 
+## push_scope = unit_leader
 unit_leader_trait = {
 	type = enum[unit_leader_types]
+	## cardinality = 0..1
+	trait_type = enum[trait_types]
 	subtype[!naval_commander] = {
-		trait_type = enum[trait_types]
 		## cardinality = 0..4
 		### direct bonus to this skill
 		enum[unit_leader_skills] = int
@@ -80,6 +91,14 @@ unit_leader_trait = {
 	subtype[naval_commander] = {
 		## cardinality = 0..1
 		gain_xp_on_spotting = int
+		## cardinality = 0..1
+		sub_unit_modifiers = {
+			## cardinality = 1..10
+			<unit> = {
+				alias_name[modifier] = alias_match_left[modifier]
+				alias_name[unit_leader_modifier] = alias_match_left[unit_leader_modifier]
+			}
+		}
 	}
 	subtype[gainable_trait] = {
 		gain_xp = {
@@ -88,10 +107,14 @@ unit_leader_trait = {
 		cost = int
 		gui_row = int
 		## cardinality = 0..1
+		gui_column = int
+		## cardinality = 0..1
 		custom_gain_xp_trigger_tooltip = localisation
 	}
 	subtype[assignable_trait] = {
 		gui_row = int
+		## cardinality = 0..1
+		gui_column = int
 		## cardinality = 0..5
 		parent = <unit_leader_trait>
 		## cardinality = 0..5
@@ -173,6 +196,7 @@ enums = {
 		corps_commander
 		field_marshal
 		navy
+		land
 	}
 	enum[trait_types] = {
 		assignable_terrain_trait
@@ -180,6 +204,7 @@ enums = {
 		personality_trait
 		assignable_trait
 		status_trait
+		exile
 	}
 	enum[combat_modifiers] = {
 		fort_attack

@@ -1795,8 +1795,7 @@ alias[trigger:has_mined] = replace_me
 alias[trigger:received_expeditionary_forces] = replace_me
 
 ### Checks the weather on a combat
-alias[trigger:is_fighting_in_weather] = replace_me
-
+alias[trigger:is_fighting_in_weather] = scalar
 
 ### checks building level in state
 ## scope = state

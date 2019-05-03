@@ -17,51 +17,51 @@ types = {
 
 ideology = {
 	subtype[regular] = {
-	types = {
-		## cardinality = 1..100
-		scalar = {
+		types = {
+			## cardinality = 1..100
+			scalar = {
 
+			}
 		}
-	}
-	dynamic_faction_names = {
-		## cardinality = 0..100
-		localisation
-		## cardinality = 0..100
-		scalar
-	}
-	### RGB color of ideology
-	color = {
-		## cardinality = 3..3
-		int
-	}
-	rules = {
-		can_force_government = bool
-		can_puppet = bool
-		can_send_volunteers = bool
-		## cardinality = 0..20
-		enum[game_rules] = bool
-	}
-	war_impact_on_world_tension = float
-	faction_impact_on_world_tension = float
+		dynamic_faction_names = {
+			## cardinality = 0..100
+			localisation
+			## cardinality = 0..100
+			scalar
+		}
+		### RGB color of ideology
+		color = {
+			## cardinality = 3..3
+			int
+		}
+		rules = {
+			can_force_government = bool
+			can_puppet = bool
+			can_send_volunteers = bool
+			## cardinality = 0..20
+			enum[game_rules] = bool
+		}
+		war_impact_on_world_tension = float
+		faction_impact_on_world_tension = float
 
-	### modifiers applied to countries with this ideology
-	## push_scope = country
-	modifiers = {
-		alias_name[modifier] = alias_match_left[modifier]
+		### modifiers applied to countries with this ideology
+		## push_scope = country
+		modifiers = {
+			alias_name[modifier] = alias_match_left[modifier]
+		}
+		## push_scope = country
+		### modifiers applied to countries with a faction leader of this ideology
+		faction_modifiers = {
+			alias_name[modifier] = alias_match_left[modifier]
+		}
+		## cardinality = 0..1
+		can_be_boosted = bool
+		## cardinality = 0..1
+		can_collaborate = bool
+		## cardinality = 0..1
+		### AI playstyle
+		enum[ai_ideology] = bool
 	}
-	## push_scope = country
-	### modifiers applied to countries with a faction leader of this ideology
-	faction_modifiers = {
-		alias_name[modifier] = alias_match_left[modifier]
-	}
-	## cardinality = 0..1
-	can_be_boosted = bool
-	## cardinality = 0..1
-	can_collaborate = bool
-	## cardinality = 0..1
-	### AI playstyle
-	enum[ai_ideology] = bool
-}
 }
 
 enums = {

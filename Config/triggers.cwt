@@ -1240,7 +1240,7 @@ alias[trigger:has_relation_modifier] = {
 ## scope = state
 alias[trigger:any_province_building_level] = {
 	province = {
-		## cardinality = 1..100
+		## cardinality = 1..inf
 		id = enum[provinces]
 		limit_to_border = bool
 	}
@@ -1582,7 +1582,7 @@ alias[trigger:print_variables] = {
 	print_global = bool
 	## cardinality = 0..1
 	var_list = {
-		## cardinality = 1..100
+		## cardinality = 1..inf
 		value[variable]
 	}
 }

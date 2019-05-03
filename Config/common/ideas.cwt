@@ -8,7 +8,7 @@ types = {
 idea = {
 	## cardinality = 0..2
 	enum[hardcode_ideas] = {
-		## cardinality = 0..100
+		## cardinality = 0..inf
 		scalar = {
 			## cardinality = 0..1
 			cancel_if_invalid = bool
@@ -41,7 +41,7 @@ idea = {
 			}
 			## cardinality = 0..1
 			rule = {
-				## cardinality = 0..100
+				## cardinality = 0..inf
 				enum[game_rules] = bool
 			}
 			## cardinality = 0..1
@@ -50,7 +50,7 @@ idea = {
 			}
 			## cardinality = 0..1
 			equipment_bonus = {
-				## cardinality = 0..100
+				## cardinality = 0..inf
 				<equipment> = {
 					## cardinality = 0..1
 					instant = bool
@@ -58,7 +58,7 @@ idea = {
 					alias_name[naval_stat] = alias_match_left[naval_stat]
 					alias_name[air_stat] = alias_match_left[air_stat]
 				}
-				## cardinality = 0..100
+				## cardinality = 0..inf
 				enum[unit_types] = {
 					## cardinality = 0..1
 					instant = bool
@@ -74,13 +74,13 @@ idea = {
 			}
 		}
 	}
-	## cardinality = 0..100
+	## cardinality = 0..inf
 	enum[idea_categories] = {
 		## cardinality = 0..1
 		law = bool
 		## cardinality = 0..1
 		designer = bool
-		## cardinality = 0..100
+		## cardinality = 0..inf
 		scalar = {
 			## cardinality = 0..1
 			level = int
@@ -113,7 +113,7 @@ idea = {
 			}
 			## cardinality = 0..1
 			rule = {
-				## cardinality = 0..100
+				## cardinality = 0..inf
 				enum[game_rules] = bool
 			}
 			## cardinality = 0..1
@@ -123,7 +123,7 @@ idea = {
 			}
 			## cardinality = 0..1
 			traits = {
-				## cardinality = 0..100
+				## cardinality = 0..inf
 				<trait>
 			}
 			## cardinality = 0..1

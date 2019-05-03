@@ -34,7 +34,7 @@ ai_area = {
 	}
 	## cardinality = 0..1
 	strategic_regions = {
-		## cardinality = 1..100
+		## cardinality = 1..inf
 		<strategic_region>
 	}
 }
@@ -42,17 +42,17 @@ ai_area = {
 ai_focus = {
 	subtype[research] = {
 		research = {
-			## cardinality = 0..100
+			## cardinality = 0..inf
 			enum[ai_research_areas] = float
-			## cardinality = 0..100
+			## cardinality = 0..inf
 			enum[tech_category] = float
 		}
 	}
 	subtype[national_focuses] = {
 		ai_national_focuses = {
-			## cardinality = 1..100
+			## cardinality = 1..inf
 			<focus>
-			## cardinality = 0..100
+			## cardinality = 0..inf
 			<shared_focus>
 		}
 	}
@@ -107,14 +107,14 @@ ai_template = {
 	# Restricts the template to only the specified tags. Optional.
 	## cardinality = 0..1
 	available_for = {
-		## cardinality = 1..100
+		## cardinality = 1..inf
 		enum[country_tags]
 	}
 
 	# Blocks the template for the specified tags. Optional.
 	## cardinality = 0..1
 	blocked_for = {
-		## cardinality = 0..100
+		## cardinality = 0..inf
 		enum[country_tags]
 	}
 
@@ -197,7 +197,7 @@ ai_template = {
 			}
 		}
 		allowed_types = {
-			## cardinality = 1..100
+			## cardinality = 1..inf
 			<unit>
 		}
 		## cardinality = 0..1
@@ -216,14 +216,14 @@ ai_equipment_design_group = {
 	# Blocks the template for the specified tags. Optional.
 	## cardinality = 0..1
 	blocked_for = {
-		## cardinality = 0..100
+		## cardinality = 0..inf
 		enum[country_tags]
 	}
 
 	# Restricts the template to only the specified tags. Optional.
 	## cardinality = 0..1
 	available_for = {
-		## cardinality = 1..100
+		## cardinality = 1..inf
 		enum[country_tags]
 	}
 
@@ -233,7 +233,7 @@ ai_equipment_design_group = {
 
 	priority = {
 		factor = float
-		## cardinality = 0..100
+		## cardinality = 0..inf
 		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	}
 
@@ -241,7 +241,7 @@ ai_equipment_design_group = {
 	enum[ai_equipment_design] = {
 		priority = {
 			factor = float
-			## cardinality = 0..100
+			## cardinality = 0..inf
 			alias_name[modifier_rule] = alias_match_left[modifier_rule]
 		}
 

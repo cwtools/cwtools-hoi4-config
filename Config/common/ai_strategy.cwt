@@ -36,12 +36,12 @@ ai_strategy_plan = {
 	alias_name[ai_strategy_rule] = alias_match_left[ai_strategy_rule]
 	## cardinality = 0..1
 	research = {
-		## cardinality = 1..100
+		## cardinality = 1..inf
 		enum[tech_category] = int
 	}
 	## cardinality = 0..1
 	ai_national_focuses = {
-		## cardinality = 1..500
+		## cardinality = 1..inf
 		<focus>
 	}
 }

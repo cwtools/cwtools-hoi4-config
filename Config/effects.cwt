@@ -229,7 +229,7 @@ alias[effect:random] = {
 ### a random effect
 ## scope = any
 alias[effect:random_list] = {
-	## cardinality = 0..100
+	## cardinality = 0..inf
 	int = {
 		alias_name[effect] = alias_match_left[effect]
 	}
@@ -316,7 +316,7 @@ alias[effect:create_country_leader] = {
 	expire = date_field
 	## cardinality = 0..1
 	traits = {
-		## cardinality = 0..100
+		## cardinality = 0..inf
 		<trait>
 	}
 	## cardinality = 0..1
@@ -389,7 +389,7 @@ alias[effect:set_political_party] = {
 alias[effect:set_politics] = {
 	## cardinality = 0..1
 	parties = {
-		## cardinality = 1..100
+		## cardinality = 1..inf
 		<ideology> = {
 			## cardinality = 0..1
 			popularity = float[0..100]
@@ -413,7 +413,7 @@ alias[effect:add_ideas] = enum[idea_name]
 ### add idea(s) to country
 ## scope = country
 alias[effect:add_ideas] = {
-	## cardinality = 1..100
+	## cardinality = 1..inf
 	enum[idea_name]
 }
 
@@ -423,7 +423,7 @@ alias[effect:remove_ideas] = enum[idea_name]
 ### remove idea(s) from country
 ## scope = country
 alias[effect:remove_ideas] = {
-	## cardinality = 1..100
+	## cardinality = 1..inf
 	enum[idea_name]
 }
 
@@ -438,7 +438,7 @@ alias[effect:set_political_power] = int
 ### sets technology level(s) on country
 ## scope = country
 alias[effect:set_technology] = {
-	## cardinality = 1..100
+	## cardinality = 1..inf
 	<technology> = int[0..1]
 }
 
@@ -451,7 +451,7 @@ alias[effect:create_navy_leader] = {
 	## cardinality = 0..1
 	gfx = scalar
 	traits = {
-		## cardinality = 0..100
+		## cardinality = 0..inf
 		<trait>
 	}
 	skill = int
@@ -554,7 +554,7 @@ alias[effect:add_building_construction] = {
 		limit_to_border = bool
 		## cardinality = 0..1
 		level = int
-		## cardinality = 0..100
+		## cardinality = 0..inf
 		id = enum[provinces]
 	}
 }
@@ -721,16 +721,16 @@ alias[effect:start_civil_war] = {
 	capital = <state>
 	## cardinality = 0..1
 	states = {
-		## cardinality = 0..100
+		## cardinality = 0..inf
 		scope[state]
-		## cardinality = 0..100
+		## cardinality = 0..inf
 		<state>
 	}
 	## cardinality = 0..1
 	states_filter = { alias_name[trigger] = alias_match_left[trigger] }
 	## cardinality = 0..1
 	keep_unit_leaders = {
-		## cardinality = 1..100
+		## cardinality = 1..inf
 		enum[unit_leader_ids]
 	}
 	## cardinality = 0..1
@@ -760,9 +760,9 @@ alias[effect:create_wargoal] = {
 	type = <wargoal>
 	## cardinality = 0..1
 	generator = {
-		## cardinality = 0..100
+		## cardinality = 0..inf
 		scope[state]
-		## cardinality = 0..100
+		## cardinality = 0..inf
 		<state>
 	}
 	## cardinality = 0..1
@@ -840,9 +840,9 @@ alias[effect:add_tech_bonus] = {
 	enum[tech_bonus] = float
 	## cardinality = 0..1
 	uses = int[1..100]
-	## cardinality = 0..100
+	## cardinality = 0..inf
 	category = enum[tech_category]
-	## cardinality = 0..100
+	## cardinality = 0..inf
 	technology = <technology>
 	## cardinality = 0..1
 	name = localisation
@@ -968,7 +968,7 @@ alias[effect:create_field_marshal] = {
 	name = localisation
 	picture = scalar
 	traits = {
-		## cardinality = 0..100
+		## cardinality = 0..inf
 		<unit_leader_trait>
 	}
 	skill = int
@@ -991,7 +991,7 @@ alias[effect:create_corps_commander] = {
 	## cardinality = 0..1
 	gfx = scalar
 	traits = {
-		## cardinality = 0..100
+		## cardinality = 0..inf
 		<unit_leader_trait>
 	}
 	skill = int
@@ -1346,7 +1346,7 @@ alias[effect:set_building_level] = {
 		limit_to_border = bool
 		## cardinality = 0..1
 		level = int
-		## cardinality = 0..100
+		## cardinality = 0..inf
 		id = enum[provinces]
 	}
 }
@@ -1803,7 +1803,7 @@ alias[effect:print_variables] = {
 	print_global = bool
 	## cardinality = 0..1
 	var_list = {
-		## cardinality = 1..100
+		## cardinality = 1..inf
 		value[variable]
 	}
 }

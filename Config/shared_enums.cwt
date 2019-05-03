@@ -34,4 +34,9 @@ enums = {
 	enum[equipment_categories] = {
 		naval
 	}
+	enum[experience_types] = {
+		army
+		navy
+		air
+	}
 }

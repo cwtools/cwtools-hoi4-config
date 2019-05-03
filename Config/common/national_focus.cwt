@@ -27,7 +27,7 @@ focus_tree = {
 	default = bool
 	## cardinality = 0..10
 	shared_focus = <shared_focus>
-	## cardinality = 1..1000
+	## cardinality = 1..inf
 	focus = {
 		id = localisation
 		## cardinality = 0..1
@@ -49,14 +49,14 @@ focus_tree = {
 		continue_if_invalid = bool
 		## cardinality = 0..10
 		will_lead_to_war_with = scope[country]
-		## cardinality = 0..50
+		## cardinality = 0..inf
 		prerequisite = {
-			## cardinality = 1..50
+			## cardinality = 1..inf
 			focus = <focus>
 		}
 		## cardinality = 0..1
 		mutually_exclusive = {
-			## cardinality = 1..50
+			## cardinality = 1..inf
 			focus = <focus>
 		}
 		## cardinality = 0..1
@@ -120,14 +120,14 @@ focus = {
 	continue_if_invalid = bool
 	## cardinality = 0..10
 	will_lead_to_war_with = scope[country]
-	## cardinality = 0..50
+	## cardinality = 0..inf
 	prerequisite = {
-		## cardinality = 1..50
+		## cardinality = 1..inf
 		focus = <focus>
 	}
 	## cardinality = 0..1
 	mutually_exclusive = {
-		## cardinality = 1..50
+		## cardinality = 1..inf
 		focus = <focus>
 	}
 	## cardinality = 0..1
@@ -190,14 +190,14 @@ shared_focus = {
 	continue_if_invalid = bool
 	## cardinality = 0..10
 	will_lead_to_war_with = scope[country]
-	## cardinality = 0..50
+	## cardinality = 0..inf
 	prerequisite = {
-		## cardinality = 1..50
+		## cardinality = 1..inf
 		focus = <shared_focus>
 	}
 	## cardinality = 0..1
 	mutually_exclusive = {
-		## cardinality = 1..50
+		## cardinality = 1..inf
 		focus = <shared_focus>
 	}
 	## cardinality = 0..1

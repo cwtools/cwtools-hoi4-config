@@ -38,7 +38,7 @@ trait = {
 	## cardinality = 0..1
 	sprite = int
 	alias_name[modifier] = alias_match_left[modifier]
-	## cardinality = 0..100
+	## cardinality = 0..inf
 	ai_strategy = {
 		type = enum[ai_strategies]
 		id = scope[country]
@@ -46,7 +46,7 @@ trait = {
 	}
 	## cardinality = 0..1
 	equipment_bonus = {
-		## cardinality = 0..100
+		## cardinality = 0..inf
 		<equipment> = {
 			## cardinality = 0..1
 			instant = bool
@@ -54,7 +54,7 @@ trait = {
 			alias_name[naval_stat] = alias_match_left[naval_stat]
 			alias_name[air_stat] = alias_match_left[air_stat]
 		}
-		## cardinality = 0..100
+		## cardinality = 0..inf
 		enum[unit_types] = {
 			## cardinality = 0..1
 			instant = bool
@@ -63,7 +63,7 @@ trait = {
 			alias_name[air_stat] = alias_match_left[air_stat]
 		}
 	}
-	## cardinality = 0..100
+	## cardinality = 0..inf
 	# targeted_modifier = single_alias_right[targeted_modifier]
 	alias_name[targeted_modifier_rule] = alias_match_left[targeted_modifier_rule]
 	alias_name[ai_strategy_rule] = alias_match_left[ai_strategy_rule]
@@ -173,7 +173,7 @@ unit_leader_trait = {
 	## cardinality = 0..1
 	ai_will_do = {
 		factor = float
-		## cardinality = 0..100
+		## cardinality = 0..inf
 		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	}
 }

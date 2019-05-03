@@ -18,15 +18,15 @@ types = {
 ideology = {
 	subtype[regular] = {
 		types = {
-			## cardinality = 1..100
+			## cardinality = 1..inf
 			scalar = {
 
 			}
 		}
 		dynamic_faction_names = {
-			## cardinality = 0..100
+			## cardinality = 0..inf
 			localisation
-			## cardinality = 0..100
+			## cardinality = 0..inf
 			scalar
 		}
 		### RGB color of ideology

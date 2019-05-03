@@ -120,25 +120,25 @@ equipment = {
 		priority = int
 		## cardinality = 0..1
 		module_slots = {
-			## cardinality = 0..100
+			## cardinality = 0..inf
 			enum[module_slots] = {
 				required = bool
 				allowed_module_categories = {
-					## cardinality = 1..100
+					## cardinality = 1..inf
 					value[module_categories]
 				}
 				## cardinality = 0..1
 				gfx = scalar
 			}
-			## cardinality = 0..100
+			## cardinality = 0..inf
 			enum[module_slots] = enum[module_slots]
-			## cardinality = 0..100
+			## cardinality = 0..inf
 			enum[module_slots] = inherit
 		}
 		## cardinality = 0..1
 		module_slots = inherit
 
-		## cardinality = 0..100
+		## cardinality = 0..inf
 		module_count_limit = {
 			## cardinality = 0..1
 			category = value[module_categories]
@@ -148,9 +148,9 @@ equipment = {
 		}
 
 		default_modules = {
-			## cardinality = 0..100
+			## cardinality = 0..inf
 			enum[module_slots] = <module>
-			## cardinality = 0..100
+			## cardinality = 0..inf
 			enum[module_slots] = empty
 		}
 

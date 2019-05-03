@@ -7,7 +7,7 @@ types = {
 
 oob = {
 	start_equipment_factor = float
-	## cardinality = 0..100
+	## cardinality = 0..inf
 	division_template = {
 		name = localisation
 		regiments = {
@@ -22,7 +22,7 @@ oob = {
 	}
 	## cardinality = 0..1
 	instant_effect = {
-		## cardinality = 0..100
+		## cardinality = 0..inf
 		add_equipment_production = {
 			equipment = {
 				type = <equipment.regular_equip>
@@ -44,7 +44,7 @@ oob = {
 
 	## cardinality = 0..1
 	units = {
-		## cardinality = 0..500
+		## cardinality = 0..inf
 		division = {
 			name = localisation
 			location = enum[provinces]

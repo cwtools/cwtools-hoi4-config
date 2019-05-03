@@ -90,17 +90,17 @@ unit = {
 	alias_name[unit_stat] = alias_match_left[unit_stat]
 
 	need = {
-		## cardinality = 1..100
+		## cardinality = 1..inf
 		<equipment> = int
 	}
 	## cardinality = 0..1
 	essential = {
-		## cardinality = 1..100
+		## cardinality = 1..inf
 		<equipment>
 	}
 	## cardinality = 0..1
 	categories = {
-		## cardinality = 0..100
+		## cardinality = 0..inf
 		enum[unit_category]
 	}
 

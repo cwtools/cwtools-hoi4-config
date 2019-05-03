@@ -171,11 +171,16 @@ enums = {
 		missile
 	}
 	enum[ship_units] = {
-		submarine
-		screen_ship
+		battle_cruiser
+		battleship
 		capital_ship
 		carrier
 		convoy
+		destroyer
+		heavy_cruiser
+		light_cruiser
+		screen_ship
+		submarine
 	}
 	complex_enum[unit_category] = {
 		path = "game/common/unit_tags"

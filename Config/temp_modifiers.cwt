@@ -12,174 +12,178 @@ alias[modifier_rule:modifier] = {
 }
 
 #vanila ideologies
-alias[modifier:<ideology>_drift] = float
 alias[modifier:<ideology>_acceptance] = int
+alias[modifier:<ideology>_drift] = float
 
 #modifiers not listed in wiki
-alias[modifier:justify_war_goal_when_in_major_war_time] = float
-alias[modifier:puppet_cost_factor] = float
-alias[modifier:conversion_cost_mil_to_civ_factor] = float
+alias[modifier:autonomy_gain_global_factor] = float
 alias[modifier:autonomy_manpower_share] = float
 alias[modifier:can_master_build_for_us] = float
-alias[modifier:extra_trade_to_overlord_factor] = float
-alias[modifier:overlord_trade_cost_factor] = float
 alias[modifier:cic_to_overlord_factor] = float
-alias[modifier:mic_to_overlord_factor] = float
-alias[modifier:research_sharing_per_country_bonus_factor] = float
-alias[modifier:autonomy_gain_global_factor] = float
+alias[modifier:conversion_cost_mil_to_civ_factor] = float
+alias[modifier:extra_trade_to_overlord_factor] = float
 alias[modifier:generate_wargoal_tension_against] = float
+alias[modifier:justify_war_goal_when_in_major_war_time] = float
+alias[modifier:mic_to_overlord_factor] = float
+alias[modifier:overlord_trade_cost_factor] = float
+alias[modifier:puppet_cost_factor] = float
+alias[modifier:research_sharing_per_country_bonus_factor] = float
 
 #local_resources_<resource>
 alias[modifier:local_resources_<resource>] = int
 
-alias[modifier:transport_capacity] = float
 alias[modifier:amphibious_invasion_defence] = float
 alias[modifier:naval_invasion_capacity] = int
+alias[modifier:transport_capacity] = float
 
 alias[modifier:encryption] = int
 alias[modifier:decryption] = int
 
-alias[modifier:air_superiority_detect_factor] = float
+alias[modifier:air_cas_efficiency] = float
+alias[modifier:air_escort_efficiency] = float
+alias[modifier:air_intercept_efficiency] = float
 alias[modifier:air_interception_detect_factor] = float
 alias[modifier:air_nav_efficiency] = float
-alias[modifier:air_intercept_efficiency] = float
-alias[modifier:air_superiority_efficiency] = float
 alias[modifier:air_strategic_bomber_night_penalty] = float
-alias[modifier:air_escort_efficiency] = float
-alias[modifier:air_cas_efficiency] = float
-alias[modifier:strategic_bomb_visibility] = float
-alias[modifier:port_strike] = float
+alias[modifier:air_superiority_detect_factor] = float
+alias[modifier:air_superiority_efficiency] = float
 alias[modifier:carrier_capacity_penalty_reduction] = float
+alias[modifier:port_strike] = float
+alias[modifier:strategic_bomb_visibility] = float
 
+alias[modifier:land_night_attack] = float
 alias[modifier:mechanized_attack_factor] = float
 alias[modifier:mechanized_defence_factor] = float
 alias[modifier:org_loss_when_moving] = float
-alias[modifier:land_night_attack] = float
 alias[modifier:special_forces_cap] = float
+alias[modifier:special_forces_no_supply_grace] = int
 alias[modifier:special_forces_out_of_supply_factor] = float
 alias[modifier:special_forces_training_time_factor] = float
-alias[modifier:special_forces_no_supply_grace] = int
 
-alias[modifier:take_states_cost_factor] = float
-alias[modifier:ai_focus_defense_factor] = float
-alias[modifier:ai_license_acceptance] = float
 alias[modifier:ai_call_ally_desire_factor] = int
+alias[modifier:ai_focus_defense_factor] = float
 alias[modifier:ai_join_ally_desire_factor] = int
+alias[modifier:ai_license_acceptance] = float
+alias[modifier:take_states_cost_factor] = float
 
 #unit stats
-alias[unit_stat:max_organisation] = float
-alias[unit_stat:reliability] = float
-alias[unit_stat:weight] = float
-alias[unit_stat:maximum_speed] = float
-alias[unit_stat:supply_consumption] = float
-alias[unit_stat:supply_consumption_factor] = float
-alias[unit_stat:default_morale] = float
-alias[unit_stat:combat_width] = float
-alias[unit_stat:lend_lease_cost] = float
-alias[unit_stat:build_cost_ic] = float
-alias[unit_stat:manpower] = float
-alias[unit_stat:training_time] = float
-alias[unit_stat:attack] = float
-alias[unit_stat:soft_attack] = float
-alias[unit_stat:hard_attack] = float
+alias[unit_stat:acclimatization_cold_climate_gain_factor] = float
+alias[unit_stat:acclimatization_hot_climate_gain_factor] = float
 alias[unit_stat:air_attack] = float
 alias[unit_stat:ap_attack] = float
-alias[unit_stat:breakthrough] = float
-#both spellings are used, but inconsistently
-alias[unit_stat:defense] = float
-alias[unit_stat:defence] = float
-alias[unit_stat:max_strength] = float
 alias[unit_stat:armor_value] = float
-alias[unit_stat:hardness] = float
-alias[unit_stat:entrenchment] = float
-alias[unit_stat:movement] = float
-alias[unit_stat:experience_loss_factor] = float
+alias[unit_stat:attack] = float
+alias[unit_stat:breakthrough] = float
+alias[unit_stat:build_cost_ic] = float
 alias[unit_stat:casualty_trickleback] = float
-alias[unit_stat:suppression_factor] = float
-alias[unit_stat:suppression] = float
-alias[unit_stat:reliability_factor] = float
+alias[unit_stat:combat_width] = float
+alias[unit_stat:default_morale] = float
+alias[unit_stat:defence] = float
+alias[unit_stat:defense] = float
+alias[unit_stat:dont_lose_dig_in_on_attack] = float
+alias[unit_stat:entrenchment] = float
 alias[unit_stat:equipment_capture_factor] = float
-alias[unit_stat:recon] = float
-alias[unit_stat:initiative] = float
-alias[unit_stat:fuel_consumption] = float
-
-alias[unit_stat:fortification_damage] = float
+alias[unit_stat:experience_loss_factor] = float
 alias[unit_stat:fortification_collateral_chance] = float
-alias[unit_stat:paratrooper_count_per_plane] = float
+alias[unit_stat:fortification_damage] = float
+alias[unit_stat:fuel_consumption] = float
+alias[unit_stat:hard_attack] = float
+alias[unit_stat:hardness] = float
+alias[unit_stat:initiative] = float
+alias[unit_stat:lend_lease_cost] = float
+alias[unit_stat:manpower] = float
+alias[unit_stat:max_organisation] = float
+alias[unit_stat:max_strength] = float
+alias[unit_stat:maximum_speed] = float
+alias[unit_stat:movement] = float
+alias[unit_stat:naval_invasion_prep_speed] = float
 alias[unit_stat:paradrop_organization_factor] = float
 alias[unit_stat:paratrooper_aa_defense] = float
-alias[unit_stat:naval_invasion_prep_speed] = float
-alias[unit_stat:dont_lose_dig_in_on_attack] = float
+alias[unit_stat:paratrooper_count_per_plane] = float
+alias[unit_stat:recon] = float
+alias[unit_stat:reliability_factor] = float
+alias[unit_stat:reliability] = float
 alias[unit_stat:river_crossing_factor] = float
-alias[unit_stat:acclimatization_hot_climate_gain_factor] = float
-alias[unit_stat:acclimatization_cold_climate_gain_factor] = float
+alias[unit_stat:soft_attack] = float
+alias[unit_stat:supply_consumption_factor] = float
+alias[unit_stat:supply_consumption] = float
+alias[unit_stat:suppression_factor] = float
+alias[unit_stat:suppression] = float
+alias[unit_stat:training_time] = float
+alias[unit_stat:weight] = float
+
 #naval stats
-alias[naval_stat:naval_speed] = float
-alias[naval_stat:fire_range] = float
-alias[naval_stat:torpedo_attack] = float
-alias[naval_stat:sub_attack] = float
 alias[naval_stat:anti_air_attack] = float
-alias[naval_stat:shore_bombardment] = float
-alias[naval_stat:evasion] = float
-alias[naval_stat:surface_detection] = float
-alias[naval_stat:sub_detection] = float
-alias[naval_stat:surface_visibility] = float
-alias[naval_stat:sub_visibility] = float
-alias[naval_stat:naval_range] = float
-alias[naval_stat:port_capacity_usage] = float
-alias[naval_stat:search_and_destroy_coordination] = float
-alias[naval_stat:convoy_raiding_coordination] = float
 alias[naval_stat:carrier_size] = float
-alias[naval_stat:lg_armor_piercing] = float
-alias[naval_stat:lg_attack] = float
+alias[naval_stat:convoy_raiding_coordination] = float
+alias[naval_stat:evasion] = float
+alias[naval_stat:fire_range] = float
 alias[naval_stat:hg_armor_piercing] = float
 alias[naval_stat:hg_attack] = float
-alias[naval_stat:navy_org_factor] = float
-alias[naval_stat:naval_morale_factor] = float
-alias[naval_stat:naval_speed_factor] = float
-alias[naval_stat:naval_retreat_chance] = float
+alias[naval_stat:lg_armor_piercing] = float
+alias[naval_stat:lg_attack] = float
 alias[naval_stat:mines_planting] = float
 alias[naval_stat:mines_sweeping] = float
+alias[naval_stat:naval_mine_hit_chance] = float
+alias[naval_stat:naval_morale_factor] = float
+alias[naval_stat:naval_range] = float
+alias[naval_stat:naval_retreat_chance] = float
+alias[naval_stat:naval_speed_factor] = float
+alias[naval_stat:naval_speed] = float
+alias[naval_stat:navy_fuel_consumption_factor] = float
+alias[naval_stat:navy_org_factor] = float
+alias[naval_stat:navy_visibility] = float
+alias[naval_stat:port_capacity_usage] = float
+alias[naval_stat:positioning] = float
+alias[naval_stat:search_and_destroy_coordination] = float
+alias[naval_stat:shore_bombardment] = float
+alias[naval_stat:sub_attack] = float
+alias[naval_stat:sub_detection] = float
+alias[naval_stat:sub_visibility] = float
+alias[naval_stat:surface_detection] = float
+alias[naval_stat:surface_visibility] = float
+alias[naval_stat:torpedo_attack] = float
+
 #air stats
-alias[air_stat:air_attack] = float
-alias[air_stat:air_ground_attack] = float
-alias[air_stat:air_defense] = float
-alias[air_stat:air_defence] = float
-alias[air_stat:air_range] = float
 alias[air_stat:air_agility] = float
+alias[air_stat:air_attack] = float
+alias[air_stat:air_bombing] = float
+alias[air_stat:air_defence] = float
+alias[air_stat:air_defense] = float
+alias[air_stat:air_ground_attack] = float
+alias[air_stat:air_range] = float
 alias[air_stat:air_superiority] = float
-alias[air_stat:naval_strike_attack] = float
-alias[air_stat:naval_strike_targetting] = float
 alias[air_stat:carrier_size] = float
 alias[air_stat:default_carrier_composition_weight] = float
-alias[air_stat:air_bombing] = float
+alias[air_stat:naval_strike_attack] = float
+alias[air_stat:naval_strike_targetting] = float
 
 #for terrain modifiers
 alias[unit_stat:<terrain>] = { alias_name[unit_stat] = alias_match_left[unit_stat] }
-alias[unit_stat:river] = { alias_name[unit_stat] = alias_match_left[unit_stat] }
 alias[unit_stat:amphibious] = { alias_name[unit_stat] = alias_match_left[unit_stat] }
 alias[unit_stat:fort] = { alias_name[unit_stat] = alias_match_left[unit_stat] }
+alias[unit_stat:river] = { alias_name[unit_stat] = alias_match_left[unit_stat] }
 
 #unit leader trait modifiers
-alias[unit_leader_modifier:skill_bonus_factor] = float
-alias[unit_leader_modifier:cannot_use_abilities] = int[0..1]
-alias[unit_leader_modifier:experience_gain_factor] = float
 alias[unit_leader_modifier:air_superiority_bonus_in_combat] = float
+alias[unit_leader_modifier:cannot_use_abilities] = int[0..1]
 alias[unit_leader_modifier:cas_damage_reduction] = float
-alias[unit_leader_modifier:extra_paratrooper_supply_grace] = float
-alias[unit_leader_modifier:shore_bombardment_bonus] = float
-alias[unit_leader_modifier:extra_marine_supply_grace] = float
-alias[unit_leader_modifier:recon_factor_while_entrenched] = float
 alias[unit_leader_modifier:equipment_capture] = float
-alias[unit_leader_modifier:max_commander_army_size] = int
+alias[unit_leader_modifier:experience_gain_factor] = float
+alias[unit_leader_modifier:extra_marine_supply_grace] = float
+alias[unit_leader_modifier:extra_paratrooper_supply_grace] = float
 alias[unit_leader_modifier:max_army_group_size] = int
+alias[unit_leader_modifier:max_commander_army_size] = int
 alias[unit_leader_modifier:max_dig_in_factor] = float
 alias[unit_leader_modifier:org_loss_when_moving] = float
-alias[unit_leader_modifier:wounded_chance_factor] = float
-alias[unit_leader_modifier:reassignment_duration_factor] = float
 alias[unit_leader_modifier:promote_cost_factor] = float
+alias[unit_leader_modifier:reassignment_duration_factor] = float
+alias[unit_leader_modifier:recon_factor_while_entrenched] = float
+alias[unit_leader_modifier:shore_bombardment_bonus] = float
+alias[unit_leader_modifier:skill_bonus_factor] = float
+alias[unit_leader_modifier:wounded_chance_factor] = float
 
 alias[unit_leader_modifier:<terrain>] = { alias_name[unit_stat] = alias_match_left[unit_stat] }
-alias[unit_leader_modifier:river] = { alias_name[unit_stat] = alias_match_left[unit_stat] }
 alias[unit_leader_modifier:amphibious] = { alias_name[unit_stat] = alias_match_left[unit_stat] }
 alias[unit_leader_modifier:fort] = { alias_name[unit_stat] = alias_match_left[unit_stat] }
+alias[unit_leader_modifier:river] = { alias_name[unit_stat] = alias_match_left[unit_stat] }

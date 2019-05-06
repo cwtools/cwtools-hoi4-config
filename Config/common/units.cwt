@@ -22,8 +22,10 @@ types = {
 			}
 		}
 		subtype[catch] = {
-
 		}
+	}
+	type[ship_name] = {
+		path = "game/common/units/names_ships"
 	}
 }
 
@@ -103,7 +105,44 @@ unit = {
 		## cardinality = 0..inf
 		enum[unit_category]
 	}
+}
 
+ship_name = {
+	name = localisation
+	for_countries = {
+		## cardinality = 0..inf
+		enum[country_tags]
+	}
+	## cardinality = 0..1
+	can_use = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	type = ship
+	## cardinality = 0..1
+	ship_types = {
+		## cardinality = 0..inf
+		<equipment.naval_equip>
+		## cardinality = 0..inf
+		<unit.ship_unit>
+		## cardinality = 0..inf
+		enum[ship_units]
+	}
+	## cardinality = 0..1
+	prefix = scalar
+	## cardinality = 0..1
+	fallback_name = scalar
+	## cardinality = 0..1
+	unique = {
+		## cardinality = 0..inf
+		scalar
+	}
+	## cardinality = 0..1
+	ordered = {
+		## cardinality = 0..inf
+		int = {
+			scalar
+		}
+	}
 }
 
 enums = {

@@ -124,7 +124,7 @@ idea = {
 			## cardinality = 0..1
 			traits = {
 				## cardinality = 0..inf
-				<trait>
+				<country_leader_trait>
 			}
 			## cardinality = 0..1
 			on_add = {

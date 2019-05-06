@@ -1,5 +1,5 @@
 types = {
-	type[trait] = {
+	type[country_leader_trait] = {
 		skip_root_key = leader_traits
 		path = "game/common/country_leader"
 	}
@@ -30,7 +30,7 @@ types = {
 }
 
 ## push_scope = country
-trait = {
+country_leader_trait = {
 	## cardinality = 0..1
 	name = scalar
 	## cardinality = 0..1

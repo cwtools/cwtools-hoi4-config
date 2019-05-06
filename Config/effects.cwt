@@ -317,7 +317,7 @@ alias[effect:create_country_leader] = {
 	## cardinality = 0..1
 	traits = {
 		## cardinality = 0..inf
-		<trait>
+		<country_leader_trait>
 	}
 	## cardinality = 0..1
 	id = int
@@ -371,11 +371,11 @@ alias[effect:set_country_leader_ideology] = enum[sub_ideology]
 
 ### add trait to active country leader
 ## scope = country
-alias[effect:add_country_leader_trait] = <trait>
+alias[effect:add_country_leader_trait] = <country_leader_trait>
 
 ### remove trait from active country leader
 ## scope = country
-alias[effect:remove_country_leader_trait] = <trait>
+alias[effect:remove_country_leader_trait] = <country_leader_trait>
 
 ### set properties of a political party
 ## scope = country
@@ -449,12 +449,22 @@ alias[effect:create_navy_leader] = {
 	## cardinality = 0..1
 	picture = scalar
 	## cardinality = 0..1
+	portrait_path = scalar
+	## cardinality = 0..1
 	gfx = scalar
 	traits = {
 		## cardinality = 0..inf
-		<trait>
+		<unit_leader_trait>
 	}
 	skill = int
+	## cardinality = 0..1
+	attack_skill = int
+	## cardinality = 0..1
+	defense_skill = int
+	## cardinality = 0..1
+	maneuvering_skill = int
+	## cardinality = 0..1
+	coordination_skill = int
 	## cardinality = 0..1
 	id = int
 	## cardinality = 0..1
@@ -702,7 +712,7 @@ alias[effect:add_popularity] = {
 
 ### Remove all ideas with specified trait from country
 ## scope = country
-alias[effect:remove_ideas_with_trait] = <trait>
+alias[effect:remove_ideas_with_trait] = <country_leader_trait>
 
 ### Given ideology starts a civil war in the country: keep_unit_leaders specify ID of unit leaders that remain with the original country
 ## scope = country
@@ -832,6 +842,7 @@ alias[effect:break] = none
 ### unlocks a focus for a country
 ## scope = country
 alias[effect:unlock_national_focus] = <focus>
+alias[effect:unlock_national_focus] = <shared_focus>
 
 ### adds a limited use tech bonus
 ## scope = country
@@ -894,6 +905,7 @@ alias[effect:diplomatic_relation] = {
 	country = scope[country]
 	country = enum[country_tags]
 	relation = enum[diplomatic_relations]
+	## cardinality = 0..1
 	active = bool
 }
 
@@ -941,8 +953,11 @@ alias[effect:load_oob] = <oob>
 ### Creates trade between two countries
 ## scope = country
 alias[effect:create_import] = {
+	## cardinality = 0..1
 	amount = int
 	resource = <resource>
+	## cardinality = 0..1
+	factories = int
 	exporter = scope[country]
 	exporter = enum[country_tags]
 }
@@ -966,7 +981,14 @@ alias[effect:set_major] = yes
 ## scope = country
 alias[effect:create_field_marshal] = {
 	name = localisation
+	## cardinality = 0..1
+	desc = localisation
+	## cardinality = 0..1
 	picture = scalar
+	## cardinality = 0..1
+	portrait_path = scalar
+	## cardinality = 0..1
+	gfx = scalar
 	traits = {
 		## cardinality = 0..inf
 		<unit_leader_trait>
@@ -987,7 +1009,11 @@ alias[effect:create_field_marshal] = {
 alias[effect:create_corps_commander] = {
 	name = localisation
 	## cardinality = 0..1
+	desc = localisation
+	## cardinality = 0..1
 	picture = scalar
+	## cardinality = 0..1
+	portrait_path = scalar
 	## cardinality = 0..1
 	gfx = scalar
 	traits = {
@@ -1023,6 +1049,7 @@ alias[effect:leave_faction] = bool
 ### unlocks a focus for a country
 ## scope = country
 alias[effect:complete_national_focus] = <focus>
+alias[effect:complete_national_focus] = <shared_focus>
 
 ### change partyname for an ideology in a country
 ## scope = country
@@ -1065,12 +1092,21 @@ alias[effect:create_equipment_variant] = {
 	name = localisation
 	type = <equipment.regular_equip>
 	## cardinality = 0..1
+	name_group = <ship_name>
+	## cardinality = 0..1
 	parent_version = int
 	## cardinality = 0..1
 	upgrades = {
 		## cardinality = 0..4
 		<upgrade> = int
 	}
+	## cardinality = 0..1
+	modules = {
+		## cardinality = 0..inf
+		enum[module_slots] = <module>
+	}
+	## cardinality = 0..1
+	obsolete = yes
 }
 
 ### Adds an equipment production
@@ -1187,7 +1223,10 @@ alias[effect:release_autonomy] = {
 alias[effect:set_autonomy] = {
 	target = scope[country]
 	target = enum[country_tags]
+	## cardinality = 0..1
 	autonomy_state = <autonomy>
+	## cardinality = 0..1
+	autonomous_state = <autonomy>
 	## cardinality = 0..1
 	freedom_level = float[0..1]
 }
@@ -1223,7 +1262,7 @@ alias[effect:add_autonomy_ratio] = {
 
 ### Sets country cosmetic tag.
 ## scope = country
-alias[effect:set_cosmetic_tag] = enum[comsmetic_tag]
+alias[effect:set_cosmetic_tag] = enum[comsmetic_tags]
 
 ### Drops country cosmetic tag.
 ## scope = country
@@ -1944,15 +1983,18 @@ alias[effect:set_faction_leader] = replace_me
 
 ### Registers an Order of Battle (OOB) file to be loaded for a country at game start, replacing any previously registered OOB (with the given key) on that country.
 ## scopes = { country }
-alias[effect:set_keyed_oob] = replace_me
+alias[effect:set_keyed_oob] = {
+	key = scalar
+	name = <oob>
+}
 
 ### Registers an Order of Battle (OOB) file to be loaded for a country at game start, replacing any previously registered OOB (with no key) on that country.
 ## scopes = { country }
-alias[effect:set_oob] = replace_me
+alias[effect:set_oob] = <oob>
 
 ### Registers an Order of Battle (OOB) file to be loaded for a country at game start, replacing any previously registered OOB (with key "naval") on that country.
 ## scopes = { country }
-alias[effect:set_naval_oob] = replace_me
+alias[effect:set_naval_oob] = <oob>
 
 ### Adds an element to an array
 ## scopes = { ??? }
@@ -2059,13 +2101,16 @@ alias[effect:add_mines] = replace_me
 
 ### Set country's current fuel ratio relative to its capacity
 ## scopes = { country }
-alias[effect:set_fuel_ratio] = replace_me
+alias[effect:set_fuel_ratio] = float
 
 ### Ends the exile of of the current scope's country
 ## scopes = { country }
 alias[effect:end_exile] = replace_me
 
-
 ### Give supply to units being controlled by this leader.
 ## scope = unit_leader
 alias[effect:supply_units] = int
+
+### Sets the number of convoys.
+## scope = country
+alias[effect:set_convoys] = int

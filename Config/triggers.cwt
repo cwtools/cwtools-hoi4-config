@@ -546,7 +546,7 @@ alias[trigger:any_war_score] = {
 
 ### check if country has idea with specified trait
 ## scope = country
-alias[trigger:has_idea_with_trait] = <trait>
+alias[trigger:has_idea_with_trait] = <country_leader_trait>
 
 ### checks for amount of aircrafts, additionally of a specified type
 ## scope = country
@@ -604,7 +604,7 @@ alias[trigger:has_built] = {
 ### Checks if country has more than limit, default = 0.
 ## scope = country
 alias[trigger:has_available_idea_with_traits] = {
-	idea = <trait>
+	idea = <country_leader_trait>
 	limit = int
 }
 

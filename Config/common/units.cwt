@@ -24,6 +24,9 @@ types = {
 		subtype[catch] = {
 		}
 	}
+	type[division_name] = {
+		path = "game/common/units/names_divisions"
+	}
 	type[ship_name] = {
 		path = "game/common/units/names_ships"
 	}
@@ -129,13 +132,43 @@ ship_name = {
 	}
 	## cardinality = 0..1
 	prefix = scalar
-	## cardinality = 0..1
+	## cardinality = 0..inf
 	fallback_name = scalar
 	## cardinality = 0..1
 	unique = {
 		## cardinality = 0..inf
 		scalar
 	}
+	## cardinality = 0..1
+	ordered = {
+		## cardinality = 0..inf
+		int = {
+			scalar
+		}
+	}
+}
+
+division_name = {
+	name = localisation
+	for_countries = {
+		## cardinality = 0..inf
+		enum[country_tags]
+	}
+	## cardinality = 0..1
+	can_use = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	division_types = {
+		## cardinality = 1..inf
+		<unit.land_unit>
+	}
+	## cardinality = 0..1
+	link_numbering_with = {
+		## cardinality = 1..inf
+		<division_name>
+	}
+	## cardinality = 0..1
+	fallback_name = scalar
 	## cardinality = 0..1
 	ordered = {
 		## cardinality = 0..inf

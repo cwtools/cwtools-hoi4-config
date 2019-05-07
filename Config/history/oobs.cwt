@@ -6,10 +6,13 @@ types = {
 }
 
 oob = {
+	## cardinality = 0..1
 	start_equipment_factor = float
+
 	## cardinality = 0..inf
 	division_template = {
 		name = localisation
+		division_names_group = <division_name>
 		regiments = {
 			## cardinality = 1..25
 			<unit> = { x = int[0..5] y = int[0..5] }
@@ -19,7 +22,10 @@ oob = {
 			## cardinality = 0..5
 			<unit> = { x = 0 y = int[0..5] }
 		}
+		## cardinality = 0..1
+		priority = int
 	}
+
 	## cardinality = 0..1
 	instant_effect = {
 		## cardinality = 0..inf
@@ -27,7 +33,7 @@ oob = {
 			equipment = {
 				type = <equipment.regular_equip>
 				## cardinality = 0..1
-				creator = "enum[country_tags]"
+				creator = enum[country_tags]
 				## cardinality = 0..1
 				version_name = localisation
 			}
@@ -46,10 +52,30 @@ oob = {
 	units = {
 		## cardinality = 0..inf
 		division = {
+			## cardinality = 0..1
 			name = localisation
+			## cardinality = 0..1
+			division_name = {
+				is_name_ordered = bool
+				name_order = int
+			}
 			location = enum[provinces]
 			division_template = localisation
+			## cardinality = 0..1
 			start_experience_factor = float
+			## cardinality = 0..1
+			start_equipment_factor = float
+		}
+	}
+
+	## cardinality = 0..1
+	air_wings = {
+		## cardinality = 1..inf
+		<state> = {
+			<equipment.air_equip> = {
+				owner = enum[country_tags]
+				amount = int
+			}
 		}
 	}
 }

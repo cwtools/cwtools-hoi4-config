@@ -16,7 +16,10 @@ types = {
 			archetype = <equipment.naval_equip>
 		}
 		subtype[air_equip] = {
-			interface_category = interface_category_air
+			## cardinality = 0..1
+			type = enum[air_units]
+			## cardinality = 0..1
+			archetype = <equipment.air_equip>
 		}
 	}
 	type[upgrade] = {

@@ -20,10 +20,13 @@ state = {
 	}
 	history = {
 		owner = enum[country_tags]
+		## cardinality = 0..1
+		controller = enum[country_tags]
 		## cardinality = 0..inf
 		victory_points = {
+			# provinces overlap the ints, have to use 2 provinces here, floats will return error
+			## cardinality = 2..2
 			enum[provinces]
-			int[0..1000]
 		}
 		## cardinality = 0..1
 		buildings = {
@@ -35,18 +38,18 @@ state = {
 				<building> = int[0..20]
 			}
 		}
+		alias_name[effect] = alias_match_left[effect]
 		## cardinality = 0..inf
-		add_core_of = enum[country_tags]
-		## cardinality = 0..inf
-		add_claim_by = enum[country_tags]
-		## cardinality = 0..5
 		date_field = {
 			## cardinality = 0..1
 			owner = enum[country_tags]
+			## cardinality = 0..1
+			controller = enum[country_tags]
 			## cardinality = 0..inf
 			victory_points = {
+				# provinces overlap the ints, have to use 2 provinces here, floats will return error
+				## cardinality = 2..2
 				enum[provinces]
-				int[0..1000]
 			}
 			## cardinality = 0..1
 			buildings = {
@@ -58,10 +61,7 @@ state = {
 					<building> = int[0..20]
 				}
 			}
-			## cardinality = 0..inf
-			add_core_of = enum[country_tags]
-			## cardinality = 0..inf
-			add_claim_by = enum[country_tags]
+			alias_name[effect] = alias_match_left[effect]
 		}
 	}
 	provinces = {
@@ -72,6 +72,8 @@ state = {
 	## cardinality = 0..1
 	buildings_max_level_factor = float
 	state_category = <state_category>
+	## cardinality = 0..1
+	impassable = yes
 }
 
 state_category = {
@@ -80,8 +82,4 @@ state_category = {
 		## cardinality = 3..3
 		int
 	}
-}
-
-enums = {
-
 }

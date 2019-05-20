@@ -25,8 +25,13 @@ focus_tree = {
 		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	}
 	default = bool
-	## cardinality = 0..10
+	## cardinality = 0..1
 	shared_focus = <shared_focus>
+	## cardinality = 0..1
+	continuous_focus_position = {
+		x = int
+		y = int
+	}
 	## cardinality = 1..inf
 	focus = {
 		id = localisation
@@ -54,7 +59,7 @@ focus_tree = {
 			## cardinality = 1..inf
 			focus = <focus>
 		}
-		## cardinality = 0..1
+		## cardinality = 0..inf
 		mutually_exclusive = {
 			## cardinality = 1..inf
 			focus = <focus>
@@ -125,7 +130,7 @@ focus = {
 		## cardinality = 1..inf
 		focus = <focus>
 	}
-	## cardinality = 0..1
+	## cardinality = 0..inf
 	mutually_exclusive = {
 		## cardinality = 1..inf
 		focus = <focus>
@@ -195,7 +200,7 @@ shared_focus = {
 		## cardinality = 1..inf
 		focus = <shared_focus>
 	}
-	## cardinality = 0..1
+	## cardinality = 0..inf
 	mutually_exclusive = {
 		## cardinality = 1..inf
 		focus = <shared_focus>

@@ -1,5 +1,5 @@
 ## scope = any
-alias[trigger:<scripted_trigger>] = yes
+alias[trigger:<scripted_trigger>] = bool
 
 ### check state id
 ## scope = state
@@ -1242,6 +1242,7 @@ alias[trigger:any_province_building_level] = {
 	province = {
 		## cardinality = 1..inf
 		id = enum[provinces]
+		## cardinality = 0..1
 		limit_to_border = bool
 	}
 	building = <building>

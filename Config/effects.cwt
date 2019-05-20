@@ -209,15 +209,6 @@ alias[effect:set_variable] = {
 	value = float
 }
 
-### Adds strategy entry to country AI
-## scope = country
-alias[effect:add_ai_strategy] = {
-	type = enum[ai_strategies]
-	id = scope[country]
-	id = enum[country_tags]
-	value = int
-}
-
 ### a random effect
 ## scope = any
 alias[effect:random] = {
@@ -354,6 +345,7 @@ alias[effect:randomize_weather] = int
 ## scope = country
 alias[effect:division_template] = {
 	name = localisation
+	division_names_group = <division_name>
 	regiments = {
 		## cardinality = 1..25
 		<unit> = { x = int[0..5] y = int[0..5] }
@@ -363,6 +355,8 @@ alias[effect:division_template] = {
 		## cardinality = 0..5
 		<unit> = { x = 0 y = int[0..5] }
 	}
+	## cardinality = 0..1
+	priority = int
 }
 
 ### change the ideology of active leader
@@ -1145,6 +1139,11 @@ alias[effect:add_ace] = {
 ## push_scope = state
 alias[effect:random_owned_controlled_state] = {
 	## cardinality = 0..1
+	prioritize = {
+		## cardinality = 0..inf
+		<state>
+	}
+	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
@@ -1214,6 +1213,7 @@ alias[effect:release_autonomy] = {
 	target = scope[country]
 	target = enum[country_tags]
 	autonomy_state = <autonomy>
+	autonomy_state = autonomy_free
 	## cardinality = 0..1
 	freedom_level = float[0..1]
 }
@@ -1225,6 +1225,7 @@ alias[effect:set_autonomy] = {
 	target = enum[country_tags]
 	## cardinality = 0..1
 	autonomy_state = <autonomy>
+	autonomy_state = autonomy_free
 	## cardinality = 0..1
 	autonomous_state = <autonomy>
 	## cardinality = 0..1
@@ -1369,13 +1370,14 @@ alias[effect:remove_relation_modifier] = {
 ### Sets specific level of a building construction for amount of levels in specified state or province
 ## scope = state
 alias[effect:set_building_level] = {
-	type = <building
+	type = <building>
 	level = int
 	instant_build = bool
 	## cardinality = 0..1
 	province = enum[provinces]
 	## cardinality = 0..1
 	province = {
+		## cardinality = 0..1
 		all_provinces = bool
 		## cardinality = 0..1
 		limit_to_coastal = bool
@@ -2114,3 +2116,119 @@ alias[effect:supply_units] = int
 ### Sets the number of convoys.
 ## scope = country
 alias[effect:set_convoys] = int
+
+### Adds strategy entry to country AI
+## scope = country
+alias[effect:add_ai_strategy] = {
+	type = enum[ai_role_strats]
+	id = value[ai_roles]
+	value = int
+}
+
+### Adds strategy entry to country AI
+## scope = country
+alias[effect:add_ai_strategy] = {
+	type = enum[unit_strats]
+	id = <unit>
+	id = enum[unit_types]
+	value = int
+}
+
+### Adds strategy entry to country AI
+## scope = country
+alias[effect:add_ai_strategy] = {
+	type = enum[equipment_strats]
+	id = <equipment>
+	value = int
+}
+
+### Adds strategy entry to country AI
+## scope = country
+alias[effect:add_ai_strategy] = {
+	type = enum[pp_strats]
+	id = enum[pp_targets]
+	value = int
+}
+
+### Adds strategy entry to country AI
+## scope = country
+alias[effect:add_ai_strategy] = {
+	type = area_priority
+	id = <ai_area>
+	value = int
+}
+
+### Adds strategy entry to country AI
+## scope = country
+alias[effect:add_ai_strategy] = {
+	type = enum[ai_diplo_strats]
+	id = enum[country_tags]
+	id = scope[country]
+	value = int
+}
+
+### Adds strategy entry to country AI
+## scope = country
+alias[effect:add_ai_strategy] = {
+	type = dont_join_wars_with
+	id = enum[country_tags]
+	id = scope[country]
+	target_country = enum[country_tags]
+	target_country = scope[country]
+	value = int
+}
+
+### Adds strategy entry to country AI
+## scope = country
+alias[effect:add_ai_strategy] = {
+	type = naval_avoid_region
+	id = <strategic_region>
+	value = int
+}
+
+### Adds strategy entry to country AI
+## scope = country
+alias[effect:add_ai_strategy] = {
+	type = enum[no_id_strats]
+	value = int
+}
+
+### Adds strategy entry to country AI
+## scope = country
+alias[effect:add_ai_strategy] = {
+	type = enum[state_strats]
+	target = int
+	value = int
+}
+
+### Adds strategy entry to country AI
+## scope = country
+alias[effect:add_ai_strategy] = {
+	type = enum[state_strats_with_id]
+	id = <building>
+	target = int
+	value = int
+}
+
+### Adds strategy entry to country AI
+## scope = country
+alias[effect:add_ai_strategy] = {
+	type = enum[state_strats_without_value]
+	id = int
+}
+
+### Adds strategy entry to country AI
+## scope = country
+alias[effect:add_ai_strategy] = {
+	type = enum[naval_mission_strats]
+	id = enum[naval_missions]
+	value = int
+}
+
+### Adds strategy entry to country AI
+## scope = country
+alias[effect:add_ai_strategy] = {
+	type = enum[building_strats]
+	id = <building>
+	value = int
+}

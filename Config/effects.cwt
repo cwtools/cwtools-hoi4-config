@@ -549,13 +549,15 @@ alias[effect:add_building_construction] = {
 	province = enum[provinces]
 	## cardinality = 0..1
 	province = {
-		all_provinces = bool
+		all_provinces = yes
 		## cardinality = 0..1
-		limit_to_coastal = bool
+		limit_to_coastal = yes
 		## cardinality = 0..1
-		limit_to_naval_base = bool
+		limit_to_naval_base = yes
 		## cardinality = 0..1
-		limit_to_border = bool
+		limit_to_border = yes
+		## cardinality = 0..1
+		limit_to_victory_point = yes
 		## cardinality = 0..1
 		level = int
 		## cardinality = 0..inf
@@ -855,7 +857,7 @@ alias[effect:add_tech_bonus] = {
 
 ### adds a limited use tech bonus
 ## scope = state
-alias[effect:set_demilitarized_zone] = yes
+alias[effect:set_demilitarized_zone] = bool
 
 ### Adds a research slot (negative values subtracts)
 ## scope = country
@@ -1010,6 +1012,7 @@ alias[effect:create_corps_commander] = {
 	portrait_path = scalar
 	## cardinality = 0..1
 	gfx = scalar
+	## cardinality = 0..1
 	traits = {
 		## cardinality = 0..inf
 		<unit_leader_trait>
@@ -1263,7 +1266,7 @@ alias[effect:add_autonomy_ratio] = {
 
 ### Sets country cosmetic tag.
 ## scope = country
-alias[effect:set_cosmetic_tag] = enum[comsmetic_tags]
+alias[effect:set_cosmetic_tag] = scalar
 
 ### Drops country cosmetic tag.
 ## scope = country
@@ -1372,7 +1375,8 @@ alias[effect:remove_relation_modifier] = {
 alias[effect:set_building_level] = {
 	type = <building>
 	level = int
-	instant_build = bool
+	## cardinality = 0..1
+	instant_build = yes
 	## cardinality = 0..1
 	province = enum[provinces]
 	## cardinality = 0..1
@@ -1541,6 +1545,16 @@ alias[effect:add_command_power] = float
 ## scope = country
 alias[effect:unlock_decision_tooltip] = <decision>
 
+### show what decision does
+## scope = country
+alias[effect:unlock_decision_tooltip] = {
+	decision = <decision>
+	## cardinality = 0..1
+	show_effect_tooltip = yes # default is no
+	## cardinality = 0..1
+	show_modifiers = yes # default is no
+}
+
 ### Add buffs to units that are belongs to the army group/navy of this unit leader
 ## scope = unit_leader
 alias[effect:add_temporary_buff_to_units] = {
@@ -1666,7 +1680,7 @@ alias[effect:activate_mission_tooltip] = <decision.mission>
 
 ### Sets what focus tree a country uses, retains finished shared focuses.
 ## scope = country
-alias[effect:load_focus_tree] = enum[focus_trees]
+alias[effect:load_focus_tree] = <focus_tree>
 
 ### Adds logistics skill to a unit leader
 ## scope = unit_leader

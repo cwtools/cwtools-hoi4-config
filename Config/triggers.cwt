@@ -661,6 +661,10 @@ alias[trigger:is_border_conflict] = bool
 ## scope = country
 alias[trigger:has_completed_focus] = <focus>
 
+### has country completed focus
+## scope = country
+alias[trigger:has_completed_focus] = <shared_focus>
+
 ### One country has offensive war against other country.
 ## scope = country
 alias[trigger:has_offensive_war_with] = scope[country]
@@ -710,6 +714,7 @@ alias[trigger:num_of_factories] = int
 ## scope = country
 alias[trigger:focus_progress] = {
 	focus = <focus>
+	focus = <shared_focus>
 	progress = float[0..1.0]
 }
 
@@ -1240,10 +1245,12 @@ alias[trigger:has_relation_modifier] = {
 ## scope = state
 alias[trigger:any_province_building_level] = {
 	province = {
-		## cardinality = 1..inf
+		## cardinality = 0..inf
 		id = enum[provinces]
 		## cardinality = 0..1
-		limit_to_border = bool
+		all_provinces = yes
+		## cardinality = 0..1
+		limit_to_border = yes
 	}
 	building = <building>
 	level = int
@@ -1670,7 +1677,10 @@ alias[trigger:has_subject] = replace_me
 
 ### Checks if a game rule is set to a particular option.
 ## scopes = { ??? }
-alias[trigger:has_game_rule] = replace_me
+alias[trigger:has_game_rule] = {
+	rule = <game_rule>
+	option = value[game_rule_options]
+}
 
 ### Returns true if all of the active game rule options allow achievements.
 ## scopes = { ??? }

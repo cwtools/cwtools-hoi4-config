@@ -43,6 +43,15 @@ focus_tree = {
 		cost = float
 		x = int
 		y = int
+		## cardinality = 0..inf
+		offset = {
+			x = int
+			y = int
+			## cardinality = 0..1
+			trigger = {
+				alias_name[trigger] = alias_match_left[trigger]
+			}
+		}
 		## cardinality = 0..1
 		relative_position_id = <focus>
 		### used for focuses that can change title/desc
@@ -116,6 +125,15 @@ focus = {
 	cost = float
 	x = int
 	y = int
+	## cardinality = 0..inf
+	offset = {
+		x = int
+		y = int
+		## cardinality = 0..1
+		trigger = {
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+	}
 	## cardinality = 0..1
 	relative_position_id = <focus>
 	### used for focuses that can change title/desc

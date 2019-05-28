@@ -284,6 +284,8 @@ alias[effect:add_opinion_modifier] = {
 	target = scope[country]
 	target = enum[country_tags]
 	modifier = <opinion>
+	## cardinality = 0..1
+	days = int
 }
 
 ### Remove opinion modifier from target
@@ -311,7 +313,7 @@ alias[effect:create_country_leader] = {
 		<country_leader_trait>
 	}
 	## cardinality = 0..1
-	id = int
+	id = value_set[unit_leader_ids]
 	## cardinality = 0..1
 	female = bool
 }
@@ -346,6 +348,8 @@ alias[effect:randomize_weather] = int
 alias[effect:division_template] = {
 	name = localisation
 	division_names_group = <division_name>
+	## cardinality = 0..1
+	is_locked = bool
 	regiments = {
 		## cardinality = 1..25
 		<unit> = { x = int[0..5] y = int[0..5] }
@@ -460,7 +464,7 @@ alias[effect:create_navy_leader] = {
 	## cardinality = 0..1
 	coordination_skill = int
 	## cardinality = 0..1
-	id = int
+	id = value_set[unit_leader_ids]
 	## cardinality = 0..1
 	female = bool
 }
@@ -679,6 +683,10 @@ alias[effect:news_event] = {
 	random = int
 }
 
+### fires a news event
+## scope = country
+alias[effect:news_event] = <event.news_event>
+
 ### declares war on specified country
 ## scope = country
 alias[effect:declare_war_on] = {
@@ -710,17 +718,21 @@ alias[effect:add_popularity] = {
 ## scope = country
 alias[effect:remove_ideas_with_trait] = <country_leader_trait>
 
-### Given ideology starts a civil war in the country: keep_unit_leaders specify ID of unit leaders that remain with the original country
+### Given ideology starts a civil war in the country. keep_unit_leaders specify ID of unit leaders that remain with the original country.
 ## scope = country
 alias[effect:start_civil_war] = {
-	### ideology of breakaway country
+	### Ideology of breakaway country.
 	ideology = <ideology>
+	ideology = scope[country]
+	### Ruling party of original country.
 	## cardinality = 0..1
-	### ruling party of original country
 	ruling_party = <ideology>
+	### Size of breakaway and percent of equip and div.
 	## cardinality = 0..1
-	### size of breakaway and percent of equip and div
 	size = float[0..1]
+	### The capital of the breakaway country.
+	## cardinality = 0..1
+	only_own_territory = no
 	## cardinality = 0..1
 	capital = scope[state]
 	## cardinality = 0..1
@@ -737,10 +749,12 @@ alias[effect:start_civil_war] = {
 	## cardinality = 0..1
 	keep_unit_leaders = {
 		## cardinality = 1..inf
-		enum[unit_leader_ids]
+		value[unit_leader_ids]
 	}
 	## cardinality = 0..1
-	keep_unit_leaders_trigger = { alias_name[trigger] = alias_match_left[trigger] }
+	keep_unit_leaders_trigger = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
 }
 
 ### retires a country leader and removes him as leader of his party, making the next in line the new party and country leader
@@ -773,6 +787,10 @@ alias[effect:create_wargoal] = {
 	}
 	## cardinality = 0..1
 	generator = owned_states
+	## cardinality = 0..1
+	expire = date_field
+	## cardinality = 0..1
+	expire = 0
 }
 
 ### Add state claim by country.
@@ -882,10 +900,15 @@ alias[effect:add_threat] = float
 ### Sends to target scope specified amount of equipment.
 ## scope = country
 alias[effect:send_equipment] = {
+	## cardinality = 0..1
 	type = <equipment>
+	## cardinality = 0..1
+	equipment = <equipment>
 	amount = int_variable_field
 	target = scope[country]
 	target = enum[country_tags]
+	## cardinality = 0..1
+	old_prioritised = yes
 }
 
 ### Adds rule to country
@@ -926,7 +949,7 @@ alias[effect:add_resource] = {
 
 ### remove a unit leader ( remove_unit_leader=ID )
 ## scope = country
-alias[effect:remove_unit_leader] = enum[unit_leader_ids]
+alias[effect:remove_unit_leader] = value[unit_leader_ids]
 
 ### add time limited idea to country idea, add_timed_idea = { idea = id days = number_of_days }
 ## scope = country
@@ -995,7 +1018,7 @@ alias[effect:create_field_marshal] = {
 	planning_skill = int
 	logistics_skill = int
 	## cardinality = 0..1
-	id = int
+	id = value_set[unit_leader_ids]
 	## cardinality = 0..1
 	female = bool
 }
@@ -1003,6 +1026,7 @@ alias[effect:create_field_marshal] = {
 ### create corps commander for country
 ## scope = country
 alias[effect:create_corps_commander] = {
+	## cardinality = 0..1
 	name = localisation
 	## cardinality = 0..1
 	desc = localisation
@@ -1023,7 +1047,7 @@ alias[effect:create_corps_commander] = {
 	planning_skill = int
 	logistics_skill = int
 	## cardinality = 0..1
-	id = int
+	id = value_set[unit_leader_ids]
 	## cardinality = 0..1
 	female = bool
 }
@@ -1112,10 +1136,12 @@ alias[effect:add_equipment_production] = {
 	equipment = {
 		type = <equipment.regular_equip>
 		## cardinality = 0..1
-		creator = "enum[country_tags]"
+		creator = enum[country_tags]
 		## cardinality = 0..1
 		version_name = localisation
 	}
+	## cardinality = 0..1
+	name = scalar
 	## cardinality = 0..1
 	amount = int
 	## cardinality = 0..1
@@ -1358,7 +1384,7 @@ alias[effect:create_production_license] = {
 alias[effect:add_relation_modifier] = {
 	target = scope[country]
 	target = enum[country_tags]
-	modifier = <relation_modifier>
+	modifier = <static_modifier.relation_modifier>
 }
 
 
@@ -1367,7 +1393,7 @@ alias[effect:add_relation_modifier] = {
 alias[effect:remove_relation_modifier] = {
 	target = scope[country]
 	target = enum[country_tags]
-	modifier = <relation_modifier>
+	modifier = <static_modifier.relation_modifier>
 }
 
 ### Sets specific level of a building construction for amount of levels in specified state or province
@@ -1969,7 +1995,7 @@ alias[effect:become_exiled_in] = replace_me
 
 ### set_faction_name = NEW_LOC_KEY. Sets the faction name to whatever the new key localises to.
 ## scopes = { state country }
-alias[effect:set_faction_name] = replace_me
+alias[effect:set_faction_name] = localisation
 
 ### Adds maneuver skill to a unit leader
 alias[effect:add_maneuver] = replace_me
@@ -1978,12 +2004,16 @@ alias[effect:add_maneuver] = replace_me
 alias[effect:add_coordination] = replace_me
 
 ### Gives rights to take resources from specified state. give_resource_rights = { receiver = <TAG> state = <id> }
-## scopes = { country }
-alias[effect:give_resource_rights] = replace_me
+## scopes = country
+alias[effect:give_resource_rights] = {
+	receiver = enum[country_tags]
+	receiver = scope[country]
+	state = <state>
+}
 
 ### Remove resource right to state for scope country. remove_resource_rights = ID
-## scopes = { country }
-alias[effect:remove_resource_rights] = replace_me
+## scopes = country
+alias[effect:remove_resource_rights] = <state>
 
 ### Copies over technology state from target
 ## scopes = { country }
@@ -2245,4 +2275,10 @@ alias[effect:add_ai_strategy] = {
 	type = enum[building_strats]
 	id = <building>
 	value = int
+}
+
+### Effect not shown in tooltips
+## scope = state country
+alias[effect:hidden_effect] = {
+	alias_name[effect] = alias_match_left[effect]
 }

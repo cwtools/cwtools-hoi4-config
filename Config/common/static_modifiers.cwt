@@ -1,6 +1,7 @@
 types = {
 	type[static_modifier] = {
 		path = "game/common/modifiers"
+		path_strict = yes
 		subtype[relation_modifier] = {
 			valid_relation_trigger = {
 

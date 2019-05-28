@@ -53,10 +53,10 @@ alias[trigger:any_neighbor_country] = {
 ### check amount of resource country has
 alias[trigger:<resource>] = int
 
-### has country flag been set.Check flag val date set and days since set.
+### has country flag been set. Check flag val date set and days since set.
 ## scope = country
 alias[trigger:has_country_flag] = value[country_flag]
-### has country flag been set.Check flag val date set and days since set.
+### has country flag been set. Check flag val date set and days since set.
 ## scope = country
 alias[trigger:has_country_flag] = {
 	flag = value[country_flag]
@@ -800,10 +800,10 @@ alias[trigger:has_volunteers_amount_from] = {
 ## scope = country
 alias[trigger:num_of_controlled_states] = int
 
-### original tag is ( for civil wars checks )
+### Checks if the current scope was ever the specified country.
 ## scope = country
 alias[trigger:original_tag] = scope[country]
-### original tag is ( for civil wars checks )
+### Checks if the current scope was ever the specified country.
 ## scope = country
 alias[trigger:original_tag] = enum[country_tags]
 
@@ -1172,7 +1172,7 @@ alias[trigger:is_staging_coup] = bool
 
 ### Does current country have the specified focus tree.
 ## scope = country
-alias[trigger:has_focus_tree] = enum[focus_trees]
+alias[trigger:has_focus_tree] = <focus_tree>
 
 ### check if country has a division template that is majority of specific unit using AI's priorities rather than visual
 ## scope = country
@@ -1238,7 +1238,7 @@ alias[trigger:ai_has_role_division] = value[ai_roles]
 alias[trigger:has_relation_modifier] = {
 	target = scope[country]
 	target = enum[country_tags]
-	modifier = <relation_modifier>
+	modifier = <static_modifier.relation_modifier>
 }
 
 ### In the current state, checks if any province within the specified limit has a building of the specified level.

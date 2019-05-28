@@ -19,12 +19,3 @@ country_history = {
 		alias_name[effect] = alias_match_left[effect]
 	}
 }
-
-enums = {
-	complex_enum[unit_leader_ids] = {
-		path = "game/history/countries"
-		name = {
-			id = enum_name
-		}
-	}
-}

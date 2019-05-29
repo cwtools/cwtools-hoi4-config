@@ -1739,7 +1739,7 @@ alias[trigger:has_country_leader_with_trait] = replace_me
 
 ### Check scope country legitimacy 0-100: Example has_legitimacy < 60
 ## scopes = { country }
-alias[trigger:has_legitimacy] = replace_me
+alias[trigger:has_legitimacy] = int
 
 ### Checks if a rule set for a country.
 ## scopes = { ??? }

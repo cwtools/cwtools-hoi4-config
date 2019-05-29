@@ -166,6 +166,9 @@ modifiers = {
 	weekly_manpower = country
 	air_training_xp_gain_factor = country
 
+	# State
+	local_non_core_manpower = state
+
 	# Unit leader
 	acclimatization_cold_climate_gain_factor = unit_leader
 	acclimatization_hot_climate_gain_factor = unit_leader

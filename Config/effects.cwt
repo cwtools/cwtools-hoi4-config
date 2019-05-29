@@ -553,6 +553,7 @@ alias[effect:add_building_construction] = {
 	province = enum[provinces]
 	## cardinality = 0..1
 	province = {
+		## cardinality = 0..1
 		all_provinces = yes
 		## cardinality = 0..1
 		limit_to_coastal = yes
@@ -1977,7 +1978,10 @@ alias[effect:remove_decision] = replace_me
 
 ### swap 2 traits on current ruler.
 ## scopes = { country }
-alias[effect:swap_ruler_traits] = replace_me
+alias[effect:swap_ruler_traits] = {
+	remove = <country_leader_trait>
+	add = <country_leader_trait>
+}
 
 ### add random trait from specified list to unit leader. add_random_trait = { old_guard brilliant_strategist inflexible_strategist }
 alias[effect:add_random_trait] = replace_me
@@ -1998,10 +2002,10 @@ alias[effect:become_exiled_in] = replace_me
 alias[effect:set_faction_name] = localisation
 
 ### Adds maneuver skill to a unit leader
-alias[effect:add_maneuver] = replace_me
+alias[effect:add_maneuver] = int
 
 ### Adds maneuver skill to a unit leader
-alias[effect:add_coordination] = replace_me
+alias[effect:add_coordination] = int
 
 ### Gives rights to take resources from specified state. give_resource_rights = { receiver = <TAG> state = <id> }
 ## scopes = country

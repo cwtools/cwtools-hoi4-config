@@ -171,6 +171,10 @@ alias[effect:country_event] = {
 	random = int
 }
 
+### fires a country event
+## scope = country
+alias[effect:country_event] = <event.country_event>
+
 ### fires a state event
 ## scope = state
 alias[effect:state_event] = {
@@ -182,6 +186,11 @@ alias[effect:state_event] = {
 	trigger_for = scope[country]
 	trigger_for = enum[country_tag]
 }
+
+### fires a state event
+## scope = state
+alias[effect:state_event] = <event.state_event>
+
 
 ### Sets a variable to a value or another variable
 ## scope = any
@@ -306,6 +315,10 @@ alias[effect:create_country_leader] = {
 		## cardinality = 0..100
 		<trait>
 	}
+	## cardinality = 0..1
+	id = int
+	## cardinality = 0..1
+	female = bool
 }
 
 ### Print message to game.log - Can be localized
@@ -744,6 +757,8 @@ alias[effect:create_wargoal] = {
 		## cardinality = 0..100
 		<state>
 	}
+	## cardinality = 0..1
+	generator = owned_states
 }
 
 ### Add state claim by country.
@@ -815,6 +830,7 @@ alias[effect:unlock_national_focus] = <focus>
 alias[effect:add_tech_bonus] = {
 	## cardinality = 1..2
 	enum[tech_bonus] = float
+	## cardinality = 0..1
 	uses = int[1..100]
 	## cardinality = 0..100
 	category = enum[tech_category]
@@ -838,7 +854,7 @@ alias[effect:set_research_slots] = int
 
 ### starts a border war in a state with neighbouring state that also has border war
 ## scope = state
-alias[effect:set_border_war] = yes
+alias[effect:set_border_war] = bool
 
 ### Modify allequipments by factor
 ## scope = country

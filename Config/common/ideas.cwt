@@ -35,6 +35,7 @@ idea = {
 			## cardinality = 0..1
 			removal_cost = int
 			## cardinality = 0..1
+			## push_scope = country
 			modifier = {
 				alias_name[modifier] = alias_match_left[modifier]
 			}
@@ -111,6 +112,7 @@ idea = {
 			## cardinality = 0..1
 			removal_cost = int
 			## cardinality = 0..1
+			## push_scope = country
 			modifier = {
 				alias_name[modifier] = alias_match_left[modifier]
 			}

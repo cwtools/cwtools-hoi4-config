@@ -42,6 +42,32 @@ alias[modifier:strategic_bomb_visibility] = float
 alias[modifier:port_strike] = float
 alias[modifier:carrier_capacity_penalty_reduction] = float
 
+alias[modifier:air_detection] = float
+alias[modifier:naval_detection] = float
+alias[modifier:naval_strike] = float
+alias[modifier:air_accidents] = float
+alias[modifier:air_mission_efficiency] = float
+alias[modifier:local_org_regain] = float
+alias[modifier:carrier_traffic] = float
+alias[modifier:air_bombing_targetting] = float
+alias[modifier:winter_attrition] = float
+alias[modifier:heat_attrition] = float
+
+alias[modifier:resistance_tick] = float
+alias[modifier:local_resources] = float
+alias[modifier:local_manpower] = float
+alias[modifier:local_factories] = float
+alias[modifier:occupation_cost] = float
+alias[modifier:local_supplies] = float
+alias[modifier:local_intel_to_enemies] = float
+alias[modifier:local_factory_sabotage] = float
+
+alias[modifier:local_building_slots_factor] = float
+alias[modifier:political_power_cost] = float
+alias[modifier:production_lack_of_resource_penalty_factor] = float
+alias[modifier:experience_gain_army_unit_factor] = float
+alias[modifier:experience_gain_navy_unit_factor] = float
+
 alias[modifier:mechanized_attack_factor] = float
 alias[modifier:mechanized_defence_factor] = float
 alias[modifier:org_loss_when_moving] = float

@@ -48,7 +48,7 @@ focus_tree = {
 		## cardinality = 0..1
 		continue_if_invalid = bool
 		## cardinality = 0..10
-		will_lead_to_war_with = scope[country]
+		will_lead_to_war_with = enum[country_tag]
 		## cardinality = 0..50
 		prerequisite = {
 			## cardinality = 1..50
@@ -92,7 +92,7 @@ focus_tree = {
 		}
 		## cardinality = 0..1
 		ai_will_do = {
-			factor = float
+			enum[base_factor] = float
 			alias_name[modifier_rule] = alias_match_left[modifier_rule]
 		}
 	}
@@ -119,7 +119,7 @@ focus = {
 	## cardinality = 0..1
 	continue_if_invalid = bool
 	## cardinality = 0..10
-	will_lead_to_war_with = scope[country]
+	will_lead_to_war_with = enum[country_tag]
 	## cardinality = 0..50
 	prerequisite = {
 		## cardinality = 1..50
@@ -163,7 +163,7 @@ focus = {
 	}
 	## cardinality = 0..1
 	ai_will_do = {
-		factor = float
+		enum[base_factor] = float
 		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	}
 }
@@ -189,7 +189,7 @@ shared_focus = {
 	## cardinality = 0..1
 	continue_if_invalid = bool
 	## cardinality = 0..10
-	will_lead_to_war_with = scope[country]
+	will_lead_to_war_with = enum[country_tag]
 	## cardinality = 0..50
 	prerequisite = {
 		## cardinality = 1..50
@@ -233,7 +233,7 @@ shared_focus = {
 	}
 	## cardinality = 0..1
 	ai_will_do = {
-		factor = float
+		enum[base_factor] = float
 		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	}
 }

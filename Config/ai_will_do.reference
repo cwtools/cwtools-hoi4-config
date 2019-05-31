@@ -1,17 +1,17 @@
 ai_will_do = {
 	factor = float
-	## cardinality = 0..100
+	## cardinality = 0..inf
 	modifier = {
-		## cardinality = 0..100
+		## cardinality = 0..inf
 		alias_name[trigger] = alias_match_left[trigger]
 		enum[add_factor] = float
 	}
 }
 ai_chance = {
 	enum[ai_chance_base] = float
-	## cardinality = 0..100
+	## cardinality = 0..inf
 	modifier = {
-		## cardinality = 0..100
+		## cardinality = 0..inf
 		alias_name[trigger] = alias_match_left[trigger]
 		enum[add_factor] = float
 	}

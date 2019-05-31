@@ -22,6 +22,9 @@ types = {
 	type[ai_template] = {
 		path = "game/common/ai_templates"
 	}
+	type[ai_equipment_design_group] = {
+		path = "game/common/ai_equipment"
+	}
 }
 
 ai_area = {
@@ -31,7 +34,7 @@ ai_area = {
 	}
 	## cardinality = 0..1
 	strategic_regions = {
-		## cardinality = 1..100
+		## cardinality = 1..inf
 		<strategic_region>
 	}
 }
@@ -39,17 +42,17 @@ ai_area = {
 ai_focus = {
 	subtype[research] = {
 		research = {
-			## cardinality = 0..100
+			## cardinality = 0..inf
 			enum[ai_research_areas] = float
-			## cardinality = 0..100
+			## cardinality = 0..inf
 			enum[tech_category] = float
 		}
 	}
 	subtype[national_focuses] = {
 		ai_national_focuses = {
-			## cardinality = 1..100
+			## cardinality = 1..inf
 			<focus>
-			## cardinality = 0..100
+			## cardinality = 0..inf
 			<shared_focus>
 		}
 	}
@@ -99,19 +102,19 @@ ai_peace = {
 
 ai_template = {
 	roles = {
-		enum[template_roles]
+		value_set[ai_roles]
 	}
 	# Restricts the template to only the specified tags. Optional.
 	## cardinality = 0..1
 	available_for = {
-		## cardinality = 1..100
+		## cardinality = 1..inf
 		enum[country_tags]
 	}
 
 	# Blocks the template for the specified tags. Optional.
 	## cardinality = 0..1
 	blocked_for = {
-		## cardinality = 1..100
+		## cardinality = 0..inf
 		enum[country_tags]
 	}
 
@@ -164,10 +167,10 @@ ai_template = {
 			#<float> #-- suppression_factor
 			#<float> #-- experience_loss_factor
 			#<float> #-- equipment_capture_factor
-			
+
 			#-- Air Values
 			#<float> #-- air_attack
-			
+
 			#-- Common Values
 			#<float> #-- max_organisation
 			#<float> #-- max_strength
@@ -194,7 +197,7 @@ ai_template = {
 			}
 		}
 		allowed_types = {
-			## cardinality = 1..100
+			## cardinality = 1..inf
 			<unit>
 		}
 		## cardinality = 0..1
@@ -202,7 +205,60 @@ ai_template = {
 		## cardinality = 0..1
 		replace_with = enum[ai_templates]
 		## cardinality = 0..1
-        target_min_match = float
+		target_min_match = float
+	}
+}
+
+ai_equipment_design_group = {
+	# Only category = naval is currently supported, starting with version 1.6.0
+	category = enum[equipment_categories]
+
+	# Blocks the template for the specified tags. Optional.
+	## cardinality = 0..1
+	blocked_for = {
+		## cardinality = 0..inf
+		enum[country_tags]
+	}
+
+	# Restricts the template to only the specified tags. Optional.
+	## cardinality = 0..1
+	available_for = {
+		## cardinality = 1..inf
+		enum[country_tags]
+	}
+
+	roles = {
+		value_set[ai_roles]
+	}
+
+	priority = {
+		factor = float
+		## cardinality = 0..inf
+		alias_name[modifier_rule] = alias_match_left[modifier_rule]
+	}
+
+	## cardinality = 1..10
+	enum[ai_equipment_design] = {
+		priority = {
+			factor = float
+			## cardinality = 0..inf
+			alias_name[modifier_rule] = alias_match_left[modifier_rule]
+		}
+
+		role_icon_index = int
+
+		enable = {
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+
+		target_variant = {
+			match_value = float
+
+			type = <equipment>
+
+			# modules = {
+			# }
+		}
 	}
 }
 
@@ -215,20 +271,20 @@ enums = {
 		battleship
 		cruiser
 	}
-	complex_enum[template_roles] = {
-		path = "game/common/ai_templates"
-		name = {
-			roles = {
-				enum_name
-			}
-		}
-	}
 	complex_enum[ai_templates] = {
 		path = "game/common/ai_templates"
 		name = {
 			enum_name = {
 				target_template = {
-					
+				}
+			}
+		}
+	}
+	complex_enum[ai_equipment_design] = {
+		path = "game/common/ai_equipment"
+		name = {
+			enum_name = {
+				target_variant = {
 				}
 			}
 		}

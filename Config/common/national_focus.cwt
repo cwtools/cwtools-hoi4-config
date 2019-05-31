@@ -25,9 +25,16 @@ focus_tree = {
 		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	}
 	default = bool
-	## cardinality = 0..10
+	## cardinality = 0..1
+	reset_on_civilwar = no
+	## cardinality = 0..1
 	shared_focus = <shared_focus>
-	## cardinality = 1..1000
+	## cardinality = 0..1
+	continuous_focus_position = {
+		x = int
+		y = int
+	}
+	## cardinality = 1..inf
 	focus = {
 		id = localisation
 		## cardinality = 0..1
@@ -36,6 +43,15 @@ focus_tree = {
 		cost = float
 		x = int
 		y = int
+		## cardinality = 0..inf
+		offset = {
+			x = int
+			y = int
+			## cardinality = 0..1
+			trigger = {
+				alias_name[trigger] = alias_match_left[trigger]
+			}
+		}
 		## cardinality = 0..1
 		relative_position_id = <focus>
 		### used for focuses that can change title/desc
@@ -47,16 +63,18 @@ focus_tree = {
 		cancel_if_invalid = bool
 		## cardinality = 0..1
 		continue_if_invalid = bool
-		## cardinality = 0..10
+		## cardinality = 0..inf
 		will_lead_to_war_with = scope[country]
-		## cardinality = 0..50
+		## cardinality = 0..inf
+		will_lead_to_war_with = enum[country_tags]
+		## cardinality = 0..inf
 		prerequisite = {
-			## cardinality = 1..50
+			## cardinality = 1..inf
 			focus = <focus>
 		}
-		## cardinality = 0..1
+		## cardinality = 0..inf
 		mutually_exclusive = {
-			## cardinality = 1..50
+			## cardinality = 1..inf
 			focus = <focus>
 		}
 		## cardinality = 0..1
@@ -92,7 +110,8 @@ focus_tree = {
 		}
 		## cardinality = 0..1
 		ai_will_do = {
-			factor = float
+			## cardinality = 0..1
+			enum[base_factor] = float
 			alias_name[modifier_rule] = alias_match_left[modifier_rule]
 		}
 	}
@@ -107,6 +126,15 @@ focus = {
 	cost = float
 	x = int
 	y = int
+	## cardinality = 0..inf
+	offset = {
+		x = int
+		y = int
+		## cardinality = 0..1
+		trigger = {
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+	}
 	## cardinality = 0..1
 	relative_position_id = <focus>
 	### used for focuses that can change title/desc
@@ -118,16 +146,18 @@ focus = {
 	cancel_if_invalid = bool
 	## cardinality = 0..1
 	continue_if_invalid = bool
-	## cardinality = 0..10
+	## cardinality = 0..inf
 	will_lead_to_war_with = scope[country]
-	## cardinality = 0..50
+	## cardinality = 0..inf
+	will_lead_to_war_with = enum[country_tags]
+	## cardinality = 0..inf
 	prerequisite = {
-		## cardinality = 1..50
+		## cardinality = 1..inf
 		focus = <focus>
 	}
-	## cardinality = 0..1
+	## cardinality = 0..inf
 	mutually_exclusive = {
-		## cardinality = 1..50
+		## cardinality = 1..inf
 		focus = <focus>
 	}
 	## cardinality = 0..1
@@ -163,7 +193,8 @@ focus = {
 	}
 	## cardinality = 0..1
 	ai_will_do = {
-		factor = float
+		## cardinality = 0..1
+		enum[base_factor] = float
 		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	}
 }
@@ -177,6 +208,15 @@ shared_focus = {
 	cost = float
 	x = int
 	y = int
+	## cardinality = 0..inf
+	offset = {
+		x = int
+		y = int
+		## cardinality = 0..1
+		trigger = {
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+	}
 	## cardinality = 0..1
 	relative_position_id = <shared_focus>
 	### used for focuses that can change title/desc
@@ -188,16 +228,18 @@ shared_focus = {
 	cancel_if_invalid = bool
 	## cardinality = 0..1
 	continue_if_invalid = bool
-	## cardinality = 0..10
+	## cardinality = 0..inf
 	will_lead_to_war_with = scope[country]
-	## cardinality = 0..50
+	## cardinality = 0..inf
+	will_lead_to_war_with = enum[country_tags]
+	## cardinality = 0..inf
 	prerequisite = {
-		## cardinality = 1..50
+		## cardinality = 1..inf
 		focus = <shared_focus>
 	}
-	## cardinality = 0..1
+	## cardinality = 0..inf
 	mutually_exclusive = {
-		## cardinality = 1..50
+		## cardinality = 1..inf
 		focus = <shared_focus>
 	}
 	## cardinality = 0..1
@@ -233,7 +275,8 @@ shared_focus = {
 	}
 	## cardinality = 0..1
 	ai_will_do = {
-		factor = float
+		## cardinality = 0..1
+		enum[base_factor] = float
 		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	}
 }

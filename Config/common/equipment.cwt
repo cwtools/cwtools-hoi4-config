@@ -10,10 +10,16 @@ types = {
 			is_archetype = no
 		}
 		subtype[naval_equip] = {
+			## cardinality = 0..1
 			type = enum[ship_units]
+			## cardinality = 0..1
+			archetype = <equipment.naval_equip>
 		}
 		subtype[air_equip] = {
-			interface_category = interface_category_air
+			## cardinality = 0..1
+			type = enum[air_units]
+			## cardinality = 0..1
+			archetype = <equipment.air_equip>
 		}
 	}
 	type[upgrade] = {
@@ -28,6 +34,14 @@ types = {
 		subtype[land_upgrade] = {
 			cost = land
 		}
+	}
+	type[module] = {
+		skip_root_key = equipment_modules
+		path = "game/common/units/equipment/modules"
+	}
+	type[critical_part] = {
+		skip_root_key = critical_parts
+		path = "game/common/units/critical_parts"
 	}
 }
 
@@ -45,7 +59,7 @@ equipment = {
 	## cardinality = 0..1
 	can_license = bool
 	## cardinality = 0..1
-	sprite = enum[unit_sprites]
+	sprite = scalar # enum[unit_sprites]
 	subtype[archetype_equip] = {
 		picture = scalar
 		group_by = enum[equip_group_by]
@@ -97,6 +111,54 @@ equipment = {
 		## cardinality = 0..4
 		<upgrade>
 	}
+
+	subtype[naval_equip] = {
+		## cardinality = 0..1
+		visual_tech_level_addition = int
+		## cardinality = 0..1
+		model = scalar
+		## cardinality = 0..1
+		alias = <unit>
+		## cardinality = 0..1
+		priority = int
+		## cardinality = 0..1
+		module_slots = {
+			## cardinality = 0..inf
+			enum[module_slots] = {
+				required = bool
+				allowed_module_categories = {
+					## cardinality = 1..inf
+					value[module_categories]
+				}
+				## cardinality = 0..1
+				gfx = scalar
+			}
+			## cardinality = 0..inf
+			enum[module_slots] = enum[module_slots]
+			## cardinality = 0..inf
+			enum[module_slots] = inherit
+		}
+		## cardinality = 0..1
+		module_slots = inherit
+
+		## cardinality = 0..inf
+		module_count_limit = {
+			## cardinality = 0..1
+			category = value[module_categories]
+			## cardinality = 0..1
+			module = <module>
+			count = int
+		}
+
+		default_modules = {
+			## cardinality = 0..inf
+			enum[module_slots] = <module>
+			## cardinality = 0..inf
+			enum[module_slots] = empty
+		}
+
+		test = enum[module_slots]
+	}
 }
 
 upgrade = {
@@ -114,6 +176,98 @@ upgrade = {
 		cost = land
 	}
 }
+
+module = {
+	category = value_set[module_categories]
+	## cardinality = 0..1
+	gui_category = value[module_categories]
+	## cardinality = 0..1
+	parent = <module>
+	## cardinality = 0..1
+	gfx = scalar
+	## cardinality = 0..1
+	sfx = scalar
+	## cardinality = 0..1
+	add_equipment_type = enum[unit_types]
+	add_stats = {
+		alias_name[unit_stat] = alias_match_left[naval_stat]
+		alias_name[naval_stat] = alias_match_left[naval_stat]
+		## cardinality = 0..1
+		build_cost_ic = int
+	}
+	## cardinality = 0..1
+	manpower = int
+	## cardinality = 0..1
+	build_cost_resources = {
+		## cardinality = 0..10
+		<resource> = int
+	}
+	## cardinality = 0..1
+	add_average_stats = {
+		alias_name[unit_stat] = alias_match_left[naval_stat]
+		alias_name[naval_stat] = alias_match_left[naval_stat]
+	}
+	## cardinality = 0..10
+	multiply_stats = {
+		alias_name[unit_stat] = alias_match_left[naval_stat]
+		alias_name[naval_stat] = alias_match_left[naval_stat]
+	}
+
+	## cardinality = 0..10
+	can_convert_from = {
+		## cardinality = 0..1
+		module_category = value[module_categories]
+		## cardinality = 0..1
+		module = <module>
+		convert_cost_ic = int
+		## cardinality = 0..1
+		convert_cost_resources = {
+			## cardinality = 0..10
+			<resource> = int
+		}
+	}
+	## cardinality = 0..1
+	critical_parts = {
+		<critical_part>
+	}
+	## cardinality = 0..1
+	dismantle_cost_ic = int
+	## cardinality = 0..1
+	dismantle_cost_resources = {
+		## cardinality = 0..10
+		<resource> = int
+	}
+}
+
+critical_part = {
+	icon = scalar
+	frame = int
+	## cardinality = 0..1
+	stat_penalties = {
+		alias_name[naval_stat] = alias_match_left[naval_stat]
+	}
+	## cardinality = 0..1
+	modifier = {
+		alias_name[naval_stat] = alias_match_left[naval_stat]
+	}
+	## cardinality = 0..1
+	str_damage = float
+	## cardinality = 0..1
+	org_damage = float
+	## cardinality = 0..1
+	str_damage_multiplier = float
+	## cardinality = 0..1
+	org_damage_multiplier = float
+	## cardinality = 0..1
+	chance = float
+	## cardinality = 0..1
+	base_damage_instance = float
+	## cardinality = 0..1
+	damage_instance_per_added_module = float
+	## cardinality = 0..1
+	max_damage_instance = float
+}
+
 enums = {
 	enum[equip_group_by] = {
 		archetype
@@ -126,5 +280,15 @@ enums = {
 		interface_category_screen_ships
 		interface_category_other_ships
 		interface_category_air
+	}
+	complex_enum[module_slots] = {
+		path = "game/common/units/equipment"
+		name = {
+			module_slots = {
+				enum_name = scalar
+				enum_name = {
+				}
+			}
+		}
 	}
 }

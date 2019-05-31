@@ -1,5 +1,5 @@
 ## scope = any
-alias[trigger:<scripted_trigger>] = yes
+alias[trigger:<scripted_trigger>] = bool
 
 ### check state id
 ## scope = state
@@ -43,20 +43,20 @@ alias[trigger:difficulty] = int
 ## scope = country
 ## push_scope = country
 alias[trigger:any_neighbor_country] = {
-    ## cardinality = 0..1
-    limit = {
-        alias_name[trigger] = alias_match_left[trigger]
-    }
-    alias_name[trigger] = alias_match_left[trigger]
+	## cardinality = 0..1
+	limit = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	alias_name[trigger] = alias_match_left[trigger]
 }
 
 ### check amount of resource country has
 alias[trigger:<resource>] = int
 
-### has country flag been set.Check flag val date set and days since set.
+### has country flag been set. Check flag val date set and days since set.
 ## scope = country
 alias[trigger:has_country_flag] = value[country_flag]
-### has country flag been set.Check flag val date set and days since set.
+### has country flag been set. Check flag val date set and days since set.
 ## scope = country
 alias[trigger:has_country_flag] = {
 	flag = value[country_flag]
@@ -82,30 +82,35 @@ alias[trigger:tag] = enum[country_tags]
 ## scope = any
 ## push_scope = country
 alias[trigger:any_country] = {
-    ## cardinality = 0..1
-    limit = {
-        alias_name[trigger] = alias_match_left[trigger]
-    }
-    alias_name[trigger] = alias_match_left[trigger]
+	## cardinality = 0..1
+	limit = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	alias_name[trigger] = alias_match_left[trigger]
 }
 
 
 ### Compares a variable to a number or variable
 ## scope = any
 alias[trigger:check_variable] = {
-	variable_field = variable_field
+	value[variable] = variable_field
 }
 ### Compares a variable to a number or variable
 ## scope = any
 alias[trigger:check_variable] = {
 	var = value[variable]
 	value = variable_field
-	compare = less_than
-	compare = less_than_or_equals
-	compare = greater_than
-	compare = greater_than_or_equals
-	compare = equals
-	compare = not_equals
+	compare = enum[var_compares]
+}
+enums = {
+	enum[var_compares] = {
+		less_than
+		less_than_or_equals
+		greater_than
+		greater_than_or_equals
+		equals
+		not_equals
+	}
 }
 
 ### check state's strategic area id
@@ -162,11 +167,11 @@ alias[trigger:has_idea] = enum[idea_name]
 ## scope = country
 ## push_scope = country
 alias[trigger:any_enemy_country] = {
-    ## cardinality = 0..1
-    limit = {
-        alias_name[trigger] = alias_match_left[trigger]
-    }
-    alias_name[trigger] = alias_match_left[trigger]
+	## cardinality = 0..1
+	limit = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	alias_name[trigger] = alias_match_left[trigger]
 }
 
 
@@ -200,7 +205,7 @@ alias[trigger:is_subject_of] = enum[country_tags]
 ## scope = country
 ## push_scope = country
 alias[trigger:all_neighbor_country] = {
-    ## cardinality = 0..1
+	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
@@ -211,7 +216,7 @@ alias[trigger:all_neighbor_country] = {
 ## scope = any
 ## push_scope = country
 alias[trigger:all_country] = {
-    ## cardinality = 0..1
+	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
@@ -222,7 +227,7 @@ alias[trigger:all_country] = {
 ## scope = country
 ## push_scope = country
 alias[trigger:all_enemy_country] = {
-    ## cardinality = 0..1
+	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
@@ -326,7 +331,7 @@ alias[trigger:country_exists] = enum[country_tags]
 ### checks for amount of ships in specified area
 ## scope = country
 alias[trigger:ships_in_area] = {
-	area = <strategic_area>
+	area = <strategic_region>
 	size = int
 }
 
@@ -429,11 +434,11 @@ alias[trigger:gives_military_access_to] = enum[country_tags]
 ## scope = any
 ## push_scope = state
 alias[trigger:any_state] = {
-    ## cardinality = 0..1
-    limit = {
-        alias_name[trigger] = alias_match_left[trigger]
-    }
-    alias_name[trigger] = alias_match_left[trigger]
+	## cardinality = 0..1
+	limit = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	alias_name[trigger] = alias_match_left[trigger]
 }
 
 
@@ -441,11 +446,11 @@ alias[trigger:any_state] = {
 ## scope = country
 ## push_scope = state
 alias[trigger:any_owned_state] = {
-    ## cardinality = 0..1
-    limit = {
-        alias_name[trigger] = alias_match_left[trigger]
-    }
-    alias_name[trigger] = alias_match_left[trigger]
+	## cardinality = 0..1
+	limit = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	alias_name[trigger] = alias_match_left[trigger]
 }
 
 
@@ -453,11 +458,11 @@ alias[trigger:any_owned_state] = {
 ## scope = state
 ## push_scope = state
 alias[trigger:any_neighbor_state] = {
-    ## cardinality = 0..1
-    limit = {
-        alias_name[trigger] = alias_match_left[trigger]
-    }
-    alias_name[trigger] = alias_match_left[trigger]
+	## cardinality = 0..1
+	limit = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	alias_name[trigger] = alias_match_left[trigger]
 }
 
 
@@ -465,11 +470,11 @@ alias[trigger:any_neighbor_state] = {
 ## scope = country
 ## push_scope = country
 alias[trigger:any_allied_country] = {
-    ## cardinality = 0..1
-    limit = {
-        alias_name[trigger] = alias_match_left[trigger]
-    }
-    alias_name[trigger] = alias_match_left[trigger]
+	## cardinality = 0..1
+	limit = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	alias_name[trigger] = alias_match_left[trigger]
 }
 
 
@@ -477,7 +482,7 @@ alias[trigger:any_allied_country] = {
 ## scope = any
 ## push_scope = state
 alias[trigger:all_state] = {
-    ## cardinality = 0..1
+	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
@@ -488,7 +493,7 @@ alias[trigger:all_state] = {
 ## scope = country
 ## push_scope = state
 alias[trigger:all_owned_state] = {
-    ## cardinality = 0..1
+	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
@@ -499,7 +504,7 @@ alias[trigger:all_owned_state] = {
 ## scope = state
 ## push_scope = state
 alias[trigger:all_neighbor_state] = {
-    ## cardinality = 0..1
+	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
@@ -510,7 +515,7 @@ alias[trigger:all_neighbor_state] = {
 ## scope = country
 ## push_scope = country
 alias[trigger:all_allied_country] = {
-    ## cardinality = 0..1
+	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
@@ -536,17 +541,17 @@ alias[trigger:ic_ratio] = {
 ### compares the warscore of all wars in a country to see if any fullfills the comparison condition 0-100 - Example: any_war_score > 40
 ## scope = country
 alias[trigger:any_war_score] = {
-    ## cardinality = 0..1
-    limit = {
-        alias_name[trigger] = alias_match_left[trigger]
-    }
-    alias_name[trigger] = alias_match_left[trigger]
+	## cardinality = 0..1
+	limit = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	alias_name[trigger] = alias_match_left[trigger]
 }
 
 
 ### check if country has idea with specified trait
 ## scope = country
-alias[trigger:has_idea_with_trait] = <trait>
+alias[trigger:has_idea_with_trait] = <country_leader_trait>
 
 ### checks for amount of aircrafts, additionally of a specified type
 ## scope = country
@@ -604,7 +609,7 @@ alias[trigger:has_built] = {
 ### Checks if country has more than limit, default = 0.
 ## scope = country
 alias[trigger:has_available_idea_with_traits] = {
-	idea = <trait>
+	idea = <country_leader_trait>
 	limit = int
 }
 
@@ -661,6 +666,10 @@ alias[trigger:is_border_conflict] = bool
 ## scope = country
 alias[trigger:has_completed_focus] = <focus>
 
+### has country completed focus
+## scope = country
+alias[trigger:has_completed_focus] = <shared_focus>
+
 ### One country has offensive war against other country.
 ## scope = country
 alias[trigger:has_offensive_war_with] = scope[country]
@@ -710,6 +719,7 @@ alias[trigger:num_of_factories] = int
 ## scope = country
 alias[trigger:focus_progress] = {
 	focus = <focus>
+	focus = <shared_focus>
 	progress = float[0..1.0]
 }
 
@@ -775,11 +785,11 @@ alias[trigger:has_flanked_opponent] = bool
 ### check if there is a claim between a country and all others
 ## scope = country
 alias[trigger:any_claim] = {
-    ## cardinality = 0..1
-    limit = {
-        alias_name[trigger] = alias_match_left[trigger]
-    }
-    alias_name[trigger] = alias_match_left[trigger]
+	## cardinality = 0..1
+	limit = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	alias_name[trigger] = alias_match_left[trigger]
 }
 
 
@@ -795,10 +805,10 @@ alias[trigger:has_volunteers_amount_from] = {
 ## scope = country
 alias[trigger:num_of_controlled_states] = int
 
-### original tag is ( for civil wars checks )
+### Checks if the current scope was ever the specified country.
 ## scope = country
 alias[trigger:original_tag] = scope[country]
-### original tag is ( for civil wars checks )
+### Checks if the current scope was ever the specified country.
 ## scope = country
 alias[trigger:original_tag] = enum[country_tags]
 
@@ -975,11 +985,11 @@ alias[trigger:has_unit_leader] = int
 ## scope = country
 ## push_scope = country
 alias[trigger:any_home_area_neighbor_country] = {
-    ## cardinality = 0..1
-    limit = {
-        alias_name[trigger] = alias_match_left[trigger]
-    }
-    alias_name[trigger] = alias_match_left[trigger]
+	## cardinality = 0..1
+	limit = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	alias_name[trigger] = alias_match_left[trigger]
 }
 
 
@@ -987,11 +997,11 @@ alias[trigger:any_home_area_neighbor_country] = {
 ## scope = country
 ## push_scope = country
 alias[trigger:any_other_country] = {
-    ## cardinality = 0..1
-    limit = {
-        alias_name[trigger] = alias_match_left[trigger]
-    }
-    alias_name[trigger] = alias_match_left[trigger]
+	## cardinality = 0..1
+	limit = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	alias_name[trigger] = alias_match_left[trigger]
 }
 
 
@@ -1107,7 +1117,7 @@ alias[trigger:has_tech_bonus] = {
 
 ### check if country has a division template that is majority of specific unit
 ## scope = country
-alias[trigger:has_template_majority_unit] = enum[unit_category]
+alias[trigger:has_template_majority_unit] = <unit>
 
 ### check if side has maximal planning bonus
 alias[trigger:min_planning] = float
@@ -1167,11 +1177,11 @@ alias[trigger:is_staging_coup] = bool
 
 ### Does current country have the specified focus tree.
 ## scope = country
-alias[trigger:has_focus_tree] = enum[focus_trees]
+alias[trigger:has_focus_tree] = <focus_tree>
 
 ### check if country has a division template that is majority of specific unit using AI's priorities rather than visual
 ## scope = country
-alias[trigger:has_template_ai_majority_unit] = enum[unit_category]
+alias[trigger:has_template_ai_majority_unit] = <unit>
 
 ### Country has any active licenses
 ## scope = country
@@ -1222,28 +1232,30 @@ alias[trigger:is_licensing_any_to] = enum[country_tags]
 
 ### check if the ai controlled country has any template for a specific role
 ## scope = country
-# <template_roles>?
-alias[trigger:ai_has_role_template] = enum[template_roles]
+alias[trigger:ai_has_role_template] = value[ai_roles]
 
 ### check if the ai controlled country has any fielded divisions for a specific role
 ## scope = country
-alias[trigger:ai_has_role_division] = enum[template_roles]
+alias[trigger:ai_has_role_division] = value[ai_roles]
 
 ### Country has specified relation modifier when dealing with _target_ county
 ## scope = country
 alias[trigger:has_relation_modifier] = {
 	target = scope[country]
 	target = enum[country_tags]
-	modifier = <relation_modifier>
+	modifier = <static_modifier.relation_modifier>
 }
 
 ### In the current state, checks if any province within the specified limit has a building of the specified level.
 ## scope = state
 alias[trigger:any_province_building_level] = {
 	province = {
-		## cardinality = 1..100
+		## cardinality = 0..inf
 		id = enum[provinces]
-		limit_to_border = bool
+		## cardinality = 0..1
+		all_provinces = yes
+		## cardinality = 0..1
+		limit_to_border = yes
 	}
 	building = <building>
 	level = int
@@ -1326,11 +1338,11 @@ alias[trigger:all_unit_leader] = {
 ## scope = country
 ## push_scope = unit_leader
 alias[trigger:any_unit_leader] = {
-    ## cardinality = 0..1
-    limit = {
-        alias_name[trigger] = alias_match_left[trigger]
-    }
-    alias_name[trigger] = alias_match_left[trigger]
+	## cardinality = 0..1
+	limit = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	alias_name[trigger] = alias_match_left[trigger]
 }
 
 
@@ -1349,11 +1361,11 @@ alias[trigger:all_army_leader] = {
 ## scope = country
 ## push_scope = unit_leader
 alias[trigger:any_army_leader] = {
-    ## cardinality = 0..1
-    limit = {
-        alias_name[trigger] = alias_match_left[trigger]
-    }
-    alias_name[trigger] = alias_match_left[trigger]
+	## cardinality = 0..1
+	limit = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	alias_name[trigger] = alias_match_left[trigger]
 }
 
 
@@ -1361,7 +1373,7 @@ alias[trigger:any_army_leader] = {
 ## scope = country
 ## push_scope = unit_leader
 alias[trigger:all_navy_leader] = {
-    ## cardinality = 0..1
+	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
@@ -1372,11 +1384,11 @@ alias[trigger:all_navy_leader] = {
 ## scope = country
 ## push_scope = unit_leader
 alias[trigger:any_navy_leader] = {
-    ## cardinality = 0..1
-    limit = {
-        alias_name[trigger] = alias_match_left[trigger]
-    }
-    alias_name[trigger] = alias_match_left[trigger]
+	## cardinality = 0..1
+	limit = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	alias_name[trigger] = alias_match_left[trigger]
 }
 
 
@@ -1583,7 +1595,7 @@ alias[trigger:print_variables] = {
 	print_global = bool
 	## cardinality = 0..1
 	var_list = {
-		## cardinality = 1..100
+		## cardinality = 1..inf
 		value[variable]
 	}
 }
@@ -1670,7 +1682,10 @@ alias[trigger:has_subject] = replace_me
 
 ### Checks if a game rule is set to a particular option.
 ## scopes = { ??? }
-alias[trigger:has_game_rule] = replace_me
+alias[trigger:has_game_rule] = {
+	rule = <game_rule>
+	option = value[game_rule_options]
+}
 
 ### Returns true if all of the active game rule options allow achievements.
 ## scopes = { ??? }
@@ -1699,7 +1714,7 @@ alias[trigger:resize_temp_array] = replace_me
 ### Runs a loop on an array and check a trigger for each value, if any true returns true. otherwise returns false
 ## scopes = { ??? }
 alias[trigger:any_of] = {
-    alias_name[effect] = alias_match_left[effect]
+	alias_name[effect] = alias_match_left[effect]
 }
 
 
@@ -1714,7 +1729,8 @@ alias[trigger:has_fuel] = replace_me
 ### Runs a loop on an array and check a trigger for each scope in it, if any true returns true. otherwise returns false
 ## scopes = { ??? }
 alias[trigger:any_of_scopes] = {
-    alias_name[effect] = alias_match_left[effect]
+	array = scalar
+	alias_name[trigger] = alias_match_left[trigger]
 }
 
 
@@ -1728,7 +1744,7 @@ alias[trigger:has_country_leader_with_trait] = replace_me
 
 ### Check scope country legitimacy 0-100: Example has_legitimacy < 60
 ## scopes = { country }
-alias[trigger:has_legitimacy] = replace_me
+alias[trigger:has_legitimacy] = int
 
 ### Checks if a rule set for a country.
 ## scopes = { ??? }
@@ -1776,11 +1792,11 @@ alias[trigger:days_since_last_strategic_bombing] = replace_me
 
 ### A trigger to check how dangerous enemy mines are for a country. Controlled by NAVAL_MINE_DANGER defines. Returns a value between 0 and 1. Example mine_threat > 0.5
 ## scopes = { country }
-alias[trigger:mine_threat] = replace_me
+alias[trigger:mine_threat] = float
 
 ### A trigger to check convoy threat for a country. Controlled by NAVAL_CONVOY_DANGER defines. Returns a value between 0 and 1. Example convoy_threat > 0.5
 ## scopes = { country }
-alias[trigger:convoy_threat] = replace_me
+alias[trigger:convoy_threat] = float
 
 ### Checks the casualties infliced by the speficied country to the scopped country.
 ## scopes = { country }
@@ -1795,8 +1811,7 @@ alias[trigger:has_mined] = replace_me
 alias[trigger:received_expeditionary_forces] = replace_me
 
 ### Checks the weather on a combat
-alias[trigger:is_fighting_in_weather] = replace_me
-
+alias[trigger:is_fighting_in_weather] = scalar
 
 ### checks building level in state
 ## scope = state

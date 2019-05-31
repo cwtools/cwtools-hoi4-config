@@ -130,5 +130,9 @@ values = {
 		difficulty
 		threat
 		id
+
+		#Random variables
+		random
+		ai_random
 	}
 }

@@ -60,11 +60,11 @@ adjaceny_rule = {
 }
 
 airports = {
-	## cardinality = 1..1000
+	## cardinality = 1..inf
 	<state> = { enum[provinces] }
 }
 rocketsites = {
-	## cardinality = 1..1000
+	## cardinality = 1..inf
 	<state> = { enum[provinces] }
 }
 

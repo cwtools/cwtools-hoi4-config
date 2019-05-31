@@ -9,6 +9,8 @@ types = {
 ability = {
 	name = localisation
 	desc = localisation
+	## cardinality = 0..1
+	icon = scalar
 
 	## cardinality = 0..1
 	sound_effect = scalar
@@ -17,6 +19,12 @@ ability = {
 
 	allowed = {
 		alias_name[trigger] = alias_match_left[trigger]
+
+		## cardinality = 0..1
+		## replace_scope = { ROOT = country THIS = country }
+		OWNER = {
+			alias_name[trigger] = alias_match_left[trigger]
+		}
 	}
 
 	cost = float
@@ -35,7 +43,7 @@ ability = {
 	}
 	## cardinality = 0..1
 	cancelable = bool
-	
+
 	## cardinality = 0..1
 	ai_will_do = {
 		factor = float

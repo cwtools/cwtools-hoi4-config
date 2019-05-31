@@ -1,46 +1,21 @@
 types = {
 	type[country_history] = {
 		path = "game/history/countries"
-        type_per_file = yes
+		type_per_file = yes
 	}
 }
 
 country_history = {
 	capital = <state>
 
-	## cardinality = 0..10
+	## cardinality = 0..1
 	oob = <oob>
 	alias_name[effect] = alias_match_left[effect]
-	## cardinality = 0..1
-	set_convoys = int
 
-	set_politics = {
-		## cardinality = 0..1
-		parties = {
-			## cardinality = 1..100
-			<ideology> = {
-				## cardinality = 0..1
-				popularity = float[0..100]
-				## cardinality = 0..1
-				banned = bool
-			}
-		}
-		## cardinality = 0..1
-		ruling_party = <ideology>
-		## cardinality = 0..1
-		elections_allowed = bool
-		## cardinality = 0..1
-		last_election = date_field
-		## cardinality = 0..1
-		election_frequency = int
-	}
-}
-
-enums = {
-	complex_enum[unit_leader_ids] = {
-		path = "game/history/countries"
-		name = {
-			id = enum_name
-		}
+	## cardinality = 0..inf
+	date_field = {
+		## cardinality = 0..inf
+		oob = <oob>
+		alias_name[effect] = alias_match_left[effect]
 	}
 }

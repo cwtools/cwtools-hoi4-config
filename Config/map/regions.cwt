@@ -14,7 +14,7 @@ supply_area = {
 	name = localisation
 	value = int
 	states = {
-		## cardinality = 1..100
+		## cardinality = 1..inf
 		<state>
 	}
 }
@@ -23,12 +23,12 @@ strategic_region = {
 	id = int
 	name = localisation
 	provinces = {
-		## cardinality = 1..500
+		## cardinality = 1..inf
 		enum[provinces]
 	}
 	### black magic
 	weather = {
-		## cardinality = 0..100
+		## cardinality = 0..inf
 		### periods of weather, months in vanilla
 		period = {
 			between = {

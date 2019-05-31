@@ -1692,8 +1692,17 @@ alias[trigger:has_game_rule] = {
 alias[trigger:game_rules_allow_achievements] = replace_me
 
 ### Checks if an element is in array
-## scopes = { ??? }
-alias[trigger:is_in_array] = replace_me
+## scopes = any
+alias[trigger:is_in_array] = {
+	array = value[array]
+	value = scalar
+}
+
+### Checks if an element is in array
+## scopes = any
+alias[trigger:is_in_array] = {
+	value[array] = scalar
+}
 
 ### Adds an element to a temporary array
 ## scopes = { ??? }

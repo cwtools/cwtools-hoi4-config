@@ -172,7 +172,6 @@ modifiers = {
 	# Unit leader
 	acclimatization_cold_climate_gain_factor = unit_leader
 	acclimatization_hot_climate_gain_factor = unit_leader
-	air_attack_factor = unit_leader
 	air_mission_efficiency = unit_leader
 	air_paradrop_agility_factor = unit_leader
 	air_paradrop_attack_factor = unit_leader
@@ -251,6 +250,7 @@ modifiers = {
 
 	# Air
 	air_agility_factor = air
+	air_attack_factor = air
 	air_maximum_speed_factor = air
 	air_range_factor = air
 	air_strategic_bomber_bombing_factor = air

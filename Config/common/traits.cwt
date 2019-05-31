@@ -66,7 +66,8 @@ country_leader_trait = {
 	## cardinality = 0..1
 	## replace_scope = { ROOT = country THIS = country }
 	ai_will_do = {
-		factor = float
+		## cardinality = 0..1
+		enum[base_factor] = float
 		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	}
 }
@@ -160,7 +161,7 @@ unit_leader_trait = {
 	enable_ability = <ability>
 	## cardinality = 0..1
 	new_commander_weight = {
-		factor = int
+		factor = float
 	}
 	## cardinality = 0..1
 	trait_xp_factor = {
@@ -168,8 +169,8 @@ unit_leader_trait = {
 	}
 	## cardinality = 0..1
 	ai_will_do = {
-		factor = float
-		## cardinality = 0..inf
+		## cardinality = 0..1
+		enum[base_factor] = float
 		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	}
 }

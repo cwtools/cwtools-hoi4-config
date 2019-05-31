@@ -69,33 +69,60 @@ ai_peace = {
 	puppet_randomness = int
 	take_states_randomness = int
 	force_government_randomness = int
+
+	## cardinality = 0..1
+	build_temp_vars = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+
 	# ROOT = Taker, FROM = Giver
 	annex = {
-		enum[base_factor] = int
+		## cardinality = 0..1
+		enum[base_factor] = float
 		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	}
 
 	# ROOT = Taker, FROM = Liberated
 	liberate = {
-		enum[base_factor] = int
+		## cardinality = 0..1
+		enum[base_factor] = float
 		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	}
 
 	# ROOT = Taker, FROM = Giver
 	puppet = {
-		enum[base_factor] = int
+		## cardinality = 0..1
+		enum[base_factor] = float
 		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	}
+
+	# ROOT = Taker, FROM = Giver
+	puppet_all = {
+		## cardinality = 0..1
+		enum[base_factor] = float
+		alias_name[modifier_rule] = alias_match_left[modifier_rule]
+	}
+
+	## replace_scope = { this = state root = state from = country fromfrom = country}
+	# ROOT = STATE, FROM = Taker, FROM.FROM = Giver
+	puppet_state = {
+		## cardinality = 0..1
+		enum[base_factor] = float
+		alias_name[modifier_rule] = alias_match_left[modifier_rule]
+	}
+
 	## replace_scope = { this = country root = country from = state }
 	# ROOT = Taker, FROM = State
 	take_states = {
-		enum[base_factor] = int
+		## cardinality = 0..1
+		enum[base_factor] = float
 		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	}
 
 	# ROOT = Taker, FROM = Giver
 	force_government = {
-		enum[base_factor] = int
+		## cardinality = 0..1
+		enum[base_factor] = float
 		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	}
 }
@@ -232,16 +259,16 @@ ai_equipment_design_group = {
 	}
 
 	priority = {
-		factor = float
-		## cardinality = 0..inf
+		## cardinality = 0..1
+		enum[base_factor] = float
 		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	}
 
 	## cardinality = 1..10
 	enum[ai_equipment_design] = {
 		priority = {
-			factor = float
-			## cardinality = 0..inf
+			## cardinality = 0..1
+			enum[base_factor] = float
 			alias_name[modifier_rule] = alias_match_left[modifier_rule]
 		}
 

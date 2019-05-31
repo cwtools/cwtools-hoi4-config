@@ -23,4 +23,4 @@ enums = {
 	}
 }
 
-	alias_name[modifier_rule] = alias_match_left[modifier_rule]
+alias_name[modifier_rule] = alias_match_left[modifier_rule]

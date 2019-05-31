@@ -111,9 +111,7 @@ focus_tree = {
 		## cardinality = 0..1
 		ai_will_do = {
 			## cardinality = 0..1
-			factor = float
-			## cardinality = 0..1
-			base = float
+			enum[base_factor] = float
 			alias_name[modifier_rule] = alias_match_left[modifier_rule]
 		}
 	}
@@ -196,9 +194,7 @@ focus = {
 	## cardinality = 0..1
 	ai_will_do = {
 		## cardinality = 0..1
-		factor = float
-		## cardinality = 0..1
-		base = float
+		enum[base_factor] = float
 		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	}
 }
@@ -280,9 +276,7 @@ shared_focus = {
 	## cardinality = 0..1
 	ai_will_do = {
 		## cardinality = 0..1
-		factor = float
-		## cardinality = 0..1
-		base = float
+		enum[base_factor] = float
 		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	}
 }

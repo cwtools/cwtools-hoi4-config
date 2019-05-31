@@ -38,12 +38,8 @@ country_leader_trait = {
 	## cardinality = 0..1
 	sprite = int
 	alias_name[modifier] = alias_match_left[modifier]
-	## cardinality = 0..inf
-	ai_strategy = {
-		type = enum[ai_strategies]
-		id = scope[country]
-		value = int
-	}
+	## cardinality = 0..100
+	alias_name[ai_strategy_rule] = alias_match_left[ai_strategy_rule]
 	## cardinality = 0..1
 	equipment_bonus = {
 		## cardinality = 0..inf

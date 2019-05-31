@@ -3,7 +3,7 @@ alias[effect:<scripted_effect>] = yes
 
 ### Adds the stability to the country in scope. Example: add_stability = 5
 ## scope = country
-alias[effect:add_stability] = float[-1.0..1.0]
+alias[effect:add_stability] = variable_field
 
 ### Adds manpower to the country in scope or locally on a state if in state scope
 ## scope = { state country }
@@ -206,7 +206,6 @@ alias[effect:set_variable] = {
 alias[effect:set_variable] = {
 	var = value_set[variable]
 	value = variable_field
-	value = float
 }
 
 ### a random effect
@@ -222,6 +221,7 @@ alias[effect:random] = {
 alias[effect:random_list] = {
 	## cardinality = 0..inf
 	int = {
+		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 		alias_name[effect] = alias_match_left[effect]
 	}
 }
@@ -379,7 +379,7 @@ alias[effect:remove_country_leader_trait] = <country_leader_trait>
 ## scope = country
 alias[effect:set_political_party] = {
 	ideology = <ideology>
-	popularity = int[0..100]
+	popularity = variable_field
 }
 
 ### set country political status
@@ -390,7 +390,7 @@ alias[effect:set_politics] = {
 		## cardinality = 1..inf
 		<ideology> = {
 			## cardinality = 0..1
-			popularity = float[0..100]
+			popularity = variable_field
 			## cardinality = 0..1
 			banned = bool
 		}
@@ -427,11 +427,11 @@ alias[effect:remove_ideas] = {
 
 ### add political power to country
 ## scope = country
-alias[effect:add_political_power] = int
+alias[effect:add_political_power] = variable_field
 
 ### set political power for country
 ## scope = country
-alias[effect:set_political_power] = int
+alias[effect:set_political_power] = variable_field
 
 ### sets technology level(s) on country
 ## scope = country
@@ -712,7 +712,7 @@ alias[effect:hold_election] = enum[country_tags]
 ## scope = country
 alias[effect:add_popularity] = {
 	ideology = <ideology>
-	popularity = float[-1..1]
+	popularity = variable_field
 }
 
 ### Remove all ideas with specified trait from country
@@ -1856,6 +1856,7 @@ alias[effect:set_border_war_data] = {
 ### cancel border war between two states
 ## scope = { state country }
 alias[effect:cancel_border_war] = {
+	## cardinality = 0..1
 	dont_fire_events = bool
 	attacker = scope[state]
 	attacker = <state>

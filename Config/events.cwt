@@ -62,6 +62,12 @@ event = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 	## cardinality = 0..1
+	show_major = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	## cardinality = 0..1
+	fire_for_sender = no
+	## cardinality = 0..1
 	mean_time_to_happen = {
 		## cardinality = 0..1
 		days = int
@@ -83,7 +89,7 @@ event = {
 		alias_name[effect] = alias_match_left[effect]
 		## cardinality = 0..1
 		ai_chance = {
-			enum[ai_chance_base] = float
+			enum[ai_chance_base] = variable_field
 			alias_name[modifier_rule] = alias_match_left[modifier_rule]
 		}
 	}

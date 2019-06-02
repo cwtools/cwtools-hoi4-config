@@ -637,9 +637,13 @@ alias[trigger:has_reserves] = bool
 ### check if sides front is full or can get more reinforcements.
 alias[trigger:frontage_full] = bool
 
-### is lend-leasing country.
+### Is lend-leasing country.
 ## scope = country
-alias[trigger:is_lend_leasing] = bool
+alias[trigger:is_lend_leasing] = scope[country]
+
+### Is lend-leasing country.
+## scope = country
+alias[trigger:is_lend_leasing] = enum[country_tags]
 
 ### checks building for available construction levels.
 ## scope = state
@@ -990,7 +994,7 @@ alias[trigger:any_home_area_neighbor_country] = {
 
 
 ### check if any other country meets the trigger. Excludes current country.
-## scope = country
+## scope = any
 ## push_scope = country
 alias[trigger:any_other_country] = {
 	## cardinality = 0..1

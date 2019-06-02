@@ -623,6 +623,11 @@ alias[effect:random_owned_state] = {
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
+	## cardinality = 0..1
+	prioritize = {
+		## cardinality = 1..inf
+		<state>
+	}
 	alias_name[effect] = alias_match_left[effect]
 }
 
@@ -1029,9 +1034,13 @@ alias[effect:create_field_marshal] = {
 		<unit_leader_trait>
 	}
 	skill = int
+	## cardinality = 0..1
 	attack_skill = int
+	## cardinality = 0..1
 	defense_skill = int
+	## cardinality = 0..1
 	planning_skill = int
+	## cardinality = 0..1
 	logistics_skill = int
 	## cardinality = 0..1
 	id = value_set[unit_leader_ids]
@@ -1058,9 +1067,13 @@ alias[effect:create_corps_commander] = {
 		<unit_leader_trait>
 	}
 	skill = int
+	## cardinality = 0..1
 	attack_skill = int
+	## cardinality = 0..1
 	defense_skill = int
+	## cardinality = 0..1
 	planning_skill = int
+	## cardinality = 0..1
 	logistics_skill = int
 	## cardinality = 0..1
 	id = value_set[unit_leader_ids]
@@ -1536,6 +1549,7 @@ alias[effect:transfer_navy] = {
 ## scope = country
 alias[effect:destroy_ships] = {
 	type = <unit.ship_unit>
+	type = <equipment.naval_equip>
 	count = int
 	count = all
 }

@@ -68,6 +68,8 @@ equipment = {
 		family = <equipment.archetype_equip>
 	}
 	subtype[air_equip] = {
+		## cardinality = 0..1
+		carrier_capable = yes
 		air_map_icon_frame = int
 		interface_overview_category_index = int
 	}

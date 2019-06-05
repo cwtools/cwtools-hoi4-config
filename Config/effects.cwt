@@ -382,19 +382,9 @@ alias[effect:set_political_party] = {
 	popularity = variable_field
 }
 
-### set country political status.
+### Set country political status.
 ## scope = country
 alias[effect:set_politics] = {
-	## cardinality = 0..1
-	parties = {
-		## cardinality = 1..inf
-		<ideology> = {
-			## cardinality = 0..1
-			popularity = variable_field
-			## cardinality = 0..1
-			banned = bool
-		}
-	}
 	## cardinality = 0..1
 	ruling_party = <ideology>
 	## cardinality = 0..1
@@ -403,6 +393,13 @@ alias[effect:set_politics] = {
 	last_election = date_field
 	## cardinality = 0..1
 	election_frequency = int
+}
+
+### Set country political party popilarities.
+## scope = country
+alias[effect:set_popularities] = {
+	## cardinality = 1..inf
+	<ideology> = variable_field
 }
 
 ### add idea(s) to country.

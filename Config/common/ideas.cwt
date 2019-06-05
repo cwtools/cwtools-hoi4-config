@@ -11,7 +11,13 @@ idea = {
 		## cardinality = 0..inf
 		scalar = {
 			## cardinality = 0..1
+			name = localisation
+			## cardinality = 0..1
 			cancel_if_invalid = bool
+			## cardinality = 0..1
+			visible = {
+				alias_name[trigger] = alias_match_left[trigger]
+			}
 			## cardinality = 0..1
 			allowed = {
 				alias_name[trigger] = alias_match_left[trigger]
@@ -37,6 +43,12 @@ idea = {
 			## cardinality = 0..1
 			## push_scope = country
 			modifier = {
+				alias_name[modifier] = alias_match_left[modifier]
+			}
+			## cardinality = 0..inf
+			targeted_modifier = {
+				tag = scope[country]
+				tag = enum[country_tags]
 				alias_name[modifier] = alias_match_left[modifier]
 			}
 			## cardinality = 0..1
@@ -67,12 +79,29 @@ idea = {
 					alias_name[naval_stat] = alias_match_left[naval_stat]
 					alias_name[air_stat] = alias_match_left[air_stat]
 				}
+				## cardinality = 0..inf
+				<unit> = {
+					## cardinality = 0..1
+					instant = bool
+					alias_name[unit_stat] = alias_match_left[unit_stat]
+					alias_name[naval_stat] = alias_match_left[naval_stat]
+					alias_name[air_stat] = alias_match_left[air_stat]
+				}
 			}
 			## cardinality = 0..1
 			ai_will_do = {
 				## cardinality = 0..1
 				enum[base_factor] = float
 				alias_name[modifier_rule] = alias_match_left[modifier_rule]
+			}
+			## cardinality = 0..1
+			traits = {
+				## cardinality = 0..inf
+				<country_leader_trait>
+			}
+			## cardinality = 0..1
+			on_add = {
+				alias_name[effect] = alias_match_left[effect]
 			}
 		}
 	}
@@ -85,11 +114,17 @@ idea = {
 		## cardinality = 0..inf
 		scalar = {
 			## cardinality = 0..1
+			name = localisation
+			## cardinality = 0..1
 			level = int
 			## cardinality = 0..1
 			default = bool
 			## cardinality = 0..1
 			cancel_if_invalid = bool
+			## cardinality = 0..1
+			visible = {
+				alias_name[trigger] = alias_match_left[trigger]
+			}
 			## cardinality = 0..1
 			allowed = {
 				alias_name[trigger] = alias_match_left[trigger]
@@ -123,6 +158,33 @@ idea = {
 				enum[game_rules] = bool
 			}
 			## cardinality = 0..1
+			equipment_bonus = {
+				## cardinality = 0..inf
+				<equipment> = {
+					## cardinality = 0..1
+					instant = bool
+					alias_name[unit_stat] = alias_match_left[unit_stat]
+					alias_name[naval_stat] = alias_match_left[naval_stat]
+					alias_name[air_stat] = alias_match_left[air_stat]
+				}
+				## cardinality = 0..inf
+				enum[unit_types] = {
+					## cardinality = 0..1
+					instant = bool
+					alias_name[unit_stat] = alias_match_left[unit_stat]
+					alias_name[naval_stat] = alias_match_left[naval_stat]
+					alias_name[air_stat] = alias_match_left[air_stat]
+				}
+				## cardinality = 0..inf
+				<unit> = {
+					## cardinality = 0..1
+					instant = bool
+					alias_name[unit_stat] = alias_match_left[unit_stat]
+					alias_name[naval_stat] = alias_match_left[naval_stat]
+					alias_name[air_stat] = alias_match_left[air_stat]
+				}
+			}
+			## cardinality = 0..1
 			ai_will_do = {
 				## cardinality = 0..1
 				enum[base_factor] = float
@@ -145,6 +207,10 @@ idea = {
 			research_bonus = {
 				## cardinality = 1..10
 				enum[tech_category] = float
+			}
+			## cardinality = 0..1
+			on_add = {
+				alias_name[effect] = alias_match_left[effect]
 			}
 		}
 	}

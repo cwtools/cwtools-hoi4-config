@@ -7,7 +7,7 @@ types = {
 		subtype[country_event] = {
 		}
 		## type_key_filter = state_event
-		## push_scope = country
+		## push_scope = state
 		subtype[state_event] = {
 		}
 		## type_key_filter = news_event
@@ -15,7 +15,7 @@ types = {
 		subtype[news_event] = {
 		}
 		## type_key_filter = unit_leader_event
-		## push_scope = country
+		## push_scope = unit_leader
 		subtype[unit_leader_event] = {
 		}
 		subtype[hidden] = {
@@ -26,9 +26,9 @@ types = {
 
 event = {
 	id = scalar
-	## cardinality = 0..10
+	## cardinality = 0..inf
 	title = localisation
-	## cardinality = 0..10
+	## cardinality = 0..inf
 	title = {
 		trigger = {
 			alias_name[trigger] = alias_match_left[trigger]
@@ -36,11 +36,13 @@ event = {
 		}
 		text = localisation
 	}
+	## cardinality = 0..1
 	picture = scalar
-	## cardinality = 0..10
+	## cardinality = 0..inf
 	desc = localisation
-	## cardinality = 0..10
+	## cardinality = 0..inf
 	desc = {
+		## cardinality = 0..1
 		trigger = {
 			alias_name[trigger] = alias_match_left[trigger]
 
@@ -60,15 +62,24 @@ event = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 	## cardinality = 0..1
+	show_major = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	## cardinality = 0..1
+	fire_for_sender = no
+	## cardinality = 0..1
 	mean_time_to_happen = {
+		## cardinality = 0..1
 		days = int
+		## cardinality = 0..1
+		months = int
 		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	}
 	## cardinality = 0..1
 	immediate = {
 		alias_name[effect] = alias_match_left[effect]
 	}
-	## cardinality = 0..10
+	## cardinality = 0..inf
 	option = {
 		name = localisation
 		## cardinality = 0..1
@@ -78,7 +89,7 @@ event = {
 		alias_name[effect] = alias_match_left[effect]
 		## cardinality = 0..1
 		ai_chance = {
-			enum[ai_chance_base] = float
+			enum[ai_chance_base] = variable_field
 			alias_name[modifier_rule] = alias_match_left[modifier_rule]
 		}
 	}

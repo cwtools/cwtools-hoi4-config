@@ -72,6 +72,7 @@ oob = {
 	air_wings = {
 		## cardinality = 1..inf
 		<state> = {
+			## cardinality = 1..inf
 			<equipment.air_equip> = {
 				owner = enum[country_tags]
 				amount = int

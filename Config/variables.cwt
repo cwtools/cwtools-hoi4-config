@@ -22,6 +22,7 @@ values = {
 		has_war_support
 		land_doctrine_level
 		manpower
+		manpower_k
 		manpower_per_military_factory
 		max_available_manpower
 		max_manpower

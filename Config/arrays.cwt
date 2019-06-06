@@ -1,0 +1,6 @@
+values = {
+	value[array] = {
+		subject_countries
+		subject_states
+	}
+}

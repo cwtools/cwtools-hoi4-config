@@ -23,17 +23,20 @@ ideology = {
 
 			}
 		}
+
 		dynamic_faction_names = {
 			## cardinality = 0..inf
 			localisation
 			## cardinality = 0..inf
 			scalar
 		}
+
 		### RGB color of ideology
 		color = {
 			## cardinality = 3..3
 			int
 		}
+
 		rules = {
 			can_force_government = bool
 			can_puppet = bool
@@ -41,6 +44,9 @@ ideology = {
 			## cardinality = 0..20
 			enum[game_rules] = bool
 		}
+
+		## cardinality = 0..1
+		can_host_government_in_exile = yes
 		war_impact_on_world_tension = float
 		faction_impact_on_world_tension = float
 
@@ -49,11 +55,13 @@ ideology = {
 		modifiers = {
 			alias_name[modifier] = alias_match_left[modifier]
 		}
+
 		## push_scope = country
 		### modifiers applied to countries with a faction leader of this ideology
 		faction_modifiers = {
 			alias_name[modifier] = alias_match_left[modifier]
 		}
+
 		## cardinality = 0..1
 		can_be_boosted = bool
 		## cardinality = 0..1

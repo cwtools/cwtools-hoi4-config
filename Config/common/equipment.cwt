@@ -68,6 +68,8 @@ equipment = {
 		family = <equipment.archetype_equip>
 	}
 	subtype[air_equip] = {
+		## cardinality = 0..1
+		carrier_capable = yes
 		air_map_icon_frame = int
 		interface_overview_category_index = int
 	}
@@ -128,7 +130,7 @@ equipment = {
 				required = bool
 				allowed_module_categories = {
 					## cardinality = 1..inf
-					value[module_categories]
+					enum[module_categories]
 				}
 				## cardinality = 0..1
 				gfx = scalar
@@ -144,7 +146,7 @@ equipment = {
 		## cardinality = 0..inf
 		module_count_limit = {
 			## cardinality = 0..1
-			category = value[module_categories]
+			category = enum[module_categories]
 			## cardinality = 0..1
 			module = <module>
 			count = int
@@ -178,9 +180,9 @@ upgrade = {
 }
 
 module = {
-	category = value_set[module_categories]
+	category = enum[module_categories]
 	## cardinality = 0..1
-	gui_category = value[module_categories]
+	gui_category = enum[module_categories]
 	## cardinality = 0..1
 	parent = <module>
 	## cardinality = 0..1
@@ -216,7 +218,7 @@ module = {
 	## cardinality = 0..10
 	can_convert_from = {
 		## cardinality = 0..1
-		module_category = value[module_categories]
+		module_category = enum[module_categories]
 		## cardinality = 0..1
 		module = <module>
 		convert_cost_ic = int
@@ -284,10 +286,20 @@ enums = {
 	complex_enum[module_slots] = {
 		path = "game/common/units/equipment"
 		name = {
-			module_slots = {
-				enum_name = scalar
-				enum_name = {
+			scalar = {
+				module_slots = {
+					enum_name = scalar
+					enum_name = {
+					}
 				}
+			}
+		}
+	}
+	complex_enum[module_categories] = {
+		path = "game/common/units/equipment/modules"
+		name = {
+			scalar = {
+				category = enum_name
 			}
 		}
 	}

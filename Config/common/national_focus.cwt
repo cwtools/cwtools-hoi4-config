@@ -21,7 +21,8 @@ types = {
 focus_tree = {
 	id = localisation
 	country = {
-		factor = int
+		## cardinality = 0..1
+		enum[base_factor] = float
 		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	}
 	default = bool

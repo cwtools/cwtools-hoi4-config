@@ -113,7 +113,7 @@ enums = {
 	}
 }
 
-### check state's strategic area id.
+### Check state's strategic area id.
 ## scope = state
 alias[trigger:region] = <strategic_region>
 
@@ -121,15 +121,15 @@ alias[trigger:region] = <strategic_region>
 ## scope = country
 alias[trigger:is_subject] = bool
 
-### check state's supply area id.
+### Check state's supply area id.
 ## scope = state
 alias[trigger:area] = <supply_area>
 
-### check the global threat value. 0-1 value.
+### Check the global threat value. 0-1 value.
 ## scope = any
 alias[trigger:threat] = float[0..1]
 
-### always returns specified value.
+### Always returns specified value.
 ## scope = any
 alias[trigger:always] = bool
 
@@ -137,10 +137,10 @@ alias[trigger:always] = bool
 ## scope = state
 alias[trigger:is_capital] = bool
 
-### has global flag been set.Check flag val date set and days since set.
+### Gas global flag been set. Check flag val date set and days since set.
 ## scope = any
 alias[trigger:has_global_flag] = value[global_flag]
-### has global flag been set.Check flag val date set and days since set.
+### Has global flag been set. Check flag val date set and days since set.
 ## scope = any
 alias[trigger:has_global_flag] = {
 	flag = value[global_flag]
@@ -152,7 +152,7 @@ alias[trigger:has_global_flag] = {
 	days = int
 }
 
-### check if attacker side in combat.
+### Check if attacker side in combat.
 alias[trigger:is_attacker] = bool
 
 ### Checks if player has a DLC.

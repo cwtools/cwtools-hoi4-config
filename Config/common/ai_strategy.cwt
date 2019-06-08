@@ -25,24 +25,60 @@ ai_strategy = {
 
 ai_strategy_plan = {
 	name = localisation
+	## cardinality = 0..1
 	desc = localisation
+
 	enable = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
+
 	## cardinality = 0..1
 	abort = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
-	alias_name[ai_strategy_rule] = alias_match_left[ai_strategy_rule]
-	## cardinality = 0..1
-	research = {
-		## cardinality = 1..inf
-		enum[tech_category] = int
-	}
+
 	## cardinality = 0..1
 	ai_national_focuses = {
-		## cardinality = 1..inf
+		## cardinality = 0..inf
 		<focus>
+		## cardinality = 0..inf
+		<shared_focus>
+	}
+
+	## cardinality = 0..1
+	focus_factors = {
+		## cardinality = 0..inf
+		<focus> = int
+		## cardinality = 0..inf
+		<shared_focus> = int
+	}
+
+	## cardinality = 0..1
+	research = {
+		## cardinality = 0..inf
+		enum[tech_category] = float
+	}
+
+	## cardinality = 0..1
+	ideas = {
+		## cardinality = 0..inf
+		enum[idea_name] = int
+	}
+
+	## cardinality = 0..1
+	traits = {
+		## cardinality = 1..inf
+		<country_leader_trait> = int
+	}
+
+	alias_name[ai_strategy_rule] = alias_match_left[ai_strategy_rule]
+
+	### Keep small, as it is used as a factor for some things (such as research needs). Recommended around 1.0. Useful for relation between plans.
+	## cardinality = 0..1
+	weight = {
+		## cardinality = 0..1
+		enum[base_factor] = float
+		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	}
 }
 

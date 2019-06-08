@@ -95,7 +95,7 @@ equipment = {
 	type = enum[unit_types]
 	## cardinality = 0..1
 	type = {
-		## cardinality = 1..10
+		## cardinality = 1..inf
 		enum[unit_types]
 	}
 	alias_name[unit_stat] = alias_match_left[unit_stat]

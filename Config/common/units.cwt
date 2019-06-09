@@ -37,6 +37,10 @@ unit = {
 	sprite = scalar
 	#enum[unit_sprites]
 	subtype[land_unit] = {
+		need = {
+			## cardinality = 1..inf
+			<equipment> = int
+		}
 		ai_priority = int
 		### map icon
 		map_icon_category = enum[land_map_icons]
@@ -63,22 +67,49 @@ unit = {
 		group = enum[unit_groups]
 		### unit type
 		type = {
-			## cardinality = 1..2
+			## cardinality = 1..inf
 			enum[land_units]
 		}
 	}
 	subtype[ship_unit] = {
+		## cardinality = 0..1
+		need = {
+			## cardinality = 1..inf
+			<equipment> = int
+		}
+		## cardinality = 0..1
+		need_equipment = {
+			## cardinality = 1..inf
+			<equipment> = int
+		}
+		## cardinality = 0..1
+		need_equipment_modules = {
+			any = {
+				## cardinality = 1..inf
+				<module> = int
+			}
+		}
 		### map icon
 		map_icon_category = enum[ship_map_icons]
 		type = {
-			## cardinality = 1..1
+			## cardinality = 1..inf
 			enum[ship_units]
 		}
 		alias_name[naval_stat] = alias_match_left[naval_stat]
+		critical_parts = {
+			## cardinality = 1..inf
+			<critical_part>
+		}
+		critical_part_damage_chance_mult = float
+		hit_profile_mult = float
 	}
 	subtype[air_unit] = {
+		need = {
+			## cardinality = 1..inf
+			<equipment> = int
+		}
 		type = {
-			## cardinality = 1..1
+			## cardinality = 1..inf
 			enum[air_units]
 		}
 		alias_name[air_stat] = alias_match_left[air_stat]
@@ -94,10 +125,9 @@ unit = {
 
 	alias_name[unit_stat] = alias_match_left[unit_stat]
 
-	need = {
-		## cardinality = 1..inf
-		<equipment> = int
-	}
+	## cardinality = 0..1
+	own_equipment_fuel_consumption_mult = float
+
 	## cardinality = 0..1
 	essential = {
 		## cardinality = 1..inf

@@ -151,6 +151,7 @@ ai_template = {
 		enum[base_factor] = float
 		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	}
+
 	## cardinality = 1..10
 	scalar = {
 		upgrade_prio = {
@@ -174,6 +175,12 @@ ai_template = {
 		target_width = float
 		width_weight = float
 		column_swap_factor = float
+
+		### List of triggers that must all be true for the template to be usable; true by default if empty or missing.
+		## cardinality = 0..1
+		enable = {
+			alias_name[trigger] = alias_match_left[trigger]
+		}
 
 		stat_weights = {
 			## cardinality = 26..26

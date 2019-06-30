@@ -36,11 +36,11 @@ alias[trigger:skill] = int
 ### Check if we are in this combat phase.
 alias[trigger:phase] = enum[phases]
 
-### Check if the current country exist. The country of the scope you are in. Example DEN = { exists = yes }.
+### Check if the current country exist. The country of the scope you are in. Example: DEN = { exists = yes }.
 ## scope = country
 alias[trigger:exists] = bool
 
-### Check if the difficulty is above or below specified value 0-2 (difficulty enum). Example difficulty > 0 (above easy).
+### Check if the difficulty is above or below specified value 0-2 (difficulty enum). Example: difficulty > 0 (above easy).
 ## scope = any
 alias[trigger:difficulty] = int
 
@@ -58,11 +58,11 @@ alias[trigger:any_neighbor_country] = {
 ### Check amount of resource country has.
 alias[trigger:<resource>] = int
 
-### Has country flag been set. Check flag val date set and days since set. Example has_country_flag = test_flag.
+### Has country flag been set. Check flag val date set and days since set. Example: has_country_flag = test_flag.
 ## scope = country
 alias[trigger:has_country_flag] = value[country_flag]
 
-### Has country flag been set. Check flag val date set and days since set. Example has_country_flag = test_flag.
+### Has country flag been set. Check flag val date set and days since set. Example: has_country_flag = test_flag.
 ## scope = country
 alias[trigger:has_country_flag] = {
 	flag = value[country_flag]
@@ -145,11 +145,11 @@ alias[trigger:always] = bool
 ## scope = state
 alias[trigger:is_capital] = bool
 
-### Has global flag been set. Check flag val date set and days since set. Example has_global_flag = test_flag.
+### Has global flag been set. Check flag val date set and days since set. Example: has_global_flag = test_flag.
 ## scope = any
 alias[trigger:has_global_flag] = value[global_flag]
 
-### Has global flag been set. Check flag val date set and days since set. Example has_global_flag = test_flag.
+### Has global flag been set. Check flag val date set and days since set. Example: has_global_flag = test_flag.
 ## scope = any
 alias[trigger:has_global_flag] = {
 	flag = value[global_flag]
@@ -164,7 +164,7 @@ alias[trigger:has_global_flag] = {
 ### Check if attacker side in combat.
 alias[trigger:is_attacker] = bool
 
-### Checks if player has a DLC. Example has_dlc = "name of the dlc".
+### Checks if player has a DLC. Example: has_dlc = "name of the dlc".
 ## scope = any
 alias[trigger:has_dlc] = enum[dlc]
 
@@ -362,7 +362,7 @@ alias[trigger:has_army_size] = {
 	type = enum[land_units]
 }
 
-### Checks for amount of ships, additionally of a specified type, archetype, or sub unit definition. Example has_navy_size = { size > 10 type = convoy }; has_navy_size = { size < 1 archetype = ship_hull_light }; has_navy_size = { size > 39 unit = heavy_cruiser };	has_navy_size = { size < 100 }.
+### Checks for amount of ships, additionally of a specified type, archetype, or sub unit definition. Example: has_navy_size = { size > 10 type = convoy }; has_navy_size = { size < 1 archetype = ship_hull_light }; has_navy_size = { size > 39 unit = heavy_cruiser };	has_navy_size = { size < 100 }.
 ## scope = country
 alias[trigger:has_navy_size] = {
 	size = float
@@ -550,7 +550,7 @@ alias[trigger:all_allied_country] = {
 ## scope = country
 alias[trigger:surrender_progress] = float
 
-### Checks if daily political power increase is more or less that specified value. Example political_power_daily > 1.5.
+### Checks if daily political power increase is more or less that specified value. Example: political_power_daily > 1.5.
 ## scope = country
 alias[trigger:political_power_daily] = float
 
@@ -818,7 +818,7 @@ alias[trigger:any_claim] = {
 	alias_name[trigger] = alias_match_left[trigger]
 }
 
-### Compares number of volunteers from the country. Example has_volunteers_amount_from = { tag = ITA count > 1 }.
+### Compares number of volunteers from the country. Example: has_volunteers_amount_from = { tag = ITA count > 1 }.
 ## scope = country
 alias[trigger:has_volunteers_amount_from] = {
 	tag = scope[country]
@@ -934,13 +934,21 @@ alias[trigger:is_historical_focus_on] = bool
 ## scope = country
 alias[trigger:original_research_slots] = int
 
-### Checks if country has a wargoal against the target.
+### Checks if country has a wargoal against the target. Example: ENG = { has_wargoal_against = GER }.
 ## scope = country
 alias[trigger:has_wargoal_against] = scope[country]
 
-### Checks if country has a wargoal against the target.
+### Checks if country has a wargoal against the target. Example: ENG = { has_wargoal_against = GER }.
 ## scope = country
 alias[trigger:has_wargoal_against] = enum[country_tags]
+
+### Checks if country has a wargoal against the target. Example: ENG = { has_wargoal_against = GER }.
+## scope = country
+alias[trigger:has_wargoal_against] = {
+	target = scope[country]
+	target = enum[country_tags]
+	type = <wargoal>
+}
 
 ### Checks if country is justifying a wargoal against the target.
 ## scope = country
@@ -1300,7 +1308,7 @@ alias[trigger:any_province_building_level] = {
 	level = int
 }
 
-### Compares estimated max armor based on intel. Example estimated_intel_max_armor = { tag = ITA value > 1 }.
+### Compares estimated max armor based on intel. Example: estimated_intel_max_armor = { tag = ITA value > 1 }.
 ## scope = country
 alias[trigger:estimated_intel_max_armor] = {
 	tag = scope[country]
@@ -1308,7 +1316,7 @@ alias[trigger:estimated_intel_max_armor] = {
 	value = float
 }
 
-### Compares estimated max armor based on intel. Example estimated_intel_max_piercing = { tag = ITA value > 1 }.
+### Compares estimated max armor based on intel. Example: estimated_intel_max_piercing = { tag = ITA value > 1 }.
 ## scope = country
 alias[trigger:estimated_intel_max_piercing] = {
 	tag = scope[country]
@@ -1353,11 +1361,11 @@ alias[trigger:enemies_naval_strength_ratio] = float
 ## scope = country
 alias[trigger:alliance_naval_strength_ratio] = float
 
-### Check value of stability 0-1: Example has_stability < 0.6.
+### Check value of stability 0-1. Example has_stability < 0.6.
 ## scope = country
 alias[trigger:has_stability] = float
 
-### Check value of war_support 0-1: Example has_war_support < 0.6.
+### Check value of war_support 0-1. Example has_war_support < 0.6.
 ## scope = country
 alias[trigger:has_war_support] = float
 
@@ -1813,13 +1821,13 @@ alias[trigger:all_of_scopes] = replace_me
 ## scopes = { country }
 alias[trigger:has_country_leader_with_trait] = replace_me
 
-### Check scope country legitimacy 0-100: Example has_legitimacy < 60.
+### Check scope country legitimacy 0-100. Example: has_legitimacy < 60.
 ## scopes = { country }
 alias[trigger:has_legitimacy] = int
 
-### Checks if a rule set for a country.
-## scopes = { ??? }
-alias[trigger:has_rule] = replace_me
+### Checks if a rule set for a country. Example: has_rule = can_puppet.
+## scopes = { country }
+alias[trigger:has_rule] = enum[game_rules]
 
 ### Check the population in the state in thousands (use to avoid variable overflows).
 ## scopes = { state }
@@ -1880,11 +1888,11 @@ alias[trigger:fuel_ratio] = float
 ## scopes = { state }
 alias[trigger:days_since_last_strategic_bombing] = int
 
-### A trigger to check how dangerous enemy mines are for a country. Controlled by NAVAL_MINE_DANGER defines. Returns a value between 0 and 1. Example mine_threat > 0.5.
+### A trigger to check how dangerous enemy mines are for a country. Controlled by NAVAL_MINE_DANGER defines. Returns a value between 0 and 1. Example: mine_threat > 0.5.
 ## scopes = { country }
 alias[trigger:mine_threat] = float
 
-### A trigger to check convoy threat for a country. Controlled by NAVAL_CONVOY_DANGER defines. Returns a value between 0 and 1. Example convoy_threat > 0.5.
+### A trigger to check convoy threat for a country. Controlled by NAVAL_CONVOY_DANGER defines. Returns a value between 0 and 1. Example: convoy_threat > 0.5.
 ## scopes = { country }
 alias[trigger:convoy_threat] = float
 

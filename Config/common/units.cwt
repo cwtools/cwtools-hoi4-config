@@ -10,16 +10,10 @@ types = {
 			}
 		}
 		subtype[ship_unit] = {
-			type = {
-				## cardinality = 1..10
-				enum[ship_units]
-			}
+			map_icon_category = enum[ship_map_icons]
 		}
 		subtype[land_unit] = {
-			type = {
-				## cardinality = 1..10
-				enum[land_units]
-			}
+			map_icon_category = enum[land_map_icons]
 		}
 		subtype[catch] = {
 		}
@@ -68,7 +62,7 @@ unit = {
 		### unit type
 		type = {
 			## cardinality = 1..inf
-			enum[land_units]
+			<unit.land_unit>
 		}
 	}
 	subtype[ship_unit] = {
@@ -93,7 +87,7 @@ unit = {
 		map_icon_category = enum[ship_map_icons]
 		type = {
 			## cardinality = 1..inf
-			enum[ship_units]
+			<unit.ship_unit>
 		}
 		alias_name[naval_stat] = alias_match_left[naval_stat]
 		critical_parts = {
@@ -158,7 +152,7 @@ ship_name = {
 		## cardinality = 0..inf
 		<unit.ship_unit>
 		## cardinality = 0..inf
-		enum[ship_units]
+		<unit.ship_unit>
 	}
 	## cardinality = 0..1
 	prefix = scalar
@@ -250,7 +244,7 @@ enums = {
 		carrier
 		convoy
 	}
-	enum[land_units] = {
+	<unit.land_unit> = {
 		infantry
 		support
 		artillery

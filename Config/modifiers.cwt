@@ -220,6 +220,7 @@ modifiers = {
 	army_infantry_attack_factor = unit_leader
 	army_infantry_defence_factor = unit_leader
 	army_morale_factor = unit_leader
+	breakthrough_factor = unit_leader
 	cavalry_attack_factor = unit_leader
 	cavalry_defence_factor = unit_leader
 	convoy_retreat_speed = unit_leader

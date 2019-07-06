@@ -187,6 +187,7 @@ tech_sharing_group = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 }
+
 enums = {
 	complex_enum[tech_category] = {
 		path = "game/common/technology_tags"

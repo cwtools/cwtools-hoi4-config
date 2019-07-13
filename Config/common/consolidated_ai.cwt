@@ -129,6 +129,7 @@ ai_peace = {
 
 ai_template = {
 	roles = {
+		## cardinality = 0..inf
 		value_set[ai_roles]
 	}
 	# Restricts the template to only the specified tags. Optional.

@@ -767,6 +767,7 @@ alias[effect:start_civil_war] = {
 		value[unit_leader_ids]
 	}
 	## cardinality = 0..1
+	## push_scope = unit_leader
 	keep_unit_leaders_trigger = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
@@ -2137,17 +2138,37 @@ alias[effect:random_scope_in_array] = {
 }
 
 
-### updates the modifiers in current scope (use if you don't want to wait for daily update to update them).
+### Updates the modifiers in current scope (use if you don't want to wait for daily update to update them).
 ## scopes = { state country }
-alias[effect:force_update_dynamic_modifier] = replace_me
+alias[effect:force_update_dynamic_modifier] = yes
 
-### removes a dynamic modifier from country/state/unit leader.
+### Removes a dynamic modifier from country/state/unit leader.
 ## scopes = { state country }
-alias[effect:remove_dynamic_modifier] = replace_me
+alias[effect:remove_dynamic_modifier] = {
+	modifier = <dynamic_modifier>
 
-### adds a dynamic modifier to country/state/unit leader.
+	## cardinality = 0..1
+	### Optional, state or country tag or a variable contains that. if specified the dynamic variable will target that scope.
+	scope = enum[country_tags]
+
+	## cardinality = 0..1
+	### Optional, state or country tag or a variable contains that. if specified the dynamic variable will target that scope.
+	scope = scope[country]
+}
+
+### Adds a dynamic modifier to country/state/unit leader.
 ## scopes = { state country }
-alias[effect:add_dynamic_modifier] = replace_me
+alias[effect:add_dynamic_modifier] = {
+	modifier = <dynamic_modifier>
+
+	## cardinality = 0..1
+	### Optional, state or country tag or a variable contains that. if specified the dynamic variable will target that scope.
+	scope = enum[country_tags]
+
+	## cardinality = 0..1
+	### Optional, state or country tag or a variable contains that. if specified the dynamic variable will target that scope.
+	scope = scope[country]
+}
 
 ### Runs a same effects through a loop. example will run the effects for value_name = -3, 0, 3, 6, 9 and then terminate.
 ## scopes = { ??? }

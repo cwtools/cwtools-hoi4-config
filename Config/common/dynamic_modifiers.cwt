@@ -1,0 +1,26 @@
+types = {
+	type[dynamic_modifier] = {
+		path = "game/common/dynamic_modifiers"
+		path_strict = yes
+	}
+}
+
+dynamic_modifier = {
+	## cardinality = 0..1
+	### Optional, will show up in guis if icon is specified.
+	icon = scalar
+
+	## cardinality = 0..1
+	### Optional, the modifier won't apply if not enabled.
+	enable = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+
+	## cardinality = 0..1
+	### Optional, will remove the modifier if true.
+	remove_trigger = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+
+	alias_name[modifier] = alias_match_left[modifier]
+}

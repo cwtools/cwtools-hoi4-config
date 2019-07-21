@@ -83,6 +83,7 @@ equipment = {
 	alias = <unit>
 
 	### Priority for usage over other equipment.
+	## cardinality = 0..1
 	priority = int
 
 	subtype[archetype_equip] = {

@@ -94,6 +94,7 @@ alias[modifier:take_states_cost_factor] = float
 alias[modifier:tech_air_damage_factor] = float
 alias[modifier:transport_capacity] = float
 alias[modifier:winter_attrition] = float
+alias[modifier:enum[sub_unit_modifiers]] = float
 
 #unit stats
 alias[unit_stat:acclimatization_cold_climate_gain_factor] = float

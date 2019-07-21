@@ -287,4 +287,13 @@ enums = {
 			}
 		}
 	}
+	complex_enum[sub_unit_modifiers] = {
+		path = "game/common/units/unit_modifiers"
+		start_from_root = yes
+		name = {
+			sub_unit_modifiers = {
+				enum_name
+			}
+		}
+	}
 }

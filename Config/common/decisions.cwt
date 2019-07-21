@@ -20,7 +20,7 @@ types = {
 			}
 		}
 		subtype[timed] = {
-			days_remove = int
+			days_remove = variable_field
 		}
 		subtype[timed] = {
 			days_mission_timeout = int
@@ -113,7 +113,7 @@ decision = {
 			alias_name[trigger] = alias_match_left[trigger]
 		}
 		## cardinality = 0..1
-		days_remove = int
+		days_remove = variable_field
 		## cardinality = 0..1
 		modifier = {
 			alias_name[modifier] = alias_match_left[modifier]

@@ -129,6 +129,7 @@ ai_peace = {
 
 ai_template = {
 	roles = {
+		## cardinality = 0..inf
 		value_set[ai_roles]
 	}
 	# Restricts the template to only the specified tags. Optional.
@@ -183,8 +184,9 @@ ai_template = {
 		}
 
 		stat_weights = {
-			## cardinality = 26..26
+			## cardinality = 33..33
 			float
+
 			#<float> #-- default_morale
 			#<float> #-- defense
 			#<float> #-- breakthrough
@@ -201,6 +203,7 @@ ai_template = {
 			#<float> #-- suppression_factor
 			#<float> #-- experience_loss_factor
 			#<float> #-- equipment_capture_factor
+			#<float> #-- fuel_capacity
 
 			#-- Air Values
 			#<float> #-- air_attack
@@ -214,6 +217,12 @@ ai_template = {
 			#<float> #-- reliability
 			#<float> #-- reliability_factor
 			#<float> #-- weight
+			#<float> #-- fuel_consumption
+			#<float> #-- fuel_consumption_factor
+			#<float> #-- strat_attack
+			#<float> #-- carrier_size
+			#<float> #-- acc_hot_gain
+			#<float> #-- acc_cold_gain
 			#<float> #-- build_cost_ic
 		}
 		target_template = {

@@ -13,11 +13,21 @@ types = {
 			## cardinality = 0..1
 			type = enum[ship_units]
 			## cardinality = 0..1
+			type = {
+				## cardinality = 1..inf
+				enum[ship_units]
+			}
+			## cardinality = 0..1
 			archetype = <equipment.naval_equip>
 		}
 		subtype[air_equip] = {
 			## cardinality = 0..1
 			type = enum[air_units]
+			## cardinality = 0..1
+			type = {
+				## cardinality = 1..inf
+				enum[air_units]
+			}
 			## cardinality = 0..1
 			archetype = <equipment.air_equip>
 		}
@@ -46,27 +56,50 @@ types = {
 }
 
 equipment = {
+	## cardinality = 0..1
+	### Limits the equipment from appearing before the specified year. Optional.
 	year = int
 
 	## cardinality = 0..1
+	### Specifies an entry as an archetype entry. All non-archetype entries inherit.
 	is_archetype = bool
+
 	## cardinality = 0..1
+	### Prevents this equipment from being built.
 	is_buildable = bool
+
 	## cardinality = 0..1
 	is_convertable = bool
+
 	## cardinality = 0..1
+	### Determines if this equipment is available without unlocking from a technology.
 	active = bool
+
 	## cardinality = 0..1
 	can_license = bool
 	## cardinality = 0..1
 	sprite = scalar # enum[unit_sprites]
+	## cardinality = 0..1
+	alias = <unit>
+
+	### Priority for usage over other equipment.
+	## cardinality = 0..1
+	priority = int
+
 	subtype[archetype_equip] = {
+		### GFX reference used to define equipment picture in land-lease.
 		picture = scalar
+
+		### How the equipment is grouped in the production screen.
 		group_by = enum[equip_group_by]
+
+		### Which category the equipment appears in the production screen.
 		interface_category = enum[interface_category]
+
 		## cardinality = 0..1
 		family = <equipment.archetype_equip>
 	}
+
 	subtype[air_equip] = {
 		## cardinality = 0..1
 		carrier_capable = yes
@@ -75,12 +108,17 @@ equipment = {
 	}
 
 	subtype[regular_equip] = {
+		### Which archetype equipment this equipment inherits from.
 		archetype = <equipment.archetype_equip>
+
 		## cardinality = 0..1
+		### Which equipment is parent to this equipment (i.e. which does it supercede).
 		parent = <equipment.regular_equip>
-		priority = int
+
 		## cardinality = 0..1
+		### Image priority in production screen.
 		visual_level = int
+
 		## cardinality = 0..1
 		one_use_only = bool
 		## cardinality = 0..1
@@ -91,39 +129,15 @@ equipment = {
 			<equipment.regular_equip>
 		}
 	}
-	## cardinality = 0..1
-	type = enum[unit_types]
-	## cardinality = 0..1
-	type = {
-		## cardinality = 1..inf
-		enum[unit_types]
-	}
-	alias_name[unit_stat] = alias_match_left[unit_stat]
-	alias_name[naval_stat] = alias_match_left[naval_stat]
-	alias_name[air_stat] = alias_match_left[air_stat]
-	## cardinality = 0..1
-	offensive_weapons = bool
-	## cardinality = 0..1
-	resources = {
-		## cardinality = 0..3
-		<resource> = int
-	}
-	## cardinality = 0..3
-	upgrades = {
-		## cardinality = 0..4
-		<upgrade>
-	}
 
 	subtype[naval_equip] = {
 		## cardinality = 0..1
 		visual_tech_level_addition = int
 		## cardinality = 0..1
 		model = scalar
+
 		## cardinality = 0..1
-		alias = <unit>
-		## cardinality = 0..1
-		priority = int
-		## cardinality = 0..1
+		### List of module slots and their details.
 		module_slots = {
 			## cardinality = 0..inf
 			enum[module_slots] = {
@@ -140,10 +154,13 @@ equipment = {
 			## cardinality = 0..inf
 			enum[module_slots] = inherit
 		}
+
 		## cardinality = 0..1
+		### All parent module slots will directly inherited with no modifications.
 		module_slots = inherit
 
 		## cardinality = 0..inf
+		### Any number of module count limits can be specified. They are automatically inherited by child equipment types. An inherited limit is overridden if the child has a limit with exactly the same match conditions.
 		module_count_limit = {
 			## cardinality = 0..1
 			category = enum[module_categories]
@@ -152,14 +169,44 @@ equipment = {
 			count = int
 		}
 
+		### List of modules assigned to module slots for the default equipment variant for this type.
 		default_modules = {
 			## cardinality = 0..inf
 			enum[module_slots] = <module>
 			## cardinality = 0..inf
 			enum[module_slots] = empty
 		}
+	}
 
-		test = enum[module_slots]
+	## cardinality = 0..1
+	### Internal type: what kind of unit can use this equipment.
+	type = enum[unit_types]
+
+	## cardinality = 0..1
+	### Internal type: what kind of unit can use this equipment.
+	type = {
+		## cardinality = 1..inf
+		enum[unit_types]
+	}
+
+	alias_name[unit_stat] = alias_match_left[unit_stat]
+	alias_name[naval_stat] = alias_match_left[naval_stat]
+	alias_name[air_stat] = alias_match_left[air_stat]
+	## cardinality = 0..1
+	offensive_weapons = bool
+
+	## cardinality = 0..1
+	### Resources needed for producing one unit of the equipment..
+	resources = {
+		## cardinality = 0..inf
+		<resource> = int
+	}
+
+	## cardinality = 0..3
+	### List of upgrade names.
+	upgrades = {
+		## cardinality = 0..4
+		<upgrade>
 	}
 }
 
@@ -197,8 +244,11 @@ module = {
 		## cardinality = 0..1
 		build_cost_ic = int
 	}
+
 	## cardinality = 0..1
+	### Manpower required to produce one unit of the equipment (naval only).
 	manpower = int
+
 	## cardinality = 0..1
 	build_cost_resources = {
 		## cardinality = 0..10

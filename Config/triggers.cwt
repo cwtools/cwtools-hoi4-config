@@ -335,7 +335,7 @@ alias[trigger:divisions_in_state] = {
 	state = scope[state]
 	state = <state>
 	## cardinality = 0..1
-	type = enum[land_units]
+	type = <unit.land_unit>
 }
 
 ### Check if the specified country exist.
@@ -349,7 +349,7 @@ alias[trigger:country_exists] = enum[country_tags]
 ### Checks for amount of ships in specified area.
 ## scope = country
 alias[trigger:ships_in_area] = {
-	type = enum[ship_units]
+	type = <unit.ship_unit>
 	area = <strategic_region>
 	size = int
 }
@@ -359,7 +359,7 @@ alias[trigger:ships_in_area] = {
 alias[trigger:has_army_size] = {
 	size = float
 	## cardinality = 0..1
-	type = enum[land_units]
+	type = <unit.land_unit>
 }
 
 ### Checks for amount of ships, additionally of a specified type, archetype, or sub unit definition. Example: has_navy_size = { size > 10 type = convoy }; has_navy_size = { size < 1 archetype = ship_hull_light }; has_navy_size = { size > 39 unit = heavy_cruiser };	has_navy_size = { size < 100 }.
@@ -367,9 +367,9 @@ alias[trigger:has_army_size] = {
 alias[trigger:has_navy_size] = {
 	size = float
 	## cardinality = 0..1
-	type = enum[ship_units]
+	type = <unit.ship_unit>
 	## cardinality = 0..1
-	unit = enum[ship_units]
+	unit = <unit.ship_unit>
 	## cardinality = 0..1
 	archetype = <equipment.archetype_equip>
 }
@@ -767,7 +767,7 @@ alias[trigger:ships_in_state_ports] = {
 	state = <state>
 	size = float
 	## cardinality = 0..1
-	type = enum[ship_units]
+	type = <unit.ship_unit>
 }
 
 ### Check if country is a major.
@@ -1717,7 +1717,7 @@ alias[trigger:is_government_in_exile] = yes
 ## scope = country
 alias[trigger:divisions_in_border_state] = {
 	## cardinality = 0..1
-	type = enum[land_units]
+	type = <unit.land_unit>
 	size = int
 	state = scope[state]
 	state = <state>
@@ -1876,7 +1876,7 @@ alias[trigger:naval_strength_comparison] = {
 	## cardinality = 0..1
 	sub_unit_def_weights = {
 		## cardinality = 0..inf
-		enum[ship_units] = float
+		<unit.ship_unit> = float
 	}
 }
 

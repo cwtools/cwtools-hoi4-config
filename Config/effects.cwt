@@ -447,18 +447,15 @@ alias[effect:create_navy_leader] = {
 	portrait_path = scalar
 	## cardinality = 0..1
 	gfx = scalar
+	## cardinality = 0..1
 	traits = {
 		## cardinality = 0..inf
 		<unit_leader_trait>
 	}
 	skill = int
-	## cardinality = 0..1
 	attack_skill = int
-	## cardinality = 0..1
 	defense_skill = int
-	## cardinality = 0..1
 	maneuvering_skill = int
-	## cardinality = 0..1
 	coordination_skill = int
 	## cardinality = 0..1
 	id = value_set[unit_leader_ids]
@@ -1026,18 +1023,15 @@ alias[effect:create_field_marshal] = {
 	portrait_path = scalar
 	## cardinality = 0..1
 	gfx = scalar
+	## cardinality = 0..1
 	traits = {
 		## cardinality = 0..inf
 		<unit_leader_trait>
 	}
 	skill = int
-	## cardinality = 0..1
 	attack_skill = int
-	## cardinality = 0..1
 	defense_skill = int
-	## cardinality = 0..1
 	planning_skill = int
-	## cardinality = 0..1
 	logistics_skill = int
 	## cardinality = 0..1
 	id = value_set[unit_leader_ids]
@@ -1064,13 +1058,9 @@ alias[effect:create_corps_commander] = {
 		<unit_leader_trait>
 	}
 	skill = int
-	## cardinality = 0..1
 	attack_skill = int
-	## cardinality = 0..1
 	defense_skill = int
-	## cardinality = 0..1
 	planning_skill = int
-	## cardinality = 0..1
 	logistics_skill = int
 	## cardinality = 0..1
 	id = value_set[unit_leader_ids]

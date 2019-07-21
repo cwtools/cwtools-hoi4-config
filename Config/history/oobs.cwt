@@ -66,6 +66,32 @@ oob = {
 			## cardinality = 0..1
 			start_equipment_factor = float
 		}
+
+		## cardinality = 0..inf
+		fleet = {
+			name = localisation
+			naval_base = enum[provinces]
+			## cardinality = 1..inf
+			task_force = {
+				name = localisation
+				location = enum[provinces]
+				## cardinality = 1..inf
+				ship = {
+					name = localisation
+					## cardinality = 0..1
+					pride_of_the_fleet = yes
+					definition = <unit.ship_unit>
+					equipment = {
+						<equipment.naval_equip> = {
+							amount = int
+							owner = enum[country_tags]
+							## cardinality = 0..1
+							version_name = localisation
+						}
+					}
+				}
+			}
+		}
 	}
 
 	## cardinality = 0..1

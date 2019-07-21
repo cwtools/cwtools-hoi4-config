@@ -11,13 +11,23 @@ types = {
 		}
 		subtype[naval_equip] = {
 			## cardinality = 0..1
-			type = <unit.ship_unit>
+			type = enum[ship_units]
+			## cardinality = 0..1
+			type = {
+				## cardinality = 1..inf
+				enum[ship_units]
+			}
 			## cardinality = 0..1
 			archetype = <equipment.naval_equip>
 		}
 		subtype[air_equip] = {
 			## cardinality = 0..1
 			type = enum[air_units]
+			## cardinality = 0..1
+			type = {
+				## cardinality = 1..inf
+				enum[air_units]
+			}
 			## cardinality = 0..1
 			archetype = <equipment.air_equip>
 		}
@@ -69,6 +79,11 @@ equipment = {
 	can_license = bool
 	## cardinality = 0..1
 	sprite = scalar # enum[unit_sprites]
+	## cardinality = 0..1
+	alias = <unit>
+
+	### Priority for usage over other equipment.
+	priority = int
 
 	subtype[archetype_equip] = {
 		### GFX reference used to define equipment picture in land-lease.
@@ -99,9 +114,6 @@ equipment = {
 		### Which equipment is parent to this equipment (i.e. which does it supercede).
 		parent = <equipment.regular_equip>
 
-		### Priority for usage over other equipment.
-		priority = int
-
 		## cardinality = 0..1
 		### Image priority in production screen.
 		visual_level = int
@@ -116,46 +128,12 @@ equipment = {
 			<equipment.regular_equip>
 		}
 	}
-	## cardinality = 0..1
-	### Internal type: what kind of unit can use this equipment.
-	type = enum[unit_types]
-
-	## cardinality = 0..1
-	### Internal type: what kind of unit can use this equipment.
-	type = {
-		## cardinality = 1..inf
-		enum[unit_types]
-	}
-
-	alias_name[unit_stat] = alias_match_left[unit_stat]
-	alias_name[naval_stat] = alias_match_left[naval_stat]
-	alias_name[air_stat] = alias_match_left[air_stat]
-	## cardinality = 0..1
-	offensive_weapons = bool
-
-	## cardinality = 0..1
-	### Resources needed for producing one unit of the equipment..
-	resources = {
-		## cardinality = 0..inf
-		<resource> = int
-	}
-
-	## cardinality = 0..3
-	### List of upgrade names.
-	upgrades = {
-		## cardinality = 0..4
-		<upgrade>
-	}
 
 	subtype[naval_equip] = {
 		## cardinality = 0..1
 		visual_tech_level_addition = int
 		## cardinality = 0..1
 		model = scalar
-		## cardinality = 0..1
-		alias = <unit>
-		## cardinality = 0..1
-		priority = int
 
 		## cardinality = 0..1
 		### List of module slots and their details.
@@ -190,14 +168,44 @@ equipment = {
 			count = int
 		}
 
+		### List of modules assigned to module slots for the default equipment variant for this type.
 		default_modules = {
 			## cardinality = 0..inf
 			enum[module_slots] = <module>
 			## cardinality = 0..inf
 			enum[module_slots] = empty
 		}
+	}
 
-		test = enum[module_slots]
+	## cardinality = 0..1
+	### Internal type: what kind of unit can use this equipment.
+	type = enum[unit_types]
+
+	## cardinality = 0..1
+	### Internal type: what kind of unit can use this equipment.
+	type = {
+		## cardinality = 1..inf
+		enum[unit_types]
+	}
+
+	alias_name[unit_stat] = alias_match_left[unit_stat]
+	alias_name[naval_stat] = alias_match_left[naval_stat]
+	alias_name[air_stat] = alias_match_left[air_stat]
+	## cardinality = 0..1
+	offensive_weapons = bool
+
+	## cardinality = 0..1
+	### Resources needed for producing one unit of the equipment..
+	resources = {
+		## cardinality = 0..inf
+		<resource> = int
+	}
+
+	## cardinality = 0..3
+	### List of upgrade names.
+	upgrades = {
+		## cardinality = 0..4
+		<upgrade>
 	}
 }
 

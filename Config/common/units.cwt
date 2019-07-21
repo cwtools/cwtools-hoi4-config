@@ -62,7 +62,7 @@ unit = {
 		### unit type
 		type = {
 			## cardinality = 1..inf
-			<unit.land_unit>
+			enum[land_units]
 		}
 	}
 	subtype[ship_unit] = {
@@ -87,7 +87,7 @@ unit = {
 		map_icon_category = enum[ship_map_icons]
 		type = {
 			## cardinality = 1..inf
-			<unit.ship_unit>
+			enum[ship_units]
 		}
 		alias_name[naval_stat] = alias_match_left[naval_stat]
 		critical_parts = {

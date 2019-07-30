@@ -11,14 +11,11 @@ alias[modifier_rule:modifier] = {
 	alias_name[trigger] = alias_match_left[trigger]
 }
 
-#vanila ideologies
 alias[modifier:<ideology>_acceptance] = int
 alias[modifier:<ideology>_drift] = float
-
-#local_resources_<resource>
 alias[modifier:local_resources_<resource>] = int
-
 alias[modifier:enum[sub_unit_modifiers]] = float
+alias[modifier:production_speed_<building>_factor] = float
 
 #unit stats
 alias[unit_stat:acclimatization_cold_climate_gain_factor] = float
@@ -133,12 +130,10 @@ alias[unit_leader_modifier:air_superiority_bonus_in_combat] = float
 alias[unit_leader_modifier:cannot_use_abilities] = int[0..1]
 alias[unit_leader_modifier:cas_damage_reduction] = float
 alias[unit_leader_modifier:equipment_capture] = float
-alias[unit_leader_modifier:experience_gain_factor] = float
 alias[unit_leader_modifier:extra_marine_supply_grace] = float
 alias[unit_leader_modifier:extra_paratrooper_supply_grace] = float
 alias[unit_leader_modifier:max_army_group_size] = int
 alias[unit_leader_modifier:max_commander_army_size] = int
-alias[unit_leader_modifier:max_dig_in_factor] = float
 alias[unit_leader_modifier:org_loss_when_moving] = float
 alias[unit_leader_modifier:promote_cost_factor] = float
 alias[unit_leader_modifier:reassignment_duration_factor] = float

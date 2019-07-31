@@ -200,12 +200,14 @@ alias[effect:state_event] = <event.state_event>
 ## scope = any
 alias[effect:set_variable] = {
 	value_set[variable] = variable_field
+	value_set[variable] = scope_field
 }
 ### Sets a variable to a value or another variable.
 ## scope = any
 alias[effect:set_variable] = {
 	var = value_set[variable]
 	value = variable_field
+	value = scope_field
 }
 
 ### a random effect.

@@ -11,8 +11,11 @@ oob = {
 
 	## cardinality = 0..inf
 	division_template = {
-		name = localisation
+		name = scalar
+		## cardinality = 0..1
 		division_names_group = <division_name>
+		## cardinality = 0..1
+		is_locked = yes
 		regiments = {
 			## cardinality = 1..25
 			<unit> = { x = int[0..5] y = int[0..5] }
@@ -35,7 +38,7 @@ oob = {
 				## cardinality = 0..1
 				creator = enum[country_tags]
 				## cardinality = 0..1
-				version_name = localisation
+				version_name = scalar
 			}
 			## cardinality = 0..1
 			amount = int
@@ -53,14 +56,14 @@ oob = {
 		## cardinality = 0..inf
 		division = {
 			## cardinality = 0..1
-			name = localisation
+			name = scalar
 			## cardinality = 0..1
 			division_name = {
 				is_name_ordered = bool
 				name_order = int
 			}
 			location = enum[provinces]
-			division_template = localisation
+			division_template = scalar
 			## cardinality = 0..1
 			start_experience_factor = float
 			## cardinality = 0..1
@@ -69,24 +72,26 @@ oob = {
 
 		## cardinality = 0..inf
 		fleet = {
-			name = localisation
+			name = scalar
 			naval_base = enum[provinces]
 			## cardinality = 1..inf
 			task_force = {
-				name = localisation
+				name = scalar
 				location = enum[provinces]
 				## cardinality = 1..inf
 				ship = {
-					name = localisation
+					name = scalar
 					## cardinality = 0..1
 					pride_of_the_fleet = yes
 					definition = <unit.ship_unit>
+					## cardinality = 0..1
+					start_experience_factor = float
 					equipment = {
 						<equipment.naval_equip> = {
 							amount = int
 							owner = enum[country_tags]
 							## cardinality = 0..1
-							version_name = localisation
+							version_name = scalar
 						}
 					}
 				}

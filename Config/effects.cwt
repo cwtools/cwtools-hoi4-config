@@ -311,7 +311,7 @@ alias[effect:create_country_leader] = {
 	expire = date_field
 	## cardinality = 0..1
 	traits = {
-		## cardinality = 0..inf
+		## cardinality = 1..inf
 		<country_leader_trait>
 	}
 	## cardinality = 0..1
@@ -442,7 +442,9 @@ alias[effect:set_technology] = {
 ### create navy leader for country.
 ## scope = country
 alias[effect:create_navy_leader] = {
-	name = localisation
+	name = scalar
+	## cardinality = 0..1
+	desc = localisation
 	## cardinality = 0..1
 	picture = scalar
 	## cardinality = 0..1
@@ -451,7 +453,7 @@ alias[effect:create_navy_leader] = {
 	gfx = scalar
 	## cardinality = 0..1
 	traits = {
-		## cardinality = 0..inf
+		## cardinality = 1..inf
 		<unit_leader_trait>
 	}
 	skill = int
@@ -1017,7 +1019,7 @@ alias[effect:set_major] = yes
 ### create field marshal for country.
 ## scope = country
 alias[effect:create_field_marshal] = {
-	name = localisation
+	name = scalar
 	## cardinality = 0..1
 	desc = localisation
 	## cardinality = 0..1
@@ -1028,7 +1030,7 @@ alias[effect:create_field_marshal] = {
 	gfx = scalar
 	## cardinality = 0..1
 	traits = {
-		## cardinality = 0..inf
+		## cardinality = 1..inf
 		<unit_leader_trait>
 	}
 	skill = int
@@ -1046,7 +1048,7 @@ alias[effect:create_field_marshal] = {
 ## scope = country
 alias[effect:create_corps_commander] = {
 	## cardinality = 0..1
-	name = localisation
+	name = scalar
 	## cardinality = 0..1
 	desc = localisation
 	## cardinality = 0..1
@@ -1057,7 +1059,7 @@ alias[effect:create_corps_commander] = {
 	gfx = scalar
 	## cardinality = 0..1
 	traits = {
-		## cardinality = 0..inf
+		## cardinality = 1..inf
 		<unit_leader_trait>
 	}
 	skill = int
@@ -1144,6 +1146,8 @@ alias[effect:create_equipment_variant] = {
 	modules = {
 		## cardinality = 0..inf
 		enum[module_slots] = <module>
+		## cardinality = 0..inf
+		enum[module_slots] = empty
 	}
 	## cardinality = 0..1
 	obsolete = yes

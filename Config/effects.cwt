@@ -1131,7 +1131,7 @@ alias[effect:show_ideas_tooltip] = enum[idea_name]
 ### creates a new equipment variant.
 ## scope = country
 alias[effect:create_equipment_variant] = {
-	name = localisation
+	name = scalar
 	type = <equipment.regular_equip>
 	## cardinality = 0..1
 	name_group = <ship_name>

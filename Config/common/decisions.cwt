@@ -7,7 +7,7 @@ types = {
 		path_strict = yes
 		skip_root_key = any
 		subtype[mission] = {
-			days_mission_timeout = int
+			days_mission_timeout = int_variable_field
 		}
 		subtype[targeted] = {
 			target_trigger = {
@@ -83,7 +83,7 @@ decision = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 	## cardinality = 0..1
-	cost = int
+	cost = int_variable_field
 	subtype[custom_cost] = {
 		custom_cost_trigger = {
 			alias_name[trigger] = alias_match_left[trigger]
@@ -94,6 +94,11 @@ decision = {
 	## push_scope = state
 	highlight_states = {
 		alias_name[trigger] = alias_match_left[trigger]
+	}
+	## cardinality = 0..1
+	highlight_provinces = {
+		## cardinality = 1..inf
+		enum[provinces]
 	}
 	## cardinality = 0..1
 	complete_effect = {
@@ -141,6 +146,15 @@ decision = {
 		target_trigger = {
 			alias_name[trigger] = alias_match_left[trigger]
 		}
+		targets = {
+			## cardinality = 1..inf
+			enum[country_tags]
+		}
+		target_root_trigger = {
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+		## cardinality = 0..1
+		target_array = value[array]
 	}
 	## cardinality = 0..3
 	enum[war_with_on] = scope[country]
@@ -158,6 +172,8 @@ decision = {
 		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	}
 
+	## cardinality = 0..1
+	on_map_mode = map_only
 
 }
 enums = {

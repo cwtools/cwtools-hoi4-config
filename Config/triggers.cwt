@@ -105,6 +105,12 @@ alias[trigger:check_variable] = {
 ### Compares a variable to a number or variable.
 ## scope = any
 alias[trigger:check_variable] = {
+	variable_field = variable_field
+}
+
+### Compares a variable to a number or variable.
+## scope = any
+alias[trigger:check_variable] = {
 	var = value[variable]
 	value = variable_field
 	compare = enum[var_compares]
@@ -1677,6 +1683,7 @@ alias[trigger:army_manpower_in_state] = {
 	state = <state>
 	state = int_variable_field
 	amount = int_variable_field
+	## cardinality = 0..1
 	type = enum[unit_types]
 }
 

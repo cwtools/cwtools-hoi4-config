@@ -43,7 +43,29 @@ alias[effect:change_tag_from] = enum[country_tags]
 
 ### Adds static modifiers to specified province.
 ## scopes = { state }
-alias[effect:add_province_modifier] = replace_me
+alias[effect:add_province_modifier] = {
+	static_modifiers = {
+		## cardinality = 1..inf
+		<static_modifier>
+	}
+	province = {
+		## cardinality = 1..inf
+		id = enum[provinces]
+	}
+}
+
+### Removes static modifiers fom specified province.
+## scopes = { state }
+alias[effect:remove_province_modifier] = {
+	static_modifiers = {
+		## cardinality = 1..inf
+		<static_modifier>
+	}
+	province = {
+		## cardinality = 1..inf
+		id = enum[provinces]
+	}
+}
 
 ### set country flag.
 ## scope = country
@@ -311,7 +333,7 @@ alias[effect:create_country_leader] = {
 	expire = date_field
 	## cardinality = 0..1
 	traits = {
-		## cardinality = 1..inf
+		## cardinality = 0..inf
 		<country_leader_trait>
 	}
 	## cardinality = 0..1
@@ -1030,7 +1052,7 @@ alias[effect:create_field_marshal] = {
 	gfx = scalar
 	## cardinality = 0..1
 	traits = {
-		## cardinality = 1..inf
+		## cardinality = 0..inf
 		<unit_leader_trait>
 	}
 	skill = int
@@ -1324,6 +1346,7 @@ alias[effect:drop_cosmetic_tag] = bool
 ### Transfers ship from scope country to target country.
 ## scope = country
 alias[effect:transfer_ship] = {
+	## cardinality = 0..1
 	prefer_name = scalar
 	type = <unit.ship_unit>
 	target = scope[country]

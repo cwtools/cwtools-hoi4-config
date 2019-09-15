@@ -1,7 +1,7 @@
 types = {
 	type[state] = {
 		path = "game/history/states"
-		name_field = "id"
+		name_field = id
 	}
 	type[state_category] = {
 		path = "game/common/state_category"

@@ -1081,7 +1081,7 @@ alias[effect:create_corps_commander] = {
 	gfx = scalar
 	## cardinality = 0..1
 	traits = {
-		## cardinality = 1..inf
+		## cardinality = 0..inf
 		<unit_leader_trait>
 	}
 	skill = int

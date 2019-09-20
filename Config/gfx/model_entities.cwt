@@ -55,6 +55,8 @@ entity = {
 
 	## cardinality = 0..1
 	pdxmesh = <pdxmesh>
+	## cardinality = 0..1
+	pdxmesh = "empty_mesh"
 
 	## cardinality = 0..1
 	cull_radius = float
@@ -76,6 +78,12 @@ entity = {
 	## cardinality = 0..1
 	default_state = no_state
 
+	## cardinality = 0..1
+	get_state_from_parent = bool
+
+	## cardinality = 0..1
+	clone = <entity>
+
 	## cardinality = 0..inf
 	state = {
 		name = scalar
@@ -88,8 +96,6 @@ entity = {
 
 		## cardinality = 0..1
 		animation = enum[model_animations]
-		## cardinality = 0..1
-		animation = <model_animation>
 
 		## cardinality = 0..1
 		animation_speed = float
@@ -98,16 +104,36 @@ entity = {
 		animation_blend_time = float
 
 		## cardinality = 0..1
+		looping = bool
+
+		## cardinality = 0..1
+		chance = float
+
+		## cardinality = 0..1
 		time_offset = {
 			## cardinality = 2..2
 			float
 		}
 
 		## cardinality = 0..1
-		looping = bool
+		propagate_state = {
+			enum[model_attachments] = enum[model_states]
+		}
+
+		## cardinality = 0..1
+		game_data = {
+			## cardinality = 0..inf
+			hitmiss_effect = {
+				time = float
+				type = enum[hitmiss_effect_types]
+			}
+		}
 
 		## cardinality = 0..inf
 		event = {
+			## cardinality = 0..1
+			id = enum[entity_state_event_ids]
+
 			## cardinality = 0..1
 			trigger_once = bool
 
@@ -131,62 +157,125 @@ entity = {
 			## cardinality = 0..1
 			light = <light>
 		}
+	}
 
+	## cardinality = 0..inf
+	attach = {
+		name = scalar
+		scalar = <entity>
+	}
+
+	## cardinality = 0..1
+	game_data = {
 		## cardinality = 0..1
-		game_data = {
-			## cardinality = 1..inf
-			hitmiss_effect = {
-				time = float
-				type = big
-			}
-		}
+		texture_anim_speed = float
 	}
 }
 
-animation = {
+model_animation = {
 	name = scalar
 	file = scalar
 }
 
 enums = {
+	enum[hitmiss_effect_types] = {
+		big
+		small
+	}
 
-}
+	enum[entity_state_event_ids] = {
+		a_1_bomb
+		a_1_crash
+		a_1_fire
+		a_1_fire
+		a_1_idle
+		a_1_idle
+		a_1_supply
+		a_2_bomb
+		a_2_crash
+		a_2_fire
+		a_2_fire
+		a_2_idle
+		a_2_idle
+		a_2_supply
+		a_3_bomb
+		a_3_crash
+		a_3_fire
+		a_3_idle
+		a_3_idle
+		a_3_supply
+		a_bomb
+		a_crash
+		a_explode
+		a_fire
+		a_fire
+		a_idle
+		a_idle
+		a_supply
+		d_1_crash
+		d_1_crash
+		d_1_fire
+		d_1_idle
+		d_2_crash
+		d_2_fire
+		d_2_fire
+		d_2_idle
+		d_2_idle
+		d_3_crash
+		d_3_fire
+		d_3_idle
+		d_bomb
+		d_crash
+		d_crash
+		d_fire
+		d_idle
+		d_idle
+	}
 
-enums = {
-	enum[model_animations] = {
-		arm_out
-		attack
-		back_bend
-		combat_idle
-		damaged
-		damaged_attack
-		damaged_defend
-		death
-		defend
-		idle
-		jump
-		leg_forward
-		move
-		squat
+	complex_enum[model_animations] = {
+		path = "game/gfx"
+		start_from_root = yes
+		name = {
+			objectTypes = {
+				pdxmesh = {
+					animation= {
+						id = enum_name
+					}
+				}
+			}
+		}
 	}
 
 	complex_enum[model_states] = {
 		path = "game/gfx"
+		start_from_root = yes
 		name = {
-			state = {
-				name = enum_name
+			entity = {
+				state = {
+					name = enum_name
+				}
 			}
 		}
 	}
 
 	complex_enum[model_locators] = {
-		path = "game/gfx/models"
+		path = "game/gfx"
+		start_from_root = yes
 		name = {
-			locator = {
-				name = enum_name
-			}
-			state = {
+			entity = {
 				locator = {
+					name = enum_name
+				}
+			}
+		}
+	}
+
+	complex_enum[model_attachments] = {
+		path = "game/gfx"
+		start_from_root = yes
+		name = {
+			entity = {
+				attach = {
 					name = enum_name
 				}
 			}

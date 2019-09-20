@@ -32,7 +32,7 @@ pdxmesh = {
 	## cardinality = 0..inf
 	animation = {
 		id = scalar
-		type = scalar
+		type = <model_animation>
 	}
 
 	## cardinality = 0..inf

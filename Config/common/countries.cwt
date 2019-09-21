@@ -36,7 +36,8 @@ enums = {
 		}
 	}
 	complex_enum[comsmetic_tags] = {
-		path = "game/common/countries/cosmetic.txt"
+		path = "game/common/countries"
+		path_file = "cosmetic.txt"
 		start_from_root = yes
 		name = {
 			enum_name = {

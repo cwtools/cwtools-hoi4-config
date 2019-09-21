@@ -70,7 +70,8 @@ rocketsites = {
 
 enums = {
 	complex_enum[continents] = {
-		path = "game/map/continent.txt"
+		path = "game/map"
+		path_file = "continent.txt"
 		name = {
 			enum_name
 		}

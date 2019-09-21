@@ -1,0 +1,958 @@
+### add_legitimacy = 10. Adds legitimacy to scope country. Value has to be 0-100.
+## scopes = { country }
+alias[effect:add_legitimacy] = replace_me
+### Adds the stability to the country in scope. Example: add_stability = 5
+## scopes = { country }
+alias[effect:add_stability] = replace_me
+### Adds manpower to the country in scope or locally on a state if in state scope
+## scopes = { state country }
+alias[effect:add_manpower] = replace_me
+### Shows just a custom tooltip
+## scopes = { ??? }
+alias[effect:custom_effect_tooltip] = replace_me
+### move capital to state
+## scopes = { country }
+alias[effect:set_capital] = replace_me
+### add core on state
+## scopes = { country }
+alias[effect:add_state_core] = replace_me
+### remove core on state
+## scopes = { country }
+alias[effect:remove_state_core] = replace_me
+### Changes player to other country
+## scopes = { ??? }
+alias[effect:change_tag_from] = replace_me
+### Adds static modifiers to specified province.
+## scopes = { state }
+alias[effect:add_province_modifier] = replace_me
+### set country flag
+## scopes = { country }
+alias[effect:set_country_flag] = replace_me
+### clear country flag
+## scopes = { country }
+alias[effect:clr_country_flag] = replace_me
+### set global flag
+## scopes = { ??? }
+alias[effect:set_global_flag] = replace_me
+### clear global flag
+## scopes = { ??? }
+alias[effect:clr_global_flag] = replace_me
+### Removes specified building in specified state or province
+## scopes = { state country }
+alias[effect:remove_building] = replace_me
+### releases specified country as a puppet
+## scopes = { country }
+alias[effect:release] = replace_me
+### Executes children effects on every country that fulfills the "limit" trigger.
+## scopes = { ??? }
+alias[effect:every_country] = {
+    ## cardinality = 0..1
+    limit = {
+        alias_name[trigger] = alias_match_left[trigger]
+    }
+    alias_name[effect] = alias_match_left[effect]
+}
+
+### Executes children effects on random country that fulfills the "limit" trigger.
+## scopes = { ??? }
+alias[effect:random_country] = {
+    ## cardinality = 0..1
+    limit = {
+        alias_name[trigger] = alias_match_left[trigger]
+    }
+    alias_name[effect] = alias_match_left[effect]
+}
+
+### Executes children effects on every neighbor country that fulfills the "limit" trigger.
+## scopes = { country }
+alias[effect:every_neighbor_country] = {
+    ## cardinality = 0..1
+    limit = {
+        alias_name[trigger] = alias_match_left[trigger]
+    }
+    alias_name[effect] = alias_match_left[effect]
+}
+
+### Executes children effects on random neighbor country that fulfills the "limit" trigger.
+## scopes = { country }
+alias[effect:random_neighbor_country] = {
+    ## cardinality = 0..1
+    limit = {
+        alias_name[trigger] = alias_match_left[trigger]
+    }
+    alias_name[effect] = alias_match_left[effect]
+}
+
+### Executes children effects on random enemy country that fulfills the "limit" trigger.
+## scopes = { country }
+alias[effect:every_enemy_country] = {
+    ## cardinality = 0..1
+    limit = {
+        alias_name[trigger] = alias_match_left[trigger]
+    }
+    alias_name[effect] = alias_match_left[effect]
+}
+
+### Executes children effects on random enemy country that fulfills the "limit" trigger.
+## scopes = { country }
+alias[effect:random_enemy_country] = {
+    ## cardinality = 0..1
+    limit = {
+        alias_name[trigger] = alias_match_left[trigger]
+    }
+    alias_name[effect] = alias_match_left[effect]
+}
+
+### fires a country event
+## scopes = { country }
+alias[effect:country_event] = replace_me
+### fires a state event
+## scopes = { state country }
+alias[effect:state_event] = replace_me
+### Removes a static modifiers to specified province
+## scopes = { state }
+alias[effect:remove_province_modifier] = replace_me
+### Sets a variable to a value or another variable
+## scopes = { ??? }
+alias[effect:set_variable] = replace_me
+### Adds strategy entry to country AI
+## scopes = { country }
+alias[effect:add_ai_strategy] = replace_me
+### a random effect
+## scopes = { ??? }
+alias[effect:random] = replace_me
+### a random effect
+## scopes = { ??? }
+alias[effect:random_list] = {
+    ## cardinality = 0..1
+    limit = {
+        alias_name[trigger] = alias_match_left[trigger]
+    }
+    alias_name[effect] = alias_match_left[effect]
+}
+
+### white peaces the two countries if at war
+## scopes = { country }
+alias[effect:white_peace] = replace_me
+### Effect not shown in tooltips
+## scopes = { state country }
+alias[effect:hidden_effect] = replace_me
+### a conditional effect
+## scopes = { ??? }
+alias[effect:if] = replace_me
+### add claim on state
+## scopes = { country }
+alias[effect:add_state_claim] = replace_me
+### remove claim on state
+## scopes = { country }
+alias[effect:remove_state_claim] = replace_me
+### Add opinion modifier(s) to target(s)
+## scopes = { country }
+alias[effect:add_opinion_modifier] = replace_me
+### Remove opinion modifier from target
+## scopes = { country }
+alias[effect:remove_opinion_modifier] = replace_me
+### creates a leader and adds it to proper party in country
+## scopes = { country }
+alias[effect:create_country_leader] = replace_me
+### Print message to game.log - Can be localized
+## scopes = { ??? }
+alias[effect:log] = replace_me
+### Create unit effect, just like in OOB,  from effect with specified parameters: owner, prioritize_location.
+## scopes = { ??? }
+alias[effect:create_unit] = replace_me
+### Plays sound effect
+## scopes = { ??? }
+alias[effect:sound_effect] = replace_me
+### promotes general to field marshal
+alias[effect:promote_leader] = replace_me
+### Randomize weather effect
+## scopes = { ??? }
+alias[effect:randomize_weather] = replace_me
+### add a division template to country
+## scopes = { country }
+alias[effect:division_template] = replace_me
+### change the ideology of active leader
+## scopes = { country }
+alias[effect:set_country_leader_ideology] = replace_me
+### add trait to active country leader
+## scopes = { country }
+alias[effect:add_country_leader_trait] = replace_me
+### remove trait from active country leader
+## scopes = { country }
+alias[effect:remove_country_leader_trait] = replace_me
+### set properties of a political party
+## scopes = { country }
+alias[effect:set_political_party] = replace_me
+### set country political status
+## scopes = { country }
+alias[effect:set_politics] = replace_me
+### add idea(s) to country
+## scopes = { country }
+alias[effect:add_ideas] = replace_me
+### remove idea(s) from country
+## scopes = { country }
+alias[effect:remove_ideas] = replace_me
+### add political power to country
+## scopes = { country }
+alias[effect:add_political_power] = replace_me
+### set political power for country
+## scopes = { country }
+alias[effect:set_political_power] = replace_me
+### sets technology level(s) on country
+## scopes = { country }
+alias[effect:set_technology] = replace_me
+### create navy leader for country
+## scopes = { country }
+alias[effect:create_navy_leader] = replace_me
+### remove trait from unit leader
+alias[effect:remove_unit_leader_trait] = replace_me
+### add trait to unit leader
+alias[effect:add_unit_leader_trait] = replace_me
+### adds new namespace
+## scopes = { ??? }
+alias[effect:add_namespace] = replace_me
+### set owner for state
+## scopes = { country }
+alias[effect:set_state_owner] = replace_me
+### puppets specified country
+## scopes = { country }
+alias[effect:puppet] = replace_me
+### set controller for state
+## scopes = { country }
+alias[effect:set_state_controller] = replace_me
+### set owner and controller for state
+## scopes = { country }
+alias[effect:transfer_state] = replace_me
+### set state flag
+## scopes = { state }
+alias[effect:set_state_flag] = replace_me
+### clear state flag
+## scopes = { state }
+alias[effect:clr_state_flag] = replace_me
+### create faction of specified name
+## scopes = { country }
+alias[effect:create_faction] = replace_me
+### add nukes to country
+## scopes = { country }
+alias[effect:add_nuclear_bombs] = replace_me
+### 
+## scopes = { country }
+alias[effect:annex_country] = replace_me
+### Starts building construction for amount of levels in specified state or province
+## scopes = { state }
+alias[effect:add_building_construction] = replace_me
+### dismantle faction led by the current country
+## scopes = { country }
+alias[effect:dismantle_faction] = replace_me
+### adds specified country to faction
+## scopes = { country }
+alias[effect:add_to_faction] = replace_me
+### removes specified country from faction
+## scopes = { country }
+alias[effect:remove_from_faction] = replace_me
+### guarantees specified country
+## scopes = { country }
+alias[effect:give_guarantee] = replace_me
+### gives military access to the specified country
+## scopes = { country }
+alias[effect:give_military_access] = replace_me
+### Executes children effects on random state that fulfills the "limit" trigger.
+## scopes = { ??? }
+alias[effect:random_state] = {
+    ## cardinality = 0..1
+    limit = {
+        alias_name[trigger] = alias_match_left[trigger]
+    }
+    alias_name[effect] = alias_match_left[effect]
+}
+
+### Executes children effects on random owned state that fulfills the "limit" trigger. 
+## scopes = { country }
+alias[effect:random_owned_state] = {
+    ## cardinality = 0..1
+    limit = {
+        alias_name[trigger] = alias_match_left[trigger]
+    }
+    alias_name[effect] = alias_match_left[effect]
+}
+
+### Executes children effects on random neighbor state that fulfills the "limit" trigger.
+## scopes = { state }
+alias[effect:random_neighbor_state] = {
+    ## cardinality = 0..1
+    limit = {
+        alias_name[trigger] = alias_match_left[trigger]
+    }
+    alias_name[effect] = alias_match_left[effect]
+}
+
+### Executes children effects on every state that fulfills the "limit" trigger.
+## scopes = { ??? }
+alias[effect:every_state] = {
+    ## cardinality = 0..1
+    limit = {
+        alias_name[trigger] = alias_match_left[trigger]
+    }
+    alias_name[effect] = alias_match_left[effect]
+}
+
+### Executes children effects on every owned state that fulfills the "limit" trigger.
+## scopes = { country }
+alias[effect:every_owned_state] = {
+    ## cardinality = 0..1
+    limit = {
+        alias_name[trigger] = alias_match_left[trigger]
+    }
+    alias_name[effect] = alias_match_left[effect]
+}
+
+### Executes children effects on every neighbor state that fulfills the "limit" trigger.
+## scopes = { state }
+alias[effect:every_neighbor_state] = {
+    ## cardinality = 0..1
+    limit = {
+        alias_name[trigger] = alias_match_left[trigger]
+    }
+    alias_name[effect] = alias_match_left[effect]
+}
+
+### fires a news event
+## scopes = { country }
+alias[effect:news_event] = replace_me
+### declares war on specified country
+## scopes = { country }
+alias[effect:declare_war_on] = replace_me
+### add political power to country scaled by the difference in IC between the receiver and another country
+## scopes = { country }
+alias[effect:add_scaled_political_power] = replace_me
+### Immediately holds an election in the target country
+## scopes = { country }
+alias[effect:hold_election] = replace_me
+### add popularity to an ideology in a country
+## scopes = { country }
+alias[effect:add_popularity] = replace_me
+### Remove all ideas with specified trait from country
+## scopes = { country }
+alias[effect:remove_ideas_with_trait] = replace_me
+### Given ideology starts a civil war in the country.
+## scopes = { country }
+alias[effect:start_civil_war] = replace_me
+### retires a country leader and removes him as leader of his party, making the next in line the new party and country leader
+## scopes = { country }
+alias[effect:retire_country_leader] = replace_me
+### kills a country leader and removes him completely, making the next in line the new party and country leader
+## scopes = { country }
+alias[effect:kill_country_leader] = replace_me
+### releases specified country as puppet
+## scopes = { country }
+alias[effect:release_puppet] = replace_me
+### creates wargoal for country in scope
+## scopes = { country }
+alias[effect:create_wargoal] = replace_me
+### Add state claim by country.
+## scopes = { state }
+alias[effect:add_claim_by] = replace_me
+### Removes state claim by country.
+## scopes = { state }
+alias[effect:remove_claim_by] = replace_me
+### Add state as core of country
+## scopes = { state }
+alias[effect:add_core_of] = replace_me
+### Removes state as core of country
+## scopes = { state }
+alias[effect:remove_core_of] = replace_me
+### add army experience for country
+## scopes = { country }
+alias[effect:army_experience] = replace_me
+### add naval experience for country
+## scopes = { country }
+alias[effect:navy_experience] = replace_me
+### add air experience for country
+## scopes = { country }
+alias[effect:air_experience] = replace_me
+### save an event target
+## scopes = { ??? }
+alias[effect:save_event_target_as] = replace_me
+### save a global event target
+## scopes = { ??? }
+alias[effect:save_global_event_target_as] = replace_me
+### clear a global event target
+## scopes = { ??? }
+alias[effect:clear_global_event_target] = replace_me
+### clear all global event targets
+## scopes = { ??? }
+alias[effect:clear_global_event_targets] = replace_me
+### break execution of effects
+## scopes = { state country }
+alias[effect:break] = replace_me
+### unlocks a focus for a country
+## scopes = { country }
+alias[effect:unlock_national_focus] = replace_me
+### adds a limited use tech bonus
+## scopes = { country }
+alias[effect:add_tech_bonus] = replace_me
+### adds a limited use tech bonus
+## scopes = { state }
+alias[effect:set_demilitarized_zone] = replace_me
+### Adds a research slot (negative values subtracts)
+## scopes = { country }
+alias[effect:add_research_slot] = replace_me
+### Sets the number of research slots
+## scopes = { country }
+alias[effect:set_research_slots] = replace_me
+### starts a border war in a state with neighbouring state that also has border war
+## scopes = { state }
+alias[effect:set_border_war] = replace_me
+### Modify allequipments by factor
+## scopes = { country }
+alias[effect:set_equipment_fraction] = replace_me
+### Adds country threat
+## scopes = { country }
+alias[effect:add_threat] = replace_me
+### Sends to target scope specified amount of equipment.
+## scopes = { country }
+alias[effect:send_equipment] = replace_me
+### Adds rule to country
+## scopes = { country }
+alias[effect:set_rule] = replace_me
+### Set up a diplomatic relation between two nations
+## scopes = { country }
+alias[effect:diplomatic_relation] = replace_me
+### Shows just tooltip of effects
+## scopes = { state country }
+alias[effect:effect_tooltip] = replace_me
+### Adds resource production to state
+## scopes = { state country }
+alias[effect:add_resource] = replace_me
+### remove a unit leader ( remove_unit_leader=ID )
+## scopes = { country }
+alias[effect:remove_unit_leader] = replace_me
+### add time limited idea to country idea, add_timed_idea = { idea = id days = number_of_days }
+## scopes = { country }
+alias[effect:add_timed_idea] = replace_me
+### Stops specefied country being a puppet of current country
+## scopes = { country }
+alias[effect:end_puppet] = replace_me
+### Immediately loads an Order of Battle (OOB) file.
+## scopes = { country }
+alias[effect:load_oob] = replace_me
+### Creates trade between two countries
+## scopes = { country }
+alias[effect:create_import] = replace_me
+### Adds country threat
+## scopes = { country }
+alias[effect:add_named_threat] = replace_me
+### set controller for province
+## scopes = { country }
+alias[effect:set_province_controller] = replace_me
+### sets mandatory major country flag
+## scopes = { country }
+alias[effect:set_major] = replace_me
+### create field marshal for country
+## scopes = { country }
+alias[effect:create_field_marshal] = replace_me
+### create corps commander for country
+## scopes = { country }
+alias[effect:create_corps_commander] = replace_me
+### Goes to stated province.
+## scopes = { country }
+alias[effect:goto_province] = replace_me
+### Goes to stated state.
+## scopes = { ??? }
+alias[effect:goto_state] = replace_me
+### Country leaves the faction
+## scopes = { country }
+alias[effect:leave_faction] = replace_me
+### unlocks a focus for a country
+## scopes = { country }
+alias[effect:complete_national_focus] = replace_me
+### change partyname for an ideology in a country
+## scopes = { country }
+alias[effect:set_party_name] = replace_me
+### add extra shared building slot to state
+## scopes = { state }
+alias[effect:add_extra_state_shared_building_slots] = replace_me
+### Add opinion modifier(s) to target(s)
+## scopes = { country }
+alias[effect:reverse_add_opinion_modifier] = replace_me
+### adds country to the specified war
+## scopes = { country }
+alias[effect:add_to_war] = replace_me
+### show what idea does
+## scopes = { country }
+alias[effect:show_ideas_tooltip] = replace_me
+### Creates a new equipment variant.
+## scopes = { country }
+alias[effect:create_equipment_variant] = replace_me
+### Adds an equipment production
+## scopes = { country }
+alias[effect:add_equipment_production] = replace_me
+### adds an air ace
+## scopes = { country }
+alias[effect:add_ace] = replace_me
+### Executes children effects on random owned state that fulfills the "limit" trigger.
+## scopes = { country }
+alias[effect:random_owned_controlled_state] = {
+    ## cardinality = 0..1
+    limit = {
+        alias_name[trigger] = alias_match_left[trigger]
+    }
+    alias_name[effect] = alias_match_left[effect]
+}
+
+### ai message... ?
+## scopes = { country }
+alias[effect:ai_message] = replace_me
+### Executes children effects on every other country that fulfills the "limit" trigger. Excludes current country
+## scopes = { ??? }
+alias[effect:every_other_country] = {
+    ## cardinality = 0..1
+    limit = {
+        alias_name[trigger] = alias_match_left[trigger]
+    }
+    alias_name[effect] = alias_match_left[effect]
+}
+
+### Executes children effects on random country that fulfills the "limit" trigger. Excludes current country
+## scopes = { ??? }
+alias[effect:random_other_country] = {
+    ## cardinality = 0..1
+    limit = {
+        alias_name[trigger] = alias_match_left[trigger]
+    }
+    alias_name[effect] = alias_match_left[effect]
+}
+
+### Adds equipment to the countries stockpiles.
+## scopes = { country }
+alias[effect:add_equipment_to_stockpile] = replace_me
+### swap 2 ideas. 
+## scopes = { country }
+alias[effect:swap_ideas] = replace_me
+### Damages buildings in the current state.
+## scopes = { state }
+alias[effect:damage_building] = replace_me
+### releases specified country with specified level of autonomy.
+## scopes = { country }
+alias[effect:release_autonomy] = replace_me
+### makes autonomy of specified level and country.
+## scopes = { country }
+alias[effect:set_autonomy] = replace_me
+### Adds country to technology sharing group of specified name.
+## scopes = { country }
+alias[effect:add_to_tech_sharing_group] = replace_me
+### Removes country from technology sharing group of specified name.
+## scopes = { country }
+alias[effect:remove_from_tech_sharing_group] = replace_me
+### Adds exact freedom score to the autonomy.
+## scopes = { country }
+alias[effect:add_autonomy_score] = replace_me
+### Modify country bonus for specified technology sharing group.
+## scopes = { country }
+alias[effect:modify_tech_sharing_bonus] = replace_me
+### Adds % freedom score to the autonomy.
+## scopes = { country }
+alias[effect:add_autonomy_ratio] = replace_me
+### Sets country cosmetic tag.
+## scopes = { country }
+alias[effect:set_cosmetic_tag] = replace_me
+### Drops country cosmetic tag.
+## scopes = { country }
+alias[effect:drop_cosmetic_tag] = replace_me
+### Transfers ship from scope country to target country.
+## scopes = { country }
+alias[effect:transfer_ship] = replace_me
+### Sets the category of a state
+## scopes = { state }
+alias[effect:set_state_category] = replace_me
+### modify global flag. Only modifies if flag already exists.
+## scopes = { ??? }
+alias[effect:modify_global_flag] = replace_me
+### modify country flag. Only modifies if flag already exists.
+## scopes = { country }
+alias[effect:modify_country_flag] = replace_me
+### modify state flag. Only modifies if flag already exists.
+## scopes = { state }
+alias[effect:modify_state_flag] = replace_me
+### Adds a modifier to the state
+## scopes = { state }
+alias[effect:add_state_modifier] = replace_me
+### set_province_name = { id = <province id> name = <string> } - Set name for a province
+## scopes = { ??? }
+alias[effect:set_province_name] = replace_me
+### set_state_name = <string> - Set the current states name
+## scopes = { state }
+alias[effect:set_state_name] = replace_me
+### reset name of a province back to localization one.
+## scopes = { ??? }
+alias[effect:reset_province_name] = replace_me
+### reset_state_name = yes - Resets the current states name to the original one
+## scopes = { state }
+alias[effect:reset_state_name] = replace_me
+### Creates production license
+## scopes = { country }
+alias[effect:create_production_license] = replace_me
+### Adds a static modifier between current scope and target
+## scopes = { country }
+alias[effect:add_relation_modifier] = replace_me
+### Removes a static modifier between current scope and target
+## scopes = { country }
+alias[effect:remove_relation_modifier] = replace_me
+### Sets specific level of a building construction for amount of levels in specified state or province
+## scopes = { state }
+alias[effect:set_building_level] = replace_me
+### Sets the stability to the country in scope. Example: set_stability = 80
+## scopes = { country }
+alias[effect:set_stability] = replace_me
+### Adds the war support to the country in scope. Example: add_war_support = 5
+## scopes = { country }
+alias[effect:add_war_support] = replace_me
+### Sets the war support to the country in scope. Example: set_war_support = 80
+## scopes = { country }
+alias[effect:set_war_support] = replace_me
+### Executes children effects on random unit leader that fulfills the "limit" trigger.
+## scopes = { country }
+alias[effect:random_unit_leader] = {
+    ## cardinality = 0..1
+    limit = {
+        alias_name[trigger] = alias_match_left[trigger]
+    }
+    alias_name[effect] = alias_match_left[effect]
+}
+
+### Executes children effects on unit leaders that fulfills the "limit" trigger.
+## scopes = { country }
+alias[effect:every_unit_leader] = {
+    ## cardinality = 0..1
+    limit = {
+        alias_name[trigger] = alias_match_left[trigger]
+    }
+    alias_name[effect] = alias_match_left[effect]
+}
+
+### Executes children effects on random army leader that fulfills the "limit" trigger.
+## scopes = { country }
+alias[effect:random_army_leader] = {
+    ## cardinality = 0..1
+    limit = {
+        alias_name[trigger] = alias_match_left[trigger]
+    }
+    alias_name[effect] = alias_match_left[effect]
+}
+
+### Executes children effects on army leaders that fulfills the "limit" trigger.
+## scopes = { country }
+alias[effect:every_army_leader] = {
+    ## cardinality = 0..1
+    limit = {
+        alias_name[trigger] = alias_match_left[trigger]
+    }
+    alias_name[effect] = alias_match_left[effect]
+}
+
+### Executes children effects on random navy leader that fulfills the "limit" trigger.
+## scopes = { country }
+alias[effect:random_navy_leader] = {
+    ## cardinality = 0..1
+    limit = {
+        alias_name[trigger] = alias_match_left[trigger]
+    }
+    alias_name[effect] = alias_match_left[effect]
+}
+
+### Executes children effects on navy leaders that fulfills the "limit" trigger.
+## scopes = { country }
+alias[effect:every_navy_leader] = {
+    ## cardinality = 0..1
+    limit = {
+        alias_name[trigger] = alias_match_left[trigger]
+    }
+    alias_name[effect] = alias_match_left[effect]
+}
+
+### Transfers the entire navy from scope country to target country. Does not support carriers!
+## scopes = { country }
+alias[effect:transfer_navy] = replace_me
+### Destroys ships of specified country and amount
+## scopes = { country }
+alias[effect:destroy_ships] = replace_me
+### set unit leader flag
+alias[effect:set_unit_leader_flag] = replace_me
+### modify unit leader flag. Only modifies if flag already exists.
+alias[effect:modify_unit_leader_flag] = replace_me
+### clear unit leader flag
+alias[effect:clr_unit_leader_flag] = replace_me
+### Sets the country that owns current scope general
+alias[effect:set_nationality] = replace_me
+### Demotes field marshal to general
+alias[effect:demote_leader] = replace_me
+### Retires scope unit leader
+alias[effect:retire] = replace_me
+### add command power to country
+## scopes = { country }
+alias[effect:add_command_power] = replace_me
+### show what decision does
+## scopes = { country }
+alias[effect:unlock_decision_tooltip] = replace_me
+### Add buffs to units that are belongs to the army group/navy of this unit leader
+alias[effect:add_temporary_buff_to_units] = replace_me
+### Boost planning of units that are belongs to the army group/navy of this unit leader
+alias[effect:boost_planning] = replace_me
+### add efficiency factor to strategic region for from country
+alias[effect:add_region_efficiency] = replace_me
+### Modifies resource output of specific building for this country only
+## scopes = { country }
+alias[effect:modify_building_resources] = replace_me
+### Executes children effects on army leaders for every country in the world that fulfills the "limit" trigger. Better to use every_army_leader if you know the country
+## scopes = { country }
+alias[effect:global_every_army_leader] = replace_me
+### Adds a value or a variable to another one
+## scopes = { ??? }
+alias[effect:add_to_variable] = replace_me
+### Subtracts a value or a variable to another one
+## scopes = { ??? }
+alias[effect:subtract_from_variable] = replace_me
+### Multiplies a variable to a value or another variable
+## scopes = { ??? }
+alias[effect:multiply_variable] = replace_me
+### Divies a variable to a value or another variable
+## scopes = { ??? }
+alias[effect:divide_variable] = replace_me
+### Clears a variable
+## scopes = { ??? }
+alias[effect:clear_variable] = replace_me
+### Adds attack skill to a unit leader
+alias[effect:add_attack] = replace_me
+### Adds defense skill to a unit leader
+alias[effect:add_defense] = replace_me
+### Adds planning skill to a unit leader
+alias[effect:add_planning] = replace_me
+### localizes name of category and displays tooltip that shows it will be unlocked
+## scopes = { country }
+alias[effect:unlock_decision_category_tooltip] = replace_me
+### shows mission will activate and name. Activation needs to be handled manually, effect is just an easier way to display name of mission.
+## scopes = { country }
+alias[effect:activate_mission_tooltip] = replace_me
+### Sets what focus tree a country uses, retains finished shared focuses.
+## scopes = { country }
+alias[effect:load_focus_tree] = replace_me
+### Adds logistics skill to a unit leader
+alias[effect:add_logistics] = replace_me
+### Add an offsite building to a country
+## scopes = { country }
+alias[effect:add_offsite_building] = replace_me
+### add trait to unit leader
+alias[effect:replace_unit_leader_trait] = replace_me
+### Adds a max assignable trait slot for a general
+alias[effect:add_max_trait] = replace_me
+### Adds a skill level to a unit leader
+alias[effect:add_skill_level] = replace_me
+### Adds a value or a variable to a temp variable
+## scopes = { ??? }
+alias[effect:add_to_temp_variable] = replace_me
+### Subtracts a value or a variable to a temp variable
+## scopes = { ??? }
+alias[effect:subtract_from_temp_variable] = replace_me
+### Multiplies a temp variable to a value or another variable
+## scopes = { ??? }
+alias[effect:multiply_temp_variable] = replace_me
+### Divies a temp variable to a value or another variable
+## scopes = { ??? }
+alias[effect:divide_temp_variable] = replace_me
+### Sets a temp variable to a value or another variable
+## scopes = { ??? }
+alias[effect:set_temp_variable] = replace_me
+### add a timed trait to unit leader
+alias[effect:add_timed_unit_leader_trait] = replace_me
+### Clamps a variable between two values or variables.
+## scopes = { ??? }
+alias[effect:clamp_variable] = replace_me
+### Clamps a temp variable a variable bet ween two a values or another variables
+## scopes = { ??? }
+alias[effect:clamp_temp_variable] = replace_me
+### start a border war between two states. Example:
+## scopes = { ??? }
+alias[effect:start_border_war] = replace_me
+### update border war properties
+## scopes = { ??? }
+alias[effect:set_border_war_data] = replace_me
+### cancel border war between two states
+## scopes = { ??? }
+alias[effect:cancel_border_war] = replace_me
+### Set lock status for a division template
+## scopes = { country }
+alias[effect:set_division_template_lock] = replace_me
+### Delete a template and its units
+## scopes = { country }
+alias[effect:delete_unit_template_and_units] = replace_me
+### prints all variables in scope and temp variables to a file
+## scopes = { state country }
+alias[effect:print_variables] = replace_me
+### Activates mission, ignoring its normal trigger conditions. Cannot activate a mission that is already active. 
+## scopes = { country }
+alias[effect:activate_mission] = replace_me
+### Removes mission without running complete or timeout effects. 
+## scopes = { country }
+alias[effect:remove_mission] = replace_me
+### Scope country recalls attache from target country. Example: GER = { recall_attache = CHI } means Germany recalls attache from China.
+## scopes = { country }
+alias[effect:recall_attache] = replace_me
+### Activates targeted decisions or mission, ignoring its normal trigger conditions, cooldown and fire only once. Cannot activate if active in interface. 
+## scopes = { country }
+alias[effect:activate_targeted_decision] = replace_me
+### Removes targeted decisions or mission. 
+## scopes = { country }
+alias[effect:remove_targeted_decision] = replace_me
+### Modify amount of days of a timed idea.
+## scopes = { country }
+alias[effect:modify_timed_idea] = replace_me
+### Activates specified decision for scope country
+## scopes = { country }
+alias[effect:activate_decision] = replace_me
+### Sets a truce between scope country and target for days duration. 
+## scopes = { country }
+alias[effect:set_truce] = replace_me
+### Rounds a variable
+## scopes = { ??? }
+alias[effect:round_variable] = replace_me
+### fires a unit leader event for owner country
+alias[effect:unit_leader_event] = replace_me
+### finalizes border war between two states, wins or cancels it
+## scopes = { ??? }
+alias[effect:finalize_border_war] = replace_me
+### Remove specified active decision for scope country - Does not run the remove_effect or put the decision on cooldown. Ignores fire_only_once
+## scopes = { country }
+alias[effect:remove_decision] = replace_me
+### swap 2 traits on current ruler. 
+## scopes = { country }
+alias[effect:swap_ruler_traits] = replace_me
+### add random trait from specified list to unit leader. add_random_trait = { old_guard brilliant_strategist inflexible_strategist }
+alias[effect:add_random_trait] = replace_me
+### remove exile tag from scope unit leader. remove_exile_tag = yes
+alias[effect:remove_exile_tag] = replace_me
+### set_legitimacy = 10. Sets legitimacy on scope country to specified value. Value has to be 0-100.
+## scopes = { country }
+alias[effect:set_legitimacy] = replace_me
+### Become exile in target nation. become_exiled_in = { target = TAG legitimacy = 0-100 (optional) }
+## scopes = { country }
+alias[effect:become_exiled_in] = replace_me
+### set_faction_name = NEW_LOC_KEY. Sets the faction name to whatever the new key localises to.
+## scopes = { state country }
+alias[effect:set_faction_name] = replace_me
+### Adds maneuver skill to a unit leader
+alias[effect:add_maneuver] = replace_me
+### Adds maneuver skill to a unit leader
+alias[effect:add_coordination] = replace_me
+### Gives rights to take resources from specified state. give_resource_rights = { receiver = <TAG> state = <id> }
+## scopes = { country }
+alias[effect:give_resource_rights] = replace_me
+### Remove resource right to state for scope country. remove_resource_rights = ID
+## scopes = { country }
+alias[effect:remove_resource_rights] = replace_me
+### Copies over technology state from target
+## scopes = { country }
+alias[effect:inherit_technology] = replace_me
+### Rounds a temporary variable
+## scopes = { ??? }
+alias[effect:round_temp_variable] = replace_me
+### Give supply to units being controlled by this leader. 
+alias[effect:supply_units] = replace_me
+### set current country as leader of its faction
+## scopes = { country }
+alias[effect:set_faction_leader] = replace_me
+### Registers an Order of Battle (OOB) file to be loaded for a country at game start, replacing any previously registered OOB (with the given key) on that country.
+## scopes = { country }
+alias[effect:set_keyed_oob] = replace_me
+### Registers an Order of Battle (OOB) file to be loaded for a country at game start, replacing any previously registered OOB (with no key) on that country.
+## scopes = { country }
+alias[effect:set_oob] = replace_me
+### Registers an Order of Battle (OOB) file to be loaded for a country at game start, replacing any previously registered OOB (with key "naval") on that country.
+## scopes = { country }
+alias[effect:set_naval_oob] = replace_me
+### Adds an element to an array
+## scopes = { ??? }
+alias[effect:add_to_array] = replace_me
+### Removes an element from an array using value or index
+## scopes = { ??? }
+alias[effect:remove_from_array] = replace_me
+### Clears the contents of array
+## scopes = { ??? }
+alias[effect:clear_array] = replace_me
+### Resizes array
+## scopes = { ??? }
+alias[effect:resize_array] = replace_me
+### Adds an element to a temporary array
+## scopes = { ??? }
+alias[effect:add_to_temp_array] = replace_me
+### Removes an element from a temporary array using value or index
+## scopes = { ??? }
+alias[effect:remove_from_temp_array] = replace_me
+### Clears the contents of a temporary array
+## scopes = { ??? }
+alias[effect:clear_temp_array] = replace_me
+### Resizes a temp array
+## scopes = { ??? }
+alias[effect:resize_temp_array] = replace_me
+### Runs a loop on for each element of an array
+## scopes = { ??? }
+alias[effect:for_each_loop] = replace_me
+### add fuel to the country
+## scopes = { country }
+alias[effect:add_fuel] = replace_me
+### set fuel for country
+## scopes = { country }
+alias[effect:set_fuel] = replace_me
+### Runs a loop on for each element of an array and changes scope to current element in each iteration
+## scopes = { ??? }
+alias[effect:for_each_scope_loop] = replace_me
+### Runs the effect for a random element in array
+## scopes = { ??? }
+alias[effect:random_scope_in_array] = {
+    ## cardinality = 0..1
+    limit = {
+        alias_name[trigger] = alias_match_left[trigger]
+    }
+    alias_name[effect] = alias_match_left[effect]
+}
+
+### updates the modifiers in current scope (use if you don't want to wait for daily update to update them):
+## scopes = { state country }
+alias[effect:force_update_dynamic_modifier] = replace_me
+### removes a dynamic modifier from country/state/unit leader:
+## scopes = { state country }
+alias[effect:remove_dynamic_modifier] = replace_me
+### adds a dynamic modifier to country/state/unit leader:
+## scopes = { state country }
+alias[effect:add_dynamic_modifier] = replace_me
+### Runs a same effects through a loop. example will run the effects for value_name = -3, 0, 3, 6, 9 and then terminate
+## scopes = { ??? }
+alias[effect:for_loop_effect] = replace_me
+### Runs the effect as long as a trigger is true
+## scopes = { ??? }
+alias[effect:while_loop_effect] = replace_me
+### meta effects can be used for building effects from strings and running them. following example will give Germany 42 pp:
+## scopes = { ??? }
+alias[effect:meta_effect] = replace_me
+### launch nuke at a state. usage : 
+## scopes = { country }
+alias[effect:launch_nuke] = replace_me
+### Plays sound effect only on in current scope's player
+## scopes = { country }
+alias[effect:scoped_sound_effect] = replace_me
+### Runs a loop on for each element of an array, finds the lowest value and stores result in temp variables
+## scopes = { ??? }
+alias[effect:find_lowest_in_array] = replace_me
+### Runs a loop on for each element of an array, finds the highest value and stores result in temp variables
+## scopes = { ??? }
+alias[effect:find_highest_in_array] = replace_me
+### Add mines to a strategic region for scoped country.
+## scopes = { country }
+alias[effect:add_mines] = replace_me
+### Set country's current fuel ratio relative to its capacity
+## scopes = { country }
+alias[effect:set_fuel_ratio] = replace_me
+### Ends the exile of of the current scope's country
+## scopes = { country }
+alias[effect:end_exile] = replace_me
+

@@ -2,22 +2,19 @@ types = {
 	## type_key_filter = pdxmesh
 	type[pdxmesh] = {
 		skip_root_key = objectTypes
-		path = "game/gfx/entities"
-		path = "game/gfx/models"
+		path = "game/gfx"
 		name_field = "name"
 	}
 
 	## type_key_filter = entity
 	type[entity] = {
-		path = "game/gfx/entities"
-		path = "game/gfx/models"
+		path = "game/gfx"
 		name_field = "name"
 	}
 
 	## type_key_filter = animation
 	type[model_animation] = {
-		path = "game/gfx/entities"
-		path = "game/gfx/models"
+		path = "game/gfx"
 		name_field = "name"
 	}
 }
@@ -37,11 +34,22 @@ pdxmesh = {
 
 	## cardinality = 0..inf
 	meshsettings = {
+		## cardinality = 0..1
 		name = scalar
+
+		## cardinality = 0..1
 		index = int
+
+		## cardinality = 0..1
 		texture_diffuse = scalar
+
+		## cardinality = 0..1
 		texture_normal = scalar
+
+		## cardinality = 0..1
 		texture_specular = scalar
+
+		## cardinality = 0..1
 		shader = scalar
 	}
 
@@ -68,6 +76,12 @@ entity = {
 	locator = {
 		name = scalar
 		position = {
+			## cardinality = 3..3
+			float
+		}
+
+		## cardinality = 0..1
+		rotation = {
 			## cardinality = 3..3
 			float
 		}
@@ -139,6 +153,12 @@ entity = {
 
 			## cardinality = 0..1
 			node = scalar
+
+			## cardinality = 0..1
+			entity = <entity>
+
+			## cardinality = 0..1
+			life = float
 
 			## cardinality = 0..1
 			time = float

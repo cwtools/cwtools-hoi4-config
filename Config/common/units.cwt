@@ -52,9 +52,6 @@ unit = {
 		mountaineers = bool
 		## cardinality = 0..1
 		### Paratroopers
-		paratroopers = bool
-		## cardinality = 0..1
-		### Paratroopers
 		can_be_parachuted = bool
 		## cardinality = 0..1
 		### use this equipment for speed

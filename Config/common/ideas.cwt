@@ -6,7 +6,7 @@ types = {
 
 ## replace_scope = { this = country root = country }
 idea = {
-	## cardinality = 0..2
+	## cardinality = 0..inf
 	enum[hardcode_ideas] = {
 		## cardinality = 0..inf
 		scalar = {

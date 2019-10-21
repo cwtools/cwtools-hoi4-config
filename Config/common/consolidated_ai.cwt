@@ -12,7 +12,10 @@ types = {
 		}
 		subtype[national_focuses] = {
 			ai_national_focuses = {
-
+				## cardinality = 0..inf
+				<focus>
+				## cardinality = 0..inf
+				<shared_focus>
 			}
 		}
 	}
@@ -50,7 +53,7 @@ ai_focus = {
 	}
 	subtype[national_focuses] = {
 		ai_national_focuses = {
-			## cardinality = 1..inf
+			## cardinality = 0..inf
 			<focus>
 			## cardinality = 0..inf
 			<shared_focus>

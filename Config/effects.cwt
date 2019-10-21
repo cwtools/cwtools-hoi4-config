@@ -6,7 +6,7 @@ alias[effect:<scripted_effect>] = yes
 alias[effect:add_stability] = variable_field
 
 ### Adds manpower to the country in scope or locally on a state if in state scope.
-## scope = { state country }
+## scopes = { state country }
 alias[effect:add_manpower] = int_variable_field
 
 ### Shows just a custom tooltip.
@@ -49,7 +49,9 @@ alias[effect:add_province_modifier] = {
 		<static_modifier>
 	}
 	province = {
-		## cardinality = 1..inf
+		## cardinality = 0..1
+		all_provinces = yes
+		## cardinality = 0..inf
 		id = enum[provinces]
 	}
 }
@@ -62,7 +64,9 @@ alias[effect:remove_province_modifier] = {
 		<static_modifier>
 	}
 	province = {
-		## cardinality = 1..inf
+		## cardinality = 0..1
+		all_provinces = bool
+		## cardinality = 0..inf
 		id = enum[provinces]
 	}
 }
@@ -371,6 +375,7 @@ alias[effect:randomize_weather] = int
 ## scope = country
 alias[effect:division_template] = {
 	name = localisation
+	## cardinality = 0..1
 	division_names_group = <division_name>
 	## cardinality = 0..1
 	is_locked = bool
@@ -478,10 +483,15 @@ alias[effect:create_navy_leader] = {
 		## cardinality = 1..inf
 		<unit_leader_trait>
 	}
+	## cardinality = 0..1
 	skill = int
+	## cardinality = 0..1
 	attack_skill = int
+	## cardinality = 0..1
 	defense_skill = int
+	## cardinality = 0..1
 	maneuvering_skill = int
+	## cardinality = 0..1
 	coordination_skill = int
 	## cardinality = 0..1
 	id = value_set[unit_leader_ids]
@@ -552,7 +562,7 @@ alias[effect:create_faction] = localisation
 
 ### add nukes to country.
 ## scopes = { country }
-alias[effect:add_nuclear_bombs] = replace_me
+alias[effect:add_nuclear_bombs] = int_variable_field
 
 ### annex the target country.
 ## scope = country
@@ -732,7 +742,7 @@ alias[effect:declare_war_on] = {
 # not used in vanilla or documented in wiki
 ### add political power to country scaled by the difference in IC between the receiver and another country.
 ## scope = country
-alias[effect:add_scaled_political_power] = replace_me
+alias[effect:add_scaled_political_power] = int_variable_field
 
 ### Immediately holds an election in the target country.
 ## scope = country
@@ -765,7 +775,7 @@ alias[effect:start_civil_war] = {
 	## cardinality = 0..1
 	size = variable_field[0..1]
 	## cardinality = 0..1
-	only_own_territory = no
+	only_own_territory = bool
 	### The capital of the breakaway country.
 	## cardinality = 0..1
 	capital = scope[state]
@@ -865,15 +875,15 @@ alias[effect:remove_core_of] = enum[country_tags]
 
 ### add army experience for country.
 ## scope = country
-alias[effect:army_experience] = float
+alias[effect:army_experience] = variable_field
 
 ### add naval experience for country.
 ## scope = country
-alias[effect:navy_experience] = float
+alias[effect:navy_experience] = variable_field
 
 ### add air experience for country.
 ## scope = country
-alias[effect:air_experience] = float
+alias[effect:air_experience] = variable_field
 
 ### save an event target.
 ## scope = any
@@ -889,11 +899,15 @@ alias[effect:clear_global_event_target] = scalar
 
 ### clear all global event targets.
 ## scope = any
-alias[effect:clear_global_event_targets] = bool
+alias[effect:clear_global_event_targets] = yes
 
 ### break execution of effects.
 ## scope = any
 alias[effect:break] = none
+
+### break execution of effects.
+## scope = any
+alias[effect:break] = yes
 
 ### unlocks a focus for a country.
 ## scope = country
@@ -1055,10 +1069,15 @@ alias[effect:create_field_marshal] = {
 		## cardinality = 0..inf
 		<unit_leader_trait>
 	}
+	## cardinality = 0..1
 	skill = int
+	## cardinality = 0..1
 	attack_skill = int
+	## cardinality = 0..1
 	defense_skill = int
+	## cardinality = 0..1
 	planning_skill = int
+	## cardinality = 0..1
 	logistics_skill = int
 	## cardinality = 0..1
 	id = value_set[unit_leader_ids]
@@ -1084,10 +1103,15 @@ alias[effect:create_corps_commander] = {
 		## cardinality = 0..inf
 		<unit_leader_trait>
 	}
+	## cardinality = 0..1
 	skill = int
+	## cardinality = 0..1
 	attack_skill = int
+	## cardinality = 0..1
 	defense_skill = int
+	## cardinality = 0..1
 	planning_skill = int
+	## cardinality = 0..1
 	logistics_skill = int
 	## cardinality = 0..1
 	id = value_set[unit_leader_ids]
@@ -1318,6 +1342,7 @@ alias[effect:remove_from_tech_sharing_group] = <tech_sharing_group>
 ## scope = country
 alias[effect:add_autonomy_score] = {
 	value = float
+	## cardinality = 0..1
 	localization = localisation
 }
 
@@ -1332,6 +1357,7 @@ alias[effect:modify_tech_sharing_bonus] = {
 ## scope = country
 alias[effect:add_autonomy_ratio] = {
 	value = float
+	## cardinality = 0..1
 	localization = localisation
 }
 
@@ -1763,7 +1789,7 @@ alias[effect:load_focus_tree] = <focus_tree>
 alias[effect:load_focus_tree] = {
 	tree = <focus_tree>
 	## cardinality = 0..1
-	keep_completed = no
+	keep_completed = bool
 }
 
 ### Adds logistics skill to a unit leader.
@@ -1874,7 +1900,7 @@ alias[effect:clamp_temp_variable] = {
 }
 
 ### start a border war between two states.
-## scope = { state country }
+## scopes = { state country }
 alias[effect:start_border_war] = {
 	change_state_after_war = bool
 	attacker = {
@@ -1896,7 +1922,7 @@ alias[effect:start_border_war] = {
 }
 
 ### update border war properties.
-## scope = { state country }
+## scopes = { state country }
 alias[effect:set_border_war_data] = {
 	attacker = scope[state]
 	attacker = <state>
@@ -1911,7 +1937,7 @@ alias[effect:set_border_war_data] = {
 }
 
 ### cancel border war between two states.
-## scope = { state country }
+## scopes = { state country }
 alias[effect:cancel_border_war] = {
 	## cardinality = 0..1
 	dont_fire_events = bool
@@ -2018,7 +2044,7 @@ alias[effect:unit_leader_event] = {
 }
 
 ### finalizes border war between two states, wins or cancels it.
-## scope = { state country }
+## scopes = { state country }
 alias[effect:finalize_border_war] = {
 	attacker = scope[state]
 	attacker = <state>
@@ -2032,7 +2058,7 @@ alias[effect:finalize_border_war] = {
 
 ### Remove specified active decision for scope country - Does not run the remove_effect or put the decision on cooldown. Ignores fire_only_once.
 ## scopes = { country }
-alias[effect:remove_decision] = replace_me
+alias[effect:remove_decision] = <decision>
 
 ### swap 2 traits on current ruler.
 ## scopes = { country }
@@ -2042,18 +2068,28 @@ alias[effect:swap_ruler_traits] = {
 }
 
 ### add random trait from specified list to unit leader. add_random_trait = { old_guard brilliant_strategist inflexible_strategist }.
-alias[effect:add_random_trait] = replace_me
+## scope = unit_leader
+alias[effect:add_random_trait] = {
+	## cardinality = 1..inf
+	<unit_leader_trait>
+}
 
 ### remove exile tag from scope unit leader. remove_exile_tag = yes.
-alias[effect:remove_exile_tag] = replace_me
+## scope = unit_leader
+alias[effect:remove_exile_tag] = yes
 
 ### set_legitimacy = 10. Sets legitimacy on scope country to specified value. Value has to be 0-100.
 ## scopes = { country }
-alias[effect:set_legitimacy] = replace_me
+alias[effect:set_legitimacy] = int_variable_field
 
 ### Become exile in target nation. become_exiled_in = { target = TAG legitimacy = 0-100 (optional) }.
 ## scopes = { country }
-alias[effect:become_exiled_in] = replace_me
+alias[effect:become_exiled_in] = {
+	target = scope[country]
+	target = enum[country_tags]
+	## cardinality = 0..1
+	legitimacy = float
+}
 
 ### set_faction_name = NEW_LOC_KEY. Sets the faction name to whatever the new key localises to.
 ## scopes = { state country }
@@ -2066,7 +2102,7 @@ alias[effect:add_maneuver] = int
 alias[effect:add_coordination] = int
 
 ### Gives rights to take resources from specified state. give_resource_rights = { receiver = <TAG> state = <id> }.
-## scopes = country
+## scopes = { country }
 alias[effect:give_resource_rights] = {
 	receiver = enum[country_tags]
 	receiver = scope[country]
@@ -2074,7 +2110,7 @@ alias[effect:give_resource_rights] = {
 }
 
 ### Remove resource right to state for scope country. remove_resource_rights = ID.
-## scopes = country
+## scopes = { country }
 alias[effect:remove_resource_rights] = <state>
 
 ### Copies over technology state from target.
@@ -2086,12 +2122,12 @@ alias[effect:inherit_technology] = enum[country_tags]
 alias[effect:inherit_technology] = scope[country]
 
 ### Rounds a temporary variable.
-## scopes = { ??? }
-alias[effect:round_temp_variable] = replace_me
+## scopes = { any }
+alias[effect:round_temp_variable] = variable_field
 
 ### set current country as leader of its faction.
 ## scopes = { country }
-alias[effect:set_faction_leader] = replace_me
+alias[effect:set_faction_leader] = yes
 
 ### Registers an Order of Battle (OOB) file to be loaded for a country at game start, replacing any previously registered OOB (with the given key) on that country.
 ## scopes = { country }
@@ -2109,57 +2145,181 @@ alias[effect:set_oob] = <oob>
 alias[effect:set_naval_oob] = <oob>
 
 ### Adds an element to an array.
-## scopes = { ??? }
-alias[effect:add_to_array] = replace_me
+## scope = any
+alias[effect:add_to_array] = {
+	array = value_set[array]
+	## cardinality = 0..1
+	### optional, if not defined adds scope
+	value = variable_field
+	## cardinality = 0..1
+	### optional, if not defined adds scope
+	value = scope_field
+	## cardinality = 0..1
+	### optional, default is end. otherwise elements are shifted
+    index = int_variable_field
+}
+
+### Adds an element to an array.
+## scope = any
+alias[effect:add_to_array] = {
+	value_set[array] = variable_field
+	value_set[array] = scope_field
+}
 
 ### Removes an element from an array using value or index.
-## scopes = { ??? }
-alias[effect:remove_from_array] = replace_me
+## scope = any
+alias[effect:remove_from_array] = {
+	array = value_set[array]
+	## cardinality = 0..1
+	### optional, use index or this. if neither it removes last element
+	value = variable_field
+	## cardinality = 0..1
+	### optional, use index or this. if neither it removes last element
+	value = scope_field
+	## cardinality = 0..1
+	### optional, use value or this. if neither it removes last element
+    index = int_variable_field
+}
+
+### Removes an element from an array using value or index.
+## scope = any
+alias[effect:remove_from_array] = {
+	value_set[array] = variable_field
+	value_set[array] = scope_field
+}
 
 ### Clears the contents of array.
-## scopes = { ??? }
-alias[effect:clear_array] = replace_me
+## scope = any
+alias[effect:clear_array] = value[array]
 
 ### Resizes array.
-## scopes = { ??? }
-alias[effect:resize_array] = replace_me
+## scope = any
+alias[effect:resize_array] = {
+	array = value_set[array]
+	## cardinality = 0..1
+	### optional, if not specified and array grows the new elements are set to this (default 0)
+	value = variable_field
+	### if higher than old size, new elements are added to end. otherwise last elements are removed to match to new size
+    size = int_variable_field
+}
+
+### Resizes array.
+## scope = any
+alias[effect:resize_array] = {
+	value_set[array] = int_variable_field
+}
 
 ### Adds an element to a temporary array.
-## scopes = { ??? }
-alias[effect:add_to_temp_array] = replace_me
+## scope = any
+alias[effect:add_to_temp_array] = {
+	array = value_set[array]
+	## cardinality = 0..1
+	### optional, if not defined adds scope
+	value = variable_field
+	## cardinality = 0..1
+	### optional, if not defined adds scope
+	value = scope_field
+	## cardinality = 0..1
+	### optional, default is end. otherwise elements are shifted
+    index = int_variable_field
+}
+
+### Adds an element to a temporary array.
+## scope = any
+alias[effect:add_to_temp_array] = {
+	value_set[array] = variable_field
+	value_set[array] = scope_field
+}
 
 ### Removes an element from a temporary array using value or index.
-## scopes = { ??? }
-alias[effect:remove_from_temp_array] = replace_me
+## scope = any
+alias[effect:remove_from_temp_array] = {
+	array = value_set[array]
+	## cardinality = 0..1
+	### optional, use index or this. if neither it removes last element
+	value = variable_field
+	## cardinality = 0..1
+	### optional, use index or this. if neither it removes last element
+	value = scope_field
+	## cardinality = 0..1
+	### optional, use value or this. if neither it removes last element
+    index = int_variable_field
+}
+
+### Removes an element from a temporary array using value or index.
+## scope = any
+alias[effect:remove_from_temp_array] = {
+	value_set[array] = variable_field
+	value_set[array] = scope_field
+}
 
 ### Clears the contents of a temporary array.
-## scopes = { ??? }
-alias[effect:clear_temp_array] = replace_me
+## scope = any
+alias[effect:clear_temp_array] = value[array]
 
 ### Resizes a temp array.
-## scopes = { ??? }
-alias[effect:resize_temp_array] = replace_me
+## scope = any
+alias[effect:resize_temp_array] = {
+	array = value_set[array]
+	## cardinality = 0..1
+	### optional, if not specified and array grows the new elements are set to this (default 0)
+	value = variable_field
+	### if higher than old size, new elements are added to end. otherwise last elements are removed to match to new size
+    size = int_variable_field
+}
+
+### Resizes a temp array.
+## scope = any
+alias[effect:resize_temp_array] = {
+	value_set[array] = int_variable_field
+}
 
 ### Runs a loop on for each element of an array.
 ## scopes = { ??? }
-alias[effect:for_each_loop] = replace_me
+alias[effect:for_each_loop] = {
+	array = value[array]
+	## cardinality = 0..1
+	### optional (default 'v') current value in array will be stored in this temp variable
+	value = scalar
+	## cardinality = 0..1
+	### optional (default 'i') current index in array will be stored in this temp variable
+	index = scalar
+	## cardinality = 0..1
+	### optional (default 'break') set this temp variable to non zero to break the loop
+    break = scalar
+    
+    alias_name[effect] = alias_match_left[effect]
+}
 
 ### add fuel to the country.
 ## scopes = { country }
-alias[effect:add_fuel] = replace_me
+alias[effect:add_fuel] = int_variable_field
 
 ### set fuel for country.
 ## scopes = { country }
-alias[effect:set_fuel] = replace_me
+alias[effect:set_fuel] = int_variable_field
 
 ### Runs a loop on for each element of an array and changes scope to current element in each iteration.
-## scopes = { ??? }
-alias[effect:for_each_scope_loop] = replace_me
+## scope = any
+## push_scope = country
+alias[effect:for_each_scope_loop] = {
+	array = value[array]
+	## cardinality = 0..1
+	### optional (default 'break') set this temp variable to non zero to break the loop
+    break = scalar
+    
+    alias_name[effect] = alias_match_left[effect]
+}
 
 ### Runs the effect for a random element in array.
-## scopes = { ??? }
+## scope = any
 alias[effect:random_scope_in_array] = {
+	array = value[array]
 	## cardinality = 0..1
+	### optional (default 'break') set this temp variable to non zero to break the loop
+	break = scalar
+	## cardinality = 0..1
+	### a trigger to limit scopes
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
@@ -2200,20 +2360,68 @@ alias[effect:add_dynamic_modifier] = {
 }
 
 ### Runs a same effects through a loop. example will run the effects for value_name = -3, 0, 3, 6, 9 and then terminate.
-## scopes = { ??? }
-alias[effect:for_loop_effect] = replace_me
+## scope = any
+alias[effect:for_loop_effect] = {
+	## cardinality = 0..1
+	### (default 0) start value of loop
+	start = int_variable_field
+	## cardinality = 0..1
+	### (default 0) end value of loop
+	end = int_variable_field
+	## cardinality = 0..1
+	### less_than_or_equals (default less_than) comparison type between start and end val
+	compare_type = enum[var_compares]
+	## cardinality = 0..1
+	### (default 1) value to add to current value after each iteration
+	add = int_variable_type
+	## cardinality = 0..1
+	### optional (default 'v') current value of iteration will be stored in this temp variable
+	value = scalar
+	## cardinality = 0..1
+	### optional (default 'break') set this temp variable to non zero to break the loop
+	break = scalar
+
+	alias_name[effect] = alias_match_left[effect]
+}
 
 ### Runs the effect as long as a trigger is true.
-## scopes = { ??? }
-alias[effect:while_loop_effect] = replace_me
+## scope = any
+alias[effect:while_loop_effect] = {
+	## cardinality = 0..1
+	### #optional (default 'break') set this temp variable to non zero to break the loop
+	break = scalar
+
+	### a trigger to test before each iteration
+	limit = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	alias_name[effect] = alias_match_left[effect]
+}
 
 ### meta effects can be used for building effects from strings and running them. following example will give Germany 42 pp.
-## scopes = { ??? }
-alias[effect:meta_effect] = replace_me
+## scope = any
+alias[effect:meta_effect] = {
+	text = {
+		alias_name[effect] = alias_match_left[effect]
+	}
+	## cardinality = 1..inf
+	scalar = scalar
+}
 
 ### launch nuke at a state. usage .
 ## scopes = { country }
-alias[effect:launch_nuke] = replace_me
+alias[effect:launch_nuke] = {
+	## cardinality = 0..1
+	province = enum[provinces]
+	## cardinality = 0..1
+	state = scope[state]
+	## cardinality = 0..1
+	state = <state>
+	controller = scope[country]
+	controller = enum[country_tags]
+	## cardinality = 0..1
+    use_nuke = bool
+}
 
 ### Plays sound effect only on in current scope's player.
 ## scopes = { country }
@@ -2221,15 +2429,35 @@ alias[effect:scoped_sound_effect] = replace_me
 
 ### Runs a loop on for each element of an array, finds the lowest value and stores result in temp variables.
 ## scopes = { ??? }
-alias[effect:find_lowest_in_array] = replace_me
+alias[effect:find_lowest_in_array] = {
+	array = value[array]
+
+	## cardinality = 0..1
+	### optional (default 'v') lowest value in array will be stored in this temp variable
+	value = scalar
+	
+	## cardinality = 0..1
+	### optional (default 'v') lowest value in array will be stored in this temp variable
+	index = scalar
+}
 
 ### Runs a loop on for each element of an array, finds the highest value and stores result in temp variables.
 ## scopes = { ??? }
-alias[effect:find_highest_in_array] = replace_me
+alias[effect:find_highest_in_array] = {
+	array = value[array]
+
+	## cardinality = 0..1
+	### optional (default 'v') lowest value in array will be stored in this temp variable
+	value = scalar
+	
+	## cardinality = 0..1
+	### optional (default 'v') lowest value in array will be stored in this temp variable
+	index = scalar
+}
 
 ### Add mines to a strategic region for scoped country.
 ## scopes = { country }
-alias[effect:add_mines] = replace_me
+alias[effect:add_mines] = { region = <strategic_region> mines = int_variable_field }
 
 ### Set country's current fuel ratio relative to its capacity.
 ## scopes = { country }
@@ -2368,7 +2596,7 @@ alias[effect:add_ai_strategy] = {
 }
 
 ### Effect not shown in tooltips.
-## scope = state country
+## scope = any
 alias[effect:hidden_effect] = {
 	alias_name[effect] = alias_match_left[effect]
 }

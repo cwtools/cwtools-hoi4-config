@@ -42,7 +42,7 @@ unit = {
 		### Cavalry
 		cavalry = bool
 		## cardinality = 0..1
-		### counts against special forces limit
+		### counts against special forfces limit
 		special_forces = bool
 		## cardinality = 0..1
 		### Marines ooh-rah
@@ -50,6 +50,9 @@ unit = {
 		## cardinality = 0..1
 		### Mountaineers
 		mountaineers = bool
+		## cardinality = 0..1
+		### Paratroopers
+		paratroopers = bool
 		## cardinality = 0..1
 		### Paratroopers
 		can_be_parachuted = bool
@@ -227,6 +230,7 @@ enums = {
 		anti_tank
 		anti_air
 		motorized
+		cavalry
 		mechanized
 		armor
 		fighter

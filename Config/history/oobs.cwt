@@ -31,24 +31,7 @@ oob = {
 
 	## cardinality = 0..1
 	instant_effect = {
-		## cardinality = 0..inf
-		add_equipment_production = {
-			equipment = {
-				type = <equipment.regular_equip>
-				## cardinality = 0..1
-				creator = enum[country_tags]
-				## cardinality = 0..1
-				version_name = scalar
-			}
-			## cardinality = 0..1
-			amount = int
-			## cardinality = 0..1
-			requested_factories = int[1..150]
-			## cardinality = 0..1
-			progress = float[0..1]
-			## cardinality = 0..1
-			efficiency = int[0..100]
-		}
+		alias_name[effect] = alias_match_left[effect]
 	}
 
 	## cardinality = 0..1

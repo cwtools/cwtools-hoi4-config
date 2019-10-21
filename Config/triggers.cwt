@@ -111,8 +111,52 @@ alias[trigger:check_variable] = {
 ### Compares a variable to a number or variable.
 ## scope = any
 alias[trigger:check_variable] = {
+	variable_field = value[variable]
+}
+
+### Compares a variable to a number or variable.
+## scope = any
+alias[trigger:check_variable] = {
+	value[variable] > variable_field
+}
+
+### Compares a variable to a number or variable.
+## scope = any
+alias[trigger:check_variable] = {
+	variable_field > variable_field
+}
+
+### Compares a variable to a number or variable.
+## scope = any
+alias[trigger:check_variable] = {
+	variable_field > value[variable]
+}
+
+### Compares a variable to a number or variable.
+## scope = any
+alias[trigger:check_variable] = {
+	value[variable] < variable_field
+}
+
+### Compares a variable to a number or variable.
+## scope = any
+alias[trigger:check_variable] = {
+	variable_field < variable_field
+}
+
+### Compares a variable to a number or variable.
+## scope = any
+alias[trigger:check_variable] = {
+	variable_field < value[variable]
+}
+
+### Compares a variable to a number or variable.
+## scope = any
+alias[trigger:check_variable] = {
 	var = value[variable]
 	value = variable_field
+	## cardinality = 0..1
+	### defaults to greater_than_or_equals
 	compare = enum[var_compares]
 }
 
@@ -341,7 +385,7 @@ alias[trigger:divisions_in_state] = {
 	state = scope[state]
 	state = <state>
 	## cardinality = 0..1
-	type = <unit.land_unit>
+	type = enum[land_units]
 }
 
 ### Check if the specified country exist.
@@ -365,7 +409,7 @@ alias[trigger:ships_in_area] = {
 alias[trigger:has_army_size] = {
 	size = float
 	## cardinality = 0..1
-	type = <unit.land_unit>
+	type = enum[land_units]
 }
 
 ### Checks for amount of ships, additionally of a specified type, archetype, or sub unit definition. Example: has_navy_size = { size > 10 type = convoy }; has_navy_size = { size < 1 archetype = ship_hull_light }; has_navy_size = { size > 39 unit = heavy_cruiser };	has_navy_size = { size < 100 }.
@@ -1143,12 +1187,19 @@ alias[trigger:num_occupied_states] = int
 alias[trigger:has_damaged_buildings] = bool
 
 ### Checks for amount of resources in specified state.
-## scope = { state country }
+## scope = country
 alias[trigger:has_resources_amount] = {
 	resource = <resource>
 	amount = int
 	state = scope[state]
 	state = <state>
+}
+
+### Checks for amount of resources in specified state.
+## scope = state
+alias[trigger:has_resources_amount] = {
+	resource = <resource>
+	amount = int
 }
 
 ### Checks if the country has a bonus for the specified technology or category.
@@ -1181,6 +1232,15 @@ alias[trigger:has_country_leader] = {
 ### Check if country has leader with specified ID. Don't localize this. Tooltip only for debug.
 ## scope = country
 alias[trigger:has_country_leader] = {
+	name = scalar
+	## cardinality = 0..1
+	ruling_only = yes
+}
+
+### Check if country has leader with specified ID. Don't localize this. Tooltip only for debug.
+## scope = country
+alias[trigger:has_country_leader] = {
+	id = int
 	name = scalar
 	## cardinality = 0..1
 	ruling_only = yes
@@ -1497,6 +1557,10 @@ alias[trigger:has_ability] = <ability>
 ## scope = any
 alias[trigger:has_variable] = value[variable]
 
+### Checks if a variable exists in a scope.
+## scope = any
+alias[trigger:has_variable] = variable_field
+
 ### Check unit leader has specified ID. Don't localize this. Tooltip only for debug.
 ## scope = unit_leader
 alias[trigger:has_id] = int
@@ -1724,7 +1788,7 @@ alias[trigger:is_government_in_exile] = yes
 ## scope = country
 alias[trigger:divisions_in_border_state] = {
 	## cardinality = 0..1
-	type = <unit.land_unit>
+	type = enum[land_units]
 	size = int
 	state = scope[state]
 	state = <state>
@@ -1748,8 +1812,12 @@ alias[trigger:state_strategic_value] = int
 alias[trigger:state_and_terrain_strategic_value] = int
 
 ### Rounds a temporary variable.
-## scopes = any
+## scope = any
 alias[trigger:round_temp_variable] = value[variable]
+
+### Rounds a temporary variable.
+## scope = any
+alias[trigger:round_temp_variable] = variable_field
 
 ### Checks if the country has for subject the given country.
 ## scopes = { country }
@@ -1760,73 +1828,145 @@ alias[trigger:has_subject] = scope[country]
 alias[trigger:has_subject] = enum[country_tags]
 
 ### Checks if a game rule is set to a particular option.
-## scopes = any
+## scope = any
 alias[trigger:has_game_rule] = {
 	rule = <game_rule>
 	option = value[game_rule_options]
 }
 
 ### Returns true if all of the active game rule options allow achievements.
-## scopes = any
+## scope = any
 alias[trigger:game_rules_allow_achievements] = yes
 
 ### Checks if an element is in array.
-## scopes = any
+## scope = any
 alias[trigger:is_in_array] = {
 	array = value[array]
 	value = scalar
 }
 
 ### Checks if an element is in array.
-## scopes = any
+## scope = any
 alias[trigger:is_in_array] = {
 	value[array] = scalar
 }
 
 ### Adds an element to a temporary array.
-## scopes = { ??? }
-alias[trigger:add_to_temp_array] = replace_me
+## scope = any
+alias[trigger:add_to_temp_array] = {
+	array = value_set[array]
+	## cardinality = 0..1
+	### optional, if not defined adds scope
+	value = variable_field
+	## cardinality = 0..1
+	### optional, if not defined adds scope
+	value = scope_field
+	## cardinality = 0..1
+	### optional, default is end. otherwise elements are shifted
+    index = int_variable_field
+}
+
+### Adds an element to a temporary array.
+## scope = any
+alias[trigger:add_to_temp_array] = {
+	value_set[array] = variable_field
+	value_set[array] = scope_field
+}
 
 ### Removes an element from a temporary array using value or index.
-## scopes = { ??? }
-alias[trigger:remove_from_temp_array] = replace_me
+## scope = any
+alias[trigger:remove_from_temp_array] = {
+	array = value_set[array]
+	## cardinality = 0..1
+	### optional, use index or this. if neither it removes last element
+	value = variable_field
+	## cardinality = 0..1
+	### optional, use index or this. if neither it removes last element
+	value = scope_field
+	## cardinality = 0..1
+	### optional, use value or this. if neither it removes last element
+    index = int_variable_field
+}
+
+### Removes an element from a temporary array using value or index.
+## scope = any
+alias[trigger:remove_from_temp_array] = {
+	value_set[array] = variable_field
+	value_set[array] = scope_field
+}
 
 ### Clears the contents of a temporary array.
-## scopes = { ??? }
-alias[trigger:clear_temp_array] = replace_me
+## scope = any
+alias[trigger:clear_temp_array] = value[array]
 
 ### Resizes a temp array.
-## scopes = { ??? }
-alias[trigger:resize_temp_array] = replace_me
+## scope = any
+alias[trigger:resize_temp_array] = {
+	array = value_set[array]
+	## cardinality = 0..1
+	### optional, if not specified and array grows the new elements are set to this (default 0)
+	value = variable_field
+	### if higher than old size, new elements are added to end. otherwise last elements are removed to match to new size
+    size = int_variable_field
+}
+
+### Resizes a temp array.
+## scope = any
+alias[trigger:resize_temp_array] = {
+	value_set[array] = int_variable_field
+}
 
 ### Runs a loop on an array and check a trigger for each value, if any true returns true. otherwise returns false.
-## scopes = { ??? }
+## scope = any
 alias[trigger:any_of] = {
-	alias_name[effect] = alias_match_left[effect]
+	array = value[array]
+	## cardinality = 0..1
+	### optional (default 'value') current value in array will be stored in this temp variable
+	value = scalar
+	## cardinality = 0..1
+	### optional (default 'index') current index in array will be stored in this temp variable
+	index = scalar
+
+	alias_name[trigger] = alias_match_left[trigger]
 }
 
 ### Runs a loop on an array and check a trigger for each value, if any false returns false. otherwise returns true.
-## scopes = { ??? }
-alias[trigger:all_of] = replace_me
+## scope = any
+alias[trigger:all_of] = {
+	array = value[array]
+	## cardinality = 0..1
+	### optional (default 'value') current value in array will be stored in this temp variable
+	value = scalar
+	## cardinality = 0..1
+	### optional (default 'index') current index in array will be stored in this temp variable
+	index = scalar
+
+	alias_name[trigger] = alias_match_left[trigger]
+}
 
 ### Check amount of fuel.
 ## scopes = { country }
-alias[trigger:has_fuel] = replace_me
+alias[trigger:has_fuel] = int_variable_field
 
 ### Runs a loop on an array and check a trigger for each scope in it, if any true returns true. otherwise returns false.
-## scopes = { ??? }
+## scope = any
+## push_scope = country
 alias[trigger:any_of_scopes] = {
-	array = scalar
+	array = value[array]
 	alias_name[trigger] = alias_match_left[trigger]
 }
 
 ### Runs a loop on an array and check a trigger for each scope in it, if any false returns false. otherwise returns true.
-## scopes = { ??? }
-alias[trigger:all_of_scopes] = replace_me
+## scope = any
+## push_scope = country
+alias[trigger:all_of_scopes] = {
+	array = value[array]
+	alias_name[trigger] = alias_match_left[trigger]
+}
 
 ### Check if current country has specified trait.
 ## scopes = { country }
-alias[trigger:has_country_leader_with_trait] = replace_me
+alias[trigger:has_country_leader_with_trait] = <country_leader_trait>
 
 ### Check scope country legitimacy 0-100. Example: has_legitimacy < 60.
 ## scopes = { country }
@@ -1838,31 +1978,70 @@ alias[trigger:has_rule] = enum[game_rules]
 
 ### Check the population in the state in thousands (use to avoid variable overflows).
 ## scopes = { state }
-alias[trigger:state_population_k] = replace_me
+alias[trigger:state_population_k] = int
 
 ### Check the amount of casualties in thousands a country has suffered in all of it's wars.
 ## scopes = { country }
-alias[trigger:casualties_k] = replace_me
+alias[trigger:casualties_k] = int
 
 ### Meta triggers can be used for building triggers from strings and running them. following example will test if Germany has 42 pp.
-## scopes = { country }
-alias[trigger:meta_trigger] = replace_me
+## scope = any
+alias[trigger:meta_trigger] = {
+	text = {
+		alias_name[effect] = alias_match_left[effect]
+	}
+	## cardinality = 1..inf
+	scalar = scalar
+}
 
 ### Checks if scope has a dynamic modifier.
 ## scopes = { state country }
-alias[trigger:has_dynamic_modifier] = replace_me
+alias[trigger:has_dynamic_modifier] = {
+	modifier = <dynamic_modifier>
+
+	## cardinality = 0..1
+	### Optional, state or country tag or a variable contains that. if specified the dynamic variable will target that scope.
+	scope = enum[country_tags]
+
+	## cardinality = 0..1
+	### Optional, state or country tag or a variable contains that. if specified the dynamic variable will target that scope.
+	scope = scope[country]
+}
 
 ### Runs a loop on for each element of an array, finds the lowest value and stores result in temp variables.
-## scopes = { ??? }
-alias[trigger:find_lowest_in_array] = replace_me
+## scope = any
+alias[trigger:find_lowest_in_array] = {
+	array = value[array]
+
+	## cardinality = 0..1
+	### optional (default 'v') lowest value in array will be stored in this temp variable
+	value = scalar
+	
+	## cardinality = 0..1
+	### optional (default 'v') lowest value in array will be stored in this temp variable
+	index = scalar
+}
 
 ### Runs a loop on for each element of an array, finds the highest value and stores result in temp variables.
-## scopes = { ??? }
-alias[trigger:find_highest_in_array] = replace_me
+## scope = any
+alias[trigger:find_highest_in_array] = {
+	array = value[array]
+
+	## cardinality = 0..1
+	### optional (default 'v') lowest value in array will be stored in this temp variable
+	value = scalar
+	
+	## cardinality = 0..1
+	### optional (default 'v') lowest value in array will be stored in this temp variable
+	index = scalar
+}
 
 ### Checks if a region has amount of mines.
 ## scopes = { country }
-alias[trigger:has_mines] = replace_me
+alias[trigger:has_mines] = {
+    region = <strategic_region>
+    amount = int_variable_field
+}
 
 ### Compares navies of two sides.
 ## scopes = { country }
@@ -1945,3 +2124,9 @@ alias[trigger:opponent] = { alias_name[trigger] = alias_match_left[trigger] }
 ### Check ratio of this type of unit for commander.
 ## scope = unit_leader
 alias[trigger:enum[unit_types]] = float
+
+### Trugger not shown in tooltips.
+## scope = state country
+alias[trigger:hidden_trigger] = {
+	alias_name[trigger] = alias_match_left[trigger]
+}

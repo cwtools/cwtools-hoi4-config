@@ -71,12 +71,12 @@ enums = {
 		mud
 		sandstorm
 	}
-	#complex_enum[province_ids] = {
-	#	path = "game/map/strategicregions"
-	#	name = {
-	#		provinces = {
-	#			enum_name
-	#		}
-	#	}
-	#}
+	complex_enum[provinces] = {
+		path = "game/map/strategicregions"
+		name = {
+			provinces = {
+				enum_name
+			}
+		}
+	}
 }

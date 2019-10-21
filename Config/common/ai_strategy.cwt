@@ -9,6 +9,17 @@ types = {
 }
 
 ai_strategy = {
+	## cardinality = 0..1
+	target_array = value[array]
+	## cardinality = 0..1
+	targets = {
+		## cardinality = 1..inf
+		enum[country_tags]
+	}
+	## cardinality = 0..1
+	enable_reverse = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
 	enable = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
@@ -67,7 +78,7 @@ ai_strategy_plan = {
 
 	## cardinality = 0..1
 	traits = {
-		## cardinality = 1..inf
+		## cardinality = 0..inf
 		<country_leader_trait> = int
 	}
 

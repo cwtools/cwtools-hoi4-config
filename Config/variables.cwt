@@ -29,6 +29,12 @@ values = {
 		### Faction leader of this country's faction.
 		faction_leader
 
+		### Host of this country's government in exile.
+		host
+
+		### ID
+		id
+
 		### Legitimacy of scope country. -1 if not an exile.
 		legitimacy
 
@@ -115,6 +121,12 @@ values = {
 
 		### Popularity of targeted party. Example party_popularity@democratic. May also target ruling_party.
 		party_popularity
+
+		### Popularity of targeted party. Example party_popularity@democratic. May also target ruling_party.
+		party_popularity@ruling_party
+
+		### Popularity of targeted party. Example party_popularity@democratic. May also target ruling_party.
+		party_popularity@<ideology>
 
 		### Total political power of country.
 		political_power

@@ -42,7 +42,7 @@ unit = {
 		### Cavalry
 		cavalry = bool
 		## cardinality = 0..1
-		### counts against special forfces limit
+		### counts against special forces limit
 		special_forces = bool
 		## cardinality = 0..1
 		### Marines ooh-rah

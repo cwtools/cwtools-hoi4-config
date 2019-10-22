@@ -117,42 +117,6 @@ alias[trigger:check_variable] = {
 ### Compares a variable to a number or variable.
 ## scope = any
 alias[trigger:check_variable] = {
-	value[variable] > variable_field
-}
-
-### Compares a variable to a number or variable.
-## scope = any
-alias[trigger:check_variable] = {
-	variable_field > variable_field
-}
-
-### Compares a variable to a number or variable.
-## scope = any
-alias[trigger:check_variable] = {
-	variable_field > value[variable]
-}
-
-### Compares a variable to a number or variable.
-## scope = any
-alias[trigger:check_variable] = {
-	value[variable] < variable_field
-}
-
-### Compares a variable to a number or variable.
-## scope = any
-alias[trigger:check_variable] = {
-	variable_field < variable_field
-}
-
-### Compares a variable to a number or variable.
-## scope = any
-alias[trigger:check_variable] = {
-	variable_field < value[variable]
-}
-
-### Compares a variable to a number or variable.
-## scope = any
-alias[trigger:check_variable] = {
 	var = value[variable]
 	value = variable_field
 	## cardinality = 0..1
@@ -1877,13 +1841,16 @@ alias[trigger:add_to_temp_array] = {
 ## scope = any
 alias[trigger:remove_from_temp_array] = {
 	array = value_set[array]
-	## cardinality = 0..1
 	### optional, use index or this. if neither it removes last element
 	value = variable_field
-	## cardinality = 0..1
 	### optional, use index or this. if neither it removes last element
 	value = scope_field
-	## cardinality = 0..1
+}
+
+### Removes an element from a temporary array using value or index.
+## scope = any
+alias[trigger:remove_from_temp_array] = {
+	array = value_set[array]
 	### optional, use value or this. if neither it removes last element
     index = int_variable_field
 }

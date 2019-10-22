@@ -2170,13 +2170,16 @@ alias[effect:add_to_array] = {
 ## scope = any
 alias[effect:remove_from_array] = {
 	array = value_set[array]
-	## cardinality = 0..1
 	### optional, use index or this. if neither it removes last element
 	value = variable_field
-	## cardinality = 0..1
 	### optional, use index or this. if neither it removes last element
 	value = scope_field
-	## cardinality = 0..1
+}
+
+### Removes an element from an array using value or index.
+## scope = any
+alias[effect:remove_from_array] = {
+	array = value_set[array]
 	### optional, use value or this. if neither it removes last element
     index = int_variable_field
 }
@@ -2235,13 +2238,16 @@ alias[effect:add_to_temp_array] = {
 ## scope = any
 alias[effect:remove_from_temp_array] = {
 	array = value_set[array]
-	## cardinality = 0..1
 	### optional, use index or this. if neither it removes last element
 	value = variable_field
-	## cardinality = 0..1
 	### optional, use index or this. if neither it removes last element
 	value = scope_field
-	## cardinality = 0..1
+}
+
+### Removes an element from a temporary array using value or index.
+## scope = any
+alias[effect:remove_from_temp_array] = {
+	array = value_set[array]
 	### optional, use value or this. if neither it removes last element
     index = int_variable_field
 }

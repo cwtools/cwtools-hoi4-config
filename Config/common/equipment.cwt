@@ -82,6 +82,9 @@ equipment = {
 	## cardinality = 0..1
 	alias = <unit>
 
+	### Which category the equipment appears in the production screen.
+	interface_category = enum[interface_category]
+
 	### Priority for usage over other equipment.
 	## cardinality = 0..1
 	priority = int
@@ -98,9 +101,6 @@ equipment = {
 
 		### How the equipment is grouped in the production screen.
 		group_by = enum[equip_group_by]
-
-		### Which category the equipment appears in the production screen.
-		interface_category = enum[interface_category]
 
 		## cardinality = 0..1
 		family = <equipment.archetype_equip>

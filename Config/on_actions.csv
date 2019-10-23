@@ -29,8 +29,11 @@ on_subject_autonomy_level_change,THIS = country ROOT = country FROM = country,co
 on_subject_annexed,THIS = country ROOT = country FROM = country,country_event
 on_release_as_free,THIS = country ROOT = country FROM = country,country_event
 on_peaceconference_ended,THIS = country ROOT = country FROM = country,country_event
+on_generate_wargoal,THIS = country ROOT = country FROM = country,country_event
+
 
 on_startup,THIS = no_scope ROOT = no_scope,
+on_daily,THIS = country ROOT = country,country_event
 
 on_state_control_changed,THIS = country FROM = country FROMFROM = state,country_event
 
@@ -41,3 +44,12 @@ on_army_leader_daily,THIS = unit_leader ROOT = unit_leader FROM = country,unit_l
 on_army_leader_won_combat,THIS = unit_leader ROOT = unit_leader FROM = country,unit_leader_event
 on_army_leader_lost_combat,THIS = unit_leader ROOT = unit_leader FROM = country,unit_leader_event
 on_army_leader_promoted,THIS = unit_leader ROOT = unit_leader,unit_leader_event
+
+on_host_changed_from_capitulation,THIS = country ROOT = country FROM = country FROMFROM = country,country_event
+on_exile_government_reinstated,THIS = country ROOT = country FROM = country FROMFROM = country,country_event
+on_civil_war_end_before_annexation,THIS = country ROOT = country FROM = country,country_event
+on_government_exiled,THIS = country ROOT = country,country_event
+on_pride_of_the_fleet_sunk,THIS = country ROOT = country FROM = country,country_event
+on_assume_faction_leadership,THIS = country ROOT = country FROM = country,country_event
+on_war,THIS = country ROOT = country FROM = country,country_event
+on_peace,THIS = country ROOT = country FROM = country,country_event

@@ -22,5 +22,5 @@ dynamic_modifier = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 
-	alias_name[modifier] = alias_match_left[modifier]
+	alias_name[modifier] = value[variable]
 }

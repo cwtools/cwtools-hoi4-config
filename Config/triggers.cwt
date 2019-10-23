@@ -30,10 +30,11 @@ alias[trigger:else] = {
 }
 
 ### Compare leader skill levels.
-## scope = unit_leader
+## scope = { unit_leader combat }
 alias[trigger:skill] = int
 
 ### Check if we are in this combat phase.
+## scope = combat
 alias[trigger:phase] = enum[phases]
 
 ### Check if the current country exist. The country of the scope you are in. Example: DEN = { exists = yes }.
@@ -117,37 +118,25 @@ alias[trigger:check_variable] = {
 ### Compares a variable to a number or variable.
 ## scope = any
 alias[trigger:check_variable] = {
-	value[variable] > variable_field
+	float = variable_field
 }
 
 ### Compares a variable to a number or variable.
 ## scope = any
 alias[trigger:check_variable] = {
-	variable_field > variable_field
+	float = value[variable]
 }
 
 ### Compares a variable to a number or variable.
 ## scope = any
 alias[trigger:check_variable] = {
-	variable_field > value[variable]
+	value[variable] = float
 }
 
 ### Compares a variable to a number or variable.
 ## scope = any
 alias[trigger:check_variable] = {
-	value[variable] < variable_field
-}
-
-### Compares a variable to a number or variable.
-## scope = any
-alias[trigger:check_variable] = {
-	variable_field < variable_field
-}
-
-### Compares a variable to a number or variable.
-## scope = any
-alias[trigger:check_variable] = {
-	variable_field < value[variable]
+	variable_field = float
 }
 
 ### Compares a variable to a number or variable.
@@ -212,6 +201,7 @@ alias[trigger:has_global_flag] = {
 }
 
 ### Check if attacker side in combat.
+## scope = combat
 alias[trigger:is_attacker] = bool
 
 ### Checks if player has a DLC. Example: has_dlc = "name of the dlc".
@@ -295,15 +285,19 @@ alias[trigger:all_enemy_country] = {
 }
 
 ### Check if combat is at night.
+## scope = combat
 alias[trigger:night] = bool
 
 ### Check if we have digin level (lowest).
+## scope = combat
 alias[trigger:dig_in] = float
 
 ### Check combat province temperature.
+## scope = combat
 alias[trigger:temperature] = int
 
 ### Check that average armor level of combatant is over a certain level.
+## scope = combat
 alias[trigger:armor] = float
 
 ### Is country at war.
@@ -327,7 +321,7 @@ alias[trigger:is_owned_by] = scope[country]
 alias[trigger:is_owned_by] = enum[country_tags]
 
 ### Compare leader skill levels.
-## scope = unit_leader
+## scope = { unit_leader combat }
 alias[trigger:skill_advantage] = int
 
 ### Check owner for state(s).
@@ -352,7 +346,9 @@ alias[trigger:has_government] = <ideology>
 
 ### Does country government (ruling party) belong to ideology group.
 ## scope = country
-alias[trigger:has_government] = scope[country]
+#alias[trigger:has_government] = scope[country]
+# funnily enough it only works for ROOT
+alias[trigger:has_government] = ROOT
 
 ### Has state flag been setCheck flag val date set and days since set.
 ## scope = state
@@ -417,7 +413,7 @@ alias[trigger:has_army_size] = {
 alias[trigger:has_navy_size] = {
 	size = float
 	## cardinality = 0..1
-	type = <unit.ship_unit>
+	type = enum[ship_units]
 	## cardinality = 0..1
 	unit = <unit.ship_unit>
 	## cardinality = 0..1
@@ -629,21 +625,27 @@ alias[trigger:has_deployed_air_force_size] = {
 }
 
 ### Check what terrain is in combat.
+## scope = combat
 alias[trigger:is_fighting_in_terrain] = <terrain>
 
 ### Check if defender side in combat.
+## scope = combat
 alias[trigger:is_defender] = bool
 
 ### Check if combatant has modifier.
+## scope = combat
 alias[trigger:has_combat_modifier] = enum[combat_modifiers]
 
 ### Check if defender side in combat.
+## scope = combat
 alias[trigger:is_winning] = bool
 
 ### Check if fastest unit of combatant is over this limit.
+## scope = combat
 alias[trigger:fastest_unit] = float
 
 ### Checks if side has an advantage in recon level.
+## scope = combat
 alias[trigger:recon_advantage] = bool
 
 ### Check if country has technology.
@@ -701,13 +703,15 @@ alias[trigger:is_core_of] = enum[country_tags]
 alias[trigger:is_ai] = bool
 
 ### Check if sides leader has trait.
-## scope = unit_leader
+## scope = { unit_leader combat }
 alias[trigger:has_trait] = <unit_leader_trait>
 
 ### Check if side has reserves waiting.
+## scope = combat
 alias[trigger:has_reserves] = bool
 
 ### Check if sides front is full or can get more reinforcements.
+## scope = combat
 alias[trigger:frontage_full] = bool
 
 ### Is lend-leasing country.
@@ -828,7 +832,12 @@ alias[trigger:is_major] = bool
 ## scope = state
 alias[trigger:is_on_continent] = enum[continents]
 
-### Check if combat is at night.
+### Is state located on same continent and the capital of right hand side.
+## scope = state
+alias[trigger:is_on_continent] = scope[country]
+
+### Checks if the current scope is performing an amphibious invasion.
+## scope = combat
 alias[trigger:is_amphibious_invasion] = bool
 
 ### Compares the estimated army strength between the scope country and the one set with 'tag'.
@@ -840,6 +849,7 @@ alias[trigger:strength_ratio] = {
 }
 
 ### Check if side has maximal planning bonus.
+## scope = combat
 alias[trigger:has_max_planning] = bool
 
 ### Check if participant in civil war as revolter or target.
@@ -847,15 +857,19 @@ alias[trigger:has_max_planning] = bool
 alias[trigger:has_civil_war] = bool
 
 ### Check if side has more combat width than their opponent.
+## scope = combat
 alias[trigger:less_combat_width_than_opponent] = bool
 
 ### Check if side is fighting air units.
+## scope = combat
 alias[trigger:is_fighting_air_units] = bool
 
 ### Check if side has a career with air wings on a mission.
+## scope = combat
 alias[trigger:has_carrier_airwings_on_mission] = bool
 
 ### Check if side has flanked their opponent.
+## scope = combat
 alias[trigger:has_flanked_opponent] = bool
 
 ### Check if there is a claim between a country and all others.
@@ -928,6 +942,7 @@ alias[trigger:has_annex_war_goal] = scope[country]
 alias[trigger:has_annex_war_goal] = enum[country_tags]
 
 ### Check lowest/highest hardness level on combatant.
+## scope = combat
 alias[trigger:hardness] = float
 
 ### Check if country has a division template that contains a specific unit.
@@ -1157,7 +1172,7 @@ alias[trigger:compare_autonomy_state] = <autonomy>
 ### Checks if country has specific cosmetic tag set.
 ## scope = country
 #enum[cosmetic_tag]?
-alias[trigger:has_cosmetic_tag] = scalar
+alias[trigger:has_cosmetic_tag] = value[cosmetic_tag]
 
 ### Check the number of subjects of nation.
 ## scope = country
@@ -1176,6 +1191,7 @@ alias[trigger:has_template] = scalar
 alias[trigger:has_state_category] = <state_category>
 
 ### Check that ratio of cavalry brigades in the composition of a side of combating troops are over a certain level.
+## scope = combat
 alias[trigger:has_cavalry_ratio] = float
 
 ### Check the number of states occupied by nation.
@@ -1219,6 +1235,7 @@ alias[trigger:has_tech_bonus] = {
 alias[trigger:has_template_majority_unit] = <unit>
 
 ### Check if side has maximal planning bonus.
+## scope = combat
 alias[trigger:min_planning] = float
 
 ### Check if country has leader with specified ID. Don't localize this. Tooltip only for debug.
@@ -1409,6 +1426,7 @@ alias[trigger:amount_taken_ideas] = {
 }
 
 ### Check if carrier has airplanes that are part of the current combat.
+## scope = combat
 alias[trigger:has_carrier_airwings_in_own_combat] = bool
 
 ### Compares the estimated navy strength between the scope country and the one set with 'tag'.
@@ -1502,23 +1520,23 @@ alias[trigger:any_navy_leader] = {
 }
 
 ### Is_assigned = yes/no - Checks if the current unit leader is assigned to command an army/navy.
-## scope = unit_leader
+## scope = { unit_leader combat }
 alias[trigger:is_assigned] = bool
 
 ### Check number of units commanded by the unit leader.
-## scope = unit_leader
+## scope = { unit_leader combat }
 alias[trigger:num_units] = int
 
 ### Is_field_marshal = yes/no - Checks if the current unit leader is a field marshall.
-## scope = unit_leader
+## scope = { unit_leader combat }
 alias[trigger:is_field_marshal] = bool
 
 ### Has unit leader flag been setCheck flag val date set and days since set.
-## scope = unit_leader
+## scope = { unit_leader combat }
 alias[trigger:has_unit_leader_flag] = value[leader_flag]
 
 ### Has unit leader flag been setCheck flag val date set and days since set.
-## scope = unit_leader
+## scope = { unit_leader combat }
 alias[trigger:has_unit_leader_flag] = {
 	flag = value[leader_flag]
 	## cardinality = 0..1
@@ -1550,7 +1568,7 @@ alias[trigger:is_fully_controlled_by] = scope[country]
 alias[trigger:is_fully_controlled_by] = enum[country_tags]
 
 ### Does unit leader have the abilityCheck if a unit leader has the ability.
-## scope = unit_leader
+## scope = { unit_leader combat }
 alias[trigger:has_ability] = <ability>
 
 ### Checks if a variable exists in a scope.
@@ -1562,11 +1580,11 @@ alias[trigger:has_variable] = value[variable]
 alias[trigger:has_variable] = variable_field
 
 ### Check unit leader has specified ID. Don't localize this. Tooltip only for debug.
-## scope = unit_leader
+## scope = { unit_leader combat }
 alias[trigger:has_id] = int
 
 ### Check if leader can select a trait.
-## scope = unit_leader
+## scope = { unit_leader combat }
 alias[trigger:can_select_trait] = <unit_leader_trait>
 
 ### Adds a value or a variable to a temporary variable.
@@ -1680,39 +1698,42 @@ alias[trigger:has_border_war_with] = scope[country]
 alias[trigger:has_border_war_with] = enum[country_tags]
 
 ### Compares the average stats for a unit leader.
-## scope = unit_leader
+## scope = { unit_leader combat }
 alias[trigger:average_stats] = int
 
 ### Compares attack skill level of a unit leader.
-## scope = unit_leader
+## scope = { unit_leader combat }
 alias[trigger:attack_skill_level] = int
 
 ### Compares defense skill level of a unit leader.
-## scope = unit_leader
+## scope = { unit_leader combat }
 alias[trigger:defense_skill_level] = int
 
 ### Compares logistics skill level of a unit leader.
-## scope = unit_leader
+## scope = { unit_leader combat }
 alias[trigger:logistics_skill_level] = int
 
 ### Compares planning skill level of a unit leader.
-## scope = unit_leader
+## scope = { unit_leader combat }
 alias[trigger:planning_skill_level] = int
 
 ### Is_leading_army_group = yes/no - Checks if the current unit leader is leading an army group (not single army).
-## scope = unit_leader
+## scope = { unit_leader combat }
 alias[trigger:is_leading_army_group] = bool
 
 ### Is_leading_army = yes/no - Checks if the current unit leader is leading a single army (not army group).
-## scope = unit_leader
+## scope = { unit_leader combat }
 alias[trigger:is_leading_army] = bool
 
 ### Prints all variables in scope and temp variables to a file.
 ## scope = any
 alias[trigger:print_variables] = {
 	file = scalar
+	## cardinality = 0..1
 	text = scalar
+	## cardinality = 0..1
 	append = bool
+	## cardinality = 0..1
 	print_global = bool
 	## cardinality = 0..1
 	var_list = {
@@ -1742,7 +1763,7 @@ alias[trigger:has_attache_from] = enum[country_tags]
 alias[trigger:amount_manpower_in_deployment_queue] = float
 
 ### Checks for amount manpower currently the target state with option to specify a type.
-## scopes = { country }
+## scope = country
 alias[trigger:army_manpower_in_state] = {
 	state = <state>
 	state = int_variable_field
@@ -1755,19 +1776,19 @@ alias[trigger:army_manpower_in_state] = {
 alias[trigger:is_exiled_leader] = yes
 
 ### Checks if scope country is a government in exile in target tag. is_exiled_in = ENG.
-## scopes = { country }
+## scope = country
 alias[trigger:is_exiled_in] = scope[country]
 
 ### Checks if scope country is a government in exile in target tag. is_exiled_in = ENG.
-## scopes = { country }
+## scope = country
 alias[trigger:is_exiled_in] = enum[country_tags]
 
 ### Checks if scope country is hosting target tag as an exile. is_hosting_exile = FRA.
-## scopes = { country }
+## scope = country
 alias[trigger:is_hosting_exile] = scope[country]
 
 ### Checks if scope country is hosting target tag as an exile. is_hosting_exile = FRA.
-## scopes = { country }
+## scope = country
 alias[trigger:is_hosting_exile] = enum[country_tags]
 
 ### Checks if scope leader is from specified exiled government. is_exiled_leader_from = FRA.
@@ -1777,11 +1798,11 @@ alias[trigger:is_exiled_leader_from] = scope[country]
 alias[trigger:is_exiled_leader_from] = enum[country_tags]
 
 ### Checks if scope country is hosting an exile. is_exile_host = yes.
-## scopes = { country }
+## scope = country
 alias[trigger:is_exile_host] = yes
 
 ### Checks if scope country an exiled government. is_government_in_exile = yes.
-## scopes = { country }
+## scope = country
 alias[trigger:is_government_in_exile] = yes
 
 ### Checks for amount of divisions in specified state owned by current country.
@@ -1820,11 +1841,11 @@ alias[trigger:round_temp_variable] = value[variable]
 alias[trigger:round_temp_variable] = variable_field
 
 ### Checks if the country has for subject the given country.
-## scopes = { country }
+## scope = country
 alias[trigger:has_subject] = scope[country]
 
 ### Checks if the country has for subject the given country.
-## scopes = { country }
+## scope = country
 alias[trigger:has_subject] = enum[country_tags]
 
 ### Checks if a game rule is set to a particular option.
@@ -1877,13 +1898,16 @@ alias[trigger:add_to_temp_array] = {
 ## scope = any
 alias[trigger:remove_from_temp_array] = {
 	array = value_set[array]
-	## cardinality = 0..1
 	### optional, use index or this. if neither it removes last element
 	value = variable_field
-	## cardinality = 0..1
 	### optional, use index or this. if neither it removes last element
 	value = scope_field
-	## cardinality = 0..1
+}
+
+### Removes an element from a temporary array using value or index.
+## scope = any
+alias[trigger:remove_from_temp_array] = {
+	array = value_set[array]
 	### optional, use value or this. if neither it removes last element
     index = int_variable_field
 }
@@ -1945,7 +1969,7 @@ alias[trigger:all_of] = {
 }
 
 ### Check amount of fuel.
-## scopes = { country }
+## scope = country
 alias[trigger:has_fuel] = int_variable_field
 
 ### Runs a loop on an array and check a trigger for each scope in it, if any true returns true. otherwise returns false.
@@ -1965,37 +1989,40 @@ alias[trigger:all_of_scopes] = {
 }
 
 ### Check if current country has specified trait.
-## scopes = { country }
+## scope = country
 alias[trigger:has_country_leader_with_trait] = <country_leader_trait>
 
 ### Check scope country legitimacy 0-100. Example: has_legitimacy < 60.
-## scopes = { country }
+## scope = country
 alias[trigger:has_legitimacy] = int
 
 ### Checks if a rule set for a country. Example: has_rule = can_puppet.
-## scopes = { country }
+## scope = country
 alias[trigger:has_rule] = enum[game_rules]
 
 ### Check the population in the state in thousands (use to avoid variable overflows).
-## scopes = { state }
+## scope = { state }
 alias[trigger:state_population_k] = int
 
 ### Check the amount of casualties in thousands a country has suffered in all of it's wars.
-## scopes = { country }
+## scope = country
 alias[trigger:casualties_k] = int
 
 ### Meta triggers can be used for building triggers from strings and running them. following example will test if Germany has 42 pp.
 ## scope = any
 alias[trigger:meta_trigger] = {
 	text = {
-		alias_name[effect] = alias_match_left[effect]
+		## cardinality = 0..inf
+		scalar
+		## cardinality = 0..inf
+		scalar = scalar
 	}
 	## cardinality = 1..inf
 	scalar = scalar
 }
 
 ### Checks if scope has a dynamic modifier.
-## scopes = { state country }
+## scope = { state country }
 alias[trigger:has_dynamic_modifier] = {
 	modifier = <dynamic_modifier>
 
@@ -2037,14 +2064,14 @@ alias[trigger:find_highest_in_array] = {
 }
 
 ### Checks if a region has amount of mines.
-## scopes = { country }
+## scope = country
 alias[trigger:has_mines] = {
     region = <strategic_region>
     amount = int_variable_field
 }
 
 ### Compares navies of two sides.
-## scopes = { country }
+## scope = country
 alias[trigger:naval_strength_comparison] = {
 	### By default compares to the from scope.
 	## cardinality = 0..1
@@ -2067,23 +2094,23 @@ alias[trigger:naval_strength_comparison] = {
 }
 
 ### Compares the fuel ratio to a variable.
-## scopes = { country }
+## scope = country
 alias[trigger:fuel_ratio] = float
 
 ### Checks the days since last strategic bombing.
-## scopes = { state }
+## scope = { state }
 alias[trigger:days_since_last_strategic_bombing] = int
 
 ### A trigger to check how dangerous enemy mines are for a country. Controlled by NAVAL_MINE_DANGER defines. Returns a value between 0 and 1. Example: mine_threat > 0.5.
-## scopes = { country }
+## scope = country
 alias[trigger:mine_threat] = float
 
 ### A trigger to check convoy threat for a country. Controlled by NAVAL_CONVOY_DANGER defines. Returns a value between 0 and 1. Example: convoy_threat > 0.5.
-## scopes = { country }
+## scope = country
 alias[trigger:convoy_threat] = float
 
 ### Checks the casualties infliced by the speficied country to the scopped country.
-## scopes = { country }
+## scope = country
 alias[trigger:casualties_inflicted_by] = {
 	opponent = scope[country]
 	opponent = enum[country_tags]
@@ -2091,7 +2118,7 @@ alias[trigger:casualties_inflicted_by] = {
 }
 
 ### Checks the mines planted by the country of the parent scope on the coastline of the target country.
-## scopes = { country }
+## scope = country
 alias[trigger:has_mined] = {
 	target = scope[country]
 	target = enum[country_tags]
@@ -2099,7 +2126,7 @@ alias[trigger:has_mined] = {
 }
 
 ### Checks that the country in scope has received the specified amount of expeditionary forces from the specified country.
-## scopes = { country }
+## scope = country
 alias[trigger:received_expeditionary_forces] = {
 	sender = scope[country]
 	sender = enum[country_tags]
@@ -2107,6 +2134,7 @@ alias[trigger:received_expeditionary_forces] = {
 }
 
 ### Checks the weather on a combat.
+## scope = combat
 alias[trigger:is_fighting_in_weather] = scalar
 
 ### Checks building level in state.
@@ -2118,11 +2146,11 @@ alias[trigger:<building>] = int
 alias[trigger:<ideology>] = float
 
 ### Changes scope to opposing army/navy.
-## scope = unit_leader
+## scope = { unit_leader combat }
 alias[trigger:opponent] = { alias_name[trigger] = alias_match_left[trigger] }
 
 ### Check ratio of this type of unit for commander.
-## scope = unit_leader
+## scope = { unit_leader combat }
 alias[trigger:enum[unit_types]] = float
 
 ### Trugger not shown in tooltips.

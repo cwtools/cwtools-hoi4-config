@@ -139,6 +139,11 @@ technology = {
 	## cardinality = 0..inf
 	<unit> = {
 		## cardinality = 0..inf
+		need = {
+			## cardinality = 1..inf
+			<equipment> = int
+		}
+		## cardinality = 0..inf
 		alias_name[unit_stat] = alias_match_left[unit_stat]
 		alias_name[naval_stat] = alias_match_left[naval_stat]
 		alias_name[air_stat] = alias_match_left[air_stat]

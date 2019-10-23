@@ -32,5 +32,8 @@ game_rule = {
 		name = value_set[game_rule_options]
 		text = localisation
 		desc = localisation
+		### Achievements cannot be earned if one or more game rules are set to an option that has this property set to no. If not specified, this is set to yes for default options and no for all other options.
+		## cardinality = 0..1
+		allow_achievements = bool
 	}
 }

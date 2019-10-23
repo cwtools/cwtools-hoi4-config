@@ -76,6 +76,26 @@ types = {
 		subtype[on_army_leader_lost_combat] = { }
 		## type_key_filter = on_army_leader_promoted
 		subtype[on_army_leader_promoted] = { }
+		## type_key_filter = on_generate_wargoal
+		subtype[on_generate_wargoal] = { }
+		## type_key_filter = on_daily
+		subtype[on_daily] = { }
+		## type_key_filter = on_host_changed_from_capitulation
+		subtype[on_host_changed_from_capitulation] = { }
+		## type_key_filter = on_exile_government_reinstated
+		subtype[on_exile_government_reinstated] = { }
+		## type_key_filter = on_civil_war_end_before_annexation
+		subtype[on_civil_war_end_before_annexation] = { }
+		## type_key_filter = on_government_exiled
+		subtype[on_government_exiled] = { }
+		## type_key_filter = on_pride_of_the_fleet_sunk
+		subtype[on_pride_of_the_fleet_sunk] = { }
+		## type_key_filter = on_assume_faction_leadership
+		subtype[on_assume_faction_leadership] = { }
+		## type_key_filter = on_war
+		subtype[on_war] = { }
+		## type_key_filter = on_peace
+		subtype[on_peace] = { }
 	}
 }
 on_action = {
@@ -592,6 +612,146 @@ on_action = {
 			int = 0
 			## cardinality = 0..inf
 			int = <event.unit_leader_event>
+		}
+		## cardinality = 0..1
+		effect = {
+			alias_name[effect] = alias_match_left[effect]
+		}
+	}
+	## replace_scope = { THIS = country ROOT = country FROM = country }
+	subtype[on_generate_wargoal] = {
+		## cardinality = 0..1
+		random_events = {
+			## cardinality = 0..inf
+			int = 0
+			## cardinality = 0..inf
+			int = <event>
+		}
+		## cardinality = 0..1
+		effect = {
+			alias_name[effect] = alias_match_left[effect]
+		}
+	}
+	## replace_scope = { THIS = country ROOT = country }
+	subtype[on_daily] = {
+		## cardinality = 0..1
+		random_events = {
+			## cardinality = 0..inf
+			int = 0
+			## cardinality = 0..inf
+			int = <event>
+		}
+		## cardinality = 0..1
+		effect = {
+			alias_name[effect] = alias_match_left[effect]
+		}
+	}
+	## replace_scope = { THIS = country ROOT = country FROM = country FROMFROM = country }
+	subtype[on_host_changed_from_capitulation] = {
+		## cardinality = 0..1
+		random_events = {
+			## cardinality = 0..inf
+			int = 0
+			## cardinality = 0..inf
+			int = <event>
+		}
+		## cardinality = 0..1
+		effect = {
+			alias_name[effect] = alias_match_left[effect]
+		}
+	}
+	## replace_scope = { THIS = country ROOT = country FROM = country FROMFROM = country }
+	subtype[on_exile_government_reinstated] = {
+		## cardinality = 0..1
+		random_events = {
+			## cardinality = 0..inf
+			int = 0
+			## cardinality = 0..inf
+			int = <event>
+		}
+		## cardinality = 0..1
+		effect = {
+			alias_name[effect] = alias_match_left[effect]
+		}
+	}
+	## replace_scope = { THIS = country ROOT = country FROM = country }
+	subtype[on_civil_war_end_before_annexation] = {
+		## cardinality = 0..1
+		random_events = {
+			## cardinality = 0..inf
+			int = 0
+			## cardinality = 0..inf
+			int = <event>
+		}
+		## cardinality = 0..1
+		effect = {
+			alias_name[effect] = alias_match_left[effect]
+		}
+	}
+	## replace_scope = { THIS = country ROOT = country }
+	subtype[on_government_exiled] = {
+		## cardinality = 0..1
+		random_events = {
+			## cardinality = 0..inf
+			int = 0
+			## cardinality = 0..inf
+			int = <event>
+		}
+		## cardinality = 0..1
+		effect = {
+			alias_name[effect] = alias_match_left[effect]
+		}
+	}
+	## replace_scope = { THIS = country ROOT = country FROM = country }
+	subtype[on_pride_of_the_fleet_sunk] = {
+		## cardinality = 0..1
+		random_events = {
+			## cardinality = 0..inf
+			int = 0
+			## cardinality = 0..inf
+			int = <event>
+		}
+		## cardinality = 0..1
+		effect = {
+			alias_name[effect] = alias_match_left[effect]
+		}
+	}
+	## replace_scope = { THIS = country ROOT = country FROM = country }
+	subtype[on_assume_faction_leadership] = {
+		## cardinality = 0..1
+		random_events = {
+			## cardinality = 0..inf
+			int = 0
+			## cardinality = 0..inf
+			int = <event>
+		}
+		## cardinality = 0..1
+		effect = {
+			alias_name[effect] = alias_match_left[effect]
+		}
+	}
+	## replace_scope = { THIS = country ROOT = country FROM = country }
+	subtype[on_war] = {
+		## cardinality = 0..1
+		random_events = {
+			## cardinality = 0..inf
+			int = 0
+			## cardinality = 0..inf
+			int = <event>
+		}
+		## cardinality = 0..1
+		effect = {
+			alias_name[effect] = alias_match_left[effect]
+		}
+	}
+	## replace_scope = { THIS = country ROOT = country FROM = country }
+	subtype[on_peace] = {
+		## cardinality = 0..1
+		random_events = {
+			## cardinality = 0..inf
+			int = 0
+			## cardinality = 0..inf
+			int = <event>
 		}
 		## cardinality = 0..1
 		effect = {

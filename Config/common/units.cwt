@@ -42,7 +42,7 @@ unit = {
 		### Cavalry
 		cavalry = bool
 		## cardinality = 0..1
-		### counts against special forfces limit
+		### counts against special forces limit
 		special_forces = bool
 		## cardinality = 0..1
 		### Marines ooh-rah
@@ -50,9 +50,6 @@ unit = {
 		## cardinality = 0..1
 		### Mountaineers
 		mountaineers = bool
-		## cardinality = 0..1
-		### Paratroopers
-		paratroopers = bool
 		## cardinality = 0..1
 		### Paratroopers
 		can_be_parachuted = bool
@@ -139,6 +136,7 @@ unit = {
 
 ship_name = {
 	name = localisation
+	## cardinality = 0..1
 	for_countries = {
 		## cardinality = 0..inf
 		enum[country_tags]
@@ -165,6 +163,13 @@ ship_name = {
 	unique = {
 		## cardinality = 0..inf
 		scalar
+	}
+	## cardinality = 0..1
+	unordered = {
+		## cardinality = 0..inf
+		int = {
+			scalar
+		}
 	}
 	## cardinality = 0..1
 	ordered = {
@@ -196,6 +201,13 @@ division_name = {
 	}
 	## cardinality = 0..1
 	fallback_name = scalar
+	## cardinality = 0..1
+	unordered = {
+		## cardinality = 0..inf
+		int = {
+			scalar
+		}
+	}
 	## cardinality = 0..1
 	ordered = {
 		## cardinality = 0..inf
@@ -247,6 +259,7 @@ enums = {
 		capital_ship
 		carrier
 		convoy
+		paratroopers
 	}
 	enum[land_units] = {
 		infantry

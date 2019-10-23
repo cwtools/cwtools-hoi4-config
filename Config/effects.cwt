@@ -2417,6 +2417,7 @@ alias[effect:while_loop_effect] = {
 ## scope = any
 alias[effect:meta_effect] = {
 	text = {
+		## cardinality = 0..inf
 		scalar
 	}
 	## cardinality = 1..inf

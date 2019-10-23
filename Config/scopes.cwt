@@ -40,3 +40,18 @@ alias[effect:OVERLORD] = { alias_name[effect] = alias_match_left[effect] }
 ## scope = country
 ## push_scope = state
 alias[effect:capital_scope] = { alias_name[effect] = alias_match_left[effect] }
+
+scopes = {
+	Country = {
+		aliases = { country }
+	}
+	State = {
+		aliases = { state }
+	}
+	"Unit Leader" = {
+		aliases = { unit_leader unitleader }
+	}
+	Combat = {
+		aliases = { combat }
+	}
+}

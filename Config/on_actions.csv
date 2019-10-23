@@ -50,3 +50,6 @@ on_exile_government_reinstated,THIS = country ROOT = country FROM = country FROM
 on_civil_war_end_before_annexation,THIS = country ROOT = country FROM = country,country_event
 on_government_exiled,THIS = country ROOT = country,country_event
 on_pride_of_the_fleet_sunk,THIS = country ROOT = country FROM = country,country_event
+on_assume_faction_leadership,THIS = country ROOT = country FROM = country,country_event
+on_war,THIS = country ROOT = country FROM = country,country_event
+on_peace,THIS = country ROOT = country FROM = country,country_event

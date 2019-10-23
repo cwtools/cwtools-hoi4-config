@@ -239,9 +239,9 @@ alias[effect:set_variable] = {
 ### a random effect.
 ## scope = any
 alias[effect:random] = {
-	int = {
-		alias_name[effect] = alias_match_left[effect]
-	}
+	chance = int
+	alias_name[modifier_rule] = alias_match_left[modifier_rule]
+	alias_name[effect] = alias_match_left[effect]
 }
 
 ### a random effect.
@@ -1903,6 +1903,34 @@ alias[effect:clamp_temp_variable] = {
 	var = value_set[variable]
 	min = variable_field
 	max = variable_field
+}
+
+### Clamps a variable a variable bet ween two a values or another variables.
+## scope = any
+alias[effect:clamp_variable] = {
+	var = value_set[variable]
+	max = variable_field
+}
+
+### Clamps a temp variable a variable bet ween two a values or another variables.
+## scope = any
+alias[effect:clamp_temp_variable] = {
+	var = value_set[variable]
+	max = variable_field
+}
+
+### Clamps a variable a variable bet ween two a values or another variables.
+## scope = any
+alias[effect:clamp_variable] = {
+	var = value_set[variable]
+	min = variable_field
+}
+
+### Clamps a temp variable a variable bet ween two a values or another variables.
+## scope = any
+alias[effect:clamp_temp_variable] = {
+	var = value_set[variable]
+	min = variable_field
 }
 
 ### start a border war between two states.

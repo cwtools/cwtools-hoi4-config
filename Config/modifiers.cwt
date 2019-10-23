@@ -58,6 +58,7 @@ modifiers = {
 	air_superiority_detect_factor = country
 	air_superiority_efficiency = country
 	air_training_xp_gain_factor = country
+	air_volunteer_cap = country
 	air_weather_penalty = country
 	aircraft_manufacturer_cost_factor = country
 	amphibious_invasion = country

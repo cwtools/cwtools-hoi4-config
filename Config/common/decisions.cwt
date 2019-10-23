@@ -74,12 +74,35 @@ decision_category = {
 	cancel_trigger = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
+
+	## cardinality = 0..inf
+	custom_icon = {
+		tag = enum[country_tags]
+		value = scalar
+		desc = scalar
+		visible = {
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+	}
+	
+	## cardinality = 0..1
+	on_map_area = {
+		state = <state>
+		name = scalar
+		zoom = int
+	}
+
+	## cardinality = 0..1
+	scripted_gui = scalar #replace with enum[scripted_gui] or a type later
 }
 
 ## replace_scope = { this = country root = country from = country }
 decision = {
 	## cardinality = 0..1
 	icon = scalar
+
+	## cardinality = 0..1
+	name = localisation
 
 	## cardinality = 0..1
 	fire_only_once = bool
@@ -149,6 +172,13 @@ decision = {
 
 		## cardinality = 0..1
 		days_remove = variable_field
+
+		## cardinality = 0..1
+		targeted_modifier = {
+			tag = scope[country]
+			tag = enum[country_tags]
+			alias_name[modifier] = alias_match_left[modifier]
+		}
 
 		## cardinality = 0..1
 		modifier = {

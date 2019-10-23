@@ -106,7 +106,7 @@ oob = {
 							amount = int
 						}
 						## cardinality = 0..inf
-						### # Order is important. Ace will be assigned to the wing above.
+						### Order is important. Ace will be assigned to the wing above.
 						ace = {
 							modifier = <ace>
 							name = localisation
@@ -138,7 +138,7 @@ oob = {
 				amount = int
 			}
 			## cardinality = 0..inf
-			### # Order is important. Ace will be assigned to the wing above.
+			### Order is important. Ace will be assigned to the wing above.
 			ace = {
 				modifier = <ace>
 				name = localisation

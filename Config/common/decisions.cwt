@@ -14,6 +14,14 @@ types = {
 
 			}
 		}
+		subtype[targeted] = {
+			targets = {
+
+			}
+		}
+		subtype[targeted] = {
+			target_array = scalar
+		}
 		subtype[custom_cost] = {
 			custom_cost_trigger = {
 
@@ -23,7 +31,7 @@ types = {
 			days_remove = variable_field
 		}
 		subtype[timed] = {
-			days_mission_timeout = int
+			days_mission_timeout = int_variable_field
 		}
 	}
 }
@@ -154,7 +162,7 @@ decision = {
 		}
 
 		is_good = bool
-		days_mission_timeout = int
+		days_mission_timeout = int_variable_field
 
 		## cardinality = 0..1
 		timeout_effect = {
@@ -203,13 +211,13 @@ decision = {
 		target_array = value[array]
 	}
 
-	## cardinality = 0..3
+	## cardinality = 0..inf
 	enum[war_with_on] = scope[country]
 
-	## cardinality = 0..3
+	## cardinality = 0..inf
 	enum[war_with_on] = enum[country_tags]
 
-	## cardinality = 0..3
+	## cardinality = 0..inf
 	enum[war_with_target_on] = bool
 
 	## cardinality = 0..1
@@ -221,7 +229,7 @@ decision = {
 	## cardinality = 0..1
 	ai_will_do = {
 		## cardinality = 0..1
-		enum[ai_chance_base] = float
+		enum[base_factor] = float
 		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	}
 

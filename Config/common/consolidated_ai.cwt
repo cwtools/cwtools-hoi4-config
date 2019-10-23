@@ -371,6 +371,26 @@ ai_equipment_design_group = {
 	}
 }
 
+values = {
+    value[ai_roles] = {
+        armor
+        cavalry
+        garrison
+        infantry
+        marines
+        mechanized
+        motorized
+        mountaineers
+        paratroopers
+        suppression
+
+        naval_capital
+        naval_carrier
+        naval_screen
+        naval_sub
+    }
+}
+
 enums = {
 	enum[ai_research_areas] = {
 		defensive

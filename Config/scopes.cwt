@@ -54,4 +54,7 @@ scopes = {
 	Combat = {
 		aliases = { combat }
 	}
+	Air = {
+		aliases = { air }
+	}
 }

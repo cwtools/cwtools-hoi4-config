@@ -73,6 +73,8 @@ event = {
 		days = int
 		## cardinality = 0..1
 		months = int
+		## cardinality = 0..1
+		years = int
 		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	}
 	## cardinality = 0..inf
@@ -91,15 +93,8 @@ event = {
 		## cardinality = 0..1
 		ai_chance = {
 			## cardinality = 0..inf
-			enum[ai_chance_base] = variable_field
+			enum[base_factor] = variable_field
 			alias_name[modifier_rule] = alias_match_left[modifier_rule]
 		}
-	}
-}
-
-enums = {
-	enum[ai_chance_base] = {
-		base
-		factor
 	}
 }

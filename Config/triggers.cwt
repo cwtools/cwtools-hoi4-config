@@ -2153,8 +2153,8 @@ alias[trigger:opponent] = { alias_name[trigger] = alias_match_left[trigger] }
 ## scope = { unit_leader combat }
 alias[trigger:enum[unit_types]] = float
 
-### Trugger not shown in tooltips.
-## scope = state country
+### Trigger not shown in tooltips.
+## scope = any
 alias[trigger:hidden_trigger] = {
 	alias_name[trigger] = alias_match_left[trigger]
 }

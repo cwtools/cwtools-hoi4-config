@@ -2014,6 +2014,8 @@ alias[trigger:meta_trigger] = {
 	text = {
 		## cardinality = 0..inf
 		scalar
+		## cardinality = 0..inf
+		scalar = scalar
 	}
 	## cardinality = 1..inf
 	scalar = scalar

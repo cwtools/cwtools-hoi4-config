@@ -292,6 +292,7 @@ ai_equipment_design_group = {
 			alias_name[modifier_rule] = alias_match_left[modifier_rule]
 		}
 
+		## cardinality = 0..1
 		role_icon_index = int
 
 		### List of triggers that must all be true for the design to be usable; true by default if empty or missing.
@@ -300,6 +301,7 @@ ai_equipment_design_group = {
 			alias_name[trigger] = alias_match_left[trigger]
 		}
 
+		## cardinality = 0..1
 		### Specifications about how a matching equipment variant should be designed.
 		target_variant = {
 			### An additional weight indicating how much the particular design is worth, if it matches.
@@ -358,6 +360,7 @@ ai_equipment_design_group = {
 			module = <module>
 		}
 
+		## cardinality = 0..1
 		### Additional modules that are allowed in any available slots for any of the above designs, after all requirements are fulfilled. Modules at the top of this list are favored over those at the bottom. Modules not in this list will not be used in any remaining open slots.
 		allowed_modules = {
 			## cardinality = 0..inf

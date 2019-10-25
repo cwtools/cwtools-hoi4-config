@@ -221,7 +221,7 @@ enums = {
 	}
 	enum[unit_types] = {
 		infantry
-		Paratroopers
+		paratroopers
 		support
 		artillery
 		rocket

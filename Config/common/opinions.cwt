@@ -1,14 +1,7 @@
 types = {
 	type[opinion] = {
-		skip_root_key = opinion_modifiers
 		path = "game/common/opinion_modifiers"
-	}
-	subtype[trade_opinion] = {
-		trade = yes
-	}
-	subtype[regular_opinion] = {
-		##cardinality = 0..1
-		trade = no
+		skip_root_key = opinion_modifiers
 	}
 }
 
@@ -17,11 +10,13 @@ opinion = {
 	##cardinality = 0..1
 	trade = bool
 	##cardinality = 0..1
-	decay = int
+	decay = float
 	##cardinality = 0..1
 	min_trust = int
 	##cardinality = 0..1
 	max_trust = int
+	##cardinality = 0..1
+	target = bool
 	##cardinality = 0..1
 	enum[opinion_timer] = int
 }
@@ -32,9 +27,3 @@ enums = {
 		years
 	}
 }
-# value
-# min_trust
-# max_trust
-# decay
-# months/years/days = timer
-# trade = yes/no

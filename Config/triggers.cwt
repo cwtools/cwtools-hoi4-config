@@ -1566,6 +1566,12 @@ alias[trigger:set_temp_variable] = {
 ### Sets a temporary variable to a value or another variable.
 ## scope = any
 alias[trigger:set_temp_variable] = {
+	value[variable] = variable_field
+}
+
+### Sets a temporary variable to a value or another variable.
+## scope = any
+alias[trigger:set_temp_variable] = {
 	var = value_set[variable]
 	value = variable_field
 }

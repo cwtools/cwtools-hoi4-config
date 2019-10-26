@@ -56,12 +56,4 @@ links = {
         prefix = var:
         data_source = value[variable]
     }
-
-    province= {
-        desc =  province_link_desc_var
-        from_data = yes
-        type = both
-        prefix = province:
-        data_source = <province>
-    }
 }

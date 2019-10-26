@@ -579,6 +579,7 @@ alias[effect:annex_country] = {
 alias[effect:add_building_construction] = {
 	type = <building>
 	level = int
+	level = int_variable_field
 	## cardinality = 0..1
 	instant_build = bool
 	## cardinality = 0..1

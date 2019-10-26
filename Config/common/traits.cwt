@@ -134,17 +134,15 @@ unit_leader_trait = {
 		## cardinality = 0..1
 		num_parents_needed = int
 	}
-	subtype[field_marshal] = {
-		field_marshal_modifier = {
-			alias_name[modifier] = alias_match_left[modifier]
-			alias_name[unit_leader_modifier] = alias_match_left[unit_leader_modifier]
-		}
+	## cardinality = 0..1
+	field_marshal_modifier = {
+		alias_name[modifier] = alias_match_left[modifier]
+		alias_name[unit_leader_modifier] = alias_match_left[unit_leader_modifier]
 	}
-	subtype[corps_commander] = {
-		corps_commander_modifier = {
-			alias_name[modifier] = alias_match_left[modifier]
-			alias_name[unit_leader_modifier] = alias_match_left[unit_leader_modifier]
-		}
+	## cardinality = 0..1
+	corps_commander_modifier = {
+		alias_name[modifier] = alias_match_left[modifier]
+		alias_name[unit_leader_modifier] = alias_match_left[unit_leader_modifier]
 	}
 	## cardinality = 0..1
 	custom_effect_tooltip = localisation
@@ -170,7 +168,9 @@ unit_leader_trait = {
 	enable_ability = <ability>
 	## cardinality = 0..1
 	new_commander_weight = {
-		factor = float
+		## cardinality = 0..1
+		enum[base_factor] = float
+		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	}
 	## cardinality = 0..1
 	trait_xp_factor = {

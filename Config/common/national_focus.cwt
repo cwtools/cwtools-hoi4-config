@@ -25,17 +25,18 @@ focus_tree = {
 		enum[base_factor] = float
 		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	}
+	## cardinality = 0..1
 	default = bool
 	## cardinality = 0..1
-	reset_on_civilwar = no
-	## cardinality = 0..1
+	reset_on_civilwar = bool
+	## cardinality = 0..inf
 	shared_focus = <shared_focus>
 	## cardinality = 0..1
 	continuous_focus_position = {
 		x = int
 		y = int
 	}
-	## cardinality = 1..inf
+	## cardinality = 0..inf
 	focus = {
 		id = localisation
 		## cardinality = 0..1
@@ -55,6 +56,8 @@ focus_tree = {
 		}
 		## cardinality = 0..1
 		relative_position_id = <focus>
+		## cardinality = 0..1
+		relative_position_id = <shared_focus>
 		### used for focuses that can change title/desc
 		## cardinality = 0..1
 		dynamic = bool
@@ -70,13 +73,17 @@ focus_tree = {
 		will_lead_to_war_with = enum[country_tags]
 		## cardinality = 0..inf
 		prerequisite = {
-			## cardinality = 1..inf
+			## cardinality = 0..inf
 			focus = <focus>
+			## cardinality = 0..inf
+			focus = <shared_focus>
 		}
 		## cardinality = 0..inf
 		mutually_exclusive = {
-			## cardinality = 1..inf
+			## cardinality = 0..inf
 			focus = <focus>
+			## cardinality = 0..inf
+			focus = <shared_focus>
 		}
 		## cardinality = 0..1
 		bypass = {
@@ -138,6 +145,8 @@ focus = {
 	}
 	## cardinality = 0..1
 	relative_position_id = <focus>
+	## cardinality = 0..1
+	relative_position_id = <shared_focus>
 	### used for focuses that can change title/desc
 	## cardinality = 0..1
 	dynamic = bool
@@ -153,13 +162,19 @@ focus = {
 	will_lead_to_war_with = enum[country_tags]
 	## cardinality = 0..inf
 	prerequisite = {
-		## cardinality = 1..inf
+		## cardinality = 0..inf
 		focus = <focus>
+		## cardinality = 0..inf
+		focus = <shared_focus>
+
 	}
 	## cardinality = 0..inf
 	mutually_exclusive = {
-		## cardinality = 1..inf
+		## cardinality = 0..inf
 		focus = <focus>
+		## cardinality = 0..inf
+		focus = <shared_focus>
+
 	}
 	## cardinality = 0..1
 	bypass = {
@@ -220,6 +235,8 @@ shared_focus = {
 	}
 	## cardinality = 0..1
 	relative_position_id = <shared_focus>
+	## cardinality = 0..1
+	relative_position_id = <focus>
 	### used for focuses that can change title/desc
 	## cardinality = 0..1
 	dynamic = bool
@@ -235,13 +252,17 @@ shared_focus = {
 	will_lead_to_war_with = enum[country_tags]
 	## cardinality = 0..inf
 	prerequisite = {
-		## cardinality = 1..inf
+		## cardinality = 0..inf
 		focus = <shared_focus>
+		## cardinality = 0..inf
+		focus = <focus>
 	}
 	## cardinality = 0..inf
 	mutually_exclusive = {
-		## cardinality = 1..inf
+		## cardinality = 0..inf
 		focus = <shared_focus>
+		## cardinality = 0..inf
+		focus = <focus>
 	}
 	## cardinality = 0..1
 	bypass = {
@@ -279,16 +300,5 @@ shared_focus = {
 		## cardinality = 0..1
 		enum[base_factor] = float
 		alias_name[modifier_rule] = alias_match_left[modifier_rule]
-	}
-}
-
-enums = {
-	complex_enum[focuses] = {
-		path = "game/common/national_focus"
-		name = {
-			focus = {
-				id = enum_name
-			}
-		}
 	}
 }

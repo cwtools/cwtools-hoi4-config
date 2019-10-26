@@ -29,6 +29,12 @@ values = {
 		### Faction leader of this country's faction.
 		faction_leader
 
+		### Host of this country's government in exile.
+		host
+
+		### ID
+		id
+
 		### Legitimacy of scope country. -1 if not an exile.
 		legitimacy
 

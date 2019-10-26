@@ -1,5 +1,9 @@
 values = {
 	value[array] = {
+		# Global arrays
+		### Array of major powers.
+		majors
+
 		# Country dynamic variables
 		### Array of allies (faction members).
 		allies
@@ -13,8 +17,14 @@ values = {
 		### Array of enemies at war with.
 		enemies
 
+		### Array of governments in exile this country hosts.
+		exiles
+
 		### Array of faction members.
 		faction_members
+
+		### Array of country's neighbors.
+		neighbors
 
 		### Array of subjects.
 		subjects

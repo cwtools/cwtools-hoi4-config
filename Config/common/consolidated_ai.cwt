@@ -12,7 +12,10 @@ types = {
 		}
 		subtype[national_focuses] = {
 			ai_national_focuses = {
-
+				## cardinality = 0..inf
+				<focus>
+				## cardinality = 0..inf
+				<shared_focus>
 			}
 		}
 	}
@@ -50,7 +53,7 @@ ai_focus = {
 	}
 	subtype[national_focuses] = {
 		ai_national_focuses = {
-			## cardinality = 1..inf
+			## cardinality = 0..inf
 			<focus>
 			## cardinality = 0..inf
 			<shared_focus>
@@ -369,6 +372,26 @@ ai_equipment_design_group = {
 			enum[module_categories]
 		}
 	}
+}
+
+values = {
+    value[ai_roles] = {
+        armor
+        cavalry
+        garrison
+        infantry
+        marines
+        mechanized
+        motorized
+        mountaineers
+        paratroopers
+        suppression
+
+        naval_capital
+        naval_carrier
+        naval_screen
+        naval_sub
+    }
 }
 
 enums = {

@@ -15,7 +15,9 @@ oob = {
 		## cardinality = 0..1
 		division_names_group = <division_name>
 		## cardinality = 0..1
-		is_locked = yes
+		template_counter = int
+		## cardinality = 0..1
+		is_locked = bool
 		regiments = {
 			## cardinality = 1..25
 			<unit> = { x = int[0..5] y = int[0..5] }
@@ -31,24 +33,7 @@ oob = {
 
 	## cardinality = 0..1
 	instant_effect = {
-		## cardinality = 0..inf
-		add_equipment_production = {
-			equipment = {
-				type = <equipment.regular_equip>
-				## cardinality = 0..1
-				creator = enum[country_tags]
-				## cardinality = 0..1
-				version_name = scalar
-			}
-			## cardinality = 0..1
-			amount = int
-			## cardinality = 0..1
-			requested_factories = int[1..150]
-			## cardinality = 0..1
-			progress = float[0..1]
-			## cardinality = 0..1
-			efficiency = int[0..100]
-		}
+		alias_name[effect] = alias_match_left[effect]
 	}
 
 	## cardinality = 0..1
@@ -60,6 +45,7 @@ oob = {
 			## cardinality = 0..1
 			division_name = {
 				is_name_ordered = bool
+				## cardinality = 0..1
 				name_order = int
 			}
 			location = enum[provinces]
@@ -68,6 +54,15 @@ oob = {
 			start_experience_factor = float
 			## cardinality = 0..1
 			start_equipment_factor = float
+			## cardinality = 0..inf
+			force_equipment_variants = {
+				## cardinality = 1..inf
+				<equipment.regular_equip> = { 
+					owner = enum[country_tags]
+					## cardinality = 0..1
+					creator = enum[country_tags]
+				}
+			}
 		}
 
 		## cardinality = 0..inf
@@ -95,6 +90,33 @@ oob = {
 							owner = enum[country_tags]
 							## cardinality = 0..1
 							version_name = scalar
+							## cardinality = 0..1
+							creator = enum[country_tags]
+						}
+					}
+					## cardinality = 0..1
+					air_wings = {
+						# should have something to force ace to be directly after <equipment.air_equip>
+
+						## cardinality = 1..inf
+						<equipment.air_equip> = {
+							owner = enum[country_tags]
+							## cardinality = 0..1
+							creator = enum[country_tags]
+							amount = int
+						}
+						## cardinality = 0..inf
+						### Order is important. Ace will be assigned to the wing above.
+						ace = {
+							modifier = <ace>
+							name = localisation
+							surname = localisation
+							## cardinality = 0..1
+							callsign = localisation
+							## cardinality = 0..1
+							portrait = int
+							## cardinality = 0..1
+							is_female = bool
 						}
 					}
 				}
@@ -106,10 +128,27 @@ oob = {
 	air_wings = {
 		## cardinality = 1..inf
 		<state> = {
+			# should have something to force ace to be directly after <equipment.air_equip>
+
 			## cardinality = 1..inf
 			<equipment.air_equip> = {
 				owner = enum[country_tags]
+				## cardinality = 0..1
+				creator = enum[country_tags]
 				amount = int
+			}
+			## cardinality = 0..inf
+			### Order is important. Ace will be assigned to the wing above.
+			ace = {
+				modifier = <ace>
+				name = localisation
+				surname = localisation
+				## cardinality = 0..1
+				callsign = localisation
+				## cardinality = 0..1
+				portrait = int
+				## cardinality = 0..1
+				is_female = bool
 			}
 		}
 	}

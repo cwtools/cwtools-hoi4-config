@@ -82,9 +82,18 @@ equipment = {
 	## cardinality = 0..1
 	alias = <unit>
 
+	### Which category the equipment appears in the production screen.
+	interface_category = enum[interface_category]
+
 	### Priority for usage over other equipment.
 	## cardinality = 0..1
 	priority = int
+	## cardinality = 0..1
+	priority = {
+		## cardinality = 0..1
+		enum[base_factor] = float
+		alias_name[modifier_rule] = alias_match_left[modifier_rule]
+	}
 
 	subtype[archetype_equip] = {
 		### GFX reference used to define equipment picture in land-lease.
@@ -92,9 +101,6 @@ equipment = {
 
 		### How the equipment is grouped in the production screen.
 		group_by = enum[equip_group_by]
-
-		### Which category the equipment appears in the production screen.
-		interface_category = enum[interface_category]
 
 		## cardinality = 0..1
 		family = <equipment.archetype_equip>

@@ -136,6 +136,7 @@ unit = {
 
 ship_name = {
 	name = localisation
+	## cardinality = 0..1
 	for_countries = {
 		## cardinality = 0..inf
 		enum[country_tags]
@@ -162,6 +163,13 @@ ship_name = {
 	unique = {
 		## cardinality = 0..inf
 		scalar
+	}
+	## cardinality = 0..1
+	unordered = {
+		## cardinality = 0..inf
+		int = {
+			scalar
+		}
 	}
 	## cardinality = 0..1
 	ordered = {
@@ -193,6 +201,13 @@ division_name = {
 	}
 	## cardinality = 0..1
 	fallback_name = scalar
+	## cardinality = 0..1
+	unordered = {
+		## cardinality = 0..inf
+		int = {
+			scalar
+		}
+	}
 	## cardinality = 0..1
 	ordered = {
 		## cardinality = 0..inf
@@ -227,6 +242,7 @@ enums = {
 		anti_tank
 		anti_air
 		motorized
+		cavalry
 		mechanized
 		armor
 		fighter
@@ -243,6 +259,7 @@ enums = {
 		capital_ship
 		carrier
 		convoy
+		paratroopers
 	}
 	enum[land_units] = {
 		infantry

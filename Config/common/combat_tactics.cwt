@@ -12,6 +12,7 @@ types = {
 	}
 }
 
+## replace_scope = { this = combat root = combat from = combat }
 combat_tactic = {
 	is_attacker = bool
 	trigger = {

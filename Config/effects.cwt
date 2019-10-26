@@ -195,6 +195,7 @@ alias[effect:random_enemy_country] = {
 ## scope = country
 alias[effect:country_event] = {
 	id = <event.country_event>
+	id = <event.news_event>
 	## cardinality = 0..1
 	enum[hours_days] = int
 	## cardinality = 0..1

@@ -1876,6 +1876,7 @@ alias[effect:divide_temp_variable] = {
 alias[effect:set_temp_variable] = {
 	value_set[variable] = variable_field
 }
+
 ### Sets a temp variable to a value or another variable.
 ## scope = any
 alias[effect:set_temp_variable] = {

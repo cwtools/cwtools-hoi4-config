@@ -894,15 +894,15 @@ alias[effect:air_experience] = variable_field
 
 ### save an event target.
 ## scope = any
-alias[effect:save_event_target_as] = scalar
+alias[effect:save_event_target_as] = value_set[event_target]
 
 ### save a global event target.
 ## scope = any
-alias[effect:save_global_event_target_as] = scalar
+alias[effect:save_global_event_target_as] = value_set[global_event_target]
 
 ### clear a global event target.
 ## scope = any
-alias[effect:clear_global_event_target] = scalar
+alias[effect:clear_global_event_target] = value[global_event_target]
 
 ### clear all global event targets.
 ## scope = any

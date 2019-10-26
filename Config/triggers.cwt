@@ -64,6 +64,10 @@ alias[trigger:has_country_flag] = value[country_flag]
 
 ### Has country flag been set. Check flag val date set and days since set. Example: has_country_flag = test_flag.
 ## scope = country
+alias[trigger:has_country_flag] = enum[hardcoded_country_flags]
+
+### Has country flag been set. Check flag val date set and days since set. Example: has_country_flag = test_flag.
+## scope = country
 alias[trigger:has_country_flag] = {
 	flag = value[country_flag]
 	## cardinality = 0..1

@@ -1,927 +1,1228 @@
 ### check state id
 ## scopes = { state }
 alias[trigger:state] = replace_me
-### if_, CIfTrigger, A conditional trigger
+
+### if_, CIfTrigger, A conditional trigger
 ## scopes = { ??? }
 alias[trigger:if] = replace_me
-### checks for a specific date
+
+### checks for a specific date
 ## scopes = { ??? }
 alias[trigger:date] = replace_me
-### compare leader skill levels
+
+### compare leader skill levels
 alias[trigger:skill] = replace_me
-### check if we are in this combat phase
+
+### check if we are in this combat phase
 alias[trigger:phase] = replace_me
-### all inside trigger must be true
+
+### all inside trigger must be true
 ## scopes = { ??? }
 alias[trigger:and] = replace_me
-### at least one entry inside trigger must be true
+
+### at least one entry inside trigger must be true
 ## scopes = { ??? }
 alias[trigger:or] = replace_me
-### negates content of trigger
+
+### negates content of trigger
 ## scopes = { ??? }
 alias[trigger:not] = replace_me
-### Check if the current country exist. The country of the scope you are in. Example: DEN = { exists = yes }
+
+### Check if the current country exist. The country of the scope you are in. Example: DEN = { exists = yes }
 ## scopes = { country }
 alias[trigger:exists] = replace_me
-### check if the difficulty is above or below specified value 0-2 (difficulty enum). Example: difficulty > 0 (above easy)
+
+### check if the difficulty is above or below specified value 0-2 (difficulty enum). Example: difficulty > 0 (above easy)
 ## scopes = { ??? }
 alias[trigger:difficulty] = replace_me
-### check if any neighbor country meets the trigger
+
+### check if any neighbor country meets the trigger
 ## scopes = { country }
 alias[trigger:any_neighbor_country] = {
     alias_name[effect] = alias_match_left[effect]
 }
 
-### has country flag been set.Check flag val date set and days since set.
-## scopes = { country }
-alias[trigger:has_country_flag] = replace_me
-### check amount of reserves
+### check amount of reserves
 alias[trigger:reserves] = replace_me
-### country tag trigger
+
+### country tag trigger
 ## scopes = { country }
 alias[trigger:tag] = replace_me
-### check if any country meets the trigger
+
+### check if any country meets the trigger
 ## scopes = { ??? }
 alias[trigger:any_country] = {
     alias_name[effect] = alias_match_left[effect]
 }
 
-### Compares a variable to a number
+
+### Compares a variable to a number
 ## scopes = { ??? }
 alias[trigger:check_variable] = replace_me
-### check state's strategic area id
+
+### check state's strategic area id
 ## scopes = { state }
 alias[trigger:region] = replace_me
-### Checks if the country is subject of any other country
+
+### Checks if the country is subject of any other country
 ## scopes = { country }
 alias[trigger:is_subject] = replace_me
-### check state's strategic area id
+
+### check state's strategic area id
 ## scopes = { state }
 alias[trigger:area] = replace_me
-### check the global threat value. 0-1 value
+
+### check the global threat value. 0-1 value
 ## scopes = { ??? }
 alias[trigger:threat] = replace_me
-### always returns specified value
+
+### always returns specified value
 ## scopes = { ??? }
 alias[trigger:always] = replace_me
-### Is scope state a capital. 169 = { is_capital = yes }
+
+### Is scope state a capital. 169 = { is_capital = yes }
 ## scopes = { state }
 alias[trigger:is_capital] = replace_me
-### has global flag been set.Check flag val date set and days since set.
+
+### has global flag been set.Check flag val date set and days since set.
 ## scopes = { ??? }
 alias[trigger:has_global_flag] = replace_me
-### check if attacker side in combat
+
+### check if attacker side in combat
 alias[trigger:is_attacker] = replace_me
-### Checks if player has a DLC.
+
+### Checks if player has a DLC.
 ## scopes = { ??? }
 alias[trigger:has_dlc] = replace_me
-### a hidden trigger, anything in it not shown in tooltips
+
+### a hidden trigger, anything in it not shown in tooltips
 ## scopes = { state country }
 alias[trigger:hidden_trigger] = replace_me
-### check if country has idea
+
+### check if country has idea
 ## scopes = { country }
 alias[trigger:has_idea] = replace_me
-### check if any enemy country meets the trigger
+
+### check if any enemy country meets the trigger
 ## scopes = { country }
 alias[trigger:any_enemy_country] = {
     alias_name[effect] = alias_match_left[effect]
 }
 
-### check if neighbor ( controlled territory ) with specified country
+
+### check if neighbor ( controlled territory ) with specified country
 ## scopes = { country }
 alias[trigger:is_neighbor_of] = replace_me
-### check what opinion the country has towards a specified country
+
+### check what opinion the country has towards a specified country
 ## scopes = { country }
 alias[trigger:has_opinion] = replace_me
-### check if a country has the opinion modifier
+
+### check if a country has the opinion modifier
 ## scopes = { country }
 alias[trigger:has_opinion_modifier] = replace_me
-### Checks if the country is subject of specified country
+
+### Checks if the country is subject of specified country
 ## scopes = { country }
 alias[trigger:is_subject_of] = replace_me
-### check if all neighbor countries meet the trigger
+
+### check if all neighbor countries meet the trigger
 ## scopes = { country }
 alias[trigger:all_neighbor_country] = replace_me
-### check if all countries meets the trigger
+
+### check if all countries meets the trigger
 ## scopes = { ??? }
 alias[trigger:all_country] = replace_me
-### check if all enemy countries meet the trigger
+
+### check if all enemy countries meet the trigger
 ## scopes = { country }
 alias[trigger:all_enemy_country] = replace_me
-### check if combat is at night
+
+### check if combat is at night
 alias[trigger:night] = replace_me
-### check if we have digin level (lowest)
+
+### check if we have digin level (lowest)
 alias[trigger:dig_in] = replace_me
-### check combat province temperature
+
+### check combat province temperature
 alias[trigger:temperature] = replace_me
-### Check that average armor level of combatant is over a certain level
+
+### Check that average armor level of combatant is over a certain level
 alias[trigger:armor] = replace_me
-### is country at war
+
+### is country at war
 ## scopes = { country }
 alias[trigger:has_war] = replace_me
-### check if state is controlled by
+
+### check if state is controlled by
 ## scopes = { state }
 alias[trigger:is_controlled_by] = replace_me
-### check if state is owned by
+
+### check if state is owned by
 ## scopes = { state }
 alias[trigger:is_owned_by] = replace_me
-### compare leader skill levels
+
+### compare leader skill levels
 alias[trigger:skill_advantage] = replace_me
-### check owner for state(s)
+
+### check owner for state(s)
 ## scopes = { country }
 alias[trigger:owns_state] = replace_me
-### check controller for state(s)
+
+### check controller for state(s)
 ## scopes = { country }
 alias[trigger:controls_state] = replace_me
-### does country government (ruling party) belong to ideology group
+
+### does country government (ruling party) belong to ideology group
 ## scopes = { country }
 alias[trigger:has_government] = replace_me
-### has state flag been setCheck flag val date set and days since set.
+
+### has state flag been setCheck flag val date set and days since set.
 ## scopes = { state }
 alias[trigger:has_state_flag] = replace_me
-### is countries at war
+
+### is countries at war
 ## scopes = { country }
 alias[trigger:has_war_with] = replace_me
-### checks for amount of divisions in specified state owned by current country.
+
+### checks for amount of divisions in specified state owned by current country.
 ## scopes = { country }
 alias[trigger:divisions_in_state] = replace_me
-### check if the specified country exist
+
+### check if the specified country exist
 ## scopes = { ??? }
 alias[trigger:country_exists] = replace_me
-### checks for amount of ships in specified area
+
+### checks for amount of ships in specified area
 ## scopes = { country }
 alias[trigger:ships_in_area] = replace_me
-### checks for amount of divisions, additionally of a specified type
+
+### checks for amount of divisions, additionally of a specified type
 ## scopes = { country }
 alias[trigger:has_army_size] = replace_me
-### Checks for amount of ships, additionally of a specified type, archetype, or sub unit definition.
+
+### Checks for amount of ships, additionally of a specified type, archetype, or sub unit definition.
 ## scopes = { country }
 alias[trigger:has_navy_size] = replace_me
-### check amount of military factories
+
+### check amount of military factories
 ## scopes = { country }
 alias[trigger:num_of_military_factories] = replace_me
-### check amount of civilian factories
+
+### check amount of civilian factories
 ## scopes = { country }
 alias[trigger:num_of_civilian_factories] = replace_me
-### check amount of naval factories
+
+### check amount of naval factories
 ## scopes = { country }
 alias[trigger:num_of_naval_factories] = replace_me
-### check amount of nukes
+
+### check amount of nukes
 ## scopes = { country }
 alias[trigger:num_of_nukes] = replace_me
-### check amount of manpower
+
+### check amount of manpower
 ## scopes = { country }
 alias[trigger:has_manpower] = replace_me
-### check amount of political power
+
+### check amount of political power
 ## scopes = { country }
 alias[trigger:has_political_power] = replace_me
-### check amount of available military factories
+
+### check amount of available military factories
 ## scopes = { country }
 alias[trigger:num_of_available_military_factories] = replace_me
-### check amount of available naval factories
+
+### check amount of available naval factories
 ## scopes = { country }
 alias[trigger:num_of_available_naval_factories] = replace_me
-### check amount of available civilian factories
+
+### check amount of available civilian factories
 ## scopes = { country }
 alias[trigger:num_of_available_civilian_factories] = replace_me
-### check if member of same faction as specified country
+
+### check if member of same faction as specified country
 ## scopes = { country }
 alias[trigger:is_in_faction_with] = replace_me
-### check if member of any faction
+
+### check if member of any faction
 ## scopes = { country }
 alias[trigger:is_in_faction] = replace_me
-### check if country leads a faction
+
+### check if country leads a faction
 ## scopes = { country }
 alias[trigger:is_faction_leader] = replace_me
-### check if guaranteed by specified country
+
+### check if guaranteed by specified country
 ## scopes = { country }
 alias[trigger:is_guaranteed_by] = replace_me
-### check if country has guaranteed specified country
+
+### check if country has guaranteed specified country
 ## scopes = { country }
 alias[trigger:has_guaranteed] = replace_me
-### check country has military access to specified country
+
+### check country has military access to specified country
 ## scopes = { country }
 alias[trigger:has_military_access_to] = replace_me
-### check if country gives military access to specified country
+
+### check if country gives military access to specified country
 ## scopes = { country }
 alias[trigger:gives_military_access_to] = replace_me
-### check if any state meets the trigger
+
+### check if any state meets the trigger
 ## scopes = { ??? }
 alias[trigger:any_state] = {
     alias_name[effect] = alias_match_left[effect]
 }
 
-### check if any owned state meets the trigger
+
+### check if any owned state meets the trigger
 ## scopes = { country }
 alias[trigger:any_owned_state] = {
     alias_name[effect] = alias_match_left[effect]
 }
 
-### check if any neighbor state meets the trigger
+
+### check if any neighbor state meets the trigger
 ## scopes = { state }
 alias[trigger:any_neighbor_state] = {
     alias_name[effect] = alias_match_left[effect]
 }
 
-### Check if any allied country meets the trigger. Does not include the country itself
+
+### Check if any allied country meets the trigger. Does not include the country itself
 ## scopes = { country }
 alias[trigger:any_allied_country] = {
     alias_name[effect] = alias_match_left[effect]
 }
 
-### check if all states meets the trigger
+
+### check if all states meets the trigger
 ## scopes = { ??? }
 alias[trigger:all_state] = replace_me
-### check if all owned states meets the trigger
+
+### check if all owned states meets the trigger
 ## scopes = { country }
 alias[trigger:all_owned_state] = replace_me
-### check if all neighbor states meets the trigger
+
+### check if all neighbor states meets the trigger
 ## scopes = { state }
 alias[trigger:all_neighbor_state] = replace_me
-### Check if all allied countries meet the trigger. Does not include the country itself
+
+### Check if all allied countries meet the trigger. Does not include the country itself
 ## scopes = { country }
 alias[trigger:all_allied_country] = replace_me
-### check if a country is close to surrendering
+
+### check if a country is close to surrendering
 ## scopes = { country }
 alias[trigger:surrender_progress] = replace_me
-### Checks if daily political power increase is more or less that specified value 
+
+### Checks if daily political power increase is more or less that specified value 
 ## scopes = { country }
 alias[trigger:political_power_daily] = replace_me
-### Compares the ratio of total industrial capacity between the scope country and the one set with 'tag'
+
+### Compares the ratio of total industrial capacity between the scope country and the one set with 'tag'
 ## scopes = { country }
 alias[trigger:ic_ratio] = replace_me
-### compares the warscore of all wars in a country to see if any fullfills the comparison condition 0-100 - Example: any_war_score > 40
+
+### compares the warscore of all wars in a country to see if any fullfills the comparison condition 0-100 - Example: any_war_score > 40
 ## scopes = { country }
 alias[trigger:any_war_score] = {
     alias_name[effect] = alias_match_left[effect]
 }
 
-### check if country has idea with specified trait
+
+### check if country has idea with specified trait
 ## scopes = { country }
 alias[trigger:has_idea_with_trait] = replace_me
-### checks for amount of aircrafts, additionally of a specified type
+
+### checks for amount of aircrafts, additionally of a specified type
 ## scopes = { country }
 alias[trigger:has_deployed_air_force_size] = replace_me
-### check what terrain is in combat
+
+### check what terrain is in combat
 alias[trigger:is_fighting_in_terrain] = replace_me
-### check if defender side in combat
+
+### check if defender side in combat
 alias[trigger:is_defender] = replace_me
-### check if combatant has modifier
+
+### check if combatant has modifier
 alias[trigger:has_combat_modifier] = replace_me
-### check if defender side in combat
+
+### check if defender side in combat
 alias[trigger:is_winning] = replace_me
-### check if fastest unit of combatant is over this limit
+
+### check if fastest unit of combatant is over this limit
 alias[trigger:fastest_unit] = replace_me
-### checks if side has an advantage in recon level
+
+### checks if side has an advantage in recon level
 alias[trigger:recon_advantage] = replace_me
-### check if country has technology
+
+### check if country has technology
 ## scopes = { country }
 alias[trigger:has_tech] = replace_me
-### checks researched land doctrine level
+
+### checks researched land doctrine level
 ## scopes = { country }
 alias[trigger:land_doctrine_level] = replace_me
-### Check if current game is ironman.
+
+### Check if current game is ironman.
 ## scopes = { ??? }
 alias[trigger:is_ironman] = replace_me
-### Compare the initial start date of current game.
+
+### Compare the initial start date of current game.
 ## scopes = { ??? }
 alias[trigger:has_start_date] = replace_me
-### checks country has built a set number (at least) of a certain type of building since taking goal
+
+### checks country has built a set number (at least) of a certain type of building since taking goal
 ## scopes = { country }
 alias[trigger:has_built] = replace_me
-### Checks if country has more than limit, default = 0.
+
+### Checks if country has more than limit, default = 0.
 ## scopes = { country }
 alias[trigger:has_available_idea_with_traits] = replace_me
-### Checks if state is claimed by country
+
+### Checks if state is claimed by country
 ## scopes = { state }
 alias[trigger:is_claimed_by] = replace_me
-### Checks if state is core of country
+
+### Checks if state is core of country
 ## scopes = { state }
 alias[trigger:is_core_of] = replace_me
-### Checks if country is AI controlled.
+
+### Checks if country is AI controlled.
 ## scopes = { country }
 alias[trigger:is_ai] = replace_me
-### check if sides leader has trait
+
+### check if sides leader has trait
 alias[trigger:has_trait] = replace_me
-### check if side has reserves waiting
+
+### check if side has reserves waiting
 alias[trigger:has_reserves] = replace_me
-### check if sides front is full or can get more reinforcements
+
+### check if sides front is full or can get more reinforcements
 alias[trigger:frontage_full] = replace_me
-### is lend-leasing country
+
+### is lend-leasing country
 ## scopes = { country }
 alias[trigger:is_lend_leasing] = replace_me
-### checks building for available construction levels
+
+### checks building for available construction levels
 ## scopes = { state }
 alias[trigger:free_building_slots] = replace_me
-### checks if a state is a demilitarized zone
+
+### checks if a state is a demilitarized zone
 ## scopes = { state }
 alias[trigger:is_demilitarized_zone] = replace_me
-### checks if a state is in border conflict
+
+### checks if a state is in border conflict
 ## scopes = { state }
 alias[trigger:is_border_conflict] = replace_me
-### has country completed focus
+
+### has country completed focus
 ## scopes = { country }
 alias[trigger:has_completed_focus] = replace_me
-### One country has offensive war against other country.
+
+### One country has offensive war against other country.
 ## scopes = { country }
 alias[trigger:has_offensive_war_with] = replace_me
-### One country has defensive war against other country.
+
+### One country has defensive war against other country.
 ## scopes = { country }
 alias[trigger:has_defensive_war_with] = replace_me
-### is country at offensive war
+
+### is country at offensive war
 ## scopes = { country }
 alias[trigger:has_offensive_war] = replace_me
-### is country at defensive war
+
+### is country at defensive war
 ## scopes = { country }
 alias[trigger:has_defensive_war] = replace_me
-### check if state is coastal
+
+### check if state is coastal
 ## scopes = { state }
 alias[trigger:is_coastal] = replace_me
-### Check the amount of casualties a country has suffered in all of it's wars
+
+### Check the amount of casualties a country has suffered in all of it's wars
 ## scopes = { country }
 alias[trigger:casualties] = replace_me
-### Works as an and-trigger with a custom tooltip
+
+### Works as an and-trigger with a custom tooltip
 ## scopes = { ??? }
 alias[trigger:custom_trigger_tooltip] = replace_me
-### checks for amount of equipment stored
+
+### checks for amount of equipment stored
 ## scopes = { country }
 alias[trigger:has_equipment] = replace_me
-### check amount of total factories
+
+### check amount of total factories
 ## scopes = { country }
 alias[trigger:num_of_factories] = replace_me
-###  = { focus = id progress = 0.5 }
+
+###  = { focus = id progress = 0.5 }
 ## scopes = { country }
 alias[trigger:focus_progress] = replace_me
-### Checks if the country is puppet of any other country
+
+### Checks if the country is puppet of any other country
 ## scopes = { country }
 alias[trigger:is_puppet] = replace_me
-### Checks if the country is puppet of specified country
+
+### Checks if the country is puppet of specified country
 ## scopes = { country }
 alias[trigger:is_puppet_of] = replace_me
-### checks for amount of ships in specified state's ports
+
+### checks for amount of ships in specified state's ports
 ## scopes = { country }
 alias[trigger:ships_in_state_ports] = replace_me
-### check if country is a major
+
+### check if country is a major
 ## scopes = { country }
 alias[trigger:is_major] = replace_me
-### is state located on continent
+
+### is state located on continent
 ## scopes = { state }
 alias[trigger:is_on_continent] = replace_me
-### check if combat is at night
+
+### check if combat is at night
 alias[trigger:is_amphibious_invasion] = replace_me
-### Compares the estimated army strength between the scope country and the one set with 'tag'
+
+### Compares the estimated army strength between the scope country and the one set with 'tag'
 ## scopes = { country }
 alias[trigger:strength_ratio] = replace_me
-### check if side has maximal planning bonus
+
+### check if side has maximal planning bonus
 alias[trigger:has_max_planning] = replace_me
-### check if participant in civil war as revolter or target
+
+### check if participant in civil war as revolter or target
 ## scopes = { country }
 alias[trigger:has_civil_war] = replace_me
-### check if side has more combat width than their opponent
+
+### check if side has more combat width than their opponent
 alias[trigger:less_combat_width_than_opponent] = replace_me
-### check if side is fighting air units
+
+### check if side is fighting air units
 alias[trigger:is_fighting_air_units] = replace_me
-### check if side has a career with air wings on a mission
+
+### check if side has a career with air wings on a mission
 alias[trigger:has_carrier_airwings_on_mission] = replace_me
-### check if side has flanked their opponent
+
+### check if side has flanked their opponent
 alias[trigger:has_flanked_opponent] = replace_me
-### check if there is a claim between a country and all others
+
+### check if there is a claim between a country and all others
 ## scopes = { country }
 alias[trigger:any_claim] = {
     alias_name[effect] = alias_match_left[effect]
 }
 
-### Compares number of volunteers from the country. Example: has_volunteers_amount_from = { tag = ITA count > 1 }
+
+### Compares number of volunteers from the country. Example: has_volunteers_amount_from = { tag = ITA count > 1 }
 ## scopes = { country }
 alias[trigger:has_volunteers_amount_from] = replace_me
-### check amount of controlled stats
+
+### check amount of controlled stats
 ## scopes = { country }
 alias[trigger:num_of_controlled_states] = replace_me
-### original tag is ( for civil wars checks )
+
+### original tag is ( for civil wars checks )
 ## scopes = { country }
 alias[trigger:original_tag] = replace_me
-### Compare if the country has added above or below the specified ammount of tension
+
+### Compare if the country has added above or below the specified ammount of tension
 ## scopes = { country }
 alias[trigger:has_added_tension_amount] = replace_me
-### check if manpower is enough to switch recruitment laws not to be negative
+
+### check if manpower is enough to switch recruitment laws not to be negative
 ## scopes = { country }
 alias[trigger:has_manpower_for_recruit_change_to] = replace_me
-### check what liberation desire the country has towards a specified country
+
+### check what liberation desire the country has towards a specified country
 ## scopes = { country }
 alias[trigger:ai_liberate_desire] = replace_me
-### check distance between two states
+
+### check distance between two states
 ## scopes = { state }
 alias[trigger:distance_to] = replace_me
-### check if country can research technology
+
+### check if country can research technology
 ## scopes = { country }
 alias[trigger:can_research] = replace_me
-### Checks a country has annex war goal on another country
+
+### Checks a country has annex war goal on another country
 ## scopes = { country }
 alias[trigger:has_annex_war_goal] = replace_me
-### check lowest/highest hardness level on combatant
+
+### check lowest/highest hardness level on combatant
 alias[trigger:hardness] = replace_me
-### check if country has a division template that contains a specific unit
+
+### check if country has a division template that contains a specific unit
 ## scopes = { country }
 alias[trigger:has_template_containing_unit] = replace_me
-### Checks if the first province in the state is connected to the capital of its owner
+
+### Checks if the first province in the state is connected to the capital of its owner
 ## scopes = { state }
 alias[trigger:is_in_home_area] = replace_me
-### check the population in the state
+
+### check the population in the state
 ## scopes = { state }
 alias[trigger:state_population] = replace_me
-### check the ai irrationality value
+
+### check the ai irrationality value
 ## scopes = { country }
 alias[trigger:ai_irrationality] = replace_me
-### Are the countries fighting on the same side of a war
+
+### Are the countries fighting on the same side of a war
 ## scopes = { country }
 alias[trigger:has_war_together_with] = replace_me
-### checks if the country has capitulated
+
+### checks if the country has capitulated
 ## scopes = { country }
 alias[trigger:has_capitulated] = replace_me
-### checks for amount of manpower of selected type, additionally of a specified type
+
+### checks for amount of manpower of selected type, additionally of a specified type
 ## scopes = { country }
 alias[trigger:has_army_manpower] = replace_me
-### check if state is owned by
+
+### check if state is owned by
 ## scopes = { state }
 alias[trigger:is_owned_and_controlled_by] = replace_me
-### check if the tutorial is active
+
+### check if the tutorial is active
 ## scopes = { ??? }
 alias[trigger:is_tutorial] = replace_me
-### check if the historical focus is active
+
+### check if the historical focus is active
 ## scopes = { ??? }
 alias[trigger:is_historical_focus_on] = replace_me
-### check number of research slots at start of game
+
+### check number of research slots at start of game
 ## scopes = { country }
 alias[trigger:original_research_slots] = replace_me
-### Checks if country has a wargoal against the target. 
+
+### Checks if country has a wargoal against the target. 
 ## scopes = { country }
 alias[trigger:has_wargoal_against] = replace_me
-### Checks if country is justifying a wargoal against the target. 
+
+### Checks if country is justifying a wargoal against the target. 
 ## scopes = { country }
 alias[trigger:is_justifying_wargoal_against] = replace_me
-### check if neighbor ( owned territory ) with specified country
+
+### check if neighbor ( owned territory ) with specified country
 ## scopes = { country }
 alias[trigger:is_owner_neighbor_of] = replace_me
-### Will compare towards the amount of divisions an ai wants to have.
+
+### Will compare towards the amount of divisions an ai wants to have.
 ## scopes = { country }
 alias[trigger:ai_wants_divisions] = replace_me
-### Checks if a state has been claimed by target country in an ongoing peace conference
+
+### Checks if a state has been claimed by target country in an ongoing peace conference
 ## scopes = { state }
 alias[trigger:has_claimed_state_in_peace_conference] = replace_me
-### Checks if a country owns the amount of states neighbouring the scoped state
+
+### Checks if a country owns the amount of states neighbouring the scoped state
 ## scopes = { state }
 alias[trigger:num_owned_neighbour_states] = replace_me
-### Checks if a country owns the amount of states neighbouring the scoped state.
+
+### Checks if a country owns the amount of states neighbouring the scoped state.
 ## scopes = { state }
 alias[trigger:num_claimed_peace_conference_neighbour_states] = replace_me
-### always returns specified value
+
+### always returns specified value
 ## scopes = { state }
 alias[trigger:is_island_state] = replace_me
-### Checks the country's politics on allowing elections. has_elections = yes
+
+### Checks the country's politics on allowing elections. has_elections = yes
 ## scopes = { country }
 alias[trigger:has_elections] = replace_me
-### Compares the estimated army strength between the scope country, his allies and his enemies.
+
+### Compares the estimated army strength between the scope country, his allies and his enemies.
 ## scopes = { country }
 alias[trigger:alliance_strength_ratio] = replace_me
-### civilwar target is ( for civil wars checks )
+
+### civilwar target is ( for civil wars checks )
 ## scopes = { country }
 alias[trigger:civilwar_target] = replace_me
-### Checks if the country is currently in a peaceconference
+
+### Checks if the country is currently in a peaceconference
 ## scopes = { country }
 alias[trigger:is_in_peace_conference] = replace_me
-### check if country has unit leader with specified ID. Don't localize this. Tooltip only for debug.
+
+### check if country has unit leader with specified ID. Don't localize this. Tooltip only for debug.
 ## scopes = { country }
 alias[trigger:has_unit_leader] = replace_me
-### check if any neighbor country in the home area meets the trigger
+
+### check if any neighbor country in the home area meets the trigger
 ## scopes = { country }
 alias[trigger:any_home_area_neighbor_country] = {
     alias_name[effect] = alias_match_left[effect]
 }
 
-### check if any other country meets the trigger. Excludes current country
+
+### check if any other country meets the trigger. Excludes current country
 ## scopes = { ??? }
 alias[trigger:any_other_country] = {
     alias_name[effect] = alias_match_left[effect]
 }
 
-### check if all other countries meets the trigger. Excludes current country
+
+### check if all other countries meets the trigger. Excludes current country
 ## scopes = { ??? }
 alias[trigger:all_other_country] = replace_me
-### Check if country has non aggression pact with the specified country
+
+### Check if country has non aggression pact with the specified country
 ## scopes = { country }
 alias[trigger:has_non_aggression_pact_with] = replace_me
-### Compares the number of members in the faction for the current country. 
+
+### Compares the number of members in the faction for the current country. 
 ## scopes = { country }
 alias[trigger:num_faction_members] = replace_me
-### Compares the estimated army strength between the scope country and all its enemies
+
+### Compares the estimated army strength between the scope country and all its enemies
 ## scopes = { country }
 alias[trigger:enemies_strength_ratio] = replace_me
-### Returns true if the game has the specified custom difficulty on: 
+
+### Returns true if the game has the specified custom difficulty on: 
 ## scopes = { ??? }
 alias[trigger:has_custom_difficulty_setting] = replace_me
-### Returns true if the game has any custom difficulty on
+
+### Returns true if the game has any custom difficulty on
 ## scopes = { ??? }
 alias[trigger:has_any_custom_difficulty_setting] = replace_me
-### Returns true if the game has any custom difficulty on the scope nation
+
+### Returns true if the game has any custom difficulty on the scope nation
 ## scopes = { country }
 alias[trigger:has_country_custom_difficulty_setting] = replace_me
-### Checks if the country is currently researching a specific technology.
+
+### Checks if the country is currently researching a specific technology.
 ## scopes = { country }
 alias[trigger:is_researching_technology] = replace_me
-### Checks if country is member specified technology sharing group.
+
+### Checks if country is member specified technology sharing group.
 ## scopes = { country }
 alias[trigger:is_in_tech_sharing_group] = replace_me
-### check if country currently has an autonomy state, example:
+
+### check if country currently has an autonomy state, example:
 ## scopes = { country }
 alias[trigger:has_autonomy_state] = replace_me
-### check if autonomy progress ratio is higher than value, example:
+
+### check if autonomy progress ratio is higher than value, example:
 ## scopes = { country }
 alias[trigger:compare_autonomy_progress_ratio] = replace_me
-### check if autonomy state is higher than other one, example:
+
+### check if autonomy state is higher than other one, example:
 ## scopes = { country }
 alias[trigger:compare_autonomy_state] = replace_me
-### Checks if country has specific cosmetic tag set.
+
+### Checks if country has specific cosmetic tag set.
 ## scopes = { country }
 alias[trigger:has_cosmetic_tag] = replace_me
-### check the number of subjects of nation
+
+### check the number of subjects of nation
 ## scopes = { country }
 alias[trigger:num_subjects] = replace_me
-### checks how many groups a nation is a member of
+
+### checks how many groups a nation is a member of
 ## scopes = { country }
 alias[trigger:num_tech_sharing_groups] = replace_me
-### Check if country has a division template of specific name
+
+### Check if country has a division template of specific name
 ## scopes = { country }
 alias[trigger:has_template] = replace_me
-### Check if state has a specific state category
+
+### Check if state has a specific state category
 ## scopes = { state }
 alias[trigger:has_state_category] = replace_me
-### Check that ratio of cavalry brigades in the composition of a side of combating troops are over a certain level
+
+### Check that ratio of cavalry brigades in the composition of a side of combating troops are over a certain level
 alias[trigger:has_cavalry_ratio] = replace_me
-### check the number of states occupied by nation
+
+### check the number of states occupied by nation
 ## scopes = { country }
 alias[trigger:num_occupied_states] = replace_me
-### check for damaged buildings of nation
+
+### check for damaged buildings of nation
 ## scopes = { country }
 alias[trigger:has_damaged_buildings] = replace_me
-### checks for amount of resources in specified state
+
+### checks for amount of resources in specified state
 ## scopes = { state country }
 alias[trigger:has_resources_amount] = replace_me
-### checks if the country has a bonus for the specified technology or category
+
+### checks if the country has a bonus for the specified technology or category
 ## scopes = { country }
 alias[trigger:has_tech_bonus] = replace_me
-### check if country has a division template that is majority of specific unit
+
+### check if country has a division template that is majority of specific unit
 ## scopes = { country }
 alias[trigger:has_template_majority_unit] = replace_me
-### check if side has maximal planning bonus
+
+### check if side has maximal planning bonus
 alias[trigger:min_planning] = replace_me
-### check if country has leader with specified ID. Don't localize this. Tooltip only for debug.
+
+### check if country has leader with specified ID. Don't localize this. Tooltip only for debug.
 ## scopes = { country }
 alias[trigger:has_country_leader] = replace_me
-### Compares current country's army experience with right side value.
+
+### Compares current country's army experience with right side value.
 ## scopes = { country }
 alias[trigger:has_army_experience] = replace_me
-### Compares current country's air experience with right side value.
+
+### Compares current country's air experience with right side value.
 ## scopes = { country }
 alias[trigger:has_air_experience] = replace_me
-### Compares current country's navy experience with right side value.
+
+### Compares current country's navy experience with right side value.
 ## scopes = { country }
 alias[trigger:has_navy_experience] = replace_me
-### check controller for state(s)
+
+### check controller for state(s)
 ## scopes = { country }
 alias[trigger:has_full_control_of_state] = replace_me
-### Will compare towards the amount of divisions a country has control over, if strength matters use has_army_size.
+
+### Will compare towards the amount of divisions a country has control over, if strength matters use has_army_size.
 ## scopes = { country }
 alias[trigger:num_divisions] = replace_me
-### Returns true if the specified number of sub-triggers return true
+
+### Returns true if the specified number of sub-triggers return true
 ## scopes = { ??? }
 alias[trigger:count_triggers] = replace_me
-### is_target_of_coup = yes - Returns true if current country is being targeted by a coup from any country.
+
+### is_target_of_coup = yes - Returns true if current country is being targeted by a coup from any country.
 ## scopes = { country }
 alias[trigger:is_target_of_coup] = replace_me
-### is_staging_coup = yes - Returns true if current country is staging a coup in another any country.
+
+### is_staging_coup = yes - Returns true if current country is staging a coup in another any country.
 ## scopes = { country }
 alias[trigger:is_staging_coup] = replace_me
-### Does current country have the specified focus tree.
+
+### Does current country have the specified focus tree.
 ## scopes = { country }
 alias[trigger:has_focus_tree] = replace_me
-### check if country has a division template that is majority of specific unit using AI's priorities rather than visual
+
+### check if country has a division template that is majority of specific unit using AI's priorities rather than visual
 ## scopes = { country }
 alias[trigger:has_template_ai_majority_unit] = replace_me
-### Country has any active licenses
+
+### Country has any active licenses
 ## scopes = { country }
 alias[trigger:has_any_license] = replace_me
-### Country has specific active license
+
+### Country has specific active license
 ## scopes = { country }
 alias[trigger:has_license] = replace_me
-### Current country is licensing something to target country
+
+### Current country is licensing something to target country
 ## scopes = { country }
 alias[trigger:is_licensing_any_to] = replace_me
-### Country is licensing specific equipment to target. License is active
+
+### Country is licensing specific equipment to target. License is active
 ## scopes = { country }
 alias[trigger:is_licensing_to] = replace_me
-### check if the ai controlled country has any template for a specific role
+
+### check if the ai controlled country has any template for a specific role
 ## scopes = { country }
 alias[trigger:ai_has_role_template] = replace_me
-### check if the ai controlled country has any fielded divisions for a specific role
+
+### check if the ai controlled country has any fielded divisions for a specific role
 ## scopes = { country }
 alias[trigger:ai_has_role_division] = replace_me
-### Country has specified relation modifier when dealing with _target_ county
+
+### Country has specified relation modifier when dealing with _target_ county
 ## scopes = { country }
 alias[trigger:has_relation_modifier] = replace_me
-### In the current state, checks if any province within the specified limit has a building of the specified level.
+
+### In the current state, checks if any province within the specified limit has a building of the specified level.
 ## scopes = { state }
 alias[trigger:any_province_building_level] = {
     alias_name[effect] = alias_match_left[effect]
 }
 
-### Compares estimated max armor based on intel. Example: estimated_intel_max_armor = { tag = ITA value > 1 }
+
+### Compares estimated max armor based on intel. Example: estimated_intel_max_armor = { tag = ITA value > 1 }
 ## scopes = { country }
 alias[trigger:estimated_intel_max_armor] = replace_me
-### Compares estimated max armor based on intel. Example: estimated_intel_max_piercing = { tag = ITA value > 1 }
+
+### Compares estimated max armor based on intel. Example: estimated_intel_max_piercing = { tag = ITA value > 1 }
 ## scopes = { country }
 alias[trigger:estimated_intel_max_piercing] = replace_me
-### check number of research current research slots 
+
+### check number of research current research slots 
 ## scopes = { country }
 alias[trigger:amount_research_slots] = replace_me
-### Number of available manpower per factory the country has. Excluding dockyards.
+
+### Number of available manpower per factory the country has. Excluding dockyards.
 ## scopes = { country }
 alias[trigger:manpower_per_military_factory] = replace_me
-### has current country picked specified amount of ideas. Category and slot is optional.
+
+### has current country picked specified amount of ideas. Category and slot is optional.
 ## scopes = { country }
 alias[trigger:amount_taken_ideas] = replace_me
-### Check if carrier has airplanes that are part of the current combat
+
+### Check if carrier has airplanes that are part of the current combat
 alias[trigger:has_carrier_airwings_in_own_combat] = replace_me
-### Compares the estimated navy strength between the scope country and the one set with 'tag'
+
+### Compares the estimated navy strength between the scope country and the one set with 'tag'
 ## scopes = { country }
 alias[trigger:naval_strength_ratio] = replace_me
-### Compares the estimated navy strength between the scope country and all its enemies
+
+### Compares the estimated navy strength between the scope country and all its enemies
 ## scopes = { country }
 alias[trigger:enemies_naval_strength_ratio] = replace_me
-### Compares the estimated naval strength between the scope country, his allies and his enemies.
+
+### Compares the estimated naval strength between the scope country, his allies and his enemies.
 ## scopes = { country }
 alias[trigger:alliance_naval_strength_ratio] = replace_me
-### check value of stability 0-1: Example has_stability < 0.6
+
+### check value of stability 0-1: Example has_stability < 0.6
 ## scopes = { country }
 alias[trigger:has_stability] = replace_me
-### check value of war_support 0-1: Example has_war_support < 0.6
+
+### check value of war_support 0-1: Example has_war_support < 0.6
 ## scopes = { country }
 alias[trigger:has_war_support] = replace_me
-### check if all unit leaders meets the trigger.
+
+### check if all unit leaders meets the trigger.
 ## scopes = { country }
 alias[trigger:all_unit_leader] = replace_me
-### check if any unit leader meets the trigger.
+
+### check if any unit leader meets the trigger.
 ## scopes = { country }
 alias[trigger:any_unit_leader] = {
     alias_name[effect] = alias_match_left[effect]
 }
 
-### check if all unit leaders meets the trigger.
+
+### check if all unit leaders meets the trigger.
 ## scopes = { country }
 alias[trigger:all_army_leader] = replace_me
-### check if any unit leader meets the trigger.
+
+### check if any unit leader meets the trigger.
 ## scopes = { country }
 alias[trigger:any_army_leader] = {
     alias_name[effect] = alias_match_left[effect]
 }
 
-### check if all unit leaders meets the trigger.
+
+### check if all unit leaders meets the trigger.
 ## scopes = { country }
 alias[trigger:all_navy_leader] = replace_me
-### check if any unit leader meets the trigger.
+
+### check if any unit leader meets the trigger.
 ## scopes = { country }
 alias[trigger:any_navy_leader] = {
     alias_name[effect] = alias_match_left[effect]
 }
 
-### is_assigned = yes/no - Checks if the current unit leader is assigned to command an army/navy
+
+### is_assigned = yes/no - Checks if the current unit leader is assigned to command an army/navy
 alias[trigger:is_assigned] = replace_me
-### Check number of units commanded by the unit leader 
+
+### Check number of units commanded by the unit leader 
 alias[trigger:num_units] = replace_me
-### is_field_marshal = yes/no - Checks if the current unit leader is a field marshall
+
+### is_field_marshal = yes/no - Checks if the current unit leader is a field marshall
 alias[trigger:is_field_marshal] = replace_me
-### has unit leader flag been setCheck flag val date set and days since set.
+
+### has unit leader flag been setCheck flag val date set and days since set.
 alias[trigger:has_unit_leader_flag] = replace_me
-### check if country has active selected decision
+
+### check if country has active selected decision
 ## scopes = { country }
 alias[trigger:has_decision] = replace_me
-### Checks if available command power is more or less that specified value 
+
+### Checks if available command power is more or less that specified value 
 ## scopes = { country }
 alias[trigger:command_power] = replace_me
-### Checks if daily command power increase is more or less that specified value 
+
+### Checks if daily command power increase is more or less that specified value 
 ## scopes = { country }
 alias[trigger:command_power_daily] = replace_me
-### Checks if state is fully controlled by specified tag
+
+### Checks if state is fully controlled by specified tag
 ## scopes = { state }
 alias[trigger:is_fully_controlled_by] = replace_me
-### does unit leader have the abilityCheck if a unit leader has the ability.
+
+### does unit leader have the abilityCheck if a unit leader has the ability.
 alias[trigger:has_ability] = replace_me
-### Checks if a variable exists in a scope
+
+### Checks if a variable exists in a scope
 ## scopes = { ??? }
 alias[trigger:has_variable] = replace_me
-### check unit leader has specified ID. Don't localize this. Tooltip only for debug.
+
+### check unit leader has specified ID. Don't localize this. Tooltip only for debug.
 alias[trigger:has_id] = replace_me
-### check if leader can select a trait
+
+### check if leader can select a trait
 alias[trigger:can_select_trait] = replace_me
-### Adds a value or a variable to a temporary variable
+
+### Adds a value or a variable to a temporary variable
 ## scopes = { ??? }
 alias[trigger:add_to_temp_variable] = replace_me
-### Subtracts a value or a variable to a temporary variable
+
+### Subtracts a value or a variable to a temporary variable
 ## scopes = { ??? }
 alias[trigger:subtract_from_temp_variable] = replace_me
-### Multiplies a temporary variable by a value or another variable
+
+### Multiplies a temporary variable by a value or another variable
 ## scopes = { ??? }
 alias[trigger:multiply_temp_variable] = replace_me
-### Divies a temporary variable by a value or another variable
+
+### Divies a temporary variable by a value or another variable
 ## scopes = { ??? }
 alias[trigger:divide_temp_variable] = replace_me
-### Sets a temporary variable to a value or another variable
+
+### Sets a temporary variable to a value or another variable
 ## scopes = { ??? }
 alias[trigger:set_temp_variable] = replace_me
-### clamps a temp variable between two values/variables
+
+### clamps a temp variable between two values/variables
 ## scopes = { ??? }
 alias[trigger:clamp_temp_variable] = replace_me
-### check amount of civilian factories available for a new project to use
+
+### check amount of civilian factories available for a new project to use
 ## scopes = { country }
 alias[trigger:num_of_civilian_factories_available_for_projects] = replace_me
-### checks if current scope or global scope has the specified event target saved
+
+### checks if current scope or global scope has the specified event target saved
 ## scopes = { ??? }
 alias[trigger:has_event_target] = replace_me
-### Check the value of political power daily growth.Exacmple: political_power_growth > 0
+
+### Check the value of political power daily growth.Exacmple: political_power_growth > 0
 ## scopes = { country }
 alias[trigger:political_power_growth] = replace_me
-### Checks if a there is any border wars for country/state
+
+### Checks if a there is any border wars for country/state
 ## scopes = { state country }
 alias[trigger:has_border_war] = replace_me
-### Checks if a the combatant or leader has a border war
+
+### Checks if a the combatant or leader has a border war
 alias[trigger:is_border_war] = replace_me
-### Checks if a there is a border war between two states
+
+### Checks if a there is a border war between two states
 ## scopes = { ??? }
 alias[trigger:has_border_war_between] = replace_me
-### Checks if a there is a border against a state/country
+
+### Checks if a there is a border against a state/country
 ## scopes = { state country }
 alias[trigger:has_border_war_with] = replace_me
-### Compares the average stats for a unit leader.
+
+### Compares the average stats for a unit leader.
 alias[trigger:average_stats] = replace_me
-### Compares attack skill level of a unit leader.
+
+### Compares attack skill level of a unit leader.
 alias[trigger:attack_skill_level] = replace_me
-### Compares defense skill level of a unit leader.
+
+### Compares defense skill level of a unit leader.
 alias[trigger:defense_skill_level] = replace_me
-### Compares logistics skill level of a unit leader.
+
+### Compares logistics skill level of a unit leader.
 alias[trigger:logistics_skill_level] = replace_me
-### Compares planning skill level of a unit leader.
+
+### Compares planning skill level of a unit leader.
 alias[trigger:planning_skill_level] = replace_me
-### is_leading_army_group = yes/no - Checks if the current unit leader is leading an army group (not single army)
+
+### is_leading_army_group = yes/no - Checks if the current unit leader is leading an army group (not single army)
 alias[trigger:is_leading_army_group] = replace_me
-### is_leading_army = yes/no - Checks if the current unit leader is leading a single army (not army group)
+
+### is_leading_army = yes/no - Checks if the current unit leader is leading a single army (not army group)
 alias[trigger:is_leading_army] = replace_me
-### prints all variables in scope and temp variables to a file
+
+### prints all variables in scope and temp variables to a file
 ## scopes = { ??? }
 alias[trigger:print_variables] = replace_me
-### check if country has an active mission with specified ID. has_active_mission = my_test_mission
+
+### check if country has an active mission with specified ID. has_active_mission = my_test_mission
 ## scopes = { country }
 alias[trigger:has_active_mission] = replace_me
-### Has attaché from any other country
+
+### Has attaché from any other country
 ## scopes = { country }
 alias[trigger:has_attache] = replace_me
-### Has attaché from specified country
+
+### Has attaché from specified country
 ## scopes = { country }
 alias[trigger:has_attache_from] = replace_me
-### Checks for amount manpower currently in deploymentview. amount_manpower_in_training > 10
+
+### Checks for amount manpower currently in deploymentview. amount_manpower_in_training > 10
 ## scopes = { country }
 alias[trigger:amount_manpower_in_deployment_queue] = replace_me
-### Checks for amount manpower currently the target state with option to specify a type.
+
+### Checks for amount manpower currently the target state with option to specify a type.
 ## scopes = { country }
 alias[trigger:army_manpower_in_state] = replace_me
-### Checks if scope leader is from an exiled government. is_exiled_leader = yes
+
+### Checks if scope leader is from an exiled government. is_exiled_leader = yes
 alias[trigger:is_exiled_leader] = replace_me
-### Checks if scope country is a government in exile in target tag. is_exiled_in = ENG
+
+### Checks if scope country is a government in exile in target tag. is_exiled_in = ENG
 ## scopes = { country }
 alias[trigger:is_exiled_in] = replace_me
-### Checks if scope country is hosting target tag as an exile. is_hosting_exile = FRA
+
+### Checks if scope country is hosting target tag as an exile. is_hosting_exile = FRA
 ## scopes = { country }
 alias[trigger:is_hosting_exile] = replace_me
-### Checks if scope leader is from specified exiled government. is_exiled_leader_from = FRA
+
+### Checks if scope leader is from specified exiled government. is_exiled_leader_from = FRA
 alias[trigger:is_exiled_leader_from] = replace_me
-### Checks if scope country is hosting an exile. is_exile_host = yes
+
+### Checks if scope country is hosting an exile. is_exile_host = yes
 ## scopes = { country }
 alias[trigger:is_exile_host] = replace_me
-### Checks if scope country an exiled government. is_government_in_exile = yes
+
+### Checks if scope country an exiled government. is_government_in_exile = yes
 ## scopes = { country }
 alias[trigger:is_government_in_exile] = replace_me
-### checks for amount of divisions in specified state owned by current country.
+
+### checks for amount of divisions in specified state owned by current country.
 ## scopes = { country }
 alias[trigger:divisions_in_border_state] = replace_me
-### Compares the ratio of equipment archetype in stockpile vs used. a value of 2 means we have double in stockpile of what is fielded or in training.
+
+### Compares the ratio of equipment archetype in stockpile vs used. a value of 2 means we have double in stockpile of what is fielded or in training.
 ## scopes = { country }
 alias[trigger:stockpile_ratio] = replace_me
-### Checks for state strategic value
+
+### Checks for state strategic value
 ## scopes = { state }
 alias[trigger:state_strategic_value] = replace_me
-### Checks for state strategic value
+
+### Checks for state strategic value
 ## scopes = { state }
 alias[trigger:state_and_terrain_strategic_value] = replace_me
-### Rounds a temporary variable
+
+### Rounds a temporary variable
 ## scopes = { ??? }
 alias[trigger:round_temp_variable] = replace_me
-### Checks if the country has for subject the given country
+
+### Checks if the country has for subject the given country
 ## scopes = { country }
 alias[trigger:has_subject] = replace_me
-### Checks if a game rule is set to a particular option.
+
+### Checks if a game rule is set to a particular option.
 ## scopes = { ??? }
 alias[trigger:has_game_rule] = replace_me
-### Returns true if all of the active game rule options allow achievements.
+
+### Returns true if all of the active game rule options allow achievements.
 ## scopes = { ??? }
 alias[trigger:game_rules_allow_achievements] = replace_me
-### Checks if an element is in array
+
+### Checks if an element is in array
 ## scopes = { ??? }
 alias[trigger:is_in_array] = replace_me
-### Adds an element to a temporary array
+
+### Adds an element to a temporary array
 ## scopes = { ??? }
 alias[trigger:add_to_temp_array] = replace_me
-### Removes an element from a temporary array using value or index
+
+### Removes an element from a temporary array using value or index
 ## scopes = { ??? }
 alias[trigger:remove_from_temp_array] = replace_me
-### Clears the contents of a temporary array
+
+### Clears the contents of a temporary array
 ## scopes = { ??? }
 alias[trigger:clear_temp_array] = replace_me
-### Resizes a temp array
+
+### Resizes a temp array
 ## scopes = { ??? }
 alias[trigger:resize_temp_array] = replace_me
-### Runs a loop on an array and check a trigger for each value, if any true returns true. otherwise returns false
+
+### Runs a loop on an array and check a trigger for each value, if any true returns true. otherwise returns false
 ## scopes = { ??? }
 alias[trigger:any_of] = {
     alias_name[effect] = alias_match_left[effect]
 }
 
-### Runs a loop on an array and check a trigger for each value, if any false returns false. otherwise returns true
+
+### Runs a loop on an array and check a trigger for each value, if any false returns false. otherwise returns true
 ## scopes = { ??? }
 alias[trigger:all_of] = replace_me
-### check amount of fuel
+
+### check amount of fuel
 ## scopes = { country }
 alias[trigger:has_fuel] = replace_me
-### Runs a loop on an array and check a trigger for each scope in it, if any true returns true. otherwise returns false
+
+### Runs a loop on an array and check a trigger for each scope in it, if any true returns true. otherwise returns false
 ## scopes = { ??? }
 alias[trigger:any_of_scopes] = {
     alias_name[effect] = alias_match_left[effect]
 }
 
-### Runs a loop on an array and check a trigger for each scope in it, if any false returns false. otherwise returns true
+
+### Runs a loop on an array and check a trigger for each scope in it, if any false returns false. otherwise returns true
 ## scopes = { ??? }
 alias[trigger:all_of_scopes] = replace_me
-### check if current country has specified trait.
+
+### check if current country has specified trait.
 ## scopes = { country }
 alias[trigger:has_country_leader_with_trait] = replace_me
-### Check scope country legitimacy 0-100: Example has_legitimacy < 60
+
+### Check scope country legitimacy 0-100: Example has_legitimacy < 60
 ## scopes = { country }
 alias[trigger:has_legitimacy] = replace_me
-### Checks if a rule set for a country.
+
+### Checks if a rule set for a country.
 ## scopes = { ??? }
 alias[trigger:has_rule] = replace_me
-### check the population in the state in thousands (use to avoid variable overflows)
+
+### check the population in the state in thousands (use to avoid variable overflows)
 ## scopes = { state }
 alias[trigger:state_population_k] = replace_me
-### Check the amount of casualties in thousands a country has suffered in all of it's wars
+
+### Check the amount of casualties in thousands a country has suffered in all of it's wars
 ## scopes = { country }
 alias[trigger:casualties_k] = replace_me
-### meta triggers can be used for building triggers from strings and running them. following example will test if Germany has 42 pp:
+
+### meta triggers can be used for building triggers from strings and running them. following example will test if Germany has 42 pp:
 ## scopes = { country }
 alias[trigger:meta_trigger] = replace_me
-### Checks if scope has a dynamic modifier.
+
+### Checks if scope has a dynamic modifier.
 ## scopes = { state country }
 alias[trigger:has_dynamic_modifier] = replace_me
-### Runs a loop on for each element of an array, finds the lowest value and stores result in temp variables
+
+### Runs a loop on for each element of an array, finds the lowest value and stores result in temp variables
 ## scopes = { ??? }
 alias[trigger:find_lowest_in_array] = replace_me
-### Runs a loop on for each element of an array, finds the highest value and stores result in temp variables
+
+### Runs a loop on for each element of an array, finds the highest value and stores result in temp variables
 ## scopes = { ??? }
 alias[trigger:find_highest_in_array] = replace_me
-### Checks if a region has amount of mines.
+
+### Checks if a region has amount of mines.
 ## scopes = { country }
 alias[trigger:has_mines] = replace_me
-### Compares navies of two sides.
+
+### Compares navies of two sides.
 ## scopes = { country }
 alias[trigger:naval_strength_comparison] = replace_me
-### Compares the fuel ratio to a variable.
+
+### Compares the fuel ratio to a variable.
 ## scopes = { country }
 alias[trigger:fuel_ratio] = replace_me
-### Checks the days since last strategic bombing.
+
+### Checks the days since last strategic bombing.
 ## scopes = { state }
 alias[trigger:days_since_last_strategic_bombing] = replace_me
-### A trigger to check how dangerous enemy mines are for a country. Controlled by NAVAL_MINE_DANGER defines. Returns a value between 0 and 1. Example mine_threat > 0.5 
+
+### A trigger to check how dangerous enemy mines are for a country. Controlled by NAVAL_MINE_DANGER defines. Returns a value between 0 and 1. Example mine_threat > 0.5 
 ## scopes = { country }
 alias[trigger:mine_threat] = replace_me
-### A trigger to check convoy threat for a country. Controlled by NAVAL_CONVOY_DANGER defines. Returns a value between 0 and 1. Example convoy_threat > 0.5 
+
+### A trigger to check convoy threat for a country. Controlled by NAVAL_CONVOY_DANGER defines. Returns a value between 0 and 1. Example convoy_threat > 0.5 
 ## scopes = { country }
 alias[trigger:convoy_threat] = replace_me
-### Checks the casualties infliced by the speficied country to the scopped country.
+
+### Checks the casualties infliced by the speficied country to the scopped country.
 ## scopes = { country }
 alias[trigger:casualties_inflicted_by] = replace_me
-### Checks the mines planted by the country of the parent scope on the coastline of the target countryE.g. true if Germany has more than 1000 mines around Poland coast:
+
+### Checks the mines planted by the country of the parent scope on the coastline of the target countryE.g. true if Germany has more than 1000 mines around Poland coast:
 ## scopes = { country }
 alias[trigger:has_mined] = replace_me
-### Checks that the country in scope has received the specified amount of expeditionary forces from the specified country
+
+### Checks that the country in scope has received the specified amount of expeditionary forces from the specified country
 ## scopes = { country }
 alias[trigger:received_expeditionary_forces] = replace_me
-### Checks the weather on a combat
+
+### Checks the weather on a combat
 alias[trigger:is_fighting_in_weather] = replace_me
-
+

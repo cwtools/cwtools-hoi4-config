@@ -195,6 +195,7 @@ alias[effect:random_enemy_country] = {
 ## scope = country
 alias[effect:country_event] = {
 	id = <event.country_event>
+	id = <event.news_event>
 	## cardinality = 0..1
 	enum[hours_days] = int
 	## cardinality = 0..1
@@ -893,15 +894,15 @@ alias[effect:air_experience] = variable_field
 
 ### save an event target.
 ## scope = any
-alias[effect:save_event_target_as] = scalar
+alias[effect:save_event_target_as] = value_set[event_target]
 
 ### save a global event target.
 ## scope = any
-alias[effect:save_global_event_target_as] = scalar
+alias[effect:save_global_event_target_as] = value_set[global_event_target]
 
 ### clear a global event target.
 ## scope = any
-alias[effect:clear_global_event_target] = scalar
+alias[effect:clear_global_event_target] = value[global_event_target]
 
 ### clear all global event targets.
 ## scope = any
@@ -1875,6 +1876,7 @@ alias[effect:divide_temp_variable] = {
 alias[effect:set_temp_variable] = {
 	value_set[variable] = variable_field
 }
+
 ### Sets a temp variable to a value or another variable.
 ## scope = any
 alias[effect:set_temp_variable] = {

@@ -116,6 +116,7 @@ alias[effect:set_country_flag] = {
 
 ### clear country flag.
 ## scope = country
+## severity = warning
 alias[effect:clr_country_flag] = value[country_flag]
 
 ### set global flag.
@@ -133,6 +134,7 @@ alias[effect:set_global_flag] = {
 
 ### clear global flag.
 ## scope = any
+## severity = warning
 alias[effect:clr_global_flag] = value[global_flag]
 
 ### Removes specified building in specified state or province.
@@ -225,7 +227,6 @@ alias[effect:random_enemy_country] = {
 ## scope = country
 alias[effect:country_event] = {
 	id = <event.country_event>
-	id = <event.news_event>
 	## cardinality = 0..1
 	enum[hours_days] = int
 	## cardinality = 0..1
@@ -585,6 +586,7 @@ alias[effect:set_state_flag] = {
 
 ### clear state flag.
 ## scope = state
+## severity = warning
 alias[effect:clr_state_flag] = value[state_flag]
 
 ### create faction of specified name.
@@ -607,7 +609,16 @@ alias[effect:annex_country] = {
 ### Starts building construction for amount of levels in specified state or province.
 ## scope = state
 alias[effect:add_building_construction] = {
-	type = <building>
+	type = <building.state>
+	level = int
+	## cardinality = 0..1
+	instant_build = bool
+}
+
+### Starts building construction for amount of levels in specified state or province.
+## scope = state
+alias[effect:add_building_construction] = {
+	type = <building.provincial>
 	level = int
 	## cardinality = 0..1
 	instant_build = bool
@@ -997,7 +1008,7 @@ alias[effect:set_equipment_fraction] = float
 
 ### Adds country threat.
 ## scope = country
-alias[effect:add_threat] = float
+alias[effect:add_threat] = float[0..100]
 
 ### Sends to target scope specified amount of equipment.
 ## scope = country
@@ -1038,7 +1049,7 @@ alias[effect:effect_tooltip] = { alias_name[effect] = alias_match_left[effect] }
 ## scope = country
 alias[effect:add_resource] = {
 	type = <resource>
-	amount = int
+	amount = int_variable_field
 	state = scope[state]
 	state = <state>
 }
@@ -1046,7 +1057,7 @@ alias[effect:add_resource] = {
 ## scope = state
 alias[effect:add_resource] = {
 	type = <resource>
-	amount = int
+	amount = int_variable_field
 }
 
 ### remove a unit leader ( remove_unit_leader=ID ).
@@ -1057,7 +1068,7 @@ alias[effect:remove_unit_leader] = value[unit_leader_ids]
 ## scope = country
 alias[effect:add_timed_idea] = {
 	idea = enum[idea_name]
-	days = int
+	days = int_variable_field
 }
 
 ### Stops specefied country being a puppet of current country.
@@ -1346,7 +1357,7 @@ alias[effect:swap_ideas] = {
 ## scope = state
 alias[effect:damage_building] = {
 	type = <building>
-	damage = float
+	damage = variable_field
 	## cardinality = 0..1
 	province = enum[provinces]
 }
@@ -1517,7 +1528,16 @@ alias[effect:remove_relation_modifier] = {
 ### Sets specific level of a building construction for amount of levels in specified state or province.
 ## scope = state
 alias[effect:set_building_level] = {
-	type = <building>
+	type = <building.state>
+	level = int
+	## cardinality = 0..1
+	instant_build = yes
+}
+
+### Sets specific level of a building construction for amount of levels in specified state or province.
+## scope = state
+alias[effect:set_building_level] = {
+	type = <building.provincial>
 	level = int
 	## cardinality = 0..1
 	instant_build = yes
@@ -1675,6 +1695,7 @@ alias[effect:modify_unit_leader_flag] = {
 
 ### clear unit leader flag.
 ## scope = unit_leader
+## severity = warning
 alias[effect:clr_unit_leader_flag] = value[leader_flag]
 
 ### Sets the country that owns current scope general.
@@ -2371,13 +2392,13 @@ alias[effect:for_each_loop] = {
 	array = value[array]
 	## cardinality = 0..1
 	### optional (default 'v') current value in array will be stored in this temp variable
-	value = scalar
+	value = value_set[variable]
 	## cardinality = 0..1
 	### optional (default 'i') current index in array will be stored in this temp variable
-	index = scalar
+	index = value_set[variable]
 	## cardinality = 0..1
 	### optional (default 'break') set this temp variable to non zero to break the loop
-    break = scalar
+    break = value_set[variable]
     
     alias_name[effect] = alias_match_left[effect]
 }
@@ -2528,11 +2549,11 @@ alias[effect:find_lowest_in_array] = {
 
 	## cardinality = 0..1
 	### optional (default 'v') lowest value in array will be stored in this temp variable
-	value = scalar
+	value = value_set[variable]
 	
 	## cardinality = 0..1
-	### optional (default 'v') lowest value in array will be stored in this temp variable
-	index = scalar
+	### optional (default 'i') index of the lowest value in array will be stored in this temp variable
+	index = value_set[variable]
 }
 
 ### Runs a loop on for each element of an array, finds the highest value and stores result in temp variables.
@@ -2541,12 +2562,12 @@ alias[effect:find_highest_in_array] = {
 	array = value[array]
 
 	## cardinality = 0..1
-	### optional (default 'v') lowest value in array will be stored in this temp variable
-	value = scalar
+	### optional (default 'v') highest value in array will be stored in this temp variable
+	value = value_set[variable]
 	
 	## cardinality = 0..1
-	### optional (default 'v') lowest value in array will be stored in this temp variable
-	index = scalar
+	### optional (default 'i') index of the highest value in array will be stored in this temp variable
+	index = value_set[variable]
 }
 
 ### Add mines to a strategic region for scoped country.

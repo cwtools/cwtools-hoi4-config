@@ -2,6 +2,12 @@ types = {
 	type[building] = {
 		path = "game/common/building"
 		skip_root_key = buildings
+		localisation = {
+			## required
+			name = "$"
+			## required
+			desc = "$_desc"
+		}
 	}
 }
 

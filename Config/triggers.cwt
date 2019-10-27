@@ -65,6 +65,10 @@ alias[trigger:has_country_flag] = value[country_flag]
 
 ### Has country flag been set. Check flag val date set and days since set. Example: has_country_flag = test_flag.
 ## scope = country
+alias[trigger:has_country_flag] = enum[hardcoded_country_flags]
+
+### Has country flag been set. Check flag val date set and days since set. Example: has_country_flag = test_flag.
+## scope = country
 alias[trigger:has_country_flag] = {
 	flag = value[country_flag]
 	## cardinality = 0..1
@@ -1651,6 +1655,12 @@ alias[trigger:set_temp_variable] = {
 ### Sets a temporary variable to a value or another variable.
 ## scope = any
 alias[trigger:set_temp_variable] = {
+	value[variable] = variable_field
+}
+
+### Sets a temporary variable to a value or another variable.
+## scope = any
+alias[trigger:set_temp_variable] = {
 	var = value_set[variable]
 	value = variable_field
 }
@@ -1669,7 +1679,11 @@ alias[trigger:num_of_civilian_factories_available_for_projects] = int
 
 ### Checks if current scope or global scope has the specified event target saved.
 ## scope = any
-alias[trigger:has_event_target] = scalar
+alias[trigger:has_event_target] = value[event_target]
+
+### Checks if current scope or global scope has the specified event target saved.
+## scope = any
+alias[trigger:has_event_target] = value[global_event_target]
 
 ### Check the value of political power daily growth.Exacmple: political_power_growth > 0.
 ## scope = country

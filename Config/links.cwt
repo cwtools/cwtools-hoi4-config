@@ -48,4 +48,12 @@ links = {
         from_data = yes
         data_source = enum[country_tags]
     }
+
+    var = {
+        desc =  eventtarget_link_desc_var
+        from_data = yes
+        type = both
+        prefix = var:
+        data_source = value[variable]
+    }
 }

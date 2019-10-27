@@ -33,7 +33,7 @@ links = {
     }
 
     global = {
-        output_scope = any
+        output_scope = invalid
         input_scopes = any
     }
 

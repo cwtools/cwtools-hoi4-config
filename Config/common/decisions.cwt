@@ -145,7 +145,7 @@ decision = {
 
 	## cardinality = 0..1
 	highlight_provinces = {
-		## cardinality = 1..inf
+		## cardinality = ~1..inf
 		enum[provinces]
 	}
 

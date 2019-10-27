@@ -49,9 +49,18 @@ alias[effect:add_province_modifier] = {
 		<static_modifier>
 	}
 	province = {
-		## cardinality = 0..1
 		all_provinces = yes
-		## cardinality = 0..inf
+		## cardinality = 0..1
+		limit_to_coastal = yes
+		## cardinality = 0..1
+		limit_to_naval_base = yes
+		## cardinality = 0..1
+		limit_to_border = yes
+		## cardinality = 0..1
+		limit_to_victory_point = yes
+	}
+	province = {
+		## cardinality = ~1..inf
 		id = enum[provinces]
 	}
 }
@@ -64,11 +73,32 @@ alias[effect:remove_province_modifier] = {
 		<static_modifier>
 	}
 	province = {
+		all_provinces = yes
 		## cardinality = 0..1
-		all_provinces = bool
-		## cardinality = 0..inf
+		limit_to_coastal = yes
+		## cardinality = 0..1
+		limit_to_naval_base = yes
+		## cardinality = 0..1
+		limit_to_border = yes
+		## cardinality = 0..1
+		limit_to_victory_point = yes
+	}
+	province = {
+		## cardinality = ~1..inf
 		id = enum[provinces]
 	}
+}
+
+### Adds static modifiers to specified province.
+## scope = { state }
+alias[effect:add_province_modifier] = {
+	enum[provinces] = <static_modifier>
+}
+
+### Removes static modifiers fom specified province.
+## scope = { state }
+alias[effect:remove_province_modifier] = {
+	enum[provinces] = <static_modifier>
 }
 
 ### set country flag.
@@ -247,7 +277,7 @@ alias[effect:random] = {
 ### a random effect.
 ## scope = any
 alias[effect:random_list] = {
-	## cardinality = 0..inf
+	## cardinality = 1..inf
 	int = {
 		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 		alias_name[effect] = alias_match_left[effect]
@@ -337,7 +367,7 @@ alias[effect:create_country_leader] = {
 	expire = date_field
 	## cardinality = 0..1
 	traits = {
-		## cardinality = 0..inf
+		## cardinality = ~1..inf
 		<country_leader_trait>
 	}
 	## cardinality = 0..1
@@ -480,7 +510,7 @@ alias[effect:create_navy_leader] = {
 	gfx = scalar
 	## cardinality = 0..1
 	traits = {
-		## cardinality = 0..inf
+		## cardinality = ~1..inf
 		<unit_leader_trait>
 	}
 	## cardinality = 0..1
@@ -580,11 +610,8 @@ alias[effect:add_building_construction] = {
 	level = int
 	## cardinality = 0..1
 	instant_build = bool
-	## cardinality = 0..1
 	province = enum[provinces]
-	## cardinality = 0..1
 	province = {
-		## cardinality = 0..1
 		all_provinces = yes
 		## cardinality = 0..1
 		limit_to_coastal = yes
@@ -596,8 +623,20 @@ alias[effect:add_building_construction] = {
 		limit_to_victory_point = yes
 		## cardinality = 0..1
 		level = int
-		## cardinality = 0..inf
+	}
+	province = {
+		## cardinality = 1..inf
 		id = enum[provinces]
+		## cardinality = 0..1
+		limit_to_coastal = yes
+		## cardinality = 0..1
+		limit_to_naval_base = yes
+		## cardinality = 0..1
+		limit_to_border = yes
+		## cardinality = 0..1
+		limit_to_victory_point = yes
+		## cardinality = 0..1
+		level = int
 	}
 }
 
@@ -1072,7 +1111,7 @@ alias[effect:create_field_marshal] = {
 	gfx = scalar
 	## cardinality = 0..1
 	traits = {
-		## cardinality = 0..inf
+		## cardinality = ~1..inf
 		<unit_leader_trait>
 	}
 	## cardinality = 0..1
@@ -1106,7 +1145,7 @@ alias[effect:create_corps_commander] = {
 	gfx = scalar
 	## cardinality = 0..1
 	traits = {
-		## cardinality = 0..inf
+		## cardinality = ~1..inf
 		<unit_leader_trait>
 	}
 	## cardinality = 0..1
@@ -1244,7 +1283,7 @@ alias[effect:add_ace] = {
 alias[effect:random_owned_controlled_state] = {
 	## cardinality = 0..1
 	prioritize = {
-		## cardinality = 0..inf
+		## cardinality = ~1..inf
 		<state>
 	}
 	## cardinality = 0..1
@@ -1481,11 +1520,8 @@ alias[effect:set_building_level] = {
 	level = int
 	## cardinality = 0..1
 	instant_build = yes
-	## cardinality = 0..1
 	province = enum[provinces]
-	## cardinality = 0..1
 	province = {
-		## cardinality = 0..1
 		all_provinces = bool
 		## cardinality = 0..1
 		limit_to_coastal = bool
@@ -1495,8 +1531,18 @@ alias[effect:set_building_level] = {
 		limit_to_border = bool
 		## cardinality = 0..1
 		level = int
-		## cardinality = 0..inf
+	}
+	province = {
+		## cardinality = 1..inf
 		id = enum[provinces]
+		## cardinality = 0..1
+		limit_to_coastal = bool
+		## cardinality = 0..1
+		limit_to_naval_base = bool
+		## cardinality = 0..1
+		limit_to_border = bool
+		## cardinality = 0..1
+		level = int
 	}
 }
 

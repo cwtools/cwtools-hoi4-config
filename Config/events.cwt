@@ -30,9 +30,9 @@ event = {
 	title = localisation
 	## cardinality = 0..inf
 	title = {
+		## cardinality = ~1..1
 		trigger = {
 			alias_name[trigger] = alias_match_left[trigger]
-
 		}
 		text = localisation
 	}
@@ -42,10 +42,9 @@ event = {
 	desc = localisation
 	## cardinality = 0..inf
 	desc = {
-		## cardinality = 0..1
+		## cardinality = ~1..1
 		trigger = {
 			alias_name[trigger] = alias_match_left[trigger]
-
 		}
 		text = localisation
 	}

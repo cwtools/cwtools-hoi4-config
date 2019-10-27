@@ -18,7 +18,7 @@ types = {
 ideology = {
 	subtype[regular] = {
 		types = {
-			## cardinality = 1..inf
+			## cardinality = ~1..inf
 			scalar = {
 
 			}

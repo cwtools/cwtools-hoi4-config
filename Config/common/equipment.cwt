@@ -204,14 +204,14 @@ equipment = {
 	## cardinality = 0..1
 	### Resources needed for producing one unit of the equipment..
 	resources = {
-		## cardinality = 0..inf
+		## cardinality = ~1..inf
 		<resource> = int
 	}
 
 	## cardinality = 0..3
 	### List of upgrade names.
 	upgrades = {
-		## cardinality = 0..4
+		## cardinality = ~1..4
 		<upgrade>
 	}
 }
@@ -280,7 +280,7 @@ module = {
 		convert_cost_ic = int
 		## cardinality = 0..1
 		convert_cost_resources = {
-			## cardinality = 0..10
+			## cardinality = ~1..10
 			<resource> = int
 		}
 	}
@@ -292,7 +292,7 @@ module = {
 	dismantle_cost_ic = int
 	## cardinality = 0..1
 	dismantle_cost_resources = {
-		## cardinality = 0..10
+		## cardinality = ~1..10
 		<resource> = int
 	}
 }

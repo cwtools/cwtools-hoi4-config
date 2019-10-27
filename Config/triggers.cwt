@@ -422,19 +422,19 @@ alias[trigger:has_navy_size] = {
 
 ### Check amount of military factories.
 ## scope = country
-alias[trigger:num_of_military_factories] = int
+alias[trigger:num_of_military_factories] = variable_field
 
 ### Check amount of civilian factories.
 ## scope = country
-alias[trigger:num_of_civilian_factories] = int
+alias[trigger:num_of_civilian_factories] = variable_field
 
 ### Check amount of naval factories.
 ## scope = country
-alias[trigger:num_of_naval_factories] = int
+alias[trigger:num_of_naval_factories] = variable_field
 
 ### Check amount of nukes.
 ## scope = country
-alias[trigger:num_of_nukes] = int
+alias[trigger:num_of_nukes] = variable_field
 
 ### Check amount of manpower.
 ## scope = country
@@ -442,19 +442,19 @@ alias[trigger:has_manpower] = variable_field
 
 ### Check amount of political power.
 ## scope = country
-alias[trigger:has_political_power] = float
+alias[trigger:has_political_power] = variable_field
 
 ### Check amount of available military factories.
 ## scope = country
-alias[trigger:num_of_available_military_factories] = int
+alias[trigger:num_of_available_military_factories] = variable_field
 
 ### Check amount of available naval factories.
 ## scope = country
-alias[trigger:num_of_available_naval_factories] = int
+alias[trigger:num_of_available_naval_factories] = variable_field
 
 ### Check amount of available civilian factories.
 ## scope = country
-alias[trigger:num_of_available_civilian_factories] = int
+alias[trigger:num_of_available_civilian_factories] = variable_field
 
 ### Check if member of same faction as specified country.
 ## scope = country
@@ -1380,10 +1380,13 @@ alias[trigger:has_relation_modifier] = {
 ## scope = state
 alias[trigger:any_province_building_level] = {
 	province = {
-		## cardinality = 0..inf
-		id = enum[provinces]
-		## cardinality = 0..1
 		all_provinces = yes
+		## cardinality = 0..1
+		limit_to_border = yes
+	}
+	province = {
+		## cardinality = 1..inf
+		id = enum[provinces]
 		## cardinality = 0..1
 		limit_to_border = yes
 	}

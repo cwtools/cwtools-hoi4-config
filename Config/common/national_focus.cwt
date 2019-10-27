@@ -41,6 +41,7 @@ focus_tree = {
 		id = localisation
 		## cardinality = 0..1
 		text = localisation
+		## cardinality = ~1..1
 		icon = scalar
 		cost = float
 		x = int
@@ -87,33 +88,43 @@ focus_tree = {
 		}
 		## cardinality = 0..1
 		bypass = {
+			## cardinality = ~1..inf
 			alias_name[trigger] = alias_match_left[trigger]
 		}
 		## cardinality = 0..1
 		allow_branch = {
+			## cardinality = ~1..inf
 			alias_name[trigger] = alias_match_left[trigger]
 		}
 		## cardinality = 0..1
 		available = {
+			## cardinality = ~1..inf
 			alias_name[trigger] = alias_match_left[trigger]
 		}
 		## cardinality = 0..1
 		cancel = {
+			## cardinality = ~1..inf
 			alias_name[trigger] = alias_match_left[trigger]
 		}
 		## cardinality = 0..1
 		historical_ai = {
+			## cardinality = ~1..inf
 			alias_name[trigger] = alias_match_left[trigger]
 		}
 		## cardinality = 0..1
 		select_effect = {
+			## cardinality = ~1..inf
 			alias_name[effect] = alias_match_left[effect]
 		}
 		## cardinality = 0..1
+		## push_scope = any
 		complete_tooltip = {
+			## cardinality = ~1..inf
 			alias_name[effect] = alias_match_left[effect]
 		}
+		## cardinality = ~1..1
 		completion_reward = {
+			## cardinality = ~1..inf
 			alias_name[effect] = alias_match_left[effect]
 		}
 		## cardinality = 0..1
@@ -130,6 +141,7 @@ focus = {
 	id = localisation
 	## cardinality = 0..1
 	text = localisation
+	## cardinality = ~1..1
 	icon = scalar
 	cost = float
 	x = int
@@ -178,33 +190,43 @@ focus = {
 	}
 	## cardinality = 0..1
 	bypass = {
+		## cardinality = ~1..inf
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 	## cardinality = 0..1
 	allow_branch = {
+		## cardinality = ~1..inf
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 	## cardinality = 0..1
 	available = {
+		## cardinality = ~1..inf
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 	## cardinality = 0..1
 	cancel = {
+		## cardinality = ~1..inf
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 	## cardinality = 0..1
 	historical_ai = {
+		## cardinality = ~1..inf
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 	## cardinality = 0..1
 	select_effect = {
+		## cardinality = ~1..inf
 		alias_name[effect] = alias_match_left[effect]
 	}
 	## cardinality = 0..1
+	## push_scope = any
 	complete_tooltip = {
+		## cardinality = ~1..inf
 		alias_name[effect] = alias_match_left[effect]
 	}
+	## cardinality = ~1..1
 	completion_reward = {
+		## cardinality = ~1..inf
 		alias_name[effect] = alias_match_left[effect]
 	}
 	## cardinality = 0..1
@@ -220,6 +242,7 @@ shared_focus = {
 	id = localisation
 	## cardinality = 0..1
 	text = localisation
+	## cardinality = ~1..1
 	icon = scalar
 	cost = float
 	x = int
@@ -266,33 +289,43 @@ shared_focus = {
 	}
 	## cardinality = 0..1
 	bypass = {
+		## cardinality = ~1..inf
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 	## cardinality = 0..1
 	allow_branch = {
+		## cardinality = ~1..inf
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 	## cardinality = 0..1
 	available = {
+		## cardinality = ~1..inf
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 	## cardinality = 0..1
 	cancel = {
+		## cardinality = ~1..inf
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 	## cardinality = 0..1
 	historical_ai = {
+		## cardinality = ~1..inf
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 	## cardinality = 0..1
 	select_effect = {
+		## cardinality = ~1..inf
 		alias_name[effect] = alias_match_left[effect]
 	}
 	## cardinality = 0..1
+	## push_scope = any
 	complete_tooltip = {
+		## cardinality = ~1..inf
 		alias_name[effect] = alias_match_left[effect]
 	}
+	## cardinality = ~1..1
 	completion_reward = {
+		## cardinality = ~1..inf
 		alias_name[effect] = alias_match_left[effect]
 	}
 	## cardinality = 0..1

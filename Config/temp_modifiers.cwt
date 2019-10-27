@@ -3,11 +3,13 @@
 alias[targeted_modifier_rule:targeted_modifier] = {
 	tag = scope[country]
 	tag = enum[country_tags]
+	## cardinality = ~1..inf
 	alias_name[modifier] = alias_match_left[modifier]
 }
 
 alias[modifier_rule:modifier] = {
 	enum[add_factor] = float
+	## cardinality = ~1..inf
 	alias_name[trigger] = alias_match_left[trigger]
 }
 
@@ -121,6 +123,7 @@ alias[air_stat:naval_strike_targetting] = float
 
 #for terrain modifiers
 alias[unit_stat:<terrain>] = { alias_name[unit_stat] = alias_match_left[unit_stat] }
+alias[unit_stat:night] = { alias_name[unit_stat] = alias_match_left[unit_stat] }
 alias[unit_stat:amphibious] = { alias_name[unit_stat] = alias_match_left[unit_stat] }
 alias[unit_stat:fort] = { alias_name[unit_stat] = alias_match_left[unit_stat] }
 alias[unit_stat:river] = { alias_name[unit_stat] = alias_match_left[unit_stat] }
@@ -143,6 +146,7 @@ alias[unit_leader_modifier:skill_bonus_factor] = float
 alias[unit_leader_modifier:wounded_chance_factor] = float
 
 alias[unit_leader_modifier:<terrain>] = { alias_name[unit_stat] = alias_match_left[unit_stat] }
+alias[unit_leader_modifier:night] = { alias_name[unit_stat] = alias_match_left[unit_stat] }
 alias[unit_leader_modifier:amphibious] = { alias_name[unit_stat] = alias_match_left[unit_stat] }
 alias[unit_leader_modifier:fort] = { alias_name[unit_stat] = alias_match_left[unit_stat] }
 alias[unit_leader_modifier:river] = { alias_name[unit_stat] = alias_match_left[unit_stat] }

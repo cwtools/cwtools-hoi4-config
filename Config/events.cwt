@@ -58,10 +58,12 @@ event = {
 	is_triggered_only = bool
 	## cardinality = 0..1
 	trigger = {
+		## cardinality = ~1..inf
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 	## cardinality = 0..1
 	show_major = {
+		## cardinality = ~1..inf
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 	## cardinality = 0..1
@@ -78,6 +80,7 @@ event = {
 	}
 	## cardinality = 0..inf
 	immediate = {
+		## cardinality = ~1..inf
 		alias_name[effect] = alias_match_left[effect]
 	}
 	## cardinality = 0..inf
@@ -86,6 +89,7 @@ event = {
 		name = localisation
 		## cardinality = 0..1
 		trigger = {
+			## cardinality = ~1..inf
 			alias_name[trigger] = alias_match_left[trigger]
 		}
 		alias_name[effect] = alias_match_left[effect]

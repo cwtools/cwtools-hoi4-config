@@ -83,6 +83,7 @@ equipment = {
 	alias = <unit>
 
 	### Which category the equipment appears in the production screen.
+	## cardinality = 0..1
 	interface_category = enum[interface_category]
 
 	### Priority for usage over other equipment.
@@ -104,6 +105,8 @@ equipment = {
 
 		## cardinality = 0..1
 		family = <equipment.archetype_equip>
+
+		interface_category = enum[interface_category]
 	}
 
 	subtype[air_equip] = {
@@ -306,6 +309,7 @@ critical_part = {
 	}
 	## cardinality = 0..1
 	modifier = {
+		## cardinality = ~1..inf
 		alias_name[naval_stat] = alias_match_left[naval_stat]
 	}
 	## cardinality = 0..1

@@ -13,12 +13,14 @@ dynamic_modifier = {
 	## cardinality = 0..1
 	### Optional, the modifier won't apply if not enabled.
 	enable = {
+		## cardinality = ~1..inf
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 
 	## cardinality = 0..1
 	### Optional, will remove the modifier if true.
 	remove_trigger = {
+		## cardinality = ~1..inf
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 

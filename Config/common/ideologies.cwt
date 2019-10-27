@@ -53,12 +53,14 @@ ideology = {
 		### modifiers applied to countries with this ideology
 		## push_scope = country
 		modifiers = {
+			## cardinality = ~1..inf
 			alias_name[modifier] = alias_match_left[modifier]
 		}
 
 		## push_scope = country
 		### modifiers applied to countries with a faction leader of this ideology
 		faction_modifiers = {
+			## cardinality = ~1..inf
 			alias_name[modifier] = alias_match_left[modifier]
 		}
 

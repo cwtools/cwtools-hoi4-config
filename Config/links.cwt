@@ -19,7 +19,7 @@ links = {
     # Custom data links ####
     owner = {
         output_scope = country
-        input_scopes = { unitleader state }
+        input_scopes = { unit_leader combat state }
     }
 
     controller = {
@@ -47,5 +47,29 @@ links = {
         output_scope = country
         from_data = yes
         data_source = enum[country_tags]
+    }
+
+    var = {
+        desc =  eventtarget_link_desc_var
+        from_data = yes
+        type = both
+        prefix = var:
+        data_source = value[variable]
+    }
+
+    event_target = {
+        desc =  eventtarget_link_desc_var
+        from_data = yes
+        type = both
+        prefix = event_target:
+        data_source = value[event_target]
+    }
+
+    global_event_target = {
+        desc =  eventtarget_link_desc_var
+        from_data = yes
+        type = both
+        prefix = event_target:
+        data_source = value[global_event_target]
     }
 }

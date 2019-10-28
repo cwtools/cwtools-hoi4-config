@@ -1,0 +1,14 @@
+modifier_categories = {
+    country = {
+        supported_scopes = { country }
+    }
+    state = {
+        supported_scopes = { state }
+    }
+    unit_leader = {
+        supported_scopes = { unit_leader }
+    }
+    air = {
+        supported_scopes = { air }
+    }
+}

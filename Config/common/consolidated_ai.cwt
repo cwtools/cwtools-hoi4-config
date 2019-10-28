@@ -12,7 +12,10 @@ types = {
 		}
 		subtype[national_focuses] = {
 			ai_national_focuses = {
-
+				## cardinality = 0..inf
+				<focus>
+				## cardinality = 0..inf
+				<shared_focus>
 			}
 		}
 	}
@@ -34,7 +37,7 @@ ai_area = {
 	}
 	## cardinality = 0..1
 	strategic_regions = {
-		## cardinality = 1..inf
+		## cardinality = ~1..inf
 		<strategic_region>
 	}
 }
@@ -50,7 +53,7 @@ ai_focus = {
 	}
 	subtype[national_focuses] = {
 		ai_national_focuses = {
-			## cardinality = 1..inf
+			## cardinality = 0..inf
 			<focus>
 			## cardinality = 0..inf
 			<shared_focus>
@@ -129,20 +132,20 @@ ai_peace = {
 
 ai_template = {
 	roles = {
-		## cardinality = 0..inf
+		## cardinality = ~1..inf
 		value_set[ai_roles]
 	}
 	# Restricts the template to only the specified tags. Optional.
 	## cardinality = 0..1
 	available_for = {
-		## cardinality = 1..inf
+		## cardinality = ~1..inf
 		enum[country_tags]
 	}
 
 	# Blocks the template for the specified tags. Optional.
 	## cardinality = 0..1
 	blocked_for = {
-		## cardinality = 0..inf
+		## cardinality = ~1..inf
 		enum[country_tags]
 	}
 
@@ -240,7 +243,7 @@ ai_template = {
 			}
 		}
 		allowed_types = {
-			## cardinality = 1..inf
+			## cardinality = ~1..inf
 			<unit>
 		}
 		## cardinality = 0..1
@@ -259,14 +262,14 @@ ai_equipment_design_group = {
 	### Exclusionary list of countries that will not use this design group.
 	## cardinality = 0..1
 	blocked_for = {
-		## cardinality = 0..inf
+		## cardinality = ~1..inf
 		enum[country_tags]
 	}
 
 	### Inclusionary list of countries that will use this design group. If this list is empty, all countries not in the block list will be allowed. If this list is not empty, only countries that are in this list and not in the blocked list will be allowed.
 	## cardinality = 0..1
 	available_for = {
-		## cardinality = 0..inf
+		## cardinality = ~1..inf
 		enum[country_tags]
 	}
 
@@ -292,6 +295,7 @@ ai_equipment_design_group = {
 			alias_name[modifier_rule] = alias_match_left[modifier_rule]
 		}
 
+		## cardinality = 0..1
 		role_icon_index = int
 
 		### List of triggers that must all be true for the design to be usable; true by default if empty or missing.
@@ -300,6 +304,7 @@ ai_equipment_design_group = {
 			alias_name[trigger] = alias_match_left[trigger]
 		}
 
+		## cardinality = 0..1
 		### Specifications about how a matching equipment variant should be designed.
 		target_variant = {
 			### An additional weight indicating how much the particular design is worth, if it matches.
@@ -358,6 +363,7 @@ ai_equipment_design_group = {
 			module = <module>
 		}
 
+		## cardinality = 0..1
 		### Additional modules that are allowed in any available slots for any of the above designs, after all requirements are fulfilled. Modules at the top of this list are favored over those at the bottom. Modules not in this list will not be used in any remaining open slots.
 		allowed_modules = {
 			## cardinality = 0..inf
@@ -366,6 +372,26 @@ ai_equipment_design_group = {
 			enum[module_categories]
 		}
 	}
+}
+
+values = {
+    value[ai_roles] = {
+        armor
+        cavalry
+        garrison
+        infantry
+        marines
+        mechanized
+        motorized
+        mountaineers
+        paratroopers
+        suppression
+
+        naval_capital
+        naval_carrier
+        naval_screen
+        naval_sub
+    }
 }
 
 enums = {

@@ -19,12 +19,6 @@ ability = {
 
 	allowed = {
 		alias_name[trigger] = alias_match_left[trigger]
-
-		## cardinality = 0..1
-		## replace_scope = { ROOT = country THIS = country }
-		OWNER = {
-			alias_name[trigger] = alias_match_left[trigger]
-		}
 	}
 
 	cost = float
@@ -48,6 +42,7 @@ ability = {
 	ai_will_do = {
 		## cardinality = 0..1
 		enum[base_factor] = float
+		## cardinality = ~1..inf
 		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	}
 }

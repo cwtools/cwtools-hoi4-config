@@ -14,6 +14,14 @@ types = {
 
 			}
 		}
+		subtype[targeted] = {
+			targets = {
+
+			}
+		}
+		subtype[targeted] = {
+			target_array = scalar
+		}
 		subtype[custom_cost] = {
 			custom_cost_trigger = {
 
@@ -23,7 +31,7 @@ types = {
 			days_remove = variable_field
 		}
 		subtype[timed] = {
-			days_mission_timeout = int
+			days_mission_timeout = int_variable_field
 		}
 	}
 }
@@ -36,6 +44,15 @@ decision_category = {
 	picture = scalar
 	## cardinality = 0..1
 	priority = int
+	## cardinality = 0..1
+	priority = {
+		## cardinality = 0..1
+		enum[base_factor] = float
+		alias_name[modifier_rule] = alias_match_left[modifier_rule]
+	}
+
+	## cardinality = 0..1
+	visible_when_empty = bool
 
 	### check if decisions in this category can be activated
 	## cardinality = 0..1
@@ -57,12 +74,35 @@ decision_category = {
 	cancel_trigger = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
+
+	## cardinality = 0..inf
+	custom_icon = {
+		tag = enum[country_tags]
+		value = scalar
+		desc = scalar
+		visible = {
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+	}
+	
+	## cardinality = 0..1
+	on_map_area = {
+		state = <state>
+		name = scalar
+		zoom = int
+	}
+
+	## cardinality = 0..1
+	scripted_gui = scalar #replace with enum[scripted_gui] or a type later
 }
 
 ## replace_scope = { this = country root = country from = country }
 decision = {
 	## cardinality = 0..1
 	icon = scalar
+
+	## cardinality = 0..1
+	name = localisation
 
 	## cardinality = 0..1
 	fire_only_once = bool
@@ -105,7 +145,7 @@ decision = {
 
 	## cardinality = 0..1
 	highlight_provinces = {
-		## cardinality = 1..inf
+		## cardinality = ~1..inf
 		enum[provinces]
 	}
 
@@ -133,8 +173,12 @@ decision = {
 		## cardinality = 0..1
 		days_remove = variable_field
 
+		## cardinality = 0..inf
+		alias_name[targeted_modifier_rule] = alias_match_left[targeted_modifier_rule]
+
 		## cardinality = 0..1
 		modifier = {
+			## cardinality = ~1..inf
 			alias_name[modifier] = alias_match_left[modifier]
 		}
 	}
@@ -145,7 +189,7 @@ decision = {
 		}
 
 		is_good = bool
-		days_mission_timeout = int
+		days_mission_timeout = int_variable_field
 
 		## cardinality = 0..1
 		timeout_effect = {
@@ -163,30 +207,40 @@ decision = {
 	}
 
 	subtype[targeted] = {
+		## cardinality = 0..1
 		target_trigger = {
 			alias_name[trigger] = alias_match_left[trigger]
 		}
 
+		## cardinality = 0..1
 		targets = {
-			## cardinality = 1..inf
+			## cardinality = 0..inf
 			enum[country_tags]
+			## cardinality = 0..inf
+			value[variable]
+			## cardinality = 0..inf
+			variable_field
 		}
 
+		## cardinality = 0..1
 		target_root_trigger = {
 			alias_name[trigger] = alias_match_left[trigger]
 		}
+
+		## cardinality = 0..inf
+		alias_name[targeted_modifier_rule] = alias_match_left[targeted_modifier_rule]
 
 		## cardinality = 0..1
 		target_array = value[array]
 	}
 
-	## cardinality = 0..3
+	## cardinality = 0..inf
 	enum[war_with_on] = scope[country]
 
-	## cardinality = 0..3
+	## cardinality = 0..inf
 	enum[war_with_on] = enum[country_tags]
 
-	## cardinality = 0..3
+	## cardinality = 0..inf
 	enum[war_with_target_on] = bool
 
 	## cardinality = 0..1
@@ -197,7 +251,8 @@ decision = {
 
 	## cardinality = 0..1
 	ai_will_do = {
-		enum[ai_chance_base] = float
+		## cardinality = 0..1
+		enum[base_factor] = float
 		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	}
 

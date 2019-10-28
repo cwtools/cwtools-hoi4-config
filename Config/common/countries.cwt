@@ -1,8 +1,9 @@
 types = {
-	type[cosmetic_tag] = {
-		path = "game/common/countries"
-		path_file = "cosmetic.txt"
-	}
+	# better to use a value_set with set_cosmetic_tag, since a cosmetic tag doesn't need to be defined in cosmetic.txt
+	#type[cosmetic_tag] = {
+	#	path = "game/common/countries"
+	#	path_file = "cosmetic.txt"
+	#}
 	type[country_file] = {
 		path = "game/common/countries"
 		type_per_file = yes
@@ -17,31 +18,31 @@ country_file = {
 		int
 	}
 }
-cosmetic_tag = {
-	color = {
-		colour[rgb]
-		colour[hsv]
-	}
-	color_ui = {
-		colour[rgb]
-		colour[hsv]
-	}
-}
+#cosmetic_tag = {
+#	color = {
+#		colour[rgb]
+#		colour[hsv]
+#	}
+#	color_ui = {
+#		colour[rgb]
+#		colour[hsv]
+#	}
+#}
 enums = {
 	complex_enum[country_tags] = {
 		path = "game/common/country_tags"
 		start_from_root = yes
 		name = {
-			enum_name = scalar
+			enum_name = "scalar"
 		}
 	}
-	complex_enum[comsmetic_tags] = {
-		path = "game/common/countries"
-		path_file = "cosmetic.txt"
-		start_from_root = yes
-		name = {
-			enum_name = {
-			}
-		}
-	}
+	#complex_enum[comsmetic_tags] = {
+	#	path = "game/common/countries"
+	#	path_file = "cosmetic.txt"
+	#	start_from_root = yes
+	#	name = {
+	#		enum_name = {
+	#		}
+	#	}
+	#}
 }

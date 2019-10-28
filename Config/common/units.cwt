@@ -32,7 +32,7 @@ unit = {
 	#enum[unit_sprites]
 	subtype[land_unit] = {
 		need = {
-			## cardinality = 1..inf
+			## cardinality = ~1..inf
 			<equipment> = int
 		}
 		ai_priority = int
@@ -61,19 +61,19 @@ unit = {
 		group = enum[unit_groups]
 		### unit type
 		type = {
-			## cardinality = 1..inf
+			## cardinality = ~1..inf
 			enum[land_units]
 		}
 	}
 	subtype[ship_unit] = {
 		## cardinality = 0..1
 		need = {
-			## cardinality = 1..inf
+			## cardinality = ~1..inf
 			<equipment> = int
 		}
 		## cardinality = 0..1
 		need_equipment = {
-			## cardinality = 1..inf
+			## cardinality = ~1..inf
 			<equipment> = int
 		}
 		## cardinality = 0..1
@@ -86,12 +86,12 @@ unit = {
 		### map icon
 		map_icon_category = enum[ship_map_icons]
 		type = {
-			## cardinality = 1..inf
+			## cardinality = ~1..inf
 			enum[ship_units]
 		}
 		alias_name[naval_stat] = alias_match_left[naval_stat]
 		critical_parts = {
-			## cardinality = 1..inf
+			## cardinality = ~1..inf
 			<critical_part>
 		}
 		critical_part_damage_chance_mult = float
@@ -99,11 +99,11 @@ unit = {
 	}
 	subtype[air_unit] = {
 		need = {
-			## cardinality = 1..inf
+			## cardinality = ~1..inf
 			<equipment> = int
 		}
 		type = {
-			## cardinality = 1..inf
+			## cardinality = ~1..inf
 			enum[air_units]
 		}
 		alias_name[air_stat] = alias_match_left[air_stat]
@@ -124,20 +124,21 @@ unit = {
 
 	## cardinality = 0..1
 	essential = {
-		## cardinality = 1..inf
+		## cardinality = ~1..inf
 		<equipment>
 	}
 	## cardinality = 0..1
 	categories = {
-		## cardinality = 0..inf
+		## cardinality = ~1..inf
 		enum[unit_category]
 	}
 }
 
 ship_name = {
 	name = localisation
+	## cardinality = 0..1
 	for_countries = {
-		## cardinality = 0..inf
+		## cardinality = ~1..inf
 		enum[country_tags]
 	}
 	## cardinality = 0..1
@@ -147,25 +148,32 @@ ship_name = {
 	type = ship
 	## cardinality = 0..1
 	ship_types = {
-		## cardinality = 0..inf
+		## cardinality = ~1..inf
 		<equipment.naval_equip>
-		## cardinality = 0..inf
+		## cardinality = ~1..inf
 		<unit.ship_unit>
-		## cardinality = 0..inf
+		## cardinality = ~1..inf
 		<unit.ship_unit>
 	}
 	## cardinality = 0..1
 	prefix = scalar
-	## cardinality = 0..inf
+	## cardinality = ~1..inf
 	fallback_name = scalar
 	## cardinality = 0..1
 	unique = {
-		## cardinality = 0..inf
+		## cardinality = ~1..inf
 		scalar
 	}
 	## cardinality = 0..1
+	unordered = {
+		## cardinality = ~1..inf
+		int = {
+			scalar
+		}
+	}
+	## cardinality = 0..1
 	ordered = {
-		## cardinality = 0..inf
+		## cardinality = ~1..inf
 		int = {
 			scalar
 		}
@@ -175,7 +183,7 @@ ship_name = {
 division_name = {
 	name = localisation
 	for_countries = {
-		## cardinality = 0..inf
+		## cardinality = ~1..inf
 		enum[country_tags]
 	}
 	## cardinality = 0..1
@@ -183,19 +191,26 @@ division_name = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 	division_types = {
-		## cardinality = 1..inf
+		## cardinality = ~1..inf
 		<unit.land_unit>
 	}
 	## cardinality = 0..1
 	link_numbering_with = {
-		## cardinality = 1..inf
+		## cardinality = ~1..inf
 		<division_name>
 	}
 	## cardinality = 0..1
 	fallback_name = scalar
 	## cardinality = 0..1
+	unordered = {
+		## cardinality = ~1..inf
+		int = {
+			scalar
+		}
+	}
+	## cardinality = 0..1
 	ordered = {
-		## cardinality = 0..inf
+		## cardinality = ~1..inf
 		int = {
 			scalar
 		}
@@ -227,6 +242,7 @@ enums = {
 		anti_tank
 		anti_air
 		motorized
+		cavalry
 		mechanized
 		armor
 		fighter
@@ -243,6 +259,7 @@ enums = {
 		capital_ship
 		carrier
 		convoy
+		paratroopers
 	}
 	enum[land_units] = {
 		infantry

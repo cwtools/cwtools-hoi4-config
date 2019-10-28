@@ -29,6 +29,12 @@ values = {
 		### Faction leader of this country's faction.
 		faction_leader
 
+		### Host of this country's government in exile.
+		host
+
+		### ID
+		id
+
 		### Legitimacy of scope country. -1 if not an exile.
 		legitimacy
 
@@ -470,5 +476,16 @@ values = {
 		# ========================
 		random
 		ai_random
+
+		# ========================
+		# EFFECT/TRIGGER DEFAULT VARIABLES
+		# ========================
+
+		### Default name of value temp variable used in loop effects and triggers.
+		v
+		### Default name of index temp variable used in loop effects and triggers.
+		i
+		### Default name of break temp variable used in loop effects and triggers.
+		break
 	}
 }

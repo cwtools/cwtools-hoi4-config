@@ -7,15 +7,49 @@ types = {
 	type[country_file] = {
 		path = "game/common/countries"
 		type_per_file = yes
+		subtype[country] = {
+			graphical_culture = scalar
+		}
+		subtype[cosmetic] = {
+		}
 	}
 }
 
 country_file = {
-	graphical_culture = scalar
-	graphical_culture_2d = scalar
-	color = {
-		## cardinality = 3..3
-		int
+	subtype[country] = {
+		graphical_culture = scalar
+		graphical_culture_2d = scalar
+		color = {
+			## cardinality = 3..3
+			int
+		}
+		color = {
+			## cardinality = 3..3
+			float
+		}
+	}
+	subtype[cosmetic] = {
+		## cardinality = 1..inf
+		scalar = {
+			color = {
+				## cardinality = 3..3
+				int
+			}
+			color = {
+				## cardinality = 3..3
+				float
+			}
+			## cardinality = 0..1
+			color_ui = {
+				## cardinality = 3..3
+				int
+			}
+			## cardinality = 0..1
+			color_ui = {
+				## cardinality = 3..3
+				float
+			}
+		}
 	}
 }
 #cosmetic_tag = {
@@ -36,6 +70,7 @@ enums = {
 			enum_name = "scalar"
 		}
 	}
+
 	#complex_enum[comsmetic_tags] = {
 	#	path = "game/common/countries"
 	#	path_file = "cosmetic.txt"

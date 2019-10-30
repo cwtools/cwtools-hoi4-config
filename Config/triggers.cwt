@@ -2154,8 +2154,8 @@ alias[trigger:received_expeditionary_forces] = {
 ## scope = combat
 alias[trigger:is_fighting_in_weather] = scalar
 
-### Checks building level in state.
-## scope = state
+### Checks building level in a state or country
+## scope = { state country }
 alias[trigger:<building>] = int
 
 ### Checks ideology popularity.

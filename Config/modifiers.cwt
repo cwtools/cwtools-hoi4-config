@@ -302,6 +302,7 @@ modifiers = {
 	research_speed_factor = country
 	research_time_factor = country
 	resistance_tick = country
+	resistance_tick_auto = country
 	resistance_tick_in_states_controlled_by_enemy = country
 	screening_efficiency = country
 	send_volunteer_divisions_required = country

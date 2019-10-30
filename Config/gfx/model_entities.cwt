@@ -179,11 +179,12 @@ entity = {
 		}
 	}
 
-	## cardinality = 0..inf
-	attach = {
-		name = scalar
-		scalar = <entity>
-	}
+    ## cardinality = 0..inf
+    attach = {
+        name = scalar
+        ## cardinality = 2..2
+        scalar = <entity>
+    }
 
 	## cardinality = 0..1
 	game_data = {

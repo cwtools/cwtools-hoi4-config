@@ -155,13 +155,13 @@ values = {
 		### (Trigger) Compares the estimated army strength between the scope country, his allies and his enemies.
 		alliance_strength_ratio
 
-		### (Trigger) Checks for amount manpower currently in deploymentview. amount_manpower_in_training > 10.
+		### (Trigger) Checks for amount manpower currently in deployment view. amount_manpower_in_training > 10.
 		amount_manpower_in_deployment_queue
 
 		### (Trigger) Check number of research current research slots. Example amount_research_slots > 2.
 		amount_research_slots
 
-		### (Trigger) Compares the warscore of all wars in a country to see if any fullfills the comparison condition 0-100 - Example: any_war_score > 40.
+		### (Trigger) Compares the warscore of all wars in a country to see if any fulfils the comparison condition 0-100 - Example: any_war_score > 40.
 		any_war_score
 
 		### (Trigger) Check the amount of casualties a country has suffered in all of it's wars.
@@ -185,7 +185,7 @@ values = {
 		### (Trigger) Compares the fuel ratio to a variable. Example: fuel_ratio > 0.5.
 		fuel_ratio
 
-		### (Trigger) Compare if the country has added above or below the specified ammount of tension.
+		### (Trigger) Compare if the country has added above or below the specified amount of tension.
 		has_added_tension_amount
 
 		### (Trigger) Check scope country legitimacy 0-100: Example has_legitimacy < 60.
@@ -257,7 +257,7 @@ values = {
 		### (Trigger) Checks if daily political power increase is more or less that specified value. Example political_power_daily > 1.5.
 		political_power_daily
 
-		### (Trigger) Check the value of political power daily growth.Exacmple: political_power_growth > 0.
+		### (Trigger) Check the value of political power daily growth. Example: political_power_growth > 0.
 		political_power_growth
 
 		### (Trigger) Check if a country is close to surrendering.

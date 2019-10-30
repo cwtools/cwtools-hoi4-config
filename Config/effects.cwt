@@ -228,7 +228,7 @@ alias[effect:random_enemy_country] = {
 alias[effect:country_event] = {
 	id = <event.country_event>
 	## cardinality = 0..1
-	enum[hours_days] = int
+	enum[hours_days_months] = int
 	## cardinality = 0..1
 	random = int
 }
@@ -242,7 +242,7 @@ alias[effect:country_event] = <event.country_event>
 alias[effect:state_event] = {
 	id = <event.state_event>
 	## cardinality = 0..1
-	enum[hours_days] = int
+	enum[hours_days_months] = int
 	## cardinality = 0..1
 	random = int
 	trigger_for = scope[country]
@@ -766,7 +766,7 @@ alias[effect:every_neighbor_state] = {
 alias[effect:news_event] = {
 	id = <event.news_event>
 	## cardinality = 0..1
-	enum[hours_days] = int
+	enum[hours_days_months] = int
 	## cardinality = 0..1
 	random = int
 }
@@ -2144,7 +2144,7 @@ alias[effect:round_variable] = variable_field
 alias[effect:unit_leader_event] = {
 	id = <event.unit_leader_event>
 	## cardinality = 0..1
-	enum[hours_days] = int
+	enum[hours_days_months] = int
 	## cardinality = 0..1
 	random = int
 }

@@ -91,12 +91,6 @@ idea = {
 				}
 			}
 			## cardinality = 0..1
-			ai_will_do = {
-				## cardinality = 0..1
-				enum[base_factor] = float
-				alias_name[modifier_rule] = alias_match_left[modifier_rule]
-			}
-			## cardinality = 0..1
 			traits = {
 				## cardinality = ~1..inf
 				<country_leader_trait>
@@ -105,6 +99,17 @@ idea = {
 			on_add = {
 				## cardinality = ~1..inf
 				alias_name[effect] = alias_match_left[effect]
+			}
+			## cardinality = 0..1
+			do_effect = {
+				## cardinality = ~1..inf
+				alias_name[trigger] = alias_match_left[trigger]
+			}
+			## cardinality = 0..1
+			ai_will_do = {
+				## cardinality = 0..1
+				enum[base_factor] = float
+				alias_name[modifier_rule] = alias_match_left[modifier_rule]
 			}
 		}
 	}

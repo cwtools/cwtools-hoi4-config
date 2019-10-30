@@ -257,6 +257,7 @@ modifiers = {
 	navy_fuel_consumption_factor = country
 	navy_max_range_factor = country
 	navy_refit_speed = country
+	navy_refit_ic_cost = country
 	navy_screen_attack_factor = country
 	navy_screen_defence_factor = country
 	navy_submarine_attack_factor = country

@@ -24,7 +24,7 @@ values = {
 		command_power
 
 		### Timeout in days for a specific timed mission, mission type token is defined in target. Example: days_mission_timeout@GER_mefo_bills_mission.
-		days_mission_timeout
+		days_mission_timeout@<decision.mission>
 
 		### Faction leader of this country's faction.
 		faction_leader
@@ -120,7 +120,7 @@ values = {
 		owned_states
 
 		### Popularity of targeted party. Example party_popularity@democratic. May also target ruling_party.
-		party_popularity
+		party_popularity@<ideology>
 
 		### Total political power of country.
 		political_power
@@ -331,7 +331,7 @@ values = {
 		avg_unit_planning_ratio
 
 		### Average unit acclimatization for a specific climate, acclimatization type is defined in target. Example avg_units_acclimation@cold_climate.
-		avg_units_acclimation
+		avg_units_acclimation@<acclimatization>
 
 		### Coordination level of the leader.
 		coordination_level
@@ -433,10 +433,10 @@ values = {
 		num_units_offensive_combats
 
 		### Number of units that are offensively fighting against a terrain, terrain type is defined as target. Example num_units_offensive_combats_against@plains.
-		num_units_offensive_combats_against
+		num_units_offensive_combats_against@<terrain>
 
 		### Number of units that are on an acclimatization required location, acclimatization type is defined in target. Example num_units_on_climate@hot_climate.
-		num_units_on_climate
+		num_units_on_climate@<acclimatization>
 
 		### Number of units with dominant type controlled by leader, dominant type is defined in target. Example: num_units_with_type@light_armor.
 		num_units_with_type

@@ -163,21 +163,28 @@ oob = {
 		## cardinality = 0..1
 		portrait_path = scalar
 		## cardinality = 0..1
+		flags = {
+			## cardinality = ~1..inf
+			value_set[leader_flag] = {
+				value = 1
+			}
+		}
+		## cardinality = 0..1
 		gfx = scalar
 		## cardinality = 0..1
 		traits = {
 			## cardinality = ~1..inf
 			<unit_leader_trait>
 		}
-		## cardinality = 0..1
+		## cardinality = ~1..1
 		skill = int
-		## cardinality = 0..1
+		## cardinality = ~1..1
 		attack_skill = int
-		## cardinality = 0..1
+		## cardinality = ~1..1
 		defense_skill = int
-		## cardinality = 0..1
+		## cardinality = ~1..1
 		maneuvering_skill = int
-		## cardinality = 0..1
+		## cardinality = ~1..1
 		coordination_skill = int
 		## cardinality = 0..1
 		id = value_set[unit_leader_ids]
@@ -194,7 +201,6 @@ oob = {
 		picture = scalar
 		## cardinality = 0..1
 		portrait_path = scalar
-		
 		## cardinality = 0..1
 		flags = {
 			## cardinality = ~1..inf
@@ -202,7 +208,6 @@ oob = {
 				value = 1
 			}
 		}
-		
 		## cardinality = 0..1
 		gfx = scalar
 		## cardinality = 0..1
@@ -210,15 +215,15 @@ oob = {
 			## cardinality = ~1..inf
 			<unit_leader_trait>
 		}
-		## cardinality = 0..1
+		## cardinality = ~1..1
 		skill = int
-		## cardinality = 0..1
+		## cardinality = ~1..1
 		attack_skill = int
-		## cardinality = 0..1
+		## cardinality = ~1..1
 		defense_skill = int
-		## cardinality = 0..1
+		## cardinality = ~1..1
 		planning_skill = int
-		## cardinality = 0..1
+		## cardinality = ~1..1
 		logistics_skill = int
 		## cardinality = 0..1
 		id = value_set[unit_leader_ids]
@@ -252,15 +257,15 @@ oob = {
 			## cardinality = ~1..inf
 			<unit_leader_trait>
 		}
-		## cardinality = 0..1
+		## cardinality = ~1..1
 		skill = int
-		## cardinality = 0..1
+		## cardinality = ~1..1
 		attack_skill = int
-		## cardinality = 0..1
+		## cardinality = ~1..1
 		defense_skill = int
-		## cardinality = 0..1
+		## cardinality = ~1..1
 		planning_skill = int
-		## cardinality = 0..1
+		## cardinality = ~1..1
 		logistics_skill = int
 		## cardinality = 0..1
 		id = value_set[unit_leader_ids]

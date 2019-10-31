@@ -154,6 +154,38 @@ oob = {
 	}
 
 	## cardinality = 0..inf
+	navy_leader = {
+		name = scalar
+		## cardinality = 0..1
+		desc = localisation
+		## cardinality = 0..1
+		picture = scalar
+		## cardinality = 0..1
+		portrait_path = scalar
+		## cardinality = 0..1
+		gfx = scalar
+		## cardinality = 0..1
+		traits = {
+			## cardinality = ~1..inf
+			<unit_leader_trait>
+		}
+		## cardinality = 0..1
+		skill = int
+		## cardinality = 0..1
+		attack_skill = int
+		## cardinality = 0..1
+		defense_skill = int
+		## cardinality = 0..1
+		maneuvering_skill = int
+		## cardinality = 0..1
+		coordination_skill = int
+		## cardinality = 0..1
+		id = value_set[unit_leader_ids]
+		## cardinality = 0..1
+		female = bool
+	}
+
+	## cardinality = 0..inf
 	field_marshal = {
 		name = scalar
 		## cardinality = 0..1

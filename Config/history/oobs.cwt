@@ -162,6 +162,15 @@ oob = {
 		picture = scalar
 		## cardinality = 0..1
 		portrait_path = scalar
+		
+		## cardinality = 0..1
+		flags = {
+			## cardinality = ~1..inf
+			value_set[leader_flag] = {
+				value = 1
+			}
+		}
+		
 		## cardinality = 0..1
 		gfx = scalar
 		## cardinality = 0..1
@@ -195,6 +204,15 @@ oob = {
 		picture = scalar
 		## cardinality = 0..1
 		portrait_path = scalar
+		
+		## cardinality = 0..1
+		flags = {
+			## cardinality = ~1..inf
+			value_set[leader_flag] = {
+				value = 1
+			}
+		}
+		
 		## cardinality = 0..1
 		gfx = scalar
 		## cardinality = 0..1

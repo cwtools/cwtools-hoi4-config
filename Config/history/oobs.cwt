@@ -24,7 +24,7 @@ oob = {
 		}
 		## cardinality = 0..1
 		support = {
-			## cardinality = 0..5
+			## cardinality = ~1..5
 			<unit> = { x = 0 y = int[0..5] }
 		}
 		## cardinality = 0..1
@@ -151,5 +151,125 @@ oob = {
 				is_female = bool
 			}
 		}
+	}
+
+	## cardinality = 0..inf
+	navy_leader = {
+		name = scalar
+		## cardinality = 0..1
+		desc = localisation
+		## cardinality = 0..1
+		picture = scalar
+		## cardinality = 0..1
+		portrait_path = scalar
+		## cardinality = 0..1
+		flags = {
+			## cardinality = ~1..inf
+			value_set[leader_flag] = {
+				value = 1
+			}
+		}
+		## cardinality = 0..1
+		gfx = scalar
+		## cardinality = 0..1
+		traits = {
+			## cardinality = ~1..inf
+			<unit_leader_trait>
+		}
+		## cardinality = ~1..1
+		skill = int
+		## cardinality = ~1..1
+		attack_skill = int
+		## cardinality = ~1..1
+		defense_skill = int
+		## cardinality = ~1..1
+		maneuvering_skill = int
+		## cardinality = ~1..1
+		coordination_skill = int
+		## cardinality = 0..1
+		id = value_set[unit_leader_ids]
+		## cardinality = 0..1
+		female = bool
+	}
+
+	## cardinality = 0..inf
+	field_marshal = {
+		name = scalar
+		## cardinality = 0..1
+		desc = localisation
+		## cardinality = 0..1
+		picture = scalar
+		## cardinality = 0..1
+		portrait_path = scalar
+		## cardinality = 0..1
+		flags = {
+			## cardinality = ~1..inf
+			value_set[leader_flag] = {
+				value = 1
+			}
+		}
+		## cardinality = 0..1
+		gfx = scalar
+		## cardinality = 0..1
+		traits = {
+			## cardinality = ~1..inf
+			<unit_leader_trait>
+		}
+		## cardinality = ~1..1
+		skill = int
+		## cardinality = ~1..1
+		attack_skill = int
+		## cardinality = ~1..1
+		defense_skill = int
+		## cardinality = ~1..1
+		planning_skill = int
+		## cardinality = ~1..1
+		logistics_skill = int
+		## cardinality = 0..1
+		id = value_set[unit_leader_ids]
+		## cardinality = 0..1
+		female = bool
+	}
+
+	## cardinality = 0..inf
+	corps_commander = {
+		## cardinality = 0..1
+		name = scalar
+		## cardinality = 0..1
+		desc = localisation
+		## cardinality = 0..1
+		picture = scalar
+		## cardinality = 0..1
+		portrait_path = scalar
+		
+		## cardinality = 0..1
+		flags = {
+			## cardinality = ~1..inf
+			value_set[leader_flag] = {
+				value = 1
+			}
+		}
+		
+		## cardinality = 0..1
+		gfx = scalar
+		## cardinality = 0..1
+		traits = {
+			## cardinality = ~1..inf
+			<unit_leader_trait>
+		}
+		## cardinality = ~1..1
+		skill = int
+		## cardinality = ~1..1
+		attack_skill = int
+		## cardinality = ~1..1
+		defense_skill = int
+		## cardinality = ~1..1
+		planning_skill = int
+		## cardinality = ~1..1
+		logistics_skill = int
+		## cardinality = 0..1
+		id = value_set[unit_leader_ids]
+		## cardinality = 0..1
+		female = bool
 	}
 }

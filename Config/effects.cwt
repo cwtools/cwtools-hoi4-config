@@ -65,7 +65,7 @@ alias[effect:add_province_modifier] = {
 	}
 }
 
-### Removes static modifiers fom specified province.
+### Removes static modifiers from specified province.
 ## scope = { state }
 alias[effect:remove_province_modifier] = {
 	static_modifiers = {
@@ -228,7 +228,7 @@ alias[effect:random_enemy_country] = {
 alias[effect:country_event] = {
 	id = <event.country_event>
 	## cardinality = 0..1
-	enum[hours_days] = int
+	enum[hours_days_months] = int
 	## cardinality = 0..1
 	random = int
 }
@@ -242,7 +242,7 @@ alias[effect:country_event] = <event.country_event>
 alias[effect:state_event] = {
 	id = <event.state_event>
 	## cardinality = 0..1
-	enum[hours_days] = int
+	enum[hours_days_months] = int
 	## cardinality = 0..1
 	random = int
 	trigger_for = scope[country]
@@ -515,15 +515,15 @@ alias[effect:create_navy_leader] = {
 		## cardinality = ~1..inf
 		<unit_leader_trait>
 	}
-	## cardinality = 0..1
+	## cardinality = ~1..1
 	skill = int
-	## cardinality = 0..1
+	## cardinality = ~1..1
 	attack_skill = int
-	## cardinality = 0..1
+	## cardinality = ~1..1
 	defense_skill = int
-	## cardinality = 0..1
+	## cardinality = ~1..1
 	maneuvering_skill = int
-	## cardinality = 0..1
+	## cardinality = ~1..1
 	coordination_skill = int
 	## cardinality = 0..1
 	id = value_set[unit_leader_ids]
@@ -766,7 +766,7 @@ alias[effect:every_neighbor_state] = {
 alias[effect:news_event] = {
 	id = <event.news_event>
 	## cardinality = 0..1
-	enum[hours_days] = int
+	enum[hours_days_months] = int
 	## cardinality = 0..1
 	random = int
 }
@@ -1126,15 +1126,15 @@ alias[effect:create_field_marshal] = {
 		## cardinality = ~1..inf
 		<unit_leader_trait>
 	}
-	## cardinality = 0..1
+	## cardinality = ~1..1
 	skill = int
-	## cardinality = 0..1
+	## cardinality = ~1..1
 	attack_skill = int
-	## cardinality = 0..1
+	## cardinality = ~1..1
 	defense_skill = int
-	## cardinality = 0..1
+	## cardinality = ~1..1
 	planning_skill = int
-	## cardinality = 0..1
+	## cardinality = ~1..1
 	logistics_skill = int
 	## cardinality = 0..1
 	id = value_set[unit_leader_ids]
@@ -1160,15 +1160,15 @@ alias[effect:create_corps_commander] = {
 		## cardinality = ~1..inf
 		<unit_leader_trait>
 	}
-	## cardinality = 0..1
+	## cardinality = ~1..1
 	skill = int
-	## cardinality = 0..1
+	## cardinality = ~1..1
 	attack_skill = int
-	## cardinality = 0..1
+	## cardinality = ~1..1
 	defense_skill = int
-	## cardinality = 0..1
+	## cardinality = ~1..1
 	planning_skill = int
-	## cardinality = 0..1
+	## cardinality = ~1..1
 	logistics_skill = int
 	## cardinality = 0..1
 	id = value_set[unit_leader_ids]
@@ -1818,12 +1818,12 @@ alias[effect:multiply_variable] = {
 	value = variable_field
 }
 
-### Divies a variable to a value or another variable.
+### Divides a variable to a value or another variable.
 ## scope = any
 alias[effect:divide_variable] = {
 	value_set[variable] = variable_field
 }
-### Divies a variable to a value or another variable.
+### Divides a variable to a value or another variable.
 ## scope = any
 alias[effect:divide_variable] = {
 	var = value_set[variable]
@@ -1926,12 +1926,12 @@ alias[effect:multiply_temp_variable] = {
 	value = variable_field
 }
 
-### Divies a temp variable to a value or another variable.
+### Divides a temp variable to a value or another variable.
 ## scope = any
 alias[effect:divide_temp_variable] = {
 	value_set[variable] = variable_field
 }
-### Divies a temp variable to a value or another variable.
+### Divides a temp variable to a value or another variable.
 ## scope = any
 alias[effect:divide_temp_variable] = {
 	var = value_set[variable]
@@ -1958,7 +1958,7 @@ alias[effect:add_timed_unit_leader_trait] = {
 	days = int
 }
 
-### Clamps a variable a variable bet ween two a values or another variables.
+### Clamps a variable a variable between two a values or another variables.
 ## scope = any
 alias[effect:clamp_variable] = {
 	var = value_set[variable]
@@ -1966,7 +1966,7 @@ alias[effect:clamp_variable] = {
 	max = variable_field
 }
 
-### Clamps a temp variable a variable bet ween two a values or another variables.
+### Clamps a temp variable a variable between two a values or another variables.
 ## scope = any
 alias[effect:clamp_temp_variable] = {
 	var = value_set[variable]
@@ -1974,28 +1974,28 @@ alias[effect:clamp_temp_variable] = {
 	max = variable_field
 }
 
-### Clamps a variable a variable bet ween two a values or another variables.
+### Clamps a variable a variable between two a values or another variables.
 ## scope = any
 alias[effect:clamp_variable] = {
 	var = value_set[variable]
 	max = variable_field
 }
 
-### Clamps a temp variable a variable bet ween two a values or another variables.
+### Clamps a temp variable a variable between two a values or another variables.
 ## scope = any
 alias[effect:clamp_temp_variable] = {
 	var = value_set[variable]
 	max = variable_field
 }
 
-### Clamps a variable a variable bet ween two a values or another variables.
+### Clamps a variable a variable between two a values or another variables.
 ## scope = any
 alias[effect:clamp_variable] = {
 	var = value_set[variable]
 	min = variable_field
 }
 
-### Clamps a temp variable a variable bet ween two a values or another variables.
+### Clamps a temp variable a variable between two a values or another variables.
 ## scope = any
 alias[effect:clamp_temp_variable] = {
 	var = value_set[variable]
@@ -2144,7 +2144,7 @@ alias[effect:round_variable] = variable_field
 alias[effect:unit_leader_event] = {
 	id = <event.unit_leader_event>
 	## cardinality = 0..1
-	enum[hours_days] = int
+	enum[hours_days_months] = int
 	## cardinality = 0..1
 	random = int
 }
@@ -2710,11 +2710,11 @@ alias[effect:add_ai_strategy] = {
 	value = int
 }
 
-### Effect not shown in tooltips.
-## scope = any
-alias[effect:hidden_effect] = {
-	alias_name[effect] = alias_match_left[effect]
-}
+# ### Effect not shown in tooltips.
+# ## scope = any
+# alias[effect:hidden_effect] = {
+# 	alias_name[effect] = alias_match_left[effect]
+# }
 
 ### Adds legitimacy to scope country. Value has to be 0-100.
 ## scope = country

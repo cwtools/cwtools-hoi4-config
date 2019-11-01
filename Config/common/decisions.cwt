@@ -57,21 +57,25 @@ decision_category = {
 	### check if decisions in this category can be activated
 	## cardinality = 0..1
 	available = {
+		## cardinality = ~1..inf
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 	### check if who can use decisions in this category
 	## cardinality = 0..1
 	allowed = {
+		## cardinality = ~1..inf
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 	### can the player see decisions in this category
 	## cardinality = 0..1
 	visible = {
+		## cardinality = ~1..inf
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 	### check whether to cancel missions in this category
 	## cardinality = 0..1
 	cancel_trigger = {
+		## cardinality = ~1..inf
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 
@@ -110,6 +114,7 @@ decision = {
 	### can the player see this decision
 	## cardinality = 0..1
 	visible = {
+		## cardinality = ~1..inf
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 
@@ -119,12 +124,14 @@ decision = {
 	### who can use this decision
 	## cardinality = 0..1
 	allowed = {
+		## cardinality = ~1..inf
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 
 	### check if this decision can be activated
 	## cardinality = 0..1
 	available = {
+		## cardinality = ~1..inf
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 
@@ -140,6 +147,7 @@ decision = {
 	## cardinality = 0..1
 	## push_scope = state
 	highlight_states = {
+		## cardinality = ~1..inf
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 
@@ -151,22 +159,26 @@ decision = {
 
 	## cardinality = 0..1
 	complete_effect = {
+		## cardinality = ~1..inf
 		alias_name[effect] = alias_match_left[effect]
 	}
 
 	## cardinality = 0..1
 	remove_effect = {
+		## cardinality = ~1..inf
 		alias_name[effect] = alias_match_left[effect]
 	}
 
 	subtype[timed] = {
 		## cardinality = 0..1
 		cancel_trigger = {
+			## cardinality = ~1..inf
 			alias_name[trigger] = alias_match_left[trigger]
 		}
 
 		## cardinality = 0..1
 		remove_trigger = {
+			## cardinality = ~1..inf
 			alias_name[trigger] = alias_match_left[trigger]
 		}
 

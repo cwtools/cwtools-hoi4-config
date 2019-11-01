@@ -49,13 +49,13 @@ event = {
 		text = localisation
 	}
 	## cardinality = 0..1
-	hidden = bool
+	hidden = yes
 	## cardinality = 0..1
 	major = bool
 	## cardinality = 0..1
-	fire_only_once = bool
+	fire_only_once = yes
 	## cardinality = 0..1
-	is_triggered_only = bool
+	is_triggered_only = yes
 	## cardinality = 0..1
 	trigger = {
 		## cardinality = ~1..inf

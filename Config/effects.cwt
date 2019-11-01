@@ -1926,12 +1926,12 @@ alias[effect:multiply_temp_variable] = {
 	value = variable_field
 }
 
-### Divies a temp variable to a value or another variable.
+### Divides a temp variable to a value or another variable.
 ## scope = any
 alias[effect:divide_temp_variable] = {
 	value_set[variable] = variable_field
 }
-### Divies a temp variable to a value or another variable.
+### Divides a temp variable to a value or another variable.
 ## scope = any
 alias[effect:divide_temp_variable] = {
 	var = value_set[variable]

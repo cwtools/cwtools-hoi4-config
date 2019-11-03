@@ -66,13 +66,13 @@ values = {
 		num_armies_in_state
 
 		### Number of armies with dominant type, dominant type is defined in target. Example: num_armies_with_type@light_armor.
-		num_armies_with_type
+		num_armies_with_type@<unit>
 
 		### Number of battalions.
 		num_battalions
 
 		### Number of battalions with sub unit type, sub unit type is defined in target. Example: num_of_battalions_with_type@light_armor.
-		num_battalions_with_type
+		num_battalions_with_type@<unit>
 
 		### Number of controlled states.
 		num_controlled_states
@@ -81,13 +81,13 @@ values = {
 		num_core_states
 
 		### Number of equipment in country. Example num_equipment@infantry_equipment.
-		num_equipment
+		num_equipment@<equipment>
 
 		### Number of equipment in armies of the country, equipment type token is defined in target. Example num_equipment_in_armies@infantry_equipment.
-		num_equipment_in_armies
+		num_equipment_in_armies@<equipment>
 
 		### Number of equipment in armies of the country in thousands, equipment type token is defined in target. Example num_equipment_in_armies_k@infantry_equipment.
-		num_equipment_in_armies_k
+		num_equipment_in_armies_k@<equipment>
 
 		### Number of owned and core states.
 		num_owned_controlled_states
@@ -99,16 +99,16 @@ values = {
 		num_ships
 
 		### Number of ships controlled in country, ship type is defined in target. Example num_ships_with_type@carrier.
-		num_ships_with_type
+		num_ships_with_type@<unit>
 
 		### Number of equipment required in armies of the country, equipment type token is defined in target. Example num_target_equipment_in_armies@infantry_equipment
-		num_target_equipment_in_armies
+		num_target_equipment_in_armies@<equipment>
 
 		### Number of equipment required in armies of the country in thousands, equipment type token is defined in target. Example num_target_equipment_in_armies_k@infantry_equipment.
-		num_target_equipment_in_armies_k
+		num_target_equipment_in_armies_k@<equipment>
 
 		### Opinion of a country targeted on another one. Example GER.opinion@ENG.
-		opinion
+		opinion@enum[country_tags]
 
 		### Master of this subject.
 		overlord
@@ -126,19 +126,19 @@ values = {
 		political_power
 
 		### Number of surplus resources in country, resource type is defined in target resource@steel.
-		resource
+		resource@<resource>
 
 		### Number of resources consumed by country, resource type is defined in target resource_consumed@steel.
-		resource_consumed
+		resource_consumed@<resource>
 
 		### Number of resources exported by country, resource type is defined in target resource_exported@steel.
-		resource_exported
+		resource_exported@<resource>
 
 		### Number of resources imported by country, resource type is defined in target resource_imported@steel.
-		resource_imported
+		resource_imported@<resource>
 
 		### Number of resources produced by country, resource type is defined in target. Example resource_produced@steel.
-		resource_produced
+		resource_produced@<resource>
 
 		### Stability of a country.
 		stability
@@ -272,10 +272,10 @@ values = {
 		arms_factory_level
 
 		### Building level of a building with type, uses target as building type. Example building_level@arms_factory.
-		building_level
+		building_level@<building>
 
 		### Distance to another state, uses target as another state. Example: 123.distance_to@124.
-		distance_to
+		distance_to@<state>
 
 		### Civilian factor level in the state.
 		industrial_complex_level
@@ -284,6 +284,7 @@ values = {
 		infrastructure_level
 
 		### Value of modifier stored in this state, uses target as modifier token. Example 123.modifier@local_manpower.
+		# TODO
 		modifier
 
 		### Resistance strength in a state.
@@ -339,6 +340,7 @@ values = {
 		### 1 if leader has orders group, zero otherwise.
 		has_orders_group
 
+		# TODO:
 		### Value of a modifier stored in leader modifier, modifier token is defined in target. Example leader_modifier@navy_max_range.
 		leader_modifier
 
@@ -364,7 +366,7 @@ values = {
 		num_battalions
 
 		### Number of battalions with sub unit type, sub unit type is defined in target. Example: num_battalions_with_type@light_armor.
-		num_battalions_with_type
+		num_battalions_with_type@<unit>
 
 		### Number of battle plans of unit leader.
 		num_battle_plans
@@ -394,7 +396,7 @@ values = {
 		num_ships
 
 		### Number of ships controlled by leader, ship type is defined in target. Example num_ships_with_type@carrier.
-		num_ships_with_type
+		num_ships_with_type@<unit>
 
 		### Number of units with special dominant type.
 		num_special
@@ -403,7 +405,7 @@ values = {
 		num_status_traits
 
 		### Number of equipment required in army of a leader, equipment type token is defined in target. Example num_target_equipment@infantry_equipment.
-		num_target_equipment
+		num_target_equipment@<equipment>
 
 		### Number of terrain traits a leader has.
 		num_terrain_traits
@@ -421,25 +423,28 @@ values = {
 		num_units_defensive_combats
 
 		### Number of units that are defensively fighting on a terrain, terrain type is defined as target. Example num_units_defensive_combats_on@plains.
-		num_units_defensive_combats_on
+		num_units_defensive_combats_on@<terrain>
 
 		### Number of units current fighting.
 		num_units_in_combat
 
 		### Number of units controlled by leader in state, state is in target. Example num_units_in_state@123.
-		num_units_in_state
+		num_units_in_state@<state>
 
 		### Number of units in offensive combats.
 		num_units_offensive_combats
 
 		### Number of units that are offensively fighting against a terrain, terrain type is defined as target. Example num_units_offensive_combats_against@plains.
 		num_units_offensive_combats_against@<terrain>
+		num_units_offensive_combats_against@fort
+		num_units_offensive_combats_against@night
+		num_units_offensive_combats_against@amphibious
 
 		### Number of units that are on an acclimatization required location, acclimatization type is defined in target. Example num_units_on_climate@hot_climate.
 		num_units_on_climate@<acclimatization>
 
 		### Number of units with dominant type controlled by leader, dominant type is defined in target. Example: num_units_with_type@light_armor.
-		num_units_with_type
+		num_units_with_type@<unit>
 
 		### Planning level of the leader.
 		planning_level
@@ -447,9 +452,11 @@ values = {
 		### Skill level of the leader.
 		skill_level
 
+		# TODO:
 		### Sum of terrain modifiers of each army's location, terrain type is defined in target. Example sum_unit_terrain_modifier@sickness_chance.
 		sum_unit_terrain_modifier
 
+		# TODO:
 		### Value of a modifier stored in unit modifier, modifier token is defined in target. Example unit_modifier@army_attack_factor.
 		unit_modifier
 

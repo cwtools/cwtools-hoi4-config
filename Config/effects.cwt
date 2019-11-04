@@ -389,6 +389,7 @@ alias[effect:create_unit] = {
 	division = scalar
 	owner = scope[country]
 	owner = enum[country_tags]
+	## cardinality = 0..1
 	prioritize_location = enum[provinces]
 }
 

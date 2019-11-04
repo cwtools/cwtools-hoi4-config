@@ -107,6 +107,7 @@ unit_leader_trait = {
 		}
 	}
 	subtype[gainable_trait] = {
+		## replace_scope = { this = combat root = combat from = combat }
 		gain_xp = {
 			alias_name[trigger] = alias_match_left[trigger]
 		}

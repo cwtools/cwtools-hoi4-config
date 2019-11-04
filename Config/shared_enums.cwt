@@ -6,9 +6,10 @@ enums = {
 		"Waking the Tiger"
 		"Man the Guns"
 	}
-	enum[hours_days] = {
+	enum[hours_days_months] = {
 		hours
 		days
+		months
 	}
 	enum[tech_bonus] = {
 		bonus
@@ -19,6 +20,7 @@ enums = {
 		guarantee
 		puppet
 		military_access
+		docking_rights
 	}
 	enum[add_factor] = {
 		add

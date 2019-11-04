@@ -31,7 +31,7 @@ focus_tree = {
 	reset_on_civilwar = bool
 	## cardinality = 0..inf
 	shared_focus = <shared_focus>
-	## cardinality = 0..1
+	## cardinality = ~1..1
 	continuous_focus_position = {
 		x = int
 		y = int
@@ -41,6 +41,7 @@ focus_tree = {
 		id = localisation
 		## cardinality = 0..1
 		text = localisation
+		## cardinality = ~1..1
 		icon = scalar
 		cost = float
 		x = int
@@ -87,33 +88,43 @@ focus_tree = {
 		}
 		## cardinality = 0..1
 		bypass = {
+			## cardinality = ~1..inf
 			alias_name[trigger] = alias_match_left[trigger]
 		}
 		## cardinality = 0..1
 		allow_branch = {
+			## cardinality = ~1..inf
 			alias_name[trigger] = alias_match_left[trigger]
 		}
 		## cardinality = 0..1
 		available = {
+			## cardinality = ~1..inf
 			alias_name[trigger] = alias_match_left[trigger]
 		}
 		## cardinality = 0..1
 		cancel = {
+			## cardinality = ~1..inf
 			alias_name[trigger] = alias_match_left[trigger]
 		}
 		## cardinality = 0..1
 		historical_ai = {
+			## cardinality = ~1..inf
 			alias_name[trigger] = alias_match_left[trigger]
 		}
 		## cardinality = 0..1
 		select_effect = {
+			## cardinality = ~1..inf
 			alias_name[effect] = alias_match_left[effect]
 		}
 		## cardinality = 0..1
+		## push_scope = any
 		complete_tooltip = {
+			## cardinality = ~1..inf
 			alias_name[effect] = alias_match_left[effect]
 		}
+		## cardinality = ~1..1
 		completion_reward = {
+			## cardinality = ~1..inf
 			alias_name[effect] = alias_match_left[effect]
 		}
 		## cardinality = 0..1
@@ -126,100 +137,11 @@ focus_tree = {
 }
 
 ## replace_scope = { root = country this = country }
-focus = {
-	id = localisation
-	## cardinality = 0..1
-	text = localisation
-	icon = scalar
-	cost = float
-	x = int
-	y = int
-	## cardinality = 0..inf
-	offset = {
-		x = int
-		y = int
-		## cardinality = 0..1
-		trigger = {
-			alias_name[trigger] = alias_match_left[trigger]
-		}
-	}
-	## cardinality = 0..1
-	relative_position_id = <focus>
-	## cardinality = 0..1
-	relative_position_id = <shared_focus>
-	### used for focuses that can change title/desc
-	## cardinality = 0..1
-	dynamic = bool
-	## cardinality = 0..1
-	available_if_capitulated = bool
-	## cardinality = 0..1
-	cancel_if_invalid = bool
-	## cardinality = 0..1
-	continue_if_invalid = bool
-	## cardinality = 0..inf
-	will_lead_to_war_with = scope[country]
-	## cardinality = 0..inf
-	will_lead_to_war_with = enum[country_tags]
-	## cardinality = 0..inf
-	prerequisite = {
-		## cardinality = 0..inf
-		focus = <focus>
-		## cardinality = 0..inf
-		focus = <shared_focus>
-
-	}
-	## cardinality = 0..inf
-	mutually_exclusive = {
-		## cardinality = 0..inf
-		focus = <focus>
-		## cardinality = 0..inf
-		focus = <shared_focus>
-
-	}
-	## cardinality = 0..1
-	bypass = {
-		alias_name[trigger] = alias_match_left[trigger]
-	}
-	## cardinality = 0..1
-	allow_branch = {
-		alias_name[trigger] = alias_match_left[trigger]
-	}
-	## cardinality = 0..1
-	available = {
-		alias_name[trigger] = alias_match_left[trigger]
-	}
-	## cardinality = 0..1
-	cancel = {
-		alias_name[trigger] = alias_match_left[trigger]
-	}
-	## cardinality = 0..1
-	historical_ai = {
-		alias_name[trigger] = alias_match_left[trigger]
-	}
-	## cardinality = 0..1
-	select_effect = {
-		alias_name[effect] = alias_match_left[effect]
-	}
-	## cardinality = 0..1
-	complete_tooltip = {
-		alias_name[effect] = alias_match_left[effect]
-	}
-	completion_reward = {
-		alias_name[effect] = alias_match_left[effect]
-	}
-	## cardinality = 0..1
-	ai_will_do = {
-		## cardinality = 0..1
-		enum[base_factor] = float
-		alias_name[modifier_rule] = alias_match_left[modifier_rule]
-	}
-}
-
-## replace_scope = { root = country this = country }
 shared_focus = {
 	id = localisation
 	## cardinality = 0..1
 	text = localisation
+	## cardinality = ~1..1
 	icon = scalar
 	cost = float
 	x = int
@@ -266,33 +188,43 @@ shared_focus = {
 	}
 	## cardinality = 0..1
 	bypass = {
+		## cardinality = ~1..inf
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 	## cardinality = 0..1
 	allow_branch = {
+		## cardinality = ~1..inf
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 	## cardinality = 0..1
 	available = {
+		## cardinality = ~1..inf
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 	## cardinality = 0..1
 	cancel = {
+		## cardinality = ~1..inf
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 	## cardinality = 0..1
 	historical_ai = {
+		## cardinality = ~1..inf
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 	## cardinality = 0..1
 	select_effect = {
+		## cardinality = ~1..inf
 		alias_name[effect] = alias_match_left[effect]
 	}
 	## cardinality = 0..1
+	## push_scope = any
 	complete_tooltip = {
+		## cardinality = ~1..inf
 		alias_name[effect] = alias_match_left[effect]
 	}
+	## cardinality = ~1..1
 	completion_reward = {
+		## cardinality = ~1..inf
 		alias_name[effect] = alias_match_left[effect]
 	}
 	## cardinality = 0..1

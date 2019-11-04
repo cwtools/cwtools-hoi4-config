@@ -29,37 +29,37 @@ technology = {
 	## cardinality = 0..1
 	### hides technology unless trigger is true
 	allow = {
-		## cardinality = 0..inf
+		## cardinality = ~1..inf
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 	## cardinality = 0..1
 	### hides technology and children unless trigger is true
 	allow_branch = {
-		## cardinality = 0..inf
+		## cardinality = ~1..inf
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 	## cardinality = 0..1
 	### make technology exclusive with techs named
 	xor = {
-		## cardinality = 1..inf
+		## cardinality = ~1..inf
 		<technology>
 	}
 	## cardinality = 0..1
 	### enables listed units
 	enable_subunits = {
-		## cardinality = 1..inf
+		## cardinality = ~1..inf
 		<unit>
 	}
 	## cardinality = 0..1
 	### enables listed equipment
 	enable_equipments = {
-		## cardinality = 1..inf
+		## cardinality = ~1..inf
 		<equipment>
 	}
 	## cardinality = 0..inf
 	### enables listed equipment modules
 	enable_equipment_modules = {
-		## cardinality = 1..inf
+		## cardinality = ~1..inf
 		<module>
 	}
 
@@ -75,7 +75,7 @@ technology = {
 	### technologies directly dependent on this tech
 	sub_technologies = {
 		# vanila defines limit sub techs to three
-		## cardinality = 0..3
+		## cardinality = ~1..3
 		<technology>
 	}
 	## cardinality = 0..inf
@@ -87,7 +87,7 @@ technology = {
 	}
 	## cardinality = 0..1
 	dependencies = {
-		## cardinality = 0..inf
+		## cardinality = ~1..inf
 		<technology> = int
 	}
 	### multiplier to base tech cost in defines.lua
@@ -126,7 +126,7 @@ technology = {
 	## cardinality = 0..1
 	### categories for tech
 	categories = {
-		## cardinality = 0..inf
+		## cardinality = ~1..inf
 		enum[tech_category]
 	}
 	## cardinality = 0..inf
@@ -184,7 +184,7 @@ tech_sharing_group = {
 	## cardinality = 0..1
 	### categories for tech
 	categories = {
-		## cardinality = 0..inf
+		## cardinality = ~1..inf
 		enum[tech_category]
 	}
 	## cardinality = 0..1

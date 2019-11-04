@@ -8,7 +8,7 @@ types = {
 ace = {
 	type = enum[air_units]
 	type = {
-		## cardinality = 1..inf
+		## cardinality = ~1..inf
 		enum[air_units]
 	}
 	chance = float

@@ -15,7 +15,7 @@ state = {
 	name = localisation
 	## cardinality = 0..1
 	resources = {
-		## cardinality = 1..inf
+		## cardinality = ~1..inf
 		<resource> = float
 	}
 	history = {
@@ -65,7 +65,7 @@ state = {
 		}
 	}
 	provinces = {
-		## cardinality = 0..inf
+		## cardinality = ~1..inf
 		enum[provinces]
 	}
 	manpower = int[0..inf]

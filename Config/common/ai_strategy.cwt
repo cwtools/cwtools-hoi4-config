@@ -13,7 +13,7 @@ ai_strategy = {
 	target_array = value[array]
 	## cardinality = 0..1
 	targets = {
-		## cardinality = 1..inf
+		## cardinality = ~1..inf
 		enum[country_tags]
 	}
 	## cardinality = 0..1
@@ -66,19 +66,19 @@ ai_strategy_plan = {
 
 	## cardinality = 0..1
 	research = {
-		## cardinality = 0..inf
+		## cardinality = ~1..inf
 		enum[tech_category] = float
 	}
 
 	## cardinality = 0..1
 	ideas = {
-		## cardinality = 0..inf
+		## cardinality = ~1..inf
 		enum[idea_name] = int
 	}
 
 	## cardinality = 0..1
 	traits = {
-		## cardinality = 0..inf
+		## cardinality = ~1..inf
 		<country_leader_trait> = int
 	}
 

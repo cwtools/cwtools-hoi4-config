@@ -83,6 +83,7 @@ equipment = {
 	alias = <unit>
 
 	### Which category the equipment appears in the production screen.
+	## cardinality = 0..1
 	interface_category = enum[interface_category]
 
 	### Priority for usage over other equipment.
@@ -104,6 +105,8 @@ equipment = {
 
 		## cardinality = 0..1
 		family = <equipment.archetype_equip>
+
+		interface_category = enum[interface_category]
 	}
 
 	subtype[air_equip] = {
@@ -204,14 +207,14 @@ equipment = {
 	## cardinality = 0..1
 	### Resources needed for producing one unit of the equipment..
 	resources = {
-		## cardinality = 0..inf
+		## cardinality = ~1..inf
 		<resource> = int
 	}
 
 	## cardinality = 0..3
 	### List of upgrade names.
 	upgrades = {
-		## cardinality = 0..4
+		## cardinality = ~1..4
 		<upgrade>
 	}
 }
@@ -280,7 +283,7 @@ module = {
 		convert_cost_ic = int
 		## cardinality = 0..1
 		convert_cost_resources = {
-			## cardinality = 0..10
+			## cardinality = ~1..10
 			<resource> = int
 		}
 	}
@@ -292,7 +295,7 @@ module = {
 	dismantle_cost_ic = int
 	## cardinality = 0..1
 	dismantle_cost_resources = {
-		## cardinality = 0..10
+		## cardinality = ~1..10
 		<resource> = int
 	}
 }
@@ -306,6 +309,7 @@ critical_part = {
 	}
 	## cardinality = 0..1
 	modifier = {
+		## cardinality = ~1..inf
 		alias_name[naval_stat] = alias_match_left[naval_stat]
 	}
 	## cardinality = 0..1

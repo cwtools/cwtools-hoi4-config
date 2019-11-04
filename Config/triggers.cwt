@@ -1828,13 +1828,13 @@ alias[trigger:is_exiled_leader_from] = scope[country]
 ### Checks if scope leader is from specified exiled government. is_exiled_leader_from = FRA.
 alias[trigger:is_exiled_leader_from] = enum[country_tags]
 
-### Checks if scope country is hosting an exile. is_exile_host = yes.
+### Checks if scope country is hosting an exile.
 ## scope = country
-alias[trigger:is_exile_host] = yes
+alias[trigger:is_exile_host] = bool
 
-### Checks if scope country an exiled government. is_government_in_exile = yes.
+### Checks if scope country an exiled government.
 ## scope = country
-alias[trigger:is_government_in_exile] = yes
+alias[trigger:is_government_in_exile] = bool
 
 ### Checks for amount of divisions in specified state owned by current country.
 ## scope = country

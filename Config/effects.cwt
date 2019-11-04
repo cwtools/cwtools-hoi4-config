@@ -382,20 +382,21 @@ alias[effect:create_country_leader] = {
 ## scope = any
 alias[effect:log] = localisation
 
-### Create unit effect, just like in OOB,  from effect with specified parameters: owner, prioritize_location.
+### Create unit effect, just like in OOB, from effect with specified parameters: owner, prioritize_location.
 ## scope = state
 #"name = \"Infantry Division\" division_template = \"Infantry Division\" start_experience_factor = 0.5 start_equipment_factor = 0.5"
 alias[effect:create_unit] = {
 	division = scalar
 	owner = scope[country]
 	owner = enum[country_tags]
+	prioritize_location = enum[provinces]
 }
 
 ### Plays sound effect.
 ## scope = any
 alias[effect:sound_effect] = scalar
 
-### promotes general to field marshal.
+### Promotes general to field marshal.
 ## scope = unit_leader
 alias[effect:promote_leader] = bool
 
@@ -403,7 +404,7 @@ alias[effect:promote_leader] = bool
 ## scope = any
 alias[effect:randomize_weather] = int
 
-### add a division template to country.
+### Adds a division template to country.
 ## scope = country
 alias[effect:division_template] = {
 	name = localisation

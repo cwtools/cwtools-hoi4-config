@@ -104,10 +104,16 @@ decision_category = {
 decision = {
 	## cardinality = 0..1
 	icon = scalar
-
+	## cardinality = 0..1
+	priority = int
+	## cardinality = 0..1
+	priority = {
+		## cardinality = 0..1
+		enum[base_factor] = float
+		alias_name[modifier_rule] = alias_match_left[modifier_rule]
+	}
 	## cardinality = 0..1
 	name = localisation
-
 	## cardinality = 0..1
 	fire_only_once = bool
 

@@ -1665,12 +1665,48 @@ alias[trigger:set_temp_variable] = {
 	value = variable_field
 }
 
-### Clamps a temp variable between two values/variables.
+### Clamps a variable between two a values or another variables.
 ## scope = any
-alias[trigger:clamp_temp_variable] = {
+alias[effect:clamp_variable] = {
 	var = value_set[variable]
 	min = variable_field
 	max = variable_field
+}
+
+### Clamps a temp variable between two a values or another variables.
+## scope = any
+alias[effect:clamp_temp_variable] = {
+	var = value_set[variable]
+	min = variable_field
+	max = variable_field
+}
+
+### Clamps a variable between two a values or another variables.
+## scope = any
+alias[effect:clamp_variable] = {
+	var = value_set[variable]
+	max = variable_field
+}
+
+### Clamps a temp variable between two a values or another variables.
+## scope = any
+alias[effect:clamp_temp_variable] = {
+	var = value_set[variable]
+	max = variable_field
+}
+
+### Clamps a variable between two a values or another variables.
+## scope = any
+alias[effect:clamp_variable] = {
+	var = value_set[variable]
+	min = variable_field
+}
+
+### Clamps a temp variable between two a values or another variables.
+## scope = any
+alias[effect:clamp_temp_variable] = {
+	var = value_set[variable]
+	min = variable_field
 }
 
 ### Check amount of civilian factories available for a new project to use.

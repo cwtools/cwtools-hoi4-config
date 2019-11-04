@@ -1958,7 +1958,7 @@ alias[effect:add_timed_unit_leader_trait] = {
 	days = int
 }
 
-### Clamps a variable a variable between two a values or another variables.
+### Clamps a variable between two a values or another variables.
 ## scope = any
 alias[effect:clamp_variable] = {
 	var = value_set[variable]
@@ -1966,7 +1966,7 @@ alias[effect:clamp_variable] = {
 	max = variable_field
 }
 
-### Clamps a temp variable a variable between two a values or another variables.
+### Clamps a temp variable between two a values or another variables.
 ## scope = any
 alias[effect:clamp_temp_variable] = {
 	var = value_set[variable]
@@ -1974,35 +1974,35 @@ alias[effect:clamp_temp_variable] = {
 	max = variable_field
 }
 
-### Clamps a variable a variable between two a values or another variables.
+### Clamps a variable between two a values or another variables.
 ## scope = any
 alias[effect:clamp_variable] = {
 	var = value_set[variable]
 	max = variable_field
 }
 
-### Clamps a temp variable a variable between two a values or another variables.
+### Clamps a temp variable between two a values or another variables.
 ## scope = any
 alias[effect:clamp_temp_variable] = {
 	var = value_set[variable]
 	max = variable_field
 }
 
-### Clamps a variable a variable between two a values or another variables.
+### Clamps a variable between two a values or another variables.
 ## scope = any
 alias[effect:clamp_variable] = {
 	var = value_set[variable]
 	min = variable_field
 }
 
-### Clamps a temp variable a variable between two a values or another variables.
+### Clamps a temp variable between two a values or another variables.
 ## scope = any
 alias[effect:clamp_temp_variable] = {
 	var = value_set[variable]
 	min = variable_field
 }
 
-### start a border war between two states.
+### Start a border war between two states.
 ## scope = { state country }
 alias[effect:start_border_war] = {
 	change_state_after_war = bool
@@ -2024,7 +2024,7 @@ alias[effect:start_border_war] = {
 	}
 }
 
-### update border war properties.
+### Update border war properties.
 ## scope = { state country }
 alias[effect:set_border_war_data] = {
 	attacker = scope[state]
@@ -2039,7 +2039,7 @@ alias[effect:set_border_war_data] = {
 	combat_width = int
 }
 
-### cancel border war between two states.
+### Cancel border war between two states.
 ## scope = { state country }
 alias[effect:cancel_border_war] = {
 	## cardinality = 0..1

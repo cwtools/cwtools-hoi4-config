@@ -47,7 +47,7 @@ alias[trigger:difficulty] = int
 
 ### Check if any neighbor country meets the trigger.
 ## scope = country
-## push_scope = country
+## push_scope = any
 alias[trigger:any_neighbor_country] = {
 	## cardinality = 0..1
 	limit = {
@@ -90,7 +90,7 @@ alias[trigger:tag] = enum[country_tags]
 
 ### Check if any country meets the trigger.
 ## scope = any
-## push_scope = country
+## push_scope = any
 alias[trigger:any_country] = {
 	## cardinality = 0..1
 	limit = {
@@ -222,7 +222,7 @@ alias[trigger:has_idea] = enum[idea_name]
 
 ### Check if any enemy country meets the trigger.
 ## scope = country
-## push_scope = country
+## push_scope = any
 alias[trigger:any_enemy_country] = {
 	## cardinality = 0..1
 	limit = {
@@ -261,7 +261,7 @@ alias[trigger:is_subject_of] = enum[country_tags]
 
 ### Check if all neighbor countries meet the trigger.
 ## scope = country
-## push_scope = country
+## push_scope = any
 alias[trigger:all_neighbor_country] = {
 	## cardinality = 0..1
 	limit = {
@@ -272,7 +272,7 @@ alias[trigger:all_neighbor_country] = {
 
 ### Check if all countries meets the trigger.
 ## scope = any
-## push_scope = country
+## push_scope = any
 alias[trigger:all_country] = {
 	## cardinality = 0..1
 	limit = {
@@ -283,7 +283,7 @@ alias[trigger:all_country] = {
 
 ### Check if all enemy countries meet the trigger.
 ## scope = country
-## push_scope = country
+## push_scope = any
 alias[trigger:all_enemy_country] = {
 	## cardinality = 0..1
 	limit = {
@@ -514,7 +514,7 @@ alias[trigger:gives_military_access_to] = enum[country_tags]
 
 ### Check if any state meets the trigger.
 ## scope = any
-## push_scope = state
+## push_scope = any
 alias[trigger:any_state] = {
 	## cardinality = 0..1
 	limit = {
@@ -525,7 +525,7 @@ alias[trigger:any_state] = {
 
 ### Check if any owned state meets the trigger.
 ## scope = country
-## push_scope = state
+## push_scope = any
 alias[trigger:any_owned_state] = {
 	## cardinality = 0..1
 	limit = {
@@ -536,7 +536,7 @@ alias[trigger:any_owned_state] = {
 
 ### Check if any neighbor state meets the trigger.
 ## scope = state
-## push_scope = state
+## push_scope = any
 alias[trigger:any_neighbor_state] = {
 	## cardinality = 0..1
 	limit = {
@@ -547,7 +547,7 @@ alias[trigger:any_neighbor_state] = {
 
 ### Check if any allied country meets the trigger. Does not include the country itself.
 ## scope = country
-## push_scope = country
+## push_scope = any
 alias[trigger:any_allied_country] = {
 	## cardinality = 0..1
 	limit = {
@@ -558,7 +558,7 @@ alias[trigger:any_allied_country] = {
 
 ### Check if all states meets the trigger.
 ## scope = any
-## push_scope = state
+## push_scope = any
 alias[trigger:all_state] = {
 	## cardinality = 0..1
 	limit = {
@@ -569,7 +569,7 @@ alias[trigger:all_state] = {
 
 ### Check if all owned states meets the trigger.
 ## scope = country
-## push_scope = state
+## push_scope = any
 alias[trigger:all_owned_state] = {
 	## cardinality = 0..1
 	limit = {
@@ -580,7 +580,7 @@ alias[trigger:all_owned_state] = {
 
 ### Check if all neighbor states meets the trigger.
 ## scope = state
-## push_scope = state
+## push_scope = any
 alias[trigger:all_neighbor_state] = {
 	## cardinality = 0..1
 	limit = {
@@ -591,7 +591,7 @@ alias[trigger:all_neighbor_state] = {
 
 ### Check if all allied countries meet the trigger. Does not include the country itself.
 ## scope = country
-## push_scope = country
+## push_scope = any
 alias[trigger:all_allied_country] = {
 	## cardinality = 0..1
 	limit = {
@@ -1098,7 +1098,7 @@ alias[trigger:has_unit_leader] = int
 
 ### Check if any neighbor country in the home area meets the trigger.
 ## scope = country
-## push_scope = country
+## push_scope = any
 alias[trigger:any_home_area_neighbor_country] = {
 	## cardinality = 0..1
 	limit = {
@@ -1109,7 +1109,7 @@ alias[trigger:any_home_area_neighbor_country] = {
 
 ### Check if any other country meets the trigger. Excludes current country.
 ## scope = any
-## push_scope = country
+## push_scope = any
 alias[trigger:any_other_country] = {
 	## cardinality = 0..1
 	limit = {
@@ -1120,7 +1120,7 @@ alias[trigger:any_other_country] = {
 
 ### Check if all other countries meets the trigger. Excludes current country.
 ## scope = country
-## push_scope = country
+## push_scope = any
 alias[trigger:all_other_country] = {
 	## cardinality = 0..1
 	limit = {
@@ -1466,7 +1466,7 @@ alias[trigger:has_war_support] = float
 
 ### Check if all unit leaders meets the trigger.
 ## scope = country
-## push_scope = unit_leader
+## push_scope = any
 alias[trigger:all_unit_leader] = {
 	## cardinality = 0..1
 	limit = {
@@ -1477,7 +1477,7 @@ alias[trigger:all_unit_leader] = {
 
 ### Check if any unit leader meets the trigger.
 ## scope = country
-## push_scope = unit_leader
+## push_scope = any
 alias[trigger:any_unit_leader] = {
 	## cardinality = 0..1
 	limit = {
@@ -1488,7 +1488,7 @@ alias[trigger:any_unit_leader] = {
 
 ### Check if all unit leaders meets the trigger.
 ## scope = country
-## push_scope = unit_leader
+## push_scope = any
 alias[trigger:all_army_leader] = {
 	## cardinality = 0..1
 	limit = {
@@ -1499,7 +1499,7 @@ alias[trigger:all_army_leader] = {
 
 ### Check if any unit leader meets the trigger.
 ## scope = country
-## push_scope = unit_leader
+## push_scope = any
 alias[trigger:any_army_leader] = {
 	## cardinality = 0..1
 	limit = {
@@ -1510,7 +1510,7 @@ alias[trigger:any_army_leader] = {
 
 ### Check if all unit leaders meets the trigger.
 ## scope = country
-## push_scope = unit_leader
+## push_scope = any
 alias[trigger:all_navy_leader] = {
 	## cardinality = 0..1
 	limit = {
@@ -1521,7 +1521,7 @@ alias[trigger:all_navy_leader] = {
 
 ### Check if any unit leader meets the trigger.
 ## scope = country
-## push_scope = unit_leader
+## push_scope = any
 alias[trigger:any_navy_leader] = {
 	## cardinality = 0..1
 	limit = {
@@ -2005,7 +2005,7 @@ alias[trigger:has_fuel] = int_variable_field
 
 ### Runs a loop on an array and check a trigger for each scope in it, if any true returns true. otherwise returns false.
 ## scope = any
-## push_scope = country
+## push_scope = any
 alias[trigger:any_of_scopes] = {
 	array = value[array]
 	alias_name[trigger] = alias_match_left[trigger]
@@ -2013,7 +2013,7 @@ alias[trigger:any_of_scopes] = {
 
 ### Runs a loop on an array and check a trigger for each scope in it, if any false returns false. otherwise returns true.
 ## scope = any
-## push_scope = country
+## push_scope = any
 alias[trigger:all_of_scopes] = {
 	array = value[array]
 	alias_name[trigger] = alias_match_left[trigger]

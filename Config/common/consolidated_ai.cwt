@@ -33,6 +33,7 @@ types = {
 ai_area = {
 	## cardinality = 0..1
 	continents = {
+		## cardinality = 1..inf
 		enum[continents]
 	}
 	## cardinality = 0..1

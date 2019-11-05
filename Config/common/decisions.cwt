@@ -83,7 +83,7 @@ decision_category = {
 	custom_icon = {
 		tag = enum[country_tags]
 		value = scalar
-		desc = scalar
+		desc = localisation
 		visible = {
 			alias_name[trigger] = alias_match_left[trigger]
 		}
@@ -92,7 +92,7 @@ decision_category = {
 	## cardinality = 0..1
 	on_map_area = {
 		state = <state>
-		name = scalar
+		name = localisation
 		zoom = int
 	}
 

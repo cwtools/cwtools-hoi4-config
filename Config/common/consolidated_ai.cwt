@@ -186,6 +186,7 @@ ai_template = {
 			alias_name[trigger] = alias_match_left[trigger]
 		}
 
+		## cardinality = 0..1
 		stat_weights = {
 			## cardinality = 33..33
 			float

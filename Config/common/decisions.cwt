@@ -83,7 +83,7 @@ decision_category = {
 	custom_icon = {
 		tag = enum[country_tags]
 		value = scalar
-		desc = scalar
+		desc = localisation
 		visible = {
 			alias_name[trigger] = alias_match_left[trigger]
 		}
@@ -92,22 +92,28 @@ decision_category = {
 	## cardinality = 0..1
 	on_map_area = {
 		state = <state>
-		name = scalar
+		name = localisation
 		zoom = int
 	}
 
 	## cardinality = 0..1
-	scripted_gui = scalar #replace with enum[scripted_gui] or a type later
+	scripted_gui = enum[scripted_guis]
 }
 
 ## replace_scope = { this = country root = country from = country }
 decision = {
 	## cardinality = 0..1
 	icon = scalar
-
+	## cardinality = 0..1
+	priority = int
+	## cardinality = 0..1
+	priority = {
+		## cardinality = 0..1
+		enum[base_factor] = float
+		alias_name[modifier_rule] = alias_match_left[modifier_rule]
+	}
 	## cardinality = 0..1
 	name = localisation
-
 	## cardinality = 0..1
 	fire_only_once = bool
 

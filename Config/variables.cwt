@@ -63,7 +63,7 @@ values = {
 		num_armies
 
 		### Number of armies in state, state is in target. Example num_armies_in_state@123.
-		num_armies_in_state
+		num_armies_in_state@<state>
 
 		### Number of armies with dominant type, dominant type is defined in target. Example: num_armies_with_type@light_armor.
 		num_armies_with_type@<unit>
@@ -121,6 +121,7 @@ values = {
 
 		### Popularity of targeted party. Example party_popularity@democratic. May also target ruling_party.
 		party_popularity@<ideology>
+		party_popularity@ruling_party
 
 		### Total political power of country.
 		political_power
@@ -424,6 +425,9 @@ values = {
 
 		### Number of units that are defensively fighting on a terrain, terrain type is defined as target. Example num_units_defensive_combats_on@plains.
 		num_units_defensive_combats_on@<terrain>
+		num_units_defensive_combats_on@fort
+		num_units_defensive_combats_on@night
+		num_units_defensive_combats_on@amphibious
 
 		### Number of units current fighting.
 		num_units_in_combat

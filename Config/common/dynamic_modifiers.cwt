@@ -7,8 +7,9 @@ types = {
 
 dynamic_modifier = {
 	## cardinality = 0..1
+	## severity = warning
 	### Optional, will show up in guis if icon is specified.
-	icon = scalar
+	icon = <spriteType>
 
 	## cardinality = 0..1
 	### Optional, the modifier won't apply if not enabled.

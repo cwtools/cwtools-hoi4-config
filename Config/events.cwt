@@ -15,7 +15,7 @@ types = {
 		subtype[news_event] = {
 		}
 		## type_key_filter = unit_leader_event
-		## push_scope = country
+		## push_scope = any
 		subtype[unit_leader_event] = {
 		}
 		subtype[hidden] = {

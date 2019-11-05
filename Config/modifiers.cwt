@@ -148,6 +148,7 @@ modifiers = {
 	extra_trade_to_target_factor = country
 	faction_trade_opinion_factor = country
 	fighter_sortie_efficiency = country
+	forced_surrender_limit = country
 	foreign_subversive_activites = country
 	fuel_gain_factor = country
 	fuel_gain_factor_from_states = country

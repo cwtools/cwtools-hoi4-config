@@ -176,7 +176,8 @@ tech_sharing_group = {
 	id = scalar
 	name = localisation
 	desc = localisation
-	picture = scalar
+	## severity = warning
+	picture = <spriteType>
 
 	research_sharing_per_country_bonus = float
 	## cardinality = 0..1

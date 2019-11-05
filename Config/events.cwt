@@ -37,7 +37,8 @@ event = {
 		text = localisation
 	}
 	## cardinality = 0..1
-	picture = scalar
+	## severity = warning
+	picture = <spriteType>
 	## cardinality = 0..inf
 	desc = localisation
 	## cardinality = 0..inf

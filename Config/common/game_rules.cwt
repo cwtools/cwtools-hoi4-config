@@ -15,7 +15,8 @@ game_rule = {
 	group = localisation
 	### Optional icon
 	## cardinality = 0..1
-	icon = scalar
+	## severity = warning
+	icon = <spriteType>
 	### Unless other specified, the first option is the default option
 	## cardinality = 0..inf
 	option = {

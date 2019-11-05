@@ -299,6 +299,7 @@ alias[effect:white_peace] = enum[country_tags]
 alias[effect:white_peace] = {
 	tag = scope[country]
 	tag = enum[country_tags]
+	## cardinality = 0..1
 	message = localisation
 }
 
@@ -509,7 +510,8 @@ alias[effect:create_navy_leader] = {
 	## cardinality = 0..1
 	portrait_path = scalar
 	## cardinality = 0..1
-	gfx = scalar
+	## severity = warning
+	gfx = <spriteType>
 	## cardinality = 0..1
 	traits = {
 		## cardinality = ~1..inf
@@ -610,7 +612,7 @@ alias[effect:annex_country] = {
 ## scope = state
 alias[effect:add_building_construction] = {
 	type = <building.state>
-	level = int
+	level = int_variable_field
 	## cardinality = 0..1
 	instant_build = bool
 }
@@ -619,7 +621,7 @@ alias[effect:add_building_construction] = {
 ## scope = state
 alias[effect:add_building_construction] = {
 	type = <building.provincial>
-	level = int
+	level = int_variable_field
 	## cardinality = 0..1
 	instant_build = bool
 	province = enum[provinces]
@@ -634,7 +636,7 @@ alias[effect:add_building_construction] = {
 		## cardinality = 0..1
 		limit_to_victory_point = yes
 		## cardinality = 0..1
-		level = int
+		level = int_variable_field
 	}
 	province = {
 		## cardinality = 1..inf
@@ -648,7 +650,7 @@ alias[effect:add_building_construction] = {
 		## cardinality = 0..1
 		limit_to_victory_point = yes
 		## cardinality = 0..1
-		level = int
+		level = int_variable_field
 	}
 }
 
@@ -1120,7 +1122,8 @@ alias[effect:create_field_marshal] = {
 	## cardinality = 0..1
 	portrait_path = scalar
 	## cardinality = 0..1
-	gfx = scalar
+	## severity = warning
+	gfx = <spriteType>
 	## cardinality = 0..1
 	traits = {
 		## cardinality = ~1..inf
@@ -1154,7 +1157,8 @@ alias[effect:create_corps_commander] = {
 	## cardinality = 0..1
 	portrait_path = scalar
 	## cardinality = 0..1
-	gfx = scalar
+	## severity = warning
+	gfx = <spriteType>
 	## cardinality = 0..1
 	traits = {
 		## cardinality = ~1..inf
@@ -1529,7 +1533,7 @@ alias[effect:remove_relation_modifier] = {
 ## scope = state
 alias[effect:set_building_level] = {
 	type = <building.state>
-	level = int
+	level = int_variable_field
 	## cardinality = 0..1
 	instant_build = yes
 }
@@ -1538,7 +1542,7 @@ alias[effect:set_building_level] = {
 ## scope = state
 alias[effect:set_building_level] = {
 	type = <building.provincial>
-	level = int
+	level = int_variable_field
 	## cardinality = 0..1
 	instant_build = yes
 	province = enum[provinces]
@@ -1551,7 +1555,7 @@ alias[effect:set_building_level] = {
 		## cardinality = 0..1
 		limit_to_border = bool
 		## cardinality = 0..1
-		level = int
+		level = int_variable_field
 	}
 	province = {
 		## cardinality = 1..inf
@@ -1563,7 +1567,7 @@ alias[effect:set_building_level] = {
 		## cardinality = 0..1
 		limit_to_border = bool
 		## cardinality = 0..1
-		level = int
+		level = int_variable_field
 	}
 }
 

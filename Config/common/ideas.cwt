@@ -166,6 +166,8 @@ idea = {
 				## cardinality = ~1..inf
 				alias_name[modifier] = alias_match_left[modifier]
 			}
+			## cardinality = 0..inf
+			alias_name[targeted_modifier_rule] = alias_match_left[targeted_modifier_rule]
 			## cardinality = 0..1
 			rule = {
 				## cardinality = ~1..inf

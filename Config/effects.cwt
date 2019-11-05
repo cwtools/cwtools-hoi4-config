@@ -300,6 +300,8 @@ alias[effect:white_peace] = {
 	tag = scope[country]
 	tag = enum[country_tags]
 	## cardinality = 0..1
+	tooltip = localisation
+	## cardinality = 0..1
 	message = localisation
 }
 
@@ -383,20 +385,22 @@ alias[effect:create_country_leader] = {
 ## scope = any
 alias[effect:log] = localisation
 
-### Create unit effect, just like in OOB,  from effect with specified parameters: owner, prioritize_location.
+### Create unit effect, just like in OOB, from effect with specified parameters: owner, prioritize_location.
 ## scope = state
 #"name = \"Infantry Division\" division_template = \"Infantry Division\" start_experience_factor = 0.5 start_equipment_factor = 0.5"
 alias[effect:create_unit] = {
 	division = scalar
 	owner = scope[country]
 	owner = enum[country_tags]
+	## cardinality = 0..1
+	prioritize_location = enum[provinces]
 }
 
 ### Plays sound effect.
 ## scope = any
 alias[effect:sound_effect] = scalar
 
-### promotes general to field marshal.
+### Promotes general to field marshal.
 ## scope = unit_leader
 alias[effect:promote_leader] = bool
 
@@ -404,7 +408,7 @@ alias[effect:promote_leader] = bool
 ## scope = any
 alias[effect:randomize_weather] = int
 
-### add a division template to country.
+### Adds a division template to country.
 ## scope = country
 alias[effect:division_template] = {
 	name = localisation
@@ -421,6 +425,8 @@ alias[effect:division_template] = {
 		## cardinality = 0..5
 		<unit> = { x = 0 y = int[0..5] }
 	}
+	## cardinality = 0..1
+	template_counter = int
 	## cardinality = 0..1
 	priority = int
 }
@@ -2153,6 +2159,10 @@ alias[effect:unit_leader_event] = {
 	## cardinality = 0..1
 	random = int
 }
+
+### fires a unit leader event for owner country.
+## scope = unit_leader
+alias[effect:unit_leader_event] = <event.unit_leader_event>
 
 ### finalizes border war between two states, wins or cancels it.
 ## scope = { state country }

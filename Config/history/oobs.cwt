@@ -28,6 +28,8 @@ oob = {
 			<unit> = { x = 0 y = int[0..5] }
 		}
 		## cardinality = 0..1
+		template_counter = int
+		## cardinality = 0..1
 		priority = int
 	}
 

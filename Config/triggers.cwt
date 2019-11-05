@@ -882,13 +882,7 @@ alias[trigger:has_flanked_opponent] = bool
 
 ### Check if there is a claim between a country and all others.
 ## scope = country
-alias[trigger:any_claim] = {
-	## cardinality = 0..1
-	limit = {
-		alias_name[trigger] = alias_match_left[trigger]
-	}
-	alias_name[trigger] = alias_match_left[trigger]
-}
+alias[trigger:any_claim] = bool
 
 ### Compares number of volunteers from the country. Example: has_volunteers_amount_from = { tag = ITA count > 1 }.
 ## scope = country

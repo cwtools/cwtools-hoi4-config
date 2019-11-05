@@ -299,6 +299,7 @@ alias[effect:white_peace] = enum[country_tags]
 alias[effect:white_peace] = {
 	tag = scope[country]
 	tag = enum[country_tags]
+	tooltip = localisation
 	message = localisation
 }
 

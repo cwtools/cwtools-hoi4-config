@@ -2154,6 +2154,10 @@ alias[effect:unit_leader_event] = {
 	random = int
 }
 
+### fires a unit leader event for owner country.
+## scope = unit_leader
+alias[effect:unit_leader_event] = <event.unit_leader_event>
+
 ### finalizes border war between two states, wins or cancels it.
 ## scope = { state country }
 alias[effect:finalize_border_war] = {

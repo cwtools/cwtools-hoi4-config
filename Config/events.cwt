@@ -21,6 +21,10 @@ types = {
 		subtype[hidden] = {
 			hidden = yes
 		}
+		localisation = {
+			## primary
+			title = title
+		}
 	}
 }
 

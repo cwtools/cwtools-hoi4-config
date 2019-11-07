@@ -57,21 +57,25 @@ decision_category = {
 	### check if decisions in this category can be activated
 	## cardinality = 0..1
 	available = {
+		## cardinality = ~1..inf
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 	### check if who can use decisions in this category
 	## cardinality = 0..1
 	allowed = {
+		## cardinality = ~1..inf
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 	### can the player see decisions in this category
 	## cardinality = 0..1
 	visible = {
+		## cardinality = ~1..inf
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 	### check whether to cancel missions in this category
 	## cardinality = 0..1
 	cancel_trigger = {
+		## cardinality = ~1..inf
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 
@@ -79,7 +83,7 @@ decision_category = {
 	custom_icon = {
 		tag = enum[country_tags]
 		value = scalar
-		desc = scalar
+		desc = localisation
 		visible = {
 			alias_name[trigger] = alias_match_left[trigger]
 		}
@@ -88,28 +92,35 @@ decision_category = {
 	## cardinality = 0..1
 	on_map_area = {
 		state = <state>
-		name = scalar
+		name = localisation
 		zoom = int
 	}
 
 	## cardinality = 0..1
-	scripted_gui = scalar #replace with enum[scripted_gui] or a type later
+	scripted_gui = enum[scripted_guis]
 }
 
 ## replace_scope = { this = country root = country from = country }
 decision = {
 	## cardinality = 0..1
 	icon = scalar
-
+	## cardinality = 0..1
+	priority = int
+	## cardinality = 0..1
+	priority = {
+		## cardinality = 0..1
+		enum[base_factor] = float
+		alias_name[modifier_rule] = alias_match_left[modifier_rule]
+	}
 	## cardinality = 0..1
 	name = localisation
-
 	## cardinality = 0..1
 	fire_only_once = bool
 
 	### can the player see this decision
 	## cardinality = 0..1
 	visible = {
+		## cardinality = ~1..inf
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 
@@ -119,12 +130,14 @@ decision = {
 	### who can use this decision
 	## cardinality = 0..1
 	allowed = {
+		## cardinality = ~1..inf
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 
 	### check if this decision can be activated
 	## cardinality = 0..1
 	available = {
+		## cardinality = ~1..inf
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 
@@ -140,48 +153,50 @@ decision = {
 	## cardinality = 0..1
 	## push_scope = state
 	highlight_states = {
+		## cardinality = ~1..inf
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 
 	## cardinality = 0..1
 	highlight_provinces = {
-		## cardinality = 1..inf
+		## cardinality = ~1..inf
 		enum[provinces]
 	}
 
 	## cardinality = 0..1
 	complete_effect = {
+		## cardinality = ~1..inf
 		alias_name[effect] = alias_match_left[effect]
 	}
 
 	## cardinality = 0..1
 	remove_effect = {
+		## cardinality = ~1..inf
 		alias_name[effect] = alias_match_left[effect]
 	}
 
 	subtype[timed] = {
 		## cardinality = 0..1
 		cancel_trigger = {
+			## cardinality = ~1..inf
 			alias_name[trigger] = alias_match_left[trigger]
 		}
 
 		## cardinality = 0..1
 		remove_trigger = {
+			## cardinality = ~1..inf
 			alias_name[trigger] = alias_match_left[trigger]
 		}
 
 		## cardinality = 0..1
 		days_remove = variable_field
 
-		## cardinality = 0..1
-		targeted_modifier = {
-			tag = scope[country]
-			tag = enum[country_tags]
-			alias_name[modifier] = alias_match_left[modifier]
-		}
+		## cardinality = 0..inf
+		alias_name[targeted_modifier_rule] = alias_match_left[targeted_modifier_rule]
 
 		## cardinality = 0..1
 		modifier = {
+			## cardinality = ~1..inf
 			alias_name[modifier] = alias_match_left[modifier]
 		}
 	}
@@ -230,12 +245,8 @@ decision = {
 			alias_name[trigger] = alias_match_left[trigger]
 		}
 
-		## cardinality = 0..1
-		targeted_modifier = {
-			tag = scope[country]
-			tag = enum[country_tags]
-			alias_name[modifier] = alias_match_left[modifier]
-		}
+		## cardinality = 0..inf
+		alias_name[targeted_modifier_rule] = alias_match_left[targeted_modifier_rule]
 
 		## cardinality = 0..1
 		target_array = value[array]

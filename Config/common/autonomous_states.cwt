@@ -28,6 +28,7 @@ autonomy = {
 	}
 
 	modifier = {
+		## cardinality = ~1..inf
 		alias_name[modifier] = alias_match_left[modifier]
 	}
 

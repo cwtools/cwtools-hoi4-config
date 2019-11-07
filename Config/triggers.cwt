@@ -47,7 +47,7 @@ alias[trigger:difficulty] = int
 
 ### Check if any neighbor country meets the trigger.
 ## scope = country
-## push_scope = country
+## push_scope = any
 alias[trigger:any_neighbor_country] = {
 	## cardinality = 0..1
 	limit = {
@@ -61,14 +61,12 @@ alias[trigger:<resource>] = int
 
 ### Has country flag been set. Check flag val date set and days since set. Example: has_country_flag = test_flag.
 ## scope = country
+## severity = warning
 alias[trigger:has_country_flag] = value[country_flag]
 
 ### Has country flag been set. Check flag val date set and days since set. Example: has_country_flag = test_flag.
 ## scope = country
-alias[trigger:has_country_flag] = enum[hardcoded_country_flags]
-
-### Has country flag been set. Check flag val date set and days since set. Example: has_country_flag = test_flag.
-## scope = country
+## severity = warning
 alias[trigger:has_country_flag] = {
 	flag = value[country_flag]
 	## cardinality = 0..1
@@ -92,7 +90,7 @@ alias[trigger:tag] = enum[country_tags]
 
 ### Check if any country meets the trigger.
 ## scope = any
-## push_scope = country
+## push_scope = any
 alias[trigger:any_country] = {
 	## cardinality = 0..1
 	limit = {
@@ -146,7 +144,7 @@ alias[trigger:check_variable] = {
 ### Compares a variable to a number or variable.
 ## scope = any
 alias[trigger:check_variable] = {
-	var = value[variable]
+	var = variable_field
 	value = variable_field
 	## cardinality = 0..1
 	### defaults to greater_than_or_equals
@@ -180,6 +178,10 @@ alias[trigger:area] = <supply_area>
 ## scope = any
 alias[trigger:threat] = float[0..1]
 
+### Check the global threat value. 0-100 value.
+## scope = any
+alias[trigger:threat] = float[0..100]
+
 ### Always returns specified value.
 ## scope = any
 alias[trigger:always] = bool
@@ -190,10 +192,12 @@ alias[trigger:is_capital] = bool
 
 ### Has global flag been set. Check flag val date set and days since set. Example: has_global_flag = test_flag.
 ## scope = any
+## severity = warning
 alias[trigger:has_global_flag] = value[global_flag]
 
 ### Has global flag been set. Check flag val date set and days since set. Example: has_global_flag = test_flag.
 ## scope = any
+## severity = warning
 alias[trigger:has_global_flag] = {
 	flag = value[global_flag]
 	## cardinality = 0..1
@@ -218,7 +222,7 @@ alias[trigger:has_idea] = enum[idea_name]
 
 ### Check if any enemy country meets the trigger.
 ## scope = country
-## push_scope = country
+## push_scope = any
 alias[trigger:any_enemy_country] = {
 	## cardinality = 0..1
 	limit = {
@@ -257,7 +261,7 @@ alias[trigger:is_subject_of] = enum[country_tags]
 
 ### Check if all neighbor countries meet the trigger.
 ## scope = country
-## push_scope = country
+## push_scope = any
 alias[trigger:all_neighbor_country] = {
 	## cardinality = 0..1
 	limit = {
@@ -268,7 +272,7 @@ alias[trigger:all_neighbor_country] = {
 
 ### Check if all countries meets the trigger.
 ## scope = any
-## push_scope = country
+## push_scope = any
 alias[trigger:all_country] = {
 	## cardinality = 0..1
 	limit = {
@@ -279,7 +283,7 @@ alias[trigger:all_country] = {
 
 ### Check if all enemy countries meet the trigger.
 ## scope = country
-## push_scope = country
+## push_scope = any
 alias[trigger:all_enemy_country] = {
 	## cardinality = 0..1
 	limit = {
@@ -350,16 +354,16 @@ alias[trigger:has_government] = <ideology>
 
 ### Does country government (ruling party) belong to ideology group.
 ## scope = country
-#alias[trigger:has_government] = scope[country]
-# funnily enough it only works for ROOT
-alias[trigger:has_government] = ROOT
+alias[trigger:has_government] = scope[country]
 
 ### Has state flag been setCheck flag val date set and days since set.
 ## scope = state
+## severity = warning
 alias[trigger:has_state_flag] = value[state_flag]
 
 ### Has state flag been setCheck flag val date set and days since set.
 ## scope = state
+## severity = warning
 alias[trigger:has_state_flag] = {
 	flag = value[state_flag]
 	## cardinality = 0..1
@@ -426,19 +430,19 @@ alias[trigger:has_navy_size] = {
 
 ### Check amount of military factories.
 ## scope = country
-alias[trigger:num_of_military_factories] = int
+alias[trigger:num_of_military_factories] = variable_field
 
 ### Check amount of civilian factories.
 ## scope = country
-alias[trigger:num_of_civilian_factories] = int
+alias[trigger:num_of_civilian_factories] = variable_field
 
 ### Check amount of naval factories.
 ## scope = country
-alias[trigger:num_of_naval_factories] = int
+alias[trigger:num_of_naval_factories] = variable_field
 
 ### Check amount of nukes.
 ## scope = country
-alias[trigger:num_of_nukes] = int
+alias[trigger:num_of_nukes] = variable_field
 
 ### Check amount of manpower.
 ## scope = country
@@ -446,19 +450,19 @@ alias[trigger:has_manpower] = variable_field
 
 ### Check amount of political power.
 ## scope = country
-alias[trigger:has_political_power] = float
+alias[trigger:has_political_power] = variable_field
 
 ### Check amount of available military factories.
 ## scope = country
-alias[trigger:num_of_available_military_factories] = int
+alias[trigger:num_of_available_military_factories] = variable_field
 
 ### Check amount of available naval factories.
 ## scope = country
-alias[trigger:num_of_available_naval_factories] = int
+alias[trigger:num_of_available_naval_factories] = variable_field
 
 ### Check amount of available civilian factories.
 ## scope = country
-alias[trigger:num_of_available_civilian_factories] = int
+alias[trigger:num_of_available_civilian_factories] = variable_field
 
 ### Check if member of same faction as specified country.
 ## scope = country
@@ -510,7 +514,7 @@ alias[trigger:gives_military_access_to] = enum[country_tags]
 
 ### Check if any state meets the trigger.
 ## scope = any
-## push_scope = state
+## push_scope = any
 alias[trigger:any_state] = {
 	## cardinality = 0..1
 	limit = {
@@ -521,7 +525,7 @@ alias[trigger:any_state] = {
 
 ### Check if any owned state meets the trigger.
 ## scope = country
-## push_scope = state
+## push_scope = any
 alias[trigger:any_owned_state] = {
 	## cardinality = 0..1
 	limit = {
@@ -532,7 +536,7 @@ alias[trigger:any_owned_state] = {
 
 ### Check if any neighbor state meets the trigger.
 ## scope = state
-## push_scope = state
+## push_scope = any
 alias[trigger:any_neighbor_state] = {
 	## cardinality = 0..1
 	limit = {
@@ -543,7 +547,7 @@ alias[trigger:any_neighbor_state] = {
 
 ### Check if any allied country meets the trigger. Does not include the country itself.
 ## scope = country
-## push_scope = country
+## push_scope = any
 alias[trigger:any_allied_country] = {
 	## cardinality = 0..1
 	limit = {
@@ -554,7 +558,7 @@ alias[trigger:any_allied_country] = {
 
 ### Check if all states meets the trigger.
 ## scope = any
-## push_scope = state
+## push_scope = any
 alias[trigger:all_state] = {
 	## cardinality = 0..1
 	limit = {
@@ -565,7 +569,7 @@ alias[trigger:all_state] = {
 
 ### Check if all owned states meets the trigger.
 ## scope = country
-## push_scope = state
+## push_scope = any
 alias[trigger:all_owned_state] = {
 	## cardinality = 0..1
 	limit = {
@@ -576,7 +580,7 @@ alias[trigger:all_owned_state] = {
 
 ### Check if all neighbor states meets the trigger.
 ## scope = state
-## push_scope = state
+## push_scope = any
 alias[trigger:all_neighbor_state] = {
 	## cardinality = 0..1
 	limit = {
@@ -587,7 +591,7 @@ alias[trigger:all_neighbor_state] = {
 
 ### Check if all allied countries meet the trigger. Does not include the country itself.
 ## scope = country
-## push_scope = country
+## push_scope = any
 alias[trigger:all_allied_country] = {
 	## cardinality = 0..1
 	limit = {
@@ -878,13 +882,7 @@ alias[trigger:has_flanked_opponent] = bool
 
 ### Check if there is a claim between a country and all others.
 ## scope = country
-alias[trigger:any_claim] = {
-	## cardinality = 0..1
-	limit = {
-		alias_name[trigger] = alias_match_left[trigger]
-	}
-	alias_name[trigger] = alias_match_left[trigger]
-}
+alias[trigger:any_claim] = bool
 
 ### Compares number of volunteers from the country. Example: has_volunteers_amount_from = { tag = ITA count > 1 }.
 ## scope = country
@@ -1094,7 +1092,7 @@ alias[trigger:has_unit_leader] = int
 
 ### Check if any neighbor country in the home area meets the trigger.
 ## scope = country
-## push_scope = country
+## push_scope = any
 alias[trigger:any_home_area_neighbor_country] = {
 	## cardinality = 0..1
 	limit = {
@@ -1105,7 +1103,7 @@ alias[trigger:any_home_area_neighbor_country] = {
 
 ### Check if any other country meets the trigger. Excludes current country.
 ## scope = any
-## push_scope = country
+## push_scope = any
 alias[trigger:any_other_country] = {
 	## cardinality = 0..1
 	limit = {
@@ -1116,7 +1114,7 @@ alias[trigger:any_other_country] = {
 
 ### Check if all other countries meets the trigger. Excludes current country.
 ## scope = country
-## push_scope = country
+## push_scope = any
 alias[trigger:all_other_country] = {
 	## cardinality = 0..1
 	limit = {
@@ -1384,14 +1382,17 @@ alias[trigger:has_relation_modifier] = {
 ## scope = state
 alias[trigger:any_province_building_level] = {
 	province = {
-		## cardinality = 0..inf
-		id = enum[provinces]
-		## cardinality = 0..1
 		all_provinces = yes
 		## cardinality = 0..1
 		limit_to_border = yes
 	}
-	building = <building>
+	province = {
+		## cardinality = 1..inf
+		id = enum[provinces]
+		## cardinality = 0..1
+		limit_to_border = yes
+	}
+	building = <building.provincial>
 	level = int
 }
 
@@ -1459,7 +1460,7 @@ alias[trigger:has_war_support] = float
 
 ### Check if all unit leaders meets the trigger.
 ## scope = country
-## push_scope = unit_leader
+## push_scope = any
 alias[trigger:all_unit_leader] = {
 	## cardinality = 0..1
 	limit = {
@@ -1470,7 +1471,7 @@ alias[trigger:all_unit_leader] = {
 
 ### Check if any unit leader meets the trigger.
 ## scope = country
-## push_scope = unit_leader
+## push_scope = any
 alias[trigger:any_unit_leader] = {
 	## cardinality = 0..1
 	limit = {
@@ -1481,7 +1482,7 @@ alias[trigger:any_unit_leader] = {
 
 ### Check if all unit leaders meets the trigger.
 ## scope = country
-## push_scope = unit_leader
+## push_scope = any
 alias[trigger:all_army_leader] = {
 	## cardinality = 0..1
 	limit = {
@@ -1492,7 +1493,7 @@ alias[trigger:all_army_leader] = {
 
 ### Check if any unit leader meets the trigger.
 ## scope = country
-## push_scope = unit_leader
+## push_scope = any
 alias[trigger:any_army_leader] = {
 	## cardinality = 0..1
 	limit = {
@@ -1503,7 +1504,7 @@ alias[trigger:any_army_leader] = {
 
 ### Check if all unit leaders meets the trigger.
 ## scope = country
-## push_scope = unit_leader
+## push_scope = any
 alias[trigger:all_navy_leader] = {
 	## cardinality = 0..1
 	limit = {
@@ -1514,7 +1515,7 @@ alias[trigger:all_navy_leader] = {
 
 ### Check if any unit leader meets the trigger.
 ## scope = country
-## push_scope = unit_leader
+## push_scope = any
 alias[trigger:any_navy_leader] = {
 	## cardinality = 0..1
 	limit = {
@@ -1537,10 +1538,12 @@ alias[trigger:is_field_marshal] = bool
 
 ### Has unit leader flag been setCheck flag val date set and days since set.
 ## scope = { unit_leader combat }
+## severity = warning
 alias[trigger:has_unit_leader_flag] = value[leader_flag]
 
 ### Has unit leader flag been setCheck flag val date set and days since set.
 ## scope = { unit_leader combat }
+## severity = warning
 alias[trigger:has_unit_leader_flag] = {
 	flag = value[leader_flag]
 	## cardinality = 0..1
@@ -1652,22 +1655,30 @@ alias[trigger:set_temp_variable] = {
 ### Sets a temporary variable to a value or another variable.
 ## scope = any
 alias[trigger:set_temp_variable] = {
-	value[variable] = variable_field
-}
-
-### Sets a temporary variable to a value or another variable.
-## scope = any
-alias[trigger:set_temp_variable] = {
 	var = value_set[variable]
 	value = variable_field
 }
 
-### Clamps a temp variable between two values/variables.
+### Clamps a temp variable between two a values or another variables.
 ## scope = any
 alias[trigger:clamp_temp_variable] = {
 	var = value_set[variable]
 	min = variable_field
 	max = variable_field
+}
+
+### Clamps a temp variable between two a values or another variables.
+## scope = any
+alias[trigger:clamp_temp_variable] = {
+	var = value_set[variable]
+	max = variable_field
+}
+
+### Clamps a temp variable between two a values or another variables.
+## scope = any
+alias[trigger:clamp_temp_variable] = {
+	var = value_set[variable]
+	min = variable_field
 }
 
 ### Check amount of civilian factories available for a new project to use.
@@ -1811,13 +1822,13 @@ alias[trigger:is_exiled_leader_from] = scope[country]
 ### Checks if scope leader is from specified exiled government. is_exiled_leader_from = FRA.
 alias[trigger:is_exiled_leader_from] = enum[country_tags]
 
-### Checks if scope country is hosting an exile. is_exile_host = yes.
+### Checks if scope country is hosting an exile.
 ## scope = country
-alias[trigger:is_exile_host] = yes
+alias[trigger:is_exile_host] = bool
 
-### Checks if scope country an exiled government. is_government_in_exile = yes.
+### Checks if scope country an exiled government.
 ## scope = country
-alias[trigger:is_government_in_exile] = yes
+alias[trigger:is_government_in_exile] = bool
 
 ### Checks for amount of divisions in specified state owned by current country.
 ## scope = country
@@ -1959,11 +1970,11 @@ alias[trigger:resize_temp_array] = {
 alias[trigger:any_of] = {
 	array = value[array]
 	## cardinality = 0..1
-	### optional (default 'value') current value in array will be stored in this temp variable
-	value = scalar
+	### optional (default 'v') current value in array will be stored in this temp variable
+	value = value_set[variable]
 	## cardinality = 0..1
-	### optional (default 'index') current index in array will be stored in this temp variable
-	index = scalar
+	### optional (default 'i') current index in array will be stored in this temp variable
+	index = value_set[variable]
 
 	alias_name[trigger] = alias_match_left[trigger]
 }
@@ -1973,11 +1984,11 @@ alias[trigger:any_of] = {
 alias[trigger:all_of] = {
 	array = value[array]
 	## cardinality = 0..1
-	### optional (default 'value') current value in array will be stored in this temp variable
-	value = scalar
+	### optional (default 'v') current value in array will be stored in this temp variable
+	value = value_set[variable]
 	## cardinality = 0..1
-	### optional (default 'index') current index in array will be stored in this temp variable
-	index = scalar
+	### optional (default 'i') current index in array will be stored in this temp variable
+	index = value_set[variable]
 
 	alias_name[trigger] = alias_match_left[trigger]
 }
@@ -1988,7 +1999,7 @@ alias[trigger:has_fuel] = int_variable_field
 
 ### Runs a loop on an array and check a trigger for each scope in it, if any true returns true. otherwise returns false.
 ## scope = any
-## push_scope = country
+## push_scope = any
 alias[trigger:any_of_scopes] = {
 	array = value[array]
 	alias_name[trigger] = alias_match_left[trigger]
@@ -1996,7 +2007,7 @@ alias[trigger:any_of_scopes] = {
 
 ### Runs a loop on an array and check a trigger for each scope in it, if any false returns false. otherwise returns true.
 ## scope = any
-## push_scope = country
+## push_scope = any
 alias[trigger:all_of_scopes] = {
 	array = value[array]
 	alias_name[trigger] = alias_match_left[trigger]
@@ -2056,11 +2067,11 @@ alias[trigger:find_lowest_in_array] = {
 
 	## cardinality = 0..1
 	### optional (default 'v') lowest value in array will be stored in this temp variable
-	value = scalar
+	value = value_set[variable]
 	
 	## cardinality = 0..1
-	### optional (default 'v') lowest value in array will be stored in this temp variable
-	index = scalar
+	### optional (default 'i') index of the lowest value in array will be stored in this temp variable
+	index = value_set[variable]
 }
 
 ### Runs a loop on for each element of an array, finds the highest value and stores result in temp variables.
@@ -2069,12 +2080,12 @@ alias[trigger:find_highest_in_array] = {
 	array = value[array]
 
 	## cardinality = 0..1
-	### optional (default 'v') lowest value in array will be stored in this temp variable
-	value = scalar
+	### optional (default 'v') highest value in array will be stored in this temp variable
+	value = value_set[variable]
 	
 	## cardinality = 0..1
-	### optional (default 'v') lowest value in array will be stored in this temp variable
-	index = scalar
+	### optional (default 'i') index of the highest value in array will be stored in this temp variable
+	index = value_set[variable]
 }
 
 ### Checks if a region has amount of mines.
@@ -2151,8 +2162,8 @@ alias[trigger:received_expeditionary_forces] = {
 ## scope = combat
 alias[trigger:is_fighting_in_weather] = scalar
 
-### Checks building level in state.
-## scope = state
+### Checks building level in a state or country
+## scope = { state country }
 alias[trigger:<building>] = int
 
 ### Checks ideology popularity.
@@ -2167,8 +2178,8 @@ alias[trigger:opponent] = { alias_name[trigger] = alias_match_left[trigger] }
 ## scope = { unit_leader combat }
 alias[trigger:enum[unit_types]] = float
 
-### Trugger not shown in tooltips.
-## scope = state country
+### Trigger not shown in tooltips.
+## scope = any
 alias[trigger:hidden_trigger] = {
 	alias_name[trigger] = alias_match_left[trigger]
 }

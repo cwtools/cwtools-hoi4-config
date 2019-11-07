@@ -8,6 +8,14 @@ types = {
 			## required
 			desc = "$_desc"
 		}
+		subtype[provincial] = {
+			provincial = yes
+		}
+		subtype[state] = {
+			provincial = no
+		}
+		subtype[state] = {
+		}
 	}
 }
 

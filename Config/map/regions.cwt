@@ -23,7 +23,7 @@ strategic_region = {
 	id = int
 	name = localisation
 	provinces = {
-		## cardinality = 1..inf
+		## cardinality = ~1..inf
 		enum[provinces]
 	}
 	## cardinality = 0..1

@@ -32,7 +32,7 @@ types = {
 ## push_scope = country
 country_leader_trait = {
 	## cardinality = 0..1
-	name = scalar
+	name = localisation
 	## cardinality = 0..1
 	random = bool
 	## cardinality = 0..1
@@ -107,6 +107,7 @@ unit_leader_trait = {
 		}
 	}
 	subtype[gainable_trait] = {
+		## replace_scope = { this = combat root = combat from = combat }
 		gain_xp = {
 			alias_name[trigger] = alias_match_left[trigger]
 		}

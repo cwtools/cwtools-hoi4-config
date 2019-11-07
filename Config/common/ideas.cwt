@@ -8,7 +8,7 @@ types = {
 idea = {
 	## cardinality = 0..inf
 	enum[hardcode_ideas] = {
-		## cardinality = 0..inf
+		## cardinality = ~1..inf
 		scalar = {
 			## cardinality = 0..1
 			name = localisation
@@ -16,22 +16,27 @@ idea = {
 			cancel_if_invalid = bool
 			## cardinality = 0..1
 			visible = {
+				## cardinality = ~1..inf
 				alias_name[trigger] = alias_match_left[trigger]
 			}
 			## cardinality = 0..1
 			allowed = {
+				## cardinality = ~1..inf
 				alias_name[trigger] = alias_match_left[trigger]
 			}
 			## cardinality = 0..1
 			cancel = {
+				## cardinality = ~1..inf
 				alias_name[trigger] = alias_match_left[trigger]
 			}
 			## cardinality = 0..1
 			available = {
+				## cardinality = ~1..inf
 				alias_name[trigger] = alias_match_left[trigger]
 			}
 			## cardinality = 0..1
 			allowed_civil_war = {
+				## cardinality = ~1..inf
 				alias_name[trigger] = alias_match_left[trigger]
 			}
 			## cardinality = 0..1
@@ -43,17 +48,14 @@ idea = {
 			## cardinality = 0..1
 			## push_scope = country
 			modifier = {
+				## cardinality = ~1..inf
 				alias_name[modifier] = alias_match_left[modifier]
 			}
 			## cardinality = 0..inf
-			targeted_modifier = {
-				tag = scope[country]
-				tag = enum[country_tags]
-				alias_name[modifier] = alias_match_left[modifier]
-			}
+			alias_name[targeted_modifier_rule] = alias_match_left[targeted_modifier_rule]
 			## cardinality = 0..1
 			rule = {
-				## cardinality = 0..inf
+				## cardinality = ~1..inf
 				enum[game_rules] = bool
 			}
 			## cardinality = 0..1
@@ -89,19 +91,25 @@ idea = {
 				}
 			}
 			## cardinality = 0..1
-			ai_will_do = {
-				## cardinality = 0..1
-				enum[base_factor] = float
-				alias_name[modifier_rule] = alias_match_left[modifier_rule]
-			}
-			## cardinality = 0..1
 			traits = {
-				## cardinality = 0..inf
+				## cardinality = ~1..inf
 				<country_leader_trait>
 			}
 			## cardinality = 0..1
 			on_add = {
+				## cardinality = ~1..inf
 				alias_name[effect] = alias_match_left[effect]
+			}
+			## cardinality = 0..1
+			do_effect = {
+				## cardinality = ~1..inf
+				alias_name[trigger] = alias_match_left[trigger]
+			}
+			## cardinality = 0..1
+			ai_will_do = {
+				## cardinality = 0..1
+				enum[base_factor] = float
+				alias_name[modifier_rule] = alias_match_left[modifier_rule]
 			}
 		}
 	}
@@ -111,7 +119,7 @@ idea = {
 		law = bool
 		## cardinality = 0..1
 		designer = bool
-		## cardinality = 0..inf
+		## cardinality = ~1..inf
 		scalar = {
 			## cardinality = 0..1
 			name = localisation
@@ -123,22 +131,27 @@ idea = {
 			cancel_if_invalid = bool
 			## cardinality = 0..1
 			visible = {
+				## cardinality = ~1..inf
 				alias_name[trigger] = alias_match_left[trigger]
 			}
 			## cardinality = 0..1
 			allowed = {
+				## cardinality = ~1..inf
 				alias_name[trigger] = alias_match_left[trigger]
 			}
 			## cardinality = 0..1
 			available = {
+				## cardinality = ~1..inf
 				alias_name[trigger] = alias_match_left[trigger]
 			}
 			## cardinality = 0..1
 			allowed_civil_war = {
+				## cardinality = ~1..inf
 				alias_name[trigger] = alias_match_left[trigger]
 			}
 			## cardinality = 0..1
 			allowed_to_remove = {
+				## cardinality = ~1..inf
 				alias_name[trigger] = alias_match_left[trigger]
 			}
 			## cardinality = 0..1
@@ -150,11 +163,14 @@ idea = {
 			## cardinality = 0..1
 			## push_scope = country
 			modifier = {
+				## cardinality = ~1..inf
 				alias_name[modifier] = alias_match_left[modifier]
 			}
+			## cardinality = 0..inf
+			alias_name[targeted_modifier_rule] = alias_match_left[targeted_modifier_rule]
 			## cardinality = 0..1
 			rule = {
-				## cardinality = 0..inf
+				## cardinality = ~1..inf
 				enum[game_rules] = bool
 			}
 			## cardinality = 0..1
@@ -192,24 +208,30 @@ idea = {
 			}
 			## cardinality = 0..1
 			traits = {
-				## cardinality = 0..inf
+				## cardinality = ~1..inf
 				<country_leader_trait>
 			}
 			## cardinality = 0..1
 			on_add = {
+				## cardinality = ~1..inf
 				alias_name[effect] = alias_match_left[effect]
 			}
-			## cardinality = 0..1
-			do_effect = {
-				alias_name[trigger] = alias_match_left[trigger]
-			}
+
+			# While it is used in vanilla and doesn't throw errors, I can't get it to work reliably so I suspect there is some hard-coded strangeness going on here
+			# ## cardinality = 0..1
+			# do_effect = {
+			# 	## cardinality = ~1..inf
+			# 	alias_name[trigger] = alias_match_left[trigger]
+			# }
+
 			## cardinality = 0..1
 			research_bonus = {
-				## cardinality = 1..10
+				## cardinality = ~1..10
 				enum[tech_category] = float
 			}
 			## cardinality = 0..1
 			on_add = {
+				## cardinality = ~1..inf
 				alias_name[effect] = alias_match_left[effect]
 			}
 		}

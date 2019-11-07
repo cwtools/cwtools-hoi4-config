@@ -21,6 +21,10 @@ types = {
 		path = "game/common/terrain"
 		skip_root_key = terrain
 	}
+	type[acclimatization] = {
+		path = "game/common"
+		path_file = "acclimatation.txt"
+	}
 }
 
 terrain = {

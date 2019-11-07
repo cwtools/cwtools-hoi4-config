@@ -33,11 +33,12 @@ types = {
 ai_area = {
 	## cardinality = 0..1
 	continents = {
+		## cardinality = 1..inf
 		enum[continents]
 	}
 	## cardinality = 0..1
 	strategic_regions = {
-		## cardinality = 1..inf
+		## cardinality = ~1..inf
 		<strategic_region>
 	}
 }
@@ -132,20 +133,20 @@ ai_peace = {
 
 ai_template = {
 	roles = {
-		## cardinality = 0..inf
+		## cardinality = ~1..inf
 		value_set[ai_roles]
 	}
 	# Restricts the template to only the specified tags. Optional.
 	## cardinality = 0..1
 	available_for = {
-		## cardinality = 1..inf
+		## cardinality = ~1..inf
 		enum[country_tags]
 	}
 
 	# Blocks the template for the specified tags. Optional.
 	## cardinality = 0..1
 	blocked_for = {
-		## cardinality = 0..inf
+		## cardinality = ~1..inf
 		enum[country_tags]
 	}
 
@@ -186,6 +187,7 @@ ai_template = {
 			alias_name[trigger] = alias_match_left[trigger]
 		}
 
+		## cardinality = 0..1
 		stat_weights = {
 			## cardinality = 33..33
 			float
@@ -243,7 +245,7 @@ ai_template = {
 			}
 		}
 		allowed_types = {
-			## cardinality = 1..inf
+			## cardinality = ~1..inf
 			<unit>
 		}
 		## cardinality = 0..1
@@ -262,14 +264,14 @@ ai_equipment_design_group = {
 	### Exclusionary list of countries that will not use this design group.
 	## cardinality = 0..1
 	blocked_for = {
-		## cardinality = 0..inf
+		## cardinality = ~1..inf
 		enum[country_tags]
 	}
 
 	### Inclusionary list of countries that will use this design group. If this list is empty, all countries not in the block list will be allowed. If this list is not empty, only countries that are in this list and not in the blocked list will be allowed.
 	## cardinality = 0..1
 	available_for = {
-		## cardinality = 0..inf
+		## cardinality = ~1..inf
 		enum[country_tags]
 	}
 

@@ -10,11 +10,11 @@ bookmark = {
 	desc = localisation
 	date = date_field
 	picture = scalar
-	default_country = enum[country_tags]
+	default_country = "enum[country_tags]"
 	default = bool
 	
 	## cardinality = 7..inf
-	enum[country_tags] = {
+	"enum[country_tags]" = {
 		## cardinality = 0..1
 		minor = yes
 		history = localisation
@@ -33,7 +33,7 @@ bookmark = {
 		}
 	}
 
-	--- = {
+	"---" = {
 		history = localisation
 	}
 

@@ -8,7 +8,7 @@ alias[targeted_modifier_rule:targeted_modifier] = {
 }
 
 alias[modifier_rule:modifier] = {
-	enum[add_factor] = float
+	enum[add_factor] = variable_field
 	## cardinality = ~1..inf
 	alias_name[trigger] = alias_match_left[trigger]
 }

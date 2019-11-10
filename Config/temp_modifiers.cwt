@@ -13,57 +13,150 @@ alias[modifier_rule:modifier] = {
 	alias_name[trigger] = alias_match_left[trigger]
 }
 
+## scope = { country }
 alias[modifier:<ideology>_acceptance] = int
+## scope = { country }
 alias[modifier:<ideology>_drift] = float
-alias[modifier:local_resources_<resource>] = int
-alias[modifier:enum[sub_unit_modifiers]] = float
+## scope = { country }
 alias[modifier:production_speed_<building>_factor] = float
 
+alias[modifier:local_resources_<resource>] = int
+alias[modifier:enum[sub_unit_modifiers]] = float
+
 #unit stats
+## scope = { combat}
 alias[unit_stat:acclimatization_cold_climate_gain_factor] = float
+
+## scope = { combat}
 alias[unit_stat:acclimatization_hot_climate_gain_factor] = float
+
+## scope = { combat}
 alias[unit_stat:air_attack] = float
+
+## scope = { combat}
 alias[unit_stat:ap_attack] = float
+
+## scope = { combat}
 alias[unit_stat:armor_value] = float
+
+## scope = { combat}
 alias[unit_stat:attack] = float
+
+## scope = { combat}
 alias[unit_stat:breakthrough] = float
+
+## scope = { combat}
 alias[unit_stat:build_cost_ic] = float
+
+## scope = { combat}
 alias[unit_stat:casualty_trickleback] = float
+
+## scope = { combat}
 alias[unit_stat:combat_width] = float
+
+## scope = { combat}
 alias[unit_stat:default_morale] = float
+
+## scope = { combat}
 alias[unit_stat:defence] = float
+
+## scope = { combat}
 alias[unit_stat:defense] = float
+
+## scope = { combat}
 alias[unit_stat:dont_lose_dig_in_on_attack] = float
+
+## scope = { combat}
 alias[unit_stat:entrenchment] = float
+
+## scope = { combat}
 alias[unit_stat:equipment_capture_factor] = float
+
+## scope = { combat}
 alias[unit_stat:experience_loss_factor] = float
+
+## scope = { combat}
 alias[unit_stat:fortification_collateral_chance] = float
+
+## scope = { combat}
 alias[unit_stat:fortification_damage] = float
+
+## scope = { combat}
 alias[unit_stat:fuel_consumption_factor] = float
+
+## scope = { combat}
 alias[unit_stat:fuel_consumption] = float
+
+## scope = { combat}
 alias[unit_stat:hard_attack] = float
+
+## scope = { combat}
 alias[unit_stat:hardness] = float
+
+## scope = { combat}
 alias[unit_stat:initiative] = float
+
+## scope = { combat}
 alias[unit_stat:lend_lease_cost] = float
+
+## scope = { combat}
 alias[unit_stat:manpower] = float
+
+## scope = { combat}
 alias[unit_stat:max_organisation] = float
+
+## scope = { combat}
 alias[unit_stat:max_strength] = float
+
+## scope = { combat}
 alias[unit_stat:maximum_speed] = float
+
+## scope = { combat}
 alias[unit_stat:movement] = float
+
+## scope = { combat}
 alias[unit_stat:naval_invasion_prep_speed] = float
+
+## scope = { combat}
 alias[unit_stat:paradrop_organization_factor] = float
+
+## scope = { combat}
 alias[unit_stat:paratrooper_aa_defense] = float
+
+## scope = { combat}
 alias[unit_stat:paratrooper_count_per_plane] = float
+
+## scope = { combat}
 alias[unit_stat:recon] = float
+
+## scope = { combat}
 alias[unit_stat:reliability_factor] = float
+
+## scope = { combat}
 alias[unit_stat:reliability] = float
+
+## scope = { combat}
 alias[unit_stat:river_crossing_factor] = float
+
+## scope = { combat}
 alias[unit_stat:soft_attack] = float
+
+## scope = { combat}
 alias[unit_stat:supply_consumption_factor] = float
+
+## scope = { combat}
 alias[unit_stat:supply_consumption] = float
+
+## scope = { combat}
 alias[unit_stat:suppression_factor] = float
+
+## scope = { combat}
 alias[unit_stat:suppression] = float
+
+## scope = { combat}
 alias[unit_stat:training_time] = float
+
+## scope = { combat}
 alias[unit_stat:weight] = float
 
 #naval stats

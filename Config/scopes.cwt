@@ -54,6 +54,18 @@ scopes = {
 	Combat = {
 		aliases = { combat }
 	}
+	"Land Warfare" = {
+		aliases = { land_warfare }
+		is_subscope_of = { combat }
+	}
+	"Naval Warfare" = {
+		aliases = { naval_warfare }
+		is_subscope_of = { combat }
+	}
+	"Air Warfare" = {
+		aliases = { air_warfare }
+		is_subscope_of = { combat }
+	}
 	Air = {
 		aliases = { air }
 	}

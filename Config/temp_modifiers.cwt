@@ -22,6 +22,7 @@ alias[modifier:production_speed_<building>_factor] = float
 
 alias[modifier:local_resources_<resource>] = int
 alias[modifier:enum[sub_unit_modifiers]] = float
+alias[modifier:production_speed_<building>_factor] = float 
 
 #unit stats
 ## scope = { land_warfare }

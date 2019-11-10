@@ -71,20 +71,14 @@ terrain = {
 	}
 
 	subtype[land] = {
-		## cardinality = 0..1
-		combat_width = float
-		## cardinality = 0..1
-		attrition = float
+		## cardinality = 0..inf
+		enum[terrain_modifiers] = float
 		ai_terrain_importance_factor = float
 		match_value = float
 		## cardinality = 0..1
 		units = {
 			alias_name[unit_stat] = alias_match_left[unit_stat]
 		}
-		## cardinality = 0..1
-		enemy_army_bonus_air_superiority_factor = float
-		## cardinality = 0..1
-		sickness_chance = float
 	}
 }
 
@@ -96,4 +90,13 @@ graphical_terrain = {
 	spawn_city = yes
 	## cardinality = 0..1
 	perm_snow = yes
+}
+
+enums = {
+	enum[terrain_modifiers] = {
+		combat_width
+		attrition
+		enemy_army_bonus_air_superiority_factor
+		sickness_chance
+	}
 }

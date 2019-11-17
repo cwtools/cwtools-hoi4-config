@@ -88,7 +88,7 @@ decision_category = {
 			alias_name[trigger] = alias_match_left[trigger]
 		}
 	}
-	
+
 	## cardinality = 0..1
 	on_map_area = {
 		state = <state>
@@ -250,6 +250,8 @@ decision = {
 
 		## cardinality = 0..1
 		target_array = value[array]
+		## cardinality = 0..1
+		target_array = variable_field
 	}
 
 	## cardinality = 0..inf

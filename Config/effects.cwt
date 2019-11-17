@@ -2269,6 +2269,7 @@ alias[effect:set_naval_oob] = <oob>
 ## scope = any
 alias[effect:add_to_array] = {
 	array = value_set[array]
+	array = value_set[variable]
 	## cardinality = 0..1
 	### optional, if not defined adds scope
 	value = variable_field
@@ -2284,13 +2285,16 @@ alias[effect:add_to_array] = {
 ## scope = any
 alias[effect:add_to_array] = {
 	value_set[array] = variable_field
+	value_set[variable] = variable_field
 	value_set[array] = scope_field
+	value_set[variable] = scope_field
 }
 
 ### Removes an element from an array using value or index.
 ## scope = any
 alias[effect:remove_from_array] = {
 	array = value_set[array]
+	array = value_set[variable]
 	### optional, use index or this. if neither it removes last element
 	value = variable_field
 	### optional, use index or this. if neither it removes last element
@@ -2301,6 +2305,7 @@ alias[effect:remove_from_array] = {
 ## scope = any
 alias[effect:remove_from_array] = {
 	array = value_set[array]
+	array = value_set[variable]
 	### optional, use value or this. if neither it removes last element
     index = int_variable_field
 }
@@ -2309,17 +2314,24 @@ alias[effect:remove_from_array] = {
 ## scope = any
 alias[effect:remove_from_array] = {
 	value_set[array] = variable_field
+	value_set[variable] = variable_field
 	value_set[array] = scope_field
+	value_set[variable] = scope_field
 }
 
 ### Clears the contents of array.
 ## scope = any
 alias[effect:clear_array] = value[array]
 
+### Clears the contents of array.
+## scope = any
+alias[effect:clear_array] = variable_field
+
 ### Resizes array.
 ## scope = any
 alias[effect:resize_array] = {
 	array = value_set[array]
+	array = value_set[variable]
 	## cardinality = 0..1
 	### optional, if not specified and array grows the new elements are set to this (default 0)
 	value = variable_field
@@ -2331,12 +2343,14 @@ alias[effect:resize_array] = {
 ## scope = any
 alias[effect:resize_array] = {
 	value_set[array] = int_variable_field
+	value_set[variable] = int_variable_field
 }
 
 ### Adds an element to a temporary array.
 ## scope = any
 alias[effect:add_to_temp_array] = {
 	array = value_set[array]
+	array = value_set[variable]
 	## cardinality = 0..1
 	### optional, if not defined adds scope
 	value = variable_field
@@ -2352,13 +2366,16 @@ alias[effect:add_to_temp_array] = {
 ## scope = any
 alias[effect:add_to_temp_array] = {
 	value_set[array] = variable_field
+	value_set[variable] = variable_field
 	value_set[array] = scope_field
+	value_set[variable] = scope_field
 }
 
 ### Removes an element from a temporary array using value or index.
 ## scope = any
 alias[effect:remove_from_temp_array] = {
 	array = value_set[array]
+	array = value_set[variable]
 	### optional, use index or this. if neither it removes last element
 	value = variable_field
 	### optional, use index or this. if neither it removes last element
@@ -2369,6 +2386,7 @@ alias[effect:remove_from_temp_array] = {
 ## scope = any
 alias[effect:remove_from_temp_array] = {
 	array = value_set[array]
+	array = value_set[variable]
 	### optional, use value or this. if neither it removes last element
     index = int_variable_field
 }
@@ -2377,17 +2395,23 @@ alias[effect:remove_from_temp_array] = {
 ## scope = any
 alias[effect:remove_from_temp_array] = {
 	value_set[array] = variable_field
+	value_set[variable] = variable_field
 	value_set[array] = scope_field
+	value_set[variable] = scope_field
 }
 
 ### Clears the contents of a temporary array.
 ## scope = any
 alias[effect:clear_temp_array] = value[array]
+### Clears the contents of a temporary array.
+## scope = any
+alias[effect:clear_temp_array] = variable_field
 
 ### Resizes a temp array.
 ## scope = any
 alias[effect:resize_temp_array] = {
 	array = value_set[array]
+	array = value_set[variable]
 	## cardinality = 0..1
 	### optional, if not specified and array grows the new elements are set to this (default 0)
 	value = variable_field
@@ -2399,12 +2423,14 @@ alias[effect:resize_temp_array] = {
 ## scope = any
 alias[effect:resize_temp_array] = {
 	value_set[array] = int_variable_field
+	value_set[variable] = int_variable_field
 }
 
 ### Runs a loop on for each element of an array.
 ## scope = any
 alias[effect:for_each_loop] = {
 	array = value[array]
+	array = variable_field
 	## cardinality = 0..1
 	### optional (default 'v') current value in array will be stored in this temp variable
 	value = value_set[variable]
@@ -2414,7 +2440,7 @@ alias[effect:for_each_loop] = {
 	## cardinality = 0..1
 	### optional (default 'break') set this temp variable to non zero to break the loop
     break = value_set[variable]
-    
+
     alias_name[effect] = alias_match_left[effect]
 }
 
@@ -2431,10 +2457,11 @@ alias[effect:set_fuel] = int_variable_field
 ## push_scope = any
 alias[effect:for_each_scope_loop] = {
 	array = value[array]
+	array = variable_field
 	## cardinality = 0..1
 	### optional (default 'break') set this temp variable to non zero to break the loop
     break = scalar
-    
+
     alias_name[effect] = alias_match_left[effect]
 }
 
@@ -2442,6 +2469,7 @@ alias[effect:for_each_scope_loop] = {
 ## scope = any
 alias[effect:random_scope_in_array] = {
 	array = value[array]
+	array = variable_field
 	## cardinality = 0..1
 	### optional (default 'break') set this temp variable to non zero to break the loop
 	break = scalar
@@ -2561,11 +2589,12 @@ alias[effect:scoped_sound_effect] = replace_me
 ## scope = any
 alias[effect:find_lowest_in_array] = {
 	array = value[array]
+	array = variable_field
 
 	## cardinality = 0..1
 	### optional (default 'v') lowest value in array will be stored in this temp variable
 	value = value_set[variable]
-	
+
 	## cardinality = 0..1
 	### optional (default 'i') index of the lowest value in array will be stored in this temp variable
 	index = value_set[variable]
@@ -2575,11 +2604,12 @@ alias[effect:find_lowest_in_array] = {
 ## scope = any
 alias[effect:find_highest_in_array] = {
 	array = value[array]
+	array = variable_field
 
 	## cardinality = 0..1
 	### optional (default 'v') highest value in array will be stored in this temp variable
 	value = value_set[variable]
-	
+
 	## cardinality = 0..1
 	### optional (default 'i') index of the highest value in array will be stored in this temp variable
 	index = value_set[variable]

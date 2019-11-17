@@ -498,5 +498,42 @@ values = {
 		i
 		### Default name of break temp variable used in loop effects and triggers.
 		break
+
+		# ========================
+		# ARRAY VARIABLES
+		# ========================
+
+		# Global arrays
+		### Array of major powers.
+		majors
+
+		# Country dynamic variables
+		### Array of allies (faction members).
+		allies
+
+		### Array of controlled states.
+		controlled_states
+
+		### Array of core states.
+		core_states
+
+		### Array of enemies at war with.
+		enemies
+
+		### Array of governments in exile this country hosts.
+		exiles
+
+		### Array of faction members.
+		faction_members
+
+		### Array of country's neighbors.
+		neighbors
+
+		### Array of subjects.
+		subjects
+
+		subject_countries
+		subject_states
+
 	}
 }

@@ -1888,6 +1888,7 @@ alias[trigger:game_rules_allow_achievements] = yes
 ## scope = any
 alias[trigger:is_in_array] = {
 	array = value[array]
+	array = variable_field
 	value = scalar
 }
 
@@ -1895,12 +1896,14 @@ alias[trigger:is_in_array] = {
 ## scope = any
 alias[trigger:is_in_array] = {
 	value[array] = scalar
+	variable_field = scalar
 }
 
 ### Adds an element to a temporary array.
 ## scope = any
 alias[trigger:add_to_temp_array] = {
 	array = value_set[array]
+	array = value_set[variable]
 	## cardinality = 0..1
 	### optional, if not defined adds scope
 	value = variable_field
@@ -1916,13 +1919,16 @@ alias[trigger:add_to_temp_array] = {
 ## scope = any
 alias[trigger:add_to_temp_array] = {
 	value_set[array] = variable_field
+	value_set[variable] = variable_field
 	value_set[array] = scope_field
+	value_set[variable] = scope_field
 }
 
 ### Removes an element from a temporary array using value or index.
 ## scope = any
 alias[trigger:remove_from_temp_array] = {
 	array = value_set[array]
+	array = value_set[variable]
 	### optional, use index or this. if neither it removes last element
 	value = variable_field
 	### optional, use index or this. if neither it removes last element
@@ -1933,6 +1939,7 @@ alias[trigger:remove_from_temp_array] = {
 ## scope = any
 alias[trigger:remove_from_temp_array] = {
 	array = value_set[array]
+	array = value_set[variable]
 	### optional, use value or this. if neither it removes last element
     index = int_variable_field
 }
@@ -1941,17 +1948,23 @@ alias[trigger:remove_from_temp_array] = {
 ## scope = any
 alias[trigger:remove_from_temp_array] = {
 	value_set[array] = variable_field
+	value_set[variable] = variable_field
 	value_set[array] = scope_field
+	value_set[variable] = scope_field
 }
 
 ### Clears the contents of a temporary array.
 ## scope = any
 alias[trigger:clear_temp_array] = value[array]
+### Clears the contents of a temporary array.
+## scope = any
+alias[trigger:clear_temp_array] = variable_field
 
 ### Resizes a temp array.
 ## scope = any
 alias[trigger:resize_temp_array] = {
 	array = value_set[array]
+	array = value_set[variable]
 	## cardinality = 0..1
 	### optional, if not specified and array grows the new elements are set to this (default 0)
 	value = variable_field
@@ -1963,12 +1976,14 @@ alias[trigger:resize_temp_array] = {
 ## scope = any
 alias[trigger:resize_temp_array] = {
 	value_set[array] = int_variable_field
+	value_set[variable] = int_variable_field
 }
 
 ### Runs a loop on an array and check a trigger for each value, if any true returns true. otherwise returns false.
 ## scope = any
 alias[trigger:any_of] = {
 	array = value[array]
+	array = variable_field
 	## cardinality = 0..1
 	### optional (default 'v') current value in array will be stored in this temp variable
 	value = value_set[variable]
@@ -1983,6 +1998,7 @@ alias[trigger:any_of] = {
 ## scope = any
 alias[trigger:all_of] = {
 	array = value[array]
+	array = variable_field
 	## cardinality = 0..1
 	### optional (default 'v') current value in array will be stored in this temp variable
 	value = value_set[variable]
@@ -2002,6 +2018,7 @@ alias[trigger:has_fuel] = int_variable_field
 ## push_scope = any
 alias[trigger:any_of_scopes] = {
 	array = value[array]
+	array = variable_field
 	alias_name[trigger] = alias_match_left[trigger]
 }
 
@@ -2010,6 +2027,7 @@ alias[trigger:any_of_scopes] = {
 ## push_scope = any
 alias[trigger:all_of_scopes] = {
 	array = value[array]
+	array = variable_field
 	alias_name[trigger] = alias_match_left[trigger]
 }
 
@@ -2064,11 +2082,12 @@ alias[trigger:has_dynamic_modifier] = {
 ## scope = any
 alias[trigger:find_lowest_in_array] = {
 	array = value[array]
+	array = variable_field
 
 	## cardinality = 0..1
 	### optional (default 'v') lowest value in array will be stored in this temp variable
 	value = value_set[variable]
-	
+
 	## cardinality = 0..1
 	### optional (default 'i') index of the lowest value in array will be stored in this temp variable
 	index = value_set[variable]
@@ -2078,11 +2097,12 @@ alias[trigger:find_lowest_in_array] = {
 ## scope = any
 alias[trigger:find_highest_in_array] = {
 	array = value[array]
+	array = variable_field
 
 	## cardinality = 0..1
 	### optional (default 'v') highest value in array will be stored in this temp variable
 	value = value_set[variable]
-	
+
 	## cardinality = 0..1
 	### optional (default 'i') index of the highest value in array will be stored in this temp variable
 	index = value_set[variable]

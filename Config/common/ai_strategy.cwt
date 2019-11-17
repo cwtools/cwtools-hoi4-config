@@ -12,6 +12,8 @@ ai_strategy = {
 	## cardinality = 0..1
 	target_array = value[array]
 	## cardinality = 0..1
+	target_array = variable_field
+	## cardinality = 0..1
 	targets = {
 		## cardinality = ~1..inf
 		enum[country_tags]

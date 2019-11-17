@@ -458,7 +458,7 @@ values = {
 
 		# TODO:
 		### Sum of terrain modifiers of each army's location, terrain type is defined in target. Example sum_unit_terrain_modifier@sickness_chance.
-		sum_unit_terrain_modifier
+		sum_unit_terrain_modifier@enum[terrain_modifiers]
 
 		# TODO:
 		### Value of a modifier stored in unit modifier, modifier token is defined in target. Example unit_modifier@army_attack_factor.

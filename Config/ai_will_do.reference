@@ -1,6 +1,6 @@
 ai_will_do = {
-	## cardinality = 0..inf
-	factor = float
+	## cardinality = 0..1
+	base = variable_field
 	## cardinality = 0..inf
 	enum[add_factor] = float
 	## cardinality = 0..inf
@@ -13,7 +13,7 @@ ai_will_do = {
 }
 ai_chance = {
 	## cardinality = 0..1
-	enum[base_factor] = float
+	base = variable_field
 	## cardinality = 0..inf
 	enum[add_factor] = float
 	## cardinality = 0..inf

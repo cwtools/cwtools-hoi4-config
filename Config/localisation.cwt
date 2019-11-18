@@ -18,6 +18,7 @@ localisation_commands = {
     GetDemocraticParty = any
     GetFascistParty = any
     GetNeutralParty = any
+	GetDate = any
     GetDateText = any
     GetYear = any
     GetHerselfHimself = any

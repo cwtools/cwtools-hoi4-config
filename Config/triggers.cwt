@@ -2054,12 +2054,7 @@ alias[trigger:casualties_k] = int
 ### Meta triggers can be used for building triggers from strings and running them. following example will test if Germany has 42 pp.
 ## scope = any
 alias[trigger:meta_trigger] = {
-	text = {
-		## cardinality = 0..inf
-		scalar
-		## cardinality = 0..inf
-		scalar = scalar
-	}
+	text = ignore_field
 	## cardinality = 1..inf
 	scalar = scalar
 }

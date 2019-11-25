@@ -348,6 +348,7 @@ modifiers = {
 	winter_attrition_factor = country
 
 	# State
+	local_building_slots = state
 	local_building_slots_factor = state
 	local_factories = state
 	local_factory_sabotage = state

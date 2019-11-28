@@ -1,0 +1,246 @@
+types = {
+	type[ai_strategy] = {
+		path = "game/common/ai_strategy"
+		path_strict = yes
+	}
+	type[ai_strategy_plan] = {
+		path = "game/common/ai_strategy_plans"
+	}
+}
+
+ai_strategy = {
+	## cardinality = 0..1
+	target_array = value[array]
+	## cardinality = 0..1
+	target_array = variable_field
+	## cardinality = 0..1
+	targets = {
+		## cardinality = ~1..inf
+		enum[country_tags]
+	}
+	## cardinality = 0..1
+	enable_reverse = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	enable = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	## cardinality = 0..1
+	abort = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	## cardinality = 0..1
+	abort_when_not_enabled = bool
+	## cardinality = 0..1
+	reversed = bool
+	alias_name[ai_strategy_rule] = alias_match_left[ai_strategy_rule]
+}
+
+ai_strategy_plan = {
+	name = localisation
+	## cardinality = 0..1
+	desc = localisation
+
+	enable = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+
+	## cardinality = 0..1
+	abort = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+
+	## cardinality = 0..1
+	ai_national_focuses = {
+		## cardinality = 0..inf
+		<focus>
+		## cardinality = 0..inf
+		<shared_focus>
+	}
+
+	## cardinality = 0..1
+	focus_factors = {
+		## cardinality = 0..inf
+		<focus> = int
+		## cardinality = 0..inf
+		<shared_focus> = int
+	}
+
+	## cardinality = 0..1
+	research = {
+		## cardinality = ~1..inf
+		enum[tech_category] = float
+	}
+
+	## cardinality = 0..1
+	ideas = {
+		## cardinality = ~1..inf
+		enum[idea_name] = int
+	}
+
+	## cardinality = 0..1
+	traits = {
+		## cardinality = ~1..inf
+		<country_leader_trait> = int
+	}
+
+	alias_name[ai_strategy_rule] = alias_match_left[ai_strategy_rule]
+
+	### Keep small, as it is used as a factor for some things (such as research needs). Recommended around 1.0. Useful for relation between plans.
+	## cardinality = 0..1
+	weight = {
+		## cardinality = 0..1
+		enum[base_factor] = float
+		alias_name[modifier_rule] = alias_match_left[modifier_rule]
+	}
+}
+
+alias[ai_strategy_rule:ai_strategy] = {
+	type = enum[ai_role_strats]
+	id = value[ai_roles]
+	value = int
+}
+
+alias[ai_strategy_rule:ai_strategy] = {
+	type = enum[unit_strats]
+	id = <unit>
+	id = enum[unit_types]
+	value = int
+}
+alias[ai_strategy_rule:ai_strategy] = {
+	type = enum[equipment_strats]
+	id = <equipment>
+	value = int
+}
+alias[ai_strategy_rule:ai_strategy] = {
+	type = enum[pp_strats]
+	id = enum[pp_targets]
+	value = int
+}
+alias[ai_strategy_rule:ai_strategy] = {
+	type = area_priority
+	id = <ai_area>
+	value = int
+}
+alias[ai_strategy_rule:ai_strategy] = {
+	type = enum[ai_diplo_strats]
+	id = enum[country_tags]
+	value = int
+}
+alias[ai_strategy_rule:ai_strategy] = {
+	type = dont_join_wars_with
+	id = enum[country_tags]
+	target_country = enum[country_tags]
+	value = int
+}
+alias[ai_strategy_rule:ai_strategy] = {
+	type = naval_avoid_region
+	id = <strategic_region>
+	value = int
+}
+alias[ai_strategy_rule:ai_strategy] = {
+	type = enum[no_id_strats]
+	value = int
+}
+alias[ai_strategy_rule:ai_strategy] = {
+	type = enum[state_strats]
+	target = int
+	value = int
+}
+alias[ai_strategy_rule:ai_strategy] = {
+	type = enum[state_strats_with_id]
+	id = <building>
+	target = int
+	value = int
+}
+alias[ai_strategy_rule:ai_strategy] = {
+	type = enum[state_strats_without_value]
+	id = int
+}
+alias[ai_strategy_rule:ai_strategy] = {
+	type = enum[naval_mission_strats]
+	id = enum[naval_missions]
+	value = int
+}
+alias[ai_strategy_rule:ai_strategy] = {
+	type = enum[building_strats]
+	id = <building>
+	value = int
+}
+
+enums = {
+	enum[ai_diplo_strats] = {
+		alliance
+		antagonize
+		befriend
+		conquer
+		consider_weak
+		contain
+		declare_war
+		dont_defend_ally_borders
+		ignore
+		ignore_claim
+		influence
+		invade
+		occupation_policy
+		protect
+		send_volunteers_desire
+		support
+		force_defend_ally_borders
+		prepare_for_war
+	}
+	enum[equipment_strats] = {
+		equipment_variant_production_factor
+		save_equipment
+		production_upgrade_desire_offset
+	}
+	enum[no_id_strats] = {
+		added_military_to_civilian_factory_ratio
+		air_factory_balance
+		dockyard_to_military_factory_ratio
+		equipment_stockpile_surplus_ratio
+		ignore_army_incompetence
+		spare_unit_factor
+		template_xp_reserve
+		force_build_armies
+		garrison
+		produce_unit_for_subject_supply_chunks
+	}
+	enum[pp_strats] = {
+		pp_spend_amount
+		pp_spend_priority
+	}
+	enum[pp_targets] = {
+		admiral
+		general
+		idea
+		decision
+		relation
+		guarantee
+	}
+	enum[unit_strats] = {
+		equipment_production_factor
+		equipment_production_min_factories
+		template_prio
+		unit_ratio
+	}
+	enum[state_strats] = {
+		factory_build_score_factor
+	}
+	enum[state_strats_with_id] = {
+		build_building
+	}
+	enum[state_strats_without_value] = {
+		strike_force_home_base
+	}
+	enum[naval_mission_strats] = {
+		naval_mission_threshold
+	}
+	enum[ai_role_strats] = {
+		role_ratio
+		build_army
+	}
+	enum[building_strats] = {
+		building_target
+	}
+}

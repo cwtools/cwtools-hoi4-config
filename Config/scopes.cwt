@@ -1,0 +1,93 @@
+alias[trigger:scope_field] = { alias_name[trigger] = alias_match_left[trigger] }
+
+## scope = country
+## push_scope = country
+alias[trigger:OVERLORD] = { alias_name[trigger] = alias_match_left[trigger] }
+
+
+## scope = country
+## push_scope = state
+alias[trigger:capital_scope] = { alias_name[trigger] = alias_match_left[trigger] }
+
+
+alias[effect:scope_field] = { alias_name[effect] = alias_match_left[effect] }
+
+alias[trigger:NOT] = {
+	## cardinality = 1..1
+	alias_name[trigger] = alias_match_left[trigger]
+}
+
+alias[trigger:NOR] = { alias_name[trigger] = alias_match_left[trigger] }
+alias[trigger:NAND] = { alias_name[trigger] = alias_match_left[trigger] }
+alias[trigger:AND] = { alias_name[trigger] = alias_match_left[trigger] }
+alias[trigger:OR] = { alias_name[trigger] = alias_match_left[trigger] }
+
+alias[effect:NOT] = {
+	## cardinality = 1..1
+	alias_name[effect] = alias_match_left[effect]
+}
+
+alias[effect:NOR] = { alias_name[effect] = alias_match_left[effect] }
+alias[effect:NAND] = { alias_name[effect] = alias_match_left[effect] }
+alias[effect:AND] = { alias_name[effect] = alias_match_left[effect] }
+alias[effect:OR] = { alias_name[effect] = alias_match_left[effect] }
+
+## scope = country
+## push_scope = country
+alias[effect:OVERLORD] = { alias_name[effect] = alias_match_left[effect] }
+
+
+## scope = country
+## push_scope = state
+alias[effect:capital_scope] = { alias_name[effect] = alias_match_left[effect] }
+
+scopes = {
+	Country = {
+		aliases = { country }
+	}
+	State = {
+		aliases = { state }
+	}
+	"Unit Leader" = {
+		aliases = { unit_leader unitleader }
+	}
+	Combat = {
+		aliases = { combat }
+	}
+	Invalid = {
+		aliases = { invalid InvalidScope }
+	}
+
+	# Modifier Scopes, modifiers are hard-coded 
+	# so it's better to make a list of scopes and 
+	# apply each modifer to the specific scopes
+	# IF there is complete overlap then merge the
+	# scopes.
+	# TODO: once all modifiers are done, 
+	# make a simple alias/sub-alias system to reduce
+	# the number od scopes.
+
+	"Land Unit Scopes" = {
+		aliases = { land_unit_scopes }
+	}
+
+	"Ship Scopes" = {
+		aliases = { naval_unit_scopes }
+	}
+	
+	"Plane Scopes" = {
+		aliases = { air_unit_scopes }
+	}
+
+	"General Combat" = {
+		aliases = { general_combat }
+	}
+
+	"Ability Upgrade Modifer" = {
+		aliases = { ability_modifier }
+	}
+
+	"Terrain Modifier" = {
+		aliases = { modifier_terrain_modifier }
+	}
+}

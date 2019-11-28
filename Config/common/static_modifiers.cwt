@@ -1,0 +1,21 @@
+types = {
+	type[static_modifier] = {
+		path = "game/common/modifiers"
+		path_strict = yes
+		subtype[relation_modifier] = {
+			valid_relation_trigger = {
+
+			}
+		}
+	}
+}
+
+static_modifier = {
+	alias_name[modifier] = alias_match_left[modifier]
+
+	subtype[relation_modifier] = {
+		valid_relation_trigger = {
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+	}
+}

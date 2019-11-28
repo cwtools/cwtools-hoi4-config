@@ -1,0 +1,298 @@
+types = {
+	type[unit] = {
+		skip_root_key = sub_units
+		path = "game/common/units"
+		path_strict = yes
+		## push_scope = air_unit_scopes
+		subtype[air_unit] = {
+			type = {
+				## cardinality = 1..10
+				enum[air_units]
+			}
+		}
+		## push_scope = naval_unit_scopes
+		subtype[ship_unit] = {
+			map_icon_category = enum[ship_map_icons]
+		}
+		## push_scope = land_unit_scopes
+		subtype[land_unit] = {
+			map_icon_category = enum[land_map_icons]
+		}
+		subtype[catch] = {
+		}
+	}
+	type[division_name] = {
+		path = "game/common/units/names_divisions"
+	}
+	type[ship_name] = {
+		path = "game/common/units/names_ships"
+	}
+}
+
+unit = {
+	### 3d map asset
+	sprite = scalar
+	#enum[unit_sprites]
+
+	subtype[land_unit] = {
+		### map icon
+		map_icon_category = enum[land_map_icons]
+		alias_name[unit_unit_values] = alias_match_left[unit_unit_values]
+		need = {
+			## cardinality = ~1..inf
+			<equipment> = int
+		}
+		### unit type
+		type = {
+			## cardinality = ~1..inf
+			enum[land_units]
+		}
+	}
+	subtype[ship_unit] = {
+		### map icon
+		map_icon_category = enum[ship_map_icons]
+		## cardinality = 0..1
+		need = {
+			## cardinality = ~1..inf
+			<equipment> = int
+		}
+		## cardinality = 0..1
+		need_equipment = {
+			## cardinality = ~1..inf
+			<equipment> = int
+		}
+		## cardinality = 0..1
+		need_equipment_modules = {
+			any = {
+				## cardinality = 1..inf
+				<module> = int
+			}
+		}
+		type = {
+			## cardinality = ~1..inf
+			enum[ship_units]
+		}
+		critical_parts = {
+			## cardinality = ~1..inf
+			<critical_part>
+		}
+		critical_part_damage_chance_mult = float
+		hit_profile_mult = float
+	}
+	subtype[air_unit] = {
+		need = {
+			## cardinality = ~1..inf
+			<equipment> = int
+		}
+		type = {
+			## cardinality = ~1..inf
+			enum[air_units]
+		}
+		
+	}
+	subtype[catch] = {
+		test = int
+	}
+	### weighting for mixed divisions
+	priority = int
+
+	### whether needs tech to create
+	active = bool
+
+	alias_name[modifier] = alias_match_left[modifier]
+
+	## cardinality = 0..1
+	own_equipment_fuel_consumption_mult = float
+
+	## cardinality = 0..1
+	essential = {
+		## cardinality = ~1..inf
+		<equipment>
+	}
+	## cardinality = 0..1
+	categories = {
+		## cardinality = ~1..inf
+		enum[unit_category]
+	}
+}
+
+ship_name = {
+	name = localisation
+	## cardinality = 0..1
+	for_countries = {
+		## cardinality = ~1..inf
+		enum[country_tags]
+	}
+	## cardinality = 0..1
+	can_use = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	type = ship
+	## cardinality = 0..1
+	ship_types = {
+		## cardinality = ~1..inf
+		<equipment.naval_equip>
+		## cardinality = ~1..inf
+		<unit.ship_unit>
+		## cardinality = ~1..inf
+		<unit.ship_unit>
+	}
+	## cardinality = 0..1
+	prefix = scalar
+	## cardinality = ~1..inf
+	fallback_name = scalar
+	## cardinality = 0..1
+	unique = {
+		## cardinality = ~1..inf
+		scalar
+	}
+	## cardinality = 0..1
+	unordered = {
+		## cardinality = ~1..inf
+		int = {
+			scalar
+		}
+	}
+	## cardinality = 0..1
+	ordered = {
+		## cardinality = ~1..inf
+		int = {
+			scalar
+		}
+	}
+}
+
+division_name = {
+	name = localisation
+	for_countries = {
+		## cardinality = ~1..inf
+		enum[country_tags]
+	}
+	## cardinality = 0..1
+	can_use = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	division_types = {
+		## cardinality = ~1..inf
+		<unit.land_unit>
+	}
+	## cardinality = 0..1
+	link_numbering_with = {
+		## cardinality = ~1..inf
+		<division_name>
+	}
+	## cardinality = 0..1
+	fallback_name = scalar
+	## cardinality = 0..1
+	unordered = {
+		## cardinality = ~1..inf
+		int = {
+			scalar
+		}
+	}
+	## cardinality = 0..1
+	ordered = {
+		## cardinality = ~1..inf
+		int = {
+			scalar
+		}
+	}
+}
+
+enums = {
+	enum[land_map_icons] = {
+		infantry
+		armored
+		other
+	}
+	enum[ship_map_icons] = {
+		ship
+		transport
+		uboat
+	}
+	enum[unit_groups] = {
+		infantry
+		support
+		mobile
+		armor
+	}
+	enum[unit_types] = {
+		infantry
+		support
+		artillery
+		rocket
+		anti_tank
+		anti_air
+		motorized
+		cavalry
+		mechanized
+		armor
+		fighter
+		cas
+		naval_bomber
+		interceptor
+		suicide
+		tactical_bomber
+		strategic_bomber
+		air_transport
+		missile
+		submarine
+		screen_ship
+		capital_ship
+		carrier
+		convoy
+		paratroopers
+	}
+	enum[land_units] = {
+		infantry
+		support
+		artillery
+		rocket
+		anti_tank
+		anti_air
+		motorized
+		mechanized
+		armor
+	}
+	enum[air_units] = {
+		fighter
+		cas
+		naval_bomber
+		interceptor
+		suicide
+		tactical_bomber
+		strategic_bomber
+		air_transport
+		missile
+	}
+	enum[ship_units] = {
+		battle_cruiser
+		battleship
+		capital_ship
+		carrier
+		convoy
+		destroyer
+		heavy_cruiser
+		light_cruiser
+		screen_ship
+		submarine
+	}
+	complex_enum[unit_category] = {
+		path = "game/common/unit_tags"
+		start_from_root = yes
+		name = {
+			sub_unit_categories = {
+				enum_name
+			}
+		}
+	}
+	complex_enum[sub_unit_modifiers] = {
+		path = "game/common/units/unit_modifiers"
+		start_from_root = yes
+		name = {
+			sub_unit_modifiers = {
+				enum_name
+			}
+		}
+	}
+}

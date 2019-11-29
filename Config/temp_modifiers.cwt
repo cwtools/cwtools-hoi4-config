@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ### Applies modifiers only in relation to a specified other country.
 ## scope = country
 alias[targeted_modifier_rule:targeted_modifier] = {
@@ -150,3 +151,66 @@ alias[unit_leader_modifier:night] = { alias_name[unit_stat] = alias_match_left[u
 alias[unit_leader_modifier:amphibious] = { alias_name[unit_stat] = alias_match_left[unit_stat] }
 alias[unit_leader_modifier:fort] = { alias_name[unit_stat] = alias_match_left[unit_stat] }
 alias[unit_leader_modifier:river] = { alias_name[unit_stat] = alias_match_left[unit_stat] }
+=======
+#unit stats
+alias[modifier:acclimatization_hot_climate_gain_factor] = float
+alias[modifier:lend_lease_cost] = float
+alias[modifier:manpower] = float
+alias[modifier:movement] = float
+alias[modifier:suppression] = float
+alias[modifier:training_time] = float
+
+#naval stats
+alias[modifier:carrier_size] = float
+alias[modifier:convoy_raiding_coordination] = float
+alias[modifier:evasion] = float
+alias[modifier:fire_range] = float
+alias[modifier:naval_accidents_chance] = float
+alias[modifier:naval_damage_factor] = float
+alias[modifier:naval_invasion_penalty] = float
+alias[modifier:naval_mine_hit_chance] = float
+alias[modifier:naval_mines_damage_factor] = float
+alias[modifier:naval_morale_factor] = float
+alias[modifier:naval_retreat_chance] = float
+alias[modifier:naval_speed_factor] = float
+alias[modifier:naval_torpedo_hit_chance_factor] = float
+alias[modifier:navy_casualty_on_sink] = float
+alias[modifier:navy_org_factor] = float
+alias[modifier:navy_visibility] = float
+alias[modifier:port_capacity_usage] = float
+alias[modifier:positioning] = float
+alias[modifier:shore_bombardment] = float
+alias[modifier:strike_force_movement_org_loss] = float
+
+#air stats
+alias[modifier:air_attack_factor] = float
+alias[modifier:air_defence] = float
+alias[modifier:air_defense] = float
+alias[modifier:air_superiority] = float
+alias[modifier:air_mission_efficiency] = float
+alias[modifier:default_carrier_composition_weight] = float
+
+#for terrain modifiers
+alias[modifier:night] = { alias_name[modifier] = alias_match_left[modifier] }
+
+#unit leader trait modifiers
+alias[modifier:air_superiority_bonus_in_combat] = float
+alias[modifier:cannot_use_abilities] = int[0..1]
+alias[modifier:cas_damage_reduction] = float
+alias[modifier:equipment_capture] = float
+alias[modifier:extra_marine_supply_grace] = float
+alias[modifier:extra_paratrooper_supply_grace] = float
+alias[modifier:max_army_group_size] = int
+alias[modifier:max_commander_army_size] = int
+alias[modifier:org_loss_when_moving] = float
+alias[modifier:promote_cost_factor] = float
+alias[modifier:reassignment_duration_factor] = float
+alias[modifier:recon_factor_while_entrenched] = float
+alias[modifier:shore_bombardment_bonus] = float
+alias[modifier:skill_bonus_factor] = float
+alias[modifier:wounded_chance_factor] = float
+
+alias[modifier:<terrain>] = { alias_name[modifier] = alias_match_left[modifier] }
+alias[modifier:night] = { alias_name[modifier] = alias_match_left[modifier] }
+alias[modifier:amphibious] = { alias_name[modifier] = alias_match_left[modifier] }
+>>>>>>> Initial commit

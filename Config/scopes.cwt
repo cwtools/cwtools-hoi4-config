@@ -54,10 +54,49 @@ scopes = {
 	Combat = {
 		aliases = { combat }
 	}
+<<<<<<< HEAD
 	Air = {
 		aliases = { air }
 	}
 	Invalid = {
 		aliases = { invalid InvalidScope }
 	}
+=======
+	Invalid = {
+		aliases = { invalid InvalidScope }
+	}
+
+	# Modifier Scopes, modifiers are hard-coded 
+	# so it's better to make a list of scopes and 
+	# apply each modifer to the specific scopes
+	# IF there is complete overlap then merge the
+	# scopes.
+	# TODO: once all modifiers are done, 
+	# make a simple alias/sub-alias system to reduce
+	# the number od scopes.
+
+	"Land Unit Scopes" = {
+		aliases = { land_unit_scopes }
+	}
+
+	"Ship Scopes" = {
+		aliases = { naval_unit_scopes }
+	}
+	
+	"Plane Scopes" = {
+		aliases = { air_unit_scopes }
+	}
+
+	"General Combat" = {
+		aliases = { general_combat }
+	}
+
+	"Ability Upgrade Modifer" = {
+		aliases = { ability_modifier }
+	}
+
+	"Terrain Modifier" = {
+		aliases = { modifier_terrain_modifier }
+	}
+>>>>>>> Initial commit
 }

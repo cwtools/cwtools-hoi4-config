@@ -27,6 +27,8 @@ combat_tactic = {
 		enum[base_factor] = float
 		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	}
+
+	is_attacker = bool
 	picture = scalar
 
 	## cardinality = 0..1
@@ -40,7 +42,7 @@ combat_tactic = {
 	enum[attack_defend] = float
 	## cardinality = 0..1
 	attacker_movement_speed = float
-	alias_name[unit_stat] = alias_match_left[unit_stat]
+	alias_name[modifier] = alias_match_left[modifier]
 }
 
 enums = {

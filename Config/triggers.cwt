@@ -305,7 +305,11 @@ alias[trigger:dig_in] = float
 alias[trigger:temperature] = int
 
 ### Check that average armor level of combatant is over a certain level.
+<<<<<<< HEAD
 ## scope = combat
+=======
+## scope = { combat general_combat }
+>>>>>>> Initial commit
 alias[trigger:armor] = float
 
 ### Is country at war.
@@ -2054,7 +2058,16 @@ alias[trigger:casualties_k] = int
 ### Meta triggers can be used for building triggers from strings and running them. following example will test if Germany has 42 pp.
 ## scope = any
 alias[trigger:meta_trigger] = {
+<<<<<<< HEAD
 	text = ignore_field
+=======
+	text = {
+		## cardinality = 0..inf
+		scalar
+		## cardinality = 0..inf
+		scalar = scalar
+	}
+>>>>>>> Initial commit
 	## cardinality = 1..inf
 	scalar = scalar
 }

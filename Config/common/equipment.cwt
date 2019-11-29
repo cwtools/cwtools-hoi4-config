@@ -35,12 +35,15 @@ types = {
 	type[upgrade] = {
 		skip_root_key = upgrades
 		path = "game/common/units/equipment/upgrades"
+		## push_scope = naval_unit_scopes
 		subtype[naval_upgrade] = {
 			cost = naval
 		}
+		## push_scope = air_unit_scopes
 		subtype[air_upgrade] = {
 			cost = air
 		}
+		## push_scope = land_unit_scopes
 		subtype[land_upgrade] = {
 			cost = land
 		}
@@ -198,9 +201,7 @@ equipment = {
 		enum[unit_types]
 	}
 
-	alias_name[unit_stat] = alias_match_left[unit_stat]
-	alias_name[naval_stat] = alias_match_left[naval_stat]
-	alias_name[air_stat] = alias_match_left[air_stat]
+	alias_name[modifier] = alias_match_left[modifier]
 	## cardinality = 0..1
 	offensive_weapons = bool
 
@@ -221,14 +222,12 @@ equipment = {
 
 upgrade = {
 	max_level = int
-	alias_name[unit_stat] = alias_match_left[unit_stat]
+	alias_name[modifier] = alias_match_left[modifier]
 	subtype[naval_upgrade] = {
 		cost = naval
-		alias_name[naval_stat] = alias_match_left[naval_stat]
 	}
 	subtype[air_upgrade] = {
 		cost = air
-		alias_name[air_stat] = alias_match_left[air_stat]
 	}
 	subtype[land_upgrade] = {
 		cost = land
@@ -248,8 +247,7 @@ module = {
 	## cardinality = 0..1
 	add_equipment_type = enum[unit_types]
 	add_stats = {
-		alias_name[unit_stat] = alias_match_left[naval_stat]
-		alias_name[naval_stat] = alias_match_left[naval_stat]
+		alias_name[modifier] = alias_match_left[modifier]
 		## cardinality = 0..1
 		build_cost_ic = int
 	}
@@ -265,13 +263,11 @@ module = {
 	}
 	## cardinality = 0..1
 	add_average_stats = {
-		alias_name[unit_stat] = alias_match_left[naval_stat]
-		alias_name[naval_stat] = alias_match_left[naval_stat]
+		alias_name[modifier] = alias_match_left[modifier]
 	}
 	## cardinality = 0..10
 	multiply_stats = {
-		alias_name[unit_stat] = alias_match_left[naval_stat]
-		alias_name[naval_stat] = alias_match_left[naval_stat]
+		alias_name[modifier] = alias_match_left[modifier]
 	}
 
 	## cardinality = 0..10
@@ -306,12 +302,12 @@ critical_part = {
 	frame = int
 	## cardinality = 0..1
 	stat_penalties = {
-		alias_name[naval_stat] = alias_match_left[naval_stat]
+		alias_name[modifier] = alias_match_left[modifier]
 	}
 	## cardinality = 0..1
 	modifier = {
 		## cardinality = ~1..inf
-		alias_name[naval_stat] = alias_match_left[naval_stat]
+		alias_name[modifier] = alias_match_left[modifier]
 	}
 	## cardinality = 0..1
 	str_damage = float

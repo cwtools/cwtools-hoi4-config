@@ -3,15 +3,27 @@ types = {
 		skip_root_key = sub_units
 		path = "game/common/units"
 		path_strict = yes
+<<<<<<< HEAD
+=======
+		## push_scope = air_unit_scopes
+>>>>>>> Initial commit
 		subtype[air_unit] = {
 			type = {
 				## cardinality = 1..10
 				enum[air_units]
 			}
 		}
+<<<<<<< HEAD
 		subtype[ship_unit] = {
 			map_icon_category = enum[ship_map_icons]
 		}
+=======
+		## push_scope = naval_unit_scopes
+		subtype[ship_unit] = {
+			map_icon_category = enum[ship_map_icons]
+		}
+		## push_scope = land_unit_scopes
+>>>>>>> Initial commit
 		subtype[land_unit] = {
 			map_icon_category = enum[land_map_icons]
 		}
@@ -30,11 +42,20 @@ unit = {
 	### 3d map asset
 	sprite = scalar
 	#enum[unit_sprites]
+<<<<<<< HEAD
 	subtype[land_unit] = {
+=======
+
+	subtype[land_unit] = {
+		### map icon
+		map_icon_category = enum[land_map_icons]
+		alias_name[unit_unit_values] = alias_match_left[unit_unit_values]
+>>>>>>> Initial commit
 		need = {
 			## cardinality = ~1..inf
 			<equipment> = int
 		}
+<<<<<<< HEAD
 		ai_priority = int
 		### map icon
 		map_icon_category = enum[land_map_icons]
@@ -59,6 +80,8 @@ unit = {
 		## cardinality = 0..1
 		### division designer group
 		group = enum[unit_groups]
+=======
+>>>>>>> Initial commit
 		### unit type
 		type = {
 			## cardinality = ~1..inf
@@ -66,6 +89,11 @@ unit = {
 		}
 	}
 	subtype[ship_unit] = {
+<<<<<<< HEAD
+=======
+		### map icon
+		map_icon_category = enum[ship_map_icons]
+>>>>>>> Initial commit
 		## cardinality = 0..1
 		need = {
 			## cardinality = ~1..inf
@@ -83,13 +111,19 @@ unit = {
 				<module> = int
 			}
 		}
+<<<<<<< HEAD
 		### map icon
 		map_icon_category = enum[ship_map_icons]
+=======
+>>>>>>> Initial commit
 		type = {
 			## cardinality = ~1..inf
 			enum[ship_units]
 		}
+<<<<<<< HEAD
 		alias_name[naval_stat] = alias_match_left[naval_stat]
+=======
+>>>>>>> Initial commit
 		critical_parts = {
 			## cardinality = ~1..inf
 			<critical_part>
@@ -106,7 +140,11 @@ unit = {
 			## cardinality = ~1..inf
 			enum[air_units]
 		}
+<<<<<<< HEAD
 		alias_name[air_stat] = alias_match_left[air_stat]
+=======
+		
+>>>>>>> Initial commit
 	}
 	subtype[catch] = {
 		test = int
@@ -117,7 +155,11 @@ unit = {
 	### whether needs tech to create
 	active = bool
 
+<<<<<<< HEAD
 	alias_name[unit_stat] = alias_match_left[unit_stat]
+=======
+	alias_name[modifier] = alias_match_left[modifier]
+>>>>>>> Initial commit
 
 	## cardinality = 0..1
 	own_equipment_fuel_consumption_mult = float

@@ -12,9 +12,6 @@ types = {
 
 static_modifier = {
 	alias_name[modifier] = alias_match_left[modifier]
-	alias_name[unit_stat] = alias_match_left[unit_stat]
-	alias_name[air_stat] = alias_match_left[air_stat]
-	alias_name[naval_stat] = alias_match_left[naval_stat]
 
 	subtype[relation_modifier] = {
 		valid_relation_trigger = {

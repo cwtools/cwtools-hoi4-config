@@ -1,0 +1,307 @@
+
+### Applies modifiers only in relation to a specified other country.
+## scope = country
+alias[targeted_modifier_rule:targeted_modifier] = {
+	tag = scope[country]
+	tag = enum[country_tags]
+	## cardinality = ~1..inf
+	alias_name[modifier] = alias_match_left[modifier]
+}
+
+alias[modifier_rule:modifier] = {
+	enum[add_factor] = variable_field
+	## cardinality = ~1..inf
+	alias_name[trigger] = alias_match_left[trigger]
+}
+
+alias[modifier:<ideology>_acceptance] = int
+## scope = { country }
+alias[modifier:<ideology>_drift] = float
+## scope = { country }
+alias[modifier:production_speed_<building>_factor] = float
+
+alias[modifier:local_resources_<resource>] = int
+alias[modifier:enum[sub_unit_modifiers]] = float
+alias[modifier:production_speed_<building>_factor] = float
+
+## scope = { ability_modifier }
+alias[modifier:acclimatization_cold_climate_gain_factor] = float
+
+## scope = { general_combat }
+alias[modifier:acclimatization_cold_gain] = float
+
+## scope = { general_combat }
+alias[modifier:acclimatization_hot_gain] = float
+
+## scope = { air_unit_scopes }
+alias[modifier:agility] = float
+
+## scope = { air_unit_scopes }
+alias[modifier:air_agility] = float
+
+## scope = { air_unit_scopes naval_unit_scopes land_unit_scopes }
+alias[modifier:air_attack] = float
+
+## scope = { air_unit_scopes }
+alias[modifier:air_bombing] = float
+
+## scope = { air_unit_scopes }
+alias[modifier:air_ground_attack] = float
+
+## scope = { air_unit_scopes }
+alias[modifier:air_range] = float
+
+## scope = { naval_unit_scopes }
+alias[modifier:amphibious_defense] = float
+
+## scope = { naval_unit_scopes }
+alias[modifier:anti_air_attack] = float
+
+## scope = { land_unit_scopes }
+alias[modifier:ap_attack] = float
+
+## scope = { naval_unit_scopes }
+alias[modifier:armor_value] = float
+
+## scope = { modifier_terrain_modifier air_unit_scopes }
+alias[modifier:attack] = float
+
+## scope = { air_unit_scopes }
+alias[modifier:bombing] = float
+
+## scope = { land_unit_scopes }
+alias[modifier:breakthrough] = float
+
+## scope = { general_combat }
+alias[modifier:build_cost_ic] = float
+
+## scope = { naval_unit_scopes }
+alias[modifier:carrier_size] = float
+
+## scope = { land_unit_scopes }
+alias[modifier:casualty_trickleback] = float
+
+## scope = { combat land_unit_scopes }
+alias[modifier:combat_width] = float
+
+## scope = { land_unit_scopes }
+alias[modifier:default_morale] = float
+
+## scope = { modifier_terrain_modifier air_unit_modifier }
+alias[modifier:defence] = float
+
+## scope = { land_unit_scopes }
+alias[modifier:defense] = float
+
+## scope = { ability_modifier }
+alias[modifier:dont_lose_dig_in_on_attack] = float
+
+## scope = { land_unit_scopes }
+alias[modifier:entrenchment] = float
+
+## scope = { land_unit_scopes }
+alias[modifier:equipment_capture_factor] = float
+
+## scope = { land_unit_scopes }
+alias[modifier:experience_loss_factor] = float
+
+## scope = { ability_modifier }
+alias[modifier:fortification_collateral_chance] = float
+
+## scope = { ability_modifier }
+alias[modifier:fortification_damage] = float
+
+## scope = { land_unit_scopes }
+alias[modifier:fuel_capacity] = float
+
+## scope = { land_unit_scopes general_combat }
+alias[modifier:fuel_consumption] = float
+
+## scope = { land_unit_scopes general_combat }
+alias[modifier:fuel_consumption_factor] = float
+
+## scope = { air_unit_scopes }
+alias[modifier:ground_attack] = float
+
+## scope = { land_unit_scopes land_unit_scopes }
+alias[modifier:hard_attack] = float
+
+## scope = { land_unit_scopes }
+alias[modifier:hardness] = float
+
+## scope = { naval_unit_scopes }
+alias[modifier:hg_armor_piercing] = float
+
+## scope = { naval_unit_scopes }
+alias[modifier:hg_attack] = float
+
+## scope = { land_unit_scopes }
+alias[modifier:initiative] = float
+
+## scope = { naval_unit_scopes }
+alias[modifier:lg_armor_piercing] = float
+
+## scope = { naval_unit_scopes }
+alias[modifier:lg_attack] = float
+
+## scope = { air_unit_scopes land_unit_scopes land_unit_scopes general_combat }
+alias[modifier:maximum_speed] = float
+
+## scope = { general_combat }
+alias[modifier:max_org] = int
+
+## scope = { ship_unit_scopes land_unit_scopes }
+alias[modifier:max_organisation] = int
+
+## scope = { naval_unit_scopes land_unit_scopes general_combat }
+alias[modifier:max_strength] = float
+
+## scope = { naval_unit_scopes }
+alias[modifier:mines_planting] = float
+
+## scope = { naval_unit_scopes }
+alias[modifier:mines_sweeping] = float
+
+## scope = { modifier_terrain_modifier }
+alias[modifier:movement] = float
+
+## scope = { ability_modifier }
+alias[modifier:naval_invasion_prep_speed] = float
+
+## scope = { naval_unit_scopes }
+alias[modifier:naval_range] = float
+
+## scope = { naval_unit_scopes }
+alias[modifier:naval_speed] = float
+
+## scope = { air_unit_scopes }
+alias[modifier:naval_strike_attack] = float
+
+## scope = { air_unit_scopes }
+alias[modifier:naval_strike_targetting] = float
+
+## scope = { ability_modifier country }
+alias[modifier:no_supply_grace] = float
+
+## scope = { ability_modifier country }
+alias[modifier:offence] = float
+
+## scope = { navy_unit_scopes }
+alias[modifier:patrol_coordination] = float
+
+## scope = { ability_modifier }
+alias[modifier:paradrop_organization_factor] = float
+
+## scope = { ability_modifier }
+alias[modifier:paratrooper_aa_defense] = float
+
+## scope = { ability_modifier }
+alias[modifier:paratrooper_count_per_plane] = float
+
+## scope = { general_combat }
+alias[modifier:piercing] = float
+
+## scope = { ability_modifier country }
+alias[modifier:planning_speed] = float
+
+## scope = { naval_unit_scopes }
+alias[modifier:raiding_coordination] = float
+
+## scope = { naval_unit_scopes }
+alias[modifier:range] = float
+
+## scope = { land_unit_scopes }
+alias[modifier:recon] = float
+
+## scope = { air_unit_scopes naval_unit_scopes land_unit_scopes general_combat }
+alias[modifier:reliability] = float
+
+## scope = { land_unit_scopes general_combat }
+alias[modifier:reliability_factor] = float
+
+## scope = { ability_modifier }
+alias[modifier:river_crossing_factor] = float
+
+## scope = { naval_unit_scopes }
+alias[modifier:search_and_destroy_coordination] = float
+
+## scope = { land_unit_scopes land_unit_scopes }
+alias[modifier:soft_attack] = float
+
+## scope = { naval_unit_scopes }
+alias[modifier:sub_attack] = float
+
+## scope = { naval_unit_scopes }
+alias[modifier:sub_detection] = float
+
+## scope = { naval_uninaval_unit_scopest_scopes }
+alias[modifier:sub_visibility] = float
+
+## scope = { air_unit_scopes }
+alias[modifier:supply_consumption] = float
+
+## scope = { naval_unit_scopes land_unit_scopes }
+alias[modifier:supply_consumption] = float
+
+## scope = { land_unit_scopes }
+alias[modifier:supression] = float
+
+## scope = { land_unit_scopes }
+alias[modifier:supression_factor] = float
+
+## scope = { land_unit_scopes }
+alias[modifier:suppression_factor] = float
+
+## scope = { land_unit_scopes }
+alias[modifier:supply_consumption_factor] = float
+
+## scope = { naval_unit_scopes }
+alias[modifier:surface_detection] = float
+
+## scope = { naval_unit_scopes }
+alias[modifier:surface_visibility] = float
+
+## scope = { naval_unit_scopes }
+alias[modifier:torpedo_attack] = float
+
+## scope = { air_unit_scopes }
+alias[modifier:visibility_factor] = float
+
+## scope = { land_unit_scopes }
+alias[unit_unit_values:manpower] = int
+
+## scope = { land_unit_scopes }
+alias[unit_unit_values:training_time] = int
+
+## scope = { land_unit_scopes }
+alias[unit_unit_values:suppression] = int
+
+## scope = { land_unit_scopes }
+alias[unit_unit_values:weight] = float
+
+## scope = { land_unit_scopes }
+alias[unit_unit_values:ai_priority] = int
+
+## scope = { general_combat }
+alias[modifier:weight] = float
+
+### Cavalry
+alias[unit_unit_values:cavalry] = bool
+
+### counts against special forces limit
+alias[unit_unit_values:special_forces] = bool
+
+### Marines ooh-rah
+alias[unit_unit_values:marines] = bool
+
+### Mountaineers
+alias[unit_unit_values:mountaineers] = bool
+
+### Paratroopers
+alias[unit_unit_values:can_be_parachuted] = bool
+
+### use this equipment for speed
+alias[unit_unit_values:transport] = <equipment>
+
+### division designer group
+alias[unit_unit_values:group] = enum[unit_groups]

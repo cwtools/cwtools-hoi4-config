@@ -72,9 +72,6 @@ links = {
         prefix = event_target:
         data_source = value[global_event_target]
     }
-<<<<<<< HEAD
-}
-=======
 }
 
 # TODO: Move these up
@@ -94,4 +91,3 @@ alias[modifier:river] = { alias_name[modifier] = alias_match_left[modifier] }
 ## push_scope = modifier_terrain_modifier
 ## scope = { ability_modifier land_unit_scopes }
 alias[modifier:<terrain.land>] = { alias_name[modifier] = alias_match_left[modifier] }
->>>>>>> Initial commit

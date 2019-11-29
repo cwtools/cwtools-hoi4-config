@@ -264,17 +264,9 @@ modifiers = {
 	navy_submarine_attack_factor = country
 	navy_submarine_defence_factor = country
 	navy_submarine_detection_factor = country
-<<<<<<< HEAD
-	no_supply_grace = country
 	non_core_manpower = country
 	nuclear_production_factor = country
 	occupation_cost = country
-	offence = country
-=======
-	non_core_manpower = country
-	nuclear_production_factor = country
-	occupation_cost = country
->>>>>>> Initial commit
 	offensive_war_stability_factor = country
 	opinion_gain_monthly_factor = country
 	opinion_gain_monthly_same_ideology_factor = country
@@ -284,10 +276,6 @@ modifiers = {
 	own_exiled_divisions_attack_factor = country
 	own_exiled_divisions_defense_factor = country
 	partisan_effect = country
-<<<<<<< HEAD
-	planning_speed = country
-=======
->>>>>>> Initial commit
 	political_advisor_cost_factor = country
 	political_power_cost = country
 	political_power_factor = country
@@ -357,10 +345,6 @@ modifiers = {
 	winter_attrition_factor = country
 
 	# State
-<<<<<<< HEAD
-	local_building_slots = state
-=======
->>>>>>> Initial commit
 	local_building_slots_factor = state
 	local_factories = state
 	local_factory_sabotage = state
@@ -454,18 +438,9 @@ modifiers = {
 	navy_submarine_defence_factor = unit_leader
 	navy_submarine_detection_factor = unit_leader
 	navy_visibility = unit_leader
-<<<<<<< HEAD
-	no_supply_grace = unit_leader
-	offence = unit_leader
 	out_of_supply_factor = unit_leader
 	own_exiled_divisions_attack_factor = unit_leader
 	own_exiled_divisions_defense_factor = unit_leader
-	planning_speed = unit_leader
-=======
-	out_of_supply_factor = unit_leader
-	own_exiled_divisions_attack_factor = unit_leader
-	own_exiled_divisions_defense_factor = unit_leader
->>>>>>> Initial commit
 	positioning = unit_leader
 	recon_factor = unit_leader
 	screening_efficiency = unit_leader

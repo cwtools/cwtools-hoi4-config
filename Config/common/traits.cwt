@@ -46,37 +46,19 @@ country_leader_trait = {
 		<equipment> = {
 			## cardinality = 0..1
 			instant = bool
-<<<<<<< HEAD
-			alias_name[unit_stat] = alias_match_left[unit_stat]
-			alias_name[naval_stat] = alias_match_left[naval_stat]
-			alias_name[air_stat] = alias_match_left[air_stat]
-=======
 			alias_name[modifier] = alias_match_left[modifier]
->>>>>>> Initial commit
 		}
 		## cardinality = 0..inf
 		enum[unit_types] = {
 			## cardinality = 0..1
 			instant = bool
-<<<<<<< HEAD
-			alias_name[unit_stat] = alias_match_left[unit_stat]
-			alias_name[naval_stat] = alias_match_left[naval_stat]
-			alias_name[air_stat] = alias_match_left[air_stat]
-=======
 			alias_name[modifier] = alias_match_left[modifier]
->>>>>>> Initial commit
 		}
 		## cardinality = 0..inf
 		<unit> = {
 			## cardinality = 0..1
 			instant = bool
-<<<<<<< HEAD
-			alias_name[unit_stat] = alias_match_left[unit_stat]
-			alias_name[naval_stat] = alias_match_left[naval_stat]
-			alias_name[air_stat] = alias_match_left[air_stat]
-=======
 			alias_name[modifier] = alias_match_left[modifier]
->>>>>>> Initial commit
 		}
 	}
 	## cardinality = 0..inf
@@ -112,13 +94,7 @@ unit_leader_trait = {
 		sub_unit_modifiers = {
 			## cardinality = 1..inf
 			<unit> = {
-<<<<<<< HEAD
-				alias_name[unit_stat] = alias_match_left[unit_stat]
-				alias_name[naval_stat] = alias_match_left[naval_stat]
-				alias_name[air_stat] = alias_match_left[air_stat]
-=======
 				alias_name[modifier] = alias_match_left[modifier]
->>>>>>> Initial commit
 			}
 		}
 	}
@@ -154,18 +130,10 @@ unit_leader_trait = {
 	## cardinality = 0..1
 	field_marshal_modifier = {
 		alias_name[modifier] = alias_match_left[modifier]
-<<<<<<< HEAD
-		alias_name[unit_leader_modifier] = alias_match_left[unit_leader_modifier]
-=======
->>>>>>> Initial commit
 	}
 	## cardinality = 0..1
 	corps_commander_modifier = {
 		alias_name[modifier] = alias_match_left[modifier]
-<<<<<<< HEAD
-		alias_name[unit_leader_modifier] = alias_match_left[unit_leader_modifier]
-=======
->>>>>>> Initial commit
 	}
 	## cardinality = 0..1
 	custom_effect_tooltip = localisation
@@ -179,19 +147,11 @@ unit_leader_trait = {
 	## replace_scope = { ROOT = unit_leader THIS = unit_leader }
 	modifier = {
 		alias_name[modifier] = alias_match_left[modifier]
-<<<<<<< HEAD
-		alias_name[unit_leader_modifier] = alias_match_left[unit_leader_modifier]
-=======
->>>>>>> Initial commit
 	}
 	## cardinality = 0..1
 	## replace_scope = { ROOT = unit_leader THIS = unit_leader }
 	non_shared_modifier = {
 		alias_name[modifier] = alias_match_left[modifier]
-<<<<<<< HEAD
-		alias_name[unit_leader_modifier] = alias_match_left[unit_leader_modifier]
-=======
->>>>>>> Initial commit
 	}
 	## cardinality = 0..5
 	enable_ability = <ability>

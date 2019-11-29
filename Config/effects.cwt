@@ -2558,16 +2558,7 @@ alias[effect:while_loop_effect] = {
 ### meta effects can be used for building effects from strings and running them. following example will give Germany 42 pp.
 ## scope = any
 alias[effect:meta_effect] = {
-<<<<<<< HEAD
 	text = ignore_field
-=======
-	text = {
-		## cardinality = 0..inf
-		scalar
-		## cardinality = 0..inf
-		scalar = scalar
-	}
->>>>>>> Initial commit
 	## cardinality = 1..inf
 	scalar = scalar
 }

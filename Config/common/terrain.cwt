@@ -48,19 +48,11 @@ terrain = {
 		<unit.ship_unit> = {
 			## cardinality = 0..1
 			units = {
-<<<<<<< HEAD
-				alias_name[unit_stat] = alias_match_left[unit_stat]
-			}
-			alias_name[naval_stat] = alias_match_left[naval_stat]
-		}
-		alias_name[naval_stat] = alias_match_left[unit_stat]
-=======
 				alias_name[modifier] = alias_match_left[modifier]
 			}
 			alias_name[modifier] = alias_match_left[modifier]
 		}
 		alias_name[modifier] = alias_match_left[modifier]
->>>>>>> Initial commit
 	}
 
 	subtype[naval_terrain] = {
@@ -71,19 +63,11 @@ terrain = {
 		<unit.ship_unit> = {
 			## cardinality = 0..1
 			units = {
-<<<<<<< HEAD
-				alias_name[unit_stat] = alias_match_left[unit_stat]
-			}
-			alias_name[naval_stat] = alias_match_left[naval_stat]
-		}
-		alias_name[naval_stat] = alias_match_left[unit_stat]
-=======
 				alias_name[modifier] = alias_match_left[modifier]
 			}
 			alias_name[modifier] = alias_match_left[modifier]
 		}
 		alias_name[modifier] = alias_match_left[modifier]
->>>>>>> Initial commit
 	}
 
 	subtype[land] = {
@@ -93,11 +77,7 @@ terrain = {
 		match_value = float
 		## cardinality = 0..1
 		units = {
-<<<<<<< HEAD
-			alias_name[unit_stat] = alias_match_left[unit_stat]
-=======
 			alias_name[modifier] = alias_match_left[modifier]
->>>>>>> Initial commit
 		}
 	}
 }

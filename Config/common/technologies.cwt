@@ -5,6 +5,11 @@ types = {
 		subtype[doctrine] = {
 			doctrine = yes
 		}
+		#TODO: Hack
+		## push_scope = country_unit_scopes
+		subtype[all] = {
+
+		}
 	}
 	type[tech_sharing_group] = {
 		path = "game/common/technology_sharing"
@@ -12,7 +17,6 @@ types = {
 	}
 }
 
-## replace_scope = { this = country root = country }
 technology = {
 	## cardinality = 0..1
 	show_equipment_icon = bool
@@ -28,12 +32,14 @@ technology = {
 
 	## cardinality = 0..1
 	### hides technology unless trigger is true
+	## replace_scope = { this = country root = country }
 	allow = {
 		## cardinality = ~1..inf
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 	## cardinality = 0..1
 	### hides technology and children unless trigger is true
+	## replace_scope = { this = country root = country }
 	allow_branch = {
 		## cardinality = ~1..inf
 		alias_name[trigger] = alias_match_left[trigger]
@@ -106,6 +112,7 @@ technology = {
 	doctrine = bool
 	## cardinality = 0..1
 	### ai weights for research
+	## replace_scope = { this = country root = country }
 	ai_will_do = {
 		## cardinality = 0..1
 		enum[base_factor] = float
@@ -130,20 +137,44 @@ technology = {
 		enum[tech_category]
 	}
 	## cardinality = 0..inf
+	## replace_scope = { this = country_unit_scopes root = country_unit_scopes }
+	#TODO: Make more specific
 	enum[unit_category] = {
 		## cardinality = 0..inf
-		#TODO: Modifier scope
 		alias_name[modifier] = alias_match_left[modifier]
 	}
 	## cardinality = 0..inf
-	<unit> = {
+	## replace_scope = { root = air_unit_scopes this = air_unit_scopes }
+	<unit.air_unit> = {
 		## cardinality = 0..inf
 		need = {
 			## cardinality = 1..inf
+			<equipment.air_equip> = int
+		}
+		## cardinality = 0..inf
+		alias_name[modifier] = alias_match_left[modifier]
+	}
+	## cardinality = 0..inf
+	## replace_scope = { root = naval_unit_scopes this = naval_unit_scopes }
+	<unit.ship_unit> = {
+		## cardinality = 0..inf
+		need = {
+			## cardinality = 1..inf
+			<equipment.naval_equip> = int
+		}
+		## cardinality = 0..inf
+		alias_name[modifier] = alias_match_left[modifier]
+	}
+	## cardinality = 0..inf
+	## replace_scope = { root = land_unit_scopes this = land_unit_scopes }
+	<unit.land_unit> = {
+		## cardinality = 0..inf
+		need = {
+			## cardinality = 1..inf
+			#TODO:More specific
 			<equipment> = int
 		}
 		## cardinality = 0..inf
-		#TODO: Modifier scope
 		alias_name[modifier] = alias_match_left[modifier]
 	}
 	## cardinality = 0..1
@@ -152,6 +183,7 @@ technology = {
 	}
 
 	## cardinality = 0..1
+	## replace_scope = { this = country root = country }
 	on_research_complete = {
 		## cardinality = 0..1
 		limit = {
@@ -164,7 +196,6 @@ technology = {
 	## cardinality = 0..1
 	nuclear_production = float
 
-	#TODO: Modifier scope
 	alias_name[modifier] = alias_match_left[modifier]
 }
 

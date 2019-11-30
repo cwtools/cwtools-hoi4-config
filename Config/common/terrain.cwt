@@ -6,12 +6,15 @@ types = {
 			## cardinality = 0..0
 			movement_cost = float
 		}
+		## push_scope = naval_unit_scopes
 		subtype[water] = {
 			is_water = yes
 		}
+		## push_scope = naval_unit_scopes
 		subtype[naval_terrain] = {
 			naval_terrain = yes
 		}
+		## push_scope = land_unit_scopes
 		subtype[land] = {
 			## cardinality = 0..1
 			is_water = no
@@ -48,13 +51,10 @@ terrain = {
 		<unit.ship_unit> = {
 			## cardinality = 0..1
 			units = {
-				#TODO: Modifier scope
 				alias_name[modifier] = alias_match_left[modifier]
 			}
-			#TODO: Modifier scope
 			alias_name[modifier] = alias_match_left[modifier]
 		}
-		#TODO: Modifier scope
 		alias_name[modifier] = alias_match_left[modifier]
 	}
 
@@ -66,13 +66,10 @@ terrain = {
 		<unit.ship_unit> = {
 			## cardinality = 0..1
 			units = {
-				#TODO: Modifier scope
 				alias_name[modifier] = alias_match_left[modifier]
 			}
-			#TODO: Modifier scope
 			alias_name[modifier] = alias_match_left[modifier]
 		}
-		#TODO: Modifier scope
 		alias_name[modifier] = alias_match_left[modifier]
 	}
 
@@ -83,7 +80,6 @@ terrain = {
 		match_value = float
 		## cardinality = 0..1
 		units = {
-			#TODO: Modifier scope
 			alias_name[modifier] = alias_match_left[modifier]
 		}
 	}

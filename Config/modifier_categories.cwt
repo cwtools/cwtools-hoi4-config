@@ -1,6 +1,7 @@
 modifier_categories = {
     country = {
-        supported_scopes = { country }
+        #Not sure about latter, maybe move all of former instead
+        supported_scopes = { country country_unit_scopes }
     }
     state = {
         supported_scopes = { state }

@@ -9,6 +9,7 @@ types = {
 			## cardinality = 0..1
 			is_archetype = no
 		}
+		## push_scope = naval_unit_scopes
 		subtype[naval_equip] = {
 			## cardinality = 0..1
 			type = enum[ship_units]
@@ -20,6 +21,7 @@ types = {
 			## cardinality = 0..1
 			archetype = <equipment.naval_equip>
 		}
+		## push_scope = air_unit_scopes
 		subtype[air_equip] = {
 			## cardinality = 0..1
 			type = enum[air_units]
@@ -30,6 +32,10 @@ types = {
 			}
 			## cardinality = 0..1
 			archetype = <equipment.air_equip>
+		}
+		## push_scope = land_unit_scopes
+		subtype[all] = {
+
 		}
 	}
 	type[upgrade] = {
@@ -247,8 +253,8 @@ module = {
 	sfx = scalar
 	## cardinality = 0..1
 	add_equipment_type = enum[unit_types]
+	## push_scope = naval_unit_scopes
 	add_stats = {
-		#TODO: Modifier scope
 		alias_name[modifier] = alias_match_left[modifier]
 		## cardinality = 0..1
 		build_cost_ic = int
@@ -264,13 +270,13 @@ module = {
 		<resource> = int
 	}
 	## cardinality = 0..1
+	## push_scope = naval_unit_scopes
 	add_average_stats = {
-		#TODO: Modifier scope
 		alias_name[modifier] = alias_match_left[modifier]
 	}
 	## cardinality = 0..10
+	## push_scope = naval_unit_scopes
 	multiply_stats = {
-		#TODO: Modifier scope
 		alias_name[modifier] = alias_match_left[modifier]
 	}
 
@@ -305,13 +311,13 @@ critical_part = {
 	icon = <spriteType>
 	frame = int
 	## cardinality = 0..1
+	## push_scope = naval_unit_scopes
 	stat_penalties = {
-		#TODO: Modifier scope
 		alias_name[modifier] = alias_match_left[modifier]
 	}
 	## cardinality = 0..1
+	## push_scope = naval_unit_scopes
 	modifier = {
-		#TODO: Modifier scope
 		## cardinality = ~1..inf
 		alias_name[modifier] = alias_match_left[modifier]
 	}

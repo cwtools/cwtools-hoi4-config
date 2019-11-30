@@ -263,6 +263,37 @@ enums = {
 		convoy
 		paratroopers
 	}
+	enum[air_unit_types] = {
+		fighter
+		cas
+		naval_bomber
+		interceptor
+		suicide
+		tactical_bomber
+		strategic_bomber
+		air_transport
+
+	}
+	enum[naval_unit_types] = {
+		submarine
+		screen_ship
+		capital_ship
+		carrier
+		convoy
+	}
+	enum[land_unit_types] = {
+		infantry
+		support
+		artillery
+		rocket
+		anti_tank
+		anti_air
+		motorized
+		cavalry
+		mechanized
+		armor
+		paratroopers
+	}
 	enum[land_units] = {
 		infantry
 		support

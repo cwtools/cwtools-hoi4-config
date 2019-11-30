@@ -43,24 +43,67 @@ country_leader_trait = {
 	## cardinality = 0..1
 	equipment_bonus = {
 		## cardinality = 0..inf
+		## replace_scope = { root = naval_unit_scopes this = naval_unit_scopes }
+		<equipment.naval_equip> = {
+			## cardinality = 0..1
+			instant = bool
+			alias_name[modifier] = alias_match_left[modifier]
+		}
+		## cardinality = 0..inf
+		## replace_scope = { root = air_unit_scopes this = air_unit_scopes }
+		<equipment.air_equip> = {
+			## cardinality = 0..1
+			instant = bool
+			alias_name[modifier] = alias_match_left[modifier]
+		}
+		## cardinality = 0..inf
+		## replace_scope = { root = land_unit_scopes this = land_unit_scopes }
+		#TODO Check
 		<equipment> = {
 			## cardinality = 0..1
 			instant = bool
-			#TODO: Modifier scope
 			alias_name[modifier] = alias_match_left[modifier]
 		}
 		## cardinality = 0..inf
-		enum[unit_types] = {
+		## replace_scope = { root = land_unit_scopes this = land_unit_scopes }
+		enum[land_unit_types] = {
 			## cardinality = 0..1
 			instant = bool
-			#TODO: Modifier scope
 			alias_name[modifier] = alias_match_left[modifier]
 		}
 		## cardinality = 0..inf
-		<unit> = {
+		## replace_scope = { root = air_unit_scopes this = air_unit_scopes }
+		enum[air_unit_types] = {
 			## cardinality = 0..1
 			instant = bool
-			#TODO: Modifier scope
+			alias_name[modifier] = alias_match_left[modifier]
+		}
+		## cardinality = 0..inf
+		## replace_scope = { root = naval_unit_scopes this = naval_unit_scopes }
+		enum[naval_unit_types] = {
+			## cardinality = 0..1
+			instant = bool
+			alias_name[modifier] = alias_match_left[modifier]
+		}
+		## cardinality = 0..inf
+		## replace_scope = { root = air_unit_scopes this = air_unit_scopes }
+		<unit.air_unit> = {
+			## cardinality = 0..1
+			instant = bool
+			alias_name[modifier] = alias_match_left[modifier]
+		}
+		## cardinality = 0..inf
+		## replace_scope = { root = land_unit_scopes this = land_unit_scopes }
+		<unit.land_unit> = {
+			## cardinality = 0..1
+			instant = bool
+			alias_name[modifier] = alias_match_left[modifier]
+		}
+		## cardinality = 0..inf
+		## replace_scope = { root = naval_unit_scopes this = naval_unit_scopes }
+		<unit.ship_unit> = {
+			## cardinality = 0..1
+			instant = bool
 			alias_name[modifier] = alias_match_left[modifier]
 		}
 	}
@@ -133,10 +176,12 @@ unit_leader_trait = {
 	}
 	## cardinality = 0..1
 	field_marshal_modifier = {
+		#TODO: Modifier scope
 		alias_name[modifier] = alias_match_left[modifier]
 	}
 	## cardinality = 0..1
 	corps_commander_modifier = {
+		#TODO: Modifier scope
 		alias_name[modifier] = alias_match_left[modifier]
 	}
 	## cardinality = 0..1
@@ -150,11 +195,13 @@ unit_leader_trait = {
 	## cardinality = 0..1
 	## replace_scope = { ROOT = unit_leader THIS = unit_leader }
 	modifier = {
+		#TODO: Modifier scope
 		alias_name[modifier] = alias_match_left[modifier]
 	}
 	## cardinality = 0..1
 	## replace_scope = { ROOT = unit_leader THIS = unit_leader }
 	non_shared_modifier = {
+		#TODO: Modifier scope
 		alias_name[modifier] = alias_match_left[modifier]
 	}
 	## cardinality = 0..5

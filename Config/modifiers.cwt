@@ -540,6 +540,8 @@ modifiers = {
 	experience_loss_factor = unit_stat
 	equipment_capture_factor = unit_stat
 
+	air_attack = unit_stat
+
 	# Common stats
 	max_organisation = common_stat
 	max_strength = common_stat

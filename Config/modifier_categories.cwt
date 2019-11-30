@@ -11,4 +11,20 @@ modifier_categories = {
     air = {
         supported_scopes = { air }
     }
+    air_stat = {
+        supported_scopes = { air_unit_scopes country_unit_scopes }
+    }
+    naval_stat = {
+        supported_scopes = { naval_unit_scopes country_unit_scopes }
+    }
+    land_stat = {
+        supported_scopes = { land_unit_scopes country_unit_scopes }
+    }
+    common_stat = {
+        supported_scopes = { air_unit_scopes naval_unit_scopes land_unit_scopes country_unit_scopes }
+    }
+    ability_modifier = {
+        supported_scopes = { ability_modifier }
+    }
+
 }

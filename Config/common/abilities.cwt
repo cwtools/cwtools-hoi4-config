@@ -28,9 +28,9 @@ ability = {
 	cooldown = int
 
 	## cardinality = 0..1
+	## replace_scope = { this = ability_modifier root = ability_modifier }
 	unit_modifiers = {
 		alias_name[modifier] = alias_match_left[modifier]
-		alias_name[unit_stat] = alias_match_left[unit_stat]
 	}
 	## cardinality = 0..1
 	one_time_effect = {

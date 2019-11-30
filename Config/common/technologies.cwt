@@ -132,9 +132,8 @@ technology = {
 	## cardinality = 0..inf
 	enum[unit_category] = {
 		## cardinality = 0..inf
-		alias_name[unit_stat] = alias_match_left[unit_stat]
-		alias_name[naval_stat] = alias_match_left[naval_stat]
-		alias_name[air_stat] = alias_match_left[air_stat]
+		#TODO: Modifier scope
+		alias_name[modifier] = alias_match_left[modifier]
 	}
 	## cardinality = 0..inf
 	<unit> = {
@@ -144,9 +143,8 @@ technology = {
 			<equipment> = int
 		}
 		## cardinality = 0..inf
-		alias_name[unit_stat] = alias_match_left[unit_stat]
-		alias_name[naval_stat] = alias_match_left[naval_stat]
-		alias_name[air_stat] = alias_match_left[air_stat]
+		#TODO: Modifier scope
+		alias_name[modifier] = alias_match_left[modifier]
 	}
 	## cardinality = 0..1
 	modifier = {
@@ -166,10 +164,8 @@ technology = {
 	## cardinality = 0..1
 	nuclear_production = float
 
+	#TODO: Modifier scope
 	alias_name[modifier] = alias_match_left[modifier]
-	alias_name[unit_stat] = alias_match_left[unit_stat]
-	alias_name[naval_stat] = alias_match_left[naval_stat]
-	alias_name[air_stat] = alias_match_left[air_stat]
 }
 
 tech_sharing_group = {

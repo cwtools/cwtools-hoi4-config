@@ -484,4 +484,85 @@ modifiers = {
 	naval_strike_agility_factor = air
 	naval_strike_attack_factor = air
 	naval_strike_targetting_factor = air
+
+
+	# Air stats
+	air_agility = air_stat
+	air_attack = air_stat
+	air_bombing = air_stat
+	air_defence = air_stat
+	air_defense = air_stat
+	air_ground_attack = air_stat
+	air_range = air_stat
+	air_superiority = air_stat
+	carrier_size = air_stat
+	naval_strike_attack = air_stat
+	naval_strike_targetting = air_stat
+	# Vis?
+
+	# Naval stats
+	surface_detection = naval_stat
+	sub_detection = naval_stat
+	surface_visibility = naval_stat
+	sub_visibility = naval_stat
+	hg_armor_piercing = naval_stat
+	hg_attack = naval_stat
+	lg_armor_piercing = naval_stat
+	lg_attack = naval_stat
+	torpedo_attack = naval_stat
+	sub_attack = naval_stat
+	anti_air_attack = naval_stat
+	#amphib
+	naval_speed = naval_stat
+	naval_range = naval_stat
+	mines_planting = naval_stat
+	mines_sweeping = naval_stat
+	convoy_raiding_coordination = naval_stat
+	search_and_destroy_coordination = naval_stat
+
+
+	# Unit stats
+	default_morale = unit_stat
+	defence = unit_stat
+	defense = unit_stat
+	breakthrough = unit_stat
+	hardness = unit_stat
+	hard_attack = unit_stat
+	soft_attack = unit_stat
+	recon = unit_stat
+	entrenchment = unit_stat
+	initiative = unit_stat
+	casualty_trickleback = unit_stat
+	supply_consumption_factor = unit_stat
+	supply_consumption = unit_stat
+	suppression_factor = unit_stat
+	suppression = unit_stat
+	experience_loss_factor = unit_stat
+	equipment_capture_factor = unit_stat
+
+	# Common stats
+	max_organisation = common_stat
+	max_strength = common_stat
+	maximum_speed = common_stat
+	armor_value = common_stat
+	ap_attack = common_stat
+	reliability = common_stat
+	reliability_factor = common_stat
+	weight = common_stat
+	fuel_consumption = common_stat
+	fuel_consumption_factor = common_stat
+	acclimatization_cold_climate_gain_factor = common_stat
+	acclimatization_hot_climate_gain_factor = common_stat
+	build_cost_ic = common_stat
+
+	# Ability modifiers
+	dont_lose_dig_in_on_attack = ability_modifier
+	fortification_collateral_chance = ability_modifier
+	fortification_damage = ability_modifier
+	naval_invasion_penalty = ability_modifier
+	paradrop_organization_factor = ability_modifier
+	paratrooper_aa_defense = ability_modifier
+	paratrooper_count_per_plane = ability_modifier
+	river_crossing_factor = ability_modifier
+
 }

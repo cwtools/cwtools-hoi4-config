@@ -3,15 +3,18 @@ types = {
 		skip_root_key = sub_units
 		path = "game/common/units"
 		path_strict = yes
+		## push_scope = air_unit_scopes
 		subtype[air_unit] = {
 			type = {
 				## cardinality = 1..10
 				enum[air_units]
 			}
 		}
+		## push_scope = naval_unit_scopes
 		subtype[ship_unit] = {
 			map_icon_category = enum[ship_map_icons]
 		}
+		## push_scope = land_unit_scopes
 		subtype[land_unit] = {
 			map_icon_category = enum[land_map_icons]
 		}
@@ -89,7 +92,6 @@ unit = {
 			## cardinality = ~1..inf
 			enum[ship_units]
 		}
-		alias_name[naval_stat] = alias_match_left[naval_stat]
 		critical_parts = {
 			## cardinality = ~1..inf
 			<critical_part>
@@ -106,7 +108,6 @@ unit = {
 			## cardinality = ~1..inf
 			enum[air_units]
 		}
-		alias_name[air_stat] = alias_match_left[air_stat]
 	}
 	subtype[catch] = {
 		test = int
@@ -117,7 +118,8 @@ unit = {
 	### whether needs tech to create
 	active = bool
 
-	alias_name[unit_stat] = alias_match_left[unit_stat]
+	# TODO: Modifier scopes
+	alias_name[modifier] = alias_match_left[modifier]
 
 	## cardinality = 0..1
 	own_equipment_fuel_consumption_mult = float

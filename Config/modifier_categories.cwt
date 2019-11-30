@@ -4,13 +4,13 @@ modifier_categories = {
         supported_scopes = { country country_unit_scopes }
     }
     state = {
-        supported_scopes = { state }
+        supported_scopes = { state country }
     }
     unit_leader = {
-        supported_scopes = { unit_leader }
+        supported_scopes = { unit_leader country }
     }
     air = {
-        supported_scopes = { air }
+        supported_scopes = { air ace country }
     }
     air_stat = {
         supported_scopes = { air_unit_scopes country_unit_scopes }

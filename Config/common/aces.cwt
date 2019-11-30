@@ -12,7 +12,7 @@ ace = {
 		enum[air_units]
 	}
 	chance = float
-	## replace_scope = { ROOT = air THIS = air}
+	## replace_scope = { ROOT = ace THIS = ace }
 	effect = {
 		alias_name[modifier] = alias_match_left[modifier]
 	}

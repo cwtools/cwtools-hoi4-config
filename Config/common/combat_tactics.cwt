@@ -40,8 +40,8 @@ combat_tactic = {
 	enum[attack_defend] = float
 	## cardinality = 0..1
 	attacker_movement_speed = float
-	#TODO: scope
-	alias_name[modifier] = alias_match_left[modifier]
+	#TODO: is this needed?
+	#alias_name[modifier] = alias_match_left[modifier]
 }
 
 enums = {

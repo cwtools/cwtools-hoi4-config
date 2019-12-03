@@ -26,5 +26,5 @@ dynamic_modifier = {
 	}
 	
 	## cardinality = 1..inf
-	alias_keys_field[modifier] = value[variable]
+	alias_keys_field[modifier] = variable_field
 }

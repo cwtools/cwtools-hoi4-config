@@ -27,5 +27,14 @@ modifier_categories = {
     ability_modifier = {
         supported_scopes = { ability_modifier }
     }
+    country_ability_modifier = {
+        supported_scopes = { ability_modifier country }
+    }
+    unit_leader_ability_modifier = {
+        supported_scopes = { ability_modifier unit_leader country }
+    }
+    modifier_terrain_modifier = {
+        supported_scopes = { modifier_terrain_modifier }
+    }
 
 }

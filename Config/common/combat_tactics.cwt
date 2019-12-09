@@ -12,7 +12,7 @@ types = {
 	}
 }
 
-## replace_scope = { this = combat root = combat from = combat }
+## scope = { combat country }
 combat_tactic = {
 	is_attacker = bool
 	trigger = {

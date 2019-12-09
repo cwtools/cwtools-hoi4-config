@@ -1117,7 +1117,7 @@ alias[effect:set_province_controller] = enum[provinces]
 
 ### sets mandatory major country flag.
 ## scope = country
-alias[effect:set_major] = yes
+alias[effect:set_major] = bool
 
 ### create field marshal for country.
 ## scope = country

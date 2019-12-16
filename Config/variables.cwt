@@ -535,5 +535,8 @@ values = {
 		subject_countries
 		subject_states
 
+		### Array of all countries (including non existing)
+		countries
+
 	}
 }

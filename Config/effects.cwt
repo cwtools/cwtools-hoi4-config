@@ -2074,14 +2074,14 @@ alias[effect:cancel_border_war] = {
 ### Set lock status for a division template.
 ## scope = country
 alias[effect:set_division_template_lock] = {
-	division_template = localisation
+	division_template = localisation_inline
 	is_locked = bool
 }
 
 ### Delete a template and its units.
 ## scope = country
 alias[effect:delete_unit_template_and_units] = {
-	division_template = localisation
+	division_template = localisation_inline
 }
 
 ### prints all variables in scope and temp variables to a file.

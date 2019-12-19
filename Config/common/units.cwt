@@ -181,7 +181,7 @@ ship_name = {
 }
 
 division_name = {
-	name = localisation
+	name = localisation_inline
 	for_countries = {
 		## cardinality = ~1..inf
 		enum[country_tags]

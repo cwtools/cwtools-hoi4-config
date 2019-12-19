@@ -1276,7 +1276,7 @@ alias[effect:add_equipment_production] = {
 		## cardinality = 0..1
 		creator = enum[country_tags]
 		## cardinality = 0..1
-		version_name = localisation
+		version_name = localisation_inline
 	}
 	## cardinality = 0..1
 	name = scalar
@@ -1298,7 +1298,7 @@ alias[effect:add_ace] = {
 	callsign = localisation_inline
 	type = <ace>
 	## cardinality = 0..1
-	is_female = bool
+	is_female = yes
 }
 
 ### Executes children effects on random owned state that fulfills the "limit" trigger.
@@ -1494,12 +1494,12 @@ alias[effect:add_state_modifier] = {
 ## scope = any
 alias[effect:set_province_name] = {
 	id = enum[provinces]
-	name = localisation
+	name = localisation_inline
 }
 
 ### set_state_name = <string> - Set the current states name.
 ## scope = state
-alias[effect:set_state_name] = localisation
+alias[effect:set_state_name] = localisation_inline
 
 ### reset name of a province back to localization one.
 ## scope = any

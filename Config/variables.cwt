@@ -57,7 +57,7 @@ values = {
 		max_manpower_k
 
 		### A modifier stored in country scope.
-		modifier
+		modifier@enum[modifier]
 
 		### Number of armies.
 		num_armies

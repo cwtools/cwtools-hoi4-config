@@ -413,7 +413,7 @@ alias[effect:randomize_weather] = int
 ### Adds a division template to country.
 ## scope = country
 alias[effect:division_template] = {
-	name = localisation
+	name = localisation_inline
 	## cardinality = 0..1
 	division_names_group = <division_name>
 	## cardinality = 0..1
@@ -601,7 +601,7 @@ alias[effect:clr_state_flag] = value[state_flag]
 
 ### create faction of specified name.
 ## scope = country
-alias[effect:create_faction] = localisation
+alias[effect:create_faction] = localisation_inline
 
 ### add nukes to country.
 ## scope = country
@@ -1212,8 +1212,8 @@ alias[effect:complete_national_focus] = <shared_focus>
 ## scope = country
 alias[effect:set_party_name] = {
 	ideology = <ideology>
-	long_name = localisation
-	name = localisation
+	long_name = localisation_inline
+	name = localisation_inline
 }
 
 ### add extra shared building slot to state.
@@ -1293,9 +1293,9 @@ alias[effect:add_equipment_production] = {
 ### adds an air ace.
 ## scope = country
 alias[effect:add_ace] = {
-	name = localisation
-	surname = localisation
-	callsign = localisation
+	name = localisation_inline
+	surname = localisation_inline
+	callsign = localisation_inline
 	type = <ace>
 	## cardinality = 0..1
 	is_female = bool

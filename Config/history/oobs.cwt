@@ -118,7 +118,7 @@ oob = {
 							## cardinality = 0..1
 							portrait = int
 							## cardinality = 0..1
-							is_female = bool
+							is_female = yes
 						}
 					}
 				}
@@ -150,7 +150,7 @@ oob = {
 				## cardinality = 0..1
 				portrait = int
 				## cardinality = 0..1
-				is_female = bool
+				is_female = yes
 			}
 		}
 	}

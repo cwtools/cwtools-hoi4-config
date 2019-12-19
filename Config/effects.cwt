@@ -1298,7 +1298,7 @@ alias[effect:add_ace] = {
 	callsign = localisation_inline
 	type = <ace>
 	## cardinality = 0..1
-	is_female = bool
+	is_female = yes
 }
 
 ### Executes children effects on random owned state that fulfills the "limit" trigger.

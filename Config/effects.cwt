@@ -1494,12 +1494,12 @@ alias[effect:add_state_modifier] = {
 ## scope = any
 alias[effect:set_province_name] = {
 	id = enum[provinces]
-	name = localisation
+	name = localisation_inline
 }
 
 ### set_state_name = <string> - Set the current states name.
 ## scope = state
-alias[effect:set_state_name] = localisation
+alias[effect:set_state_name] = localisation_inline
 
 ### reset name of a province back to localization one.
 ## scope = any

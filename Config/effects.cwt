@@ -1276,7 +1276,7 @@ alias[effect:add_equipment_production] = {
 		## cardinality = 0..1
 		creator = enum[country_tags]
 		## cardinality = 0..1
-		version_name = localisation
+		version_name = localisation_inline
 	}
 	## cardinality = 0..1
 	name = scalar

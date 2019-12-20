@@ -344,6 +344,7 @@ values = {
 		# TODO:
 		### Value of a modifier stored in leader modifier, modifier token is defined in target. Example leader_modifier@navy_max_range.
 		leader_modifier
+		leader_modifier@wounded_chance_factor
 
 		### Logistics level of the leader.
 		logistics_level

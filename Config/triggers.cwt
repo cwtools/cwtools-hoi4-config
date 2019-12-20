@@ -81,11 +81,11 @@ alias[trigger:has_country_flag] = {
 alias[trigger:reserves] = int
 
 ### Country tag trigger.
-## scope = country
+## scope = { country combat }
 alias[trigger:tag] = scope[country]
 
 ### Country tag trigger.
-## scope = country
+## scope = { country combat }
 alias[trigger:tag] = enum[country_tags]
 
 ### Check if any country meets the trigger.
@@ -897,11 +897,11 @@ alias[trigger:has_volunteers_amount_from] = {
 alias[trigger:num_of_controlled_states] = int
 
 ### Checks if the current scope was ever the specified country.
-## scope = country
+## scope = { country combat }
 alias[trigger:original_tag] = scope[country]
 
 ### Checks if the current scope was ever the specified country.
-## scope = country
+## scope = { country combat }
 alias[trigger:original_tag] = enum[country_tags]
 
 ### Compare if the country has added above or below the specified ammount of tension.

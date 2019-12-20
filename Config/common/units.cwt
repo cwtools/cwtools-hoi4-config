@@ -190,6 +190,7 @@ division_name = {
 	can_use = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
+	## cardinality = ~0..1
 	division_types = {
 		## cardinality = ~1..inf
 		<unit.land_unit>

@@ -33,6 +33,7 @@ bookmark = {
 		}
 	}
 
+	## cardinality = ~0..1
 	"---" = {
 		history = localisation
 	}

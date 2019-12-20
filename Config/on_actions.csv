@@ -30,6 +30,19 @@ on_subject_annexed,THIS = country ROOT = country FROM = country,country_event
 on_release_as_free,THIS = country ROOT = country FROM = country,country_event
 on_peaceconference_ended,THIS = country ROOT = country FROM = country,country_event
 on_generate_wargoal,THIS = country ROOT = country FROM = country,country_event
+on_military_access,THIS = country ROOT = country FROM = country,country_event
+on_offer_military_access,THIS = country ROOT = country FROM = country,country_event
+on_call_allies,THIS = country ROOT = country FROM = country,country_event
+on_join_allies,THIS = country ROOT = country FROM = country,country_event
+on_lend_lease,THIS = country ROOT = country FROM = country,country_event
+on_incoming_lend_lease,THIS = country ROOT = country FROM = country,country_event
+on_incoming_lend_lease,THIS = country ROOT = country FROM = country,country_event
+on_send_volunteers,THIS = country ROOT = country FROM = country,country_event
+on_send_expeditionary_force,THIS = country ROOT = country FROM = country,country_event
+on_return_expeditionary_forces,THIS = country ROOT = country FROM = country,country_event
+on_request_expeditionary_forces,THIS = country ROOT = country FROM = country,country_event
+on_ask_for_state_control,THIS = country ROOT = country FROM = country,country_event
+on_give_state_control,THIS = country ROOT = country FROM = country,country_event
 
 
 on_startup,THIS = no_scope ROOT = no_scope,

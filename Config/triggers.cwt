@@ -1896,6 +1896,11 @@ alias[trigger:is_in_array] = {
 ## scope = any
 alias[trigger:is_in_array] = {
 	value[array] = scalar
+}
+
+### Checks if an element is in array.
+## scope = any
+alias[trigger:is_in_array] = {
 	variable_field = scalar
 }
 

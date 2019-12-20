@@ -111,10 +111,10 @@ oob = {
 						### Order is important. Ace will be assigned to the wing above.
 						ace = {
 							modifier = <ace>
-							name = localsiation_inline 
-							surname = localsiation_inline 
+							name = localisation_inline 
+							surname = localisation_inline 
 							## cardinality = 0..1
-							callsign = localsiation_inline 
+							callsign = localisation_inline 
 							## cardinality = 0..1
 							portrait = int
 							## cardinality = 0..1
@@ -143,10 +143,10 @@ oob = {
 			### Order is important. Ace will be assigned to the wing above.
 			ace = {
 				modifier = <ace>
-				name = localsiation_inline 
-				surname = localsiation_inline 
+				name = localisation_inline 
+				surname = localisation_inline 
 				## cardinality = 0..1
-				callsign = localsiation_inline 
+				callsign = localisation_inline 
 				## cardinality = 0..1
 				portrait = int
 				## cardinality = 0..1

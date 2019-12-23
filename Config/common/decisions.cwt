@@ -7,7 +7,7 @@ types = {
 		path_strict = yes
 		skip_root_key = any
 		subtype[mission] = {
-			days_mission_timeout = int_variable_field
+			days_mission_timeout = scalar
 		}
 		subtype[targeted] = {
 			target_trigger = {
@@ -28,10 +28,10 @@ types = {
 			}
 		}
 		subtype[timed] = {
-			days_remove = variable_field
+			days_remove = scalar
 		}
 		subtype[timed] = {
-			days_mission_timeout = int_variable_field
+			days_mission_timeout = scalar
 		}
 	}
 }

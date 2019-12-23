@@ -24,6 +24,7 @@ dynamic_modifier = {
 		## cardinality = ~1..inf
 		alias_name[trigger] = alias_match_left[trigger]
 	}
-
-	alias_name[modifier] = value[variable]
+	
+	## cardinality = 1..inf
+	alias_keys_field[modifier] = variable_field
 }

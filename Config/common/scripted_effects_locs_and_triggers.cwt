@@ -26,6 +26,6 @@ scripted_loc = {
 	text = {
 		## cardinality = 0..1
 		trigger = { alias_name[trigger] = alias_match_left[trigger] }
-		localization_key = localisation
+		localization_key = localisation_inline
 	}
 }

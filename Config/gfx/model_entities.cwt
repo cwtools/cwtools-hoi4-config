@@ -129,7 +129,7 @@ entity = {
 			float
 		}
 
-		## cardinality = 0..1
+		## cardinality = 0..inf
 		propagate_state = {
 			enum[model_attachments] = enum[model_states]
 		}

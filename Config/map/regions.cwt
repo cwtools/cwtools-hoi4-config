@@ -42,15 +42,15 @@ strategic_region = {
 				### day.month (both start at 0)
 				# float hacks as dates ftw
 				## cardinality = 2..2
-				"float[0.0..30.9]"
+				float[0.0..30.9]
 			}
 			temperature = {
 				## cardinality = 2..2
-				"float"
+				float
 			}
 			temperature_day_night = {
 				## cardinality = 2..2
-				"float"
+				float
 			}
 			#hacks
 			## cardinality = 7..8

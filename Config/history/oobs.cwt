@@ -53,7 +53,7 @@ oob = {
 			location = enum[provinces]
 			division_template = scalar
 			## cardinality = 0..1
-			start_experience_factor = float
+			start_experience_factor = float[0..1]
 			## cardinality = 0..1
 			start_equipment_factor = float
 			## cardinality = 0..inf
@@ -85,7 +85,7 @@ oob = {
 					pride_of_the_fleet = yes
 					definition = <unit.ship_unit>
 					## cardinality = 0..1
-					start_experience_factor = float
+					start_experience_factor = float[0..1]
 					equipment = {
 						<equipment.naval_equip> = {
 							amount = int
@@ -111,15 +111,18 @@ oob = {
 						### Order is important. Ace will be assigned to the wing above.
 						ace = {
 							modifier = <ace>
-							name = localisation
-							surname = localisation
+							name = localisation_inline 
+							surname = localisation_inline 
 							## cardinality = 0..1
-							callsign = localisation
+							callsign = localisation_inline 
 							## cardinality = 0..1
 							portrait = int
 							## cardinality = 0..1
-							is_female = bool
+							is_female = yes
 						}
+						## cardinality = 0..inf
+						### Order is important. start_experience_factor will be assigned to the ace above.
+						start_experience_factor = float[0..1]
 					}
 				}
 			}
@@ -143,15 +146,18 @@ oob = {
 			### Order is important. Ace will be assigned to the wing above.
 			ace = {
 				modifier = <ace>
-				name = localisation
-				surname = localisation
+				name = localisation_inline 
+				surname = localisation_inline 
 				## cardinality = 0..1
-				callsign = localisation
+				callsign = localisation_inline 
 				## cardinality = 0..1
 				portrait = int
 				## cardinality = 0..1
-				is_female = bool
+				is_female = yes
 			}
+			## cardinality = 0..inf
+			### Order is important. start_experience_factor will be assigned to the ace above.
+			start_experience_factor = float[0..1]
 		}
 	}
 

@@ -16,6 +16,7 @@ types = {
 	}
 }
 
+## replace_scope = { root = country this = country }
 country_tag_alias = {
 	subtype[variable] = {
 		variable = variable_field
@@ -63,7 +64,7 @@ enums = {
 		start_from_root = yes
 		name = {
 			enum_name = {
-                
+
             }
 		}
 	}

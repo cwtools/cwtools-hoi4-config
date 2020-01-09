@@ -63,6 +63,7 @@ country_file = {
 #	}
 #}
 enums = {
+	# country tags + country tag aliases
 	complex_enum[country_tags] = {
 		path = "game/common/country_tags"
 		start_from_root = yes
@@ -70,7 +71,14 @@ enums = {
 			enum_name = scalar
 		}
 	}
-
+	# just country tags, to make sure tag aliases cannot use other aliases
+	complex_enum[explicit_country_tags] = {
+		path = "game/common/country_tags"
+		start_from_root = yes
+		name = {
+			enum_name = scalar
+		}
+	}
 	#complex_enum[comsmetic_tags] = {
 	#	path = "game/common/countries"
 	#	path_file = "cosmetic.txt"

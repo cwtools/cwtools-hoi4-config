@@ -97,7 +97,7 @@ decision_category = {
 	}
 
 	## cardinality = 0..1
-	scripted_gui = enum[scripted_guis]
+	scripted_gui = <scripted_gui>
 }
 
 ## replace_scope = { this = country root = country from = country }

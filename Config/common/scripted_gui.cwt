@@ -1,9 +1,0 @@
-enums = {
-	complex_enum[scripted_guis] = {
-		path = "game/common/scripted_guis"
-		name = {
-			enum_name = {
-			}
-		}
-	}
-}

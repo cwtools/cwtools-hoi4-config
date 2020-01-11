@@ -9,15 +9,19 @@ types = {
 				}
 			}
 		}
+		## only_if_not = { any_context }
 		subtype[global_context] = {
 			context_type = global_context
 		}
+		## only_if_not = { any_context }
 		subtype[state_context] = {
 			context_type = selected_state_context
 		}
+		## only_if_not = { any_context }
 		subtype[country_context] = {
 			context_type = selected_country_context
 		}
+		## only_if_not = { any_context country_context state_context global_context }
 		subtype[player_context] = {
 		}
 	}

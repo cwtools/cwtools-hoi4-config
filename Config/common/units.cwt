@@ -12,6 +12,9 @@ types = {
 		subtype[ship_unit] = {
 			map_icon_category = enum[ship_map_icons]
 		}
+		subtype[support_unit] = {
+			group = support
+		}
 		subtype[land_unit] = {
 			map_icon_category = enum[land_map_icons]
 		}
@@ -36,35 +39,97 @@ unit = {
 			<equipment> = int
 		}
 		ai_priority = int
+
 		### map icon
 		map_icon_category = enum[land_map_icons]
+
 		## cardinality = 0..1
 		### Cavalry
 		cavalry = bool
+
 		## cardinality = 0..1
 		### counts against special forces limit
 		special_forces = bool
+
 		## cardinality = 0..1
 		### Marines ooh-rah
 		marines = bool
+
 		## cardinality = 0..1
 		### Mountaineers
 		mountaineers = bool
+
 		## cardinality = 0..1
 		### Paratroopers
 		can_be_parachuted = bool
+
 		## cardinality = 0..1
 		### use this equipment for speed
 		transport = <equipment>
+
 		## cardinality = 0..1
 		### division designer group
 		group = enum[unit_groups]
+
 		### unit type
 		type = {
 			## cardinality = ~1..inf
 			enum[land_units]
 		}
 	}
+
+	subtype[support_unit] = {
+		need = {
+			## cardinality = ~1..inf
+			<equipment> = int
+		}
+		ai_priority = int
+
+		### map icon
+		map_icon_category = enum[land_map_icons]
+
+		## cardinality = 0..1
+		### Cavalry
+		cavalry = bool
+
+		## cardinality = 0..1
+		### counts against special forces limit
+		special_forces = bool
+
+		## cardinality = 0..1
+		### Marines ooh-rah
+		marines = bool
+
+		## cardinality = 0..1
+		### Mountaineers
+		mountaineers = bool
+
+		## cardinality = 0..1
+		### Paratroopers
+		can_be_parachuted = bool
+
+		## cardinality = 0..1
+		### use this equipment for speed
+		transport = <equipment>
+
+		## cardinality = 0..1
+		### division designer group
+		group = enum[unit_groups]
+
+		### unit type
+		type = {
+			## cardinality = ~1..inf
+			enum[land_units]
+		}
+
+		## cardinality = 0..1
+		affects_speed = no
+
+		## cardinality = 0..1
+		### Blocks adding same unit types to a template.
+		same_support_type = <unit.support_unit>
+	}
+
 	subtype[ship_unit] = {
 		## cardinality = 0..1
 		need = {
@@ -97,6 +162,7 @@ unit = {
 		critical_part_damage_chance_mult = float
 		hit_profile_mult = float
 	}
+
 	subtype[air_unit] = {
 		need = {
 			## cardinality = ~1..inf
@@ -108,9 +174,11 @@ unit = {
 		}
 		alias_name[air_stat] = alias_match_left[air_stat]
 	}
+
 	subtype[catch] = {
 		test = int
 	}
+
 	### weighting for mixed divisions
 	priority = int
 
@@ -150,8 +218,6 @@ ship_name = {
 	ship_types = {
 		## cardinality = ~1..inf
 		<equipment.naval_equip>
-		## cardinality = ~1..inf
-		<unit.ship_unit>
 		## cardinality = ~1..inf
 		<unit.ship_unit>
 	}
@@ -273,15 +339,16 @@ enums = {
 		armor
 	}
 	enum[air_units] = {
-		fighter
+		air_transport
 		cas
-		naval_bomber
+		fighter
 		interceptor
+		missile
+		naval_bomber
+		scout_plane
+		strategic_bomber
 		suicide
 		tactical_bomber
-		strategic_bomber
-		air_transport
-		missile
 	}
 	enum[ship_units] = {
 		battle_cruiser

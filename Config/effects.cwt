@@ -365,10 +365,7 @@ alias[effect:create_country_leader] = {
 	name = scalar
 	## cardinality = 0..1
 	desc = localisation
-	## cardinality = 0..1
 	picture = scalar
-	## cardinality = 0..1
-	picture_path = scalar
 	ideology = enum[sub_ideology]
 	## cardinality = 0..1
 	expire = date_field
@@ -413,7 +410,7 @@ alias[effect:randomize_weather] = int
 ### Adds a division template to country.
 ## scope = country
 alias[effect:division_template] = {
-	name = localisation
+	name = localisation_inline
 	## cardinality = 0..1
 	division_names_group = <division_name>
 	## cardinality = 0..1
@@ -601,7 +598,7 @@ alias[effect:clr_state_flag] = value[state_flag]
 
 ### create faction of specified name.
 ## scope = country
-alias[effect:create_faction] = localisation
+alias[effect:create_faction] = localisation_inline
 
 ### add nukes to country.
 ## scope = country
@@ -1212,8 +1209,8 @@ alias[effect:complete_national_focus] = <shared_focus>
 ## scope = country
 alias[effect:set_party_name] = {
 	ideology = <ideology>
-	long_name = localisation
-	name = localisation
+	long_name = localisation_inline
+	name = localisation_inline
 }
 
 ### add extra shared building slot to state.
@@ -1276,7 +1273,7 @@ alias[effect:add_equipment_production] = {
 		## cardinality = 0..1
 		creator = enum[country_tags]
 		## cardinality = 0..1
-		version_name = localisation
+		version_name = localisation_inline
 	}
 	## cardinality = 0..1
 	name = scalar
@@ -1293,12 +1290,12 @@ alias[effect:add_equipment_production] = {
 ### adds an air ace.
 ## scope = country
 alias[effect:add_ace] = {
-	name = localisation
-	surname = localisation
-	callsign = localisation
+	name = localisation_inline
+	surname = localisation_inline
+	callsign = localisation_inline
 	type = <ace>
 	## cardinality = 0..1
-	is_female = bool
+	is_female = yes
 }
 
 ### Executes children effects on random owned state that fulfills the "limit" trigger.
@@ -1494,12 +1491,12 @@ alias[effect:add_state_modifier] = {
 ## scope = any
 alias[effect:set_province_name] = {
 	id = enum[provinces]
-	name = localisation
+	name = localisation_inline
 }
 
 ### set_state_name = <string> - Set the current states name.
 ## scope = state
-alias[effect:set_state_name] = localisation
+alias[effect:set_state_name] = localisation_inline
 
 ### reset name of a province back to localization one.
 ## scope = any
@@ -2074,14 +2071,14 @@ alias[effect:cancel_border_war] = {
 ### Set lock status for a division template.
 ## scope = country
 alias[effect:set_division_template_lock] = {
-	division_template = localisation
+	division_template = localisation_inline
 	is_locked = bool
 }
 
 ### Delete a template and its units.
 ## scope = country
 alias[effect:delete_unit_template_and_units] = {
-	division_template = localisation
+	division_template = localisation_inline
 }
 
 ### prints all variables in scope and temp variables to a file.

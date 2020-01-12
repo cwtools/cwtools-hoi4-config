@@ -247,7 +247,7 @@ ship_name = {
 }
 
 division_name = {
-	name = localisation
+	name = localisation_inline
 	for_countries = {
 		## cardinality = ~1..inf
 		enum[country_tags]
@@ -256,6 +256,7 @@ division_name = {
 	can_use = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
+	## cardinality = ~0..1
 	division_types = {
 		## cardinality = ~1..inf
 		<unit.land_unit>

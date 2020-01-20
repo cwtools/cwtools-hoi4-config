@@ -2552,7 +2552,7 @@ alias[effect:for_loop_effect] = {
 ## scope = any
 alias[effect:while_loop_effect] = {
 	## cardinality = 0..1
-	### #optional (default 'break') set this temp variable to non zero to break the loop
+	### Optional (default 'break') set this temp variable to non zero to break the loop.
 	break = scalar
 
 	### A trigger to test before each iteration.

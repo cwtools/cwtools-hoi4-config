@@ -179,9 +179,9 @@ oob = {
 		}
 		## cardinality = 0..1
 		gfx = scalar
-		## cardinality = 0..1
+		## cardinality = 1..1
 		traits = {
-			## cardinality = ~1..inf
+			## cardinality = 0..inf
 			<unit_leader_trait>
 		}
 		## cardinality = ~1..1
@@ -218,9 +218,9 @@ oob = {
 		}
 		## cardinality = 0..1
 		gfx = scalar
-		## cardinality = 0..1
+		## cardinality = 1..1
 		traits = {
-			## cardinality = ~1..inf
+			## cardinality = 0..inf
 			<unit_leader_trait>
 		}
 		## cardinality = ~1..1
@@ -260,9 +260,9 @@ oob = {
 		
 		## cardinality = 0..1
 		gfx = scalar
-		## cardinality = 0..1
+		## cardinality = 1..1
 		traits = {
-			## cardinality = ~1..inf
+			## cardinality = 0..inf
 			<unit_leader_trait>
 		}
 		## cardinality = ~1..1

@@ -147,7 +147,7 @@ alias[trigger:check_variable] = {
 	var = variable_field
 	value = variable_field
 	## cardinality = 0..1
-	### defaults to greater_than_or_equals
+	### Defaults to greater_than_or_equals
 	compare = enum[var_compares]
 }
 
@@ -1910,13 +1910,13 @@ alias[trigger:add_to_temp_array] = {
 	array = value_set[array]
 	array = value_set[variable]
 	## cardinality = 0..1
-	### optional, if not defined adds scope
+	### Optional, if not defined adds scope
 	value = variable_field
 	## cardinality = 0..1
-	### optional, if not defined adds scope
+	### Optional, if not defined adds scope
 	value = scope_field
 	## cardinality = 0..1
-	### optional, default is end. otherwise elements are shifted
+	### Optional, default is end. otherwise elements are shifted
     index = int_variable_field
 }
 
@@ -1934,9 +1934,9 @@ alias[trigger:add_to_temp_array] = {
 alias[trigger:remove_from_temp_array] = {
 	array = value_set[array]
 	array = value_set[variable]
-	### optional, use index or this. if neither it removes last element
+	### Optional, use index or this. if neither it removes last element
 	value = variable_field
-	### optional, use index or this. if neither it removes last element
+	### Optional, use index or this. if neither it removes last element
 	value = scope_field
 }
 
@@ -1945,7 +1945,7 @@ alias[trigger:remove_from_temp_array] = {
 alias[trigger:remove_from_temp_array] = {
 	array = value_set[array]
 	array = value_set[variable]
-	### optional, use value or this. if neither it removes last element
+	### Optional, use value or this. if neither it removes last element
     index = int_variable_field
 }
 
@@ -1971,9 +1971,9 @@ alias[trigger:resize_temp_array] = {
 	array = value_set[array]
 	array = value_set[variable]
 	## cardinality = 0..1
-	### optional, if not specified and array grows the new elements are set to this (default 0)
+	### Optional, if not specified and array grows the new elements are set to this (default 0)
 	value = variable_field
-	### if higher than old size, new elements are added to end. otherwise last elements are removed to match to new size
+	### If higher than old size, new elements are added to end. otherwise last elements are removed to match to new size
     size = int_variable_field
 }
 
@@ -1990,10 +1990,10 @@ alias[trigger:any_of] = {
 	array = value[array]
 	array = variable_field
 	## cardinality = 0..1
-	### optional (default 'v') current value in array will be stored in this temp variable
+	### Optional (default 'v') current value in array will be stored in this temp variable
 	value = value_set[variable]
 	## cardinality = 0..1
-	### optional (default 'i') current index in array will be stored in this temp variable
+	### Optional (default 'i') current index in array will be stored in this temp variable
 	index = value_set[variable]
 
 	alias_name[trigger] = alias_match_left[trigger]
@@ -2005,10 +2005,10 @@ alias[trigger:all_of] = {
 	array = value[array]
 	array = variable_field
 	## cardinality = 0..1
-	### optional (default 'v') current value in array will be stored in this temp variable
+	### Optional (default 'v') current value in array will be stored in this temp variable
 	value = value_set[variable]
 	## cardinality = 0..1
-	### optional (default 'i') current index in array will be stored in this temp variable
+	### Optional (default 'i') current index in array will be stored in this temp variable
 	index = value_set[variable]
 
 	alias_name[trigger] = alias_match_left[trigger]
@@ -2085,11 +2085,11 @@ alias[trigger:find_lowest_in_array] = {
 	array = variable_field
 
 	## cardinality = 0..1
-	### optional (default 'v') lowest value in array will be stored in this temp variable
+	### Optional (default 'v') lowest value in array will be stored in this temp variable
 	value = value_set[variable]
 
 	## cardinality = 0..1
-	### optional (default 'i') index of the lowest value in array will be stored in this temp variable
+	### Optional (default 'i') index of the lowest value in array will be stored in this temp variable
 	index = value_set[variable]
 }
 
@@ -2100,11 +2100,11 @@ alias[trigger:find_highest_in_array] = {
 	array = variable_field
 
 	## cardinality = 0..1
-	### optional (default 'v') highest value in array will be stored in this temp variable
+	### Optional (default 'v') highest value in array will be stored in this temp variable
 	value = value_set[variable]
 
 	## cardinality = 0..1
-	### optional (default 'i') index of the highest value in array will be stored in this temp variable
+	### Optional (default 'i') index of the highest value in array will be stored in this temp variable
 	index = value_set[variable]
 }
 
@@ -2127,7 +2127,7 @@ alias[trigger:naval_strength_comparison] = {
 	### Default is 'navy strength', the key can be overridden if wanted.
 	## cardinality = 0..1
 	tooltip = localisation
-	### default is 1
+	### Default is 1
 	## cardinality = 0..1
 	ratio = float
 	### If not specified, it will weigh all ships as 1. Otherwise only specified sub unit types will be counted.

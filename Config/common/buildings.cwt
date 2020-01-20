@@ -50,7 +50,7 @@ building = {
 	damage_factor = float
 
 	## cardinality = 0..1
-	### yes, they spelled it costal
+	### Yes, they spelled it costal
 	only_costal = bool
 	## cardinality = 0..1
 	disabled_in_dmz = bool

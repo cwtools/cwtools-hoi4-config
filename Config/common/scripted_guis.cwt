@@ -72,7 +72,7 @@ scripted_gui = {
 			entry_container = scalar
 
 			## cardinality = 0..1
-			### ai_weights of lists are stored under its list entry.
+			### Ai_weights of lists are stored under its list entry.
 			ai_weights = {
 				## cardinality = ~1..inf
 				scalar = {
@@ -283,7 +283,7 @@ scripted_gui = {
 
 	## cardinality = 0..1
 	## replace_scope = { root = country this = country }
-	### ai_enabled entry is the best optimization you can set. While initialization AI, it will check every scripted GUI for every country and will test ai_enabled with its country scope. If ai_enabled is false, AI will ignore that scripted GUI forever.
+	### Ai_enabled entry is the best optimization you can set. While initialization AI, it will check every scripted GUI for every country and will test ai_enabled with its country scope. If ai_enabled is false, AI will ignore that scripted GUI forever.
 	ai_enabled = {
 		## cardinality = ~1..inf
 		alias_name[trigger] = alias_match_left[trigger]

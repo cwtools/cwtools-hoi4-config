@@ -384,7 +384,7 @@ alias[effect:create_country_leader] = {
 ## scope = any
 alias[effect:log] = localisation
 
-### Create unit effect, just like in OOB, from effect with specified parameters: owner, prioritize_location.
+### Creates a unit effect, just like in OOB, from effect with specified parameters: owner, prioritize_location.
 ## scope = state
 #"name = \"Infantry Division\" division_template = \"Infantry Division\" start_experience_factor = 0.5 start_equipment_factor = 0.5"
 alias[effect:create_unit] = {
@@ -504,7 +504,7 @@ alias[effect:set_technology] = {
 	<technology> = int[0..1]
 }
 
-### Create navy leader for country.
+### Creates an admiral for country in scope.
 ## scope = country
 alias[effect:create_navy_leader] = {
 	name = scalar
@@ -597,7 +597,7 @@ alias[effect:set_state_flag] = {
 ## severity = warning
 alias[effect:clr_state_flag] = value[state_flag]
 
-### Create faction of specified name.
+### Create a faction of specified name.
 ## scope = country
 alias[effect:create_faction] = localisation_inline
 
@@ -1117,7 +1117,7 @@ alias[effect:set_province_controller] = enum[provinces]
 ## scope = country
 alias[effect:set_major] = bool
 
-### Create field marshal for country.
+### Creates a field marshal for country in scope.
 ## scope = country
 alias[effect:create_field_marshal] = {
 	name = scalar
@@ -1152,7 +1152,7 @@ alias[effect:create_field_marshal] = {
 	female = bool
 }
 
-### Create corps commander for country.
+### Creates a corps commander for country in scope.
 ## scope = country
 alias[effect:create_corps_commander] = {
 	## cardinality = 0..1

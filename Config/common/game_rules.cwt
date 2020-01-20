@@ -11,13 +11,13 @@ game_rule = {
 	required_dlc = enum[dlc]
 	## cardinality = 0..1
 	desc = localisation
-	### Used for filtering. A single rule can be in multiple groups
+	### Used for filtering. A single rule can be in multiple groups.
 	group = localisation
-	### Optional icon
+	### Optional icon.
 	## cardinality = 0..1
 	## severity = warning
 	icon = <spriteType>
-	### Unless other specified, the first option is the default option
+	### Unless other specified, the first option is the default option.
 	## cardinality = 0..inf
 	option = {
 		name = value_set[game_rule_options]

@@ -276,7 +276,7 @@ ai_template = {
 }
 
 ai_equipment_design_group = {
-	### Only category = naval is currently supported, starting with version 1.6.0
+	### Only category = naval is currently supported, starting with version 1.6.0.
 	category = enum[equipment_categories]
 
 	### Exclusionary list of countries that will not use this design group.

@@ -95,9 +95,9 @@ unit_leader_trait = {
 	trait_type = enum[trait_types]
 	subtype[!naval_commander] = {
 		## cardinality = 0..4
-		### Direct bonus to this skill
+		### Direct bonus to this skill.
 		enum[unit_leader_skills] = int
-		### Bonus for gaining this skill
+		### Bonus for gaining this skill.
 		## cardinality = 0..4
 		enum[unit_leader_skill_factors] = int
 	}

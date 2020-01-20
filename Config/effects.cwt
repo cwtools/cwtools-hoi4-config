@@ -517,7 +517,7 @@ alias[effect:create_navy_leader] = {
 	## cardinality = 0..1
 	## severity = warning
 	gfx = <spriteType>
-	### Sets starting traits for this leader. If empty, sets no traits. If missing, assigns a random trait
+	### Sets starting traits for this leader. If empty, sets no traits. If missing, assigns a random trait.
 	## cardinality = 1..1
 	traits = {
 		## cardinality = 0..inf
@@ -1130,7 +1130,7 @@ alias[effect:create_field_marshal] = {
 	## cardinality = 0..1
 	## severity = warning
 	gfx = <spriteType>
-	### Sets starting traits for this leader. If empty, sets no traits. If missing, assigns a random trait
+	### Sets starting traits for this leader. If empty, sets no traits. If missing, assigns a random trait.
 	## cardinality = 1..1
 	traits = {
 		## cardinality = 0..inf
@@ -1166,7 +1166,7 @@ alias[effect:create_corps_commander] = {
 	## cardinality = 0..1
 	## severity = warning
 	gfx = <spriteType>
-	### Sets starting traits for this leader. If empty, sets no traits. If missing, assigns a random trait
+	### Sets starting traits for this leader. If empty, sets no traits. If missing, assigns a random trait.
 	## cardinality = 1..1
 	traits = {
 		## cardinality = 0..inf
@@ -2281,13 +2281,13 @@ alias[effect:add_to_array] = {
 	array = value_set[array]
 	array = value_set[variable]
 	## cardinality = 0..1
-	### Optional, if not defined adds scope
+	### Optional, if not defined adds scope.
 	value = variable_field
 	## cardinality = 0..1
-	### Optional, if not defined adds scope
+	### Optional, if not defined adds scope.
 	value = scope_field
 	## cardinality = 0..1
-	### Optional, default is end. otherwise elements are shifted
+	### Optional, default is end. otherwise elements are shifted.
     index = int_variable_field
 }
 
@@ -2305,9 +2305,9 @@ alias[effect:add_to_array] = {
 alias[effect:remove_from_array] = {
 	array = value_set[array]
 	array = value_set[variable]
-	### Optional, use index or this. if neither it removes last element
+	### Optional, use index or this. If neither it removes last element.
 	value = variable_field
-	### Optional, use index or this. if neither it removes last element
+	### Optional, use index or this. If neither it removes last element.
 	value = scope_field
 }
 
@@ -2316,7 +2316,7 @@ alias[effect:remove_from_array] = {
 alias[effect:remove_from_array] = {
 	array = value_set[array]
 	array = value_set[variable]
-	### Optional, use value or this. if neither it removes last element
+	### Optional, use value or this. If neither it removes last element.
     index = int_variable_field
 }
 
@@ -2343,9 +2343,9 @@ alias[effect:resize_array] = {
 	array = value_set[array]
 	array = value_set[variable]
 	## cardinality = 0..1
-	### Optional, if not specified and array grows the new elements are set to this (default 0)
+	### Optional, if not specified and array grows the new elements are set to this (default 0).
 	value = variable_field
-	### If higher than old size, new elements are added to end. otherwise last elements are removed to match to new size
+	### If higher than old size, new elements are added to end. Otherwise last elements are removed to match to new size.
     size = int_variable_field
 }
 
@@ -2362,13 +2362,13 @@ alias[effect:add_to_temp_array] = {
 	array = value_set[array]
 	array = value_set[variable]
 	## cardinality = 0..1
-	### Optional, if not defined adds scope
+	### Optional, if not defined adds scope.
 	value = variable_field
 	## cardinality = 0..1
-	### Optional, if not defined adds scope
+	### Optional, if not defined adds scope.
 	value = scope_field
 	## cardinality = 0..1
-	### Optional, default is end. otherwise elements are shifted
+	### Optional, default is end. Otherwise elements are shifted.
     index = int_variable_field
 }
 
@@ -2386,9 +2386,9 @@ alias[effect:add_to_temp_array] = {
 alias[effect:remove_from_temp_array] = {
 	array = value_set[array]
 	array = value_set[variable]
-	### Optional, use index or this. if neither it removes last element
+	### Optional, use index or this. If neither it removes last element.
 	value = variable_field
-	### Optional, use index or this. if neither it removes last element
+	### Optional, use index or this. If neither it removes last element.
 	value = scope_field
 }
 
@@ -2397,7 +2397,7 @@ alias[effect:remove_from_temp_array] = {
 alias[effect:remove_from_temp_array] = {
 	array = value_set[array]
 	array = value_set[variable]
-	### Optional, use value or this. if neither it removes last element
+	### Optional, use value or this. If neither it removes last element.
     index = int_variable_field
 }
 
@@ -2423,9 +2423,9 @@ alias[effect:resize_temp_array] = {
 	array = value_set[array]
 	array = value_set[variable]
 	## cardinality = 0..1
-	### Optional, if not specified and array grows the new elements are set to this (default 0)
+	### Optional, if not specified and array grows the new elements are set to this (default 0).
 	value = variable_field
-	### If higher than old size, new elements are added to end. otherwise last elements are removed to match to new size
+	### If higher than old size, new elements are added to end. Otherwise last elements are removed to match to new size.
     size = int_variable_field
 }
 
@@ -2442,13 +2442,13 @@ alias[effect:for_each_loop] = {
 	array = value[array]
 	array = variable_field
 	## cardinality = 0..1
-	### Optional (default 'v') current value in array will be stored in this temp variable
+	### Optional (default 'v') current value in array will be stored in this temp variable.
 	value = value_set[variable]
 	## cardinality = 0..1
-	### Optional (default 'i') current index in array will be stored in this temp variable
+	### Optional (default 'i') current index in array will be stored in this temp variable.
 	index = value_set[variable]
 	## cardinality = 0..1
-	### Optional (default 'break') set this temp variable to non zero to break the loop
+	### Optional (default 'break') set this temp variable to non zero to break the loop.
     break = value_set[variable]
 
     alias_name[effect] = alias_match_left[effect]
@@ -2469,7 +2469,7 @@ alias[effect:for_each_scope_loop] = {
 	array = value[array]
 	array = variable_field
 	## cardinality = 0..1
-	### Optional (default 'break') set this temp variable to non zero to break the loop
+	### Optional (default 'break') set this temp variable to non zero to break the loop.
     break = scalar
 
     alias_name[effect] = alias_match_left[effect]
@@ -2481,16 +2481,15 @@ alias[effect:random_scope_in_array] = {
 	array = value[array]
 	array = variable_field
 	## cardinality = 0..1
-	### Optional (default 'break') set this temp variable to non zero to break the loop
+	### Optional (default 'break') set this temp variable to non zero to break the loop.
 	break = scalar
 	## cardinality = 0..1
-	### A trigger to limit scopes
+	### A trigger to limit scopes.
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 	alias_name[effect] = alias_match_left[effect]
 }
-
 
 ### Updates the modifiers in current scope (use if you don't want to wait for daily update to update them).
 ## scope = { state country }
@@ -2528,22 +2527,22 @@ alias[effect:add_dynamic_modifier] = {
 ## scope = any
 alias[effect:for_loop_effect] = {
 	## cardinality = 0..1
-	### (default 0) start value of loop
+	### (default 0) start value of loop.
 	start = int_variable_field
 	## cardinality = 0..1
-	### (default 0) end value of loop
+	### (default 0) end value of loop.
 	end = int_variable_field
 	## cardinality = 0..1
-	### Less_than_or_equals (default less_than) comparison type between start and end val
+	### Less_than_or_equals (default less_than) comparison type between start and end val.
 	compare_type = enum[var_compares]
 	## cardinality = 0..1
-	### (default 1) value to add to current value after each iteration
+	### (default 1) value to add to current value after each iteration.
 	add = int_variable_type
 	## cardinality = 0..1
-	### Optional (default 'v') current value of iteration will be stored in this temp variable
+	### Optional (default 'v') current value of iteration will be stored in this temp variable.
 	value = scalar
 	## cardinality = 0..1
-	### Optional (default 'break') set this temp variable to non zero to break the loop
+	### Optional (default 'break') set this temp variable to non zero to break the loop.
 	break = scalar
 
 	alias_name[effect] = alias_match_left[effect]
@@ -2556,7 +2555,7 @@ alias[effect:while_loop_effect] = {
 	### #optional (default 'break') set this temp variable to non zero to break the loop
 	break = scalar
 
-	### A trigger to test before each iteration
+	### A trigger to test before each iteration.
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
@@ -2597,11 +2596,11 @@ alias[effect:find_lowest_in_array] = {
 	array = variable_field
 
 	## cardinality = 0..1
-	### Optional (default 'v') lowest value in array will be stored in this temp variable
+	### Optional (default 'v') lowest value in array will be stored in this temp variable.
 	value = value_set[variable]
 
 	## cardinality = 0..1
-	### Optional (default 'i') index of the lowest value in array will be stored in this temp variable
+	### Optional (default 'i') index of the lowest value in array will be stored in this temp variable.
 	index = value_set[variable]
 }
 
@@ -2612,11 +2611,11 @@ alias[effect:find_highest_in_array] = {
 	array = variable_field
 
 	## cardinality = 0..1
-	### Optional (default 'v') highest value in array will be stored in this temp variable
+	### Optional (default 'v') highest value in array will be stored in this temp variable.
 	value = value_set[variable]
 
 	## cardinality = 0..1
-	### Optional (default 'i') index of the highest value in array will be stored in this temp variable
+	### Optional (default 'i') index of the highest value in array will be stored in this temp variable.
 	index = value_set[variable]
 }
 

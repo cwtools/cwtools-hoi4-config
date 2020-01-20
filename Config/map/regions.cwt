@@ -33,10 +33,10 @@ strategic_region = {
 		## cardinality = 1..inf
 		<static_modifier> = always
 	}
-	### Black magic
+	### Black magic.
 	weather = {
 		## cardinality = 0..inf
-		### Periods of weather, months in vanilla
+		### Periods of weather, months in vanilla.
 		period = {
 			between = {
 				### Day.month (both start at 0)

@@ -76,27 +76,31 @@ ideology = {
 
 enums = {
 	enum[game_rules] = {
-		can_declare_war_on_same_ideology
-		can_lower_tension
-		can_only_justify_war_on_threat_country
-		can_guarantee_other_ideologies
-		can_force_government
-		can_puppet
-		can_send_volunteers
 		can_be_called_to_war
+		can_be_spymaster
 		can_boost_other_ideologies
+		can_create_collaboration_government
 		can_create_factions
+		can_declare_war_on_same_ideology
 		can_declare_war_without_wargoal_when_in_war
 		can_decline_call_to_war
+		can_force_government
 		can_generate_female_aces
+		can_guarantee_other_ideologies
 		can_join_factions
 		can_join_factions_not_allowed_diplomacy
 		can_join_opposite_factions
+		can_lower_tension
 		can_not_declare_war
 		can_occupy_non_war
+		can_only_justify_war_on_threat_country
+		can_puppet
+		can_send_volunteers
 		can_use_kamikaze_pilots
+		contributes_operatives
 		units_deployed_to_overlord
 	}
+
 	enum[ai_ideology] = {
 		# most aggressive
 		ai_fascist
@@ -107,6 +111,7 @@ enums = {
 		# passive
 		ai_neutral
 	}
+
 	complex_enum[sub_ideology] = {
 		path = "game/common/ideologies"
 		name = {

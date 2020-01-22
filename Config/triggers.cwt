@@ -2203,3 +2203,7 @@ alias[trigger:enum[unit_types]] = float
 alias[trigger:hidden_trigger] = {
 	alias_name[trigger] = alias_match_left[trigger]
 }
+
+### Check controller for province.
+## scope = country
+alias[trigger:controls_province] = enum[provinces]

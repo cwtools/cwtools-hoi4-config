@@ -226,11 +226,24 @@ alias[effect:random_enemy_country] = {
 ### fires a country event.
 ## scope = country
 alias[effect:country_event] = {
+	### The event to fire.
 	id = <event.country_event>
+
+	### The number of time to wait before firing the event, where a month is treated as 30 days.
 	## cardinality = 0..1
 	enum[hours_days_months] = int
+
+	### A random amount of hours to be added to the delay before firing, from 0 up to but not including random_hours. Equivalent to random_hours. Preserverd for backwards compatibility.
 	## cardinality = 0..1
 	random = int
+
+	### A random amount of hours to be added to the delay before firing, from 0 up to but not including random_hours.
+	## cardinality = 0..1
+	random_hours = int
+
+	### A random amount of days to be added to the delay before firing, from 0 up to but one hour less than random_days.
+	## cardinality = 0..1
+	random_days = int
 }
 
 ### fires a country event.
@@ -240,11 +253,25 @@ alias[effect:country_event] = <event.country_event>
 ### fires a state event.
 ## scope = state
 alias[effect:state_event] = {
+	### The event to fire.
 	id = <event.state_event>
+
+	### The number of time to wait before firing the event, where a month is treated as 30 days.
 	## cardinality = 0..1
 	enum[hours_days_months] = int
+
+	### A random amount of hours to be added to the delay before firing, from 0 up to but not including random_hours. Equivalent to random_hours. Preserverd for backwards compatibility.
 	## cardinality = 0..1
 	random = int
+
+	### A random amount of hours to be added to the delay before firing, from 0 up to but not including random_hours.
+	## cardinality = 0..1
+	random_hours = int
+
+	### A random amount of days to be added to the delay before firing, from 0 up to but one hour less than random_days.
+	## cardinality = 0..1
+	random_days = int
+
 	trigger_for = scope[country]
 	trigger_for = enum[country_tags]
 }
@@ -518,7 +545,7 @@ alias[effect:create_navy_leader] = {
 	## severity = warning
 	gfx = <spriteType>
 	### Sets starting traits for this leader. If empty, sets no traits. If missing, assigns a random trait
-	## cardinality = 1..1
+	## cardinality = ~1..1
 	traits = {
 		## cardinality = 0..inf
 		<unit_leader_trait>
@@ -772,11 +799,24 @@ alias[effect:every_neighbor_state] = {
 ### fires a news event.
 ## scope = country
 alias[effect:news_event] = {
+	### The event to fire.
 	id = <event.news_event>
+
+	### The number of time to wait before firing the event, where a month is treated as 30 days.
 	## cardinality = 0..1
 	enum[hours_days_months] = int
+
+	### A random amount of hours to be added to the delay before firing, from 0 up to but not including random_hours. Equivalent to random_hours. Preserverd for backwards compatibility.
 	## cardinality = 0..1
 	random = int
+
+	### A random amount of hours to be added to the delay before firing, from 0 up to but not including random_hours.
+	## cardinality = 0..1
+	random_hours = int
+
+	### A random amount of days to be added to the delay before firing, from 0 up to but one hour less than random_days.
+	## cardinality = 0..1
+	random_days = int
 }
 
 ### fires a news event.
@@ -1167,7 +1207,7 @@ alias[effect:create_corps_commander] = {
 	## severity = warning
 	gfx = <spriteType>
 	### Sets starting traits for this leader. If empty, sets no traits. If missing, assigns a random trait
-	## cardinality = 1..1
+	## cardinality = ~1..1
 	traits = {
 		## cardinality = 0..inf
 		<unit_leader_trait>
@@ -2163,11 +2203,24 @@ alias[effect:round_variable] = variable_field
 ### fires a unit leader event for owner country.
 ## scope = unit_leader
 alias[effect:unit_leader_event] = {
+	### The event to fire.
 	id = <event.unit_leader_event>
+
+	### The number of time to wait before firing the event, where a month is treated as 30 days.
 	## cardinality = 0..1
 	enum[hours_days_months] = int
+
+	### A random amount of hours to be added to the delay before firing, from 0 up to but not including random_hours. Equivalent to random_hours. Preserverd for backwards compatibility.
 	## cardinality = 0..1
 	random = int
+
+	### A random amount of hours to be added to the delay before firing, from 0 up to but not including random_hours.
+	## cardinality = 0..1
+	random_hours = int
+
+	### A random amount of days to be added to the delay before firing, from 0 up to but one hour less than random_days.
+	## cardinality = 0..1
+	random_days = int
 }
 
 ### fires a unit leader event for owner country.
@@ -2769,3 +2822,7 @@ alias[effect:add_ai_strategy] = {
 ### Adds legitimacy to scope country. Value has to be 0-100.
 ## scope = country
 alias[effect:add_legitimacy] = int[-100..100]
+
+### Kills a ideology leader and removes him completely, making the next in line the new party leader.
+## scope = country
+alias[effect:retire_ideology_leader] = <ideology>

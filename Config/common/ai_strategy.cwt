@@ -178,16 +178,17 @@ enums = {
 		contain
 		declare_war
 		dont_defend_ally_borders
+		force_defend_ally_borders
 		ignore
 		ignore_claim
 		influence
 		invade
 		occupation_policy
+		prepare_for_war
 		protect
+		send_lend_lease_desire
 		send_volunteers_desire
 		support
-		force_defend_ally_borders
-		prepare_for_war
 	}
 	enum[equipment_strats] = {
 		equipment_variant_production_factor

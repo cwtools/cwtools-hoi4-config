@@ -70,6 +70,12 @@ scripted_gui = {
 			change_scope = bool
 			### GUI container name of the entry.
 			entry_container = scalar
+			## cardinality = 0..1
+			### current index and value is also stored as temp variables and can be used in effects/triggers if wanted. You can rename them to another temp variables
+			index = scalar
+			## cardinality = 0..1
+			### current index and value is also stored as temp variables and can be used in effects/triggers if wanted. You can rename them to another temp variables
+			value = scalar
 
 			## cardinality = 0..1
 			### ai_weights of lists are stored under its list entry.

@@ -2524,7 +2524,7 @@ alias[effect:add_dynamic_modifier] = {
 	scope = scope[country]
 }
 
-### Runs a same effects through a loop. example will run the effects for value_name = -3, 0, 3, 6, 9 and then terminate.
+### Runs a same effects through a loop. example will run the effects for value_name = -3, 0, 3, 6, 9 and then terminate. Warning: will stop after reaching MAX_EFFECT_ITERATION define iterations - default 1000. Consider using for_each_loop instead.
 ## scope = any
 alias[effect:for_loop_effect] = {
 	## cardinality = 0..1
@@ -2549,7 +2549,7 @@ alias[effect:for_loop_effect] = {
 	alias_name[effect] = alias_match_left[effect]
 }
 
-### Runs the effect as long as a trigger is true.
+### Runs the effect as long as a trigger is true. Warning: will stop after reaching MAX_EFFECT_ITERATION define iterations - default 1000.
 ## scope = any
 alias[effect:while_loop_effect] = {
 	## cardinality = 0..1

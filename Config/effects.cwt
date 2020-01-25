@@ -365,6 +365,7 @@ alias[effect:create_country_leader] = {
 	name = scalar
 	## cardinality = 0..1
 	desc = localisation
+	## cardinality = ~1..1
 	picture = scalar
 	ideology = enum[sub_ideology]
 	## cardinality = 0..1

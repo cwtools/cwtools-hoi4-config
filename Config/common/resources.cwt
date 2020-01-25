@@ -6,10 +6,10 @@ types = {
 }
 
 resource = {
-	### icon frame from file
+	### Icon frame from file.
 	icon_frame = int
-	### 1 unit of resource costs this many civ factories
+	### 1 unit of resource costs this many civ factories.
 	cic = float
-	### this many convoys to convey one unit of resource
+	### This many convoys to convey one unit of resource.
 	convoys = float
 }

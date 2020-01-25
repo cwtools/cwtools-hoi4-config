@@ -60,7 +60,7 @@ focus_tree = {
 		relative_position_id = <focus>
 		## cardinality = 0..1
 		relative_position_id = <shared_focus>
-		### used for focuses that can change title/desc
+		### Used for focuses that can change title/desc.
 		## cardinality = 0..1
 		dynamic = bool
 		## cardinality = 0..1
@@ -161,7 +161,7 @@ shared_focus = {
 	relative_position_id = <shared_focus>
 	## cardinality = 0..1
 	relative_position_id = <focus>
-	### used for focuses that can change title/desc
+	### Used for focuses that can change title/desc.
 	## cardinality = 0..1
 	dynamic = bool
 	## cardinality = 0..1

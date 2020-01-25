@@ -27,44 +27,44 @@ technology = {
 	xp_research_bonus = float
 
 	## cardinality = 0..1
-	### hides technology unless trigger is true
+	### Hides technology unless trigger is true.
 	allow = {
 		## cardinality = ~1..inf
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 	## cardinality = 0..1
-	### hides technology and children unless trigger is true
+	### Hides technology and children unless trigger is true.
 	allow_branch = {
 		## cardinality = ~1..inf
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 	## cardinality = 0..1
-	### make technology exclusive with techs named
+	### Make technology exclusive with techs named.
 	xor = {
 		## cardinality = ~1..inf
 		<technology>
 	}
 	## cardinality = 0..1
-	### enables listed units
+	### Enables listed units.
 	enable_subunits = {
 		## cardinality = ~1..inf
 		<unit>
 	}
 	## cardinality = 0..1
-	### enables listed equipment
+	### Enables listed equipment.
 	enable_equipments = {
 		## cardinality = ~1..inf
 		<equipment>
 	}
 	## cardinality = 0..inf
-	### enables listed equipment modules
+	### Enables listed equipment modules.
 	enable_equipment_modules = {
 		## cardinality = ~1..inf
 		<module>
 	}
 
 	## cardinality = 0..1
-	### sets max level of named building
+	### Sets max level of named building.
 	enable_building = {
 		building = <building>
 		level = int
@@ -72,14 +72,14 @@ technology = {
 	## cardinality = 0..inf
 	enable_tactic = <combat_tactic>
 	## cardinality = 0..1
-	### technologies directly dependent on this tech
+	### Technologies directly dependent on this tech.
 	sub_technologies = {
 		# vanila defines limit sub techs to three
 		## cardinality = ~1..3
 		<technology>
 	}
 	## cardinality = 0..inf
-	### techs following this
+	### Techs following this.
 	path = {
 		## cardinality = 0..1
 		leads_to_tech = <technology>
@@ -90,29 +90,29 @@ technology = {
 		## cardinality = ~1..inf
 		<technology> = int
 	}
-	### multiplier to base tech cost in defines.lua
+	### Multiplier to base tech cost in defines.lua
 	research_cost = float
 	## cardinality = 0..1
-	### when ahead of time penalty reaches 0
+	### When ahead of time penalty reaches 0.
 	start_year = int
 	## cardinality = 0..inf
-	### which folder(s) tech appears in
+	### Which folder(s) tech appears in.
 	folder = {
 		name = enum[tech_folder]
 		position = { x = int y = int }
 	}
 	## cardinality = 0..1
-	### is a doctrine
+	### Is a doctrine.
 	doctrine = bool
 	## cardinality = 0..1
-	### ai weights for research
+	### AI weights for research.
 	ai_will_do = {
 		## cardinality = 0..1
 		enum[base_factor] = float
 		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	}
 	## cardinality = 0..1
-	### modifies ai willingness for categories
+	### Modifies AI willingness for categories.
 	ai_research_weights = {
 		## cardinality = 0..inf
 		enum[ai_research_areas] = float
@@ -124,7 +124,7 @@ technology = {
 		<resource> = float
 	}
 	## cardinality = 0..1
-	### categories for tech
+	### Categories for tech.
 	categories = {
 		## cardinality = ~1..inf
 		enum[tech_category]
@@ -183,7 +183,7 @@ tech_sharing_group = {
 	## cardinality = 0..1
 	is_faction_sharing = yes
 	## cardinality = 0..1
-	### categories for tech
+	### Categories for tech.
 	categories = {
 		## cardinality = ~1..inf
 		enum[tech_category]

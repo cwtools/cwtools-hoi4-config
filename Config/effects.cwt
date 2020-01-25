@@ -518,9 +518,10 @@ alias[effect:create_navy_leader] = {
 	## cardinality = 0..1
 	## severity = warning
 	gfx = <spriteType>
-	## cardinality = 0..1
+	### Sets starting traits for this leader. If empty, sets no traits. If missing, assigns a random trait
+	## cardinality = 1..1
 	traits = {
-		## cardinality = ~1..inf
+		## cardinality = 0..inf
 		<unit_leader_trait>
 	}
 	## cardinality = ~1..1
@@ -1130,9 +1131,10 @@ alias[effect:create_field_marshal] = {
 	## cardinality = 0..1
 	## severity = warning
 	gfx = <spriteType>
-	## cardinality = 0..1
+	### Sets starting traits for this leader. If empty, sets no traits. If missing, assigns a random trait
+	## cardinality = 1..1
 	traits = {
-		## cardinality = ~1..inf
+		## cardinality = 0..inf
 		<unit_leader_trait>
 	}
 	## cardinality = ~1..1
@@ -1165,9 +1167,10 @@ alias[effect:create_corps_commander] = {
 	## cardinality = 0..1
 	## severity = warning
 	gfx = <spriteType>
-	## cardinality = 0..1
+	### Sets starting traits for this leader. If empty, sets no traits. If missing, assigns a random trait
+	## cardinality = 1..1
 	traits = {
-		## cardinality = ~1..inf
+		## cardinality = 0..inf
 		<unit_leader_trait>
 	}
 	## cardinality = ~1..1
@@ -2522,21 +2525,21 @@ alias[effect:add_dynamic_modifier] = {
 	scope = scope[country]
 }
 
-### Runs a same effects through a loop. example will run the effects for value_name = -3, 0, 3, 6, 9 and then terminate.
+### Runs a same effects through a loop. example will run the effects for value_name = -3, 0, 3, 6, 9 and then terminate. Warning: will stop after reaching MAX_EFFECT_ITERATION define iterations - default 1000. Consider using for_each_loop instead.
 ## scope = any
 alias[effect:for_loop_effect] = {
 	## cardinality = 0..1
 	### (default 0) start value of loop
-	start = int_variable_field
+	start = variable_field
 	## cardinality = 0..1
 	### (default 0) end value of loop
-	end = int_variable_field
+	end = variable_field
 	## cardinality = 0..1
-	### less_than_or_equals (default less_than) comparison type between start and end val
-	compare_type = enum[var_compares]
+	### (default less_than) comparison type between start and end val (mistakenly written as compare_type in documentation)
+	compare = enum[var_compares]
 	## cardinality = 0..1
 	### (default 1) value to add to current value after each iteration
-	add = int_variable_type
+	add = variable_type
 	## cardinality = 0..1
 	### optional (default 'v') current value of iteration will be stored in this temp variable
 	value = scalar
@@ -2547,7 +2550,7 @@ alias[effect:for_loop_effect] = {
 	alias_name[effect] = alias_match_left[effect]
 }
 
-### Runs the effect as long as a trigger is true.
+### Runs the effect as long as a trigger is true. Warning: will stop after reaching MAX_EFFECT_ITERATION define iterations - default 1000.
 ## scope = any
 alias[effect:while_loop_effect] = {
 	## cardinality = 0..1

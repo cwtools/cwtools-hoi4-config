@@ -31,7 +31,7 @@ ideology = {
 			scalar
 		}
 
-		### RGB color of ideology
+		### RGB color of ideology.
 		color = {
 			## cardinality = 3..3
 			int
@@ -50,7 +50,7 @@ ideology = {
 		war_impact_on_world_tension = float
 		faction_impact_on_world_tension = float
 
-		### modifiers applied to countries with this ideology
+		### Modifiers applied to countries with this ideology.
 		## push_scope = country
 		modifiers = {
 			## cardinality = ~1..inf
@@ -58,7 +58,7 @@ ideology = {
 		}
 
 		## push_scope = country
-		### modifiers applied to countries with a faction leader of this ideology
+		### Modifiers applied to countries with a faction leader of this ideology.
 		faction_modifiers = {
 			## cardinality = ~1..inf
 			alias_name[modifier] = alias_match_left[modifier]
@@ -69,7 +69,7 @@ ideology = {
 		## cardinality = 0..1
 		can_collaborate = bool
 		## cardinality = 0..1
-		### AI playstyle
+		### AI playstyle.
 		enum[ai_ideology] = bool
 	}
 }

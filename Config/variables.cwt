@@ -32,7 +32,7 @@ values = {
 		### Host of this country's government in exile.
 		host
 
-		### ID
+		### ID.
 		id
 
 		### Legitimacy of scope country. -1 if not an exile.
@@ -101,7 +101,7 @@ values = {
 		### Number of ships controlled in country, ship type is defined in target. Example num_ships_with_type@carrier.
 		num_ships_with_type@<unit>
 
-		### Number of equipment required in armies of the country, equipment type token is defined in target. Example num_target_equipment_in_armies@infantry_equipment
+		### Number of equipment required in armies of the country, equipment type token is defined in target. Example num_target_equipment_in_armies@infantry_equipment.
 		num_target_equipment_in_armies@<equipment>
 
 		### Number of equipment required in armies of the country in thousands, equipment type token is defined in target. Example num_target_equipment_in_armies_k@infantry_equipment.

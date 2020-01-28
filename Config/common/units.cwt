@@ -30,7 +30,7 @@ types = {
 }
 
 unit = {
-	### 3d map asset
+	### 3D map asset.
 	sprite = scalar
 	#enum[unit_sprites]
 	subtype[land_unit] = {
@@ -89,34 +89,33 @@ unit = {
 		map_icon_category = enum[land_map_icons]
 
 		## cardinality = 0..1
-		### Cavalry
+		### Cavalry.
 		cavalry = bool
 
 		## cardinality = 0..1
-		### counts against special forces limit
+		### Counts against special forces limit.
 		special_forces = bool
 
 		## cardinality = 0..1
-		### Marines ooh-rah
+		### Marines ooh-rah.
 		marines = bool
 
 		## cardinality = 0..1
-		### Mountaineers
+		### Mountaineers.
 		mountaineers = bool
 
 		## cardinality = 0..1
-		### Paratroopers
+		### Paratroopers.
 		can_be_parachuted = bool
 
 		## cardinality = 0..1
-		### use this equipment for speed
+		### Use this equipment for speed.
 		transport = <equipment>
 
 		## cardinality = 0..1
-		### division designer group
+		### Division designer group.
 		group = enum[unit_groups]
-
-		### unit type
+		### Unit type.
 		type = {
 			## cardinality = ~1..inf
 			enum[land_units]
@@ -148,7 +147,7 @@ unit = {
 				<module> = int
 			}
 		}
-		### map icon
+		### Map icon.
 		map_icon_category = enum[ship_map_icons]
 		type = {
 			## cardinality = ~1..inf
@@ -178,11 +177,10 @@ unit = {
 	subtype[catch] = {
 		test = int
 	}
-
-	### weighting for mixed divisions
+	### Weighting for mixed divisions.
 	priority = int
 
-	### whether needs tech to create
+	### Whether needs tech to create.
 	active = bool
 
 	alias_name[unit_stat] = alias_match_left[unit_stat]

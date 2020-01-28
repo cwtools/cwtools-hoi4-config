@@ -100,7 +100,7 @@ idea = {
 				## cardinality = ~1..inf
 				alias_name[effect] = alias_match_left[effect]
 			}
-			### While it is used in vanilla and doesn't throw errors, I can't get it to work reliably so I suspect there is some hard-coded strangeness going on here
+			### While it is used in vanilla and doesn't throw errors, I can't get it to work reliably so I suspect there is some hard-coded strangeness going on here.
 			## cardinality = 0..1
 			do_effect = {
 				## cardinality = ~1..inf
@@ -218,7 +218,7 @@ idea = {
 				alias_name[effect] = alias_match_left[effect]
 			}
 
-			### While it is used in vanilla and doesn't throw errors, I can't get it to work reliably so I suspect there is some hard-coded strangeness going on here
+			### While it is used in vanilla and doesn't throw errors, I can't get it to work reliably so I suspect there is some hard-coded strangeness going on here.
 			## cardinality = 0..1
 			do_effect = {
 				## cardinality = ~1..inf

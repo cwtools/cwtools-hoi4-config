@@ -2207,3 +2207,15 @@ alias[trigger:hidden_trigger] = {
 ### Check controller for province.
 ## scope = country
 alias[trigger:controls_province] = enum[provinces]
+
+### Has an occupation modifier that applies to average resistance/compliance.
+## scope = country
+alias[trigger:has_core_occupation_modifier] = {
+	occupied_country_tag = scope[country]
+	occupied_country_tag = enum[country_tags]
+	modifier = <resistance_compliance_modifier>
+}
+
+### Has country created an Intelligence Agency.
+## scope = country
+alias[trigger:has_intelligence_agency] = bool

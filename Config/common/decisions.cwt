@@ -241,6 +241,9 @@ decision = {
 		}
 
 		## cardinality = 0..1
+		targets_dynamic = bool
+
+		## cardinality = 0..1
 		target_root_trigger = {
 			alias_name[trigger] = alias_match_left[trigger]
 		}

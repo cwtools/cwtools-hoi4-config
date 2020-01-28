@@ -230,11 +230,15 @@ idea = {
 				## cardinality = ~1..10
 				enum[tech_category] = float
 			}
+
 			## cardinality = 0..1
 			on_add = {
 				## cardinality = ~1..inf
 				alias_name[effect] = alias_match_left[effect]
 			}
+
+			## cardinality = 0..1
+			ledger = enum[ledgers]
 		}
 	}
 }
@@ -244,6 +248,13 @@ enums = {
 		hidden_ideas
 		country
 	}
+
+	enum[ledgers] = {
+		army
+		navy
+		air
+	}
+
 	complex_enum[idea_categories] = {
 		path = "game/common/idea_tags"
 		name = {
@@ -252,6 +263,7 @@ enums = {
 			}
 		}
 	}
+
 	complex_enum[idea_name] = {
 		path = "game/common/ideas"
 		name = {

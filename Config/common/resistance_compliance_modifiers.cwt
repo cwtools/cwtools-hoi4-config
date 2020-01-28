@@ -1,0 +1,70 @@
+types = {
+	type[resistance_compliance_modifier] = {
+		path = "game/common/resistance_compliance_modifiers"
+	}
+}
+
+resistance_compliance_modifier = {
+	type = enum[resistance_compliance_modifier_types]
+
+	### GFX entry & frame for law entry icon. both frame and gfx name can be ommited, in that case it will default to GFX_occupation_modifier_strip
+	icon = <spriteType>
+
+	### Small icon will be used for progress bars (GFX_occupation_modifier_small_strip is default gfx)
+	small_icon = <spriteType>
+
+	### Percentage threshold to enable.
+	threshold = int
+
+	### Margin to disable the modifier back. It will be disabled if current value < threshold - margin.
+	margin = int
+
+	### If visible is false, the modifier will not show up anywhere.
+	## cardinality = 0..1
+	allowed = {
+		## cardinality = ~1..inf
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+
+	### If enabled is false, the modifier won't be enabled even if it passes threshold (and will be disabled if it was enabled before).
+	## cardinality = 0..1
+	enabled = {
+		## cardinality = ~1..inf
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+
+	## cardinality = 0..1
+	alert_level = high
+
+	## cardinality = 0..1
+	alert_margin = int
+
+	### Will be added to state if modifier is enabled.
+	state_modifier = {
+		## cardinality = ~1..inf
+		alias_name[modifier] = alias_match_left[modifier]
+	}
+
+	### The effect will be called when modifier is enabled.
+	## cardinality = 0..1
+	on_enable = {
+		## cardinality = ~1..inf
+		alias_name[effect] = alias_match_left[effect]
+	}
+
+	### The effect will be called when modifier is disabled.
+	## cardinality = 0..1
+	on_disable = {
+		## cardinality = ~1..inf
+		alias_name[effect] = alias_match_left[effect]
+	}
+}
+
+enums = {
+	enum[resistance_compliance_modifier_types] = {
+		state_resistance_modifier
+		state_compliance_modifier
+		core_resistance_modifier
+		core_compliance_modifier
+	}
+}

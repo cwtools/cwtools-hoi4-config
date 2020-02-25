@@ -122,11 +122,11 @@ scripted_gui = {
 		## cardinality = 0..inf
 		### Limits AI to selected scopes. When used multiple times, will use all matching scopes.
 		ai_test_scopes = enum[ai_test_scope_country]
-		
+
 		## cardinality = 0..inf
 		### Limits AI to selected scopes. When used multiple times, will use all matching scopes.
 		ai_test_scopes = enum[ai_test_scope_state]
-		
+
 		## cardinality = 0..1
 		### AI makes a final check on each target scope:ai_check_scope. If this trigger is false, AI will ignore that scope.
 		ai_check_scope = {
@@ -145,13 +145,13 @@ scripted_gui = {
 				alias_name[effect] = alias_match_left[effect]
 			}
 		}
-		
+
 		## cardinality = 0..1
 		## replace_scope = { root = country this = no_scope }
 		visible = {
 			alias_name[trigger] = alias_match_left[trigger]
 		}
-		
+
 		## cardinality = 0..1
 		triggers = {
 			## cardinality = ~1..inf
@@ -161,15 +161,15 @@ scripted_gui = {
 				alias_name[trigger] = alias_match_left[trigger]
 			}
 		}
-		
+
 		## cardinality = 0..inf
 		### Limits AI to selected scopes. When used multiple times, will use all matching scopes.
 		ai_test_scopes = enum[ai_test_scope_country]
-		
+
 		## cardinality = 0..inf
 		### Limits AI to selected scopes. When used multiple times, will use all matching scopes.
 		ai_test_scopes = enum[ai_test_scope_state]
-		
+
 		## cardinality = 0..1
 		## replace_scope = { root = country this = no_scope }
 		### AI makes a final check on each target scope:ai_check_scope. If this trigger is false, AI will ignore that scope.
@@ -186,7 +186,7 @@ scripted_gui = {
 		visible = {
 			alias_name[trigger] = alias_match_left[trigger]
 		}
-		
+
 		## cardinality = 0..1
 		effects = {
 			## cardinality = ~1..inf
@@ -196,7 +196,7 @@ scripted_gui = {
 				alias_name[effect] = alias_match_left[effect]
 			}
 		}
-		
+
 		## cardinality = 0..1
 		triggers = {
 			## cardinality = ~1..inf
@@ -214,7 +214,7 @@ scripted_gui = {
 		visible = {
 			alias_name[trigger] = alias_match_left[trigger]
 		}
-		
+
 		## cardinality = 0..1
 		effects = {
 			## cardinality = ~1..inf
@@ -224,7 +224,7 @@ scripted_gui = {
 				alias_name[effect] = alias_match_left[effect]
 			}
 		}
-		
+
 		## cardinality = 0..1
 		triggers = {
 			## cardinality = ~1..inf
@@ -234,11 +234,11 @@ scripted_gui = {
 				alias_name[trigger] = alias_match_left[trigger]
 			}
 		}
-		
+
 		## cardinality = 0..inf
 		### Limits AI to selected scopes. When used multiple times, will use all matching scopes.
 		ai_test_scopes = enum[ai_test_scope_country]
-		
+
 		## cardinality = 0..1
 		## replace_scope = { root = country this = country }
 		### AI makes a final check on each target scope:ai_check_scope. If this trigger is false, AI will ignore that scope.
@@ -254,7 +254,7 @@ scripted_gui = {
 		visible = {
 			alias_name[trigger] = alias_match_left[trigger]
 		}
-		
+
 		## cardinality = 0..1
 		effects = {
 			## cardinality = ~1..inf
@@ -264,7 +264,7 @@ scripted_gui = {
 				alias_name[effect] = alias_match_left[effect]
 			}
 		}
-		
+
 		## cardinality = 0..1
 		triggers = {
 			## cardinality = ~1..inf
@@ -277,7 +277,7 @@ scripted_gui = {
 		## cardinality = 0..inf
 		### Limits AI to selected scopes. When used multiple times, will use all matching scopes.
 		ai_test_scopes = enum[ai_test_scope_state]
-		
+
 		## cardinality = 0..1
 		## replace_scope = { root = country this = state }
 		### AI makes a final check on each target scope:ai_check_scope. If this trigger is false, AI will ignore that scope.
@@ -423,7 +423,7 @@ enums = {
 		selected_country_view_info #(same as before but only visible if info tab is clicked)
 		selected_country_view_diplomacy #(same as before but only visible if info diplomacy is clicked)
 	}
-	
+
 	enum[ai_test_scope_country] = {
 		test_self_country
 		test_enemy_countries

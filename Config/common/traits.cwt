@@ -91,6 +91,10 @@ country_leader_trait = {
 ## push_scope = unit_leader
 unit_leader_trait = {
 	type = enum[unit_leader_types]
+	type = {
+		## cardinality = ~1..inf
+		enum[unit_leader_types]
+	}
 	## cardinality = 0..1
 	trait_type = enum[trait_types]
 	subtype[!naval_commander] = {

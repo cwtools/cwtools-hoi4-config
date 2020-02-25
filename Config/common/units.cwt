@@ -325,6 +325,7 @@ enums = {
 		carrier
 		convoy
 		paratroopers
+		scout_plane
 	}
 	enum[land_units] = {
 		infantry

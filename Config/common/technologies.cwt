@@ -15,6 +15,9 @@ types = {
 ## replace_scope = { this = country root = country }
 technology = {
 	## cardinality = 0..1
+	doctrine_name = localisation
+
+	## cardinality = 0..1
 	show_equipment_icon = bool
 	## cardinality = 0..1
 	desc = localisation

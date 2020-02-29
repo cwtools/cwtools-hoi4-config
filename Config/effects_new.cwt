@@ -1,0 +1,255 @@
+###Effect not shown in tooltips
+## scopes = { STATE COUNTRY }
+alias[effect:hidden_effect] = replace_me
+###Grant experience to the scoped in unit leader. Cannot be used to remove experience.The unit leader is promoted to the next skill level if applicable.Example:gain_xp = 5
+## scopes = { UNIT_LEADER }
+alias[effect:gain_xp] = replace_me
+###delete units of a country. no tooltip is generated. example: Example:delete_unit = { 	template = template_name # can be filtered a specific template 	id = 42 # can be filtered to a given id in create unit effect 	state = 64 # can be filtered by a given state 	disband = yes # default is no. if set to yes the game will refund equipment/manpower}
+## scopes = { COUNTRY }
+alias[effect:delete_unit] = replace_me
+###Free an operativeCan be used from a scope and a target that is either a country or a unit leader.GER = { free_operative = PREV } # where PREV is an operative (unit leader)free_operative = { captured_by = GER } # where the scope is an unit leader
+## scopes = { COUNTRY UNIT_LEADER }
+alias[effect:free_operative] = replace_me
+###Free a random captured operative of a certain tag by a certain tagCan be used from a country scope of the operative in question.`all` is optional, default value is no - if set to yes it will free all operatives captured by the target countryGER = { free_random_operative = { all = yes captured_by = ENG } }
+## scopes = { COUNTRY }
+alias[effect:free_random_operative] = replace_me
+###create operative for countrycreate_operative_leader = {	bypass_recruitment = no # whether the operative is directly added to the list of available operatives 	available_to_spy_master = yes # whether the operative can be recruited by the spy master. Only makes sense if bypass_recruitment is 'no'.	portrait_tag_override = TAG # when selectiong the portrait for the operative, consider that tag instead of the country the operative will operate for	# Additionally supports the common token to other create_x_leader effects}
+## scopes = { COUNTRY }
+alias[effect:create_operative_leader] = replace_me
+###Capture an operativeCan be used from a scope and a target that is either a country or a unit leader.Examples:GER = {    capture_operative = PREV  # where PREV is an operative (unit leader)    # or    capture_operative = {        operative = PREV        ignore_death_chance = yes  # optional: whether the death chance on capture should be ignored    }}capture_operative = { captured_by = GER } # where the scope is an unit leader
+## scopes = { COUNTRY UNIT_LEADER }
+alias[effect:capture_operative] = replace_me
+###Executes children effects on a random operatives that fulfills the "limit" trigger.
+## scopes = { COUNTRY OPERATION }
+alias[effect:random_operative] = {
+    ## cardinality = 0..1
+	limit = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	alias_name[effect] = alias_match_left[effect]
+}
+
+###Executes children effects on operatives that fulfills the "limit" trigger. tooltip=key can be added to override tooltip title
+## scopes = { COUNTRY OPERATION }
+alias[effect:every_operative] = {
+    ## cardinality = 0..1
+	limit = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	alias_name[effect] = alias_match_left[effect]
+}
+
+###Sends to target scope specified fraction of equipment._send_equipment_fraction_ = {  target = FROM  value = 0.3    # clamped in code to the range [0,1]}
+## scopes = { COUNTRY }
+alias[effect:send_equipment_fraction] = replace_me
+###Transfer units (air, army, navy) to another country.Also transfer the stockiled equipment (you can set it to zero if it is undesired) as well as unit leaders.transfer_units_fraction = {	target = ROOT          # the recipient	size = 0.4             # [0,1] Default value for the ratio below if they are not specified	stockpile_ratio = 0.3  # [0,1] Overrides size modifier for the stockpiled equipment and fuel	army_ratio = 0.1       # [0,1] Overrides size modifier for army	navy_ratio = 0.2       # [0,1] Overrides size modifier for navy	air_ratio = 0.4        # [0,1] Overrides size modifier for air	keep_unit_leaders = {  # specify IDs of unit leaders that remain with the original country		700 701	}	keep_unit_leaders_trigger = { # Trigger for unit leaders to remain with the original country		...                         # the scope is the unit leader being evaluated		...                         # ROOT is the recipient		...                         # FROM is the sender		...                         # PREV is unset	}}
+## scopes = { COUNTRY }
+alias[effect:transfer_units_fraction] = replace_me
+###removes a ideology leader as leader of his party, making the next in line the new party leader
+## scopes = { COUNTRY }
+alias[effect:kill_ideology_leader] = replace_me
+###adds/removes days to 'days_remove' value of a decisionExample:add_days_remove  = {    decision = <some_decision>    days = 30}
+## scopes = { COUNTRY }
+alias[effect:add_days_remove] = replace_me
+###add days to 'mission_timeout' value of a missionExample:add_days_mission_timeout  = {    mission = <some_mission>    days = 30}
+## scopes = { COUNTRY }
+alias[effect:add_days_mission_timeout] = replace_me
+###add resistance to a state. Example: add_resistance = 30
+## scopes = { STATE }
+alias[effect:add_resistance] = replace_me
+###add compliance to a state. Example: add_compliance = 30
+## scopes = { STATE }
+alias[effect:add_compliance] = replace_me
+###starts resistance activity for a core country. Use along with force_enable_resistance if you are enabling resistancein a state that is not possible (ie core).Example : start_resistance = POL or start_resistance = yes
+## scopes = { STATE }
+alias[effect:start_resistance] = replace_me
+###cancels resistance activity for a core country.use along with force_disable_resistance to disable resistance foreverExample : cancel_resistance = yes
+## scopes = { STATE }
+alias[effect:cancel_resistance] = replace_me
+###set resistance of a state. Example: set_resistance = 30
+## scopes = { STATE }
+alias[effect:set_resistance] = replace_me
+###set compliance of a state. Example: set_compliance = 30
+## scopes = { STATE }
+alias[effect:set_compliance] = replace_me
+###Adds a specific token against against another countryadd_operation_token = {	tag = GER	token = some_token_id}
+## scopes = { COUNTRY }
+alias[effect:add_operation_token] = replace_me
+###Remove a specific token against against another countryremove_operation_token = {	tag = GER	token = some_token_id}
+## scopes = { COUNTRY }
+alias[effect:remove_operation_token] = replace_me
+###adds a random limited use tech bonus from country of categories that is it ahead in compared to you.it must have atleast one category or folder. But it can contain any number of them in any combinationNote: if a country does not have a tech to be stolen a random tech bonus will be applied based on base_bonus Example: steal_random_tech_bonus = {	category = air_equipment	folder = naval_folder	ahead_reduction = ???	bonus = ???	base_bonus = 0.05	instant = yes # instant unlock instead of bonus	name = ???	target = ???	uses = 1}
+## scopes = { COUNTRY }
+alias[effect:steal_random_tech_bonus] = replace_me
+###teleport armies in state to another state or province. example :teleport_armies = {   #only define one. if neither is defined will teleport to unit to their capital  to_state = 123 #id of the state to teleport  to_state_array = array_name #an array of states to teleport (will be randomly picked)  to_province = 123 #id of the province to teleport  limit = {      # trigger will be checked for owner of armies and will only teleport if true. scope if the owner of the army and prev is the scope that calls teleport_armies  } }
+## scopes = { STATE }
+alias[effect:teleport_armies] = replace_me
+###Executes children effects on every controlled state that fulfills the "limit" trigger. tooltip=key can be added to override tooltip title
+## scopes = { COUNTRY }
+alias[effect:every_controlled_state] = {
+    ## cardinality = 0..1
+	limit = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	alias_name[effect] = alias_match_left[effect]
+}
+
+###sets the controller of provinces belong to a state and fullfils a condition. no tooltip is builtset_state_province_controller = {  controller = ITA  limit = {      # will be checked old controller of each province. will only update controller if true  } }
+## scopes = { STATE }
+alias[effect:set_state_province_controller] = replace_me
+###reserves a dynamic country so it won't be recycled for civil wars. A dynamic country with no owned states must be reserved after it is created and unreserved once it is no longer going to be used. example :reserve_dynamic_country = yesreserve_dynamic_country = no
+## scopes = { COUNTRY }
+alias[effect:reserve_dynamic_country] = replace_me
+###calculates the highest scored country that is defined in a country scorer and sets it to a variable. Example: get_highest_scored_country_temp = {   scorer = scorer_id   var = var_name # variable name that the result will be stored. default is highest_scored_country }
+## scopes = { COUNTRY }
+alias[effect:get_highest_scored_country_temp] = replace_me
+###creates a dynamic country and runs child effects on it. example :create_dynamic_country = {   original_tag = ITA #original tag of new country  copy_tag = ITA # if set, it will copy stuff from copy tag instead of original_tag #...effects to run on new country}
+## scopes = { any }
+alias[effect:create_dynamic_country] = replace_me
+###calculates & sorts all countries in a country scorer and stores them and their scores in temp arrays. Example: get_sorted_scored_countries_temp = {   scorer = scorer_id # id that is used in country scorer  array = array_name # a name to store sorted countries as a temp array (default to sorted_country_list)   scores = array_name # corresponding score temp array for countries stored in array (default to country_list_scores) }
+## scopes = { COUNTRY }
+alias[effect:get_sorted_scored_countries_temp] = replace_me
+###Executes children effects on random occupied country that fulfills the "limit" trigger.
+## scopes = { COUNTRY }
+alias[effect:random_occupied_country] = {
+    ## cardinality = 0..1
+	limit = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	alias_name[effect] = alias_match_left[effect]
+}
+
+###Executes children effects on every occupied country that fulfills the "limit" trigger. tooltip=key can be defined to override tooltip title
+## scopes = { COUNTRY }
+alias[effect:every_occupied_country] = {
+    ## cardinality = 0..1
+	limit = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	alias_name[effect] = alias_match_left[effect]
+}
+
+###adds resistance target to the scoped state :add_resistance_target = 10add_resistance_target = {   id = 123 #if set, id can be used for removing an added resistance target using remove_resistance_target effect  amount = 10 #original tag of new country  occupied = GER #if set, the resistance target will only apply if the occupied country is GER  occupier = ENG #if set, the resistance target will only apply if the occupier country is ENG  days = 42 #if set the newly added resistance target will be only active for this many days  tooltip = "BLABLA" #tooltip loc key to display in resistance target tooltips}
+## scopes = { STATE }
+alias[effect:add_resistance_target] = replace_me
+###removes a previously added resistance target using its id. No tooltips are generated.:remove_resistance_target = 42
+## scopes = { STATE }
+alias[effect:remove_resistance_target] = replace_me
+###calculates the highest scored country that is defined in a country scorer and sets it to a temp variable. Example: get_highest_scored_country = {   scorer = scorer_id   var = var_name # temp variable name that the result will be stored. default is highest_scored_country }
+## scopes = { COUNTRY }
+alias[effect:get_highest_scored_country] = replace_me
+###calculates & sorts all countries in a country scorer and stores them and their scores in arrays. Example: get_sorted_scored_countries = {   scorer = scorer_id # id that is used in country scorer  array = array_name # a name to store sorted countries as an array (default to sorted_country_list)   scores = array_name # corresponding score array for countries stored in array (default to country_list_scores) }
+## scopes = { COUNTRY }
+alias[effect:get_sorted_scored_countries] = replace_me
+###Executes children effects on a random country with original tag. Example:random_country_with_original_tag = {   original_tag_to_check = ENG # the effect will only run on countries that has this original tag   limit = { always = yes } # a limit can be defined to limit scopes  # ... effects to execute }
+## scopes = { any }
+alias[effect:random_country_with_original_tag] = {
+    ## cardinality = 0..1
+	limit = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	alias_name[effect] = alias_match_left[effect]
+}
+
+###Executes children effects on a all countries with original tag. tooltip=key can be defined to override tooltip title. Example:every_country_with_original_tag = {   original_tag_to_check = ENG # the effect will only run on countries that has this original tag   limit = { always = yes } # a limit can be defined to limit scopes  # ... effects to execute }
+## scopes = { COUNTRY }
+alias[effect:every_country_with_original_tag] = {
+    ## cardinality = 0..1
+	limit = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	alias_name[effect] = alias_match_left[effect]
+}
+
+###add decryption against a target country. Example:add_decryption = {  target = GER  # pick one amount = 1000 # a flat amount to be added ratio = 0.3 # a ratio of crypto defense of target to be added
+## scopes = { COUNTRY }
+alias[effect:add_decryption] = replace_me
+###deletes units that uses a specific template :delete_units = {   division_template = "Template Name"  disband = no # if yes, equipment will be returned to country equipment. default is no}
+## scopes = { COUNTRY }
+alias[effect:delete_units] = replace_me
+###force enables resistance for scoped state. the resistance will be active even if other conditions doesn't satisfy (even if it is core or resistance check trigger is false)  :force_enable_resistance = GER # same as occupier = GER force_enable_resistance = {   clear = no #if yes, will clear previously set resistance  occupier = GER #if set, the resistance will be enabled when the occupier is GER  occupied = ENG #if set, the resistance will be enabled if the occupier country is target}
+## scopes = { STATE }
+alias[effect:force_enable_resistance] = replace_me
+###force disables resistance for scoped state.  :force_disable_resistance = GER # same as occupier = GER force_disable_resistance = {   clear = no #if yes, will clear previously disabled resistance  occupier = GER #if set, the resistance will be disabled when the occupier is GER  occupied = ENG #if set, the resistance will be disabled if the occupier country is target}
+## scopes = { STATE }
+alias[effect:force_disable_resistance] = replace_me
+###create an Intelligence Agency for the country, if it is not already done.
+## scopes = { COUNTRY }
+alias[effect:create_intelligence_agency] = replace_me
+###add an upgrade to the Intelligence Agency (must be created):upgrade_intelligence_agency = upgrade_army_department
+## scopes = { COUNTRY }
+alias[effect:upgrade_intelligence_agency] = replace_me
+###create a ship from another country and assign it to the reserve fleet.'creator' is optional. If not set, it will be the scoped country.'name' is optional.FRA = {  create_ship = {    type = ship_hull_submarine_1    equipment_variant = "S Class"    creator = ENG    name = "My ship name"  }}
+## scopes = { COUNTRY }
+alias[effect:create_ship] = replace_me
+###set current country as spy master of its faction
+## scopes = { COUNTRY }
+alias[effect:set_faction_spymaster] = replace_me
+###Lock all the division template at the country level. Note that you need to unlock them in the same way (You can't use 'set_division_template_lock' individually, because the lock at the country level will not be removed)
+## scopes = { COUNTRY }
+alias[effect:country_lock_all_division_template] = replace_me
+###Randomize a temporary variablerandomize_temp_variable = num_dogs# which is equivalient torandomize_temp_variable = {  var = num_dogs  distribution = uniform}# which is equivalent torandomize_temp_variable = {  var = num_dogs  distribution = uniform  min = 0  max = 1}# also allow for binomial distribution (with N=2)randomize_temp_variable = {  var = num_dogs  distribution = binomial  min = 0               # optional  max = 10              # required if min is specified}# also allow for the poisson distributionrandomize_temp_variable = {  var = num_dogs  distribution = poisson  lambda = 10           # required  min = 10              # optional}
+## scopes = { any }
+alias[effect:randomize_temp_variable] = replace_me
+###refer to randomize_temp_variable
+## scopes = { any }
+alias[effect:randomize_variable] = replace_me
+###Harm an operative. The specified value is subject to modifiers.harm_operative_leader = 12
+## scopes = { UNIT_LEADER }
+alias[effect:harm_operative_leader] = replace_me
+###Force an operative into hiding, preventing him from performing mission. The specified values is subject to modifiersforce_operative_leader_into_hiding = 12
+## scopes = { UNIT_LEADER }
+alias[effect:force_operative_leader_into_hiding] = replace_me
+###Add the specified amount of intel over a specified countryGER = {  add_intel = {    target = POL    civilian_intel = 3    army_intel = 1    # zero field can be omitted    # navy_intel = 0    # airforce_intel = 0  }}
+## scopes = { COUNTRY }
+alias[effect:add_intel] = replace_me
+###Fires a operative leader event for owner country.Example:operative_leader_event = {	id = generic.17 # The event to fire.	# Optional Fields:	originator = TAG # The originator of the event (default to the owner of the operative)	recipient = TAG # The recipient of the event (default to the owner of the operative)	hours = 12 # The number of hours to wait before firing the event.	days = 5 # The number of days to wait before firing the event.	months = 1 # The number of months to wait before firing the event, where a month is treated as 30 days.		# Note:  hours, days, and months can all be used and will simply be added together.	random_hours = 18 # A random amount of hours to be added to the delay before firing, from 0 up to but not including random_hours.	random_days = 2 # A random amount of days to be added to the delay before firing, from 0 up to but one hour less than random_days.		# Note:  random_hours and random_days can both be used and will simply be added together.	random = 6 # Equivalent to random_hours; preserverd for backwards compatibility.	random = { chance = 50 ... } # Specify a set of child effects to execute as part of this effect, with a percentage chance of randomly happening or not (as a group, not individually).	tooltip = generic.17.t # Manually specify which tooltip to use for this effect.	set_from = TAG # Set the scope of the From in the scripted localization	set_from_from = TAG # Set the scope of the From.From in the scripted localization	set_root = TAG # Set the scope of the Root in the scripted localization}
+## scopes = { UNIT_LEADER }
+alias[effect:operative_leader_event] = replace_me
+###Kills an operative. This will temporarily lock the slot they occupyExamples:GER = {    kill_operative = PREV  # where PREV is an operative (unit leader)    # or    kill_operative = {        operative = PREV    }}kill_operative = { killed_by = GER } # where the scope is an unit leader
+## scopes = { COUNTRY UNIT_LEADER }
+alias[effect:kill_operative] = replace_me
+###Executes children effects on random controlled state that fulfills the "limit" trigger. prioritize = { <stateID> <stateID> } to pick those states first if they fulfull the limit
+## scopes = { COUNTRY }
+alias[effect:random_controlled_state] = {
+    ## cardinality = 0..1
+	limit = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	alias_name[effect] = alias_match_left[effect]
+}
+
+###Forces the refresh of the tree layout for the scoped countrymark_focus_tree_layout_dirty = yes
+## scopes = { COUNTRY }
+alias[effect:mark_focus_tree_layout_dirty] = replace_me
+###Adds a civil war target to a specific country Usage: add_civil_war_target = TAG
+## scopes = { COUNTRY }
+alias[effect:add_civil_war_target] = replace_me
+###modulos a temp variable with another. Example: modulo_temp_variable = {   var = variable_to_modulo   value = divisior }
+## scopes = { any }
+alias[effect:modulo_temp_variable] = replace_me
+###modulos a variable with another. Example: modulo_variable = {   var = variable_to_modulo   value = divisior }
+## scopes = { any }
+alias[effect:modulo_variable] = replace_me
+###Adds the collaboration in a target country with our currently scoped countryGER = {  add_collaboration = {    target = POL    value = 0.3  }}
+## scopes = { COUNTRY }
+alias[effect:add_collaboration] = replace_me
+###Sets the collaboration in a target country with our currently scoped countryGER = {  set_collaboration = {    target = POL    value = 0.3  }}
+## scopes = { COUNTRY }
+alias[effect:set_collaboration] = replace_me
+###Special effect for executing the Coordinated Strike Operation. amount determines how often the simulation is run
+## scopes = { OPERATION }
+alias[effect:execute_operation_coordinated_strike] = replace_me
+###Add the specified nationalty to the scoped-in operative. Examples:add_nationality = ROOTadd_nationality = FRA
+## scopes = { UNIT_LEADER }
+alias[effect:add_nationality] = replace_me
+###The scoped in country recall the volunteers sent to the target country.Example:# FRA recalls the volunteers it sent to SPRFRA = { recall_volunteers_from = SPR }
+## scopes = { COUNTRY }
+alias[effect:recall_volunteers_from] = replace_me
+###An operative is turned by the specified country.This transfers the operative to the target country and make it appear as killed to the country of origin (increases the death counter and lock the slot).This fires the on_action on_operative_death with as killer the target country.If the target country is the owner of the operative, this has no effect and an error is logged.WARN: the on_action might execute immediatly, before any effect listed after the occurence of turn_operative.Examples:GER = {    turn_operative = PREV  # where PREV is an operative (unit leader)    # or    turn_operative = {        operative = PREV    }}turn_operative = { turned_by = GER } # where the scope is an unit leader
+## scopes = { COUNTRY UNIT_LEADER }
+alias[effect:turn_operative] = replace_me
+###set initial garrison strength. Example: set_garrison_strength = 0.5
+## scopes = { STATE }
+alias[effect:set_garrison_strength] = replace_me
+

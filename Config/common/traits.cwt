@@ -103,7 +103,7 @@ unit_leader_trait = {
 		enum[unit_leader_skills] = int
 		### Bonus for gaining this skill.
 		## cardinality = 0..4
-		enum[unit_leader_skill_factors] = int
+		enum[army_leader_skill_factors] = int
 	}
 	subtype[naval_commander] = {
 		## cardinality = 0..1
@@ -117,6 +117,9 @@ unit_leader_trait = {
 				alias_name[air_stat] = alias_match_left[air_stat]
 			}
 		}
+		### Bonus for gaining this skill.
+		## cardinality = 0..4
+		enum[naval_leader_skill_factors] = int
 	}
 	subtype[gainable_trait] = {
 		## replace_scope = { this = combat root = combat from = combat }
@@ -204,10 +207,16 @@ enums = {
 		logistics_skill
 		planning_skill
 	}
-	enum[unit_leader_skill_factors] = {
+	enum[army_leader_skill_factors] = {
 		attack_skill_factor
 		defense_skill_factor
 		logistics_skill_factor
+		planning_skill_factor
+	}
+	enum[naval_leader_skill_factors] = {
+		attack_skill_factor
+		coordination_skill_factor
+		maneuvering_skill_factor
 		planning_skill_factor
 	}
 	enum[unit_leader_types] = {

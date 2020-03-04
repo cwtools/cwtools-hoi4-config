@@ -218,6 +218,8 @@ ship_name = {
 		<equipment.naval_equip>
 		## cardinality = ~1..inf
 		<unit.ship_unit>
+		## cardinality = ~1..inf
+		enum[ship_units]
 	}
 	## cardinality = 0..1
 	prefix = scalar

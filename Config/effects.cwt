@@ -876,6 +876,7 @@ alias[effect:news_event] = <event.news_event>
 alias[effect:declare_war_on] = {
 	target = scope[country]
 	target = enum[country_tags]
+	## cardinality = ~0..1
 	type = <wargoal>
 	## cardinality = 0..1
 	generator = {

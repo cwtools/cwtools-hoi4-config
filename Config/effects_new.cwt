@@ -37,7 +37,43 @@ alias[effect:free_random_operative] = {
 
 ###create operative for countrycreate_operative_leader = {	bypass_recruitment = no # whether the operative is directly added to the list of available operatives 	available_to_spy_master = yes # whether the operative can be recruited by the spy master. Only makes sense if bypass_recruitment is 'no'.	portrait_tag_override = TAG # when selectiong the portrait for the operative, consider that tag instead of the country the operative will operate for	# Additionally supports the common token to other create_x_leader effects}
 ## scopes = { COUNTRY }
-alias[effect:create_operative_leader] = replace_me
+alias[effect:create_operative_leader] = {
+	## cardinality = 0..1
+	name = scalar
+	## cardinality = 0..1
+	desc = localisation
+	## cardinality = 0..1
+	picture = scalar
+	## cardinality = 0..1
+	portrait_path = scalar
+	## cardinality = 0..1
+	## severity = warning
+	gfx = <spriteType>
+	### Sets starting traits for this leader. If empty, sets no traits. If missing, assigns a random trait
+	## cardinality = ~1..1
+	traits = {
+		## cardinality = 0..inf
+		<unit_leader_trait>
+	}
+	## cardinality = 0..1
+	id = value_set[unit_leader_ids]
+	## cardinality = 0..1
+	available_to_spy_master = bool
+	## cardinality = 0..1
+	bypass_recruitment = bool
+	nationalities = {
+		## cardinality = 0..inf
+		scope[country]
+		## cardinality = 0..inf
+		enum[country_tags]
+	}
+	## cardinality = 0..1
+	portrait_tag_override = scope[country]
+	## cardinality = 0..1
+	portrait_tag_override = enum[country_tags]
+	## cardinality = 0..1
+	female = bool
+}
 
 ###Capture an operativeCan be used from a scope and a target that is either a country or a unit leader.Examples:GER = {    capture_operative = PREV  # where PREV is an operative (unit leader)    # or    capture_operative = {        operative = PREV        ignore_death_chance = yes  # optional: whether the death chance on capture should be ignored    }}capture_operative = { captured_by = GER } # where the scope is an unit leader
 ## scopes = { COUNTRY UNIT_LEADER }

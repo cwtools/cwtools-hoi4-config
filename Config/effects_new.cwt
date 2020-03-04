@@ -61,6 +61,7 @@ alias[effect:create_operative_leader] = {
 	available_to_spy_master = bool
 	## cardinality = 0..1
 	bypass_recruitment = bool
+	## cardinality = 0..1
 	nationalities = {
 		## cardinality = 0..inf
 		scope[country]

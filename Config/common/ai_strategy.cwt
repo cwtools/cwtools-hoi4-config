@@ -206,6 +206,10 @@ enums = {
 		force_build_armies
 		garrison
 		produce_unit_for_subject_supply_chunks
+		intelligence_agency_usable_factories
+		agency_ai_base_num_factories_factor
+		garrison_reinforcement_priority
+		operation_equipment_priority
 	}
 	enum[pp_strats] = {
 		pp_spend_amount

@@ -107,6 +107,8 @@ values = {
 		### Number of equipment required in armies of the country in thousands, equipment type token is defined in target. Example num_target_equipment_in_armies_k@infantry_equipment.
 		num_target_equipment_in_armies_k@<equipment>
 
+		occupied_countries
+
 		### Opinion of a country targeted on another one. Example GER.opinion@ENG.
 		opinion@enum[country_tags]
 

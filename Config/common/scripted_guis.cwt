@@ -96,7 +96,7 @@ scripted_gui = {
 		## cardinality = 0..1
 		effects = {
 			## cardinality = ~1..inf
-				## replace_scope = { root = country this = any from = any }
+			## replace_scope = { root = country this = any from = any }
 			scalar = {
 				## cardinality = ~1..inf
 				alias_name[effect] = alias_match_left[effect]

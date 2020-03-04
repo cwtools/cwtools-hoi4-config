@@ -315,6 +315,7 @@ modifiers = {
 	refit_ic_cost = country
 	refit_speed = country
 	repair_speed_factor = country
+	request_lease_tension = country
 	research = country
 	research_sharing_per_country_bonus_factor = country
 	research_speed_factor = country

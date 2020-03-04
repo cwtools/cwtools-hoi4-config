@@ -153,72 +153,84 @@ alias[effect:release] = enum[country_tags]
 
 ### Executes children effects on every country that fulfills the "limit" trigger.
 ## scope = any
-## push_scope = any
+## push_scope = country
 alias[effect:every_country] = {
 	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
+	## cardinality = 0..1
+	tooltip = localisation
 	alias_name[effect] = alias_match_left[effect]
 }
 
 
 ### Executes children effects on random country that fulfills the "limit" trigger.
 ## scope = any
-## push_scope = any
+## push_scope = country
 alias[effect:random_country] = {
 	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
+	## cardinality = 0..1
+	tooltip = localisation
 	alias_name[effect] = alias_match_left[effect]
 }
 
 
 ### Executes children effects on every neighbor country that fulfills the "limit" trigger.
 ## scope = country
-## push_scope = any
+## push_scope = country
 alias[effect:every_neighbor_country] = {
 	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
+	## cardinality = 0..1
+	tooltip = localisation
 	alias_name[effect] = alias_match_left[effect]
 }
 
 
 ### Executes children effects on random neighbor country that fulfills the "limit" trigger.
 ## scope = country
-## push_scope = any
+## push_scope = country
 alias[effect:random_neighbor_country] = {
 	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
+	## cardinality = 0..1
+	tooltip = localisation
 	alias_name[effect] = alias_match_left[effect]
 }
 
 
 ### Executes children effects on random enemy country that fulfills the "limit" trigger.
 ## scope = country
-## push_scope = any
+## push_scope = country
 alias[effect:every_enemy_country] = {
 	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
+	## cardinality = 0..1
+	tooltip = localisation
 	alias_name[effect] = alias_match_left[effect]
 }
 
 
 ### Executes children effects on random enemy country that fulfills the "limit" trigger.
 ## scope = country
-## push_scope = any
+## push_scope = country
 alias[effect:random_enemy_country] = {
 	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
+	## cardinality = 0..1
+	tooltip = localisation
 	alias_name[effect] = alias_match_left[effect]
 }
 
@@ -286,6 +298,7 @@ alias[effect:state_event] = <event.state_event>
 alias[effect:set_variable] = {
 	value_set[variable] = variable_field
 	value_set[variable] = scope_field
+	value_set[variable] = enum[country_tags]
 }
 ### Sets a variable to a value or another variable.
 ## scope = any
@@ -293,6 +306,7 @@ alias[effect:set_variable] = {
 	var = value_set[variable]
 	value = variable_field
 	value = scope_field
+	value = enum[country_tags]
 }
 
 ### A random effect.
@@ -421,6 +435,25 @@ alias[effect:create_unit] = {
 	owner = enum[country_tags]
 	## cardinality = 0..1
 	prioritize_location = enum[provinces]
+	## cardinality = 0..1
+	allow_spawning_on_enemy_provs = bool
+	## cardinality = 0..1
+	count = int_variable_field
+	## cardinality = 0..1
+	country_score = {
+		## cardinality = 0..1
+		base = variable_field
+		## cardinality = 0..inf
+		enum[add_factor] = float
+		## cardinality = 0..inf
+		## push_scope = country
+		modifier = {
+			## cardinality = ~1..inf
+			alias_name[trigger] = alias_match_left[trigger]
+			## cardinality = ~1..1
+			enum[add_factor] = float
+		}
+	}
 }
 
 ### Plays sound effect.
@@ -528,6 +561,8 @@ alias[effect:set_political_power] = variable_field
 ### Sets technology level(s) on country.
 ## scope = country
 alias[effect:set_technology] = {
+	## cardinality = 0..1
+	popup = bool
 	## cardinality = 1..inf
 	<technology> = int[0..1]
 }
@@ -722,19 +757,21 @@ alias[effect:give_military_access] = enum[country_tags]
 
 ### Executes children effects on random state that fulfills the "limit" trigger.
 ## scope = any
-## push_scope = any
+## push_scope = state
 alias[effect:random_state] = {
 	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
+	## cardinality = 0..1
+	tooltip = localisation
 	alias_name[effect] = alias_match_left[effect]
 }
 
 
 ### Executes children effects on random owned state that fulfills the "limit" trigger.
 ## scope = country
-## push_scope = any
+## push_scope = state
 alias[effect:random_owned_state] = {
 	## cardinality = 0..1
 	limit = {
@@ -745,54 +782,64 @@ alias[effect:random_owned_state] = {
 		## cardinality = 1..inf
 		<state>
 	}
+	## cardinality = 0..1
+	tooltip = localisation
 	alias_name[effect] = alias_match_left[effect]
 }
 
 
 ### Executes children effects on random neighbor state that fulfills the "limit" trigger.
 ## scope = state
-## push_scope = any
+## push_scope = state
 alias[effect:random_neighbor_state] = {
 	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
+	## cardinality = 0..1
+	tooltip = localisation
 	alias_name[effect] = alias_match_left[effect]
 }
 
 
 ### Executes children effects on every state that fulfills the "limit" trigger.
 ## scope = any
-## push_scope = any
+## push_scope = state
 alias[effect:every_state] = {
 	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
+	## cardinality = 0..1
+	tooltip = localisation
 	alias_name[effect] = alias_match_left[effect]
 }
 
 
 ### Executes children effects on every owned state that fulfills the "limit" trigger.
 ## scope = country
-## push_scope = any
+## push_scope = state
 alias[effect:every_owned_state] = {
 	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
+	## cardinality = 0..1
+	tooltip = localisation
 	alias_name[effect] = alias_match_left[effect]
 }
 
 
 ### Executes children effects on every neighbor state that fulfills the "limit" trigger.
 ## scope = state
-## push_scope = any
+## push_scope = state
 alias[effect:every_neighbor_state] = {
 	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
+	## cardinality = 0..1
+	tooltip = localisation
 	alias_name[effect] = alias_match_left[effect]
 }
 
@@ -1344,7 +1391,7 @@ alias[effect:add_ace] = {
 
 ### Executes children effects on random owned state that fulfills the "limit" trigger.
 ## scope = country
-## push_scope = any
+## push_scope = state
 alias[effect:random_owned_controlled_state] = {
 	## cardinality = 0..1
 	prioritize = {
@@ -1355,6 +1402,8 @@ alias[effect:random_owned_controlled_state] = {
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
+	## cardinality = 0..1
+	tooltip = localisation
 	alias_name[effect] = alias_match_left[effect]
 }
 
@@ -1366,24 +1415,28 @@ alias[effect:ai_message] = replace_me
 
 ### Executes children effects on every other country that fulfills the "limit" trigger. Excludes current country.
 ## scope = country
-## push_scope = any
+## push_scope = country
 alias[effect:every_other_country] = {
 	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
+	## cardinality = 0..1
+	tooltip = localisation
 	alias_name[effect] = alias_match_left[effect]
 }
 
 
 ### Executes children effects on random country that fulfills the "limit" trigger. Excludes current country.
 ## scope = country
-## push_scope = any
+## push_scope = country
 alias[effect:random_other_country] = {
 	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
+	## cardinality = 0..1
+	tooltip = localisation
 	alias_name[effect] = alias_match_left[effect]
 }
 
@@ -1634,24 +1687,28 @@ alias[effect:set_war_support] = variable_field[0..1]
 
 ### Executes children effects on random unit leader that fulfills the "limit" trigger.
 ## scope = country
-## push_scope = any
+## push_scope = unit_leader
 alias[effect:random_unit_leader] = {
 	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
+	## cardinality = 0..1
+	tooltip = localisation
 	alias_name[effect] = alias_match_left[effect]
 }
 
 
 ### Executes children effects on unit leaders that fulfills the "limit" trigger.
 ## scope = country
-## push_scope = any
+## push_scope = unit_leader
 alias[effect:every_unit_leader] = {
 	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
+	## cardinality = 0..1
+	tooltip = localisation
 	alias_name[effect] = alias_match_left[effect]
 }
 
@@ -1664,6 +1721,8 @@ alias[effect:random_army_leader] = {
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
+	## cardinality = 0..1
+	tooltip = localisation
 	alias_name[effect] = alias_match_left[effect]
 }
 
@@ -1676,6 +1735,8 @@ alias[effect:every_army_leader] = {
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
+	## cardinality = 0..1
+	tooltip = localisation
 	alias_name[effect] = alias_match_left[effect]
 }
 
@@ -1688,6 +1749,8 @@ alias[effect:random_navy_leader] = {
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
+	## cardinality = 0..1
+	tooltip = localisation
 	alias_name[effect] = alias_match_left[effect]
 }
 
@@ -1700,6 +1763,8 @@ alias[effect:every_navy_leader] = {
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
+	## cardinality = 0..1
+	tooltip = localisation
 	alias_name[effect] = alias_match_left[effect]
 }
 
@@ -1833,6 +1898,8 @@ alias[effect:global_every_army_leader] = {
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
+	## cardinality = 0..1
+	tooltip = localisation
 	alias_name[effect] = alias_match_left[effect]
 }
 
@@ -2004,6 +2071,8 @@ alias[effect:divide_temp_variable] = {
 ## scope = any
 alias[effect:set_temp_variable] = {
 	value_set[variable] = variable_field
+	value_set[variable] = scope_field
+	value_set[variable] = enum[country_tags]
 }
 
 ### Sets a temp variable to a value or another variable.
@@ -2011,6 +2080,8 @@ alias[effect:set_temp_variable] = {
 alias[effect:set_temp_variable] = {
 	var = value_set[variable]
 	value = variable_field
+	value = scope_field
+	value = enum[country_tags]
 }
 
 ### Add a timed trait to unit leader.
@@ -2074,6 +2145,7 @@ alias[effect:start_border_war] = {
 		num_provinces = int[1..100]
 		on_win = <event>
 		on_lose = <event>
+		## cardinality = ~0..1
 		on_cancel = <event>
 	}
 	defender = {
@@ -2082,6 +2154,7 @@ alias[effect:start_border_war] = {
 		num_provinces = int[1..100]
 		on_win = <event>
 		on_lose = <event>
+		## cardinality = ~0..1
 		on_cancel = <event>
 	}
 }
@@ -2341,6 +2414,9 @@ alias[effect:add_to_array] = {
 	### Optional, if not defined adds scope.
 	value = scope_field
 	## cardinality = 0..1
+	### Optional, if not defined adds scope.
+	value = enum[country_tags]
+	## cardinality = 0..1
 	### Optional, default is end. otherwise elements are shifted.
     index = int_variable_field
 }
@@ -2352,6 +2428,8 @@ alias[effect:add_to_array] = {
 	value_set[variable] = variable_field
 	value_set[array] = scope_field
 	value_set[variable] = scope_field
+	value_set[array] = enum[country_tags]
+	value_set[variable] = enum[country_tags]
 }
 
 ### Removes an element from an array using value or index.
@@ -2363,6 +2441,8 @@ alias[effect:remove_from_array] = {
 	value = variable_field
 	### Optional, use index or this. If neither it removes last element.
 	value = scope_field
+	### Optional, use index or this. If neither it removes last element.
+	value = enum[country_tags]
 }
 
 ### Removes an element from an array using value or index.
@@ -2381,6 +2461,8 @@ alias[effect:remove_from_array] = {
 	value_set[variable] = variable_field
 	value_set[array] = scope_field
 	value_set[variable] = scope_field
+	value_set[array] = enum[country_tags]
+	value_set[variable] = enum[country_tags]
 }
 
 ### Clears the contents of array.
@@ -2422,6 +2504,9 @@ alias[effect:add_to_temp_array] = {
 	### Optional, if not defined adds scope.
 	value = scope_field
 	## cardinality = 0..1
+	### Optional, if not defined adds scope.
+	value = enum[country_tags]
+	## cardinality = 0..1
 	### Optional, default is end. Otherwise elements are shifted.
     index = int_variable_field
 }
@@ -2433,6 +2518,8 @@ alias[effect:add_to_temp_array] = {
 	value_set[variable] = variable_field
 	value_set[array] = scope_field
 	value_set[variable] = scope_field
+	value_set[array] = enum[country_tags]
+	value_set[variable] = enum[country_tags]
 }
 
 ### Removes an element from a temporary array using value or index.
@@ -2444,6 +2531,8 @@ alias[effect:remove_from_temp_array] = {
 	value = variable_field
 	### Optional, use index or this. If neither it removes last element.
 	value = scope_field
+	### Optional, use index or this. If neither it removes last element.
+	value = enum[country_tags]
 }
 
 ### Removes an element from a temporary array using value or index.
@@ -2462,6 +2551,8 @@ alias[effect:remove_from_temp_array] = {
 	value_set[variable] = variable_field
 	value_set[array] = scope_field
 	value_set[variable] = scope_field
+	value_set[array] = enum[country_tags]
+	value_set[variable] = enum[country_tags]
 }
 
 ### Clears the contents of a temporary array.
@@ -2542,6 +2633,8 @@ alias[effect:random_scope_in_array] = {
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
+	## cardinality = 0..1
+	tooltip = localisation
 	alias_name[effect] = alias_match_left[effect]
 }
 

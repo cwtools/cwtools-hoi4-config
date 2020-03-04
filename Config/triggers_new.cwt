@@ -172,7 +172,7 @@ alias[trigger:all_occupied_country] = {
 ###check if any country with current scope's original tag meets the trigger. Example:any_country_with_original_tag = {   original_tag_to_check = ENG # the trigger check all countries that has this original tag   # ... triggers to check }
 ## scopes = { any }
 alias[trigger:any_country_with_original_tag] = {
-	original_tag_to_check = enum[explicit_country_tags]
+	original_tag_to_check = enum[country_tags]
 	## cardinality = 0..1
 	tooltip = localisation
 	alias_name[trigger] = alias_match_left[trigger]
@@ -182,7 +182,7 @@ alias[trigger:any_country_with_original_tag] = {
 ###check if all country with current scope's original tag meets the trigger. Example:all_country_with_original_tag = {   original_tag_to_check = ENG # the trigger check all countries that has this original tag   # ... triggers to check }
 ## scopes = { any }
 alias[trigger:all_country_with_original_tag] = {
-	original_tag_to_check = enum[explicit_country_tags]
+	original_tag_to_check = enum[country_tags]
 	## cardinality = 0..1
 	tooltip = localisation
 	alias_name[trigger] = alias_match_left[trigger]

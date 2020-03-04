@@ -880,7 +880,7 @@ alias[trigger:original_tag] = scope[country]
 
 ### Checks if the current scope was ever the specified country.
 ## scope = { country combat }
-alias[trigger:original_tag] = enum[explicit_country_tags]
+alias[trigger:original_tag] = enum[country_tags]
 
 ### Compare if the country has added above or below the specified ammount of tension.
 ## scope = country

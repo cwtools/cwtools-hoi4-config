@@ -458,6 +458,8 @@ alias[effect:create_unit] = {
 			enum[add_factor] = float
 		}
 	}
+	## cardinality = 0..1
+	id = variable_field
 }
 
 ### Plays sound effect.

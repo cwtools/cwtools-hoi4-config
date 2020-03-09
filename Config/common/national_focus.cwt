@@ -321,4 +321,10 @@ shared_focus = {
 		enum[base_factor] = float
 		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	}
+
+	## cardinality = 0..1
+	search_filters = {
+		## cardinality = ~1..inf
+		value_set[focus_filter]
+	}
 }

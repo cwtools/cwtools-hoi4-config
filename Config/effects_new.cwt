@@ -349,6 +349,8 @@ alias[effect:get_sorted_scored_countries] = replace_me
 ## scopes = { any }
 ## push_scope = country
 alias[effect:random_country_with_original_tag] = {
+	original_tag_to_check = enum[country_tags]
+	original_tag_to_check = scope[country]
     ## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
@@ -361,6 +363,8 @@ alias[effect:random_country_with_original_tag] = {
 ## scopes = { any }
 ## push_scope = country
 alias[effect:every_country_with_original_tag] = {
+	original_tag_to_check = enum[country_tags]
+	original_tag_to_check = scope[country]
     ## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
@@ -371,7 +375,22 @@ alias[effect:every_country_with_original_tag] = {
 
 ###add decryption against a target country. Example:add_decryption = {  target = GER  # pick one amount = 1000 # a flat amount to be added ratio = 0.3 # a ratio of crypto defense of target to be added
 ## scopes = { COUNTRY }
-alias[effect:add_decryption] = replace_me
+alias[effect:add_decryption] = {
+	target = enum[country_tags]
+	target = scope[country]
+
+	amount = variable_field
+}
+
+###add decryption against a target country. Example:add_decryption = {  target = GER  # pick one amount = 1000 # a flat amount to be added ratio = 0.3 # a ratio of crypto defense of target to be added
+## scopes = { COUNTRY }
+alias[effect:add_decryption] = {
+	target = enum[country_tags]
+	target = scope[country]
+
+	ratio = variable_field
+}
+
 
 ###deletes units that uses a specific template :delete_units = {   division_template = "Template Name"  disband = no # if yes, equipment will be returned to country equipment. default is no}
 ## scopes = { COUNTRY }
@@ -418,11 +437,95 @@ alias[effect:country_lock_all_division_template] = bool
 
 ###Randomize a temporary variablerandomize_temp_variable = num_dogs# which is equivalient torandomize_temp_variable = {  var = num_dogs  distribution = uniform}# which is equivalent torandomize_temp_variable = {  var = num_dogs  distribution = uniform  min = 0  max = 1}# also allow for binomial distribution (with N=2)randomize_temp_variable = {  var = num_dogs  distribution = binomial  min = 0               # optional  max = 10              # required if min is specified}# also allow for the poisson distributionrandomize_temp_variable = {  var = num_dogs  distribution = poisson  lambda = 10           # required  min = 10              # optional}
 ## scopes = { any }
-alias[effect:randomize_temp_variable] = replace_me
+alias[effect:randomize_temp_variable] = variable_field
 
-###refer to randomize_temp_variable
+###Randomize a temporary variablerandomize_temp_variable = num_dogs# which is equivalient torandomize_temp_variable = {  var = num_dogs  distribution = uniform}# which is equivalent torandomize_temp_variable = {  var = num_dogs  distribution = uniform  min = 0  max = 1}# also allow for binomial distribution (with N=2)randomize_temp_variable = {  var = num_dogs  distribution = binomial  min = 0               # optional  max = 10              # required if min is specified}# also allow for the poisson distributionrandomize_temp_variable = {  var = num_dogs  distribution = poisson  lambda = 10           # required  min = 10              # optional}
 ## scopes = { any }
-alias[effect:randomize_variable] = replace_me
+alias[effect:randomize_temp_variable] = {
+	var = variable_field
+	distribution = uniform
+}
+
+###Randomize a temporary variablerandomize_temp_variable = num_dogs# which is equivalient torandomize_temp_variable = {  var = num_dogs  distribution = uniform}# which is equivalent torandomize_temp_variable = {  var = num_dogs  distribution = uniform  min = 0  max = 1}# also allow for binomial distribution (with N=2)randomize_temp_variable = {  var = num_dogs  distribution = binomial  min = 0               # optional  max = 10              # required if min is specified}# also allow for the poisson distributionrandomize_temp_variable = {  var = num_dogs  distribution = poisson  lambda = 10           # required  min = 10              # optional}
+## scopes = { any }
+alias[effect:randomize_temp_variable] = {
+	var = variable_field
+	distribution = binomial
+}
+
+###Randomize a temporary variablerandomize_temp_variable = num_dogs# which is equivalient torandomize_temp_variable = {  var = num_dogs  distribution = uniform}# which is equivalent torandomize_temp_variable = {  var = num_dogs  distribution = uniform  min = 0  max = 1}# also allow for binomial distribution (with N=2)randomize_temp_variable = {  var = num_dogs  distribution = binomial  min = 0               # optional  max = 10              # required if min is specified}# also allow for the poisson distributionrandomize_temp_variable = {  var = num_dogs  distribution = poisson  lambda = 10           # required  min = 10              # optional}
+## scopes = { any }
+alias[effect:randomize_temp_variable] = {
+	var = variable_field
+	distribution = uniform
+	min = variable_field
+	max = variable_field
+}
+
+###Randomize a temporary variablerandomize_temp_variable = num_dogs# which is equivalient torandomize_temp_variable = {  var = num_dogs  distribution = uniform}# which is equivalent torandomize_temp_variable = {  var = num_dogs  distribution = uniform  min = 0  max = 1}# also allow for binomial distribution (with N=2)randomize_temp_variable = {  var = num_dogs  distribution = binomial  min = 0               # optional  max = 10              # required if min is specified}# also allow for the poisson distributionrandomize_temp_variable = {  var = num_dogs  distribution = poisson  lambda = 10           # required  min = 10              # optional}
+## scopes = { any }
+alias[effect:randomize_temp_variable] = {
+	var = variable_field
+	distribution = binomial
+	min = variable_field
+	max = variable_field
+}
+
+###Randomize a temporary variablerandomize_temp_variable = num_dogs# which is equivalient torandomize_temp_variable = {  var = num_dogs  distribution = uniform}# which is equivalent torandomize_temp_variable = {  var = num_dogs  distribution = uniform  min = 0  max = 1}# also allow for binomial distribution (with N=2)randomize_temp_variable = {  var = num_dogs  distribution = binomial  min = 0               # optional  max = 10              # required if min is specified}# also allow for the poisson distributionrandomize_temp_variable = {  var = num_dogs  distribution = poisson  lambda = 10           # required  min = 10              # optional}
+## scopes = { any }
+alias[effect:randomize_temp_variable] = {
+	var = variable_field
+	distribution = binomial
+	## cardinality = 0..1
+	min = variable_field
+	lambda = variable_field
+}
+
+###Randomize a variablerandomize_variable = num_dogs# which is equivalient torandomize_variable = {  var = num_dogs  distribution = uniform}# which is equivalent torandomize_variable = {  var = num_dogs  distribution = uniform  min = 0  max = 1}# also allow for binomial distribution (with N=2)randomize_variable = {  var = num_dogs  distribution = binomial  min = 0               # optional  max = 10              # required if min is specified}# also allow for the poisson distributionrandomize_variable = {  var = num_dogs  distribution = poisson  lambda = 10           # required  min = 10              # optional}
+## scopes = { any }
+alias[effect:randomize_variable] = variable_field
+
+###Randomize a variablerandomize_variable = num_dogs# which is equivalient torandomize_variable = {  var = num_dogs  distribution = uniform}# which is equivalent torandomize_variable = {  var = num_dogs  distribution = uniform  min = 0  max = 1}# also allow for binomial distribution (with N=2)randomize_variable = {  var = num_dogs  distribution = binomial  min = 0               # optional  max = 10              # required if min is specified}# also allow for the poisson distributionrandomize_variable = {  var = num_dogs  distribution = poisson  lambda = 10           # required  min = 10              # optional}
+## scopes = { any }
+alias[effect:randomize_variable] = {
+	var = variable_field
+	distribution = uniform
+}
+
+###Randomize a variablerandomize_variable = num_dogs# which is equivalient torandomize_variable = {  var = num_dogs  distribution = uniform}# which is equivalent torandomize_variable = {  var = num_dogs  distribution = uniform  min = 0  max = 1}# also allow for binomial distribution (with N=2)randomize_variable = {  var = num_dogs  distribution = binomial  min = 0               # optional  max = 10              # required if min is specified}# also allow for the poisson distributionrandomize_variable = {  var = num_dogs  distribution = poisson  lambda = 10           # required  min = 10              # optional}
+## scopes = { any }
+alias[effect:randomize_variable] = {
+	var = variable_field
+	distribution = binomial
+}
+
+###Randomize a variablerandomize_variable = num_dogs# which is equivalient torandomize_variable = {  var = num_dogs  distribution = uniform}# which is equivalent torandomize_variable = {  var = num_dogs  distribution = uniform  min = 0  max = 1}# also allow for binomial distribution (with N=2)randomize_variable = {  var = num_dogs  distribution = binomial  min = 0               # optional  max = 10              # required if min is specified}# also allow for the poisson distributionrandomize_variable = {  var = num_dogs  distribution = poisson  lambda = 10           # required  min = 10              # optional}
+## scopes = { any }
+alias[effect:randomize_variable] = {
+	var = variable_field
+	distribution = uniform
+	min = variable_field
+	max = variable_field
+}
+
+###Randomize a variablerandomize_variable = num_dogs# which is equivalient torandomize_variable = {  var = num_dogs  distribution = uniform}# which is equivalent torandomize_variable = {  var = num_dogs  distribution = uniform  min = 0  max = 1}# also allow for binomial distribution (with N=2)randomize_variable = {  var = num_dogs  distribution = binomial  min = 0               # optional  max = 10              # required if min is specified}# also allow for the poisson distributionrandomize_variable = {  var = num_dogs  distribution = poisson  lambda = 10           # required  min = 10              # optional}
+## scopes = { any }
+alias[effect:randomize_variable] = {
+	var = variable_field
+	distribution = binomial
+	min = variable_field
+	max = variable_field
+}
+
+###Randomize a variablerandomize_variable = num_dogs# which is equivalient torandomize_variable = {  var = num_dogs  distribution = uniform}# which is equivalent torandomize_variable = {  var = num_dogs  distribution = uniform  min = 0  max = 1}# also allow for binomial distribution (with N=2)randomize_variable = {  var = num_dogs  distribution = binomial  min = 0               # optional  max = 10              # required if min is specified}# also allow for the poisson distributionrandomize_variable = {  var = num_dogs  distribution = poisson  lambda = 10           # required  min = 10              # optional}
+## scopes = { any }
+alias[effect:randomize_variable] = {
+	var = variable_field
+	distribution = binomial
+	## cardinality = 0..1
+	min = variable_field
+	lambda = variable_field
+}
 
 ###Harm an operative. The specified value is subject to modifiers.harm_operative_leader = 12
 ## scopes = { UNIT_LEADER }

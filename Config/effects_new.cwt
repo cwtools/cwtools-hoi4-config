@@ -446,6 +446,7 @@ alias[effect:kill_operative] = replace_me
 
 ###Executes children effects on random controlled state that fulfills the "limit" trigger. prioritize = { <stateID> <stateID> } to pick those states first if they fulfull the limit
 ## scopes = { COUNTRY }
+## push_scope = state
 alias[effect:random_controlled_state] = {
     ## cardinality = 0..1
 	limit = {

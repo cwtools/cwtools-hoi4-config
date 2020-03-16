@@ -101,6 +101,7 @@ enums = {
 		can_use_kamikaze_pilots
 		contributes_operatives
 		units_deployed_to_overlord
+		can_boost_own_ideology
 	}
 
 	enum[ai_ideology] = {

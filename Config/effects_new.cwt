@@ -177,7 +177,7 @@ alias[effect:transfer_units_fraction] = {
 	air_ratio = variable_field
 	## cardinality = 0..1
 	keep_unit_leaders = {
-		## cardinality = 1..inf
+		## cardinality = ~1..inf
 		value[unit_leader_ids]
 	}
 	## cardinality = 0..1

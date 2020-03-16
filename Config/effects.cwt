@@ -467,7 +467,7 @@ alias[effect:create_unit] = {
 		}
 	}
 	## cardinality = 0..1
-	id = value_set[spawned_unit_id]
+	id = variable_field
 }
 
 ### Plays sound effect.

@@ -79,7 +79,7 @@ alias[trigger:has_active_resistance] = bool
 
 ###compares occupied country that creates resistance to a tag. Example: has_occupation_modifier = modifier_name
 ## scopes = { STATE }
-alias[trigger:has_occupation_modifier] = replace_me
+alias[trigger:has_occupation_modifier] = <resistance_compliance_modifier>
 
 ###returns true if game is in debug mode (launched with -debug argument)
 ## scopes = { any }
@@ -120,11 +120,15 @@ alias[trigger:network_strength] = {
 
 ###Checks if a country has a specific token against another countryhas_operation_token = {	tag = GER	token = some_token_id}
 ## scopes = { COUNTRY }
-alias[trigger:has_operation_token] = replace_me
+alias[trigger:has_operation_token] = {
+	tag = scope[country]
+	tag = enum[country_tags]
+	token = <operation_token>
+}
 
 ###checks occupation law of state. Example: occupation_law = brutally_oppressive_occupation
 ## scopes = { STATE }
-alias[trigger:occupation_law] = replace_me
+alias[trigger:occupation_law] = <occupation_law>
 
 ###checks if a country is ally with another country. will check if two countries are same/in same faction/has subject master relationExample: is_ally_with = ITA 
 ## scopes = { COUNTRY }
@@ -192,7 +196,7 @@ alias[trigger:all_country_with_original_tag] = {
 
 ###has country done this intelligence agency upgrade (to its highest level)
 ## scopes = { COUNTRY }
-alias[trigger:has_done_agency_upgrade] = replace_me
+alias[trigger:has_done_agency_upgrade] = <intelligence_agency_upgrade>
 
 ###check if country is Spy Master
 ## scopes = { COUNTRY }
@@ -216,7 +220,16 @@ alias[trigger:operative_leader_mission] = replace_me
 
 ###Compare the intel of the scoped country with the specified one:GER = {  # is true if all predicates are satisfied  compare_intel_with = {     target = POL    civilian_intel > 0.5  # GER has at least 0.5 more civ. intel than POL    army_intel = 0  # GER has as much army intel as POL    navy_intel < 0  # POL has more navy intel than GER    # airforce_intel is not specified and thus ignored in the comparison  }}
 ## scopes = { COUNTRY }
-alias[trigger:compare_intel_with] = replace_me
+alias[trigger:compare_intel_with] = { 
+	target = enum[country_tags]
+	target = scope[country]
+	## cardinality = 0..1
+	civilian_intel = variable_field
+	## cardinality = 0..1
+	army_intel = variable_field
+	## cardinality = 0..1
+    navy_intel = variable_field
+}
 
 ###check if all operatives meets the trigger. tooltip=key can be defined to override title
 ## scopes = { COUNTRY OPERATION }
@@ -242,7 +255,16 @@ alias[trigger:is_operative_captured] = bool
 
 ###Compare the absolute, percentage based, intel level the scoped country has overthe specified one:GER = {  # is true if all predicates are satisfied  intel_level_over = {     target = POL    civilian_intel > 0.5  # GER has more than 50% civ. intel over POL    army_intel = 0  # GER has no army intel over POL    navy_intel > 0  # GER has at least some navy intel over POL    # airforce_intel is not specified and thus ignored in the comparison    # NOTE: since we are comparing the intel level of a country over another,    # checking for values less than 0 does not make sense    # NOTE: since we are comparing percentages, using values greater than 1    # does not make sense.  }}
 ## scopes = { COUNTRY }
-alias[trigger:intel_level_over] = replace_me
+alias[trigger:intel_level_over] = { 
+	target = enum[country_tags]
+	target = scope[country]
+	## cardinality = 0..1
+	civilian_intel = variable_field
+	## cardinality = 0..1
+	army_intel = variable_field
+	## cardinality = 0..1
+    navy_intel = variable_field
+}
 
 ###check if any of the states controlled by the scope country meets the trigger. tooltip=key can be defined to override title
 ## scopes = { COUNTRY }
@@ -340,7 +362,11 @@ alias[trigger:num_finished_operations] = replace_me
 
 ###checks the collaboration in a target country with our currently scoped country. Example: has_collaboration = {  target = GER value > 0.5} #or has_collaboration@GER as variable
 ## scopes = { COUNTRY }
-alias[trigger:has_collaboration] = replace_me
+alias[trigger:has_collaboration] = {
+	target = scope[country]
+	target = enum[country_tags]
+	value = variable_field
+}
 
 ###checks if running a specific operation. operation can be ommitted to check for any operationExample: is_running_operation = {  target = ITA  operation = operation_infiltrate_armed_forces_navy}
 ## scopes = { COUNTRY }
@@ -376,7 +402,11 @@ alias[trigger:operative_leader_operation] = replace_me
 
 ###checks if the country could potentially declare a war on the target ( according to game rules, relationship, etc... ). Example can_declare_war_on = GER
 ## scopes = { COUNTRY }
-alias[trigger:can_declare_war_on] = replace_me
+alias[trigger:can_declare_war_on] = scope[country]
+
+###checks if the country could potentially declare a war on the target ( according to game rules, relationship, etc... ). Example can_declare_war_on = GER
+## scopes = { COUNTRY }
+alias[trigger:can_declare_war_on] = enum[country_tags]
 
 ###Checks whether the operative has the specified nationality.NOTE: this is invalid on non-operatives.Examples:has_nationality = GER
 ## scopes = { UNIT_LEADER }
@@ -388,7 +418,11 @@ alias[trigger:has_nationality] = enum[country_tags]
 
 ###checks network national coverage you have over a country. Example: network_national_coverage = {  target = GER value > 0.5} 
 ## scopes = { COUNTRY }
-alias[trigger:network_national_coverage] = replace_me
+alias[trigger:network_national_coverage] = { 
+	target = enum[country_tags]
+	target = scope[country]
+	value = variable_field
+}
 
 ###Randomize a temporary variablerandomize_temp_variable = num_dogs# which is equivalient torandomize_temp_variable = {  var = num_dogs  distribution = uniform}# which is equivalent torandomize_temp_variable = {  var = num_dogs  distribution = uniform  min = 0  max = 1}# also allow for binomial distribution (with N=2)randomize_temp_variable = {  var = num_dogs  distribution = binomial  min = 0               # optional  max = 10              # required if min is specified}# also allow for the poisson distributionrandomize_temp_variable = {  var = num_dogs  distribution = poisson  lambda = 10           # required  min = 10              # optional}
 ## scopes = { any }

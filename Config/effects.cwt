@@ -324,8 +324,16 @@ alias[effect:random] = {
 ### A random effect.
 ## scope = any
 alias[effect:random_list] = {
-	## cardinality = 1..inf
+	## cardinality = 0..inf
 	int = {
+		## cardinality = 0..inf
+		alias_name[modifier_rule] = alias_match_left[modifier_rule]
+		alias_name[effect] = alias_match_left[effect]
+	}
+
+	## cardinality = 0..inf
+	variable_field = {
+		## cardinality = 0..inf
 		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 		alias_name[effect] = alias_match_left[effect]
 	}
@@ -459,7 +467,7 @@ alias[effect:create_unit] = {
 		}
 	}
 	## cardinality = 0..1
-	id = variable_field
+	id = value_set[spawned_unit_id]
 }
 
 ### Plays sound effect.
@@ -482,6 +490,8 @@ alias[effect:division_template] = {
 	division_names_group = <division_name>
 	## cardinality = 0..1
 	is_locked = bool
+	## cardinality = 0..1
+	is_fake_intel_division = bool
 	regiments = {
 		## cardinality = 1..25
 		<unit> = { x = int[0..5] y = int[0..5] }
@@ -2045,13 +2055,14 @@ alias[effect:add_to_temp_variable] = {
 ### Subtracts a value or a variable to a temp variable.
 ## scope = any
 alias[effect:subtract_from_temp_variable] = {
-	var = value_set[variable]
-	value = variable_field
+	value_set[variable] = variable_field
 }
+
 ### Subtracts a value or a variable to a temp variable.
 ## scope = any
 alias[effect:subtract_from_temp_variable] = {
-	value_set[variable] = variable_field
+	var = value_set[variable]
+	value = variable_field
 }
 
 ### Multiplies a temp variable to a value or another variable.
@@ -2207,6 +2218,8 @@ alias[effect:set_division_template_lock] = {
 ## scope = country
 alias[effect:delete_unit_template_and_units] = {
 	division_template = localisation_inline
+	## cardinality = 0..1
+	disband = bool
 }
 
 ### Prints all variables in scope and temp variables to a file.

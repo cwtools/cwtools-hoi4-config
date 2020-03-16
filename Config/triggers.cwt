@@ -665,7 +665,20 @@ alias[trigger:has_built] = {
 ## scope = country
 alias[trigger:has_available_idea_with_traits] = {
 	idea = <country_leader_trait>
+	idea = {
+		## cardinality = 1..inf
+		<country_leader_trait>
+	}
 	limit = int
+	## cardinality = 0..1
+	### # if specified, these ideas will be ignored.
+	ignore = {
+		enum[idea_name]
+	}
+
+	## cardinality = 0..1
+	### # if specified, these ideas will be ignored.
+	ignore = enum[idea_name]
 }
 
 ### Checks if state is claimed by country.
@@ -1226,7 +1239,7 @@ alias[trigger:has_country_leader] = {
 alias[trigger:has_country_leader] = {
 	name = scalar
 	## cardinality = 0..1
-	ruling_only = yes
+	ruling_only = bool
 }
 
 ### Check if country has leader with specified ID. Don't localize this. Tooltip only for debug.
@@ -1235,7 +1248,7 @@ alias[trigger:has_country_leader] = {
 	id = int
 	name = scalar
 	## cardinality = 0..1
-	ruling_only = yes
+	ruling_only = bool
 }
 
 ### Compares current country's army experience with right side value.

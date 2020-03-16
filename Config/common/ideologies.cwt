@@ -20,7 +20,9 @@ ideology = {
 		types = {
 			## cardinality = ~1..inf
 			scalar = {
-
+				### won't be assigned to randomly generated country leaders
+				## cardinality = 0..1
+				can_be_randomly_selected = bool
 			}
 		}
 

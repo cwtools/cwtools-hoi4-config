@@ -96,11 +96,11 @@ oob = {
 							creator = enum[country_tags]
 						}
 					}
-					## cardinality = 0..1
+					## cardinality = 1..1
 					air_wings = {
 						# should have something to force ace to be directly after <equipment.air_equip>
 
-						## cardinality = 1..inf
+						## cardinality = 0..inf
 						<equipment.air_equip> = {
 							owner = enum[country_tags]
 							## cardinality = 0..1

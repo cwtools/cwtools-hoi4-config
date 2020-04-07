@@ -182,6 +182,9 @@ types = {
         ## type_key_filter = on_peace
         ### 
         subtype[on_peace] = { }
+        ## type_key_filter = on_weekly
+        ### 
+        subtype[on_weekly] = { }
     }
 }
 on_action = {
@@ -1014,6 +1017,20 @@ on_action = {
     }
     ## replace_scope = { THIS = country ROOT = country FROM = country }
     subtype[on_peace] = {
+        ## cardinality = 0..1
+        random_events = {
+            ## cardinality = 0..inf
+            int = 0
+            ## cardinality = 0..inf
+            int = <event.country_event>
+        }
+        ## cardinality = 0..1
+        effect = {
+            alias_name[effect] = alias_match_left[effect]
+        }
+    }
+    ## replace_scope = { THIS = country ROOT = country FROM = country }
+    subtype[on_weekly] = {
         ## cardinality = 0..1
         random_events = {
             ## cardinality = 0..inf

@@ -1498,6 +1498,8 @@ alias[effect:release_autonomy] = {
 	autonomy_state = autonomy_free
 	## cardinality = 0..1
 	freedom_level = float[0..1]
+	## cardinality = 0..1
+	release_non_owned_controlled = bool
 }
 
 ### Makes autonomy of specified level and country.

@@ -98,6 +98,10 @@ technology = {
 	## cardinality = 0..1
 	### When ahead of time penalty reaches 0.
 	start_year = int
+
+	## cardinality = 0..1
+	sub_tech_index = int
+
 	## cardinality = 0..inf
 	### Which folder(s) tech appears in.
 	folder = {

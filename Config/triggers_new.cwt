@@ -469,3 +469,7 @@ alias[effect:randomize_temp_variable] = {
 	min = variable_field
 	lambda = variable_field
 }
+
+###Checks whether a state is impassable.
+## scopes = { state }
+alias[effect:impassable] = bool

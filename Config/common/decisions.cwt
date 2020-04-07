@@ -187,6 +187,12 @@ decision = {
 	}
 
 	## cardinality = 0..1
+	highlight_state_targets = {
+		## cardinality = ~1..inf
+		state = <state>
+	}
+
+	## cardinality = 0..1
 	highlight_provinces = {
 		## cardinality = ~1..inf
 		enum[provinces]

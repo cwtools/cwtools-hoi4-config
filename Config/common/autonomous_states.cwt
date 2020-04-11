@@ -15,6 +15,9 @@ autonomy = {
 	## cardinality = 0..1
 	is_puppet = bool
 
+	## cardinality = 0..1
+	use_overlord_color = bool
+
 	min_freedom_level = float[0..0.99]
 
 	## cardinality = 0..1
@@ -40,6 +43,7 @@ autonomy = {
 		factor = float
 	}
 
+	## cardinality = 0..1
 	ai_overlord_wants_garrison = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
@@ -61,10 +65,12 @@ autonomy = {
 		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	}
 
+	## cardinality = 0..1
 	can_take_level = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 
+	## cardinality = 0..1
 	can_lose_level = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}

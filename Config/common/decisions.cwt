@@ -9,16 +9,22 @@ types = {
 		subtype[mission] = {
 			days_mission_timeout = scalar
 		}
+		subtype[state_targeted] = {
+			state_target = yes
+		}
+		## only_if_not = { state_targeted }
 		subtype[targeted] = {
 			target_trigger = {
 
 			}
 		}
+		## only_if_not = { state_targeted }
 		subtype[targeted] = {
 			targets = {
 
 			}
 		}
+		## only_if_not = { state_targeted }
 		subtype[targeted] = {
 			target_array = scalar
 		}
@@ -40,6 +46,13 @@ types = {
 decision_category = {
 	## cardinality = 0..1
 	icon = scalar
+	## cardinality = 0..inf
+	icon = {
+		key = scalar
+		trigger = {
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+	}
 	## cardinality = 0..1
 	picture = scalar
 	## cardinality = 0..1
@@ -90,10 +103,19 @@ decision_category = {
 	}
 
 	## cardinality = 0..1
+	visibility_type = enum[targeted_decisions_state_map_modes]
+
+
+	## cardinality = 0..1
 	on_map_area = {
 		state = <state>
 		name = localisation
 		zoom = int
+		
+		## cardinality = 0..1
+		target_root_trigger = {
+			alias_name[trigger] = alias_match_left[trigger]
+		}
 	}
 
 	## cardinality = 0..1
@@ -104,6 +126,13 @@ decision_category = {
 decision = {
 	## cardinality = 0..1
 	icon = scalar
+	## cardinality = 0..inf
+	icon = {
+		key = scalar
+		trigger = {
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+	}
 	## cardinality = 0..1
 	priority = int
 	## cardinality = 0..1
@@ -158,10 +187,21 @@ decision = {
 	}
 
 	## cardinality = 0..1
+	highlight_state_targets = {
+		## cardinality = ~1..inf
+		state = <state>
+	}
+
+	## cardinality = 0..1
 	highlight_provinces = {
 		## cardinality = ~1..inf
 		enum[provinces]
 	}
+
+	## cardinality = 0..1
+	highlight_color_before_active = int
+	## cardinality = 0..1
+	highlight_color_while_active = int
 
 	## cardinality = 0..1
 	complete_effect = {
@@ -241,6 +281,9 @@ decision = {
 		}
 
 		## cardinality = 0..1
+		targets_dynamic = bool
+
+		## cardinality = 0..1
 		target_root_trigger = {
 			alias_name[trigger] = alias_match_left[trigger]
 		}
@@ -252,6 +295,8 @@ decision = {
 		target_array = value[array]
 		## cardinality = 0..1
 		target_array = variable_field
+		## cardinality = 0..1
+		target_non_existing = bool
 	}
 
 	## cardinality = 0..inf
@@ -277,7 +322,78 @@ decision = {
 	}
 
 	## cardinality = 0..1
-	on_map_mode = map_only
+	on_map_mode = enum[targeted_decisions_state_map_modes]
+
+	subtype[state_targeted] = {
+		### Can the player see this decision.
+		## cardinality = 0..1
+		## replace_scope = { root = country this = country from = state }
+		visible = {
+			## cardinality = ~1..inf
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+
+		### Check if this decision can be activated.
+		## cardinality = 0..1
+		## replace_scope = { root = country this = country from = state }
+		available = {
+			## cardinality = ~1..inf
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+
+		## cardinality = 0..1
+		## replace_scope = { root = country this = country from = state }
+		complete_effect = {
+			## cardinality = ~1..inf
+			alias_name[effect] = alias_match_left[effect]
+		}
+
+		## cardinality = 0..1
+		## replace_scope = { root = country this = country from = state }
+		remove_effect = {
+			## cardinality = ~1..inf
+			alias_name[effect] = alias_match_left[effect]
+		}
+
+		## cardinality = 0..1
+		## replace_scope = { root = country this = country from = state }
+		target_trigger = {
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+
+		state_target = yes
+
+		## cardinality = 0..1
+		targets = {
+			## cardinality = 0..inf
+			<state>
+			## cardinality = 0..inf
+			value[variable]
+			## cardinality = 0..inf
+			variable_field
+		}
+
+		## cardinality = 0..1
+		target_root_trigger = {
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+
+		## cardinality = 0..inf
+		alias_name[targeted_modifier_rule] = alias_match_left[targeted_modifier_rule]
+
+		## cardinality = 0..1
+		target_array = value[array]
+		## cardinality = 0..1
+		target_array = variable_field
+
+		## cardinality = 0..1
+		## replace_scope = { root = country this = country from = state }
+		ai_will_do = {
+			## cardinality = 0..1
+			enum[base_factor] = variable_field
+			alias_name[modifier_rule] = alias_match_left[modifier_rule]
+		}
+	}
 }
 
 enums = {
@@ -291,5 +407,10 @@ enums = {
 		war_with_target_on_remove
 		war_with_target_on_complete
 		war_with_target_on_timeout
+	}
+
+	enum[targeted_decisions_state_map_modes] = {
+		map_only
+		map_and_decisions_view
 	}
 }

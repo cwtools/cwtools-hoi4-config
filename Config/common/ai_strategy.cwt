@@ -10,6 +10,10 @@ types = {
 
 ai_strategy = {
 	## cardinality = 0..1
+	allowed = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	## cardinality = 0..1
 	target_array = value[array]
 	## cardinality = 0..1
 	target_array = variable_field
@@ -178,16 +182,17 @@ enums = {
 		contain
 		declare_war
 		dont_defend_ally_borders
+		force_defend_ally_borders
 		ignore
 		ignore_claim
 		influence
 		invade
 		occupation_policy
+		prepare_for_war
 		protect
+		send_lend_lease_desire
 		send_volunteers_desire
 		support
-		force_defend_ally_borders
-		prepare_for_war
 	}
 	enum[equipment_strats] = {
 		equipment_variant_production_factor
@@ -205,6 +210,10 @@ enums = {
 		force_build_armies
 		garrison
 		produce_unit_for_subject_supply_chunks
+		intelligence_agency_usable_factories
+		agency_ai_base_num_factories_factor
+		garrison_reinforcement_priority
+		operation_equipment_priority
 	}
 	enum[pp_strats] = {
 		pp_spend_amount

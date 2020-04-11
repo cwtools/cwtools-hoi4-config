@@ -405,7 +405,11 @@ values = {
         motorized
         mountaineers
         paratroopers
-        suppression
+		suppression
+		mobile
+		artillery
+		cas
+		anti_tank
 
         naval_capital
         naval_carrier

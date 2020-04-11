@@ -8,6 +8,7 @@ alias[targeted_modifier_rule:targeted_modifier] = {
 }
 
 alias[modifier_rule:modifier] = {
+	## cardinality = ~1..inf
 	enum[add_factor] = variable_field
 	## cardinality = ~1..inf
 	alias_name[trigger] = alias_match_left[trigger]
@@ -18,6 +19,11 @@ alias[modifier:<ideology>_drift] = float
 alias[modifier:local_resources_<resource>] = int
 alias[modifier:enum[sub_unit_modifiers]] = float
 alias[modifier:production_speed_<building>_factor] = float
+alias[modifier:<modifier_definition>] = float
+alias[modifier:hidden_modifier] = {
+	alias_name[modifier] = alias_match_left[modifier]
+}
+alias[modifier:custom_modifier_tooltip] = localisation
 
 #unit stats
 alias[unit_stat:acclimatization_cold_climate_gain_factor] = float

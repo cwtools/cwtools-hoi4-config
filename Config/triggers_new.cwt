@@ -108,6 +108,7 @@ alias[trigger:network_strength] = {
 	target = scope[country]
 	## cardinality = 0..1
 	state = <state>
+	state = scope[state]
 	value = variable_field
 }
 
@@ -115,6 +116,7 @@ alias[trigger:network_strength] = {
 ## scopes = { COUNTRY }
 alias[trigger:network_strength] = {
 	state = <state>
+	state = scope[state]
 	value = variable_field
 }
 

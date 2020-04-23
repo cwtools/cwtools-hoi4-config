@@ -1273,7 +1273,7 @@ alias[trigger:has_full_control_of_state] = <state>
 
 ### Will compare towards the amount of divisions a country has control over, if strength matters use has_army_size.
 ## scope = country
-alias[trigger:num_divisions] = int
+alias[trigger:num_divisions] = int_variable_field
 
 ### Returns true if the specified number of sub-triggers return true.
 ## scope = any
@@ -2214,3 +2214,7 @@ alias[trigger:has_core_occupation_modifier] = {
 ### Has country created an Intelligence Agency.
 ## scope = country
 alias[trigger:has_intelligence_agency] = bool
+
+### Is impassable state
+## scope = state
+alias[trigger:impassable] = bool

@@ -336,6 +336,7 @@ modifiers = {
 	propaganda_mission_factor = country
 	puppet_cost_factor = country
 	recon_factor = country
+	recruitable_population = country
 	refit_ic_cost = country
 	refit_speed = country
 	repair_speed_factor = country

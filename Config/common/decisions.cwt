@@ -316,7 +316,7 @@ decision = {
 
 	## cardinality = 0..1
 	ai_will_do = {
-		## cardinality = 0..1
+		## cardinality = 1..1
 		enum[base_factor] = variable_field
 		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	}
@@ -389,7 +389,7 @@ decision = {
 		## cardinality = 0..1
 		## replace_scope = { root = country this = country from = state }
 		ai_will_do = {
-			## cardinality = 0..1
+			## cardinality = 1..1
 			enum[base_factor] = variable_field
 			alias_name[modifier_rule] = alias_match_left[modifier_rule]
 		}

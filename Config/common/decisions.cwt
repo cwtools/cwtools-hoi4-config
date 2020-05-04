@@ -215,6 +215,12 @@ decision = {
 		alias_name[effect] = alias_match_left[effect]
 	}
 
+	## cardinality = 0..1
+	cancel_effect = {
+		## cardinality = ~1..inf
+		alias_name[effect] = alias_match_left[effect]
+	}
+
 	subtype[timed] = {
 		## cardinality = 0..1
 		cancel_trigger = {

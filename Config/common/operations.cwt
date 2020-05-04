@@ -1,0 +1,5 @@
+types = {
+    type[operation] = {
+		path = "game/common/operation"
+	}
+}

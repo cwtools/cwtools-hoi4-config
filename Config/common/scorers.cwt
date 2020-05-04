@@ -1,0 +1,5 @@
+types = {
+    type[country_scorer] = {
+		path = "game/common/scorers/country"
+	}
+}

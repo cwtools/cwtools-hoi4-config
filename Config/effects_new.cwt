@@ -345,7 +345,11 @@ alias[effect:reserve_dynamic_country] = bool
 
 ###calculates the highest scored country that is defined in a country scorer and sets it to a variable. Example: get_highest_scored_country_temp = {   scorer = scorer_id   var = var_name # variable name that the result will be stored. default is highest_scored_country }
 ## scopes = { COUNTRY }
-alias[effect:get_highest_scored_country_temp] = replace_me
+alias[effect:get_highest_scored_country_temp] = {
+	scorer = <country_scorer>
+	## cardinality = 0..1
+	var = value_set[variable]
+}
 
 ###creates a dynamic country and runs child effects on it. example :create_dynamic_country = {   original_tag = ITA #original tag of new country  copy_tag = ITA # if set, it will copy stuff from copy tag instead of original_tag #...effects to run on new country}
 ## scopes = { any }
@@ -362,7 +366,13 @@ alias[effect:create_dynamic_country] = {
 
 ###calculates & sorts all countries in a country scorer and stores them and their scores in temp arrays. Example: get_sorted_scored_countries_temp = {   scorer = scorer_id # id that is used in country scorer  array = array_name # a name to store sorted countries as a temp array (default to sorted_country_list)   scores = array_name # corresponding score temp array for countries stored in array (default to country_list_scores) }
 ## scopes = { COUNTRY }
-alias[effect:get_sorted_scored_countries_temp] = replace_me
+alias[effect:get_sorted_scored_countries_temp] = {
+	scorer = <country_scorer>
+	## cardinality = 0..1
+	array = value_set[array]
+	## cardinality = 0..1
+	scores = value_set[array]
+}
 
 ###Executes children effects on random occupied country that fulfills the "limit" trigger.
 ## scopes = { COUNTRY }
@@ -416,11 +426,21 @@ alias[effect:remove_resistance_target] = value[resistance_target]
 
 ###calculates the highest scored country that is defined in a country scorer and sets it to a temp variable. Example: get_highest_scored_country = {   scorer = scorer_id   var = var_name # temp variable name that the result will be stored. default is highest_scored_country }
 ## scopes = { COUNTRY }
-alias[effect:get_highest_scored_country] = replace_me
+alias[effect:get_highest_scored_country] = {
+	scorer = <country_scorer>
+	## cardinality = 0..1
+	var = value_set[variable]
+}
 
 ###calculates & sorts all countries in a country scorer and stores them and their scores in arrays. Example: get_sorted_scored_countries = {   scorer = scorer_id # id that is used in country scorer  array = array_name # a name to store sorted countries as an array (default to sorted_country_list)   scores = array_name # corresponding score array for countries stored in array (default to country_list_scores) }
 ## scopes = { COUNTRY }
-alias[effect:get_sorted_scored_countries] = replace_me
+alias[effect:get_sorted_scored_countries] = {
+	scorer = <country_scorer>
+	## cardinality = 0..1
+	array = value_set[array]
+	## cardinality = 0..1
+	scores = value_set[array]
+}
 
 ###Executes children effects on a random country with original tag. Example:random_country_with_original_tag = {   original_tag_to_check = ENG # the effect will only run on countries that has this original tag   limit = { always = yes } # a limit can be defined to limit scopes  # ... effects to execute }
 ## scopes = { any }
@@ -551,7 +571,7 @@ alias[effect:create_intelligence_agency] = yes
 
 ###create an Intelligence Agency for the country, if it is not already done.
 ## scopes = { COUNTRY }
-alias[effect:create_intelligence_agency] = { 
+alias[effect:create_intelligence_agency] = {
   name = localisation
   icon = <spriteType>
 }
@@ -562,7 +582,7 @@ alias[effect:upgrade_intelligence_agency] = <intelligence_agency_upgrade>
 
 ###create a ship from another country and assign it to the reserve fleet.'creator' is optional. If not set, it will be the scoped country.'name' is optional.FRA = {  create_ship = {    type = ship_hull_submarine_1    equipment_variant = "S Class"    creator = ENG    name = "My ship name"  }}
 ## scopes = { COUNTRY }
-alias[effect:create_ship] = { 
+alias[effect:create_ship] = {
 	type = <equipment.naval_equip>
 	equipment_variant = scalar
 	## cardinality = 0..1
@@ -775,7 +795,7 @@ alias[effect:kill_operative] = {
 
 ###Kills an operative. This will temporarily lock the slot they occupyExamples:GER = {    kill_operative = PREV  # where PREV is an operative (unit leader)    # or    kill_operative = {        operative = PREV    }}kill_operative = { killed_by = GER } # where the scope is an unit leader
 ## scopes = { UNIT_LEADER }
-alias[effect:kill_operative] = { 
+alias[effect:kill_operative] = {
 	killed_by = scope[country]
 	killed_by = enum[country_tags]
 }
@@ -880,7 +900,7 @@ alias[effect:turn_operative] = {
 
 ###An operative is turned by the specified country.This transfers the operative to the target country and make it appear as killed to the country of origin (increases the death counter and lock the slot).This fires the on_action on_operative_death with as killer the target country.If the target country is the owner of the operative, this has no effect and an error is logged.WARN: the on_action might execute immediatly, before any effect listed after the occurence of turn_operative.Examples:GER = {    turn_operative = PREV  # where PREV is an operative (unit leader)    # or    turn_operative = {        operative = PREV    }}turn_operative = { turned_by = GER } # where the scope is an unit leader
 ## scopes = { UNIT_LEADER }
-alias[effect:turn_operative] = { 
+alias[effect:turn_operative] = {
 	turned_by = scope[country]
 	turned_by = enum[country_tags]
 }

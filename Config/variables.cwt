@@ -135,6 +135,9 @@ values = {
 		### Autonomy of scope country. -1 if not a subject.
 		autonomy_ratio
 
+		### Capital state of the country
+		capital
+
 		### Civilian intel against a target country. example GER.civilian_intel@ENG.
 		civilian_intel@enum[country_tags]
 

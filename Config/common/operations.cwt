@@ -74,20 +74,23 @@ operation = {
     ## cardinality = 0..1
     ## replace_scope = { THIS = country ROOT = country }
 	allowed = {
-		original_tag = GER
+		## cardinality = ~1..inf
+		alias_name[trigger] = alias_match_left[trigger]
 	}
 
 	### Determines whether the operation can be launched by the player, Default = { always = yes }
     ## cardinality = 0..1
     ## replace_scope = { THIS = country ROOT = country FROM = country }
 	available = {
-		always = no
+		## cardinality = ~1..inf
+		alias_name[trigger] = alias_match_left[trigger]
 	}
 
 	### Determines whether the operation will be visible to the player, If no trigger used it will fall back to a default where it shows operations with network strength below NOperatives::INTEL_NETWORK_MIN_DEFAULT_FOR_SHOWING or when reaching half its network requirements. It will also only show operations with one level higher operation count than you currently have.
     ## replace_scope = { THIS = country ROOT = operation FROM = operation }
     ## cardinality = 0..1
 	visible = {
+		## cardinality = ~1..inf
         alias_name[trigger] = alias_match_left[trigger]
 	}
 

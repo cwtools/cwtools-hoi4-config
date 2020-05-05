@@ -171,6 +171,11 @@ values = {
 		### Total fuel of country in thousands.
 		fuel_k
 
+		### Gives what ratio of the garrison factor we can support for current template and buffers.
+		garrison_equipment_support_ratio
+		garrison_min_support_ratio
+		garrison_manpower_support_ratio
+
 		### Ideology of the most popular party. Can exclude the ruling party by using @exclude_ruling_party. Example: highest_party_ideology OR highest_party_ideology@exclude_ruling_party
 		highest_party_ideology
 		highest_party_ideology@exclude_ruling_party

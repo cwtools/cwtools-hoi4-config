@@ -19,6 +19,10 @@ types = {
 		## push_scope = any
 		subtype[unit_leader_event] = {
 		}
+		## type_key_filter = operative_leader_event
+		## push_scope = any
+		subtype[operative_leader_event] = {
+		}
 		subtype[hidden] = {
 			hidden = yes
 		}

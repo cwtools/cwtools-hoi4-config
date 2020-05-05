@@ -417,5 +417,6 @@ enums = {
 		root_out_resistance
 		control_trade
 		diplomatic_pressure
+		no_mission
 	}
 }

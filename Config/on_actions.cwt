@@ -185,6 +185,30 @@ types = {
         ## type_key_filter = on_weekly
         ### 
         subtype[on_weekly] = { }
+        ## type_key_filter = on_operative_on_mission_spotted
+        ### 
+        subtype[on_operative_on_mission_spotted] = { }
+        ## type_key_filter = on_operative_captured
+        ### 
+        subtype[on_operative_captured] = { }
+        ## type_key_filter = on_operative_death
+        ### 
+        subtype[on_operative_death] = { }
+        ## type_key_filter = on_operative_detected_during_operation
+        ### 
+        subtype[on_operative_detected_during_operation] = { }
+        ## type_key_filter = on_operative_created
+        ### 
+        subtype[on_operative_created] = { }
+        ## type_key_filter = on_operation_completed
+        ### 
+        subtype[on_operation_completed] = { }
+        ## type_key_filter = on_fully_decrypted_cipher
+        ### 
+        subtype[on_fully_decrypted_cipher] = { }
+        ## type_key_filter = on_activated_active_decryption_bonuses
+        ### 
+        subtype[on_activated_active_decryption_bonuses] = { }
     }
 }
 on_action = {
@@ -1037,6 +1061,118 @@ on_action = {
             int = 0
             ## cardinality = 0..inf
             int = <event.country_event>
+        }
+        ## cardinality = 0..1
+        effect = {
+            alias_name[effect] = alias_match_left[effect]
+        }
+    }
+    ## replace_scope = { THIS = unit_leader ROOT = country FROM = country }
+    subtype[on_operative_on_mission_spotted] = {
+        ## cardinality = 0..1
+        random_events = {
+            ## cardinality = 0..inf
+            int = 0
+            ## cardinality = 0..inf
+            int = <event.operative_leader_event>
+        }
+        ## cardinality = 0..1
+        effect = {
+            alias_name[effect] = alias_match_left[effect]
+        }
+    }
+    ## replace_scope = { THIS = unit_leader ROOT = country FROM = country }
+    subtype[on_operative_captured] = {
+        ## cardinality = 0..1
+        random_events = {
+            ## cardinality = 0..inf
+            int = 0
+            ## cardinality = 0..inf
+            int = <event.operative_leader_event>
+        }
+        ## cardinality = 0..1
+        effect = {
+            alias_name[effect] = alias_match_left[effect]
+        }
+    }
+    ## replace_scope = { THIS = unit_leader ROOT = country FROM = country }
+    subtype[on_operative_death] = {
+        ## cardinality = 0..1
+        random_events = {
+            ## cardinality = 0..inf
+            int = 0
+            ## cardinality = 0..inf
+            int = <event.operative_leader_event>
+        }
+        ## cardinality = 0..1
+        effect = {
+            alias_name[effect] = alias_match_left[effect]
+        }
+    }
+    ## replace_scope = { THIS = unit_leader ROOT = unit_leader FROM = unit_leader FROMFROM = state }
+    subtype[on_operative_detected_during_operation] = {
+        ## cardinality = 0..1
+        random_events = {
+            ## cardinality = 0..inf
+            int = 0
+            ## cardinality = 0..inf
+            int = <event.operative_leader_event>
+        }
+        ## cardinality = 0..1
+        effect = {
+            alias_name[effect] = alias_match_left[effect]
+        }
+    }
+    ## replace_scope = { THIS = unit_leader FROM = country }
+    subtype[on_operative_created] = {
+        ## cardinality = 0..1
+        random_events = {
+            ## cardinality = 0..inf
+            int = 0
+            ## cardinality = 0..inf
+            int = <event.operative_leader_event>
+        }
+        ## cardinality = 0..1
+        effect = {
+            alias_name[effect] = alias_match_left[effect]
+        }
+    }
+    ## replace_scope = { THIS = operation ROOT = country FROM = country }
+    subtype[on_operation_completed] = {
+        ## cardinality = 0..1
+        random_events = {
+            ## cardinality = 0..inf
+            int = 0
+            ## cardinality = 0..inf
+            int = <event.operative_leader_event>
+        }
+        ## cardinality = 0..1
+        effect = {
+            alias_name[effect] = alias_match_left[effect]
+        }
+    }
+    ## replace_scope = { THIS = country ROOT = country FROM = country }
+    subtype[on_fully_decrypted_cipher] = {
+        ## cardinality = 0..1
+        random_events = {
+            ## cardinality = 0..inf
+            int = 0
+            ## cardinality = 0..inf
+            int = <event.operative_leader_event>
+        }
+        ## cardinality = 0..1
+        effect = {
+            alias_name[effect] = alias_match_left[effect]
+        }
+    }
+    ## replace_scope = { THIS = country ROOT = country FROM = country }
+    subtype[on_activated_active_decryption_bonuses] = {
+        ## cardinality = 0..1
+        random_events = {
+            ## cardinality = 0..inf
+            int = 0
+            ## cardinality = 0..inf
+            int = <event.operative_leader_event>
         }
         ## cardinality = 0..1
         effect = {

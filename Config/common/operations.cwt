@@ -34,6 +34,22 @@ operation = {
 	### Every operation has a hard requirement of network strength in the target country Integer [0-100]
 	network_strength = int[0..100]
 
+    ### Used for rescue operative operations
+    ## cardinality = 0..1
+    prevent_captured_operative_to_die = bool
+
+    ### Multiplier for the operation cost
+    ## cardinality = 0..1
+    cost_multiplier = float
+
+    ### Experience awarded by the operation
+	## cardinality = 0..1
+    experience = float
+
+    ### Sets a fixed scaling instead of per target size
+	## cardinality = 0..1
+    scale_cost_independent_of_target = bool
+
     ### This is where all the separate phases are defined, There can be any number of phases, they will be evenly split over the total duration of the operation
     ## cardinality = 1..inf
 	phases = {
@@ -67,6 +83,23 @@ operation = {
 	available = {
 		always = no
 	}
+
+	### Determines whether the operation will be visible to the player, If no trigger used it will fall back to a default where it shows operations with network strength below NOperatives::INTEL_NETWORK_MIN_DEFAULT_FOR_SHOWING or when reaching half its network requirements. It will also only show operations with one level higher operation count than you currently have.
+    ## replace_scope = { THIS = country ROOT = operation FROM = operation }
+    ## cardinality = 0..1
+	visible = {
+        alias_name[trigger] = alias_match_left[trigger]
+	}
+
+    ## cardinality = 0..1
+    risk_chance = float[0..1]
+
+	### List of modifiers that apply to risk_chance
+    ## cardinality = 0..1
+	risk_modifiers = {
+        ## cardinality = 1..inf
+        <unit_leader_trait>
+    }
 
     ### Determines the potentially awarded token(s) - this is for display purposes only in tooltips
     ## cardinality = 0..1
@@ -102,6 +135,14 @@ operation = {
             ## cardinality = 1..inf
             scope[country]
         }
+	}
+
+
+	### Determines the valid states for province selection
+    ## replace_scope = { THIS = state ROOT = state }
+    ## cardinality = 0..1
+	selection_target_state = {
+		<state>
 	}
 
     ### Determines the selector type. Currently supported are: [ province, strategic_region ]
@@ -174,17 +215,7 @@ operation = {
         alias_name[effect] = alias_match_left[effect]
 	}
 
-	### Determines whether the operation will be visible to the player, If no trigger used it will fall back to a default where it shows operations with network strength below NOperatives::INTEL_NETWORK_MIN_DEFAULT_FOR_SHOWING or when reachign half its network requirements. It will also only show operations with one level higher operation count than you currently have.
-    ## replace_scope = { THIS = country ROOT = operation FROM = operation }
-    ## cardinality = 0..1
-	visible = {
-        alias_name[trigger] = alias_match_left[trigger]
-	}
-
 	### Used to warn the AI about an upcoming war with the target of the operation
     ## cardinality = 0..1
     will_lead_to_war_with = bool
-
-    ## cardinality = 0..1
-    risk_chance = float[0..1]
 }

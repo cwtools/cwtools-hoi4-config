@@ -62,6 +62,9 @@ values = {
 		### Returns 1 if AI wants weaken.
 		ai_attitude_wants_weaken
 
+		### How much the AI wants a certain resource.
+		ai_desire_<resource>
+
 		### AI strategy value activate_crypto against country. Example: GER.ai_strategy_activate_crypto@ENG.
 		ai_strategy_activate_crypto@enum[country_tags]
 

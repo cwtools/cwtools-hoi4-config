@@ -2694,6 +2694,10 @@ alias[effect:add_dynamic_modifier] = {
 	## cardinality = 0..1
 	### Optional, state or country tag or a variable contains that. if specified the dynamic variable will target that scope.
 	scope = scope[country]
+
+	## cardinality = 0..1
+	### Optional, makes the dynamic modifier acted as a timed modifier
+	days = int_variable_field
 }
 
 ### Runs a same effects through a loop. example will run the effects for value_name = -3, 0, 3, 6, 9 and then terminate. Warning: will stop after reaching MAX_EFFECT_ITERATION define iterations - default 1000. Consider using for_each_loop instead.

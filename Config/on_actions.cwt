@@ -3,216 +3,216 @@ types = {
         path = "game/common/on_actions"
 		skip_root_key = on_actions
         ## type_key_filter = on_new_term_election
-        ### 
+        ###
         subtype[on_new_term_election] = { }
         ## type_key_filter = on_ace_promoted
-        ### 
+        ###
         subtype[on_ace_promoted] = { }
         ## type_key_filter = on_aces_killed_each_other
-        ### 
+        ###
         subtype[on_aces_killed_each_other] = { }
         ## type_key_filter = on_ace_killed_by_ace
-        ### 
+        ###
         subtype[on_ace_killed_by_ace] = { }
         ## type_key_filter = on_ace_killed_other_ace
-        ### 
+        ###
         subtype[on_ace_killed_other_ace] = { }
         ## type_key_filter = on_ace_killed
-        ### 
+        ###
         subtype[on_ace_killed] = { }
         ## type_key_filter = on_justifying_wargoal_pulse
-        ### 
+        ###
         subtype[on_justifying_wargoal_pulse] = { }
         ## type_key_filter = on_wargoal_expire
-        ### 
+        ###
         subtype[on_wargoal_expire] = { }
         ## type_key_filter = on_nuke_drop
-        ### 
+        ###
         subtype[on_nuke_drop] = { }
         ## type_key_filter = on_border_war_lost
-        ### 
+        ###
         subtype[on_border_war_lost] = { }
         ## type_key_filter = on_leave_faction
-        ### 
+        ###
         subtype[on_leave_faction] = { }
         ## type_key_filter = on_create_faction
-        ### 
+        ###
         subtype[on_create_faction] = { }
         ## type_key_filter = on_offer_join_faction
-        ### 
+        ###
         subtype[on_offer_join_faction] = { }
         ## type_key_filter = on_join_faction
-        ### 
+        ###
         subtype[on_join_faction] = { }
         ## type_key_filter = on_declare_war
-        ### 
+        ###
         subtype[on_declare_war] = { }
         ## type_key_filter = on_faction_formed
-        ### 
+        ###
         subtype[on_faction_formed] = { }
         ## type_key_filter = on_capitulation
-        ### 
+        ###
         subtype[on_capitulation] = { }
         ## type_key_filter = on_uncapitulation
-        ### 
+        ###
         subtype[on_uncapitulation] = { }
         ## type_key_filter = on_government_change
-        ### 
+        ###
         subtype[on_government_change] = { }
         ## type_key_filter = on_coup_succeeded
-        ### 
+        ###
         subtype[on_coup_succeeded] = { }
         ## type_key_filter = on_civil_war_end
-        ### 
+        ###
         subtype[on_civil_war_end] = { }
         ## type_key_filter = on_puppet
-        ### 
+        ###
         subtype[on_puppet] = { }
         ## type_key_filter = on_release_as_puppet
-        ### 
+        ###
         subtype[on_release_as_puppet] = { }
         ## type_key_filter = on_annex
-        ### 
+        ###
         subtype[on_annex] = { }
         ## type_key_filter = on_subject_free
-        ### 
+        ###
         subtype[on_subject_free] = { }
         ## type_key_filter = on_subject_autonomy_level_change
-        ### 
+        ###
         subtype[on_subject_autonomy_level_change] = { }
         ## type_key_filter = on_subject_annexed
-        ### 
+        ###
         subtype[on_subject_annexed] = { }
         ## type_key_filter = on_release_as_free
-        ### 
+        ###
         subtype[on_release_as_free] = { }
         ## type_key_filter = on_peaceconference_ended
-        ### 
+        ###
         subtype[on_peaceconference_ended] = { }
         ## type_key_filter = on_generate_wargoal
-        ### 
+        ###
         subtype[on_generate_wargoal] = { }
         ## type_key_filter = on_military_access
-        ### 
+        ###
         subtype[on_military_access] = { }
         ## type_key_filter = on_offer_military_access
-        ### 
+        ###
         subtype[on_offer_military_access] = { }
         ## type_key_filter = on_call_allies
-        ### 
+        ###
         subtype[on_call_allies] = { }
         ## type_key_filter = on_join_allies
-        ### 
+        ###
         subtype[on_join_allies] = { }
         ## type_key_filter = on_lend_lease
-        ### 
+        ###
         subtype[on_lend_lease] = { }
         ## type_key_filter = on_incoming_lend_lease
-        ### 
+        ###
         subtype[on_incoming_lend_lease] = { }
         ## type_key_filter = on_incoming_lend_lease
-        ### 
+        ###
         subtype[on_incoming_lend_lease] = { }
         ## type_key_filter = on_send_volunteers
-        ### 
+        ###
         subtype[on_send_volunteers] = { }
         ## type_key_filter = on_send_expeditionary_force
-        ### 
+        ###
         subtype[on_send_expeditionary_force] = { }
         ## type_key_filter = on_return_expeditionary_forces
-        ### 
+        ###
         subtype[on_return_expeditionary_forces] = { }
         ## type_key_filter = on_request_expeditionary_forces
-        ### 
+        ###
         subtype[on_request_expeditionary_forces] = { }
         ## type_key_filter = on_ask_for_state_control
-        ### 
+        ###
         subtype[on_ask_for_state_control] = { }
         ## type_key_filter = on_give_state_control
-        ### 
+        ###
         subtype[on_give_state_control] = { }
         ## type_key_filter = on_startup
-        ### 
+        ###
         subtype[on_startup] = { }
         ## type_key_filter = on_daily
-        ### 
+        ###
         subtype[on_daily] = { }
+        ## type_key_filter = on_weekly
+        ###
+        subtype[on_weekly] = { }
         ## type_key_filter = on_state_control_changed
-        ### 
+        ###
         subtype[on_state_control_changed] = { }
         ## type_key_filter = on_unit_leader_created
-        ### 
+        ###
         subtype[on_unit_leader_created] = { }
         ## type_key_filter = on_unit_leader_level_up
-        ### 
+        ###
         subtype[on_unit_leader_level_up] = { }
         ## type_key_filter = on_army_leader_daily
-        ### 
+        ###
         subtype[on_army_leader_daily] = { }
         ## type_key_filter = on_army_leader_won_combat
-        ### 
+        ###
         subtype[on_army_leader_won_combat] = { }
         ## type_key_filter = on_army_leader_lost_combat
-        ### 
+        ###
         subtype[on_army_leader_lost_combat] = { }
         ## type_key_filter = on_army_leader_promoted
-        ### 
+        ###
         subtype[on_army_leader_promoted] = { }
         ## type_key_filter = on_host_changed_from_capitulation
-        ### 
+        ###
         subtype[on_host_changed_from_capitulation] = { }
         ## type_key_filter = on_exile_government_reinstated
-        ### 
+        ###
         subtype[on_exile_government_reinstated] = { }
         ## type_key_filter = on_civil_war_end_before_annexation
-        ### 
+        ###
         subtype[on_civil_war_end_before_annexation] = { }
         ## type_key_filter = on_government_exiled
-        ### 
+        ###
         subtype[on_government_exiled] = { }
         ## type_key_filter = on_pride_of_the_fleet_sunk
-        ### 
+        ###
         subtype[on_pride_of_the_fleet_sunk] = { }
         ## type_key_filter = on_assume_faction_leadership
-        ### 
+        ###
         subtype[on_assume_faction_leadership] = { }
         ## type_key_filter = on_war
-        ### 
+        ###
         subtype[on_war] = { }
         ## type_key_filter = on_peace
-        ### 
+        ###
         subtype[on_peace] = { }
-        ## type_key_filter = on_weekly
-        ### 
-        subtype[on_weekly] = { }
         ## type_key_filter = on_operative_on_mission_spotted
-        ### 
+        ###
         subtype[on_operative_on_mission_spotted] = { }
         ## type_key_filter = on_operative_captured
-        ### 
+        ###
         subtype[on_operative_captured] = { }
         ## type_key_filter = on_operative_death
-        ### 
+        ###
         subtype[on_operative_death] = { }
         ## type_key_filter = on_operative_detected_during_operation
-        ### 
+        ###
         subtype[on_operative_detected_during_operation] = { }
         ## type_key_filter = on_operative_created
-        ### 
+        ###
         subtype[on_operative_created] = { }
         ## type_key_filter = on_operation_completed
-        ### 
+        ###
         subtype[on_operation_completed] = { }
         ## type_key_filter = on_fully_decrypted_cipher
-        ### 
+        ###
         subtype[on_fully_decrypted_cipher] = { }
         ## type_key_filter = on_activated_active_decryption_bonuses
-        ### 
+        ###
         subtype[on_activated_active_decryption_bonuses] = { }
     }
 }
 on_action = {
-    
+
     ## replace_scope = { THIS = country ROOT = country }
     subtype[on_new_term_election] = {
         ## cardinality = 0..1
@@ -843,6 +843,20 @@ on_action = {
             alias_name[effect] = alias_match_left[effect]
         }
     }
+    ## replace_scope = { THIS = country ROOT = country }
+    subtype[on_weekly] = {
+        ## cardinality = 0..1
+        random_events = {
+            ## cardinality = 0..inf
+            int = 0
+            ## cardinality = 0..inf
+            int = <event.country_event>
+        }
+        ## cardinality = 0..1
+        effect = {
+            alias_name[effect] = alias_match_left[effect]
+        }
+    }
     ## replace_scope = { THIS = country FROM = country FROMFROM = state }
     subtype[on_state_control_changed] = {
         ## cardinality = 0..1
@@ -1053,20 +1067,6 @@ on_action = {
             alias_name[effect] = alias_match_left[effect]
         }
     }
-    ## replace_scope = { THIS = country ROOT = country FROM = country }
-    subtype[on_weekly] = {
-        ## cardinality = 0..1
-        random_events = {
-            ## cardinality = 0..inf
-            int = 0
-            ## cardinality = 0..inf
-            int = <event.country_event>
-        }
-        ## cardinality = 0..1
-        effect = {
-            alias_name[effect] = alias_match_left[effect]
-        }
-    }
     ## replace_scope = { THIS = unit_leader ROOT = country FROM = country }
     subtype[on_operative_on_mission_spotted] = {
         ## cardinality = 0..1
@@ -1158,7 +1158,7 @@ on_action = {
             ## cardinality = 0..inf
             int = 0
             ## cardinality = 0..inf
-            int = <event.operative_leader_event>
+            int = <event.country_event>
         }
         ## cardinality = 0..1
         effect = {
@@ -1172,7 +1172,7 @@ on_action = {
             ## cardinality = 0..inf
             int = 0
             ## cardinality = 0..inf
-            int = <event.operative_leader_event>
+            int = <event.country_event>
         }
         ## cardinality = 0..1
         effect = {

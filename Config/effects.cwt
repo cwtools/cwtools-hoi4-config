@@ -324,6 +324,12 @@ alias[effect:random] = {
 ### A random effect.
 ## scope = any
 alias[effect:random_list] = {
+	## cardinality = 0..1
+	log = bool
+	
+	## cardinality = 0..1
+	seed = variable_field
+	
 	## cardinality = 0..inf
 	int = {
 		## cardinality = 0..inf

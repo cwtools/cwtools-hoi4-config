@@ -3,9 +3,6 @@ types = {
         path = "game/common/operations"
         path_strict = yes
     }
-    type[operation_phase] = {
-		path = "game/common/operation_phases"
-	}
 }
 
 

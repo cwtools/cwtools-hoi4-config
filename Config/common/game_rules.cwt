@@ -26,6 +26,8 @@ game_rule = {
 		### Achievements cannot be earned if one or more game rules are set to an option that has this property set to no. If not specified, this is set to yes for default options and no for all other options.
 		## cardinality = 0..1
 		allow_achievements = bool
+		## cardinality = 0..1
+		required_dlc = enum[dlc]
 	}
 	### Specify an option with the "default" token to override the behavior of treating the first option as the default.
 	## cardinality = 0..1
@@ -36,5 +38,7 @@ game_rule = {
 		### Achievements cannot be earned if one or more game rules are set to an option that has this property set to no. If not specified, this is set to yes for default options and no for all other options.
 		## cardinality = 0..1
 		allow_achievements = bool
+		## cardinality = 0..1
+		required_dlc = enum[dlc]
 	}
 }

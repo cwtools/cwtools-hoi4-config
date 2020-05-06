@@ -234,6 +234,8 @@ decision = {
 	highlight_state_targets = {
 		## cardinality = ~1..inf
 		state = <state>
+		## cardinality = ~1..inf
+		state = variable_field
 	}
 
 	## cardinality = 0..1

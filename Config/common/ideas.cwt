@@ -7,7 +7,7 @@ types = {
 ## replace_scope = { this = country root = country }
 idea = {
 	## cardinality = 0..inf
-	enum[hardcode_ideas] = {
+	<idea_category.no_slot> = {
 		## cardinality = ~1..inf
 		scalar = {
 			## cardinality = 0..1

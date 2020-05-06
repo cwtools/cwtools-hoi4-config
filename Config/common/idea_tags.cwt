@@ -2,6 +2,14 @@ types = {
 	type[idea_category] = {
 		path = "game/common/idea_tags"
 		skip_root_key = idea_categories
+		subtype[slot] = {
+			## cardinality = 1..inf
+			slot = scalar
+		}
+		## only_if_not = { slot }
+		subtype[no_slot] = {
+			
+		}
 	}
 }
 
@@ -10,8 +18,10 @@ idea_category = {
 	## cardinality = 0..1
 	hidden = bool
 
-	## cardinality = 0..1
-	national_spirit = bool
+	subtype[no_slot] = {
+		## cardinality = 0..1
+		national_spirit = bool
+	}
 
 	## cardinality = 0..1
 	cost = int
@@ -23,6 +33,8 @@ idea_category = {
 	# enum[ledgers] defined in ideas.cwt
 	ledger = enum[ledgers]
 
-	## cardinality = 0..inf
-	slot = value_set[idea_slot]
+	subtype[slot] = {
+		## cardinality = 1..inf
+		slot = value_set[idea_slot]
+	}
 }

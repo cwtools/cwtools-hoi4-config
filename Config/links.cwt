@@ -57,6 +57,14 @@ links = {
         data_source = value[variable]
     }
 
+    temp_var = {
+        desc =  eventtarget_link_desc_var
+        from_data = yes
+        type = both
+        prefix = temp_var:
+        data_source = value[variable]
+    }
+
     event_target = {
         desc =  eventtarget_link_desc_var
         from_data = yes

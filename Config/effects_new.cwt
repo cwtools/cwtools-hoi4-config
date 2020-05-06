@@ -718,7 +718,7 @@ alias[effect:add_intel] = {
 ## scopes = { UNIT_LEADER }
 alias[effect:operative_leader_event] = {
 	### The event to fire.
-	id = <event.operative_event>
+	id = <event.operative_leader_event>
 
 	### The originator of the event (default to the owner of the operative)
 	## cardinality = 0..1

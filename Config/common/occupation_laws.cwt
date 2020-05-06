@@ -44,6 +44,9 @@ occupation_law = {
     
     ## cardinality = 0..1
 	default_law = bool
+    
+    ## cardinality = 0..1
+	starting_law = bool
 	
     ### main fallback modifier will be used when previous modifier is no longer active and there is no fallback_law, there must be exactly one fallback modifier. if you are lacking manpower/equipments for your current laws, fallback modifier bonuses will apply instead (will lerp to fallback and at 0 manpower you will be forced to switch)
     ## cardinality = 0..1

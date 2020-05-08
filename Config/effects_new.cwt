@@ -270,6 +270,8 @@ alias[effect:steal_random_tech_bonus] = {
 	## cardinality = 0..1
 	base_bonus = float
 	## cardinality = 0..1
+	dynamic = bool
+	## cardinality = 0..1
 	name = localisation
 	## cardinality = 0..1
 	uses = int[1..32767]
@@ -909,3 +911,91 @@ alias[effect:turn_operative] = {
 ## scopes = { STATE }
 alias[effect:set_garrison_strength] = variable_field
 
+### Releases specified country as a puppet using your owned or controlled states.
+## scope = { COUNTRY }
+alias[effect:release_on_controlled] = scope[country]
+### Releases specified country as a puppet using your owned or controlled states.
+## scope = { COUNTRY }
+alias[effect:release_on_controlled] = enum[country_tags]
+
+### Releases specified country as puppet using states you own or control.
+## scope = { COUNTRY }
+alias[effect:release_puppet_on_controlled] = scope[country]
+### Releases specified country as puppet using states you own or control.
+## scope = { COUNTRY }
+alias[effect:release_puppet_on_controlled] = enum[country_tags]
+
+### Releases specified country using your owned states.
+## scope = { COUNTRY }
+alias[effect:release] = scope[country]
+### Releases specified country using your owned states.
+## scope = { COUNTRY }
+alias[effect:release] = enum[country_tags]
+
+### Changes the name of country leader. no tooltip is generated.
+## scope = { COUNTRY }
+alias[effect:set_country_leader_name] = {
+	name = localisation_inline
+	## cardinality = 0..1
+	ideology = <ideology>
+}
+
+### Changes the portrait of country leader. no tooltip is generated.
+## scope = { COUNTRY }
+alias[effect:set_country_leader_portrait] = {
+	portrait = <spriteType>
+	## cardinality = 0..1
+	ideology = <ideology>
+}
+
+### Changes the description of country leader. no tooltip is generated.
+## scope = { COUNTRY }
+alias[effect:set_country_leader_description] = {
+	desc = localisation
+	## cardinality = 0..1
+	ideology = <ideology>
+}
+
+### Changes the name of unit leader. no tooltip is generated.
+## scope = { UNIT_LEADER }
+alias[effect:set_leader_name] = localisation_inline
+
+### Changes the portrait of unit leader. no tooltip is generated.
+## scope = { UNIT_LEADER }
+alias[effect:set_leader_portrait] = <spriteType>
+
+### Changes the description of unit leader. no tooltip is generated.
+## scope = { UNIT_LEADER }
+alias[effect:set_leader_description] = localisation
+
+###sets a variable to a random value.
+## scopes = { any }
+alias[effect:set_variable_to_random] = variable_field
+
+###sets a variable to a random value.
+## scopes = { any }
+alias[effect:set_variable_to_random] = {
+	var = variable_field
+	## cardinality = 0..1
+	min = variable_field
+	## cardinality = 0..1
+	max = variable_field
+	## cardinality = 0..1
+	integer = bool
+}
+
+###sets a temp variable to a random value.
+## scopes = { any }
+alias[effect:set_temp_variable_to_random] = variable_field
+
+###sets a temp variable to a random value.
+## scopes = { any }
+alias[effect:set_temp_variable_to_random] = {
+	var = variable_field
+	## cardinality = 0..1
+	min = variable_field
+	## cardinality = 0..1
+	max = variable_field
+	## cardinality = 0..1
+	integer = bool
+}

@@ -325,10 +325,18 @@ alias[effect:random] = {
 ## scope = any
 alias[effect:random_list] = {
 	## cardinality = 0..1
+	### enable logging the dice roll in game.log
 	log = bool
 	
 	## cardinality = 0..1
+	### if specified, it will use this seed instead of scope seed for picking a random
 	seed = variable_field
+	## cardinality = 0..1
+	### if specified, it will use this seed instead of scope seed for picking a random
+	seed = const
+	## cardinality = 0..1
+	### if specified, it will use this seed instead of scope seed for picking a random
+	seed = random
 	
 	## cardinality = 0..inf
 	int = {
@@ -1507,6 +1515,8 @@ alias[effect:release_autonomy] = {
 	freedom_level = float[0..1]
 	## cardinality = 0..1
 	release_non_owned_controlled = bool
+	## cardinality = 0..1
+	force_change_controller_for_non_ally_controlled = bool
 }
 
 ### Makes autonomy of specified level and country.

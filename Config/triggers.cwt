@@ -661,7 +661,7 @@ alias[trigger:has_built] = {
 	value = int
 }
 
-### Checks if country has more than limit, default = 0.
+### Checks if country has available ideas with specific traits more than limit.
 ## scope = country
 alias[trigger:has_available_idea_with_traits] = {
 	idea = <country_leader_trait>

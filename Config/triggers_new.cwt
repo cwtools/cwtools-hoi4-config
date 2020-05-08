@@ -496,6 +496,46 @@ alias[effect:randomize_temp_variable] = {
 	lambda = variable_field
 }
 
-###Checks whether a state is impassable.
+###sets a temp variable to a random value.
+## scopes = { any }
+alias[effect:set_temp_variable_to_random] = variable_field
+
+###sets a temp variable to a random value.
+## scopes = { any }
+alias[effect:set_temp_variable_to_random] = {
+	var = variable_field
+	## cardinality = 0..1
+	min = variable_field
+	## cardinality = 0..1
+	max = variable_field
+	## cardinality = 0..1
+	integer = bool
+}
+
+### Checks whether a state is impassable.
 ## scopes = { state }
 alias[effect:impassable] = bool
+
+### Number of researched technologies.
+## scopes = { COUNTRY }
+alias[effect:num_researched_technologies] = int_variable_field
+
+### Checks if country has allowed ideas with specific traits more than limit.
+## scopes = { COUNTRY }
+alias[effect:has_allowed_idea_with_traits] = {
+	idea = <country_leader_trait>
+	idea = {
+		## cardinality = 1..inf
+		<country_leader_trait>
+	}
+	limit = int
+	## cardinality = 0..1
+	### # if specified, these ideas will be ignored.
+	ignore = {
+		enum[idea_name]
+	}
+
+	## cardinality = 0..1
+	### # if specified, these ideas will be ignored.
+	ignore = enum[idea_name]
+}

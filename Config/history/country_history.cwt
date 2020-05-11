@@ -14,6 +14,10 @@ country_history = {
 
 	## cardinality = 0..inf
 	date_field = {
+
+		## cardinality = 0..1
+		capital = <state> 
+		
 		## cardinality = 0..inf
 		oob = <oob>
 		alias_name[effect] = alias_match_left[effect]

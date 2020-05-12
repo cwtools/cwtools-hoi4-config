@@ -47,6 +47,7 @@ on_give_state_control,THIS = country ROOT = country FROM = country,country_event
 
 on_startup,THIS = no_scope ROOT = no_scope,,
 on_daily,THIS = country ROOT = country,country_event,
+on_weekly,THIS = country ROOT = country,country_event,
 
 on_state_control_changed,THIS = country FROM = country FROMFROM = state,country_event,
 
@@ -66,3 +67,12 @@ on_pride_of_the_fleet_sunk,THIS = country ROOT = country FROM = country,country_
 on_assume_faction_leadership,THIS = country ROOT = country FROM = country,country_event,
 on_war,THIS = country ROOT = country FROM = country,country_event,
 on_peace,THIS = country ROOT = country FROM = country,country_event,
+
+on_operative_on_mission_spotted,THIS = unit_leader ROOT = country FROM = country,operative_leader_event,
+on_operative_captured,THIS = unit_leader ROOT = country FROM = country,operative_leader_event,
+on_operative_death,THIS = unit_leader ROOT = country FROM = country,operative_leader_event,
+on_operative_detected_during_operation,THIS = unit_leader ROOT = unit_leader FROM = unit_leader FROMFROM = state,operative_leader_event,
+on_operative_created,THIS = unit_leader FROM = country,operative_leader_event,
+on_operation_completed,THIS = operation ROOT = country FROM = country,operative_leader_event,
+on_fully_decrypted_cipher,THIS = country ROOT = country FROM = country,country_event,
+on_activated_active_decryption_bonuses,THIS = country ROOT = country FROM = country,country_event,

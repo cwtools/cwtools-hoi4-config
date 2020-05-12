@@ -7,7 +7,7 @@ types = {
 ## replace_scope = { this = country root = country }
 idea = {
 	## cardinality = 0..inf
-	enum[hardcode_ideas] = {
+	<idea_category.no_slot> = {
 		## cardinality = ~1..inf
 		scalar = {
 			## cardinality = 0..1
@@ -115,7 +115,7 @@ idea = {
 		}
 	}
 	## cardinality = 0..inf
-	enum[idea_categories] = {
+	value[idea_slot] = {
 		## cardinality = 0..1
 		law = bool
 		## cardinality = 0..1
@@ -246,24 +246,14 @@ idea = {
 }
 
 enums = {
-	enum[hardcode_ideas] = {
-		hidden_ideas
-		country
-	}
-
 	enum[ledgers] = {
 		army
 		navy
 		air
-	}
-
-	complex_enum[idea_categories] = {
-		path = "game/common/idea_tags"
-		name = {
-			scalar = {
-				slot = enum_name
-			}
-		}
+		invalid
+		civilian
+		hidden
+		all
 	}
 
 	complex_enum[idea_name] = {

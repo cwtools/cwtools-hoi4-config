@@ -57,6 +57,9 @@ scopes = {
 	Air = {
 		aliases = { air }
 	}
+	Operation = {
+		aliases = { operation }
+	}
 	Invalid = {
 		aliases = { invalid InvalidScope }
 	}

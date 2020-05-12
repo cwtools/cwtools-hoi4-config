@@ -324,6 +324,20 @@ alias[effect:random] = {
 ### A random effect.
 ## scope = any
 alias[effect:random_list] = {
+	## cardinality = 0..1
+	### enable logging the dice roll in game.log
+	log = bool
+	
+	## cardinality = 0..1
+	### if specified, it will use this seed instead of scope seed for picking a random
+	seed = variable_field
+	## cardinality = 0..1
+	### if specified, it will use this seed instead of scope seed for picking a random
+	seed = const
+	## cardinality = 0..1
+	### if specified, it will use this seed instead of scope seed for picking a random
+	seed = random
+	
 	## cardinality = 0..inf
 	int = {
 		## cardinality = 0..inf
@@ -981,6 +995,7 @@ alias[effect:start_civil_war] = {
 	keep_unit_leaders_trigger = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
+	alias_name[effect] = alias_match_left[effect]
 }
 
 ### Retires a country leader and removes him as leader of his party, making the next in line the new party and country leader.
@@ -1500,6 +1515,8 @@ alias[effect:release_autonomy] = {
 	freedom_level = float[0..1]
 	## cardinality = 0..1
 	release_non_owned_controlled = bool
+	## cardinality = 0..1
+	force_change_controller_for_non_ally_controlled = bool
 }
 
 ### Makes autonomy of specified level and country.
@@ -2694,6 +2711,10 @@ alias[effect:add_dynamic_modifier] = {
 	## cardinality = 0..1
 	### Optional, state or country tag or a variable contains that. if specified the dynamic variable will target that scope.
 	scope = scope[country]
+
+	## cardinality = 0..1
+	### Optional, makes the dynamic modifier acted as a timed modifier
+	days = int_variable_field
 }
 
 ### Runs a same effects through a loop. example will run the effects for value_name = -3, 0, 3, 6, 9 and then terminate. Warning: will stop after reaching MAX_EFFECT_ITERATION define iterations - default 1000. Consider using for_each_loop instead.

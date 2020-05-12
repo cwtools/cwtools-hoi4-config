@@ -73,7 +73,7 @@
 		"release":	{
 			"supported_scope":	["COUNTRY"],
 			"supported_target":	["THIS", "ROOT", "PREV", "FROM", "OWNER", "CONTROLLER", "OCCUPIED", "CAPITAL"],
-			"description":	"releases specified country as a puppet"
+			"description":	"releases specified country as a puppet using your owned states"
 		},
 		"every_country":	{
 			"supported_scope":	["any"],
@@ -138,7 +138,7 @@
 		"random_list":	{
 			"supported_scope":	["any"],
 			"supported_target":	["none"],
-			"description":	"Picks a random effect from the list based on the weight associated.\nThe weight can be a variable valid in the current scope.\nExample:\nrandom_list = {\n\t# enable logging the dice role in game.log\n\tlog = yes\n\t# some effect with an associated weight\n\t10 = { add_political_power=10 }\n\t10 = { add_political_power=100 }\n\tsome_var = { add_political_power=1000 }\n}"
+			"description":	"Picks a random effect from the list based on the weight associated.\nThe weight can be a variable valid in the current scope.\nExample:\nrandom_list = {\n\t# enable logging the dice role in game.log\n\tlog = yes\n\tseed = var_name/const/random #if specified, it will use this seed instead of scope seed for picking a random\n\t# some effect with an associated weight\n\t10 = { add_political_power=10 }\n\t10 = { add_political_power=100 }\n\tsome_var = { add_political_power=1000 }\n}"
 		},
 		"white_peace":	{
 			"supported_scope":	["COUNTRY"],
@@ -428,7 +428,7 @@
 		"start_civil_war":	{
 			"supported_scope":	["COUNTRY"],
 			"supported_target":	["THIS", "ROOT", "PREV", "FROM", "OWNER", "CONTROLLER", "OCCUPIED", "CAPITAL"],
-			"description":	"Given ideology starts a civil war in the country.\nstart_civil_war = {\n\tideology = revolting ideology\n\truling party = ruling party for country\n\tsize = 0-1 Size modifier of the revolt. Affects stockpile, army, air and navy as well\n\tarmy_ratio = 0-1 Overrides size modifier for army\n\tnavy_ratio = 0-1 Overrides size modifier for navy\n\tair_ratio = 0-1 Overrides size modifier for air\n\tkeep_unit_leaders specify ID of unit leaders that remain with the original country\n\tkeep_unit_leaders_trigger Trigger for unit leaders to remain with the original country\n\tstates States that go to the revolter. Use \"all\" to include all states.\n\tstates_filter States that go to the revolter. Filtering trigger on the states scripted to go to the revolter.\n}"
+			"description":	"Given ideology starts a civil war in the country.\nstart_civil_war = {\n\tideology = revolting ideology\n\truling party = ruling party for country\n\tsize = 0-1 Size modifier of the revolt. Affects stockpile, army, air and navy as well\n\tarmy_ratio = 0-1 Overrides size modifier for army\n\tnavy_ratio = 0-1 Overrides size modifier for navy\n\tair_ratio = 0-1 Overrides size modifier for air\n\tkeep_unit_leaders specify ID of unit leaders that remain with the original country\n\tkeep_unit_leaders_trigger Trigger for unit leaders to remain with the original country\n\tstates States that go to the revolter. Use \"all\" to include all states.\n\tstates_filter States that go to the revolter. Filtering trigger on the states scripted to go to the revolter.\n\t ... effect list ... # you can list effects that will run on civil war country\n}"
 		},
 		"retire_country_leader":	{
 			"supported_scope":	["COUNTRY"],
@@ -443,7 +443,7 @@
 		"release_puppet":	{
 			"supported_scope":	["COUNTRY"],
 			"supported_target":	["THIS", "ROOT", "PREV", "FROM", "OWNER", "CONTROLLER", "OCCUPIED", "CAPITAL"],
-			"description":	"releases specified country as puppet"
+			"description":	"releases specified country as puppet using states you own"
 		},
 		"create_wargoal":	{
 			"supported_scope":	["COUNTRY"],
@@ -518,7 +518,7 @@
 		"set_demilitarized_zone":	{
 			"supported_scope":	["STATE"],
 			"supported_target":	["none"],
-			"description":	"adds a limited use tech bonus"
+			"description":	"sets the demilitarized status for currently scoped state"
 		},
 		"add_research_slot":	{
 			"supported_scope":	["COUNTRY"],
@@ -558,7 +558,7 @@
 		"diplomatic_relation":	{
 			"supported_scope":	["COUNTRY"],
 			"supported_target":	["THIS", "ROOT", "PREV", "FROM", "OWNER", "CONTROLLER", "OCCUPIED", "CAPITAL"],
-			"description":	"Set up a diplomatic relation between two nations"
+			"description":	"Set up a diplomatic relation between two nations. Example: \ndiplomatic_relation = { \n\tcountry = POR #target country\n\trelation = military_access #type of relation\n\tactive = yes #yes to add relation, no to cancel existing one\n}"
 		},
 		"effect_tooltip":	{
 			"supported_scope":	["STATE", "COUNTRY"],
@@ -703,7 +703,7 @@
 		"add_equipment_to_stockpile":	{
 			"supported_scope":	["COUNTRY"],
 			"supported_target":	["any"],
-			"description":	"Adds equipment to the countries stockpiles. Amount can be a variable. \nExample: add_equipment_to_stockpile = { type = strat_bomber_equipment_2 amount = 100 producer = USA }"
+			"description":	"Adds equipment to the countries stockpiles. Amount can be a variable. if it is negative it will remove equipment instead. if producer tag is not specified it will remove from all creators. \nExample: add_equipment_to_stockpile = { type = strat_bomber_equipment_2 amount = 100 producer = USA }"
 		},
 		"swap_ideas":	{
 			"supported_scope":	["COUNTRY"],
@@ -718,7 +718,7 @@
 		"release_autonomy":	{
 			"supported_scope":	["COUNTRY"],
 			"supported_target":	["THIS", "ROOT", "PREV", "FROM", "OWNER", "CONTROLLER", "OCCUPIED", "CAPITAL"],
-			"description":	"releases specified country with specified level of autonomy.\nExample:\nENG = {\nrelease_autonomy = {\ntarget=RAJ\nautonomy_state=autonomy_puppet\nfreedom_level=0.5\n}\n}"
+			"description":	"releases specified country with specified level of autonomy.\nExample:\nENG = { \n release_autonomy = { \n  target = RAJ \n  autonomy_state = autonomy_puppet \n  freedom_level = 0.5 \n  release_non_owned_controlled = yes # default no. if yes you will release states you only control as well  force_change_controller_for_non_ally_controlled = yes # default = no. if yes it will change the controller of the states you or your allies don't control (ie if an enemy occupying it, the ownership will change but not controller) }\n}"
 		},
 		"set_autonomy":	{
 			"supported_scope":	["COUNTRY"],
@@ -1378,7 +1378,7 @@
 		"while_loop_effect":	{
 			"supported_scope":	["any"],
 			"supported_target":	["any"],
-			"description":	"Runs the effect as long as a trigger is true\nExample: while_effect = {\n\tlimit = { ... trigger ... } a trigger to test before each iteration\n\tbreak = break_name #optional (default 'break') set this temp variable to non zero to break the loop\n #effect 1\n #effect 2 ...\n}"
+			"description":	"Runs the effect as long as a trigger is true\nExample: while_loop_effect = {\n\tlimit = { ... trigger ... } a trigger to test before each iteration\n\tbreak = break_name #optional (default 'break') set this temp variable to non zero to break the loop\n #effect 1\n #effect 2 ...\n}"
 		},
 		"meta_effect":	{
 			"supported_scope":	["any"],
@@ -1483,7 +1483,7 @@
 		"steal_random_tech_bonus":	{
 			"supported_scope":	["COUNTRY"],
 			"supported_target":	["none"],
-			"description":	"adds a random limited use tech bonus from country of categories that is it ahead in compared to you.\nit must have atleast one category or folder. But it can contain any number of them in any combination\nNote: if a country does not have a tech to be stolen a random tech bonus will be applied based on base_bonus \nExample: steal_random_tech_bonus = {\n\tcategory = air_equipment\n\tfolder = naval_folder\n\tahead_reduction = ???\n\tbonus = ???\n\tbase_bonus = 0.05\n\tinstant = yes # instant unlock instead of bonus\n\tname = ???\n\ttarget = ???\n\tuses = 1\n}\n"
+			"description":	"adds a random limited use tech bonus from country of categories that is it ahead in compared to you.\nit must have atleast one category or folder. But it can contain any number of them in any combination\nNote: if a country does not have a tech to be stolen a random tech bonus will be applied based on base_bonus \nExample: steal_random_tech_bonus = {\n\tcategory = air_equipment\n\tfolder = naval_folder\n\tahead_reduction = ???\n\tbonus = ???\n\tbase_bonus = 0.05\n\tinstant = yes # instant unlock instead of bonus\n\tdynamic = yes # swaps bonus types from instant to category dependig on type as well as uses weights on tech progress\n\tname = ???\n\ttarget = ???\n\tuses = 1\n}\n"
 		},
 		"teleport_armies":	{
 			"supported_scope":	["STATE"],
@@ -1583,7 +1583,7 @@
 		"create_intelligence_agency":	{
 			"supported_scope":	["COUNTRY"],
 			"supported_target":	["none"],
-			"description":	"create an Intelligence Agency for the country, if it is not already done."
+			"description":	"create an Intelligence Agency for the country, if it is not already done. Example: \ncreate_intelligence_agency = yes # creates with historical ones, if exists. \ncreate_intelligence_agency = { \n  name = \"M.I.B.\" \n  icon = \"GFX_intelligence_agency_logo_ita\" \n}"
 		},
 		"upgrade_intelligence_agency":	{
 			"supported_scope":	["COUNTRY"],
@@ -1665,6 +1665,16 @@
 			"supported_target":	["none"],
 			"description":	"modulos a variable with another. Example: \nmodulo_variable = { \n  var = variable_to_modulo \n  value = divisior \n}"
 		},
+		"set_country_leader_name":	{
+			"supported_scope":	["COUNTRY"],
+			"supported_target":	["any"],
+			"description":	"changes the name of country leader. no tooltip is generated\nset_country_leader_name = {\n  ideology = neutrality # can be ommitted. if so it will change the name of current ruler\n  name = \"James Boned\"\n}"
+		},
+		"set_country_leader_portrait":	{
+			"supported_scope":	["COUNTRY"],
+			"supported_target":	["any"],
+			"description":	"changes the portrait of country leader. no tooltip is generated\nset_country_leader_name = {\n  ideology = neutrality # can be ommitted. if so it will change the portrait of current ruler\n  portrait = \"GFX_portrait_italy_emperor_mussolini\"\n}"
+		},
 		"add_collaboration":	{
 			"supported_scope":	["COUNTRY"],
 			"supported_target":	["THIS", "ROOT", "PREV", "FROM", "OWNER", "CONTROLLER", "OCCUPIED", "CAPITAL"],
@@ -1674,6 +1684,36 @@
 			"supported_scope":	["COUNTRY"],
 			"supported_target":	["THIS", "ROOT", "PREV", "FROM", "OWNER", "CONTROLLER", "OCCUPIED", "CAPITAL"],
 			"description":	"Sets the collaboration in a target country with our currently scoped country\nGER = {\n  set_collaboration = {\n    target = POL\n    value = 0.3\n  }\n}\n"
+		},
+		"set_temp_variable_to_random":	{
+			"supported_scope":	["any"],
+			"supported_target":	["none"],
+			"description":	"sets a temp variable to a random value. example \nset_temp_variable_to_random = num_dogs #sets num_dogs a random value between [0, 1) \nset_temp_variable_to_random = { \n\tvar = num_dogs #variable to set \n\tmin = 5 #default 0. value will be set in between [min, max) \n\tmax = 10 #default 1. value will be set in between [min, max) \n\tinteger = yes #default no. if yes the number value will be an integer \n} \n"
+		},
+		"set_variable_to_random":	{
+			"supported_scope":	["any"],
+			"supported_target":	["none"],
+			"description":	"sets a variable to a random value. example \nset_variable_to_random = num_dogs #sets num_dogs a random value between [0, 1) \nset_variable_to_random = { \n\tvar = num_dogs #variable to set \n\tmin = 5 #default 0. value will be set in between [min, max) \n\tmax = 10 #default 1. value will be set in between [min, max) \n\tinteger = yes #default no. if yes the number value will be an integer \n} \n"
+		},
+		"set_leader_name":	{
+			"supported_scope":	["UNIT_LEADER"],
+			"supported_target":	["any"],
+			"description":	"changes the name of unit leader. no tooltip is generated\nset_leader_name = \"James Boned\"\n"
+		},
+		"set_leader_portrait":	{
+			"supported_scope":	["UNIT_LEADER"],
+			"supported_target":	["any"],
+			"description":	"changes the portrait of unit leader. no tooltip is generated\nset_leader_portrait = \"GFX_portrait_italy_emperor_mussolini\"\n"
+		},
+		"set_country_leader_description":	{
+			"supported_scope":	["COUNTRY"],
+			"supported_target":	["any"],
+			"description":	"changes the description of country leader. no tooltip is generated\nset_country_leader_name = {\n  ideology = neutrality # can be ommitted. if so it will change the portrait of current ruler\n  desc = \"DESC_KEY\"\n}"
+		},
+		"set_leader_description":	{
+			"supported_scope":	["UNIT_LEADER"],
+			"supported_target":	["any"],
+			"description":	"changes the description of unit leader. no tooltip is generated\nset_leader_description = \"DESC_KEY\"\n"
 		},
 		"execute_operation_coordinated_strike":	{
 			"supported_scope":	["OPERATION"],
@@ -1699,6 +1739,16 @@
 			"supported_scope":	["STATE"],
 			"supported_target":	["any"],
 			"description":	"set initial garrison strength. Example: set_garrison_strength = 0.5"
+		},
+		"release_on_controlled":	{
+			"supported_scope":	["COUNTRY"],
+			"supported_target":	["THIS", "ROOT", "PREV", "FROM", "OWNER", "CONTROLLER", "OCCUPIED", "CAPITAL"],
+			"description":	"releases specified country as a puppet using your owned or controlled states"
+		},
+		"release_puppet_on_controlled":	{
+			"supported_scope":	["COUNTRY"],
+			"supported_target":	["THIS", "ROOT", "PREV", "FROM", "OWNER", "CONTROLLER", "OCCUPIED", "CAPITAL"],
+			"description":	"releases specified country as puppet using states you own or control"
 		}
 	},
 	"triggers":	{
@@ -1821,6 +1871,11 @@
 			"supported_scope":	["any"],
 			"supported_target":	["any"],
 			"description":	"has global flag been set.Check flag val date set and days since set.\nExample: has_global_flag = test_flag\nhas_global_flag = { \n\tflag = <name> (mandatory)\n\tvalue < <int> (optional)\n\tdate > <date> (optional)\n\tdays > <int> (optional)\n}"
+		},
+		"impassable":	{
+			"supported_scope":	["STATE"],
+			"supported_target":	["any"],
+			"description":	"checks if a state is impassable"
 		},
 		"is_attacker":	{
 			"supported_scope":	["COMBATANT"],
@@ -2190,7 +2245,7 @@
 		"has_available_idea_with_traits":	{
 			"supported_scope":	["COUNTRY"],
 			"supported_target":	["none"],
-			"description":	"Checks if country has more than limit, default = 0."
+			"description":	"Checks if country has available ideas with specific traits more than limit. Example: \nhas_available_idea_with_traits = { \n\tidea = head_of_intelligence # trait names. can be a list of traits in { } \n\tlimit = 1 \n\tignore = generic_head_of_intelligence # if specified, these ideas will be ignored. can be a list of ideas in { }\n} \n"
 		},
 		"is_claimed_by":	{
 			"supported_scope":	["STATE"],
@@ -2295,7 +2350,7 @@
 		"focus_progress":	{
 			"supported_scope":	["COUNTRY"],
 			"supported_target":	["none"],
-			"description":	" = { focus = id progress = 0.5 }"
+			"description":	"checks focus progress example:\n focus_progress = { focus = id progress > 0.5 }"
 		},
 		"is_puppet":	{
 			"supported_scope":	["COUNTRY"],
@@ -3155,12 +3210,12 @@
 		"any_of_scopes":	{
 			"supported_scope":	["any"],
 			"supported_target":	["any"],
-			"description":	"Runs a loop on an array and check a trigger for each scope in it, if any true returns true. otherwise returns false\nExample: any_of_scopes = {\n\tarray = array_name\n #trigger 1\n #trigger 2 ...\n}"
+			"description":	"Runs a loop on an array and check a trigger for each scope in it, if any true returns true. otherwise returns false\nExample: any_of_scopes = {\n\tarray = array_name\n\ttooltip = loc #if defined the trigger will output tooltip using this title. loc_NOT will be used if trigger is inside a NOT\n #trigger 1\n #trigger 2 ...\n}"
 		},
 		"all_of_scopes":	{
 			"supported_scope":	["any"],
 			"supported_target":	["any"],
-			"description":	"Runs a loop on an array and check a trigger for each scope in it, if any false returns false. otherwise returns true\nExample: all_of_scopes = {\n\tarray = array_name\n\ttooltip = loc #if defined the trigger will output tooltip using this title\n #trigger 1\n #trigger 2 ...\n}"
+			"description":	"Runs a loop on an array and check a trigger for each scope in it, if any false returns false. otherwise returns true\nExample: all_of_scopes = {\n\tarray = array_name\n\ttooltip = loc #if defined the trigger will output tooltip using this title. loc_NOT will be used if trigger is inside a NOT\n #trigger 1\n #trigger 2 ...\n}"
 		},
 		"has_country_leader_with_trait":	{
 			"supported_scope":	["COUNTRY"],
@@ -3522,6 +3577,11 @@
 			"supported_target":	["none"],
 			"description":	"checks the collaboration in a target country with our currently scoped country. Example: \nhas_collaboration = { \n target = GER\n value > 0.5\n} \n#or has_collaboration@GER as variable\n"
 		},
+		"set_temp_variable_to_random":	{
+			"supported_scope":	["any"],
+			"supported_target":	["none"],
+			"description":	"sets a temp variable to a random value. example \nset_temp_variable_to_random = num_dogs #sets num_dogs a random value between [0, 1) \nset_temp_variable_to_random = { \n\tvar = num_dogs #variable to set \n\tmin = 5 #default 0. value will be set in between [min, max) \n\tmax = 10 #default 1. value will be set in between [min, max) \n\tinteger = yes #default no. if yes the number value will be an integer \n} \n"
+		},
 		"is_running_operation":	{
 			"supported_scope":	["COUNTRY"],
 			"supported_target":	["any"],
@@ -3557,6 +3617,11 @@
 			"supported_target":	["any"],
 			"description":	"checks if preparing a specific operation.\nExample: \nis_preparing_operation = { \n target = ITA \n operation = operation_infiltrate_armed_forces_navy}"
 		},
+		"num_researched_technologies":	{
+			"supported_scope":	["COUNTRY"],
+			"supported_target":	["none"],
+			"description":	"Number of researched technologies"
+		},
 		"operative_leader_operation":	{
 			"supported_scope":	["UNIT_LEADER"],
 			"supported_target":	["none"],
@@ -3576,6 +3641,11 @@
 			"supported_scope":	["COUNTRY"],
 			"supported_target":	["none"],
 			"description":	"checks network national coverage you have over a country. Example: \nnetwork_national_coverage = { \n target = GER\n value > 0.5\n} \n"
+		},
+		"has_allowed_idea_with_traits":	{
+			"supported_scope":	["COUNTRY"],
+			"supported_target":	["none"],
+			"description":	"Checks if country has allowed ideas with specific traits more than limit. Example: \nhas_available_idea_with_traits = { \n\tidea = head_of_intelligence # trait names. can be a list of traits in { } \n\tlimit = 1 \n\tignore = generic_head_of_intelligence # if specified, these ideas will be ignored. can be a list of ideas in { }\n} \n"
 		}
 	},
 	"modifiers":	[{
@@ -4673,6 +4743,11 @@
 			"decimal_places":	1,
 			"categories":	["country"]
 		}, {
+			"name":	"request_lease_tension",
+			"type":	"number",
+			"decimal_places":	1,
+			"categories":	["country"]
+		}, {
 			"name":	"send_volunteers_tension",
 			"type":	"number",
 			"decimal_places":	1,
@@ -4754,6 +4829,11 @@
 			"categories":	["army", "aggressive"]
 		}, {
 			"name":	"max_planning",
+			"type":	"number",
+			"decimal_places":	1,
+			"categories":	["army", "aggressive"]
+		}, {
+			"name":	"max_planning_factor",
 			"type":	"number",
 			"decimal_places":	1,
 			"categories":	["army", "aggressive"]
@@ -5556,7 +5636,7 @@
 		}, {
 			"name":	"targeted_legitimacy_daily",
 			"type":	"number",
-			"decimal_places":	1,
+			"decimal_places":	2,
 			"categories":	["government_in_exile"]
 		}, {
 			"name":	"screening_efficiency",
@@ -6093,6 +6173,26 @@
 			"type":	"number",
 			"decimal_places":	0,
 			"categories":	["intelligence_agency"]
+		}, {
+			"name":	"female_random_operative_chance",
+			"type":	"number",
+			"decimal_places":	0,
+			"categories":	["country", "intelligence_agency"]
+		}, {
+			"name":	"female_random_army_leader_chance",
+			"type":	"number",
+			"decimal_places":	0,
+			"categories":	["country", "army"]
+		}, {
+			"name":	"female_random_admiral_chance",
+			"type":	"number",
+			"decimal_places":	0,
+			"categories":	["naval", "country"]
+		}, {
+			"name":	"female_random_country_leader_chance",
+			"type":	"number",
+			"decimal_places":	0,
+			"categories":	["country"]
 		}, {
 			"name":	"operation_outcome",
 			"type":	"number",
@@ -6979,12 +7079,42 @@
 			"decimal_places":	0,
 			"categories":	["state"]
 		}, {
+			"name":	"state_resource_cost_oil",
+			"type":	"number",
+			"decimal_places":	0,
+			"categories":	["state"]
+		}, {
+			"name":	"country_resource_oil",
+			"type":	"number",
+			"decimal_places":	0,
+			"categories":	["state"]
+		}, {
+			"name":	"country_resource_cost_oil",
+			"type":	"number",
+			"decimal_places":	0,
+			"categories":	["state"]
+		}, {
 			"name":	"state_resource_aluminium",
 			"type":	"number",
 			"decimal_places":	0,
 			"categories":	["state"]
 		}, {
 			"name":	"temporary_state_resource_aluminium",
+			"type":	"number",
+			"decimal_places":	0,
+			"categories":	["state"]
+		}, {
+			"name":	"state_resource_cost_aluminium",
+			"type":	"number",
+			"decimal_places":	0,
+			"categories":	["state"]
+		}, {
+			"name":	"country_resource_aluminium",
+			"type":	"number",
+			"decimal_places":	0,
+			"categories":	["state"]
+		}, {
+			"name":	"country_resource_cost_aluminium",
 			"type":	"number",
 			"decimal_places":	0,
 			"categories":	["state"]
@@ -6999,12 +7129,42 @@
 			"decimal_places":	0,
 			"categories":	["state"]
 		}, {
+			"name":	"state_resource_cost_rubber",
+			"type":	"number",
+			"decimal_places":	0,
+			"categories":	["state"]
+		}, {
+			"name":	"country_resource_rubber",
+			"type":	"number",
+			"decimal_places":	0,
+			"categories":	["state"]
+		}, {
+			"name":	"country_resource_cost_rubber",
+			"type":	"number",
+			"decimal_places":	0,
+			"categories":	["state"]
+		}, {
 			"name":	"state_resource_tungsten",
 			"type":	"number",
 			"decimal_places":	0,
 			"categories":	["state"]
 		}, {
 			"name":	"temporary_state_resource_tungsten",
+			"type":	"number",
+			"decimal_places":	0,
+			"categories":	["state"]
+		}, {
+			"name":	"state_resource_cost_tungsten",
+			"type":	"number",
+			"decimal_places":	0,
+			"categories":	["state"]
+		}, {
+			"name":	"country_resource_tungsten",
+			"type":	"number",
+			"decimal_places":	0,
+			"categories":	["state"]
+		}, {
+			"name":	"country_resource_cost_tungsten",
 			"type":	"number",
 			"decimal_places":	0,
 			"categories":	["state"]
@@ -7019,6 +7179,21 @@
 			"decimal_places":	0,
 			"categories":	["state"]
 		}, {
+			"name":	"state_resource_cost_steel",
+			"type":	"number",
+			"decimal_places":	0,
+			"categories":	["state"]
+		}, {
+			"name":	"country_resource_steel",
+			"type":	"number",
+			"decimal_places":	0,
+			"categories":	["state"]
+		}, {
+			"name":	"country_resource_cost_steel",
+			"type":	"number",
+			"decimal_places":	0,
+			"categories":	["state"]
+		}, {
 			"name":	"state_resource_chromium",
 			"type":	"number",
 			"decimal_places":	0,
@@ -7029,145 +7204,300 @@
 			"decimal_places":	0,
 			"categories":	["state"]
 		}, {
+			"name":	"state_resource_cost_chromium",
+			"type":	"number",
+			"decimal_places":	0,
+			"categories":	["state"]
+		}, {
+			"name":	"country_resource_chromium",
+			"type":	"number",
+			"decimal_places":	0,
+			"categories":	["state"]
+		}, {
+			"name":	"country_resource_cost_chromium",
+			"type":	"number",
+			"decimal_places":	0,
+			"categories":	["state"]
+		}, {
 			"name":	"production_speed_infrastructure_factor",
 			"type":	"number",
 			"decimal_places":	2,
 			"categories":	["country"]
+		}, {
+			"name":	"state_production_speed_infrastructure_factor",
+			"type":	"number",
+			"decimal_places":	2,
+			"categories":	["state"]
 		}, {
 			"name":	"repair_speed_infrastructure_factor",
 			"type":	"number",
 			"decimal_places":	2,
 			"categories":	["country"]
 		}, {
+			"name":	"state_repair_speed_infrastructure_factor",
+			"type":	"number",
+			"decimal_places":	2,
+			"categories":	["state"]
+		}, {
 			"name":	"production_speed_arms_factory_factor",
 			"type":	"number",
 			"decimal_places":	2,
 			"categories":	["country"]
+		}, {
+			"name":	"state_production_speed_arms_factory_factor",
+			"type":	"number",
+			"decimal_places":	2,
+			"categories":	["state"]
 		}, {
 			"name":	"repair_speed_arms_factory_factor",
 			"type":	"number",
 			"decimal_places":	2,
 			"categories":	["country"]
 		}, {
+			"name":	"state_repair_speed_arms_factory_factor",
+			"type":	"number",
+			"decimal_places":	2,
+			"categories":	["state"]
+		}, {
 			"name":	"production_speed_industrial_complex_factor",
 			"type":	"number",
 			"decimal_places":	2,
 			"categories":	["country"]
+		}, {
+			"name":	"state_production_speed_industrial_complex_factor",
+			"type":	"number",
+			"decimal_places":	2,
+			"categories":	["state"]
 		}, {
 			"name":	"repair_speed_industrial_complex_factor",
 			"type":	"number",
 			"decimal_places":	2,
 			"categories":	["country"]
 		}, {
+			"name":	"state_repair_speed_industrial_complex_factor",
+			"type":	"number",
+			"decimal_places":	2,
+			"categories":	["state"]
+		}, {
 			"name":	"production_speed_air_base_factor",
 			"type":	"number",
 			"decimal_places":	2,
 			"categories":	["country"]
+		}, {
+			"name":	"state_production_speed_air_base_factor",
+			"type":	"number",
+			"decimal_places":	2,
+			"categories":	["state"]
 		}, {
 			"name":	"repair_speed_air_base_factor",
 			"type":	"number",
 			"decimal_places":	2,
 			"categories":	["country"]
 		}, {
+			"name":	"state_repair_speed_air_base_factor",
+			"type":	"number",
+			"decimal_places":	2,
+			"categories":	["state"]
+		}, {
 			"name":	"production_speed_naval_base_factor",
 			"type":	"number",
 			"decimal_places":	2,
 			"categories":	["country"]
+		}, {
+			"name":	"state_production_speed_naval_base_factor",
+			"type":	"number",
+			"decimal_places":	2,
+			"categories":	["state"]
 		}, {
 			"name":	"repair_speed_naval_base_factor",
 			"type":	"number",
 			"decimal_places":	2,
 			"categories":	["country"]
 		}, {
+			"name":	"state_repair_speed_naval_base_factor",
+			"type":	"number",
+			"decimal_places":	2,
+			"categories":	["state"]
+		}, {
 			"name":	"production_speed_bunker_factor",
 			"type":	"number",
 			"decimal_places":	2,
 			"categories":	["country"]
+		}, {
+			"name":	"state_production_speed_bunker_factor",
+			"type":	"number",
+			"decimal_places":	2,
+			"categories":	["state"]
 		}, {
 			"name":	"repair_speed_bunker_factor",
 			"type":	"number",
 			"decimal_places":	2,
 			"categories":	["country"]
 		}, {
+			"name":	"state_repair_speed_bunker_factor",
+			"type":	"number",
+			"decimal_places":	2,
+			"categories":	["state"]
+		}, {
 			"name":	"production_speed_coastal_bunker_factor",
 			"type":	"number",
 			"decimal_places":	2,
 			"categories":	["country"]
+		}, {
+			"name":	"state_production_speed_coastal_bunker_factor",
+			"type":	"number",
+			"decimal_places":	2,
+			"categories":	["state"]
 		}, {
 			"name":	"repair_speed_coastal_bunker_factor",
 			"type":	"number",
 			"decimal_places":	2,
 			"categories":	["country"]
 		}, {
+			"name":	"state_repair_speed_coastal_bunker_factor",
+			"type":	"number",
+			"decimal_places":	2,
+			"categories":	["state"]
+		}, {
 			"name":	"production_speed_dockyard_factor",
 			"type":	"number",
 			"decimal_places":	2,
 			"categories":	["country"]
+		}, {
+			"name":	"state_production_speed_dockyard_factor",
+			"type":	"number",
+			"decimal_places":	2,
+			"categories":	["state"]
 		}, {
 			"name":	"repair_speed_dockyard_factor",
 			"type":	"number",
 			"decimal_places":	2,
 			"categories":	["country"]
 		}, {
+			"name":	"state_repair_speed_dockyard_factor",
+			"type":	"number",
+			"decimal_places":	2,
+			"categories":	["state"]
+		}, {
 			"name":	"production_speed_anti_air_building_factor",
 			"type":	"number",
 			"decimal_places":	2,
 			"categories":	["country"]
+		}, {
+			"name":	"state_production_speed_anti_air_building_factor",
+			"type":	"number",
+			"decimal_places":	2,
+			"categories":	["state"]
 		}, {
 			"name":	"repair_speed_anti_air_building_factor",
 			"type":	"number",
 			"decimal_places":	2,
 			"categories":	["country"]
 		}, {
+			"name":	"state_repair_speed_anti_air_building_factor",
+			"type":	"number",
+			"decimal_places":	2,
+			"categories":	["state"]
+		}, {
 			"name":	"production_speed_synthetic_refinery_factor",
 			"type":	"number",
 			"decimal_places":	2,
 			"categories":	["country"]
+		}, {
+			"name":	"state_production_speed_synthetic_refinery_factor",
+			"type":	"number",
+			"decimal_places":	2,
+			"categories":	["state"]
 		}, {
 			"name":	"repair_speed_synthetic_refinery_factor",
 			"type":	"number",
 			"decimal_places":	2,
 			"categories":	["country"]
 		}, {
+			"name":	"state_repair_speed_synthetic_refinery_factor",
+			"type":	"number",
+			"decimal_places":	2,
+			"categories":	["state"]
+		}, {
 			"name":	"production_speed_fuel_silo_factor",
 			"type":	"number",
 			"decimal_places":	2,
 			"categories":	["country"]
+		}, {
+			"name":	"state_production_speed_fuel_silo_factor",
+			"type":	"number",
+			"decimal_places":	2,
+			"categories":	["state"]
 		}, {
 			"name":	"repair_speed_fuel_silo_factor",
 			"type":	"number",
 			"decimal_places":	2,
 			"categories":	["country"]
 		}, {
+			"name":	"state_repair_speed_fuel_silo_factor",
+			"type":	"number",
+			"decimal_places":	2,
+			"categories":	["state"]
+		}, {
 			"name":	"production_speed_radar_station_factor",
 			"type":	"number",
 			"decimal_places":	2,
 			"categories":	["country"]
+		}, {
+			"name":	"state_production_speed_radar_station_factor",
+			"type":	"number",
+			"decimal_places":	2,
+			"categories":	["state"]
 		}, {
 			"name":	"repair_speed_radar_station_factor",
 			"type":	"number",
 			"decimal_places":	2,
 			"categories":	["country"]
 		}, {
+			"name":	"state_repair_speed_radar_station_factor",
+			"type":	"number",
+			"decimal_places":	2,
+			"categories":	["state"]
+		}, {
 			"name":	"production_speed_rocket_site_factor",
 			"type":	"number",
 			"decimal_places":	2,
 			"categories":	["country"]
+		}, {
+			"name":	"state_production_speed_rocket_site_factor",
+			"type":	"number",
+			"decimal_places":	2,
+			"categories":	["state"]
 		}, {
 			"name":	"repair_speed_rocket_site_factor",
 			"type":	"number",
 			"decimal_places":	2,
 			"categories":	["country"]
 		}, {
+			"name":	"state_repair_speed_rocket_site_factor",
+			"type":	"number",
+			"decimal_places":	2,
+			"categories":	["state"]
+		}, {
 			"name":	"production_speed_nuclear_reactor_factor",
 			"type":	"number",
 			"decimal_places":	2,
 			"categories":	["country"]
 		}, {
+			"name":	"state_production_speed_nuclear_reactor_factor",
+			"type":	"number",
+			"decimal_places":	2,
+			"categories":	["state"]
+		}, {
 			"name":	"repair_speed_nuclear_reactor_factor",
 			"type":	"number",
 			"decimal_places":	2,
 			"categories":	["country"]
+		}, {
+			"name":	"state_repair_speed_nuclear_reactor_factor",
+			"type":	"number",
+			"decimal_places":	2,
+			"categories":	["state"]
 		}, {
 			"name":	"political_advisor_cost_factor",
 			"type":	"number",
@@ -7783,5 +8113,2269 @@
 			"type":	"number",
 			"decimal_places":	0,
 			"categories":	["intelligence_agency"]
-		}]
+		}],
+	"dynamic_variables":	{
+		"global":	{
+			"year":	{
+				"description":	"current year"
+			},
+			"operations":	{
+				"description":	"array of objects in operations database"
+			},
+			"majors":	{
+				"description":	"get array of all majors (including non existing"
+			},
+			"technology":	{
+				"description":	"array of objects in technology database"
+			},
+			"num_days":	{
+				"description":	"current total days"
+			},
+			"date":	{
+				"description":	"get date value that can be comparable to other date values and localized using GetDateString/GetDateStringShortMonth/GetDateStringNoHour/GetDateStringNoHourLong scripted locs"
+			},
+			"countries":	{
+				"description":	"get array of all countries (including non existing"
+			},
+			"ideology_groups":	{
+				"description":	"array of objects in ideology_groups database"
+			},
+			"difficulty":	{
+				"description":	"check if the difficulty is above or below specified value 0-2 (difficulty enum). Example: difficulty > 0 (above easy)",
+				"is_trigger":	true
+			},
+			"threat":	{
+				"description":	"check the global threat value. 0-1 value",
+				"is_trigger":	true
+			}
+		},
+		"country":	{
+			"political_power":	{
+				"description":	"total political power of country"
+			},
+			"resource_consumed":	{
+				"description":	"number of resources consumed by country, resource type is defined in target resource_consumed@steel"
+			},
+			"manpower":	{
+				"description":	"DEPRECATED, MAY OVERFLOW. total manpower of country"
+			},
+			"air_intel":	{
+				"description":	"air intel against a target country. example GER.air_intel@ENG"
+			},
+			"overlord":	{
+				"description":	"master of this subject"
+			},
+			"num_of_nukes":	{
+				"description":	"check amount of nukes",
+				"is_trigger":	true
+			},
+			"command_power":	{
+				"description":	"total command power of country"
+			},
+			"enemies_of_allies":	{
+				"description":	"array of enemies of allies"
+			},
+			"owned_controlled_states":	{
+				"description":	"array owned and core states"
+			},
+			"navy_intel":	{
+				"description":	"navy intel against a target country. example GER.navy_intel@ENG"
+			},
+			"manpower_k":	{
+				"description":	"total manpower of country in thousands"
+			},
+			"num_battalions":	{
+				"description":	"number of battalions"
+			},
+			"max_manpower":	{
+				"description":	"DEPRECATED, MAY OVERFLOW. maximum manpower of country"
+			},
+			"faction_members":	{
+				"description":	"array of faction members"
+			},
+			"fuel_k":	{
+				"description":	"total fuel of country in thousands"
+			},
+			"max_fuel_k":	{
+				"description":	"max fuel of country in thousands"
+			},
+			"num_owned_controlled_states":	{
+				"description":	"number of owned and core states"
+			},
+			"agency_upgrade_number":	{
+				"description":	"Checks the number of upgrade done in the intelligence agency. \nagency_upgrade_number > 4",
+				"is_trigger":	true
+			},
+			"max_available_manpower":	{
+				"description":	"DEPRECATED, MAY OVERFLOW. total available manpower of country"
+			},
+			"ai_strategy_dont_defend_ally_borders":	{
+				"description":	"ai strategy value dont_defend_ally_borders against country. Example: GER.ai_strategy_dont_defend_ally_borders@ENG"
+			},
+			"max_available_manpower_k":	{
+				"description":	"total available manpower of country in thousands"
+			},
+			"opinion":	{
+				"description":	"opinion of a country targeted on another one. example GER.opinion@ENG"
+			},
+			"owned_states":	{
+				"description":	"array of owned states"
+			},
+			"max_manpower_k":	{
+				"description":	"maximum manpower of country in thousands"
+			},
+			"num_ships_with_type":	{
+				"description":	"number of ships controlled in country, ship type is defined in target. example num_ships_with_type@carrier. can be a sub unit def type or one of carrier,capital,screen, submarine"
+			},
+			"army_experience":	{
+				"description":	"army experience of a country"
+			},
+			"conscription_ratio":	{
+				"description":	"Checks  conscription ratio of the country compared to target conscription ratio.\n",
+				"is_trigger":	true
+			},
+			"navy_experience":	{
+				"description":	"navy experience of a country"
+			},
+			"air_experience":	{
+				"description":	"air experience of a country"
+			},
+			"any_war_score":	{
+				"description":	"compares the warscore of all wars in a country to see if any fullfills the comparison condition 0-100 - Example: any_war_score > 40",
+				"is_trigger":	true
+			},
+			"num_armies":	{
+				"description":	"number of armies"
+			},
+			"ai_strategy_ignore_claim":	{
+				"description":	"ai strategy value ignore_claim against country. Example: GER.ai_strategy_ignore_claim@ENG"
+			},
+			"party_popularity":	{
+				"description":	"popularity of targeted party [0.00, 1.00]. example party_popularity@democratic. May also target ruling_party. This also supports country variables, so you can party_popularity@my_var_name for variables that store ideologies"
+			},
+			"num_ships":	{
+				"description":	"number of ships"
+			},
+			"enemies_naval_strength_ratio":	{
+				"description":	"Compares the estimated navy strength between the scope country and all its enemies",
+				"is_trigger":	true
+			},
+			"num_deployed_planes":	{
+				"description":	"number of deployed planes"
+			},
+			"command_power_daily":	{
+				"description":	"Checks if daily command power increase is more or less that specified value \n command_power_daily > 1.5",
+				"is_trigger":	true
+			},
+			"num_deployed_planes_with_type":	{
+				"description":	"number of deployed planes with equipment type. example num_deployed_planes_with_type@fighter"
+			},
+			"legitimacy":	{
+				"description":	"legitimacy of scope country. -1 if not an exile"
+			},
+			"researched_techs":	{
+				"description":	"returns the array of researched technologies"
+			},
+			"num_armies_in_state":	{
+				"description":	"number of armies in state, state is in target. example num_armies_in_state@123"
+			},
+			"num_armies_with_type":	{
+				"description":	"number of armies with dominant type, dominant type is defined in target. example: num_armies_with_type@light_armor"
+			},
+			"army_intel":	{
+				"description":	"army intel against a target country. example GER.army_intel@ENG"
+			},
+			"num_battalions_with_type":	{
+				"description":	"number of battalions with sub unit type, sub unit type is defined in target. example: num_battalions_with_type@light_armor"
+			},
+			"civilian_intel":	{
+				"description":	"civilian intel against a target country. example GER.civilian_intel@ENG"
+			},
+			"stability":	{
+				"description":	"stability of a country"
+			},
+			"modifier":	{
+				"description":	"a modifier stored in country scope"
+			},
+			"highest_party_ideology":	{
+				"description":	"ideology of the most popular party. Can exclude the ruling party by using @exclude_ruling_party. Example: highest_party_ideology OR highest_party_ideology@exclude_ruling_party"
+			},
+			"highest_party_popularity":	{
+				"description":	"popularity size of the most popular party [0.00, 1.00]. Can exclude the ruling party by using @exclude_ruling_party. Example: highest_party_popularity OR highest_party_popularity@exclude_ruling_party"
+			},
+			"neighbors_owned":	{
+				"description":	"array of neighbors to owned states"
+			},
+			"current_party_ideology_group":	{
+				"description":	"returns the token for current party ideology group"
+			},
+			"alliance_naval_strength_ratio":	{
+				"description":	"Compares the estimated naval strength between the scope country, his allies and his enemies.",
+				"is_trigger":	true
+			},
+			"resource":	{
+				"description":	"number of surplus resources in country, resource type is defined in target resource@steel"
+			},
+			"num_controlled_states":	{
+				"description":	"number of controlled states"
+			},
+			"controlled_states":	{
+				"description":	"array of controlled states"
+			},
+			"potential_and_current_enemies":	{
+				"description":	"array of potential and actual enemies"
+			},
+			"capital":	{
+				"description":	"capital state of the country"
+			},
+			"encryption_strength":	{
+				"description":	"total encryption strength of a country that is needed"
+			},
+			"num_owned_states":	{
+				"description":	"number of owned states"
+			},
+			"resource_produced":	{
+				"description":	"number of resources produced by country, resource type is defined in target. example resource_produced@steel"
+			},
+			"core_resistance":	{
+				"description":	"returns core resistance of target country"
+			},
+			"num_core_states":	{
+				"description":	"number of core states"
+			},
+			"core_states":	{
+				"description":	"array of core states"
+			},
+			"enemies":	{
+				"description":	"array of enemies at war with"
+			},
+			"subjects":	{
+				"description":	"array of subjects"
+			},
+			"neighbors":	{
+				"description":	"array of neighbors"
+			},
+			"host":	{
+				"description":	"exile host of this country"
+			},
+			"exiles":	{
+				"description":	"exile host of this country"
+			},
+			"days_mission_timeout":	{
+				"description":	"timeout in days for a specific timed mission, mission type token is defined in target. example: days_mission_timeout@GER_mefo_bills_mission"
+			},
+			"allies":	{
+				"description":	"array of allies (faction members). prefer using faction_members instead"
+			},
+			"faction_leader":	{
+				"description":	"faction leader of this country's faction"
+			},
+			"ai_attitude_protective_weight":	{
+				"description":	"weight for an ai attitude attitude_protectiveagainst country. Example: GER.ai_attitude_protective_weight@ENG"
+			},
+			"resource_exported":	{
+				"description":	"number of resources exported by country, resource type is defined in target resource_exported@steel"
+			},
+			"num_equipment_in_armies":	{
+				"description":	"number of equipment in armies of the country, equipment type token is defined in target. example num_equipment_in_armies@infantry_equipment"
+			},
+			"resource_imported":	{
+				"description":	"number of resources imported by country, resource type is defined in target resource_imported@steel"
+			},
+			"num_target_equipment_in_armies":	{
+				"description":	"number of equipment required in armies of the country, equipment type token is defined in target. example num_target_equipment_in_armies@infantry_equipment"
+			},
+			"num_equipment":	{
+				"description":	"number of equipment in country. example num_equipment@infantry_equipment"
+			},
+			"num_of_operatives":	{
+				"description":	"Checks the number of operatives the country controls",
+				"is_trigger":	true
+			},
+			"num_equipment_in_armies_k":	{
+				"description":	"number of equipment in armies of the country in thousands, equipment type token is defined in target. example num_equipment_in_armies_k@infantry_equipment"
+			},
+			"num_target_equipment_in_armies_k":	{
+				"description":	"number of equipment required in armies of the country in thousands, equipment type token is defined in target. example num_target_equipment_in_armies_k@infantry_equipment"
+			},
+			"autonomy_ratio":	{
+				"description":	"autonomy of scope country. -1 if not a subject"
+			},
+			"ai_attitude_wants_antagonize":	{
+				"description":	"returns 1 if ai wants antagonize"
+			},
+			"ai_attitude_wants_weaken":	{
+				"description":	"returns 1 if ai wants weaken"
+			},
+			"ai_attitude_wants_ally":	{
+				"description":	"returns 1 if ai wants ally"
+			},
+			"ai_attitude_wants_protect":	{
+				"description":	"returns 1 if ai wants protect"
+			},
+			"ai_attitude_wants_ignore":	{
+				"description":	"returns 1 if ai wants ignore"
+			},
+			"ai_attitude_is_threatened":	{
+				"description":	"returns 1 if ai is threatened"
+			},
+			"core_compliance":	{
+				"description":	"returns core compliance of target country"
+			},
+			"occupied_countries":	{
+				"description":	"array of occupied countries"
+			},
+			"original_tag":	{
+				"description":	"returns the original tag of a country"
+			},
+			"decryption_speed":	{
+				"description":	"total encryption strength of a country that is needed"
+			},
+			"cryptology_defense_level":	{
+				"description":	"cryptology defense level of a country"
+			},
+			"army_leaders":	{
+				"description":	"all army leaders of a country"
+			},
+			"navy_leaders":	{
+				"description":	"all navy leaders of a country"
+			},
+			"operatives":	{
+				"description":	"all operatives of a country"
+			},
+			"num_of_military_factories":	{
+				"description":	"check amount of military factories",
+				"is_trigger":	true
+			},
+			"num_of_civilian_factories":	{
+				"description":	"check amount of civilian factories",
+				"is_trigger":	true
+			},
+			"num_of_naval_factories":	{
+				"description":	"check amount of naval factories",
+				"is_trigger":	true
+			},
+			"foreign_manpower":	{
+				"description":	"check the amount of foreign garrison manpower we have",
+				"is_trigger":	true
+			},
+			"has_manpower":	{
+				"description":	"check amount of manpower",
+				"is_trigger":	true
+			},
+			"num_subjects":	{
+				"description":	"check the number of subjects of nation",
+				"is_trigger":	true
+			},
+			"has_political_power":	{
+				"description":	"check amount of political power",
+				"is_trigger":	true
+			},
+			"num_of_available_military_factories":	{
+				"description":	"check amount of available military factories",
+				"is_trigger":	true
+			},
+			"num_of_available_naval_factories":	{
+				"description":	"check amount of available naval factories",
+				"is_trigger":	true
+			},
+			"num_of_available_civilian_factories":	{
+				"description":	"check amount of available civilian factories",
+				"is_trigger":	true
+			},
+			"surrender_progress":	{
+				"description":	"check if a country is close to surrendering",
+				"is_trigger":	true
+			},
+			"political_power_daily":	{
+				"description":	"Checks if daily political power increase is more or less that specified value \n political_power_daily > 1.5",
+				"is_trigger":	true
+			},
+			"land_doctrine_level":	{
+				"description":	"checks researched land doctrine level",
+				"is_trigger":	true
+			},
+			"casualties":	{
+				"description":	"Check the amount of casualties a country has suffered in all of it's wars",
+				"is_trigger":	true
+			},
+			"num_of_factories":	{
+				"description":	"check amount of total factories",
+				"is_trigger":	true
+			},
+			"num_of_controlled_states":	{
+				"description":	"check amount of controlled stats",
+				"is_trigger":	true
+			},
+			"has_added_tension_amount":	{
+				"description":	"Compare if the country has added above or below the specified ammount of tension",
+				"is_trigger":	true
+			},
+			"ai_irrationality":	{
+				"description":	"check the ai irrationality value",
+				"is_trigger":	true
+			},
+			"ai_strategy_antagonize":	{
+				"description":	"ai strategy value antagonize against country. Example: GER.ai_strategy_antagonize@ENG"
+			},
+			"num_divisions":	{
+				"description":	"Will compare towards the amount of divisions a country has control over, if strength matters use has_army_size.",
+				"is_trigger":	true
+			},
+			"original_research_slots":	{
+				"description":	"check number of research slots at start of game",
+				"is_trigger":	true
+			},
+			"ai_wants_divisions":	{
+				"description":	"Will compare towards the amount of divisions an ai wants to have.",
+				"is_trigger":	true
+			},
+			"alliance_strength_ratio":	{
+				"description":	"Compares the estimated army strength between the scope country, his allies and his enemies.",
+				"is_trigger":	true
+			},
+			"num_faction_members":	{
+				"description":	"Compares the number of members in the faction for the current country. \n Example: num_faction_members > 10",
+				"is_trigger":	true
+			},
+			"enemies_strength_ratio":	{
+				"description":	"Compares the estimated army strength between the scope country and all its enemies",
+				"is_trigger":	true
+			},
+			"compare_autonomy_progress_ratio":	{
+				"description":	"check if autonomy progress ratio is higher than value, example:\ncompare_autonomy_progress_ratio > 0.5",
+				"is_trigger":	true
+			},
+			"num_tech_sharing_groups":	{
+				"description":	"checks how many groups a nation is a member of",
+				"is_trigger":	true
+			},
+			"ai_strategy_invade":	{
+				"description":	"ai strategy value invade against country. Example: GER.ai_strategy_invade@ENG"
+			},
+			"num_occupied_states":	{
+				"description":	"check the number of states occupied by nation",
+				"is_trigger":	true
+			},
+			"amount_research_slots":	{
+				"description":	"check number of research current research slots \n amount_research_slots > 2",
+				"is_trigger":	true
+			},
+			"manpower_per_military_factory":	{
+				"description":	"Number of available manpower per factory the country has. Excluding dockyards.\nmanpower_per_military_factory < 1000",
+				"is_trigger":	true
+			},
+			"has_stability":	{
+				"description":	"check value of stability 0-1: Example has_stability < 0.6",
+				"is_trigger":	true
+			},
+			"has_war_support":	{
+				"description":	"check value of war_support 0-1: Example has_war_support < 0.6",
+				"is_trigger":	true
+			},
+			"num_of_civilian_factories_available_for_projects":	{
+				"description":	"check amount of civilian factories available for a new project to use",
+				"is_trigger":	true
+			},
+			"political_power_growth":	{
+				"description":	"Check the value of political power daily growth.Exacmple: political_power_growth > 0",
+				"is_trigger":	true
+			},
+			"amount_manpower_in_deployment_queue":	{
+				"description":	"Checks for amount manpower currently in deploymentview. amount_manpower_in_training > 10",
+				"is_trigger":	true
+			},
+			"has_legitimacy":	{
+				"description":	"Check scope country legitimacy 0-100: Example has_legitimacy < 60",
+				"is_trigger":	true
+			},
+			"casualties_k":	{
+				"description":	"Check the amount of casualties in thousands a country has suffered in all of it's wars",
+				"is_trigger":	true
+			},
+			"fuel_ratio":	{
+				"description":	"Compares the fuel ratio to a variable.\nExample: fuel_ratio > 0.5",
+				"is_trigger":	true
+			},
+			"days_since_capitulated":	{
+				"description":	"Checks the number of days since the country last capitulated, even if it is no longer capitulated.\n\tIf it has not ever capitulated, the value is extremely large.\n\tIt is recommended to combine this with has_capitulated = yes when you specifically want to ignore non-active capitulations.\nExamples:\n\tHOL = { has_capitulated = yes days_since_capitulated > 60 } # The Netherlands has been capitulated for more than two months\n\tFRA = { has_capitulated = yes days_since_capitulated < 21 } # France has capitulated sometime within the past three weeks\n\tGER = { OR = { has_capitulated = no days_since_capitulated > 14 } } # Germany is not both actively and recently capitulated\n",
+				"is_trigger":	true
+			},
+			"mine_threat":	{
+				"description":	"A trigger to check how dangerous enemy mines are for a country. Controlled by NAVAL_MINE_DANGER defines. Returns a value between 0 and 1. Example mine_threat > 0.5 ",
+				"is_trigger":	true
+			},
+			"convoy_threat":	{
+				"description":	"A trigger to check convoy threat for a country. Controlled by NAVAL_CONVOY_DANGER defines. Returns a value between 0 and 1. Example convoy_threat > 0.5 ",
+				"is_trigger":	true
+			},
+			"decryption_progress":	{
+				"description":	"checks decryption ratio against a country. Example: \ndecryption_progress = { \n target = GER\n value > 0.5\n} \n#or decryption_progress@GER as variable\n",
+				"is_trigger":	true
+			},
+			"garrison_manpower_need":	{
+				"description":	"check the amount of manpower needed by garrisons",
+				"is_trigger":	true
+			},
+			"num_operative_slots":	{
+				"description":	"Checks the number of available operative slots a country has.\nIf this differs from the number of operative, this does not mean the country can recruit an operative, but that it will eventually be able to.",
+				"is_trigger":	true
+			},
+			"num_free_operative_slots":	{
+				"description":	"Checks the number of operative a country can recruit right now.\nNote that this is not necessarily greater than zero if num_operative_slots returned a number greater than the number of operative.",
+				"is_trigger":	true
+			},
+			"num_fake_intel_divisions":	{
+				"description":	"Will compare towards the amount of fake intel divisions a country has control over. .",
+				"is_trigger":	true
+			},
+			"has_collaboration":	{
+				"description":	"checks the collaboration in a target country with our currently scoped country. Example: \nhas_collaboration = { \n target = GER\n value > 0.5\n} \n#or has_collaboration@GER as variable\n",
+				"is_trigger":	true
+			},
+			"target_conscription_amount":	{
+				"description":	"Checks the target conscription amount of the country.\n",
+				"is_trigger":	true
+			},
+			"current_conscription_amount":	{
+				"description":	"Checks the current conscription amount of the country.\n",
+				"is_trigger":	true
+			},
+			"num_researched_technologies":	{
+				"description":	"Number of researched technologies",
+				"is_trigger":	true
+			},
+			"network_national_coverage":	{
+				"description":	"checks network national coverage you have over a country. Example: \nnetwork_national_coverage = { \n target = GER\n value > 0.5\n} \n",
+				"is_trigger":	true
+			},
+			"ai_strategy_conquer":	{
+				"description":	"ai strategy value conquer against country. Example: GER.ai_strategy_conquer@ENG"
+			},
+			"ai_strategy_befriend":	{
+				"description":	"ai strategy value befriend against country. Example: GER.ai_strategy_befriend@ENG"
+			},
+			"ai_strategy_consider_weak":	{
+				"description":	"ai strategy value consider_weak against country. Example: GER.ai_strategy_consider_weak@ENG"
+			},
+			"ai_strategy_protect":	{
+				"description":	"ai strategy value protect against country. Example: GER.ai_strategy_protect@ENG"
+			},
+			"ai_strategy_alliance":	{
+				"description":	"ai strategy value alliance against country. Example: GER.ai_strategy_alliance@ENG"
+			},
+			"ai_strategy_contain":	{
+				"description":	"ai strategy value contain against country. Example: GER.ai_strategy_contain@ENG"
+			},
+			"ai_strategy_support":	{
+				"description":	"ai strategy value support against country. Example: GER.ai_strategy_support@ENG"
+			},
+			"ai_strategy_force_defend_ally_borders":	{
+				"description":	"ai strategy value force_defend_ally_borders against country. Example: GER.ai_strategy_force_defend_ally_borders@ENG"
+			},
+			"ai_strategy_influence":	{
+				"description":	"ai strategy value influence against country. Example: GER.ai_strategy_influence@ENG"
+			},
+			"ai_strategy_ignore":	{
+				"description":	"ai strategy value ignore against country. Example: GER.ai_strategy_ignore@ENG"
+			},
+			"ai_strategy_send_volunteers_desire":	{
+				"description":	"ai strategy value send_volunteers_desire against country. Example: GER.ai_strategy_send_volunteers_desire@ENG"
+			},
+			"ai_strategy_occupation_policy":	{
+				"description":	"ai strategy value occupation_policy against country. Example: GER.ai_strategy_occupation_policy@ENG"
+			},
+			"ai_strategy_declare_war":	{
+				"description":	"ai strategy value declare_war against country. Example: GER.ai_strategy_declare_war@ENG"
+			},
+			"ai_strategy_prepare_for_war":	{
+				"description":	"ai strategy value prepare_for_war against country. Example: GER.ai_strategy_prepare_for_war@ENG"
+			},
+			"ai_strategy_decrypt_target":	{
+				"description":	"ai strategy value decrypt_target against country. Example: GER.ai_strategy_decrypt_target@ENG"
+			},
+			"ai_strategy_activate_crypto":	{
+				"description":	"ai strategy value activate_crypto against country. Example: GER.ai_strategy_activate_crypto@ENG"
+			},
+			"ai_attitude_neutral_weight":	{
+				"description":	"weight for an ai attitude attitude_neutralagainst country. Example: GER.ai_attitude_neutral_weight@ENG"
+			},
+			"ai_attitude_hostile_weight":	{
+				"description":	"weight for an ai attitude attitude_hostileagainst country. Example: GER.ai_attitude_hostile_weight@ENG"
+			},
+			"ai_attitude_friendly_weight":	{
+				"description":	"weight for an ai attitude attitude_friendlyagainst country. Example: GER.ai_attitude_friendly_weight@ENG"
+			},
+			"ai_attitude_outraged_weight":	{
+				"description":	"weight for an ai attitude attitude_outragedagainst country. Example: GER.ai_attitude_outraged_weight@ENG"
+			},
+			"ai_attitude_threatened_weight":	{
+				"description":	"weight for an ai attitude attitude_threatenedagainst country. Example: GER.ai_attitude_threatened_weight@ENG"
+			},
+			"ai_attitude_allied_weight":	{
+				"description":	"weight for an ai attitude attitude_alliedagainst country. Example: GER.ai_attitude_allied_weight@ENG"
+			}
+		},
+		"state":	{
+			"arms_factory_level":	{
+				"description":	"military factory level in the state"
+			},
+			"damaged_building_level":	{
+				"description":	"damaged building level of a building with type, uses target as building type. example damaged_building_level@arms_factory"
+			},
+			"modifier":	{
+				"description":	"value of modifier stored in this state, uses target as modifier token, example: 123.modifier@local_manpower"
+			},
+			"industrial_complex_level":	{
+				"description":	"civilian factor level in the state"
+			},
+			"core_countries":	{
+				"description":	"countries that cores the state"
+			},
+			"infrastructure_level":	{
+				"description":	"infrastructure level in the state"
+			},
+			"days_since_last_strategic_bombing":	{
+				"description":	"Checks the days since last strategic bombing.\ndays_since_last_strategic_bombing < 10\n",
+				"is_trigger":	true
+			},
+			"distance_to":	{
+				"description":	"distance to another state, uses target as another state. example: 123.distance_to@124"
+			},
+			"non_damaged_building_level":	{
+				"description":	"non damaged building level of a building with type, uses target as building type. example non_damaged_building_level@arms_factory"
+			},
+			"building_level":	{
+				"description":	"building level of a building with type, uses target as building type. example building_level@arms_factory"
+			},
+			"resource":	{
+				"description":	"resources produced in state. example resource@steel"
+			},
+			"owner":	{
+				"description":	"owner of the state"
+			},
+			"controller":	{
+				"description":	"controller of the state"
+			},
+			"resistance":	{
+				"description":	"Compares the current resistance level of a state to a value. Example: resistance > 50 ",
+				"is_trigger":	true
+			},
+			"state_population":	{
+				"description":	"check the population in the state",
+				"is_trigger":	true
+			},
+			"state_strategic_value":	{
+				"description":	"Checks for state strategic value",
+				"is_trigger":	true
+			},
+			"state_and_terrain_strategic_value":	{
+				"description":	"Checks for state strategic value",
+				"is_trigger":	true
+			},
+			"state_population_k":	{
+				"description":	"check the population in the state in thousands (use to avoid variable overflows)",
+				"is_trigger":	true
+			},
+			"compliance":	{
+				"description":	"Compares the current compliance level of a state to a value. Example: compliance > 50 ",
+				"is_trigger":	true
+			},
+			"compliance_speed":	{
+				"description":	"Compares the current compliance speed of a state to a value. Example: compliance_speed > 50 ",
+				"is_trigger":	true
+			},
+			"resistance_speed":	{
+				"description":	"Compares the current resistance speed of a state to a value. Example: resistance_speed > 50 ",
+				"is_trigger":	true
+			},
+			"resistance_target":	{
+				"description":	"Compares the target resistance level of a state to a value. Example: resistance_target > 50 ",
+				"is_trigger":	true
+			}
+		},
+		"unit_leader":	{
+			"num_units":	{
+				"description":	"number of units controlled by leader"
+			},
+			"num_units_with_type":	{
+				"description":	"number of units with dominant type controlled by leader, dominant type is defined in target. example: num_units_with_type@light_armor"
+			},
+			"has_orders_group":	{
+				"description":	"1 if leader has orders group, zero otherwise"
+			},
+			"num_units_in_state":	{
+				"description":	"number of units controlled by leader in state, state is in target. example num_units_in_state@123"
+			},
+			"num_rocket":	{
+				"description":	"number of units with rocket dominant type"
+			},
+			"num_equipment":	{
+				"description":	"number of equipment in army of a leader, equipment type token is defined in target. example num_equipment@infantry_equipment"
+			},
+			"num_max_traits":	{
+				"description":	"number of maximum assignable traits a leader can have"
+			},
+			"num_cavalry":	{
+				"description":	"number of units with cavalry dominant type"
+			},
+			"avg_units_acclimation":	{
+				"description":	"average unit acclimatization for a specific climate, acclimatization type is defined in target. example avg_units_acclimation@cold_climate"
+			},
+			"num_artillery":	{
+				"description":	"number of units with artillery dominant type"
+			},
+			"num_target_equipment":	{
+				"description":	"number of equipment required in army of a leader, equipment type token is defined in target. example num_target_equipment@infantry_equipment"
+			},
+			"logistics_level":	{
+				"description":	"logistics level of the leader"
+			},
+			"num_infantry":	{
+				"description":	"number of units with infantry dominant type"
+			},
+			"num_units_defensive_combats_on":	{
+				"description":	"number of units that are defensively fighting on a terrain, terrain type is defined as target. example: num_units_defensive_combats_on@plains"
+			},
+			"num_ships_with_type":	{
+				"description":	"number of ships controlled by leader, ship type is defined in target. example num_ships_with_type@carrier"
+			},
+			"own_capture_chance_factor":	{
+				"description":	"The chance this operative has to be captured, taking into account the country it is operating for and the country it is operating against."
+			},
+			"num_ships":	{
+				"description":	"number of ships controlled by leader"
+			},
+			"num_armored":	{
+				"description":	"number of units with armored dominant type"
+			},
+			"num_battalions":	{
+				"description":	"number of battalions"
+			},
+			"num_special":	{
+				"description":	"number of units with special dominant type"
+			},
+			"num_mechanized":	{
+				"description":	"number of units with mechanized dominant type"
+			},
+			"attack_level":	{
+				"description":	"attack level of the leader"
+			},
+			"num_personality_traits":	{
+				"description":	"number of personality traits a leader has"
+			},
+			"num_motorized":	{
+				"description":	"number of units with motorized dominant type"
+			},
+			"maneuvering_level":	{
+				"description":	"maneuvering level of the leader"
+			},
+			"num_battalions_with_type":	{
+				"description":	"number of battalions with sub unit type, sub unit type is defined in target. example: num_battalions_with_type@light_armor"
+			},
+			"own_harmed_time_factor":	{
+				"description":	"The time factor applied to the status \"harmed\". Takes int accountthe country it is operating for and the country it is operating against."
+			},
+			"num_battle_plans":	{
+				"description":	"number of battle plans of unit leader"
+			},
+			"avg_defensive_combat_status":	{
+				"description":	"average progress of defensive combats"
+			},
+			"num_traits":	{
+				"description":	"number of traits a leader has"
+			},
+			"num_status_traits":	{
+				"description":	"number of status traits a leader has"
+			},
+			"defense_skill_level":	{
+				"description":	"Compares defense skill level of a unit leader.\nExample: defense_skill_level > 5",
+				"is_trigger":	true
+			},
+			"num_assigned_traits":	{
+				"description":	"number of assigned traits the leader has"
+			},
+			"leader_modifier":	{
+				"description":	"value of a modifier stored in leader modifier, modifier token is defined in target. example leader_modifier@navy_max_range"
+			},
+			"num_terrain_traits":	{
+				"description":	"number of terrain traits a leader has"
+			},
+			"avg_unit_planning_ratio":	{
+				"description":	"average planning ratio of all units"
+			},
+			"num_basic_traits":	{
+				"description":	"number of basic traits a leader has"
+			},
+			"skill_level":	{
+				"description":	"skill level of the leader"
+			},
+			"army_attack_level":	{
+				"description":	"attack level of the leader"
+			},
+			"attack_skill_level":	{
+				"description":	"Compares attack skill level of a unit leader.\nExample: attack_skill_level > 5",
+				"is_trigger":	true
+			},
+			"army_defense_level":	{
+				"description":	"defense level of the leader"
+			},
+			"defense_level":	{
+				"description":	"defense level of the leader"
+			},
+			"planning_level":	{
+				"description":	"planning level of the leader"
+			},
+			"avg_combat_status":	{
+				"description":	"average progress of all combats"
+			},
+			"coordination_level":	{
+				"description":	"coordination level of the leader"
+			},
+			"operation_state":	{
+				"description":	"the state location the operative is assigned. 0 if it is not assigned to a state"
+			},
+			"average_stats":	{
+				"description":	"average stats of unit leader"
+			},
+			"avg_offensive_combat_status":	{
+				"description":	"average progress of offensive combats"
+			},
+			"operation_type":	{
+				"description":	"returns the operation token the operative is assigned"
+			},
+			"sum_unit_terrain_modifier":	{
+				"description":	"sum of terrain modifiers of each army's location, terrain type is defined in target. example: sum_unit_terrain_modifier@sickness_chance "
+			},
+			"unit_modifier":	{
+				"description":	"value of a modifier stored in unit modifier, modifier token is defined in target. example unit_modifier@army_attack_factor"
+			},
+			"num_units_in_combat":	{
+				"description":	"number of units current fighting"
+			},
+			"operation_country":	{
+				"description":	"the country location the operative is assigned. 0 if it is not assigned to a country"
+			},
+			"num_units_defensive_combats":	{
+				"description":	"number of units in defensive combats"
+			},
+			"num_units_on_climate":	{
+				"description":	"number of units that are on an acclimatization required location, acclimatization type is defined in target. example num_units_on_climate@hot_climate"
+			},
+			"num_units_offensive_combats":	{
+				"description":	"number of units in offensive combats"
+			},
+			"planning_skill_level":	{
+				"description":	"Compares planning skill level of a unit leader.\nExample: planning_skill_level > 5",
+				"is_trigger":	true
+			},
+			"unit_ratio_ready_for_plan":	{
+				"description":	"ratio of units that are ready for plan"
+			},
+			"num_units_crossing_river":	{
+				"description":	"number of units currently passing through a river"
+			},
+			"num_units_offensive_combats_against":	{
+				"description":	"number of units that are offensively fighting against a terrain, terrain type is defined as target. example: num_units_offensive_combats_against@plains"
+			},
+			"own_forced_into_hiding_time_factor":	{
+				"description":	"The time factor applied to the status \"forced into hiding\". Takes into account the country it is operating for and the country it is operating against."
+			},
+			"skill":	{
+				"description":	"compare leader skill levels",
+				"is_trigger":	true
+			},
+			"intel_yield_factor_on_capture":	{
+				"description":	"Rate at which intel is extracted from this operative by an enemy country."
+			},
+			"operative_captor":	{
+				"description":	"returns the country tag that captured the operative"
+			},
+			"logistics_skill_level":	{
+				"description":	"Compares logistics skill level of a unit leader.\nExample: logistics_skill_level > 5",
+				"is_trigger":	true
+			}
+		}
+	},
+	"console_commands":	{
+		"commands":	{
+			"rendertype":	{
+				"description":	"Reports what render backend is used"
+			},
+			"CrashReporter.SimulateCrash":	{
+				"description":	"Simulates a crash (resulting in the game exiting)."
+			},
+			"CrashReporter.UploadCrash":	{
+				"description":	"Upload the latest crash dump."
+			},
+			"CrashReporter.DeleteCrashData":	{
+				"description":	"Delete local crash dumps older than X days."
+			},
+			"pdxmp_netstats":	{
+				"description":	"Reports PDX MP network statistics"
+			},
+			"pdxmp_status":	{
+				"description":	"Reports whether PDX MP is online and connected."
+			},
+			"pops_account_login":	{
+				"available_in_release_build":	false,
+				"arguments":	["email", "password"],
+				"description":	"Login to a POPS Account"
+			},
+			"pops_account_logout":	{
+				"available_in_release_build":	false,
+				"description":	"Login to a POPS Account"
+			},
+			"pops_account_status":	{
+				"available_in_release_build":	false,
+				"description":	"Show whether you are currently logged into POPS or not."
+			},
+			"social_debuginfo":	{
+				"available_in_release_build":	false,
+				"description":	"Print debug info about the social layer"
+			},
+			"social_joinroom":	{
+				"available_in_release_build":	false,
+				"arguments":	["Context Index", "Room Name", "Nick Name"],
+				"description":	"Join a chat room using the given social context"
+			},
+			"social_sendmessage":	{
+				"available_in_release_build":	false,
+				"arguments":	["Context Index", "Room Name", "Message"],
+				"description":	"Send a message to a chat room."
+			},
+			"social_addfriend":	{
+				"available_in_release_build":	false,
+				"arguments":	["Context Index", "Account ID"],
+				"description":	"Add a friend to friends list"
+			},
+			"collaboration":	{
+				"description":	"Adds collaborations against selected country. Right click to select a country and use \"collaboration 0.3\""
+			},
+			"add_fake_armies":	{
+				"description":	"Creates fake intel armies for the player"
+			},
+			"tweakergui":	{
+				"description":	"Spawns a tweaker GUI"
+			},
+			"reload":	{
+				"arguments":	["file name"],
+				"description":	"Reloads assets",
+				"argument_completion_support":	true
+			},
+			"time":	{
+				"description":	"What time is it?"
+			},
+			"reloadfx":	{
+				"arguments":	["Arguments: map/mapname/postfx or *.fx filename"],
+				"description":	"Reloads the shader"
+			},
+			"particle_editor":	{
+				"description":	"Spawns a particle editor"
+			},
+			"add_mines":	{
+				"arguments":	["<Amount of naval mines>"],
+				"aliases":	["mines"],
+				"description":	"Add naval mines to selected region(s)"
+			},
+			"release":	{
+				"arguments":	["Tag of a country to be released"],
+				"aliases":	["rls"],
+				"description":	"Released a given country"
+			},
+			"map_icon_reload_type":	{
+				"available_in_release_build":	false,
+				"arguments":	["<NUM> or <help>"],
+				"description":	"Specify a map icon type to reload"
+			},
+			"randomlog":	{
+				"available_in_release_build":	false,
+				"aliases":	["rlog"],
+				"description":	"Toggles the random logs."
+			},
+			"save":	{
+				"aliases":	["savegame"],
+				"description":	"save a savegame."
+			},
+			"acclimatization":	{
+				"arguments":	["<climate_name>", "<value 0-100>"],
+				"aliases":	["acc"],
+				"description":	"Sets the acclimatization on a division(s)."
+			},
+			"combattest":	{
+				"available_in_release_build":	false,
+				"description":	"combat simulation process"
+			},
+			"navalcombatlog":	{
+				"available_in_release_build":	false,
+				"description":	"logs naval combat"
+			},
+			"debug":	{
+				"description":	"Toggle debug mode on/off."
+			},
+			"ironman":	{
+				"available_in_release_build":	false,
+				"description":	"Applies Ironman status to current game."
+			},
+			"deironman":	{
+				"available_in_release_build":	false,
+				"description":	"Removes Ironman status from current game."
+			},
+			"show_xp_gain":	{
+				"aliases":	["xp_gain"],
+				"description":	"Show XP gain information."
+			},
+			"whitepeace":	{
+				"arguments":	["<country tags>"],
+				"aliases":	["wp"],
+				"description":	"White peace with the specified countries."
+			},
+			"debug_orders_tree":	{
+				"available_in_release_build":	false,
+				"aliases":	["dot"],
+				"description":	"Print out debug about orders chain."
+			},
+			"testtool":	{
+				"available_in_release_build":	false,
+				"aliases":	["test"],
+				"description":	"Testing tool."
+			},
+			"analyzetheatres":	{
+				"aliases":	["anth"],
+				"description":	"Analyze theatres for errors."
+			},
+			"debug_front_sections":	{
+				"arguments":	["<Theatre index>", "<Front index>", "<Section index>"],
+				"aliases":	["dbg_fs"],
+				"description":	"Visual debug of theatres, fronts and sections."
+			},
+			"rebuildfronts":	{
+				"available_in_release_build":	false,
+				"arguments":	["<Country tag>"],
+				"description":	"Rebuild fronts."
+			},
+			"debug_unit_controller_weights":	{
+				"arguments":	["<weight token>"],
+				"aliases":	["dbg_ucw"],
+				"description":	"Visual debug of unit controller weights. Enable track_unit_controller_weights first!"
+			},
+			"track_unit_controller_weights":	{
+				"aliases":	["track_ucw"],
+				"description":	"Will start tracking unit controller weights for current country, should be used together with debug_unit_controller_weights to view the data."
+			},
+			"debug_force_capitulate":	{
+				"arguments":	["<tag>"],
+				"aliases":	["dfc"],
+				"description":	"forces capitulation of a country on next daily tick"
+			},
+			"massconquer":	{
+				"available_in_release_build":	false,
+				"aliases":	["massc"],
+				"description":	"Mass conquer tool."
+			},
+			"deleteallunits":	{
+				"aliases":	["delall"],
+				"description":	"Delete all armies and fleets of the specified countries."
+			},
+			"deleteallunitsbut":	{
+				"aliases":	["delallbut"],
+				"description":	"Delete all armies and fleets of ALL countries, except specified one."
+			},
+			"aircombat":	{
+				"available_in_release_build":	false,
+				"arguments":	["<scenario name>", "<result name>", "<province id>", "<state id with airbase>", "<state id with airbase>", "<equipment type>", "<equipment type>", "[equipment creator country]", "[equipment creator country]"],
+				"aliases":	["airc"],
+				"description":	"Spawns an air combat in desired location."
+			},
+			"teleport":	{
+				"arguments":	["<province_id>"],
+				"aliases":	["tp"],
+				"description":	"Teleports selected armies or ships to the specified province"
+			},
+			"theatersrebuild":	{
+				"available_in_release_build":	false,
+				"aliases":	["trebuild"],
+				"description":	"Rebuilds all theatres in the world. All orders will be cleaned."
+			},
+			"test_naval_move_danger":	{
+				"available_in_release_build":	false,
+				"arguments":	["<from region id>", "<to region id>, <avoid as block = 1>"],
+				"description":	"Tests if path between two region is blocked"
+			},
+			"highlight_encirclements":	{
+				"description":	"Toggle highlighting of detected encirclements"
+			},
+			"simplified_transport":	{
+				"description":	"Toggle simplified naval transports"
+			},
+			"fronts":	{
+				"description":	"Toggle visibility of the foreign fronts"
+			},
+			"traderoutes":	{
+				"description":	"Toggle visibility of trade routes"
+			},
+			"debug_norender":	{
+				"description":	"Toggle rendering of map"
+			},
+			"debug_tactics":	{
+				"description":	"Toggle visibility of debug tooltip for tactics"
+			},
+			"show_ships":	{
+				"description":	"Toggle always showing of player ships"
+			},
+			"show_enemy_ships":	{
+				"description":	"Toggle always showing of enemy ships"
+			},
+			"allowdiplo":	{
+				"aliases":	["adiplo", "nocb"],
+				"description":	"Allows to use all diplomatic actions for no matter the rules."
+			},
+			"allowtraits":	{
+				"description":	"Allows to learn all traits."
+			},
+			"allowideas":	{
+				"description":	"Allows to learn all ideas."
+			},
+			"allowoperations":	{
+				"description":	"Allows to execute all operations."
+			},
+			"operation_test_phase_selection":	{
+				"arguments":	[],
+				"description":	"Test an operation phase."
+			},
+			"operation_debug":	{
+				"arguments":	[],
+				"description":	"Allows to execute all operations."
+			},
+			"operation_start":	{
+				"arguments":	[],
+				"description":	"Allows to execute all operations."
+			},
+			"debug_nuking":	{
+				"description":	"Allows to nuke every province without checking any conditions."
+			},
+			"instantevents":	{
+				"description":	"Ignores event mth s"
+			},
+			"nukes":	{
+				"arguments":	["<count>"],
+				"aliases":	["nuke"],
+				"description":	"add nukes"
+			},
+			"reloadsupply":	{
+				"aliases":	["relsup"],
+				"description":	"Reinitializes the supply systems."
+			},
+			"rebuildlayers":	{
+				"description":	"Reload mapmodes."
+			},
+			"deltat":	{
+				"arguments":	["<speed factor>"],
+				"description":	"control animation speeds"
+			},
+			"building_health":	{
+				"arguments":	["<building type>", "<state or prov id>", "<building level>", "<health to add>"],
+				"aliases":	["bhealth"],
+				"description":	"Changes specified building health"
+			},
+			"instantconstruction":	{
+				"aliases":	["ic"],
+				"description":	"Toggles instant construction cheat."
+			},
+			"instantshiprefit":	{
+				"aliases":	["isr"],
+				"description":	"Toggles instant ship refitting cheat."
+			},
+			"instanttraining":	{
+				"aliases":	["it"],
+				"description":	"Toggles instant army training cheat."
+			},
+			"war_relations":	{
+				"arguments":	["<tag>"],
+				"description":	"Prints war relations info"
+			},
+			"add_temporary_buff":	{
+				"arguments":	["<buff_index>"],
+				"description":	"adds temporary buff to selected units"
+			},
+			"list_temporary_buffs":	{
+				"arguments":	[],
+				"description":	"lists all temporary buffs on selected units"
+			},
+			"unit_stats":	{
+				"arguments":	[],
+				"description":	"lists stats of selected units"
+			},
+			"trigger_ability":	{
+				"arguments":	["<ability_name>"],
+				"description":	"triggers an ability"
+			},
+			"profile":	{
+				"arguments":	["<on> <off> <print> <clear>"],
+				"description":	"profile options"
+			},
+			"nomapicons":	{
+				"description":	"Toggles map icons."
+			},
+			"nopausetext":	{
+				"description":	"Toggles the pausebanner for nicer screenshots."
+			},
+			"combatsound":	{
+				"description":	"How often does the combat view give a random sound? 0-50"
+			},
+			"morehumans":	{
+				"arguments":	["num"],
+				"aliases":	["humans"],
+				"description":	"Adds more humans"
+			},
+			"window":	{
+				"arguments":	["Arguments: open/close", "window gui name"],
+				"aliases":	["wnd"],
+				"description":	"Opens or closes the specified window"
+			},
+			"reloadinterface":	{
+				"description":	"Reloads the entire interface"
+			},
+			"reloadtechnologies":	{
+				"description":	"Reloads the technology database"
+			},
+			"updateequipments":	{
+				"description":	"Updates the equipment database"
+			},
+			"updatesubunits":	{
+				"description":	"Updates the subunit database"
+			},
+			"reloadoob":	{
+				"arguments":	["<Target Country Tag>"],
+				"description":	"Reloads OOBs"
+			},
+			"createarmygroup":	{
+				"arguments":	[],
+				"description":	"Create field marshal group from selected groups"
+			},
+			"combat_analyzer":	{
+				"arguments":	["<TAG1>", "<TAG2>", "<OOB1>", "<OOB2>", "<num runs> OPTIONAL", "<num days> OPTIONAL"],
+				"description":	"Runs a combat between the 2 OOBs owned by the two TAGs either until done or for the specified number of days. \nUsing <num runs> the combat will be run multiple times and the averages are printed"
+			},
+			"update_loc":	{
+				"arguments":	["localization tag"],
+				"description":	"Updates the localization tag file"
+			},
+			"event":	{
+				"arguments":	["event id", "<Target Country Tag>"],
+				"description":	"Executes an event"
+			},
+			"research":	{
+				"arguments":	["<slot id> or \"all\""],
+				"description":	"Researches an technology from research slot or all."
+			},
+			"research_on_icon_click":	{
+				"description":	"Research a technology when clicking on technology tree icon"
+			},
+			"Agency.Instant":	{
+				"description":	"Activates Operation.Instant, IntelNetwork.Instant, Agency.InstantSlotUnlock and Agency.Autocomplete"
+			},
+			"add_autonomy":	{
+		},
+			"annex":	{
+				"arguments":	["<Target Country Tag>"],
+				"description":	"Begin annex/annexes the specified tag"
+			},
+			"no_wargoal":	{
+				"description":	"No need to have a wargoal for declaring war"
+			},
+			"instant_wargoal":	{
+				"description":	"Generation of wargoals are instant"
+			},
+			"testrtti":	{
+				"arguments":	["<test case>"],
+				"description":	"Tests performance for RTTI"
+			},
+			"testevent":	{
+				"arguments":	["<Event ID>", "<Character ID>"],
+				"description":	"Tests an event without triggering it"
+			},
+			"manpower":	{
+				"arguments":	["<Amount>"],
+				"description":	"Adds manpower to player"
+			},
+			"add_opinion":	{
+				"arguments":	["<Country tag>"],
+				"description":	"Add opinion to/from tag"
+			},
+			"tag":	{
+				"arguments":	["<Country tag>"],
+				"description":	"Switch tag to another country"
+			},
+			"resign":	{
+				"description":	"Resign from the game"
+			},
+			"add_interest":	{
+				"arguments":	["<Country tag>"],
+				"description":	"Add specified country tag to your interest"
+			},
+			"remove_interest":	{
+				"arguments":	["<Country tag>"],
+				"description":	"Removes specified country tag from your interest"
+			},
+			"add_diplo":	{
+				"description":	"Adds diplomatic entroute"
+			},
+			"build_war_blobs":	{
+				"description":	"Prints a list of all your wars"
+			},
+			"PrintSynchStuff":	{
+				"description":	"Prints random count and seed"
+			},
+			"SetRandomCount":	{
+				"description":	"Sets the randomcount to 0 or arg"
+			},
+			"observe":	{
+				"aliases":	["spectator"],
+				"description":	"Switches to play no country at all, and no longer shows messages or pauses the game"
+			},
+			"lock_air_det":	{
+				"arguments":	["<CountryTag>", "<Detection> (0.0-1.0) OPTIONAL"],
+				"description":	"Locks Air Detection for a country, omit detection value to reset"
+			},
+			"lock_air_eff":	{
+				"arguments":	["<CountryTag>", "<Efficiency> (0.0-1.0) OPTIONAL"],
+				"description":	"Locks Air Efficiency for a country, omit efficiency value to reset"
+			},
+			"ai_trace":	{
+				"available_in_release_build":	false,
+				"description":	"Toggles the AI Trace window"
+			},
+			"ai":	{
+				"description":	"Toggles the AI on or off"
+			},
+			"human_ai":	{
+				"description":	"Toggles AI for Human countries"
+			},
+			"ai_invasion":	{
+				"description":	"Toggles AI AI naval invasions"
+			},
+			"ai_accept":	{
+				"aliases":	["yesman"],
+				"description":	"Toggles AI always accept diplomacy"
+			},
+			"fow":	{
+				"arguments":	["<Province ID> OPTIONAL"],
+				"aliases":	["debug_fow"],
+				"description":	"Turns off fog of war in a province or in general"
+			},
+			"collision":	{
+				"aliases":	["debug_collision"],
+				"description":	"Toggles debug display of normals/bounding boxes/collision"
+			},
+			"savegame":	{
+				"description":	"Creates an savefile."
+			},
+			"savecheck":	{
+				"description":	"Makes a savegame (Test_01), loads the savegame, makes a new savegame (Test_02). Those savegames should look the same."
+			},
+			"IP":	{
+				"description":	"Shows your IP"
+			},
+			"nudge":	{
+				"description":	"Go to the nudge tool"
+			},
+			"mapmode":	{
+				"arguments":	["Mapmode type (int)"],
+				"description":	"Change mapmode."
+			},
+			"fullscreen":	{
+				"description":	"Toggles fullscreen"
+			},
+			"prices":	{
+				"description":	"Price Info"
+			},
+			"add_core":	{
+				"arguments":	["<Province ID>"],
+				"description":	"Add core"
+			},
+			"remove_core":	{
+				"arguments":	["<Province ID>"],
+				"description":	"Remove core"
+			},
+			"debug_zoom":	{
+				"available_in_release_build":	false,
+				"description":	"Zooms in the game"
+			},
+			"debug_types":	{
+				"available_in_release_build":	false,
+				"description":	"Will print the data type for all dynamic reference objects. Can only be used if using RTTI."
+			},
+			"debug_show_event_ID":	{
+				"description":	"Shows event ID"
+			},
+			"debug_commands":	{
+				"available_in_release_build":	false,
+				"description":	"Printing commandcount to message.log"
+			},
+			"debug_events":	{
+				"description":	"Start Counting events"
+			},
+			"debug_dumpevents":	{
+				"description":	"Dump Event data to game log"
+			},
+			"dump_cached_random_logs":	{
+				"description":	"dumps cached random logs"
+			},
+			"debug_diploactions":	{
+				"available_in_release_build":	false,
+				"description":	"Start Counting diplomatic actions"
+			},
+			"debug_dumpdiploactions":	{
+				"available_in_release_build":	false,
+				"description":	"Dump diplomatic action data to game log"
+			},
+			"debug_assert":	{
+				"available_in_release_build":	false,
+				"description":	"Toggles asserts on/off"
+			},
+			"debug_smooth":	{
+				"description":	"Toggle framesmoothing"
+			},
+			"debug_nomouse":	{
+				"available_in_release_build":	false,
+				"description":	"Toggles mouse scrollwheel on/off"
+			},
+			"debug_terrain":	{
+				"description":	"Toggles Terrain on/off"
+			},
+			"debug_cities":	{
+				"description":	"Toggles Cities painting mode on/off"
+			},
+			"debug_water":	{
+				"description":	"Toggles Water on/off"
+			},
+			"debug_fronts":	{
+				"available_in_release_build":	false,
+				"description":	"Toggles interpolated fronts debug"
+			},
+			"history_logger":	{
+				"description":	"Toggle history logger"
+			},
+			"instant_prepare":	{
+				"description":	"Instantly prepares naval invasions"
+			},
+			"debug_off_front_snap":	{
+				"available_in_release_build":	false,
+				"aliases":	["dbg_fsnap"],
+				"description":	"Toggles offensive fronts snapping debug"
+			},
+			"debug_borders":	{
+				"description":	"Toggles Borders on/off"
+			},
+			"debug_trees":	{
+				"description":	"Toggles Trees on/off"
+			},
+			"debug_rivers":	{
+				"description":	"Toggles Rivers on/off"
+			},
+			"debug_postfx":	{
+				"description":	"Toggles PostFX on/off"
+			},
+			"debug_sky":	{
+				"description":	"Toggles Sky on/off"
+			},
+			"debug_bloom":	{
+				"description":	"Toggles Bloom on/off"
+			},
+			"debug_tooltip":	{
+				"available_in_release_build":	false,
+				"description":	"Toggles Tooltips on/off"
+			},
+			"flagsoutput":	{
+				"arguments":	["<path>"],
+				"description":	"Creates texture atlas files from memory."
+			},
+			"cityreload":	{
+				"description":	"Reloads the cities"
+			},
+			"error":	{
+				"description":	"Show errors in log"
+			},
+			"version":	{
+				"description":	"Show current game version"
+			},
+			"debug_nogui":	{
+				"description":	"Toggles GUI on/off"
+			},
+			"debug_volume":	{
+				"available_in_release_build":	false,
+				"arguments":	["<Volume Delta>"],
+				"description":	"Modifies music volume"
+			},
+			"debug_lockcamera":	{
+				"available_in_release_build":	false,
+				"description":	"Toggles Camera locked on/off"
+			},
+			"debug_lines":	{
+				"available_in_release_build":	false,
+				"description":	"Toggles Debuglines"
+			},
+			"debug_entities":	{
+				"available_in_release_build":	false,
+				"description":	"Toggles Debug entities"
+			},
+			"debug_info":	{
+				"available_in_release_build":	false,
+				"description":	"Toggles Debug info"
+			},
+			"debug_particle":	{
+				"available_in_release_build":	false,
+				"description":	"Toggles Particles Debug info"
+			},
+			"debug_textures":	{
+				"available_in_release_build":	false,
+				"description":	"Writes Texture info to application debug log"
+			},
+			"reload_textures":	{
+				"arguments":	["<optional file name filters...>"],
+				"aliases":	["rt", "reload_texture"],
+				"description":	"Reloads all textures, with an optional filter to reload only files that include the given text"
+			},
+			"debug_texture":	{
+				"available_in_release_build":	false,
+				"description":	"draws textures like bloom"
+			},
+			"debug_wireframe":	{
+				"available_in_release_build":	false,
+				"description":	"Toggles forced wireframe on/off"
+			},
+			"debug_achievements_clear":	{
+				"available_in_release_build":	false,
+				"description":	"Clear all achievements and user stats"
+			},
+			"debug_achievements":	{
+				"available_in_release_build":	false,
+				"description":	"Enables popups for achievements to debug them"
+			},
+			"moveunit":	{
+				"arguments":	["<Unit ID>", "<Province ID>"],
+				"description":	"Moves a unit to a province"
+			},
+			"spawnactor":	{
+				"available_in_release_build":	false,
+				"arguments":	["<Actorname>", "<Province ID>", "<Animation> OPTIONAL"],
+				"description":	"Spawns an actor with an optional animation"
+			},
+			"spawn":	{
+				"available_in_release_build":	false,
+				"arguments":	["<SubUnit Type>", "<Province ID>", "<Amount>"],
+				"description":	"Spawns a unit in a province"
+			},
+			"guibounds":	{
+				"aliases":	["gui"],
+				"description":	"Toggles GUI bounds debug"
+			},
+			"cameraclamp":	{
+				"available_in_release_build":	false,
+				"description":	"Toggles the camera clamping"
+			},
+			"provtooltipdebug":	{
+				"aliases":	["tdebug"],
+				"description":	"Toggles the debug info in province tooltip"
+			},
+			"reloadweather":	{
+				"arguments":	["<randomseed>"],
+				"description":	"Reload and regenerate weather"
+			},
+			"weather":	{
+				"description":	"Toggle weather simulation"
+			},
+			"debug_air_vs_land":	{
+				"available_in_release_build":	false,
+				"aliases":	["dbg_cas"],
+				"description":	"Toggle debug mode for air vs land combat."
+			},
+			"mapnames":	{
+				"description":	"Toggle map names"
+			},
+			"gbreload":	{
+				"available_in_release_build":	false,
+				"description":	"Reloads gradient borders"
+			},
+			"gbpaint":	{
+				"available_in_release_build":	false,
+				"arguments":	["layer", "channel"],
+				"description":	"Toggles gradient border painting"
+			},
+			"occupationpaint":	{
+				"arguments":	["tag<OPTIONAL>"],
+				"aliases":	["op"],
+				"description":	"Toggles occupation painting. If specifying a tag, that country will be occupied."
+			},
+			"setowner":	{
+				"arguments":	["country tag", "state id"],
+				"description":	"Sets state owner"
+			},
+			"setcontroller":	{
+				"arguments":	["country tag", "province id"],
+				"description":	"Sets province controller"
+			},
+			"profilelog":	{
+				"available_in_release_build":	false,
+				"description":	"Prints out the profiling informations into time.log"
+			},
+			"gamestate_timer":	{
+				"arguments":	["on / off"],
+				"aliases":	["gstimer"],
+				"description":	"Enable / Disable recording of how long an hour / day / week etc takes to process."
+			},
+			"run":	{
+				"description":	"Runs the specified file with list of commands"
+			},
+			"oos":	{
+				"available_in_release_build":	false,
+				"description":	"Out of Synch"
+			},
+			"debug_crash":	{
+				"available_in_release_build":	false,
+				"aliases":	["crash"],
+				"description":	"Crash!"
+			},
+			"debug_unit_entity":	{
+				"aliases":	["dbg_ue"],
+				"description":	"Print out the entity hierarchy."
+			},
+			"sleep":	{
+				"available_in_release_build":	false,
+				"arguments":	["time in sec"],
+				"aliases":	["wait"],
+				"description":	"Sleep"
+			},
+			"goto_province":	{
+				"arguments":	["province id"],
+				"description":	"Centers to province"
+			},
+			"goto_state":	{
+				"arguments":	["state id"],
+				"description":	"Centers to state"
+			},
+			"goto_region":	{
+				"arguments":	["region id"],
+				"description":	"Centers to region"
+			},
+			"trigger_docs":	{
+				"aliases":	["effect_docs", "scripting_docs", "docs"],
+				"description":	"Print docs for triggers, effects and variables"
+			},
+			"cp":	{
+				"arguments":	["CP amount"],
+				"description":	"Gives command power to player"
+			},
+			"effect":	{
+				"arguments":	["<tag> scripted_effect_name"],
+				"aliases":	["e"],
+				"description":	"Runs a scripted effect on selected scope",
+				"argument_completion_support":	true
+			},
+			"eval_effect":	{
+				"description":	"Runs the inlined effect on a selected scope"
+			},
+			"trigger":	{
+				"arguments":	["<tag> scripted_trigger_name"],
+				"aliases":	["t"],
+				"description":	"Runs a scripted trigger on selected scope",
+				"argument_completion_support":	true
+			},
+			"print_operation_tokens":	{
+				"description":	"Runs a scripted effect on selected scope"
+			},
+			"xp":	{
+				"arguments":	["XP amount"],
+				"description":	"Gives Army, navy and air experience to player"
+			},
+			"threat":	{
+				"arguments":	["threat amount"],
+				"description":	"Adds or show thread level of player"
+			},
+			"add_latest_equipment":	{
+				"arguments":	["equipment amount"],
+				"aliases":	["ale"],
+				"description":	"Gives player amount of latest equipment variants"
+			},
+			"add_equipment":	{
+				"arguments":	["equipment amount", "equipment name"],
+				"aliases":	["ae"],
+				"description":	"Gives player amount of equipment that has the specified name"
+			},
+			"pp":	{
+				"arguments":	["PP amount"],
+				"aliases":	["fuhrer_mana", "political_power"],
+				"description":	"Gives political power to player"
+			},
+			"fuel":	{
+				"arguments":	["Fuel amount"],
+				"aliases":	["army_juice"],
+				"description":	"Adds/removes fuel to the player"
+			},
+			"fuel_gain":	{
+				"arguments":	["Daily Fuel amount"],
+				"description":	"Adds/removes daily fuel gain for player"
+			},
+			"empty_fuel_tanks":	{
+				"arguments":	["Fuel amount"],
+				"description":	"Clear fuel tanks of all armies"
+			},
+			"resistance":	{
+				"arguments":	["amount"],
+				"description":	"increases decreases resistance in a state"
+			},
+			"compliance":	{
+				"arguments":	["amount"],
+				"description":	"increases decreases compliance in a state"
+			},
+			"add_stability":	{
+				"arguments":	["unity amount"],
+				"aliases":	["st"],
+				"description":	"Gives/removes stability from player"
+			},
+			"add_war_support":	{
+				"arguments":	["unity amount"],
+				"aliases":	["ws"],
+				"description":	"Gives/removes war support from player"
+			},
+			"3dstats":	{
+				"description":	"Toggles 3D Stats"
+			},
+			"hdr":	{
+				"available_in_release_build":	false,
+				"description":	"Toggles hdr"
+			},
+			"hdr_debug":	{
+				"available_in_release_build":	false,
+				"description":	"Toggles hdr debugging"
+			},
+			"srgb":	{
+				"available_in_release_build":	false,
+				"description":	"Toggles sRGB"
+			},
+			"bloom":	{
+				"available_in_release_build":	false,
+				"description":	"Toggles bloom"
+			},
+			"PostEffectVolumes.Default":	{
+				"available_in_release_build":	false,
+				"arguments":	["posteffect_values name"],
+				"description":	"Toggles default posteffect values"
+			},
+			"night":	{
+				"available_in_release_build":	false,
+				"description":	"Toggles night"
+			},
+			"civilwar":	{
+				"arguments":	["<ideology>", "[target country tag]"],
+				"description":	"Spawns a civil war",
+				"argument_completion_support":	true
+			},
+			"createlean":	{
+				"available_in_release_build":	false,
+				"description":	"Create LEAN textures"
+			},
+			"helplog":	{
+				"description":	"Print out all console commands to game.log file."
+			},
+			"help":	{
+				"arguments":	["command name"],
+				"description":	"Print out all console commands or a specific command description."
+			},
+			"helphelp":	{
+				"description":	"Double Rainbow help."
+			},
+			"hsv":	{
+				"available_in_release_build":	false,
+				"description":	"Converts RGB to HSV"
+			},
+			"tag_color":	{
+				"description":	"Test setting a country's color"
+			},
+			"browser":	{
+				"available_in_release_build":	false,
+				"arguments":	["url"],
+				"description":	"Show browser window"
+			},
+			"aiview":	{
+				"description":	"Enable AI debug info"
+			},
+			"ai_dump":	{
+				"available_in_release_build":	false,
+				"aliases":	["aidump"],
+				"description":	"Dump AI data to log file"
+			},
+			"ai_front_dump":	{
+				"available_in_release_build":	false,
+				"aliases":	["aifrontdump"],
+				"description":	"Dump AI front data to log file, needs to have a unit selected"
+			},
+			"metrics":	{
+				"available_in_release_build":	false,
+				"aliases":	[],
+				"description":	"Toggles collecting metrics"
+			},
+			"ai_research_log":	{
+				"available_in_release_build":	false,
+				"description":	"Toggles ai research logging"
+			},
+			"ai_idea_desire_log":	{
+				"description":	"Prints AI desire for ideas to log. For Current country only."
+			},
+			"set_debug_unit_controller":	{
+				"available_in_release_build":	false,
+				"aliases":	["dbg_unit_controller"],
+				"description":	"Sets debug unit controller tag, other countries will not update units"
+			},
+			"ai_pp_log":	{
+				"description":	"Prints AI use of PP to log"
+			},
+			"airealism":	{
+				"description":	"Enable realistic AI"
+			},
+			"ai_force_template":	{
+				"description":	"Force the AI to only spend army XP on template design"
+			},
+			"ai_force_equipment":	{
+				"description":	"Force the AI to only spend army XP on equipment design"
+			},
+			"pause_in_hours":	{
+				"description":	"Pauses the game after X hours have passed after command is called"
+			},
+			"pathfind_stats":	{
+				"available_in_release_build":	false,
+				"description":	"Print PathFind Cache Stats"
+			},
+			"debug_army_entity":	{
+				"aliases":	["dae"],
+				"description":	"Shows debug entity for all armies"
+			},
+			"pathfind_cache":	{
+				"available_in_release_build":	false,
+				"arguments":	["on / off"],
+				"description":	"Enable / Disable the PathFind Cache"
+			},
+			"gamespeed":	{
+				"arguments":	["speed <0-5>"],
+				"description":	"Set the current game speed, pausing the game at speed 0."
+			},
+			"unit_address":	{
+				"description":	"Get the address of the first selected unit, for debugging"
+			},
+			"ai_front_id":	{
+				"description":	"Get the address of selected group's front debug id"
+			},
+			"test_log":	{
+				"description":	"Enable / Disable tests"
+			},
+			"test_save_mode":	{
+				"description":	"Sets if save game for failed test should be for current or previous day"
+			},
+			"set_cosmetic_tag":	{
+				"arguments":	["<country tag>", "<cosmetic tag>"],
+				"description":	"Sets 'cosmetic tag' for a specified country"
+			},
+			"drop_cosmetic_tag":	{
+				"arguments":	["<country tag>"],
+				"description":	"Drops 'cosmetic tag' for a specified country"
+			},
+			"add_ideas":	{
+				"arguments":	[],
+				"description":	"Adds ideas (ministers or national spirits) with <ID> to the country. Use 'all' to add them all",
+				"argument_completion_support":	true
+			},
+			"remove_ideas":	{
+				"arguments":	[],
+				"description":	"Removes ideas (ministers or national spirits) with <ID> to the country. Use 'all' to remove them all",
+				"argument_completion_support":	true
+			},
+			"list_ideas":	{
+				"arguments":	[],
+				"description":	"Dump all ideas to console (ministers or national spirits)"
+			},
+			"add_party_popularity":	{
+				"arguments":	["<party>", "<amount>"],
+				"description":	"Adds party popularity for specified party to the current country"
+			},
+			"set_ruling_party":	{
+				"arguments":	["<ideology>"],
+				"description":	"Sets ruling party for the country"
+			},
+			"set_global_flag":	{
+				"arguments":	["<flag name>"],
+				"description":	"Sets the specified global flag to a value. Defaults to 1"
+			},
+			"set_country_flag":	{
+				"arguments":	["<flag name>"],
+				"description":	"Sets country flag on specified TAG for a duration. Defaults to current country and value 1 with infinite duration."
+			},
+			"get_country_flag":	{
+				"arguments":	["<flag name>"],
+				"description":	"Gets country flag on specified TAG. Defaults to current country"
+			},
+			"set_var":	{
+				"arguments":	["<var name>"],
+				"description":	"Set a variable"
+			},
+			"get_var":	{
+				"arguments":	["<var name>"],
+				"description":	"Gets a variable"
+			},
+			"set_flag":	{
+				"arguments":	["<flag name>"],
+				"description":	"Set a flag"
+			},
+			"get_flag":	{
+				"arguments":	["<flag name>"],
+				"description":	"Get a flag"
+			},
+			"list_vars":	{
+				"arguments":	["<scope>"],
+				"description":	"Lists all variables in a scope or for the selected country/state/unitleader"
+			},
+			"gain_xp":	{
+				"arguments":	["<trait>"],
+				"description":	"Gain xp for selected leader or for a leader trait"
+			},
+			"list_flags":	{
+				"arguments":	["<scope>"],
+				"description":	"Lists all flags in a scope or for the selected country/state/unitleader"
+			},
+			"list_modifiers":	{
+				"arguments":	["<scope>"],
+				"description":	"Lists all modifiers in a scope or for the selected country/state/unitleader"
+			},
+			"dbg_enable_scripted_gui":	{
+				"available_in_release_build":	false,
+				"arguments":	["<scope>"],
+				"description":	"Enables scripted GUIs"
+			},
+			"prep_for_war":	{
+				"arguments":	["<TAG>"],
+				"description":	"Make AI country with specified TAG to prepare fight for another country "
+			},
+			"dbg_prov":	{
+				"available_in_release_build":	false,
+				"arguments":	["<int>"],
+				"aliases":	[],
+				"description":	"Sets type of debugging information on provinces."
+			},
+			"random_seed":	{
+				"description":	"reseeds random with specified seed or reseeds random"
+			},
+			"timer":	{
+				"description":	"Prints out debug timing info"
+			},
+			"timer_start":	{
+				"description":	"Starts debug timing"
+			},
+			"timer_restart":	{
+				"description":	"Restarts (resets and starts) debug timing"
+			},
+			"timer_reset":	{
+				"description":	"Resets debug timing"
+			},
+			"timer_stop":	{
+				"description":	"Stops debug timing"
+			},
+			"timer_dump":	{
+				"description":	"Dumps debug timing info"
+			},
+			"ct":	{
+				"description":	"Puts timer info in clipboard"
+			},
+			"dump_checksum":	{
+				"description":	"Compute and store the checksum in a file"
+			},
+			"compare_to_last_checksum":	{
+				"description":	"Compare current checksum with the most recent dump"
+			},
+			"dump_synchronized_members":	{
+				"description":	"Dump the synchronized game state (the one that has checksum ID 2)"
+			},
+			"add_legitimacy":	{
+				"arguments":	["<TAG>", "<value>"],
+				"description":	"Adds legitimacy to specified tag. add_legitimacy TAG amount"
+			},
+			"dbg_tf_fulfillment":	{
+				"description":	"Show the managed fulfillment of a taskforce (exepected number of ships after all ships have been merged in)"
+			},
+			"damage_units":	{
+				"arguments":	["<org>", "<str>", "<num>"],
+				"description":	"Damage or heal selected units or units under pointer if there is none selected. Enter 1 argument to apply damage for both types, two for individual both types"
+			},
+			"add_critical_hit":	{
+				"arguments":	["<critical_hit_name>"],
+				"description":	"add critical hit to selected ships"
+			},
+			"clear_critical_hits":	{
+				"description":	"clear all critical hits"
+			},
+			"add_exile_manpower":	{
+				"arguments":	["<TAG>", "<value>"],
+				"description":	"Adds legitimacy to specified tag. add_legitimacy TAG amount"
+			},
+			"bypass_invasion_superiority_check":	{
+				"aliases":	["bisc"],
+				"description":	"Ignore superiority in the strategic areas crossed by a naval invasion order"
+			},
+			"add_fleet_arrow":	{
+				"available_in_release_build":	false,
+				"arguments":	["color"],
+				"description":	"Add an arrow around a strategic region"
+			},
+			"toggle_offset_ai_daily_update":	{
+				"available_in_release_build":	false,
+				"description":	"Whether a country's ai daily update should be spread over a day"
+			},
+			"get_capital":	{
+				"arguments":	["<Country tag>"],
+				"description":	"Get the capital of a country"
+			},
+			"dbg_task_force_role_insignia_assignment":	{
+				"aliases":	["tfria"],
+				"description":	"print the role that would be deduced for the selected task force"
+			},
+			"imgui":	{
+				"description":	"Controls ImGui UIs. See the sub commands."
+			},
+			"grow_intel_network":	{
+				"description":	"Grow the intel network in the specified tag"
+			},
+			"print_intel_network":	{
+				"description":	"Print intel network related information"
+			},
+			"print_intel_values":	{
+				"description":	"Print the intel a country has over another"
+			},
+			"clear_intel_pools":	{
+				"description":	"Reset the specified intel pool"
+			},
+			"print_radar_intel":	{
+				"description":	"Print the intel value breakdown generated by radar"
+			},
+			"add_intel":	{
+				"description":	"Set the values of a static intel pool against a specific country. E.g. `add_intel GER POL army=10`"
+			},
+			"force_operative_detection":	{
+				"aliases":	["snitch"],
+				"description":	"Print intel network related information"
+			},
+			"prevent_operative_detection":	{
+				"description":	"Prevent a country from detecting and harming foreign operatives"
+			},
+			"emulate_ai_operative_assignment":	{
+				"description":	"Log ai operative assignment if it were to run this tick. Takes as first argument the tag of the country to test, default to the player's."
+			},
+			"select":	{
+				"available_in_release_build":	false,
+				"arguments":	["<object id>", "<object type id> (optional)"],
+				"aliases":	["sel"],
+				"description":	"select object by id"
+			}
+		},
+		"tweakables":	{
+			"Operation.Instant":	{
+				"type":	"bool"
+			},
+			"IntelNetwork.Instant":	{
+				"type":	"bool"
+			},
+			"Focus.NoChecks":	{
+				"type":	"bool"
+			},
+			"Focus.AutoComplete":	{
+				"type":	"bool"
+			},
+			"fa":	{
+				"type":	"bool"
+			},
+			"Focus.IgnorePrerequisites":	{
+				"type":	"bool"
+			},
+			"Debug.DeleteUnitEachTick":	{
+				"available_in_release_build":	false,
+				"type":	"bool"
+			},
+			"Draw.Objects":	{
+				"available_in_release_build":	false,
+				"type":	"bool"
+			},
+			"Draw.Transparent":	{
+				"available_in_release_build":	false,
+				"type":	"bool"
+			},
+			"Draw.Shadows":	{
+				"available_in_release_build":	false,
+				"type":	"bool"
+			},
+			"Draw.ShadowBlur":	{
+				"available_in_release_build":	false,
+				"type":	"bool"
+			},
+			"PostEffectVolumes.Draw":	{
+				"available_in_release_build":	false,
+				"type":	"bool"
+			},
+			"Decision.NoChecks":	{
+				"type":	"bool"
+			},
+			"BattleSound.PlayBackground":	{
+				"available_in_release_build":	false,
+				"type":	"bool"
+			},
+			"BattleSound.Debug":	{
+				"available_in_release_build":	false,
+				"type":	"bool"
+			},
+			"resistance_system":	{
+				"type":	"bool"
+			},
+			"Agency.AutoComplete":	{
+				"type":	"bool"
+			},
+			"Agency.KeepExcessOperatives":	{
+				"type":	"bool"
+			},
+			"Agency.InstantSlotUnlock":	{
+				"type":	"bool"
+			},
+			"Draw.Postfx":	{
+				"available_in_release_build":	false,
+				"type":	"bool"
+			},
+			"Draw.Tree":	{
+				"available_in_release_build":	false,
+				"type":	"bool"
+			},
+			"Draw.Terrain":	{
+				"available_in_release_build":	false,
+				"type":	"bool"
+			},
+			"Draw.Rivers":	{
+				"available_in_release_build":	false,
+				"type":	"bool"
+			},
+			"Draw.Water":	{
+				"available_in_release_build":	false,
+				"type":	"bool"
+			},
+			"Draw.Borders":	{
+				"available_in_release_build":	false,
+				"type":	"bool"
+			},
+			"Draw.Refractions":	{
+				"available_in_release_build":	false,
+				"type":	"bool"
+			},
+			"Tree.MipLevels":	{
+				"available_in_release_build":	false,
+				"type":	"bool"
+			},
+			"Terrain.MipLevels":	{
+				"available_in_release_build":	false,
+				"type":	"bool"
+			},
+			"BorderLOD.Threaded":	{
+				"available_in_release_build":	false,
+				"type":	"bool"
+			},
+			"PostEffectVolumes.Enabled":	{
+				"available_in_release_build":	false,
+				"type":	"bool"
+			},
+			"ShowTechBonus":	{
+				"type":	"bool"
+			},
+			"CounterIntelligence.TestShieldColors":	{
+				"type":	"bool"
+			},
+			"guibounds":	{
+				"type":	"bool"
+			},
+			"Update.Particles":	{
+				"available_in_release_build":	false,
+				"type":	"bool"
+			},
+			"Update.Animations":	{
+				"available_in_release_build":	false,
+				"type":	"bool"
+			},
+			"Normals":	{
+				"available_in_release_build":	false,
+				"type":	"bool"
+			},
+			"BoundingVolumes":	{
+				"available_in_release_build":	false,
+				"type":	"bool"
+			},
+			"Collisions":	{
+				"available_in_release_build":	false,
+				"type":	"bool"
+			},
+			"Mesh.Names":	{
+				"type":	"bool"
+			},
+			"Mesh.TextureNames":	{
+				"type":	"bool"
+			},
+			"GUI.Wireframe":	{
+				"available_in_release_build":	false,
+				"type":	"bool"
+			},
+			"Mesh.Wireframe":	{
+				"available_in_release_build":	false,
+				"type":	"bool"
+			},
+			"Mesh.MipLevels":	{
+				"available_in_release_build":	false,
+				"type":	"bool"
+			},
+			"Particle.Wireframe":	{
+				"available_in_release_build":	false,
+				"type":	"bool"
+			},
+			"Particle.UseRingbuffer":	{
+				"available_in_release_build":	false,
+				"type":	"bool"
+			},
+			"Particle.MipLevels":	{
+				"available_in_release_build":	false,
+				"type":	"bool"
+			},
+			"ApplicationUtils.Update":	{
+				"available_in_release_build":	false,
+				"type":	"bool"
+			},
+			"Audio.DebugMin":	{
+				"available_in_release_build":	false,
+				"type":	"bool"
+			},
+			"Audio.DebugMax":	{
+				"available_in_release_build":	false,
+				"type":	"bool"
+			},
+			"Audio.Debug.LevelsSampleRate":	{
+				"available_in_release_build":	false,
+				"type":	"integer"
+			},
+			"Audio.Debug.Levels":	{
+				"available_in_release_build":	false,
+				"type":	"bool"
+			},
+			"Audio.Debug":	{
+				"available_in_release_build":	false,
+				"type":	"bool"
+			},
+			"Audio.Debug.ExtendedRange":	{
+				"available_in_release_build":	false,
+				"type":	"bool"
+			},
+			"Audio.Compressor":	{
+				"available_in_release_build":	false,
+				"type":	"bool"
+			}
+		}
+	}
 }

@@ -23,7 +23,8 @@ operation = {
 	days = int
 
 	### The danger level the target country will perceived once this operation is initiated (default = 0)
-	danger_level = int
+    ## cardinality = 0..1
+    danger_level = int
 
 	### The number of operatives requires to be assigned to an operation for it to start
 	operatives = int

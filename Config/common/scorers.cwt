@@ -34,6 +34,7 @@ country_scorer = {
 
 		## replace_scope = { THIS = country ROOT = country FROM = country }
 		### MTTH like score description. THIS is a target. FROM is the initiator.
+		## cardinality = ~1..1
 		score = {
 			## cardinality = 1..1
 			enum[base_factor] = variable_field

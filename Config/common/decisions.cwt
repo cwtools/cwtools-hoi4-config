@@ -333,9 +333,9 @@ decision = {
 		## cardinality = 0..inf
 		alias_name[targeted_modifier_rule] = alias_match_left[targeted_modifier_rule]
 
-		## cardinality = 0..1
+		## cardinality = 0..inf
 		target_array = value[array]
-		## cardinality = 0..1
+		## cardinality = 0..inf
 		target_array = variable_field
 		## cardinality = 0..1
 		target_non_existing = bool
@@ -417,9 +417,9 @@ decision = {
 		## cardinality = 0..inf
 		alias_name[targeted_modifier_rule] = alias_match_left[targeted_modifier_rule]
 
-		## cardinality = 0..1
+		## cardinality = 0..inf
 		target_array = value[array]
-		## cardinality = 0..1
+		## cardinality = 0..inf
 		target_array = variable_field
 
 		## cardinality = 0..1

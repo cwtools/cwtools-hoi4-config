@@ -97,10 +97,11 @@ operation = {
 
     ### List of modifiers that apply to risk_chance
     ## cardinality = 0..1
-    ## replace_scope = { THIS = operation ROOT = operation FROM = operation }
 	risk_modifiers = {
-        ## cardinality = ~1..inf
-        alias_name[modifier] = alias_match_left[modifier]
+        ## cardinality = 0..inf
+        alias_keys_field[modifier]
+        ## cardinality = 0..inf
+        alias_keys_field[unit_leader_modifier]
     }
 
     ### Determines the potentially awarded token(s) - this is for display purposes only in tooltips
@@ -112,10 +113,11 @@ operation = {
 
     ### List of traits that affect the cost of an operation
     ## cardinality = 0..1
-    ## replace_scope = { THIS = operation ROOT = operation FROM = operation }
 	cost_modifiers = {
-        ## cardinality = ~1..inf
-        alias_name[modifier] = alias_match_left[modifier]
+        ## cardinality = 0..inf
+        alias_keys_field[modifier]
+        ## cardinality = 0..inf
+        alias_keys_field[unit_leader_modifier]
     }
 
 	### If no operation_target is defined it will be allowed for all countries
@@ -198,10 +200,11 @@ operation = {
 
 	### List of modifiers that apply to outcome_chance
     ## cardinality = 0..1
-    ## replace_scope = { THIS = operation ROOT = operation FROM = operation }
 	outcome_modifiers = {
-        ## cardinality = ~1..inf
-        alias_name[modifier] = alias_match_left[modifier]
+        ## cardinality = 0..inf
+        alias_keys_field[modifier]
+        ## cardinality = 0..inf
+        alias_keys_field[unit_leader_modifier]
     }
 
 	### Executed when the operation has completed [ once per operation ]

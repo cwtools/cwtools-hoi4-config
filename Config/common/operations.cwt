@@ -23,7 +23,8 @@ operation = {
 	days = int
 
 	### The danger level the target country will perceived once this operation is initiated (default = 0)
-	danger_level = int
+    ## cardinality = 0..1
+    danger_level = int
 
 	### The number of operatives requires to be assigned to an operation for it to start
 	operatives = int
@@ -94,11 +95,13 @@ operation = {
     ## cardinality = 0..1
     risk_chance = float[0..1]
 
-	### List of modifiers that apply to risk_chance
+    ### List of modifiers that apply to risk_chance
     ## cardinality = 0..1
 	risk_modifiers = {
-        ## cardinality = 1..inf
-        <unit_leader_trait>
+        ## cardinality = 0..inf
+        alias_keys_field[modifier]
+        ## cardinality = 0..inf
+        alias_keys_field[unit_leader_modifier]
     }
 
     ### Determines the potentially awarded token(s) - this is for display purposes only in tooltips
@@ -111,10 +114,11 @@ operation = {
     ### List of traits that affect the cost of an operation
     ## cardinality = 0..1
 	cost_modifiers = {
-        ## cardinality = 1..inf
-        <unit_leader_trait.operative>
-     }
-
+        ## cardinality = 0..inf
+        alias_keys_field[modifier]
+        ## cardinality = 0..inf
+        alias_keys_field[unit_leader_modifier]
+    }
 
 	### If no operation_target is defined it will be allowed for all countries
     ## replace_scope = { THIS = country ROOT = country }
@@ -184,7 +188,7 @@ operation = {
 	}
 
 	### For description purposes only. This is the effect that generates that text shown as a potential reward for completing the operation
-    ## replace_scope = { THIS = operation ROOT = operation FROM = operation FROMFOM = state }
+    ## replace_scope = { THIS = operation ROOT = operation FROM = operation FROMFROM = state }
     ## cardinality = 0..1
 	outcome_potential = {
         alias_name[effect] = alias_match_left[effect]
@@ -197,19 +201,21 @@ operation = {
 	### List of modifiers that apply to outcome_chance
     ## cardinality = 0..1
 	outcome_modifiers = {
-        ## cardinality = 1..inf
-        <unit_leader_trait>
+        ## cardinality = 0..inf
+        alias_keys_field[modifier]
+        ## cardinality = 0..inf
+        alias_keys_field[unit_leader_modifier]
     }
 
 	### Executed when the operation has completed [ once per operation ]
-    ## replace_scope = { THIS = operation ROOT = operation FROM = operation FROMFOM = state }
+    ## replace_scope = { THIS = operation ROOT = operation FROM = operation FROMFROM = state }
     ## cardinality = 0..1
 	outcome_execute = {
         alias_name[effect] = alias_match_left[effect]
 	}
 
 	### Same as outcome_execute
-    ## replace_scope = { THIS = operation ROOT = operation FROM = operation FROMFOM = state }
+    ## replace_scope = { THIS = operation ROOT = operation FROM = operation FROMFROM = state }
     ## cardinality = 0..1
 	outcome_extra_execute = {
         alias_name[effect] = alias_match_left[effect]

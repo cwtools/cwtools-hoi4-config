@@ -29,6 +29,7 @@ localisation_commands = {
     GetManchuriaPuppet = any
     GetID = any
     GetTag = any
+    GetCapital = any
 
     # TODO: Confirm
     GetNameAdj = any

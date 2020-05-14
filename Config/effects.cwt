@@ -146,6 +146,9 @@ alias[effect:clr_global_flag] = value[global_flag]
 alias[effect:remove_building] = {
 	type = <building>
 	level = int_variable_field
+	
+	##cardinality = 0..1
+	province = enum[provinces]
 }
 
 ### Releases specified country as a free country.

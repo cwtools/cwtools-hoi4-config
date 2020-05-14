@@ -59,6 +59,7 @@ scopes = {
 	}
 	Operation = {
 		aliases = { operation }
+		is_subscope_of = { country }
 	}
 	Invalid = {
 		aliases = { invalid InvalidScope }

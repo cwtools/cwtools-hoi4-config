@@ -407,6 +407,7 @@ modifiers = {
 	training_time_army_factor = country
 	training_time_factor = country
 	transport_capacity = country
+	war_stability_factor = country
 	war_support_factor = country
 	war_support_weekly = country
 	weekly_manpower = country

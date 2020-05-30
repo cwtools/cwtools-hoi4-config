@@ -303,7 +303,7 @@ alias[effect:state_event] = <event.state_event>
 ### Sets a variable to a value or another variable.
 ## scope = any
 alias[effect:set_variable] = {
-	value_set[variable] = variable_field
+	value_set[variable] = variable_field_32
 	value_set[variable] = scope_field
 	value_set[variable] = enum[country_tags]
 }
@@ -311,7 +311,7 @@ alias[effect:set_variable] = {
 ## scope = any
 alias[effect:set_variable] = {
 	var = value_set[variable]
-	value = variable_field
+	value = variable_field_32
 	value = scope_field
 	value = enum[country_tags]
 }
@@ -1949,13 +1949,13 @@ alias[effect:global_every_army_leader] = {
 ### Adds a value or a variable to another one.
 ## scope = any
 alias[effect:add_to_variable] = {
-	value_set[variable] = variable_field
+	value_set[variable] = variable_field_32
 }
 ### Adds a value or a variable to another one.
 ## scope = any
 alias[effect:add_to_variable] = {
 	var = value_set[variable]
-	value = variable_field
+	value = variable_field_32
 	## cardinality = 0..1
 	tooltip = localisation
 }
@@ -1963,13 +1963,13 @@ alias[effect:add_to_variable] = {
 ### Subtracts a value or a variable to another one.
 ## scope = any
 alias[effect:subtract_from_variable] = {
-	value_set[variable] = variable_field
+	value_set[variable] = variable_field_32
 }
 ### Subtracts a value or a variable to another one.
 ## scope = any
 alias[effect:subtract_from_variable] = {
 	var = value_set[variable]
-	value = variable_field
+	value = variable_field_32
 	## cardinality = 0..1
 	tooltip = localisation
 }
@@ -1977,13 +1977,13 @@ alias[effect:subtract_from_variable] = {
 ### Multiplies a variable to a value or another variable.
 ## scope = any
 alias[effect:multiply_variable] = {
-	value_set[variable] = variable_field
+	value_set[variable] = variable_field_32
 }
 ### Multiplies a variable to a value or another variable.
 ## scope = any
 alias[effect:multiply_variable] = {
 	var = value_set[variable]
-	value = variable_field
+	value = variable_field_32
 	## cardinality = 0..1
 	tooltip = localisation
 }
@@ -1991,20 +1991,20 @@ alias[effect:multiply_variable] = {
 ### Divides a variable to a value or another variable.
 ## scope = any
 alias[effect:divide_variable] = {
-	value_set[variable] = variable_field
+	value_set[variable] = variable_field_32
 }
 ### Divides a variable to a value or another variable.
 ## scope = any
 alias[effect:divide_variable] = {
 	var = value_set[variable]
-	value = variable_field
+	value = variable_field_32
 	## cardinality = 0..1
 	tooltip = localisation
 }
 
 ### Clears a variable.
 ## scope = any
-alias[effect:clear_variable] = variable_field
+alias[effect:clear_variable] = variable_field_32
 
 ### Adds attack skill to a unit leader.
 ## scope = unit_leader
@@ -2065,56 +2065,56 @@ alias[effect:add_skill_level] = int
 ### Adds a value or a variable to a temp variable.
 ## scope = any
 alias[effect:add_to_temp_variable] = {
-	value_set[variable] = variable_field
+	value_set[variable] = variable_field_32
 }
 ### Adds a value or a variable to a temp variable.
 ## scope = any
 alias[effect:add_to_temp_variable] = {
 	var = value_set[variable]
-	value = variable_field
+	value = variable_field_32
 }
 
 ### Subtracts a value or a variable to a temp variable.
 ## scope = any
 alias[effect:subtract_from_temp_variable] = {
-	value_set[variable] = variable_field
+	value_set[variable] = variable_field_32
 }
 
 ### Subtracts a value or a variable to a temp variable.
 ## scope = any
 alias[effect:subtract_from_temp_variable] = {
 	var = value_set[variable]
-	value = variable_field
+	value = variable_field_32
 }
 
 ### Multiplies a temp variable to a value or another variable.
 ## scope = any
 alias[effect:multiply_temp_variable] = {
-	value_set[variable] = variable_field
+	value_set[variable] = variable_field_32
 }
 ### Multiplies a temp variable to a value or another variable.
 ## scope = any
 alias[effect:multiply_temp_variable] = {
 	var = value_set[variable]
-	value = variable_field
+	value = variable_field_32
 }
 
 ### Divides a temp variable to a value or another variable.
 ## scope = any
 alias[effect:divide_temp_variable] = {
-	value_set[variable] = variable_field
+	value_set[variable] = variable_field_32
 }
 ### Divides a temp variable to a value or another variable.
 ## scope = any
 alias[effect:divide_temp_variable] = {
 	var = value_set[variable]
-	value = variable_field
+	value = variable_field_32
 }
 
 ### Sets a temp variable to a value or another variable.
 ## scope = any
 alias[effect:set_temp_variable] = {
-	value_set[variable] = variable_field
+	value_set[variable] = variable_field_32
 	value_set[variable] = scope_field
 	value_set[variable] = enum[country_tags]
 }
@@ -2123,7 +2123,7 @@ alias[effect:set_temp_variable] = {
 ## scope = any
 alias[effect:set_temp_variable] = {
 	var = value_set[variable]
-	value = variable_field
+	value = variable_field_32
 	value = scope_field
 	value = enum[country_tags]
 }
@@ -2139,44 +2139,44 @@ alias[effect:add_timed_unit_leader_trait] = {
 ## scope = any
 alias[effect:clamp_variable] = {
 	var = value_set[variable]
-	min = variable_field
-	max = variable_field
+	min = variable_field_32
+	max = variable_field_32
 }
 
 ### Clamps a temp variable between two a values or another variables.
 ## scope = any
 alias[effect:clamp_temp_variable] = {
 	var = value_set[variable]
-	min = variable_field
-	max = variable_field
+	min = variable_field_32
+	max = variable_field_32
 }
 
 ### Clamps a variable between two a values or another variables.
 ## scope = any
 alias[effect:clamp_variable] = {
 	var = value_set[variable]
-	max = variable_field
+	max = variable_field_32
 }
 
 ### Clamps a temp variable between two a values or another variables.
 ## scope = any
 alias[effect:clamp_temp_variable] = {
 	var = value_set[variable]
-	max = variable_field
+	max = variable_field_32
 }
 
 ### Clamps a variable between two a values or another variables.
 ## scope = any
 alias[effect:clamp_variable] = {
 	var = value_set[variable]
-	min = variable_field
+	min = variable_field_32
 }
 
 ### Clamps a temp variable between two a values or another variables.
 ## scope = any
 alias[effect:clamp_temp_variable] = {
 	var = value_set[variable]
-	min = variable_field
+	min = variable_field_32
 }
 
 ### Start a border war between two states.
@@ -2318,7 +2318,7 @@ alias[effect:set_truce] = {
 
 ### Rounds a variable.
 ## scope = any
-alias[effect:round_variable] = variable_field
+alias[effect:round_variable] = variable_field_32
 
 ### Fires a unit leader event for owner country.
 ## scope = unit_leader
@@ -2427,7 +2427,7 @@ alias[effect:inherit_technology] = scope[country]
 
 ### Rounds a temporary variable.
 ## scope = { any }
-alias[effect:round_temp_variable] = variable_field
+alias[effect:round_temp_variable] = variable_field_32
 
 ### Set current country as leader of its faction.
 ## scope = country
@@ -2455,7 +2455,7 @@ alias[effect:add_to_array] = {
 	array = value_set[variable]
 	## cardinality = 0..1
 	### Optional, if not defined adds scope.
-	value = variable_field
+	value = variable_field_32
 	## cardinality = 0..1
 	### Optional, if not defined adds scope.
 	value = scope_field
@@ -2464,14 +2464,14 @@ alias[effect:add_to_array] = {
 	value = enum[country_tags]
 	## cardinality = 0..1
 	### Optional, default is end. otherwise elements are shifted.
-    index = int_variable_field
+    index = int_variable_field_32
 }
 
 ### Adds an element to an array.
 ## scope = any
 alias[effect:add_to_array] = {
-	value_set[array] = variable_field
-	value_set[variable] = variable_field
+	value_set[array] = variable_field_32
+	value_set[variable] = variable_field_32
 	value_set[array] = scope_field
 	value_set[variable] = scope_field
 	value_set[array] = enum[country_tags]
@@ -2484,7 +2484,7 @@ alias[effect:remove_from_array] = {
 	array = value_set[array]
 	array = value_set[variable]
 	### Optional, use index or this. If neither it removes last element.
-	value = variable_field
+	value = variable_field_32
 	### Optional, use index or this. If neither it removes last element.
 	value = scope_field
 	### Optional, use index or this. If neither it removes last element.
@@ -2497,14 +2497,14 @@ alias[effect:remove_from_array] = {
 	array = value_set[array]
 	array = value_set[variable]
 	### Optional, use value or this. If neither it removes last element.
-    index = int_variable_field
+    index = int_variable_field_32
 }
 
 ### Removes an element from an array using value or index.
 ## scope = any
 alias[effect:remove_from_array] = {
-	value_set[array] = variable_field
-	value_set[variable] = variable_field
+	value_set[array] = variable_field_32
+	value_set[variable] = variable_field_32
 	value_set[array] = scope_field
 	value_set[variable] = scope_field
 	value_set[array] = enum[country_tags]
@@ -2517,7 +2517,7 @@ alias[effect:clear_array] = value[array]
 
 ### Clears the contents of array.
 ## scope = any
-alias[effect:clear_array] = variable_field
+alias[effect:clear_array] = variable_field_32
 
 ### Resizes array.
 ## scope = any
@@ -2526,16 +2526,16 @@ alias[effect:resize_array] = {
 	array = value_set[variable]
 	## cardinality = 0..1
 	### Optional, if not specified and array grows the new elements are set to this (default 0).
-	value = variable_field
+	value = variable_field_32
 	### If higher than old size, new elements are added to end. Otherwise last elements are removed to match to new size.
-    size = int_variable_field
+    size = int_variable_field_32
 }
 
 ### Resizes array.
 ## scope = any
 alias[effect:resize_array] = {
-	value_set[array] = int_variable_field
-	value_set[variable] = int_variable_field
+	value_set[array] = int_variable_field_32
+	value_set[variable] = int_variable_field_32
 }
 
 ### Adds an element to a temporary array.
@@ -2545,7 +2545,7 @@ alias[effect:add_to_temp_array] = {
 	array = value_set[variable]
 	## cardinality = 0..1
 	### Optional, if not defined adds scope.
-	value = variable_field
+	value = variable_field_32
 	## cardinality = 0..1
 	### Optional, if not defined adds scope.
 	value = scope_field
@@ -2554,14 +2554,14 @@ alias[effect:add_to_temp_array] = {
 	value = enum[country_tags]
 	## cardinality = 0..1
 	### Optional, default is end. Otherwise elements are shifted.
-    index = int_variable_field
+    index = int_variable_field_32
 }
 
 ### Adds an element to a temporary array.
 ## scope = any
 alias[effect:add_to_temp_array] = {
-	value_set[array] = variable_field
-	value_set[variable] = variable_field
+	value_set[array] = variable_field_32
+	value_set[variable] = variable_field_32
 	value_set[array] = scope_field
 	value_set[variable] = scope_field
 	value_set[array] = enum[country_tags]
@@ -2574,7 +2574,7 @@ alias[effect:remove_from_temp_array] = {
 	array = value_set[array]
 	array = value_set[variable]
 	### Optional, use index or this. If neither it removes last element.
-	value = variable_field
+	value = variable_field_32
 	### Optional, use index or this. If neither it removes last element.
 	value = scope_field
 	### Optional, use index or this. If neither it removes last element.
@@ -2587,14 +2587,14 @@ alias[effect:remove_from_temp_array] = {
 	array = value_set[array]
 	array = value_set[variable]
 	### Optional, use value or this. If neither it removes last element.
-    index = int_variable_field
+    index = int_variable_field_32
 }
 
 ### Removes an element from a temporary array using value or index.
 ## scope = any
 alias[effect:remove_from_temp_array] = {
-	value_set[array] = variable_field
-	value_set[variable] = variable_field
+	value_set[array] = variable_field_32
+	value_set[variable] = variable_field_32
 	value_set[array] = scope_field
 	value_set[variable] = scope_field
 	value_set[array] = enum[country_tags]
@@ -2606,7 +2606,7 @@ alias[effect:remove_from_temp_array] = {
 alias[effect:clear_temp_array] = value[array]
 ### Clears the contents of a temporary array.
 ## scope = any
-alias[effect:clear_temp_array] = variable_field
+alias[effect:clear_temp_array] = variable_field_32
 
 ### Resizes a temp array.
 ## scope = any
@@ -2615,23 +2615,23 @@ alias[effect:resize_temp_array] = {
 	array = value_set[variable]
 	## cardinality = 0..1
 	### Optional, if not specified and array grows the new elements are set to this (default 0).
-	value = variable_field
+	value = variable_field_32
 	### If higher than old size, new elements are added to end. Otherwise last elements are removed to match to new size.
-    size = int_variable_field
+    size = int_variable_field_32
 }
 
 ### Resizes a temp array.
 ## scope = any
 alias[effect:resize_temp_array] = {
-	value_set[array] = int_variable_field
-	value_set[variable] = int_variable_field
+	value_set[array] = int_variable_field_32
+	value_set[variable] = int_variable_field_32
 }
 
 ### Runs a loop on for each element of an array.
 ## scope = any
 alias[effect:for_each_loop] = {
 	array = value[array]
-	array = variable_field
+	array = variable_field_32
 	## cardinality = 0..1
 	### Optional (default 'v') current value in array will be stored in this temp variable.
 	value = value_set[variable]
@@ -2658,7 +2658,7 @@ alias[effect:set_fuel] = int_variable_field
 ## push_scope = any
 alias[effect:for_each_scope_loop] = {
 	array = value[array]
-	array = variable_field
+	array = variable_field_32
 	## cardinality = 0..1
 	### Optional (default 'break') set this temp variable to non zero to break the loop.
     break = scalar
@@ -2670,7 +2670,7 @@ alias[effect:for_each_scope_loop] = {
 ## scope = any
 alias[effect:random_scope_in_array] = {
 	array = value[array]
-	array = variable_field
+	array = variable_field_32
 	## cardinality = 0..1
 	### Optional (default 'break') set this temp variable to non zero to break the loop.
 	break = scalar
@@ -2790,7 +2790,7 @@ alias[effect:scoped_sound_effect] = scalar
 ## scope = any
 alias[effect:find_lowest_in_array] = {
 	array = value[array]
-	array = variable_field
+	array = variable_field_32
 
 	## cardinality = 0..1
 	### Optional (default 'v') lowest value in array will be stored in this temp variable.
@@ -2805,7 +2805,7 @@ alias[effect:find_lowest_in_array] = {
 ## scope = any
 alias[effect:find_highest_in_array] = {
 	array = value[array]
-	array = variable_field
+	array = variable_field_32
 
 	## cardinality = 0..1
 	### Optional (default 'v') highest value in array will be stored in this temp variable.

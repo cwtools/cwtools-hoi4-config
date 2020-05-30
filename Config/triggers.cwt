@@ -98,50 +98,26 @@ alias[trigger:any_country] = {
 ### Compares a variable to a number or variable.
 ## scope = any
 alias[trigger:check_variable] = {
-	value[variable] = variable_field
+	value[variable] = variable_field_32
 }
 
 ### Compares a variable to a number or variable.
 ## scope = any
 alias[trigger:check_variable] = {
-	variable_field = variable_field
+	variable_field_32 = variable_field_32
 }
 
 ### Compares a variable to a number or variable.
 ## scope = any
 alias[trigger:check_variable] = {
-	variable_field = value[variable]
+	variable_field_32 = value[variable]
 }
 
 ### Compares a variable to a number or variable.
 ## scope = any
 alias[trigger:check_variable] = {
-	float = variable_field
-}
-
-### Compares a variable to a number or variable.
-## scope = any
-alias[trigger:check_variable] = {
-	float = value[variable]
-}
-
-### Compares a variable to a number or variable.
-## scope = any
-alias[trigger:check_variable] = {
-	value[variable] = float
-}
-
-### Compares a variable to a number or variable.
-## scope = any
-alias[trigger:check_variable] = {
-	variable_field = float
-}
-
-### Compares a variable to a number or variable.
-## scope = any
-alias[trigger:check_variable] = {
-	var = variable_field
-	value = variable_field
+	var = variable_field_32
+	value = variable_field_32
 	## cardinality = 0..1
 	### Defaults to greater_than_or_equals.
 	compare = enum[var_compares]
@@ -1571,59 +1547,59 @@ alias[trigger:can_select_trait] = <unit_leader_trait>
 ### Adds a value or a variable to a temporary variable.
 ## scope = any
 alias[trigger:add_to_temp_variable] = {
-	value_set[variable] = variable_field
+	value_set[variable] = variable_field_32
 }
 
 ### Adds a value or a variable to a temporary variable.
 ## scope = any
 alias[trigger:add_to_temp_variable] = {
 	var = value_set[variable]
-	value = variable_field
+	value = variable_field_32
 }
 
 ### Subtracts a value or a variable to a temporary variable.
 ## scope = any
 alias[trigger:subtract_from_temp_variable] = {
-	value_set[variable] = variable_field
+	value_set[variable] = variable_field_32
 }
 
 ### Subtracts a value or a variable to a temporary variable.
 ## scope = any
 alias[trigger:subtract_from_temp_variable] = {
 	var = value_set[variable]
-	value = variable_field
+	value = variable_field_32
 }
 
 ### Multiplies a temporary variable by a value or another variable.
 ## scope = any
 alias[trigger:multiply_temp_variable] = {
-	value_set[variable] = variable_field
+	value_set[variable] = variable_field_32
 }
 
 ### Multiplies a temporary variable by a value or another variable.
 ## scope = any
 alias[trigger:multiply_temp_variable] = {
 	var = value_set[variable]
-	value = variable_field
+	value = variable_field_32
 }
 
 ### Divies a temporary variable by a value or another variable.
 ## scope = any
 alias[trigger:divide_temp_variable] = {
-	value_set[variable] = variable_field
+	value_set[variable] = variable_field_32
 }
 
 ### Divies a temporary variable by a value or another variable.
 ## scope = any
 alias[trigger:divide_temp_variable] = {
 	var = value_set[variable]
-	value = variable_field
+	value = variable_field_32
 }
 
 ### Sets a temporary variable to a value or another variable.
 ## scope = any
 alias[trigger:set_temp_variable] = {
-	value_set[variable] = variable_field
+	value_set[variable] = variable_field_32
 	value_set[variable] = scope_field
 	value_set[variable] = enum[country_tags]
 }
@@ -1632,7 +1608,7 @@ alias[trigger:set_temp_variable] = {
 ## scope = any
 alias[trigger:set_temp_variable] = {
 	var = value_set[variable]
-	value = variable_field
+	value = variable_field_32
 	value = scope_field
 	value = enum[country_tags]
 }
@@ -1641,22 +1617,22 @@ alias[trigger:set_temp_variable] = {
 ## scope = any
 alias[trigger:clamp_temp_variable] = {
 	var = value_set[variable]
-	min = variable_field
-	max = variable_field
+	min = variable_field_32
+	max = variable_field_32
 }
 
 ### Clamps a temp variable between two a values or another variables.
 ## scope = any
 alias[trigger:clamp_temp_variable] = {
 	var = value_set[variable]
-	max = variable_field
+	max = variable_field_32
 }
 
 ### Clamps a temp variable between two a values or another variables.
 ## scope = any
 alias[trigger:clamp_temp_variable] = {
 	var = value_set[variable]
-	min = variable_field
+	min = variable_field_32
 }
 
 ### Check amount of civilian factories available for a new project to use.
@@ -1841,7 +1817,7 @@ alias[trigger:round_temp_variable] = value[variable]
 
 ### Rounds a temporary variable.
 ## scope = any
-alias[trigger:round_temp_variable] = variable_field
+alias[trigger:round_temp_variable] = variable_field_32
 
 ### Checks if the country has for subject the given country.
 ## scope = country
@@ -1866,7 +1842,7 @@ alias[trigger:game_rules_allow_achievements] = yes
 ## scope = any
 alias[trigger:is_in_array] = {
 	array = value[array]
-	array = variable_field
+	array = variable_field_32
 	value = scalar
 }
 
@@ -1879,7 +1855,7 @@ alias[trigger:is_in_array] = {
 ### Checks if an element is in array.
 ## scope = any
 alias[trigger:is_in_array] = {
-	variable_field = scalar
+	variable_field_32 = scalar
 }
 
 ### Adds an element to a temporary array.
@@ -1889,7 +1865,7 @@ alias[trigger:add_to_temp_array] = {
 	array = value_set[variable]
 	## cardinality = 0..1
 	### Optional, if not defined adds scope.
-	value = variable_field
+	value = variable_field_32
 	## cardinality = 0..1
 	### Optional, if not defined adds scope.
 	value = scope_field
@@ -1898,14 +1874,14 @@ alias[trigger:add_to_temp_array] = {
 	value = enum[country_tags]
 	## cardinality = 0..1
 	### Optional, default is end. Otherwise elements are shifted.
-    index = int_variable_field
+    index = int_variable_field_32
 }
 
 ### Adds an element to a temporary array.
 ## scope = any
 alias[trigger:add_to_temp_array] = {
-	value_set[array] = variable_field
-	value_set[variable] = variable_field
+	value_set[array] = variable_field_32
+	value_set[variable] = variable_field_32
 	value_set[array] = scope_field
 	value_set[variable] = scope_field
 	value_set[array] = enum[country_tags]
@@ -1918,7 +1894,7 @@ alias[trigger:remove_from_temp_array] = {
 	array = value_set[array]
 	array = value_set[variable]
 	### Optional, use index or this. If neither it removes last element.
-	value = variable_field
+	value = variable_field_32
 	### Optional, use index or this. If neither it removes last element.
 	value = scope_field
 	### Optional, use index or this. If neither it removes last element.
@@ -1931,14 +1907,14 @@ alias[trigger:remove_from_temp_array] = {
 	array = value_set[array]
 	array = value_set[variable]
 	### Optional, use value or this. If neither it removes last element.
-    index = int_variable_field
+    index = int_variable_field_32
 }
 
 ### Removes an element from a temporary array using value or index.
 ## scope = any
 alias[trigger:remove_from_temp_array] = {
-	value_set[array] = variable_field
-	value_set[variable] = variable_field
+	value_set[array] = variable_field_32
+	value_set[variable] = variable_field_32
 	value_set[array] = scope_field
 	value_set[variable] = scope_field
 	value_set[array] = enum[country_tags]
@@ -1950,7 +1926,7 @@ alias[trigger:remove_from_temp_array] = {
 alias[trigger:clear_temp_array] = value[array]
 ### Clears the contents of a temporary array.
 ## scope = any
-alias[trigger:clear_temp_array] = variable_field
+alias[trigger:clear_temp_array] = variable_field_32
 
 ### Resizes a temp array.
 ## scope = any
@@ -1959,16 +1935,16 @@ alias[trigger:resize_temp_array] = {
 	array = value_set[variable]
 	## cardinality = 0..1
 	### Optional, if not specified and array grows the new elements are set to this (default 0).
-	value = variable_field
+	value = variable_field_32
 	### If higher than old size, new elements are added to end. Otherwise last elements are removed to match to new size.
-    size = int_variable_field
+    size = int_variable_field_32
 }
 
 ### Resizes a temp array.
 ## scope = any
 alias[trigger:resize_temp_array] = {
-	value_set[array] = int_variable_field
-	value_set[variable] = int_variable_field
+	value_set[array] = int_variable_field_32
+	value_set[variable] = int_variable_field_32
 }
 
 ### Runs a loop on an array and check a trigger for each value, if any true returns true. Otherwise returns false.
@@ -1977,7 +1953,7 @@ alias[trigger:any_of] = {
 	## cardinality = 0..1
 	tooltip = localisation
 	array = value[array]
-	array = variable_field
+	array = variable_field_32
 	## cardinality = 0..1
 	### Optional (default 'v') current value in array will be stored in this temp variable.
 	value = value_set[variable]
@@ -1994,7 +1970,7 @@ alias[trigger:all_of] = {
 	## cardinality = 0..1
 	tooltip = localisation
 	array = value[array]
-	array = variable_field
+	array = variable_field_32
 	## cardinality = 0..1
 	### Optional (default 'v') current value in array will be stored in this temp variable.
 	value = value_set[variable]
@@ -2016,7 +1992,7 @@ alias[trigger:any_of_scopes] = {
 	## cardinality = 0..1
 	tooltip = localisation
 	array = value[array]
-	array = variable_field
+	array = variable_field_32
 	alias_name[trigger] = alias_match_left[trigger]
 }
 
@@ -2027,7 +2003,7 @@ alias[trigger:all_of_scopes] = {
 	## cardinality = 0..1
 	tooltip = localisation
 	array = value[array]
-	array = variable_field
+	array = variable_field_32
 	alias_name[trigger] = alias_match_left[trigger]
 }
 
@@ -2077,7 +2053,7 @@ alias[trigger:has_dynamic_modifier] = {
 ## scope = any
 alias[trigger:find_lowest_in_array] = {
 	array = value[array]
-	array = variable_field
+	array = variable_field_32
 
 	## cardinality = 0..1
 	### Optional (default 'v') lowest value in array will be stored in this temp variable.
@@ -2092,7 +2068,7 @@ alias[trigger:find_lowest_in_array] = {
 ## scope = any
 alias[trigger:find_highest_in_array] = {
 	array = value[array]
-	array = variable_field
+	array = variable_field_32
 
 	## cardinality = 0..1
 	### Optional (default 'v') highest value in array will be stored in this temp variable.

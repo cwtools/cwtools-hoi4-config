@@ -19,6 +19,7 @@ on_faction_formed,THIS = country ROOT = country,country_event,
 on_capitulation,THIS = country ROOT = country FROM = country,country_event,
 on_uncapitulation,THIS = country ROOT = country,country_event,
 on_government_change,THIS = country ROOT = country,country_event,
+on_ruling_party_change,THIS = country ROOT = country,country_event,
 on_coup_succeeded,THIS = country ROOT = country,country_event,
 on_civil_war_end,THIS = country ROOT = country FROM = country,country_event,
 on_puppet,THIS = country ROOT = country FROM = country,country_event,
@@ -43,7 +44,6 @@ on_return_expeditionary_forces,THIS = country ROOT = country FROM = country,coun
 on_request_expeditionary_forces,THIS = country ROOT = country FROM = country,country_event,
 on_ask_for_state_control,THIS = country ROOT = country FROM = country,country_event,
 on_give_state_control,THIS = country ROOT = country FROM = country,country_event,
-
 
 on_startup,THIS = no_scope ROOT = no_scope,,
 on_daily,THIS = country ROOT = country,country_event,
@@ -77,3 +77,6 @@ on_operative_created,THIS = unit_leader FROM = country,operative_leader_event,
 on_operation_completed,THIS = operation ROOT = country FROM = country,operative_leader_event,
 on_fully_decrypted_cipher,THIS = country ROOT = country FROM = country,country_event,
 on_activated_active_decryption_bonuses,THIS = country ROOT = country FROM = country,country_event,
+
+on_naval_invasion,THIS = state ROOT = country FROM = state,,
+on_paradrop,THIS = state ROOT = country FROM = state,,

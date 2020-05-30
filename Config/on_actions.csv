@@ -48,6 +48,7 @@ on_give_state_control,THIS = country ROOT = country FROM = country,country_event
 on_startup,THIS = no_scope ROOT = no_scope,,
 on_daily,THIS = country ROOT = country,country_event,
 on_weekly,THIS = country ROOT = country,country_event,
+on_monthly,THIS = country ROOT = country,country_event,
 
 on_state_control_changed,THIS = country FROM = country FROMFROM = state,country_event,
 

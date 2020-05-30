@@ -224,7 +224,7 @@ decision = {
 	}
 
 	## cardinality = 0..1
-	## replace_scope = { this = state root = state }
+	## replace_scope = { this = state root = country }
 	highlight_states = {
 		## cardinality = ~1..inf
 		alias_name[trigger] = alias_match_left[trigger]
@@ -327,6 +327,13 @@ decision = {
 		## cardinality = 0..1
 		## replace_scope = { this = country root = country }
 		target_root_trigger = {
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+
+		## cardinality = 0..1
+		## replace_scope = { this = state root = country from = country }
+		highlight_states = {
+			## cardinality = ~1..inf
 			alias_name[trigger] = alias_match_left[trigger]
 		}
 

@@ -1,0 +1,167 @@
+types = {
+    type[containerWindowType] = {
+        path = "game/interface"
+        name_field = "name"
+        path_extension = .gui
+        skip_root_key = guiTypes
+    }
+}
+
+guiTypes = {
+    containerWindowType = {
+        alias_name[gui_standard:name] = alias_match_left[gui_standard:name]
+        ## cardinality = 0..1
+        ### Mouse Draggable
+        moveable = bool
+        ## cardinality = 0..1
+        ### Origin of position field
+        orientation = enum[containerOrientations]
+        ## cardinality = 0..1
+        ### Will remove elements outside of size bounding box
+        clipping = bool
+        ## cardinality = 0..1
+        fullscreen = bool
+        ## cardinality = 0..1
+        ### Background texture
+		background = {
+            alias_name[gui_standard] = alias_match_left[gui_standard]
+            alias_name[gui_image] = alias_match_left[gui_image]
+        }
+
+        alias_name[gui] = alias_match_left[gui]
+        alias_name[gui_standard] = alias_match_left[gui_standard]
+        ## cardinality = 0..1
+        verticalScrollbar = enum[scrollbar_types]
+        ## cardinality = 0..1
+        horizontalScrollbar = enum[horizontal_scrollbar_types]
+    }
+}
+#Container Window
+alias_name[gui:containerWindowType] = {
+    alias_name[gui_standard:name] = alias_match_left[gui_standard:name]
+    ## cardinality = 0..1
+    ### Mouse Draggable
+    moveable = bool
+    ## cardinality = 0..1
+    ### Origin of position field
+    orientation = enum[containerOrientations]
+    ## cardinality = 0..1
+    ### Will remove elements outside of size bounding box
+    clipping = bool
+    ## cardinality = 0..1
+    fullscreen = bool
+    ## cardinality = 0..1
+    ### Background texture
+    background = {
+        alias_name[gui_standard] = alias_match_left[gui_standard]
+        alias_name[gui_image] = alias_match_left[gui_image]
+    }
+    alias_name[gui] = alias_match_left[gui]
+    alias_name[gui_standard] = alias_match_left[gui_standard]
+}
+alias_name[gui:buttonType] = {
+    alias_name[gui_standard] = alias_match_left[gui_standard]
+    alias_name[gui_image] = alias_match_left[gui_image]
+    ## cardinality = 0..1
+    buttonText = localization
+    pdx_tooltip = localization
+    font = scalar
+}
+
+#GUI Standard Functions
+### Position of element. Absolute in px, % of screen, or % of parent.
+alias_name[gui_standard:position] = {
+    x = int
+    x = percentage_field
+    y = int
+    y = percentage_field
+}
+### Size of element. Absolute in px, % of screen, or % of parent.
+alias_name[gui_standard:size] = {
+    width = int
+    width = percentage_field
+    height = int
+    height = percentage_field
+}
+alias_name[gui_standard:margin] = {
+    ## cardinality = 0..1
+    top = int
+    ## cardinality = 0..1
+    bottom = int
+    ## cardinality = 0..1
+    left = int
+    ## cardinality = 0..1
+    right = int
+}
+### Origin of position field
+alias_name[gui_standard:orientation] = enum[containerOrientations]
+### Container Name as referenced by scripted gui
+alias_name[gui_standard:name] = scalar
+#GUI Image
+### Sprite for image
+alias_name[gui_image:spriteType] = <spriteType>
+alias_name[gui_image:quadTextureSprite] = <spriteType>
+### Allows clickthrough
+alias_name[gui_image:alwaystransparent] = bool
+### Frame of image
+alias_name[gui_image:frame] = int
+#GUI Animation
+### Position before animation in pixels
+alias_name[gui_animation:show_position] = {
+    x = int
+    x = percentage_field
+    y = int
+    y = percentage_field
+}
+### Position returned to when hiding
+alias_name[gui_animation:hide_position] = {
+    x = int
+    x = percentage_field
+    y = int
+    y = percentage_field
+}
+alias_name[gui_animation:show_animation_type] = decelerated
+alias_name[gui_animation:hide_animation_type] = accelerated
+alias_name[gui_animation:animation_time] = int
+alias_name[gui_animation:fade_time] = int
+alias_name[gui_animation:fade_type] = linear
+
+# GUI Sound
+alias_name[gui_sound:upsound] = scalar
+alias_name[gui_sound:downsound] = scalar
+alias_name[gui_sound:show_sound] = scalar
+alias_name[gui_sound:hide_sound] = scalar
+
+enums = {
+    enum[containerOrientations] = {
+        CENTER
+        UPPER_LEFT
+        LOWER_LEFT
+        UPPER_RIGHT
+        LOWER_RIGHT
+    }
+}
+complex_enum[horizontal_scrollbar_types] = {
+    path = "game/interface"
+    name = {
+        extendedScrollbarType = {
+            name = enum_name
+            horizontal = yes
+        }
+        scrollbarType = {
+            name = enum_name
+            horizontal = yes
+        }
+    }
+}
+complex_enum[scrollbar_types] = {
+    path = "game/interface"
+    name = {
+        extendedScrollbarType = {
+            name = enum_name
+        }
+        scrollbarType = {
+            name = enum_name
+        }
+    }
+}

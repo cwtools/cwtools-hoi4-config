@@ -21,7 +21,7 @@ guiTypes = {
         clipping = bool
         ## cardinality = 0..1
         fullscreen = bool
-        ## cardinality = 0..1
+        ## cardinality = 0..inf
         ### Background texture
 		background = {
             alias_name[gui_standard] = alias_match_left[gui_standard]
@@ -34,6 +34,10 @@ guiTypes = {
         verticalScrollbar = enum[scrollbar_types]
         ## cardinality = 0..1
         horizontalScrollbar = enum[horizontal_scrollbar_types]
+        ## cardinality = 0..1
+        drag_scroll = { enum[dragScrollType] }
+        ## cardinality = 0..1
+        click_to_front = bool
     }
 }
 #Container Window
@@ -58,16 +62,44 @@ alias_name[gui:containerWindowType] = {
     }
     alias_name[gui] = alias_match_left[gui]
     alias_name[gui_standard] = alias_match_left[gui_standard]
+    ## cardinality = 0..1
+    verticalScrollbar = enum[scrollbar_types]
+    ## cardinality = 0..1
+    horizontalScrollbar = enum[horizontal_scrollbar_types]
+    ## cardinality = 0..1
+    drag_scroll = { enum[dragScrollType] }
+    ## cardinality = 0..1
+    click_to_front = bool
 }
 alias_name[gui:buttonType] = {
+    alias_name[gui_standard:name] = alias_match_left[gui_standard:name]
     alias_name[gui_standard] = alias_match_left[gui_standard]
     alias_name[gui_image] = alias_match_left[gui_image]
     ## cardinality = 0..1
     buttonText = localization
-    pdx_tooltip = localization
-    font = scalar
+    buttonFont = scalar
+    alias_name[gui_localization] = alias_match_left[gui_localization]
+    ## cardinality = 0..1
+    shortcut = scalar
+    ## cardinality = 0..1
+    hint_tag = localization
 }
-
+alias_name[gui:gridboxtype] = {
+    alias_name[gui_standard:name] = alias_match_left[gui_standard:name]
+    alias_name[gui_standard] = alias_match_left[gui_standard]
+    slotsize = {
+        width = int
+        width = percentage_field
+        height = int
+        height = percentage_field
+    }
+    ## cardinality = 0..1
+    add_horizontal = bool
+    ## cardinality = 0..1
+    max_slots_horizontal = int
+    ## cardinality = 0..1
+    format = enum[containerOrientations]
+}
 #GUI Standard Functions
 ### Position of element. Absolute in px, % of screen, or % of parent.
 alias_name[gui_standard:position] = {
@@ -93,6 +125,8 @@ alias_name[gui_standard:margin] = {
     ## cardinality = 0..1
     right = int
 }
+alias_name[gui_standard:scale] = float
+alias_name[gui_standard:rotation] = float
 ### Origin of position field
 alias_name[gui_standard:orientation] = enum[containerOrientations]
 ### Container Name as referenced by scripted gui
@@ -105,6 +139,12 @@ alias_name[gui_image:quadTextureSprite] = <spriteType>
 alias_name[gui_image:alwaystransparent] = bool
 ### Frame of image
 alias_name[gui_image:frame] = int
+
+#GUI Localization
+alias_name[gui_localization:pdx_tooltip] = localization
+alias_name[gui_localization:pdx_tooltip_delayed] = localization
+
+
 #GUI Animation
 ### Position before animation in pixels
 alias_name[gui_animation:show_position] = {
@@ -131,6 +171,8 @@ alias_name[gui_sound:upsound] = scalar
 alias_name[gui_sound:downsound] = scalar
 alias_name[gui_sound:show_sound] = scalar
 alias_name[gui_sound:hide_sound] = scalar
+alias_name[gui_sound:clicksound] = scalar
+alias_name[gui_sound:oversound] = scalar
 
 enums = {
     enum[containerOrientations] = {
@@ -140,28 +182,37 @@ enums = {
         UPPER_RIGHT
         LOWER_RIGHT
     }
-}
-complex_enum[horizontal_scrollbar_types] = {
-    path = "game/interface"
-    name = {
-        extendedScrollbarType = {
-            name = enum_name
-            horizontal = yes
-        }
-        scrollbarType = {
-            name = enum_name
-            horizontal = yes
+    enum[dragScrollType] = {
+        left
+        middle
+        right
+    }
+    enum[guiTextFormats] = {
+        left
+        right
+    }
+    complex_enum[horizontal_scrollbar_types] = {
+        path = "game/interface"
+        name = {
+            extendedScrollbarType = {
+                name = enum_name
+                horizontal = yes
+            }
+            scrollbarType = {
+                name = enum_name
+                horizontal = yes
+            }
         }
     }
-}
-complex_enum[scrollbar_types] = {
-    path = "game/interface"
-    name = {
-        extendedScrollbarType = {
-            name = enum_name
-        }
-        scrollbarType = {
-            name = enum_name
+    complex_enum[scrollbar_types] = {
+        path = "game/interface"
+        name = {
+            extendedScrollbarType = {
+                name = enum_name
+            }
+            scrollbarType = {
+                name = enum_name
+            }
         }
     }
 }

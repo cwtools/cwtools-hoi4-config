@@ -100,8 +100,6 @@ operation = {
 	## cardinality = 0..1
 	risk_modifiers = {
 		## cardinality = 0..inf
-		<modifier_definition>
-		## cardinality = 0..inf
 		alias_keys_field[modifier]
 		## cardinality = 0..inf
 		alias_keys_field[unit_leader_modifier]
@@ -117,8 +115,6 @@ operation = {
 	### List of traits that affect the cost of an operation
 	## cardinality = 0..1
 	cost_modifiers = {
-		## cardinality = 0..inf
-		<modifier_definition>
 		## cardinality = 0..inf
 		alias_keys_field[modifier]
 		## cardinality = 0..inf
@@ -164,16 +160,30 @@ operation = {
 	### Equipment base cost for the operation, Note: Exceptionally supports `civilian_factories` as an equipment type. It works like the agency creation cost, where it allocates a number of factories over time
 	## cardinality = 0..1
 	equipment = {
-		## cardinality = ~1..inf
+		## cardinality = 0..inf
 		<equipment> = int
+		## cardinality = 0..inf
+		civilian_factories = {
+			amount = int
+			days = int
+		}
 	}
 
 	### Determines required token(s) - against target country - to launch the operation
 	## cardinality = 0..1
 	required_tokens = {
-		## cardinality = 1..inf
+		## cardinality = ~1..inf
 		<operation_token>
 	}
+	
+	## cardinality = 0..1
+	## replace_scope = { THIS = country ROOT = country FROM = country FROMFROM = state }
+	target_weight = {
+		## cardinality = 0..1
+		enum[base_factor] = float
+		alias_name[modifier_rule] = alias_match_left[modifier_rule]
+	}
+
 
 	### Determines requirements other than equipment to launch the operation
 	## replace_scope = { THIS = country ROOT = country FROM = country }
@@ -207,8 +217,6 @@ operation = {
 	### List of modifiers that apply to outcome_chance
 	## cardinality = 0..1
 	outcome_modifiers = {
-		## cardinality = 0..inf
-		<modifier_definition>
 		## cardinality = 0..inf
 		alias_keys_field[modifier]
 		## cardinality = 0..inf

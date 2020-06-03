@@ -109,6 +109,7 @@ alias[ai_strategy_rule:ai_strategy] = {
 	type = enum[unit_strats]
 	id = <unit>
 	id = enum[unit_types]
+	id = value[ai_roles]
 	value = int
 }
 alias[ai_strategy_rule:ai_strategy] = {
@@ -129,6 +130,11 @@ alias[ai_strategy_rule:ai_strategy] = {
 alias[ai_strategy_rule:ai_strategy] = {
 	type = enum[ai_diplo_strats]
 	id = enum[country_tags]
+	value = int
+}
+alias[ai_strategy_rule:ai_strategy] = {
+	type = enum[ai_diplo_strats]
+	target = <ai_area>
 	value = int
 }
 alias[ai_strategy_rule:ai_strategy] = {
@@ -155,6 +161,12 @@ alias[ai_strategy_rule:ai_strategy] = {
 	type = enum[state_strats_with_id]
 	id = <building>
 	target = int
+	value = int
+}
+alias[ai_strategy_rule:ai_strategy] = {
+	type = enum[diplo_action_strats]
+	id = enum[country_tags]
+	target = enum[diplomatic_relations]
 	value = int
 }
 alias[ai_strategy_rule:ai_strategy] = {
@@ -202,6 +214,9 @@ alias[ai_strategy_rule:ai_strategy] = {
 
 	## cardinality = 0..inf
 	state = int
+
+	## cardinality = 0..inf
+	area = <ai_area>
 
 	## cardinality = 0..inf
 	strategic_region = <strategic_region>
@@ -300,11 +315,13 @@ alias[ai_strategy_rule:ai_strategy] = {
 alias[ai_strategy_rule:ai_strategy] = {
 	type = operative_operation
 	operation = <operation>
+	operation = variable_field
 	# TODO
 	# operation = token:operation?
 	value = int
 	operation_target = enum[country_tags]
 	operation_target = scope[country]
+	operation_target = variable_field
 }
 enums = {
 	enum[ai_diplo_strats] = {
@@ -327,6 +344,7 @@ enums = {
 		send_lend_lease_desire
 		send_volunteers_desire
 		support
+		front_armor_score
 	}
 	enum[equipment_strats] = {
 		equipment_variant_production_factor
@@ -418,5 +436,9 @@ enums = {
 		control_trade
 		diplomatic_pressure
 		no_mission
+	}
+	enum[diplo_action_strats] = {
+		diplo_action_desire
+		diplo_action_acceptance
 	}
 }

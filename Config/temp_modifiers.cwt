@@ -24,7 +24,6 @@ alias[modifier:state_resource_<resource>] = int
 alias[modifier:temporary_state_resource_<resource>] = int
 alias[modifier:enum[sub_unit_modifiers]] = float
 alias[modifier:production_speed_<building>_factor] = float
-alias[modifier:repair_speed_<building>_factor] = float
 alias[modifier:<modifier_definition>] = float
 alias[modifier:hidden_modifier] = {
 	alias_name[modifier] = alias_match_left[modifier]

@@ -2662,6 +2662,8 @@ alias[effect:for_each_scope_loop] = {
 	## cardinality = 0..1
 	### Optional (default 'break') set this temp variable to non zero to break the loop.
     break = scalar
+	## cardinality = 0..1
+	tooltip = localisation
 
     alias_name[effect] = alias_match_left[effect]
 }

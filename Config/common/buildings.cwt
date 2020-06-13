@@ -85,6 +85,8 @@ building = {
 	rocket_production = int
 	## cardinality = 0..1
 	rocket_launch_capacity = int
+	## cardinality = 0..1
+	air_defence = int
 
 	subtype[state] = {
 		alias_name[modifier] = alias_match_left[modifier]

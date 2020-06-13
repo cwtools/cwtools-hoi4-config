@@ -2731,7 +2731,7 @@ alias[effect:for_loop_effect] = {
 	end = variable_type
 	## cardinality = 0..1
 	### (default less_than) comparison type between start and end val. Mistakenly written as compare_type in game documentation.
-	compare_type = enum[var_compares]
+	compare = enum[var_compares]
 	## cardinality = 0..1
 	### (default 1) value to add to current value after each iteration.
 	add = variable_type

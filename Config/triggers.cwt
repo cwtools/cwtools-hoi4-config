@@ -879,7 +879,7 @@ alias[trigger:has_added_tension_amount] = float
 ## scope = country
 alias[trigger:has_manpower_for_recruit_change_to] = {
 	value = float
-	group = enum[idea_categories]
+	group = value[idea_slot]
 }
 
 ### Check what liberation desire the country has towards a specified country.
@@ -1388,7 +1388,7 @@ alias[trigger:amount_taken_ideas] = {
 	amount = int
 	## cardinality = 0..1
 	slots = {
-		enum[idea_categories]
+		value[idea_slot]
 	}
 }
 

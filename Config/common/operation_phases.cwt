@@ -27,6 +27,9 @@ operation_phase = {
 	## cardinality = 0..1
 	outcome_extra = localisation
 
+	## cardinality = 0..1
+	risk_extra = localisation
+
 	### requirements is a trigger that will be visible in the UI and determines the set of requirements necessary to start an operation. They are used for phase selection. If this trigger is not successful ( checked on a weekly basis ) then the phase is invalid. PreSeeded operations will be ReSeeded with new phases if one of theirs becomes invalid
 	## cardinality = 0..1
 	## replace_scope = { THIS = country ROOT = country FROM = country }
@@ -46,5 +49,10 @@ operation_phase = {
 		<equipment> = int
 		## cardinality = 0..inf
 		civilian_factories = int
+		## cardinality = 0..inf
+		civilian_factories = {
+			amount = int
+			days = int
+		}
 	}
 }

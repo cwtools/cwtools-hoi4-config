@@ -487,6 +487,9 @@ values = {
 		# STATE DYNAMIC VARIABLES
 		# =======================
 
+		controller
+		owner
+
 		### Military factory level in the state.
 		arms_factory_level
 

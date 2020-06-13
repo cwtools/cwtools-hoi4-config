@@ -99,18 +99,31 @@ focus_tree = {
 
 		## cardinality = 0..1
 		relative_position_id = <shared_focus>
+		
 		### Used for focuses that can change title/desc.
 		## cardinality = 0..1
-		dynamic = bool
+		dynamic = yes
+		## error_if_only_match = This is the default value and can be ommitted
+		## severity = info
+		dynamic = no
 
 		## cardinality = 0..1
-		available_if_capitulated = bool
+		available_if_capitulated = yes
+		## error_if_only_match = This is the default value and can be ommitted
+		## severity = info
+		available_if_capitulated = no
 
 		## cardinality = 0..1
-		cancel_if_invalid = bool
+		cancel_if_invalid = yes
+		## error_if_only_match = This is the default value and can be ommitted
+		## severity = info
+		cancel_if_invalid = no
 
 		## cardinality = 0..1
-		continue_if_invalid = bool
+		continue_if_invalid = yes
+		## error_if_only_match = This is the default value and can be ommitted
+		## severity = info
+		continue_if_invalid = no
 
 		## cardinality = 0..inf
 		will_lead_to_war_with = scope[country]
@@ -230,18 +243,31 @@ shared_focus = {
 
 	## cardinality = 0..1
 	relative_position_id = <focus>
+
 	### Used for focuses that can change title/desc.
 	## cardinality = 0..1
-	dynamic = bool
+	dynamic = yes
+	## error_if_only_match = This is the default value and can be ommitted
+	## severity = info
+	dynamic = no
 
 	## cardinality = 0..1
-	available_if_capitulated = bool
+	available_if_capitulated = yes
+	## error_if_only_match = This is the default value and can be ommitted
+	## severity = info
+	available_if_capitulated = no
 
 	## cardinality = 0..1
-	cancel_if_invalid = bool
+	cancel_if_invalid = yes
+	## error_if_only_match = This is the default value and can be ommitted
+	## severity = info
+	cancel_if_invalid = no
 
 	## cardinality = 0..1
-	continue_if_invalid = bool
+	continue_if_invalid = yes
+	## error_if_only_match = This is the default value and can be ommitted
+	## severity = info
+	continue_if_invalid = no
 
 	## cardinality = 0..inf
 	will_lead_to_war_with = scope[country]

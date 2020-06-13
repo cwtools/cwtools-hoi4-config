@@ -224,7 +224,7 @@ decision = {
 	}
 
 	## cardinality = 0..1
-	## replace_scope = { this = state root = state }
+	## replace_scope = { this = state root = country }
 	highlight_states = {
 		## cardinality = ~1..inf
 		alias_name[trigger] = alias_match_left[trigger]
@@ -330,6 +330,13 @@ decision = {
 			alias_name[trigger] = alias_match_left[trigger]
 		}
 
+		## cardinality = 0..1
+		## replace_scope = { this = state root = country from = country }
+		highlight_states = {
+			## cardinality = ~1..inf
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+
 		## cardinality = 0..inf
 		alias_name[targeted_modifier_rule] = alias_match_left[targeted_modifier_rule]
 
@@ -377,6 +384,12 @@ decision = {
 		}
 
 		## cardinality = 0..1
+		## replace_scope = { this = country root = country from = state }
+		cancel_trigger = {
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+
+		## cardinality = 0..1
 		## replace_scope = { root = country this = country from = state }
 		complete_effect = {
 			## cardinality = ~1..inf
@@ -386,6 +399,13 @@ decision = {
 		## cardinality = 0..1
 		## replace_scope = { root = country this = country from = state }
 		remove_effect = {
+			## cardinality = ~1..inf
+			alias_name[effect] = alias_match_left[effect]
+		}
+
+		## cardinality = 0..1
+		## replace_scope = { root = country this = country from = state }
+		cancel_effect = {
 			## cardinality = ~1..inf
 			alias_name[effect] = alias_match_left[effect]
 		}

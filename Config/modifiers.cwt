@@ -436,13 +436,13 @@ modifiers = {
 	recruitable_population = state
 	recruitable_population_factor = state
 	required_garrison_factor = state
+	resistance_activity = state
 	resistance_damage_to_garrison = state
 	resistance_garrison_penetration_chance = state
 	resistance_decay = state
 	resistance_target = state
 	state_production_speed_buildings_factor = state
 	state_resources_factor = state
-
 
 	# Unit leader
 	acclimatization_cold_climate_gain_factor = unit_leader

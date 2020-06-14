@@ -17,6 +17,7 @@ operation_phase = {
 	picture = <spriteType>
 
 	### Outcome text that is used to build the final outcome string
+	## cardinality = 0..1
 	outcome = localisation
 	
 	### map icon, will use regular icon if none specified

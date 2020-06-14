@@ -314,6 +314,8 @@ decision = {
 		## cardinality = 0..1
 		targets = {
 			## cardinality = 0..inf
+			scope[country]
+			## cardinality = 0..inf
 			enum[country_tags]
 			## cardinality = 0..inf
 			value[variable]

@@ -879,7 +879,7 @@ alias[trigger:has_added_tension_amount] = float
 ## scope = country
 alias[trigger:has_manpower_for_recruit_change_to] = {
 	value = float
-	group = enum[idea_categories]
+	group = value[idea_slot]
 }
 
 ### Check what liberation desire the country has towards a specified country.
@@ -1388,7 +1388,7 @@ alias[trigger:amount_taken_ideas] = {
 	amount = int
 	## cardinality = 0..1
 	slots = {
-		enum[idea_categories]
+		value[idea_slot]
 	}
 }
 
@@ -2130,7 +2130,7 @@ alias[trigger:convoy_threat] = float
 alias[trigger:casualties_inflicted_by] = {
 	opponent = scope[country]
 	opponent = enum[country_tags]
-	thousands = int
+	thousands = variable_field
 }
 
 ### Checks the mines planted by the country of the parent scope on the coastline of the target country.
@@ -2138,7 +2138,7 @@ alias[trigger:casualties_inflicted_by] = {
 alias[trigger:has_mined] = {
 	target = scope[country]
 	target = enum[country_tags]
-	value = int
+	value = variable_field
 }
 
 ### Checks that the country in scope has received the specified amount of expeditionary forces from the specified country.
@@ -2146,7 +2146,7 @@ alias[trigger:has_mined] = {
 alias[trigger:received_expeditionary_forces] = {
 	sender = scope[country]
 	sender = enum[country_tags]
-	value = int
+	value = variable_field
 }
 
 ### Checks the weather on a combat.
@@ -2155,7 +2155,7 @@ alias[trigger:is_fighting_in_weather] = scalar
 
 ### Checks building level in a state or country.
 ## scope = { state country }
-alias[trigger:<building>] = int
+alias[trigger:<building>] = int_variable_field
 
 ### Checks ideology popularity.
 ## scope = country
@@ -2167,7 +2167,7 @@ alias[trigger:opponent] = { alias_name[trigger] = alias_match_left[trigger] }
 
 ### Check ratio of this type of unit for commander.
 ## scope = { unit_leader combat }
-alias[trigger:enum[unit_types]] = float
+alias[trigger:enum[unit_types]] = variable_field
 
 ### Trigger not shown in tooltips.
 ## scope = any

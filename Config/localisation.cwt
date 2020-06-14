@@ -50,4 +50,8 @@ localisation_commands = {
     GetRulingPartyLong = any
 
     GetMonth = any
+
+    # for tokens
+    GetTokenKey = any
+    GetTokenLocalizedKey = any
 }

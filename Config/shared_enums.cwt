@@ -25,6 +25,7 @@ enums = {
 		puppet
 		military_access
 		docking_rights
+		declare_war
 	}
 
 	enum[add_factor] = {

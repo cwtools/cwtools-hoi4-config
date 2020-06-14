@@ -1527,12 +1527,28 @@ alias[effect:release_autonomy] = {
 alias[effect:set_autonomy] = {
 	target = scope[country]
 	target = enum[country_tags]
-	## cardinality = 0..1
 	autonomy_state = <autonomy>
 	autonomy_state = autonomy_free
 	## cardinality = 0..1
+	freedom_level = float[0..1]
+}
+
+### Makes autonomy of specified level and country.
+## scope = country
+alias[effect:set_autonomy] = {
+	target = scope[country]
+	target = enum[country_tags]
 	autonomous_state = <autonomy>
+	autonomous_state = autonomy_free
 	## cardinality = 0..1
+	freedom_level = float[0..1]
+}
+
+### Makes autonomy of specified level and country.
+## scope = country
+alias[effect:set_autonomy] = {
+	target = scope[country]
+	target = enum[country_tags]
 	freedom_level = float[0..1]
 }
 

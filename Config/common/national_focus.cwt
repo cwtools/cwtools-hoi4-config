@@ -105,12 +105,14 @@ focus_tree = {
 		dynamic = yes
 		## error_if_only_match = This is the default value and can be ommitted
 		## severity = info
+		## cardinality = 0..1
 		dynamic = no
 
 		## cardinality = 0..1
 		available_if_capitulated = yes
 		## error_if_only_match = This is the default value and can be ommitted
 		## severity = info
+		## cardinality = 0..1
 		available_if_capitulated = no
 
 		## cardinality = 0..1
@@ -251,12 +253,14 @@ shared_focus = {
 	dynamic = yes
 	## error_if_only_match = This is the default value and can be ommitted
 	## severity = info
+	## cardinality = 0..1
 	dynamic = no
 
 	## cardinality = 0..1
 	available_if_capitulated = yes
 	## error_if_only_match = This is the default value and can be ommitted
 	## severity = info
+	## cardinality = 0..1
 	available_if_capitulated = no
 
 	## cardinality = 0..1

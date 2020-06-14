@@ -99,7 +99,7 @@ focus_tree = {
 
 		## cardinality = 0..1
 		relative_position_id = <shared_focus>
-		
+
 		### Used for focuses that can change title/desc.
 		## cardinality = 0..1
 		dynamic = yes
@@ -117,12 +117,14 @@ focus_tree = {
 		cancel_if_invalid = yes
 		## error_if_only_match = This is the default value and can be ommitted
 		## severity = info
+		## cardinality = 0..1
 		cancel_if_invalid = no
 
 		## cardinality = 0..1
 		continue_if_invalid = yes
 		## error_if_only_match = This is the default value and can be ommitted
 		## severity = info
+		## cardinality = 0..1
 		continue_if_invalid = no
 
 		## cardinality = 0..inf
@@ -261,12 +263,14 @@ shared_focus = {
 	cancel_if_invalid = yes
 	## error_if_only_match = This is the default value and can be ommitted
 	## severity = info
+	## cardinality = 0..1
 	cancel_if_invalid = no
 
 	## cardinality = 0..1
 	continue_if_invalid = yes
 	## error_if_only_match = This is the default value and can be ommitted
 	## severity = info
+	## cardinality = 0..1
 	continue_if_invalid = no
 
 	## cardinality = 0..inf

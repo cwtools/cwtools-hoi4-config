@@ -113,7 +113,7 @@ decision_category = {
 	## cardinality = 0..1
 	visibility_type = enum[targeted_decisions_state_map_modes]
 
-	## cardinality = 0..1
+	## cardinality = 0..inf
 	on_map_area = {
 		state = <state>
 		name = localisation

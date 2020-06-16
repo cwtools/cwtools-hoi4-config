@@ -12,7 +12,7 @@ oob = {
 	## cardinality = 0..1
 	focus = {
 		current = <focus>
-		progress = float[0..100]
+		progress = float[0..inf]
 	}
 
 	## cardinality = 0..inf

@@ -7,7 +7,6 @@ types = {
 ### Those mtth entries can be used as variables. Example set_variable = { a = mtth:entry_name }
 ## replace_scope = { root = country this = country }
 mtth = {
-	## cardinality = 1..1
 	enum[base_factor] = variable_field
 	alias_name[modifier_rule] = alias_match_left[modifier_rule]
 }

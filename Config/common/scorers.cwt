@@ -25,18 +25,23 @@ country_scorer = {
 		## cardinality = 0..1
 		## replace_scope = { THIS = country ROOT = country }
 		### the country initiating the mission has to pass this trigger
-		target_root_trigger = { always = no }
+		target_root_trigger = {
+			## cardinality = ~1..inf
+			alias_name[effect] = alias_match_left[effect]
+		}
 
 		## cardinality = 0..1
 		## replace_scope = { THIS = country ROOT = country FROM = country }
 		### each target among the selected ones has to pass this trigger
-		target_trigger = { always = no }
+		target_trigger = {
+			## cardinality = ~1..inf
+			alias_name[effect] = alias_match_left[effect]
+		}
 
 		## replace_scope = { THIS = country ROOT = country FROM = country }
 		### MTTH like score description. THIS is a target. FROM is the initiator.
 		## cardinality = ~1..1
 		score = {
-			## cardinality = 1..1
 			enum[base_factor] = variable_field
 			alias_name[modifier_rule] = alias_match_left[modifier_rule]
 		}

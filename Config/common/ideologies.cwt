@@ -3,7 +3,6 @@ types = {
 		skip_root_key = ideologies
 		path = "game/common/ideologies"
 		subtype[regular] = {
-			## cardinality = 1..1
 			types = {
 			}
 		}

@@ -9,6 +9,12 @@ oob = {
 	## cardinality = 0..1
 	start_equipment_factor = float
 
+	## cardinality = 0..1
+	focus = {
+		current = <focus>
+		progress = float[0..100]
+	}
+
 	## cardinality = 0..inf
 	division_template = {
 		name = scalar

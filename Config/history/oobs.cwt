@@ -186,7 +186,6 @@ oob = {
 		## cardinality = 0..1
 		gfx = scalar
 		### Sets starting traits for this leader. If empty, sets no traits. If missing, assigns a random trait.
-		## cardinality = 1..1
 		traits = {
 			## cardinality = 0..inf
 			<unit_leader_trait>
@@ -226,7 +225,6 @@ oob = {
 		## cardinality = 0..1
 		gfx = scalar
 		### Sets starting traits for this leader. If empty, sets no traits. If missing, assigns a random trait.
-		## cardinality = 1..1
 		traits = {
 			## cardinality = 0..inf
 			<unit_leader_trait>
@@ -269,7 +267,6 @@ oob = {
 		## cardinality = 0..1
 		gfx = scalar
 		### Sets starting traits for this leader. If empty, sets no traits. If missing, assigns a random trait.
-		## cardinality = 1..1
 		traits = {
 			## cardinality = 0..inf
 			<unit_leader_trait>

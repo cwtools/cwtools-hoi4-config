@@ -1258,7 +1258,6 @@ alias[effect:create_field_marshal] = {
 	## severity = warning
 	gfx = <spriteType>
 	### Sets starting traits for this leader. If empty, sets no traits. If missing, assigns a random trait.
-	## cardinality = 1..1
 	traits = {
 		## cardinality = 0..inf
 		<unit_leader_trait>

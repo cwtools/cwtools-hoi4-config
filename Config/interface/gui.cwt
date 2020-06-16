@@ -7,42 +7,45 @@ types = {
     }
 }
 
-guiTypes = {
-    containerWindowType = {
-        alias_name[gui_standard:name] = alias_match_left[gui_standard:name]
-        ## cardinality = 0..1
-        ### Mouse Draggable
-        moveable = bool
-        ## cardinality = 0..1
-        ### Origin of position field
-        orientation = enum[containerOrientations]
-        ## cardinality = 0..1
-        ### Will remove elements outside of size bounding box
-        clipping = bool
-        ## cardinality = 0..1
-        fullscreen = bool
-        ## cardinality = 0..inf
-        ### Background texture
-		background = {
-            alias_name[gui_standard] = alias_match_left[gui_standard]
-            alias_name[gui_image] = alias_match_left[gui_image]
-        }
-
-        alias_name[gui] = alias_match_left[gui]
+containerWindowType = {
+    name = scalar
+    ## cardinality = 0..1
+    ### Mouse Draggable
+    moveable = bool
+    ## cardinality = 0..1
+    ### Origin of position field
+    orientation = enum[containerOrientations]
+    ## cardinality = 0..1
+    ### Will remove elements outside of size bounding box
+    clipping = bool
+    ## cardinality = 0..1
+    fullscreen = bool
+    ## cardinality = 0..inf
+    ### Background texture
+    background = {
+        name = scalar
         alias_name[gui_standard] = alias_match_left[gui_standard]
-        ## cardinality = 0..1
-        verticalScrollbar = enum[scrollbar_types]
-        ## cardinality = 0..1
-        horizontalScrollbar = enum[horizontal_scrollbar_types]
-        ## cardinality = 0..1
-        drag_scroll = { enum[dragScrollType] }
-        ## cardinality = 0..1
-        click_to_front = bool
+        alias_name[gui_image] = alias_match_left[gui_image]
     }
+    alias_name[gui] = alias_match_left[gui]
+    alias_name[gui_standard] = alias_match_left[gui_standard]
+    alias_name[gui_animation] = alias_match_left[gui_animation]
+    alias_name[gui_sound] = alias_match_left[gui_sound]
+    ## cardinality = 0..1
+    verticalScrollbar = enum[scrollbar_types]
+    ## cardinality = 0..1
+    horizontalScrollbar = enum[horizontal_scrollbar_types]
+    ## cardinality = 0..1
+    drag_scroll = {
+        ## cardinality = 0..inf
+        enum[dragScrollType]
+    }
+    ## cardinality = 0..1
+    click_to_front = bool
 }
 #Container Window
-alias_name[gui:containerWindowType] = {
-    alias_name[gui_standard:name] = alias_match_left[gui_standard:name]
+alias[gui:containerWindowType] = {
+    name = scalar
     ## cardinality = 0..1
     ### Mouse Draggable
     moveable = bool
@@ -57,6 +60,7 @@ alias_name[gui:containerWindowType] = {
     ## cardinality = 0..1
     ### Background texture
     background = {
+        name = scalar
         alias_name[gui_standard] = alias_match_left[gui_standard]
         alias_name[gui_image] = alias_match_left[gui_image]
     }
@@ -71,12 +75,13 @@ alias_name[gui:containerWindowType] = {
     ## cardinality = 0..1
     click_to_front = bool
 }
-alias_name[gui:buttonType] = {
-    alias_name[gui_standard:name] = alias_match_left[gui_standard:name]
+alias[gui:buttonType] = {
+    name = scalar
     alias_name[gui_standard] = alias_match_left[gui_standard]
     alias_name[gui_image] = alias_match_left[gui_image]
     ## cardinality = 0..1
-    buttonText = localization
+    buttonText = localisation
+    ## cardinality = 0..1
     buttonFont = scalar
     alias_name[gui_localization] = alias_match_left[gui_localization]
     ## cardinality = 0..1
@@ -84,38 +89,70 @@ alias_name[gui:buttonType] = {
     ## cardinality = 0..1
     hint_tag = localization
 }
-alias_name[gui:gridboxtype] = {
-    alias_name[gui_standard:name] = alias_match_left[gui_standard:name]
+### Dynamic List
+alias[gui:gridboxtype] = {
+    ### Name referenced by scripted gui
+    name = scalar
     alias_name[gui_standard] = alias_match_left[gui_standard]
+    ### Dimensions of slot, does not clip entries
     slotsize = {
         width = int
         width = percentage_field
         height = int
         height = percentage_field
     }
+    ### Adds entries horizontally
     ## cardinality = 0..1
     add_horizontal = bool
     ## cardinality = 0..1
+    ### Maximum number of horizontal slots if adding horizontally
     max_slots_horizontal = int
     ## cardinality = 0..1
     format = enum[containerOrientations]
 }
+alias[gui:iconType] = {
+    ### Name referenced by scripted gui
+    name = scalar
+    spriteType = <spriteType>
+    alias_name[gui_image] = alias_match_left[gui_image]
+    alias_name[gui_standard] = alias_match_left[gui_standard]
+    alias_name[gui_localization] = alias_match_left[gui_localization]
+}
+alias[gui:instantTextBoxType] = {
+    ### Name referenced by scripted gui
+    name = scalar
+    text = localisation
+    ## cardinality = 0..1
+    font = scalar
+    ## cardinality = 0..1
+    maxWidth = int
+    ## cardinality = 0..1
+    maxHeight = int
+    ## cardinality = 0..1
+    format = enum[guiTextFormats]
+    ## cardinality = 0..1
+    multiline = bool
+    alias_name[gui_standard] = alias_match_left[gui_standard]
+    alias_name[gui_localization] = alias_match_left[gui_localization]
+    ## cardinality = 0..1
+    alwaystransparent = bool
+}
 #GUI Standard Functions
 ### Position of element. Absolute in px, % of screen, or % of parent.
-alias_name[gui_standard:position] = {
+alias[gui_standard:position] = {
     x = int
     x = percentage_field
     y = int
     y = percentage_field
 }
 ### Size of element. Absolute in px, % of screen, or % of parent.
-alias_name[gui_standard:size] = {
+alias[gui_standard:size] = {
     width = int
     width = percentage_field
     height = int
     height = percentage_field
 }
-alias_name[gui_standard:margin] = {
+alias[gui_standard:margin] = {
     ## cardinality = 0..1
     top = int
     ## cardinality = 0..1
@@ -125,54 +162,57 @@ alias_name[gui_standard:margin] = {
     ## cardinality = 0..1
     right = int
 }
-alias_name[gui_standard:scale] = float
-alias_name[gui_standard:rotation] = float
-### Origin of position field
-alias_name[gui_standard:orientation] = enum[containerOrientations]
-### Container Name as referenced by scripted gui
-alias_name[gui_standard:name] = scalar
+alias[gui_standard:scale] = float
+alias[gui_standard:rotation] = float
+### Orientation of window in parent
+alias[gui_standard:orientation] = enum[containerOrientations]
+### Origin of window
+alias[gui_standard:origo] = enum[containerOrigo]
+
 #GUI Image
 ### Sprite for image
-alias_name[gui_image:spriteType] = <spriteType>
-alias_name[gui_image:quadTextureSprite] = <spriteType>
+alias[gui_image:spriteType] = <spriteType>
+alias[gui_image:quadTextureSprite] = <spriteType>
 ### Allows clickthrough
-alias_name[gui_image:alwaystransparent] = bool
+alias[gui_image:alwaystransparent] = bool
 ### Frame of image
-alias_name[gui_image:frame] = int
+alias[gui_image:frame] = int
+### Sets image origin to center
+alias[gui_image:centerposition] = bool
 
 #GUI Localization
-alias_name[gui_localization:pdx_tooltip] = localization
-alias_name[gui_localization:pdx_tooltip_delayed] = localization
+alias[gui_localization:pdx_tooltip] = localisation
+alias[gui_localization:pdx_tooltip_delayed] = localisation
 
 
 #GUI Animation
 ### Position before animation in pixels
-alias_name[gui_animation:show_position] = {
+alias[gui_animation:show_position] = {
     x = int
     x = percentage_field
     y = int
     y = percentage_field
 }
 ### Position returned to when hiding
-alias_name[gui_animation:hide_position] = {
+alias[gui_animation:hide_position] = {
     x = int
     x = percentage_field
     y = int
     y = percentage_field
 }
-alias_name[gui_animation:show_animation_type] = decelerated
-alias_name[gui_animation:hide_animation_type] = accelerated
-alias_name[gui_animation:animation_time] = int
-alias_name[gui_animation:fade_time] = int
-alias_name[gui_animation:fade_type] = linear
+alias[gui_animation:show_animation_type] = decelerated
+alias[gui_animation:hide_animation_type] = accelerated
+alias[gui_animation:animation_time] = int
+alias[gui_animation:fade_time] = int
+alias[gui_animation:fade_type] = linear
 
 # GUI Sound
-alias_name[gui_sound:upsound] = scalar
-alias_name[gui_sound:downsound] = scalar
-alias_name[gui_sound:show_sound] = scalar
-alias_name[gui_sound:hide_sound] = scalar
-alias_name[gui_sound:clicksound] = scalar
-alias_name[gui_sound:oversound] = scalar
+alias[gui_sound:upsound] = scalar
+alias[gui_sound:downsound] = scalar
+alias[gui_sound:show_sound] = scalar
+alias[gui_sound:hide_sound] = scalar
+alias[gui_sound:clicksound] = scalar
+alias[gui_sound:oversound] = scalar
 
 enums = {
     enum[containerOrientations] = {
@@ -181,6 +221,19 @@ enums = {
         LOWER_LEFT
         UPPER_RIGHT
         LOWER_RIGHT
+        RIGHT
+        LEFT
+    }
+    enum[containerOrigo] = {
+        center
+        center_up
+        center_down
+        lower_left
+        lower_right
+        upper_right
+        upper_left
+        right
+        left
     }
     enum[dragScrollType] = {
         left
@@ -190,6 +243,7 @@ enums = {
     enum[guiTextFormats] = {
         left
         right
+        centre
     }
     complex_enum[horizontal_scrollbar_types] = {
         path = "game/interface"

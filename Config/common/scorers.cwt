@@ -42,7 +42,6 @@ country_scorer = {
 		### MTTH like score description. THIS is a target. FROM is the initiator.
 		## cardinality = ~1..1
 		score = {
-			## cardinality = 1..1
 			enum[base_factor] = variable_field
 			alias_name[modifier_rule] = alias_match_left[modifier_rule]
 		}

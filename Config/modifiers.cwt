@@ -199,6 +199,7 @@ modifiers = {
 	improve_relations_maintain_cost_factor = country
 	industrial_capacity_dockyard = country
 	industrial_capacity_factory = country
+	industrial_concern_cost_factor = country
 	industrial_factory_donations = country
 	industry_air_damage_factor = country
 	industry_free_repair_factor = country
@@ -410,6 +411,7 @@ modifiers = {
 	war_stability_factor = country
 	war_support_factor = country
 	war_support_weekly = country
+	weapons_manufacturer_cost_factor = country
 	weekly_manpower = country
 	winter_attrition = country
 	winter_attrition_factor = country
@@ -446,7 +448,6 @@ modifiers = {
 	resistance_target = state
 	state_production_speed_buildings_factor = state
 	state_resources_factor = state
-
 
 	# Unit leader
 	acclimatization_cold_climate_gain_factor = unit_leader

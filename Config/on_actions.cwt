@@ -59,6 +59,9 @@ types = {
         ## type_key_filter = on_government_change
         ###
         subtype[on_government_change] = { }
+        ## type_key_filter = on_naval_invasion
+        ###
+        subtype[on_naval_invasion] = { }
         ## type_key_filter = on_coup_succeeded
         ###
         subtype[on_coup_succeeded] = { }
@@ -467,6 +470,20 @@ on_action = {
     }
     ## replace_scope = { THIS = country ROOT = country }
     subtype[on_government_change] = {
+        ## cardinality = 0..1
+        random_events = {
+            ## cardinality = 0..inf
+            int = 0
+            ## cardinality = 0..inf
+            int = <event.country_event>
+        }
+        ## cardinality = 0..1
+        effect = {
+            alias_name[effect] = alias_match_left[effect]
+        }
+    }
+    ## replace_scope = { THIS = country ROOT = country }
+    subtype[on_naval_invasion] = {
         ## cardinality = 0..1
         random_events = {
             ## cardinality = 0..inf

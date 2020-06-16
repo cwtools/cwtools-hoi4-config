@@ -113,7 +113,7 @@ decision_category = {
 	## cardinality = 0..1
 	visibility_type = enum[targeted_decisions_state_map_modes]
 
-	## cardinality = 0..1
+	## cardinality = 0..inf
 	on_map_area = {
 		state = <state>
 		name = localisation
@@ -196,7 +196,6 @@ decision = {
 		## cardinality = 0..1
 		## replace_scope = { this = country root = country from = country }
 		ai_will_do = {
-			## cardinality = 1..1
 			enum[base_factor] = variable_field
 			alias_name[modifier_rule] = alias_match_left[modifier_rule]
 		}
@@ -447,7 +446,6 @@ decision = {
 		## cardinality = 0..1
 		## replace_scope = { root = country this = country from = state }
 		ai_will_do = {
-			## cardinality = 1..1
 			enum[base_factor] = variable_field
 			alias_name[modifier_rule] = alias_match_left[modifier_rule]
 		}

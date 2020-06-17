@@ -57,7 +57,7 @@ alias[gui:containerWindowType] = {
     clipping = bool
     ## cardinality = 0..1
     fullscreen = bool
-    ## cardinality = 0..1
+    ## cardinality = 0..inf
     ### Background texture
     background = {
         name = scalar
@@ -66,17 +66,28 @@ alias[gui:containerWindowType] = {
     }
     alias_name[gui] = alias_match_left[gui]
     alias_name[gui_standard] = alias_match_left[gui_standard]
+    alias_name[gui_animation] = alias_match_left[gui_animation]
+    alias_name[gui_sound] = alias_match_left[gui_sound]
     ## cardinality = 0..1
     verticalScrollbar = enum[scrollbar_types]
     ## cardinality = 0..1
     horizontalScrollbar = enum[horizontal_scrollbar_types]
     ## cardinality = 0..1
-    drag_scroll = { enum[dragScrollType] }
+    drag_scroll = {
+        ## cardinality = 0..inf
+        enum[dragScrollType]
+    }
     ## cardinality = 0..1
     click_to_front = bool
 }
 alias[gui:buttonType] = {
     name = scalar
+    ## cardinality = 0..1
+    ### Special size version for buttons
+    size = {
+        x = int
+        y = int
+    }
     alias_name[gui_standard] = alias_match_left[gui_standard]
     alias_name[gui_image] = alias_match_left[gui_image]
     ## cardinality = 0..1
@@ -88,6 +99,7 @@ alias[gui:buttonType] = {
     shortcut = scalar
     ## cardinality = 0..1
     hint_tag = localization
+    alias_name[gui_sound] = alias_match_left[gui_sound]
 }
 ### Dynamic List
 alias[gui:gridboxtype] = {
@@ -113,7 +125,7 @@ alias[gui:gridboxtype] = {
 alias[gui:iconType] = {
     ### Name referenced by scripted gui
     name = scalar
-    spriteType = <spriteType>
+    ## cardinality = 1..1
     alias_name[gui_image] = alias_match_left[gui_image]
     alias_name[gui_standard] = alias_match_left[gui_standard]
     alias_name[gui_localization] = alias_match_left[gui_localization]
@@ -136,6 +148,22 @@ alias[gui:instantTextBoxType] = {
     alias_name[gui_localization] = alias_match_left[gui_localization]
     ## cardinality = 0..1
     alwaystransparent = bool
+    ## cardinality = 0..1
+    #DEBUG
+    ### Pixel Border
+    borderSize = { x = int y = int }
+    ## cardinality = 0..1
+    #DEBUG
+    ### Missing Descriptiion, need testing
+    textureFile = <spriteType>
+    ## cardinality = 0..1
+    #DEBUG
+    ### Missing Descriptiion, need testing
+    vertical_alignment = enum[guiTextFormatsVertical]
+    ## cardinality = 0..1
+    #DEBUG
+    ### Text box only scroll bar
+    scrollbartype = enum[scrollbar_types]
 }
 #GUI Standard Functions
 ### Position of element. Absolute in px, % of screen, or % of parent.
@@ -168,11 +196,19 @@ alias[gui_standard:rotation] = float
 alias[gui_standard:orientation] = enum[containerOrientations]
 ### Origin of window
 alias[gui_standard:origo] = enum[containerOrigo]
+### Hide element
+alias[gui_standard:hide] = bool
 
 #GUI Image
 ### Sprite for image
 alias[gui_image:spriteType] = <spriteType>
+### Tiliing Sprite
 alias[gui_image:quadTextureSprite] = <spriteType>
+### Image Sprite
+single_alias[gui_image:any_image_type] = {
+    alias_name[gui_image:spriteType] = alias_match_left[gui_image:spriteType]
+    alias_name[gui_image:quadTextureSprite] = alias_match_left[gui_image:quadTextureSprite]
+}
 ### Allows clickthrough
 alias[gui_image:alwaystransparent] = bool
 ### Frame of image
@@ -183,6 +219,8 @@ alias[gui_image:centerposition] = bool
 #GUI Localization
 alias[gui_localization:pdx_tooltip] = localisation
 alias[gui_localization:pdx_tooltip_delayed] = localisation
+### PDX function, use pdx_tooltip instead
+alias[gui_localization:tooltip] = localisation
 
 
 #GUI Animation
@@ -223,6 +261,8 @@ enums = {
         LOWER_RIGHT
         RIGHT
         LEFT
+        UP
+        DOWN
     }
     enum[containerOrigo] = {
         center
@@ -244,6 +284,11 @@ enums = {
         left
         right
         centre
+    }
+    enum[guiTextFormatsVertical] = {
+        center
+        up
+        down
     }
     complex_enum[horizontal_scrollbar_types] = {
         path = "game/interface"

@@ -38,6 +38,7 @@ resistance_compliance_modifier = {
 	alert_margin = int
 
 	### Will be added to state if modifier is enabled.
+	## cardinality = 0..1
 	## push_scope = state
 	state_modifier = {
 		## cardinality = ~1..inf

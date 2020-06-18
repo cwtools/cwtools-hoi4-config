@@ -2742,16 +2742,16 @@ alias[effect:add_dynamic_modifier] = {
 alias[effect:for_loop_effect] = {
 	## cardinality = 0..1
 	### (default 0) start value of loop.
-	start = variable_type
+	start = variable_field_32
 	## cardinality = 0..1
 	### (default 0) end value of loop.
-	end = variable_type
+	end = variable_field_32
 	## cardinality = 0..1
 	### (default less_than) comparison type between start and end val. Mistakenly written as compare_type in game documentation.
 	compare = enum[var_compares]
 	## cardinality = 0..1
 	### (default 1) value to add to current value after each iteration.
-	add = variable_type
+	add = variable_field_32
 	## cardinality = 0..1
 	### Optional (default 'v') current value of iteration will be stored in this temp variable.
 	value = scalar

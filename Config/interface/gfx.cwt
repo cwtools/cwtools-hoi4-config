@@ -9,4 +9,21 @@ types = {
 
 spriteType = {
 	name = scalar
+	textureFile = filepath
+	## cardinality = 0..1
+	borderSize = { x = int y = int }
+	## cardinality = 0..1
+	size = {  x = int y = int }
+	## cardinality = 0..1
+	tilingCenter = bool
+	## cardinality = 0..1
+	effectFile = scalar
+	## cardinality = 0..1
+	noOfFrames = int
+	## cardinality = 0..1
+	animation_rate_fps = int
+	## cardinality = 0..1
+	looping = bool
+	## cardinality = 0..1
+	play_on_show = bool
 }

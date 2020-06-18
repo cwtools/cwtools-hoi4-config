@@ -568,6 +568,24 @@ alias[effect:force_disable_resistance] = {
 	occupied = enum[country_tags]
 }
 
+###force disables resistance for scoped state.  :force_disable_resistance = GER # same as occupier = GER force_disable_resistance = {   clear = no #if yes, will clear previously disabled resistance  occupier = GER #if set, the resistance will be disabled when the occupier is GER  occupied = ENG #if set, the resistance will be disabled if the occupier country is target}
+## scopes = { STATE }
+alias[effect:force_disable_resistance] = {
+	clear = yes
+	## error_if_only_match = This has no effect
+	## severity = info
+	## cardinality = 0..1
+	clear = no
+	## cardinality = 0..1
+	occupier = scope[country]
+	## cardinality = 0..1
+	occupier = enum[country_tags]
+	## cardinality = 0..1
+	occupied = scope[country]
+	## cardinality = 0..1
+	occupied = enum[country_tags]
+}
+
 ###create an Intelligence Agency for the country, if it is not already done.
 ## scopes = { COUNTRY }
 alias[effect:create_intelligence_agency] = yes

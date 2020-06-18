@@ -27,7 +27,7 @@ country_scorer = {
 		### the country initiating the mission has to pass this trigger
 		target_root_trigger = {
 			## cardinality = ~1..inf
-			alias_name[effect] = alias_match_left[effect]
+			alias_name[trigger] = alias_match_left[trigger]
 		}
 
 		## cardinality = 0..1
@@ -35,7 +35,7 @@ country_scorer = {
 		### each target among the selected ones has to pass this trigger
 		target_trigger = {
 			## cardinality = ~1..inf
-			alias_name[effect] = alias_match_left[effect]
+			alias_name[trigger] = alias_match_left[trigger]
 		}
 
 		## replace_scope = { THIS = country ROOT = country FROM = country }

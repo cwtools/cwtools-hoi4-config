@@ -265,7 +265,8 @@ alias[gui_animation:hide_position] = {
     y = percentage_field
 }
 alias[gui_animation:show_animation_type] = decelerated
-alias[gui_animation:hide_animation_type] = { accelerated linear }
+alias[gui_animation:hide_animation_type] = accelerated
+alias[gui_animation:hide_animation_type] = linear
 alias[gui_animation:animation_time] = int
 alias[gui_animation:fade_time] = int
 alias[gui_animation:fade_type] = linear

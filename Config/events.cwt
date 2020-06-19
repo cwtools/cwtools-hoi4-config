@@ -66,18 +66,18 @@ event = {
 	hidden = no
 
 	## cardinality = 0..1
-	major = no
+	major = yes
 	## error_if_only_match = This is the default value and can be ommitted
 	## severity = info
 	## cardinality = 0..1
-	major = yes
+	major = no
 
 	## cardinality = 0..1
-	fire_only_once = no
+	fire_only_once = yes
 	## error_if_only_match = This is the default value and can be ommitted
 	## severity = info
 	## cardinality = 0..1
-	fire_only_once = yes
+	fire_only_once = no
 
 	## cardinality = 0..1
 	is_triggered_only = yes

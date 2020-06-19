@@ -26,6 +26,10 @@ types = {
 			gain_xp = {
 			}
 		}
+		subtype[gainable_trait] = {
+			gain_xp_leader = {
+			}
+		}
 	}
 }
 
@@ -124,6 +128,10 @@ unit_leader_trait = {
 	subtype[gainable_trait] = {
 		## replace_scope = { this = combat root = combat from = combat }
 		gain_xp = {
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+		## replace_scope = { this = unit_leader root = unit_leader from = country }
+		gain_xp_leader = {
 			alias_name[trigger] = alias_match_left[trigger]
 		}
 		cost = int
@@ -225,6 +233,7 @@ enums = {
 		field_marshal
 		navy
 		land
+		operative
 	}
 	enum[trait_types] = {
 		assignable_terrain_trait
@@ -233,6 +242,7 @@ enums = {
 		assignable_trait
 		status_trait
 		exile
+		basic_trait
 	}
 	enum[combat_modifiers] = {
 		fort_attack

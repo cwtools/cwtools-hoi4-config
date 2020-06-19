@@ -4,18 +4,20 @@ types = {
 		skip_root_key = spriteTypes
 		path_extension = .gfx
 		name_field = "name"
+		# type_key_filter = { spriteType frameAnimatedSpriteType }
+		subtype[spriteType] = { }
+		# type_key_filter = corneredTileSpriteType
+		subtype[corneredTileSpriteType] = { }
+		# type_key_filter = maskedShieldType
+		subtype[maskedShieldType] = { }
+		# type_key_filter = textSpriteType
+		subtype[textSpriteType] = { }
 	}
 }
 
-spriteType = {
+subtype[spriteType] = {
 	name = scalar
 	textureFile = filepath
-	## cardinality = 0..1
-	borderSize = { x = int y = int }
-	## cardinality = 0..1
-	size = {  x = int y = int }
-	## cardinality = 0..1
-	tilingCenter = bool
 	## cardinality = 0..1
 	effectFile = scalar
 	## cardinality = 0..1
@@ -26,4 +28,81 @@ spriteType = {
 	looping = bool
 	## cardinality = 0..1
 	play_on_show = bool
+	## cardinality = 0..inf
+	animation = {
+		## cardinality = 0..1
+		animationmaskfile = scalar
+		## cardinality = 0..1
+		animationtexturefile = scalar
+		## cardinality = 0..1
+		animationrotation = float
+		## cardinality = 0..1
+		animationlooping = yes
+		## cardinality = 0..1
+		animationtime = float
+		## cardinality = 0..1
+		animationdelay = float
+		## cardinality = 0..1
+		animationtype = scalar
+		## cardinality = 0..1
+		animationblendmode = scalar
+		## cardinality = 0..1
+		animationrotationoffset = { x = int y = int }
+		## cardinality = 0..1
+		animationtexturescale = { x = int y = int }
+	}
+	## cardinality = 0..1
+	loadType = scalar
+	## cardinality = 0..1
+	transparencecheck = bool
+	## cardinality = 0..1
+	legacy_lazy_load = bool
+	## cardinality = 0..1
+	pause_on_loop = float
+	## cardinality = 0..1
+	alwaystransparent = bool
+}
+
+subtype[corneredTileSpriteType] = {
+	name = scalar
+	textureFile = filepath
+	## cardinality = 0..1
+	borderSize = { x = int y = int }
+	## cardinality = 0..1
+	size = { x = int y = int }
+	## cardinality = 0..1
+	tilingCenter = bool
+	## cardinality = 0..1
+	legacy_lazy_load = bool
+	## cardinality = 0..1
+	alwaystransparent = bool
+	## cardinality = 0..1
+	animation_rate_fps = float
+	## cardinality = 0..1
+	looping = bool
+	## cardinality = 0..1
+	play_on_show = bool
+	## cardinality = 0..1
+	pause_on_loop = float
+	## cardinality = 0..1
+	effectFile = scalar
+	## cardinality = 0..1
+	noOfFrames = int
+}
+
+textSpriteType = {
+	name = scalar
+	textureFile = filepath
+	## cardinality = 0..1
+	effectFile = scalar
+	## cardinality = 0..1
+	noOfFrames = int
+}
+
+subtype[maskedShieldType]  = {
+	name = scalar
+	textureFile1 = scalar
+	textureFile2 = scalar
+	## cardinality = 0..1
+	effectFile = scalar
 }

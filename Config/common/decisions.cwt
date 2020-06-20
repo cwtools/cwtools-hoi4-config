@@ -6,6 +6,11 @@ types = {
 		path = "game/common/decisions"
 		path_strict = yes
 		skip_root_key = any
+		subtype[state_mission] = {
+			state_target = yes
+			days_mission_timeout = scalar
+		}
+		## only_if_not = { state_mission }
 		subtype[mission] = {
 			days_mission_timeout = scalar
 		}
@@ -298,6 +303,32 @@ decision = {
 
 		## cardinality = 0..1
 		## replace_scope = { this = country root = country from = country }
+		cancel_trigger = {
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+	}
+
+	subtype[state_mission] = {
+		## replace_scope = { this = country root = country from = state }
+		activation = {
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+
+		is_good = bool
+		days_mission_timeout = int_variable_field
+
+		## cardinality = 0..1
+		## replace_scope = { this = country root = country from = state }
+		timeout_effect = {
+			alias_name[effect] = alias_match_left[effect]
+		}
+
+		### Can select this mission like a regular decision.
+		## cardinality = 0..1
+		selectable_mission = bool
+
+		## cardinality = 0..1
+		## replace_scope = { this = country root = country from = state }
 		cancel_trigger = {
 			alias_name[trigger] = alias_match_left[trigger]
 		}

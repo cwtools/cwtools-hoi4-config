@@ -959,6 +959,9 @@ alias[effect:start_civil_war] = {
 	### Size of breakaway and percent of equip and div going to breakaway.
 	## cardinality = 0..1
 	size = variable_field[0..1]
+	### Percent of army going to breakaway. Defaults to size if not defined.
+	## cardinality = 0..1
+	army_ratio = variable_field[0..1]
 	### Percent of navy going to breakaway. Defaults to size if not defined.
 	## cardinality = 0..1
 	navy_ratio = variable_field[0..1]

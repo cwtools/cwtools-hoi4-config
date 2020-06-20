@@ -420,6 +420,7 @@ alias[trigger:is_operation_type] = <operation>
 ## scopes = { COUNTRY }
 alias[trigger:is_preparing_operation] = {
 	operation = <operation>
+	operation = variable_field
 	target = scope[country]
 }
 

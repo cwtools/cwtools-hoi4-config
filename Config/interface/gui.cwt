@@ -1,4 +1,5 @@
 types = {
+    ##type_key_filter = containerWindowType
     type[containerWindowType] = {
         path = "game/interface"
         name_field = "name"
@@ -26,6 +27,7 @@ containerWindowType = {
         name = scalar
         alias_name[gui_standard] = alias_match_left[gui_standard]
         alias_name[gui_image] = alias_match_left[gui_image]
+        alias_name[gui_sound] = alias_match_left[gui_sound]
     }
     alias_name[gui] = alias_match_left[gui]
     alias_name[gui_standard] = alias_match_left[gui_standard]
@@ -41,9 +43,13 @@ containerWindowType = {
         enum[dragScrollType]
     }
     ## cardinality = 0..1
+    ###Allows clicking to reorder windows
     click_to_front = bool
+    ## cardinality = 0..1
+    ###Smoothly scroll a scrollbar -- container version
+    smooth_scrolling = bool
 }
-#Container Window
+###Container Window
 alias[gui:containerWindowType] = {
     name = scalar
     ## cardinality = 0..1
@@ -79,7 +85,11 @@ alias[gui:containerWindowType] = {
     }
     ## cardinality = 0..1
     click_to_front = bool
+    ## cardinality = 0..1
+    ###Smoothly scroll a scrollbar -- container version
+    smooth_scrolling = bool
 }
+###Button Element
 alias[gui:buttonType] = {
     name = scalar
     ## cardinality = 0..1
@@ -108,7 +118,7 @@ alias[gui:buttonType] = {
     font = scalar
 }
 ### Dynamic List
-alias[gui:gridboxtype] = {
+alias[gui:gridBoxType] = {
     ### Name referenced by scripted gui
     name = scalar
     alias_name[gui_standard] = alias_match_left[gui_standard]
@@ -130,7 +140,15 @@ alias[gui:gridboxtype] = {
     max_slots_vertical = int
     ## cardinality = 0..1
     format = enum[containerOrientations]
+    ## cardinality = 0..1
+    background = {
+        name = scalar
+        alias_name[gui_standard] = alias_match_left[gui_standard]
+        alias_name[gui_image] = alias_match_left[gui_image]
+        alias_name[gui_sound] = alias_match_left[gui_sound]
+    }
 }
+###Non-clickable icon
 alias[gui:iconType] = {
     ### Name referenced by scripted gui
     name = scalar
@@ -140,6 +158,7 @@ alias[gui:iconType] = {
     alias_name[gui_standard] = alias_match_left[gui_standard]
     alias_name[gui_localization] = alias_match_left[gui_localization]
 }
+###Text box
 alias[gui:instantTextBoxType] = {
     ### Name referenced by scripted gui
     name = scalar
@@ -186,6 +205,84 @@ alias[gui:checkboxType] = {
     name = scalar
     alias_name[gui_standard] = alias_match_left[gui_standard]
     alias_name[gui_image] = alias_match_left[gui_image]
+    alias_name[gui_sound] = alias_match_left[gui_sound]
+}
+alias[gui:extendedScrollbarType] = {
+    name = scalar
+    alias_name[gui_standard] = alias_match_left[gui_standard]
+    background = {
+        name = scalar
+        alias_name[gui_standard] = alias_match_left[gui_standard]
+        alias_name[gui_image] = alias_match_left[gui_image]
+        alias_name[gui_sound] = alias_match_left[gui_sound]
+    }
+    ##cardinality  = 0..1
+    ###Size in px of tiling
+    tileSize = {
+        width = int
+        height = int
+    }
+    ##cardinality  = 0..1
+    ###Maximum value of slider
+    maxValue = float
+    ##cardinality  = 0..1
+    ###Minimum value of slider
+    minValue = float
+    ##cardinality  = 0..1
+    ###Start position of slider
+    startValue = float
+    ##cardinality  = 0..1
+    ###Size of slider incriment
+    stepSize = float
+    ##cardinality  = 0..1
+    ###Horizontal or vertical slider
+    horizontal = bool
+    ##cardinality  = 0..1
+    ###Smoothing percentage (reduces steps)
+    smooth_scrolling = float
+    ##cardinality  = 1..1
+    ###Slider for scroll bar
+    slider = {
+        name = scalar
+        alias_name[gui_image] = alias_match_left[gui_image]
+        position = {
+            x = int
+            y = int
+        }
+        alias_name[gui_localization] = alias_match_left[gui_localization]
+    }
+    ##cardinality  = 1..1
+    ###Slider for scroll bar
+    track = {
+        name = scalar
+        alias_name[gui_image] = alias_match_left[gui_image]
+        position = {
+            x = int
+            y = int
+        }
+    }
+    ##cardinality  = 0..1
+    ###Increase button
+    increaseButton = {
+        name = scalar
+        alias_name[gui_image] = alias_match_left[gui_image]
+        position = {
+            x = int
+            y = int
+        }
+        alias_name[gui_localization] = alias_match_left[gui_localization]
+    }
+    ##cardinality  = 0..1
+    ###Decrease button
+    slider = {
+        name = scalar
+        alias_name[gui_image] = alias_match_left[gui_image]
+        position = {
+            x = int
+            y = int
+        }
+        alias_name[gui_localization] = alias_match_left[gui_localization]
+    }
 }
 #GUI Standard Functions
 ### Position of element. Absolute in px, % of screen, or % of parent.
@@ -195,12 +292,21 @@ alias[gui_standard:position] = {
     y = int
     y = percentage_field
 }
-### Size of element. Absolute in px, % of screen, or % of parent.
+###Size of element. Absolute in px, % of screen, or % of parent.
 alias[gui_standard:size] = {
     width = int
     width = percentage_field
     height = int
     height = percentage_field
+    ## cardinality = 0..1
+    min = {
+        width = int
+        width = percentage_field
+        height = int
+        height = percentage_field
+    }
+    ## cardinality = 0..1
+    preserve_aspect_ratio = bool
 }
 alias[gui_standard:margin] = {
     ## cardinality = 0..1
@@ -266,6 +372,8 @@ alias[gui_animation:hide_position] = {
 }
 alias[gui_animation:show_animation_type] = decelerated
 alias[gui_animation:hide_animation_type] = accelerated
+alias[gui_animation:hide_animation_type] = decelerated
+alias[gui_animation:show_animation_type] = accelerated
 alias[gui_animation:hide_animation_type] = linear
 alias[gui_animation:animation_time] = int
 alias[gui_animation:fade_time] = int
@@ -288,6 +396,8 @@ enums = {
         LOWER_RIGHT
         RIGHT
         LEFT
+        CENTER_UP
+        CENTER_LOWER
         UP
         DOWN
     }
@@ -338,6 +448,35 @@ enums = {
                 name = enum_name
             }
             scrollbarType = {
+                name = enum_name
+            }
+        }
+    }
+    complex_enum[guiElementsProperties] = {
+        path = "game/interface"
+        name = {
+            buttonType = {
+                name = enum_name
+            }
+        }
+        name = {
+            iconType = {
+                name = enum_name
+            }
+        }
+    }
+    complex_enum[guiButtons] = {
+        path = "game/interface"
+        name = {
+            buttonType = {
+                name = enum_name
+            }
+        }
+    }
+    complex_enum[guiDynamicLists] = {
+        path = "game/interface"
+        name = {
+            gridBoxType = {
                 name = enum_name
             }
         }

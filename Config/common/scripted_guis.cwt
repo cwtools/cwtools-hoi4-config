@@ -51,7 +51,7 @@ scripted_gui = {
 	## cardinality = 0..1
 	properties = {
 		## cardinality = ~1..inf
-		scalar = {
+		enum[guiElementsProperties] = {
 			## cardinality = 0..1
 			### Should return name of the texture in gfx file.
 			image = localisation_inline
@@ -67,7 +67,7 @@ scripted_gui = {
 	## cardinality = 0..1
 	dynamic_lists = {
 		## cardinality = ~1..inf
-		scalar = {
+		enum[guiDynamicLists] = {
 			### The array that will be used for populating the grid.
 			array = variable_field
 			## cardinality = 0..1
@@ -103,7 +103,11 @@ scripted_gui = {
 		effects = {
 			## cardinality = ~1..inf
 			## replace_scope = { root = country this = any from = any }
-			scalar = {
+			enum[guiButtons]_click = {
+				## cardinality = ~1..inf
+				alias_name[effect] = alias_match_left[effect]
+			}
+			enum[guiButtons]_right_click = {
 				## cardinality = ~1..inf
 				alias_name[effect] = alias_match_left[effect]
 			}
@@ -145,8 +149,12 @@ scripted_gui = {
 		## cardinality = 0..1
 		effects = {
 			## cardinality = ~1..inf
-			## replace_scope = { root = country this = no_scope }
-			scalar = {
+			## replace_scope = { root = country this = any from = any }
+			enum[guiButtons]_click = {
+				## cardinality = ~1..inf
+				alias_name[effect] = alias_match_left[effect]
+			}
+			enum[guiButtons]_right_click = {
 				## cardinality = ~1..inf
 				alias_name[effect] = alias_match_left[effect]
 			}
@@ -196,8 +204,12 @@ scripted_gui = {
 		## cardinality = 0..1
 		effects = {
 			## cardinality = ~1..inf
-			## replace_scope = { root = country this = country }
-			scalar = {
+			## replace_scope = { root = country this = any from = any }
+			enum[guiButtons]_click = {
+				## cardinality = ~1..inf
+				alias_name[effect] = alias_match_left[effect]
+			}
+			enum[guiButtons]_right_click = {
 				## cardinality = ~1..inf
 				alias_name[effect] = alias_match_left[effect]
 			}
@@ -224,8 +236,12 @@ scripted_gui = {
 		## cardinality = 0..1
 		effects = {
 			## cardinality = ~1..inf
-			## replace_scope = { root = country this = country }
-			scalar = {
+			## replace_scope = { root = country this = any from = any }
+			enum[guiButtons]_click = {
+				## cardinality = ~1..inf
+				alias_name[effect] = alias_match_left[effect]
+			}
+			enum[guiButtons]_right_click = {
 				## cardinality = ~1..inf
 				alias_name[effect] = alias_match_left[effect]
 			}
@@ -264,8 +280,12 @@ scripted_gui = {
 		## cardinality = 0..1
 		effects = {
 			## cardinality = ~1..inf
-			## replace_scope = { root = country this = state }
-			scalar = {
+			## replace_scope = { root = country this = any from = any }
+			enum[guiButtons]_click = {
+				## cardinality = ~1..inf
+				alias_name[effect] = alias_match_left[effect]
+			}
+			enum[guiButtons]_right_click = {
 				## cardinality = ~1..inf
 				alias_name[effect] = alias_match_left[effect]
 			}

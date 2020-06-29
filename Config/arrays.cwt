@@ -31,5 +31,7 @@ values = {
 
 		subject_countries
 		subject_states
+		### Arguments for debugging commands
+		args
 	}
 }

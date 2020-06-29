@@ -607,7 +607,7 @@ alias[effect:create_ship] = {
 	type = <equipment.naval_equip>
 	equipment_variant = scalar
 	## cardinality = 0..1
-	creator = enum[country_tags]
+	creator = scope[country]
 	## cardinality = 0..1
 	name = scalar
 }

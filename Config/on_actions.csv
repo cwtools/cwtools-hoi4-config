@@ -5,7 +5,7 @@ on_aces_killed_each_other,THIS = country root = country FROM = any prev = any,co
 on_ace_killed_by_ace,THIS = country root = country FROM = any prev = any,country_event,
 on_ace_killed_other_ace,THIS = country root = country FROM = any prev = any,country_event,
 on_ace_killed,THIS = country root = country FROM = any,country_event,
-
+,,,
 on_justifying_wargoal_pulse,THIS = country ROOT = country FROM = country,country_event,
 on_wargoal_expire,THIS = country ROOT = country FROM = country,country_event,
 on_nuke_drop,THIS = country ROOT = country FROM = state,country_event,
@@ -44,22 +44,25 @@ on_return_expeditionary_forces,THIS = country ROOT = country FROM = country,coun
 on_request_expeditionary_forces,THIS = country ROOT = country FROM = country,country_event,
 on_ask_for_state_control,THIS = country ROOT = country FROM = country,country_event,
 on_give_state_control,THIS = country ROOT = country FROM = country,country_event,
-
+,,,
 on_startup,THIS = no_scope ROOT = no_scope,,
 on_daily,THIS = country ROOT = country,country_event,
 on_weekly,THIS = country ROOT = country,country_event,
 on_monthly,THIS = country ROOT = country,country_event,
-
+on_yearly,THIS = country ROOT = country,country_event,
+on_bi_yearly_pulse,THIS = country ROOT = country,country_event,
+on_thri_yearly_pulse,THIS = country ROOT = country,country_event,
+,,,
 on_state_control_changed,THIS = country FROM = country FROMFROM = state,country_event,
-
+,,,
 on_unit_leader_created,THIS = unit_leader ROOT = unit_leader,unit_leader_event,
 on_unit_leader_level_up,THIS = unit_leader ROOT = unit_leader,unit_leader_event,
-
+,,,
 on_army_leader_daily,THIS = unit_leader ROOT = unit_leader FROM = country,unit_leader_event,
 on_army_leader_won_combat,THIS = unit_leader ROOT = unit_leader FROM = country,unit_leader_event,
 on_army_leader_lost_combat,THIS = unit_leader ROOT = unit_leader FROM = country,unit_leader_event,
 on_army_leader_promoted,THIS = unit_leader ROOT = unit_leader,unit_leader_event,
-
+,,,
 on_host_changed_from_capitulation,THIS = country ROOT = country FROM = country FROMFROM = country,country_event,
 on_exile_government_reinstated,THIS = country ROOT = country FROM = country FROMFROM = country,country_event,
 on_civil_war_end_before_annexation,THIS = country ROOT = country FROM = country,country_event,
@@ -69,7 +72,8 @@ on_assume_faction_leadership,THIS = country ROOT = country FROM = country,countr
 on_war,THIS = country ROOT = country,country_event,
 on_war_relation_added,THIS = country ROOT = country FROM = country,country_event,
 on_peace,THIS = country ROOT = country,country_event,
-
+on_peace_proposal,THIS = country ROOT = country,country_event,
+,,,
 on_operative_on_mission_spotted,THIS = unit_leader ROOT = country FROM = country,operative_leader_event,
 on_operative_captured,THIS = unit_leader ROOT = country FROM = country,operative_leader_event,
 on_operative_death,THIS = unit_leader ROOT = country FROM = country,operative_leader_event,
@@ -79,6 +83,6 @@ on_operative_recruited,THIS = unit_leader ROOT = unit_leader FROM = country,oper
 on_operation_completed,THIS = operation ROOT = country FROM = country,operative_leader_event,
 on_fully_decrypted_cipher,THIS = country ROOT = country FROM = country,country_event,
 on_activated_active_decryption_bonuses,THIS = country ROOT = country FROM = country,country_event,
-
+,,,
 on_naval_invasion,THIS = state ROOT = country FROM = state,,
 on_paradrop,THIS = state ROOT = country FROM = state,,

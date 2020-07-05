@@ -149,9 +149,18 @@ types = {
         ## type_key_filter = on_monthly
         ###
         subtype[on_monthly] = { }
-        ## type_key_filter = on_state_control_changed
-        ###
-        subtype[on_state_control_changed] = { }
+        ## type_key_filter = on_yearly
+		###
+		subtype[on_yearly] = { }
+		## type_key_filter = on_bi_yearly_pulse
+		###
+		subtype[on_bi_yearly_pulse] = { }
+		## type_key_filter = on_thri_yearly_pulse
+		###
+		subtype[on_thri_yearly_pulse] = { }
+		## type_key_filter = on_state_control_changed
+		###
+		subtype[on_state_control_changed] = { }
         ## type_key_filter = on_unit_leader_created
         ###
         subtype[on_unit_leader_created] = { }
@@ -194,6 +203,9 @@ types = {
         ## type_key_filter = on_peace
         ###
         subtype[on_peace] = { }
+        ## type_key_filter = on_peace_proposal
+		###
+		subtype[on_peace_proposal] = { }
         ## type_key_filter = on_operative_on_mission_spotted
         ###
         subtype[on_operative_on_mission_spotted] = { }
@@ -916,6 +928,45 @@ on_action = {
         effect = {
             alias_name[effect] = alias_match_left[effect]
         }
+	}
+	subtype[on_yearly] = {
+        ## cardinality = 0..1
+        random_events = {
+            ## cardinality = 0..inf
+            int = 0
+            ## cardinality = 0..inf
+            int = <event.country_event>
+        }
+        ## cardinality = 0..1
+        effect = {
+            alias_name[effect] = alias_match_left[effect]
+        }
+	}
+	subtype[on_thri_yearly_pulse] = {
+        ## cardinality = 0..1
+        random_events = {
+            ## cardinality = 0..inf
+            int = 0
+            ## cardinality = 0..inf
+            int = <event.country_event>
+        }
+        ## cardinality = 0..1
+        effect = {
+            alias_name[effect] = alias_match_left[effect]
+        }
+	}
+	subtype[on_bi_yearly_pulse] = {
+        ## cardinality = 0..1
+        random_events = {
+            ## cardinality = 0..inf
+            int = 0
+            ## cardinality = 0..inf
+            int = <event.country_event>
+        }
+        ## cardinality = 0..1
+        effect = {
+            alias_name[effect] = alias_match_left[effect]
+        }
     }
     ## replace_scope = { THIS = country FROM = country FROMFROM = state }
     subtype[on_state_control_changed] = {
@@ -1115,6 +1166,20 @@ on_action = {
     }
     ## replace_scope = { THIS = country ROOT = country FROM = country }
     subtype[on_peace] = {
+        ## cardinality = 0..1
+        random_events = {
+            ## cardinality = 0..inf
+            int = 0
+            ## cardinality = 0..inf
+            int = <event.country_event>
+        }
+        ## cardinality = 0..1
+        effect = {
+            alias_name[effect] = alias_match_left[effect]
+        }
+	}
+	## replace_scope = { THIS = country ROOT = country FROM = country }
+	subtype[on_peace_proposal] = {
         ## cardinality = 0..1
         random_events = {
             ## cardinality = 0..inf

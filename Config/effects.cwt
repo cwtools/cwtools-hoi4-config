@@ -563,8 +563,6 @@ alias[effect:set_politics] = {
 alias[effect:set_popularities] = {
 	## cardinality = 1..inf
 	<ideology> = variable_field
-	## cardinality = 1..inf
-	variable_field = variable_field
 }
 
 ### Add idea(s) to country.

@@ -960,6 +960,7 @@ alias[effect:start_civil_war] = {
 	### Ruling party of original country.
 	## cardinality = 0..1
 	ruling_party = <ideology>
+	## cardinality = 0..1
 	ruling_party = variable_field
 	### Size of breakaway and percent of equip and div going to breakaway.
 	## cardinality = 0..1

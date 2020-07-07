@@ -540,14 +540,16 @@ alias[effect:remove_country_leader_trait] = <country_leader_trait>
 ## scope = country
 alias[effect:set_political_party] = {
 	ideology = <ideology>
+	ideology = variable_field
 	popularity = variable_field
 }
 
 ### Set country political status.
 ## scope = country
 alias[effect:set_politics] = {
-	## cardinality = 0..1
+	### ruling_party is required, otherwise the game will CTD
 	ruling_party = <ideology>
+	ruling_party = variable_field
 	## cardinality = 0..1
 	elections_allowed = bool
 	## cardinality = 0..1
@@ -561,6 +563,8 @@ alias[effect:set_politics] = {
 alias[effect:set_popularities] = {
 	## cardinality = 1..inf
 	<ideology> = variable_field
+	## cardinality = 1..inf
+	variable_field = variable_field
 }
 
 ### Add idea(s) to country.
@@ -940,6 +944,7 @@ alias[effect:hold_election] = enum[country_tags]
 ## scope = country
 alias[effect:add_popularity] = {
 	ideology = <ideology>
+	ideology = variable_field
 	popularity = variable_field
 }
 
@@ -953,9 +958,11 @@ alias[effect:start_civil_war] = {
 	### Ideology of breakaway country.
 	ideology = <ideology>
 	ideology = scope[country]
+	ideology = variable_field
 	### Ruling party of original country.
 	## cardinality = 0..1
 	ruling_party = <ideology>
+	ruling_party = variable_field
 	### Size of breakaway and percent of equip and div going to breakaway.
 	## cardinality = 0..1
 	size = variable_field[0..1]
@@ -1341,6 +1348,7 @@ alias[effect:complete_national_focus] = <shared_focus>
 ## scope = country
 alias[effect:set_party_name] = {
 	ideology = <ideology>
+	ideology = variable_field
 	long_name = localisation_inline
 	name = localisation_inline
 }
@@ -2989,3 +2997,7 @@ alias[effect:add_legitimacy] = int[-100..100]
 ### Kills a ideology leader and removes him completely, making the next in line the new party leader.
 ## scope = country
 alias[effect:retire_ideology_leader] = <ideology>
+
+### Kills a ideology leader and removes him completely, making the next in line the new party leader.
+## scope = country
+alias[effect:retire_ideology_leader] = variable_field

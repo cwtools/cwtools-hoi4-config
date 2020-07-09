@@ -197,6 +197,10 @@ alias[effect:transfer_units_fraction] = {
 ## scopes = { COUNTRY }
 alias[effect:kill_ideology_leader] = <ideology>
 
+###removes a ideology leader as leader of his party, making the next in line the new party leader
+## scopes = { COUNTRY }
+alias[effect:kill_ideology_leader] = variable_field
+
 ###adds/removes days to 'days_remove' value of a decisionExample:add_days_remove  = {    decision = <some_decision>    days = 30}
 ## scopes = { COUNTRY }
 alias[effect:add_days_remove] = {
@@ -961,6 +965,8 @@ alias[effect:set_country_leader_name] = {
 	name = localisation_inline
 	## cardinality = 0..1
 	ideology = <ideology>
+	## cardinality = 0..1
+	ideology = variable_field
 }
 
 ### Changes the portrait of country leader. no tooltip is generated.
@@ -969,6 +975,8 @@ alias[effect:set_country_leader_portrait] = {
 	portrait = <spriteType>
 	## cardinality = 0..1
 	ideology = <ideology>
+	## cardinality = 0..1
+	ideology = variable_field
 }
 
 ### Changes the description of country leader. no tooltip is generated.
@@ -977,6 +985,8 @@ alias[effect:set_country_leader_description] = {
 	desc = localisation
 	## cardinality = 0..1
 	ideology = <ideology>
+	## cardinality = 0..1
+	ideology = variable_field
 }
 
 ### Changes the name of unit leader. no tooltip is generated.

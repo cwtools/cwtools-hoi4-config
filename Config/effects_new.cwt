@@ -615,6 +615,8 @@ alias[effect:create_ship] = {
 	## cardinality = 0..1
 	creator = enum[country_tags]
 	## cardinality = 0..1
+	creator = scope[country]
+	## cardinality = 0..1
 	name = scalar
 }
 

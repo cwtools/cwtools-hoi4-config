@@ -18,7 +18,7 @@ values = {
 
 		### (Trigger) Check the global threat value. 0-1 value.
 		threat
-		
+
 		# =========================
 		# COUNTRY DYNAMIC VARIABLES
 		# =========================
@@ -216,6 +216,9 @@ values = {
 
 		### A modifier stored in country scope.
 		modifier@enum[modifier]
+
+		### Custom modifier accessed via variable
+		modifier@<modifier_definition>
 
 		### Navy experience of a country.
 		navy_experience
@@ -514,10 +517,10 @@ values = {
 
 		### Non damaged building level of a building with type, uses target as building type. example non_damaged_building_level@arms_factory.
 		non_damaged_building_level@<building>
-		
+
 		### (Trigger) Checks the current compliance level.
 		compliance
-		
+
 		### (Trigger) Checks the current compliance speed.
 		compliance_speed
 
@@ -784,23 +787,23 @@ values = {
 		# Global arrays
 		### Array of all countries (including non existing)
 		countries
-		
+
 		### Array of objects in ideology_groups database.
 		ideology_groups
-		
+
 		### Array of major powers.
 		majors
-		
+
 		### Array of objects in operations database.
 		operations
-		
+
 		### Array of objects in technology database.
 		technology
 
 		# Country dynamic variables
 		### Array of allies (faction members).
 		allies
-		
+
 		### Array of all army leaders of a country.
 		army_leaders
 
@@ -851,13 +854,13 @@ values = {
 
 		### Array of subjects.
 		subjects
-		
+
 		### Array of subjects of a tag.
 		subject_countries@enum[country_tags]
-		
+
 		### Array of states onwned by subjects of a tag.
 		subject_states@enum[country_tags]
-		
+
 		#State dynamic variables
 		### Array of countries with cores on the scope state.
 		core_countries

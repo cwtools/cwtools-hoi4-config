@@ -154,6 +154,8 @@ alias[gui:dropDownBoxType] = {
         ## cardinality = 0..1
         buttonText = localisation
         ## cardinality = 0..1
+        buttonText = localisation_inline
+        ## cardinality = 0..1
         buttonFont = scalar
         alias_name[gui_localization] = alias_match_left[gui_localization]
         ## cardinality = 0..1
@@ -228,6 +230,8 @@ alias[gui:buttonType] = {
     alias_name[gui_image] = alias_match_left[gui_image]
     ## cardinality = 0..1
     buttonText = localisation
+    ## cardinality = 0..1
+    buttonText = localisation_inline
     ## cardinality = 0..1
     buttonFont = scalar
     alias_name[gui_localization] = alias_match_left[gui_localization]
@@ -338,6 +342,8 @@ alias[gui:instantTextBoxType] = {
     name = scalar
     ## cardinality = ~1..1
     text = localisation
+    ## cardinality = ~1..1
+    text = localisation_inline
     ## cardinality = 0..1
     font = scalar
     ## cardinality = 0..1
@@ -381,6 +387,8 @@ alias[gui:editBoxType] = {
     name = scalar
     ## cardinality = ~1..1
     text = localisation
+    ## cardinality = ~1..1
+    text = localisation_inline
     ## cardinality = 0..1
     font = scalar
     ## cardinality = 0..1
@@ -425,6 +433,8 @@ alias[gui:checkboxType] = {
     name = scalar
     ## cardinality = 0..1
     buttonText = localisation
+    ## cardinality = 0..1
+    buttonText = localisation_inline
     ## cardinality = 0..1
     buttonFont = scalar
     alias_name[gui_standard] = alias_match_left[gui_standard]
@@ -630,11 +640,15 @@ alias[gui_image:centerposition] = bool
 
 #GUI Localization
 alias[gui_localization:pdx_tooltip] = localisation
+alias[gui_localization:pdx_tooltip] = localisation_inline
 alias[gui_localization:pdx_tooltip_delayed] = localisation
+alias[gui_localization:pdx_tooltip_delayed] = localisation_inline
 ### PDX function, use pdx_tooltip instead
 alias[gui_localization:tooltip] = localisation
+alias[gui_localization:tooltip] = localisation_inline
 ### Text ontop of elements
 alias[gui_localization:text] = localisation
+alias[gui_localization:text] = localisation_inline
 
 
 #GUI Animation

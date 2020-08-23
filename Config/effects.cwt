@@ -1126,7 +1126,7 @@ alias[effect:add_tech_bonus] = {
 	category = enum[tech_category]
 	## cardinality = 0..inf
 	technology = <technology>
-	## cardinality = ~1..1
+	## cardinality = 1..1
 	name = localisation
 }
 
@@ -1140,7 +1140,7 @@ alias[effect:add_research_slot] = int
 
 ### Sets the number of research slots.
 ## scope = country
-alias[effect:set_research_slots] = int
+alias[effect:set_research_slots] = variable_field_32
 
 ### Starts a border war in a state with neighbouring state that also has border war.
 ## scope = state

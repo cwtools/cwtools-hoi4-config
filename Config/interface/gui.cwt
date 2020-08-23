@@ -24,10 +24,12 @@ containerWindowType = {
     ## cardinality = 0..inf
     ### Background texture
     background = {
+        ## cardinality = ~1..1
         name = scalar
         alias_name[gui_standard] = alias_match_left[gui_standard]
         alias_name[gui_image] = alias_match_left[gui_image]
         alias_name[gui_sound] = alias_match_left[gui_sound]
+        alias_name[gui_localization] = alias_match_left[gui_localization]
     }
     alias_name[gui] = alias_match_left[gui]
     alias_name[gui_standard] = alias_match_left[gui_standard]
@@ -48,6 +50,8 @@ containerWindowType = {
     ## cardinality = 0..1
     ###Smoothly scroll a scrollbar -- container version
     smooth_scrolling = bool
+    ##cardinality  = 0..1
+    scroll_wheel_factor = float
 }
 ###Container Window
 alias[gui:containerWindowType] = {
@@ -66,9 +70,11 @@ alias[gui:containerWindowType] = {
     ## cardinality = 0..inf
     ### Background texture
     background = {
+        ## cardinality = ~1..1
         name = scalar
         alias_name[gui_standard] = alias_match_left[gui_standard]
         alias_name[gui_image] = alias_match_left[gui_image]
+        alias_name[gui_localization] = alias_match_left[gui_localization]
     }
     alias_name[gui] = alias_match_left[gui]
     alias_name[gui_standard] = alias_match_left[gui_standard]
@@ -88,6 +94,128 @@ alias[gui:containerWindowType] = {
     ## cardinality = 0..1
     ###Smoothly scroll a scrollbar -- container version
     smooth_scrolling = bool
+    ##cardinality  = 0..1
+    scroll_wheel_factor = float
+}
+###Drop Down Box, seems to be hardcoded
+alias[gui:dropDownBoxType] = {
+    name = scalar
+    ## cardinality = 0..1
+    ### Mouse Draggable
+    moveable = bool
+    ## cardinality = 0..1
+    ### Origin of position field
+    orientation = enum[containerOrientations]
+    ## cardinality = 0..1
+    ### Will remove elements outside of size bounding box
+    clipping = bool
+    ## cardinality = 0..1
+    fullscreen = bool
+    ## cardinality = 0..inf
+    ### Background texture
+    background = {
+        ## cardinality = ~1..1
+        name = scalar
+        alias_name[gui_standard] = alias_match_left[gui_standard]
+        alias_name[gui_image] = alias_match_left[gui_image]
+        alias_name[gui_localization] = alias_match_left[gui_localization]
+    }
+    alias_name[gui] = alias_match_left[gui]
+    alias_name[gui_standard] = alias_match_left[gui_standard]
+    alias_name[gui_animation] = alias_match_left[gui_animation]
+    alias_name[gui_sound] = alias_match_left[gui_sound]
+    ## cardinality = 0..1
+    verticalScrollbar = enum[scrollbar_types]
+    ## cardinality = 0..1
+    horizontalScrollbar = enum[horizontal_scrollbar_types]
+    ## cardinality = 0..1
+    drag_scroll = {
+        ## cardinality = 0..inf
+        enum[dragScrollType]
+    }
+    ## cardinality = 0..1
+    click_to_front = bool
+    ## cardinality = 0..1
+    ###Smoothly scroll a scrollbar -- container version
+    smooth_scrolling = bool
+    ##cardinality = 0..1
+    scroll_wheel_factor = float
+    ##cardinality = 0..1
+    expandButton = {
+        name = scalar
+        ## cardinality = 0..1
+        ### Special size version for buttons
+        size = {
+            x = int
+            y = int
+        }
+        alias_name[gui_standard] = alias_match_left[gui_standard]
+        alias_name[gui_image] = alias_match_left[gui_image]
+        ## cardinality = 0..1
+        buttonText = localisation
+        ## cardinality = 0..1
+        buttonText = localisation_inline
+        ## cardinality = 0..1
+        buttonFont = scalar
+        alias_name[gui_localization] = alias_match_left[gui_localization]
+        ## cardinality = 0..1
+        shortcut = scalar
+        ## cardinality = 0..1
+        hint_tag = localization
+        alias_name[gui_sound] = alias_match_left[gui_sound]
+        ## cardinality = 0..1
+        format = enum[guiTextFormats]
+        ## cardinality = 0..1
+        multiline = bool
+        ## cardinality = 0..1
+        font = scalar
+        ## cardinality = 0..1
+        web_link = scalar
+    }
+    ## cardinality = 0..1
+    expandedWindow = {
+        name = scalar
+        ## cardinality = 0..1
+        ### Mouse Draggable
+        moveable = bool
+        ## cardinality = 0..1
+        ### Origin of position field
+        orientation = enum[containerOrientations]
+        ## cardinality = 0..1
+        ### Will remove elements outside of size bounding box
+        clipping = bool
+        ## cardinality = 0..1
+        fullscreen = bool
+        ## cardinality = 0..inf
+        ### Background texture
+        background = {
+            ## cardinality = ~1..1
+            name = scalar
+            alias_name[gui_standard] = alias_match_left[gui_standard]
+            alias_name[gui_image] = alias_match_left[gui_image]
+            alias_name[gui_localization] = alias_match_left[gui_localization]
+        }
+        alias_name[gui] = alias_match_left[gui]
+        alias_name[gui_standard] = alias_match_left[gui_standard]
+        alias_name[gui_animation] = alias_match_left[gui_animation]
+        alias_name[gui_sound] = alias_match_left[gui_sound]
+        ## cardinality = 0..1
+        verticalScrollbar = enum[scrollbar_types]
+        ## cardinality = 0..1
+        horizontalScrollbar = enum[horizontal_scrollbar_types]
+        ## cardinality = 0..1
+        drag_scroll = {
+            ## cardinality = 0..inf
+            enum[dragScrollType]
+        }
+        ## cardinality = 0..1
+        click_to_front = bool
+        ## cardinality = 0..1
+        ###Smoothly scroll a scrollbar -- container version
+        smooth_scrolling = bool
+        ##cardinality  = 0..1
+        scroll_wheel_factor = float
+    }
 }
 ###Button Element
 alias[gui:buttonType] = {
@@ -103,6 +231,8 @@ alias[gui:buttonType] = {
     ## cardinality = 0..1
     buttonText = localisation
     ## cardinality = 0..1
+    buttonText = localisation_inline
+    ## cardinality = 0..1
     buttonFont = scalar
     alias_name[gui_localization] = alias_match_left[gui_localization]
     ## cardinality = 0..1
@@ -116,6 +246,18 @@ alias[gui:buttonType] = {
     multiline = bool
     ## cardinality = 0..1
     font = scalar
+    ## cardinality = 0..1
+    web_link = scalar
+}
+### Hardcoded
+alias[gui:OverlappingElementsBoxType] = {
+    ### Name referenced by scripted gui
+    name = scalar
+    alias_name[gui_standard] = alias_match_left[gui_standard]
+    ## cardinality = 0..1
+    spacing = float
+    ## cardinality = 0..1
+    format = enum[guiTextFormats]
 }
 ### Dynamic List
 alias[gui:gridBoxType] = {
@@ -139,13 +281,30 @@ alias[gui:gridBoxType] = {
     ### Maximum number of vertical slots if adding horizontally
     max_slots_vertical = int
     ## cardinality = 0..1
+    ### Maximum number of slots
+    max_slots = { x = int y = int }
+    ## cardinality = 0..1
+    ### Paddding around slots
+    padding = {
+        ## cardinality = 0..1
+        top = int
+        ## cardinality = 0..1
+        bottom = int
+        ## cardinality = 0..1
+        left = int
+        ## cardinality = 0..1
+        right = int
+    }
+    ## cardinality = 0..1
     format = enum[containerOrientations]
     ## cardinality = 0..1
     background = {
+        ## cardinality = ~1..1
         name = scalar
         alias_name[gui_standard] = alias_match_left[gui_standard]
         alias_name[gui_image] = alias_match_left[gui_image]
         alias_name[gui_sound] = alias_match_left[gui_sound]
+        alias_name[gui_localization] = alias_match_left[gui_localization]
     }
 }
 ###Non-clickable icon
@@ -158,11 +317,33 @@ alias[gui:iconType] = {
     alias_name[gui_standard] = alias_match_left[gui_standard]
     alias_name[gui_localization] = alias_match_left[gui_localization]
 }
+###Unknown, seems to be only used with hardcoded things
+alias[gui:positionType] = {
+    # cardinality = ~1..1
+    name = scalar
+    position = {
+        x = int
+        y = int
+    }
+}
+###Browser, hardcoded
+alias[gui:browserType] = {
+    ### Name referenced by scripted gui
+    name = scalar
+    ##cardinality = ~1..1
+    alias_name[any_image_type] = alias_match_left[any_image_type]
+    alias_name[gui_image] = alias_match_left[gui_image]
+    alias_name[gui_standard] = alias_match_left[gui_standard]
+    alias_name[gui_localization] = alias_match_left[gui_localization]
+}
 ###Text box
 alias[gui:instantTextBoxType] = {
     ### Name referenced by scripted gui
     name = scalar
+    ## cardinality = ~1..1
     text = localisation
+    ## cardinality = ~1..1
+    text = localisation_inline
     ## cardinality = 0..1
     font = scalar
     ## cardinality = 0..1
@@ -200,21 +381,77 @@ alias[gui:instantTextBoxType] = {
     ## cardinality = 0..1
     truncate = bool
 }
+###Editable text box - only works with hardcoded HoI4 elements
+alias[gui:editBoxType] = {
+    ### Name referenced by scripted gui
+    name = scalar
+    ## cardinality = ~1..1
+    text = localisation
+    ## cardinality = ~1..1
+    text = localisation_inline
+    ## cardinality = 0..1
+    font = scalar
+    ## cardinality = 0..1
+    maxWidth = int
+    ## cardinality = 0..1
+    maxHeight = int
+    ## cardinality = 0..1
+    format = enum[guiTextFormats]
+    ## cardinality = 0..1
+    only_numbers = bool
+    ## cardinality = 0..1
+    multiline = bool
+    alias_name[gui_standard] = alias_match_left[gui_standard]
+    alias_name[gui_localization] = alias_match_left[gui_localization]
+    ## cardinality = 0..1
+    alwaystransparent = bool
+    ## cardinality = 0..1
+    #DEBUG
+    ### Pixel Border
+    borderSize = { x = int y = int }
+    ## cardinality = 0..1
+    #DEBUG
+    ### Missing Descriptiion, need testing
+    textureFile = <spriteType>
+    ## cardinality = 0..1
+    #DEBUG
+    ### Vertical alignement in text box
+    vertical_alignment = enum[guiTextFormatsVertical]
+    ## cardinality = 0..1
+    #DEBUG
+    ### Text box only scroll bar
+    scrollbartype = enum[scrollbar_types]
+    ## cardinality = 0..1
+    fixedsize = bool
+    ## cardinality = 0..1
+    text_color_code = scalar
+    ## cardinality = 0..1
+    truncate = bool
+}
 ### Checkbox
 alias[gui:checkboxType] = {
     name = scalar
+    ## cardinality = 0..1
+    buttonText = localisation
+    ## cardinality = 0..1
+    buttonText = localisation_inline
+    ## cardinality = 0..1
+    buttonFont = scalar
     alias_name[gui_standard] = alias_match_left[gui_standard]
     alias_name[gui_image] = alias_match_left[gui_image]
     alias_name[gui_sound] = alias_match_left[gui_sound]
+    alias_name[gui_localization] = alias_match_left[gui_localization]
 }
 alias[gui:extendedScrollbarType] = {
     name = scalar
     alias_name[gui_standard] = alias_match_left[gui_standard]
     background = {
+        ## cardinality = ~1..1
         name = scalar
         alias_name[gui_standard] = alias_match_left[gui_standard]
         alias_name[gui_image] = alias_match_left[gui_image]
         alias_name[gui_sound] = alias_match_left[gui_sound]
+        alias_name[gui_localization] = alias_match_left[gui_localization]
     }
     ##cardinality  = 0..1
     ###Size in px of tiling
@@ -240,6 +477,8 @@ alias[gui:extendedScrollbarType] = {
     ##cardinality  = 0..1
     ###Smoothing percentage (reduces steps)
     smooth_scrolling = float
+    ##cardinality  = 0..1
+    clickonly = bool
     ##cardinality  = 1..1
     ###Slider for scroll bar
     slider = {
@@ -266,6 +505,19 @@ alias[gui:extendedScrollbarType] = {
     increaseButton = {
         name = scalar
         alias_name[gui_image] = alias_match_left[gui_image]
+        alias_name[gui_sound] = alias_match_left[gui_sound]
+        position = {
+            x = int
+            y = int
+        }
+        alias_name[gui_localization] = alias_match_left[gui_localization]
+    }
+    ##cardinality  = 0..1
+    ###Decrease button
+    decreaseButton = {
+        name = scalar
+        alias_name[gui_image] = alias_match_left[gui_image]
+        alias_name[gui_sound] = alias_match_left[gui_sound]
         position = {
             x = int
             y = int
@@ -306,9 +558,49 @@ alias[gui_standard:size] = {
         height = percentage_field
     }
     ## cardinality = 0..1
+    max = {
+        width = int
+        width = percentage_field
+        height = int
+        height = percentage_field
+    }
+    ## cardinality = 0..1
+    preserve_aspect_ratio = bool
+}
+###Size of element. Absolute in px, % of screen, or % of parent.
+alias[gui_standard:size] = {
+    x = int
+    x = percentage_field
+    y = int
+    y = percentage_field
+    ## cardinality = 0..1
+    min = {
+        x = int
+        x = percentage_field
+        y = int
+        y = percentage_field
+    }
+    ## cardinality = 0..1
+    max = {
+        x = int
+        x = percentage_field
+        y = int
+        y = percentage_field
+    }
+    ## cardinality = 0..1
     preserve_aspect_ratio = bool
 }
 alias[gui_standard:margin] = {
+    ## cardinality = 0..1
+    top = int
+    ## cardinality = 0..1
+    bottom = int
+    ## cardinality = 0..1
+    left = int
+    ## cardinality = 0..1
+    right = int
+}
+alias[gui_standard:background_margin] = {
     ## cardinality = 0..1
     top = int
     ## cardinality = 0..1
@@ -348,11 +640,15 @@ alias[gui_image:centerposition] = bool
 
 #GUI Localization
 alias[gui_localization:pdx_tooltip] = localisation
+alias[gui_localization:pdx_tooltip] = localisation_inline
 alias[gui_localization:pdx_tooltip_delayed] = localisation
+alias[gui_localization:pdx_tooltip_delayed] = localisation_inline
 ### PDX function, use pdx_tooltip instead
 alias[gui_localization:tooltip] = localisation
+alias[gui_localization:tooltip] = localisation_inline
 ### Text ontop of elements
 alias[gui_localization:text] = localisation
+alias[gui_localization:text] = localisation_inline
 
 
 #GUI Animation
@@ -370,11 +666,9 @@ alias[gui_animation:hide_position] = {
     y = int
     y = percentage_field
 }
-alias[gui_animation:show_animation_type] = decelerated
-alias[gui_animation:hide_animation_type] = accelerated
-alias[gui_animation:hide_animation_type] = decelerated
-alias[gui_animation:show_animation_type] = accelerated
-alias[gui_animation:hide_animation_type] = linear
+alias[gui_animation:show_animation_type] = enum[animationTypes]
+alias[gui_animation:hide_animation_type] = enum[animationTypes]
+alias[gui_animation:animation_type] = enum[animationTypes]
 alias[gui_animation:animation_time] = int
 alias[gui_animation:fade_time] = int
 alias[gui_animation:fade_type] = linear
@@ -388,8 +682,15 @@ alias[gui_sound:clicksound] = scalar
 alias[gui_sound:oversound] = scalar
 
 enums = {
+    enum[animationTypes] = {
+        decelerated
+        accelerated
+        linear
+    }
     enum[containerOrientations] = {
         CENTER
+        CENTER_LEFT
+        CENTER_RIGHT
         UPPER_LEFT
         LOWER_LEFT
         UPPER_RIGHT
@@ -397,6 +698,7 @@ enums = {
         RIGHT
         LEFT
         CENTER_UP
+        CENTER_DOWN
         CENTER_LOWER
         UP
         DOWN
@@ -405,6 +707,8 @@ enums = {
         center
         center_up
         center_down
+        center_left
+        center_right
         lower_left
         lower_right
         upper_right

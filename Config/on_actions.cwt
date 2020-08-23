@@ -134,6 +134,9 @@ types = {
         ## type_key_filter = on_give_state_control
         ###
         subtype[on_give_state_control] = { }
+        ## type_key_filter = on_war_relation_added
+        ###
+        subtype[on_war_relation_added] = { }
         ## type_key_filter = on_startup
         ###
         subtype[on_startup] = { }
@@ -844,6 +847,20 @@ on_action = {
     }
     ## replace_scope = { THIS = country ROOT = country FROM = country }
     subtype[on_give_state_control] = {
+        ## cardinality = 0..1
+        random_events = {
+            ## cardinality = 0..inf
+            int = 0
+            ## cardinality = 0..inf
+            int = <event.country_event>
+        }
+        ## cardinality = 0..1
+        effect = {
+            alias_name[effect] = alias_match_left[effect]
+        }
+    }
+    ## replace_scope = { THIS = country ROOT = country FROM = country }
+    subtype[on_war_relation_added] = {
         ## cardinality = 0..1
         random_events = {
             ## cardinality = 0..inf

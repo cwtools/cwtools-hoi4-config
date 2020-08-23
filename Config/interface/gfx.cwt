@@ -52,7 +52,12 @@ spriteType = {
 		## cardinality = 0..1
 		animationrotationoffset = { x = int y = int }
 		## cardinality = 0..1
-		animationtexturescale = { x = int y = int }
+		animationtexturescale = { x = float y = float }
+		## cardinality = 0..1
+		animationframes = {
+			## cardinality = 1..inf
+			int
+		}
 	}
 	## cardinality = 0..1
 	loadType = scalar
@@ -86,5 +91,7 @@ spriteType = {
 		textureFile2 = scalar
 		size = { x = int y = int }
 		horizontal = bool
+		color = { float float float }
+		colortwo = { float float float }
 	}
 }

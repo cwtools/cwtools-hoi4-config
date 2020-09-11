@@ -11,4 +11,7 @@ modifier_categories = {
     air = {
         supported_scopes = { air }
     }
+    intelligence_agency = {
+        supported_scopes = { country unit_leader }
+    }
 }

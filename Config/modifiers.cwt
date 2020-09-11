@@ -596,4 +596,16 @@ modifiers = {
 	naval_strike_agility_factor = air
 	naval_strike_attack_factor = air
 	naval_strike_targetting_factor = air
+
+	### Operational Modifiers
+	operation_infiltrate_risk = intelligence_agency
+	operation_infiltrate_cost = intelligence_agency
+	operation_infiltrate_outcome = intelligence_agency
+	target_sabotage_factor = intelligence_agency
+	target_sabotage_risk = intelligence_agency
+	target_sabotage_cost = intelligence_agency
+	operation_steal_tech_risk = intelligence_agency
+	operation_steal_tech_cost = intelligence_agency
+	operation_steal_tech_outcome = intelligence_agency
+	operation_risk = intelligence_agency
 }

@@ -396,6 +396,7 @@ modifiers = {
 	spotting_chance = country
 	stability_factor = country
 	stability_weekly = country
+	stability_weekly_factor = country
 	starting_compliance = country
 	static_anti_air_damage_factor = country
 	static_anti_air_hit_chance_factor = country

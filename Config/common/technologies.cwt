@@ -106,7 +106,7 @@ technology = {
 	### Which folder(s) tech appears in.
 	folder = {
 		name = enum[tech_folder]
-		position = { x = int y = int }
+		position = { x = float y = float }
 	}
 	## cardinality = 0..1
 	### Is a doctrine.

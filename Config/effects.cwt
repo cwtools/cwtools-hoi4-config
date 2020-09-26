@@ -146,7 +146,7 @@ alias[effect:clr_global_flag] = value[global_flag]
 alias[effect:remove_building] = {
 	type = <building>
 	level = int_variable_field
-	
+
 	##cardinality = 0..1
 	province = enum[provinces]
 }
@@ -334,7 +334,7 @@ alias[effect:random_list] = {
 	## cardinality = 0..1
 	### enable logging the dice roll in game.log
 	log = bool
-	
+
 	## cardinality = 0..1
 	### if specified, it will use this seed instead of scope seed for picking a random
 	seed = variable_field
@@ -344,7 +344,7 @@ alias[effect:random_list] = {
 	## cardinality = 0..1
 	### if specified, it will use this seed instead of scope seed for picking a random
 	seed = random
-	
+
 	## cardinality = 0..inf
 	int = {
 		## cardinality = 0..inf

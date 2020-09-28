@@ -306,6 +306,8 @@ alias[effect:set_variable] = {
 	value_set[variable] = variable_field_32
 	value_set[variable] = scope_field
 	value_set[variable] = enum[country_tags]
+	## cardinality = 0..1
+	tooltip = localisation
 }
 ### Sets a variable to a value or another variable.
 ## scope = any
@@ -314,6 +316,8 @@ alias[effect:set_variable] = {
 	value = variable_field_32
 	value = scope_field
 	value = enum[country_tags]
+	## cardinality = 0..1
+	tooltip = localisation
 }
 
 ### A random effect.

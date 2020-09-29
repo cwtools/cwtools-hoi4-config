@@ -86,7 +86,7 @@ operation = {
 	}
 
 	### Determines whether the operation will be visible to the player, If no trigger used it will fall back to a default where it shows operations with network strength below NOperatives::INTEL_NETWORK_MIN_DEFAULT_FOR_SHOWING or when reaching half its network requirements. It will also only show operations with one level higher operation count than you currently have.
-	## replace_scope = { THIS = country ROOT = operation FROM = operation }
+	## replace_scope = { THIS = country ROOT = country FROM = country }
 	## cardinality = 0..1
 	visible = {
 		## cardinality = ~1..inf

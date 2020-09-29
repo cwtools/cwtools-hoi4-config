@@ -179,7 +179,7 @@ operation = {
 	}
 
 	## cardinality = 0..1
-	## replace_scope = { THIS = country ROOT = country FROM = country FROM.FROM = state }
+	## replace_scope = { THIS = country ROOT = country FROM = country FROMFROM = state }
 	target_weight = {
 		## cardinality = 0..1
 		enum[base_factor] = float
@@ -206,7 +206,7 @@ operation = {
 	}
 
 	### For description purposes only. This is the effect that generates that text shown as a potential reward for completing the operation
-	## replace_scope = { THIS = operation ROOT = country FROM = country FROM.FROM = state }
+	## replace_scope = { THIS = operation ROOT = country FROM = country FROMFROM = state }
 	## cardinality = 0..1
 	outcome_potential = {
 		alias_name[effect] = alias_match_left[effect]
@@ -226,14 +226,14 @@ operation = {
 	}
 
 	### Executed when the operation has completed [ once per operation ]
-	## replace_scope = { THIS = operation ROOT = country FROM = country FROM.FROM = state }
+	## replace_scope = { THIS = operation ROOT = country FROM = country FROMFROM = state }
 	## cardinality = 0..1
 	outcome_execute = {
 		alias_name[effect] = alias_match_left[effect]
 	}
 
 	### Same as outcome_execute
-	## replace_scope = { THIS = operation ROOT = country FROM = country FROM.FROM = state }
+	## replace_scope = { THIS = operation ROOT = country FROM = country FROMFROM = state }
 	## cardinality = 0..1
 	outcome_extra_execute = {
 		alias_name[effect] = alias_match_left[effect]

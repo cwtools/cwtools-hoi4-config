@@ -133,7 +133,7 @@ operation = {
 
 
 	### Determines the valid countries for province selection. If set this will enable the UI to select a target province
-	## replace_scope = { THIS = country ROOT = country FROM = country FROMFROM = state }
+	## replace_scope = { THIS = country ROOT = country FROM = country FROM.FROM = state }
 	## cardinality = 0..1
 	selection_target = {
 		targets = {
@@ -177,9 +177,9 @@ operation = {
 		## cardinality = ~1..inf
 		<operation_token>
 	}
-	
+
 	## cardinality = 0..1
-	## replace_scope = { THIS = country ROOT = country FROM = country FROMFROM = state }
+	## replace_scope = { THIS = country ROOT = country FROM = country FROM.FROM = state }
 	target_weight = {
 		## cardinality = 0..1
 		enum[base_factor] = float
@@ -199,14 +199,14 @@ operation = {
 	return_on_complete = yes
 
 	### Executed when an operation starts
-	## replace_scope = { THIS = operation ROOT = operation FROM = operation }
+	## replace_scope = { THIS = operation ROOT = country FROM = country }
 	## cardinality = 0..1
 	on_start = {
 		alias_name[effect] = alias_match_left[effect]
 	}
 
 	### For description purposes only. This is the effect that generates that text shown as a potential reward for completing the operation
-	## replace_scope = { THIS = operation ROOT = operation FROM = operation FROMFROM = state }
+	## replace_scope = { THIS = operation ROOT = country FROM = country FROM.FROM = state }
 	## cardinality = 0..1
 	outcome_potential = {
 		alias_name[effect] = alias_match_left[effect]
@@ -226,14 +226,14 @@ operation = {
 	}
 
 	### Executed when the operation has completed [ once per operation ]
-	## replace_scope = { THIS = operation ROOT = operation FROM = operation FROMFROM = state }
+	## replace_scope = { THIS = operation ROOT = country FROM = country FROM.FROM = state }
 	## cardinality = 0..1
 	outcome_execute = {
 		alias_name[effect] = alias_match_left[effect]
 	}
 
 	### Same as outcome_execute
-	## replace_scope = { THIS = operation ROOT = operation FROM = operation FROMFROM = state }
+	## replace_scope = { THIS = operation ROOT = country FROM = country FROM.FROM = state }
 	## cardinality = 0..1
 	outcome_extra_execute = {
 		alias_name[effect] = alias_match_left[effect]

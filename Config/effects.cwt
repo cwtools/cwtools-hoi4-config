@@ -1131,6 +1131,7 @@ alias[effect:add_tech_bonus] = {
 	## cardinality = 0..inf
 	technology = <technology>
 	## cardinality = 1..1
+	## severity = warning
 	name = localisation
 }
 

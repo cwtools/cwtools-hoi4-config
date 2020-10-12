@@ -129,7 +129,7 @@ alias[ai_strategy_rule:ai_strategy] = {
 }
 alias[ai_strategy_rule:ai_strategy] = {
 	type = enum[ai_diplo_strats]
-	id = enum[country_tags]
+	id = scope[country]
 	value = int
 }
 alias[ai_strategy_rule:ai_strategy] = {

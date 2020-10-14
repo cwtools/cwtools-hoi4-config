@@ -20,7 +20,7 @@ ai_strategy = {
 	## cardinality = 0..1
 	targets = {
 		## cardinality = ~1..inf
-		enum[country_tags]
+		scope[country]
 	}
 	## cardinality = 0..1
 	enable_reverse = {
@@ -129,7 +129,7 @@ alias[ai_strategy_rule:ai_strategy] = {
 }
 alias[ai_strategy_rule:ai_strategy] = {
 	type = enum[ai_diplo_strats]
-	id = enum[country_tags]
+	id = scope[country]
 	value = int
 }
 alias[ai_strategy_rule:ai_strategy] = {
@@ -139,8 +139,8 @@ alias[ai_strategy_rule:ai_strategy] = {
 }
 alias[ai_strategy_rule:ai_strategy] = {
 	type = dont_join_wars_with
-	id = enum[country_tags]
-	target_country = enum[country_tags]
+	id = scope[country]
+	target_country = scope[country]
 	value = int
 }
 alias[ai_strategy_rule:ai_strategy] = {
@@ -165,7 +165,7 @@ alias[ai_strategy_rule:ai_strategy] = {
 }
 alias[ai_strategy_rule:ai_strategy] = {
 	type = enum[diplo_action_strats]
-	id = enum[country_tags]
+	id = scope[country]
 	target = enum[diplomatic_relations]
 	value = int
 }
@@ -210,7 +210,7 @@ alias[ai_strategy_rule:ai_strategy] = {
 	type = front_control
 
 	## cardinality = 0..inf
-	tag = enum[country_tags]
+	tag = scope[country]
 
 	## cardinality = 0..inf
 	state = int
@@ -256,7 +256,7 @@ alias[ai_strategy_rule:ai_strategy] = {
 	type = enum[unit_requests]
 
 	## cardinality = 0..inf
-	tag = enum[country_tags]
+	tag = scope[country]
 
 	## cardinality = 0..inf
 	state = int
@@ -292,14 +292,12 @@ alias[ai_strategy_rule:ai_strategy] = {
 	value = int
 
 	## cardinality = 0..1
-	id = enum[country_tags]
+	id = scope[country]
 }
 alias[ai_strategy_rule:ai_strategy] = {
 	type = operative_mission
 	mission = enum[operative_missions]
 	value = int
-	## cardinality = 0..1
-	mission_target = enum[country_tags]
 	## cardinality = 0..1
 	mission_target = scope[country]
 
@@ -319,7 +317,6 @@ alias[ai_strategy_rule:ai_strategy] = {
 	# TODO
 	# operation = token:operation?
 	value = int
-	operation_target = enum[country_tags]
 	operation_target = scope[country]
 	operation_target = variable_field
 }

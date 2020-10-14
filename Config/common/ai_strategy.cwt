@@ -300,8 +300,6 @@ alias[ai_strategy_rule:ai_strategy] = {
 	value = int
 	## cardinality = 0..1
 	mission_target = scope[country]
-	## cardinality = 0..1
-	mission_target = scope[country]
 
 	## cardinality = 0..inf
 	state = int
@@ -319,7 +317,6 @@ alias[ai_strategy_rule:ai_strategy] = {
 	# TODO
 	# operation = token:operation?
 	value = int
-	operation_target = scope[country]
 	operation_target = scope[country]
 	operation_target = variable_field
 }

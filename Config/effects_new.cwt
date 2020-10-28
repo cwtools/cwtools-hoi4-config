@@ -1032,3 +1032,17 @@ alias[effect:set_temp_variable_to_random] = {
 	## cardinality = 0..1
 	integer = bool
 }
+
+###adds victory point to province
+## scopes = { any }
+alias[effect:add_victory_points] = {
+	province = enum[provinces]
+	value = variable_field_32
+}
+
+###sets victory point to province
+## scopes = { any }
+alias[effect:set_victory_points] = {
+	province = enum[provinces]
+	value = variable_field_32
+}

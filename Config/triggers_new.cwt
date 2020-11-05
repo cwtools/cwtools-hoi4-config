@@ -500,12 +500,12 @@ alias[effect:randomize_temp_variable] = {
 
 ###sets a temp variable to a random value.
 ## scopes = { any }
-alias[effect:set_temp_variable_to_random] = variable_field_32
+alias[effect:set_temp_variable_to_random] = value_set[variable]
 
 ###sets a temp variable to a random value.
 ## scopes = { any }
 alias[effect:set_temp_variable_to_random] = {
-	var = variable_field_32
+	var = value_set[variable]
 	## cardinality = 0..1
 	min = variable_field_32
 	## cardinality = 0..1

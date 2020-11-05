@@ -89,5 +89,7 @@ links = {
         data = <ideology>
         data = <equipment>
         data = <operation>
+        data = <technology>
+        data = <idea>
     }
 }

@@ -120,6 +120,7 @@ modifiers = {
 	command_power_gain = country
 	command_power_gain_mult = country
 	commando_trait_chance_factor = country
+	max_command_power_mult = country
 	compliance_gain = country
 	compliance_growth = country
 	compliance_growth_on_our_occupied_states = country

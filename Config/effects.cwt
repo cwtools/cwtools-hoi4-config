@@ -1131,6 +1131,7 @@ alias[effect:add_tech_bonus] = {
 	## cardinality = 0..inf
 	technology = <technology>
 	## cardinality = 1..1
+	## severity = warning
 	name = localisation
 }
 
@@ -3012,3 +3013,6 @@ alias[effect:retire_ideology_leader] = <ideology>
 ### Kills a ideology leader and removes him completely, making the next in line the new party leader.
 ## scope = country
 alias[effect:retire_ideology_leader] = variable_field
+
+## scope = country
+alias[effect:play_song] = scalar

@@ -1217,9 +1217,13 @@ alias[trigger:min_planning] = float
 ### Check if country has leader with specified ID. Don't localize this. Tooltip only for debug.
 ## scope = country
 alias[trigger:has_country_leader] = {
+	## cardinality = 0..1
 	id = int
 	## cardinality = 0..1
 	ruling_only = bool
+
+	## cardinality = 0..1
+	name = scalar
 }
 
 ### Check if country has leader with specified ID. Don't localize this. Tooltip only for debug.

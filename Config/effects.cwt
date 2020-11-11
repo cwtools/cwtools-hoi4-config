@@ -306,6 +306,7 @@ alias[effect:set_variable] = {
 	value_set[variable] = variable_field_32
 	value_set[variable] = scope_field
 	value_set[variable] = enum[country_tags]
+	value_set[variable] = value_set[token]
 	## cardinality = 0..1
 	tooltip = localisation
 }
@@ -316,6 +317,7 @@ alias[effect:set_variable] = {
 	value = variable_field_32
 	value = scope_field
 	value = enum[country_tags]
+	value = value_set[token]
 	## cardinality = 0..1
 	tooltip = localisation
 }
@@ -805,6 +807,11 @@ alias[effect:random_state] = {
 	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
+	}
+	## cardinality = 0..1
+	prioritize = {
+		## cardinality = 1..inf
+		<state>
 	}
 	## cardinality = 0..1
 	tooltip = localisation
@@ -2155,6 +2162,7 @@ alias[effect:set_temp_variable] = {
 	value_set[variable] = variable_field_32
 	value_set[variable] = scope_field
 	value_set[variable] = enum[country_tags]
+	value_set[variable] = value_set[token]
 }
 
 ### Sets a temp variable to a value or another variable.
@@ -2164,6 +2172,7 @@ alias[effect:set_temp_variable] = {
 	value = variable_field_32
 	value = scope_field
 	value = enum[country_tags]
+	value = value_set[token]
 }
 
 ### Add a timed trait to unit leader.

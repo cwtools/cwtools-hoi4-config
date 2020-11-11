@@ -80,4 +80,16 @@ links = {
         prefix = event_target:
         data_source = value[global_event_target]
     }
+
+    token = {
+        desc =  token_link_desc_var
+        from_data = yes
+        type = both
+        prefix = token:
+        data = <ideology>
+        data = <equipment>
+        data = <operation>
+        data = <technology>
+        data = <idea>
+    }
 }

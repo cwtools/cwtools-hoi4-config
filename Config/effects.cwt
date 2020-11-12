@@ -1009,6 +1009,8 @@ alias[effect:start_civil_war] = {
 	## push_scope = any
 	states_filter = { alias_name[trigger] = alias_match_left[trigger] }
 	## cardinality = 0..1
+	keep_political_leader = bool
+	## cardinality = 0..1
 	keep_unit_leaders = {
 		## cardinality = ~1..inf
 		value[unit_leader_ids]

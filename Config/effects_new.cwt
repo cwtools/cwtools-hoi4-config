@@ -1046,3 +1046,12 @@ alias[effect:set_victory_points] = {
 	province = enum[provinces]
 	value = variable_field_32
 }
+
+###Removes wargoals of specified type for country in scope.
+## scopes = { country }
+alias[effect:remove_wargoal] = {
+	target = scope[country]
+	target = enum[country_tags]
+	type = <wargoal>
+	type = all
+}

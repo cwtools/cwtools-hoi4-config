@@ -541,3 +541,19 @@ alias[effect:has_allowed_idea_with_traits] = {
 	### # if specified, these ideas will be ignored.
 	ignore = enum[idea_name]
 }
+
+### Is leading volunteers in the target
+## scopes = { UNIT_LEADER }
+alias[effect:is_leading_volunteer_group] = scope[country]
+
+### Is leading volunteers in the target
+## scopes = { UNIT_LEADER }
+alias[effect:is_leading_volunteer_group] = enum[country_tags]
+
+### Is leading volunteers in a country with the original tag
+## scopes = { UNIT_LEADER }
+alias[effect:is_leading_volunteer_group_with_original_country] = scope[country]
+
+### Is leading volunteers in a country with the original tag
+## scopes = { UNIT_LEADER }
+alias[effect:is_leading_volunteer_group_with_original_country] = enum[country_tags]

@@ -120,9 +120,26 @@ decision_category = {
 
 	## cardinality = 0..inf
 	on_map_area = {
-		state = <state>
 		name = localisation
 		zoom = int
+		
+		## cardinality = 0..1
+		state = <state>
+		
+		## cardinality = 0..1
+		targets = {
+			## cardinality = 0..inf
+			<state>
+		}
+
+		## cardinality = 0..inf
+		target_array = value[array]
+		
+		## cardinality = 0..1
+		## replace_scope = { this = country root = country from = state }
+		target_trigger = {
+			alias_name[trigger] = alias_match_left[trigger]
+		}
 		
 		## cardinality = 0..1
 		## replace_scope = { this = country root = country }

@@ -134,6 +134,8 @@ decision_category = {
 
 		## cardinality = 0..inf
 		target_array = value[array]
+		## cardinality = 0..inf
+		target_array = variable_field
 		
 		## cardinality = 0..1
 		## replace_scope = { this = country root = country from = state }

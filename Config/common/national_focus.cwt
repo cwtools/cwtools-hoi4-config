@@ -60,7 +60,9 @@ focus_tree = {
 
 		## cardinality = 0..inf
 		offset = {
+			## cardinality = 0..1
 			x = int
+			## cardinality = 0..1
 			y = int
 
 			trigger = {
@@ -86,7 +88,9 @@ focus_tree = {
 
 		## cardinality = 0..inf
 		offset = {
+			## cardinality = 0..1
 			x = int
+			## cardinality = 0..1
 			y = int
 			## cardinality = 0..1
 			trigger = {
@@ -247,7 +251,9 @@ shared_focus = {
 
 	## cardinality = 0..inf
 	offset = {
+		## cardinality = 0..1
 		x = int
+		## cardinality = 0..1
 		y = int
 
 		## cardinality = 0..1

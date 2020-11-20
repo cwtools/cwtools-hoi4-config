@@ -763,9 +763,17 @@ alias[effect:operative_leader_event] = {
 	## cardinality = 0..1
 	recipient = scope[country]
 
-	### The number of time to wait before firing the event, where a month is treated as 30 days.
+	### The number of hours to wait before firing the event. Note: hours, days, and months can all be used and will simply be added together.
 	## cardinality = 0..1
-	enum[hours_days_months] = int
+	hours = int
+
+	### The number of days to wait before firing the event. Note: hours, days, and months can all be used and will simply be added together.
+	## cardinality = 0..1
+	days = int
+
+	### The number of months to wait before firing the event. Note: hours, days, and months can all be used and will simply be added together.
+	## cardinality = 0..1
+	months = int
 
 	### A random amount of hours to be added to the delay before firing, from 0 up to but not including random_hours. Equivalent to random_hours. Preserverd for backwards compatibility.
 	## cardinality = 0..1

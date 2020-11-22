@@ -248,13 +248,17 @@ alias[effect:country_event] = {
 	### The event to fire.
 	id = <event.country_event>
 
-	### The number of time to wait before firing the event, where a month is treated as 30 days.
+	### The number of hours to wait before firing the event. Note: hours, days, and months can all be used and will simply be added together.
 	## cardinality = 0..1
-	enum[hours_days_months] = int
+	hours = int
 
-	### A random amount of hours to be added to the delay before firing, from 0 up to but not including random_hours. Equivalent to random_hours. Preserverd for backwards compatibility.
+	### The number of days to wait before firing the event. Note: hours, days, and months can all be used and will simply be added together.
 	## cardinality = 0..1
-	random = int
+	days = int
+
+	### The number of months to wait before firing the event. Note: hours, days, and months can all be used and will simply be added together.
+	## cardinality = 0..1
+	months = int
 
 	### A random amount of hours to be added to the delay before firing, from 0 up to but not including random_hours.
 	## cardinality = 0..1
@@ -263,6 +267,21 @@ alias[effect:country_event] = {
 	### A random amount of days to be added to the delay before firing, from 0 up to but one hour less than random_days.
 	## cardinality = 0..1
 	random_days = int
+
+	### A random amount of hours to be added to the delay before firing, from 0 up to but not including random_hours. Equivalent to random_hours. Preserverd for backwards compatibility.
+	## cardinality = 0..1
+	random = int
+
+	### Specify a set of child effects to execute as part of this effect, with a percentage chance of randomly happening or not (as a group, not individually).
+	## cardinality = 0..1
+	random = {
+		chance = int
+		alias_name[effect] = alias_match_left[effect]
+	}
+
+	### Manually specify which tooltip to use for this effect.
+	## cardinality = 0..1
+	tooltip = localisation
 }
 
 ### Fires a country event.
@@ -275,13 +294,17 @@ alias[effect:state_event] = {
 	### The event to fire.
 	id = <event.state_event>
 
-	### The number of time to wait before firing the event, where a month is treated as 30 days.
+	### The number of hours to wait before firing the event. Note: hours, days, and months can all be used and will simply be added together.
 	## cardinality = 0..1
-	enum[hours_days_months] = int
+	hours = int
 
-	### A random amount of hours to be added to the delay before firing, from 0 up to but not including random_hours. Equivalent to random_hours. Preserverd for backwards compatibility.
+	### The number of days to wait before firing the event. Note: hours, days, and months can all be used and will simply be added together.
 	## cardinality = 0..1
-	random = int
+	days = int
+
+	### The number of months to wait before firing the event. Note: hours, days, and months can all be used and will simply be added together.
+	## cardinality = 0..1
+	months = int
 
 	### A random amount of hours to be added to the delay before firing, from 0 up to but not including random_hours.
 	## cardinality = 0..1
@@ -290,6 +313,21 @@ alias[effect:state_event] = {
 	### A random amount of days to be added to the delay before firing, from 0 up to but one hour less than random_days.
 	## cardinality = 0..1
 	random_days = int
+
+	### A random amount of hours to be added to the delay before firing, from 0 up to but not including random_hours. Equivalent to random_hours. Preserverd for backwards compatibility.
+	## cardinality = 0..1
+	random = int
+
+	### Specify a set of child effects to execute as part of this effect, with a percentage chance of randomly happening or not (as a group, not individually).
+	## cardinality = 0..1
+	random = {
+		chance = int
+		alias_name[effect] = alias_match_left[effect]
+	}
+
+	### Manually specify which tooltip to use for this effect.
+	## cardinality = 0..1
+	tooltip = localisation
 
 	trigger_for = scope[country]
 	trigger_for = enum[country_tags]
@@ -441,7 +479,7 @@ alias[effect:create_country_leader] = {
 	name = scalar
 	## cardinality = 0..1
 	desc = localisation
-	## cardinality = ~1..1
+	## cardinality = 0..1
 	picture = scalar
 	ideology = enum[sub_ideology]
 	## cardinality = 0..1
@@ -900,13 +938,17 @@ alias[effect:news_event] = {
 	### The event to fire.
 	id = <event.news_event>
 
-	### The number of time to wait before firing the event, where a month is treated as 30 days.
+	### The number of hours to wait before firing the event. Note: hours, days, and months can all be used and will simply be added together.
 	## cardinality = 0..1
-	enum[hours_days_months] = int
+	hours = int
 
-	### A random amount of hours to be added to the delay before firing, from 0 up to but not including random_hours. Equivalent to random_hours. Preserverd for backwards compatibility.
+	### The number of days to wait before firing the event. Note: hours, days, and months can all be used and will simply be added together.
 	## cardinality = 0..1
-	random = int
+	days = int
+
+	### The number of months to wait before firing the event. Note: hours, days, and months can all be used and will simply be added together.
+	## cardinality = 0..1
+	months = int
 
 	### A random amount of hours to be added to the delay before firing, from 0 up to but not including random_hours.
 	## cardinality = 0..1
@@ -915,6 +957,21 @@ alias[effect:news_event] = {
 	### A random amount of days to be added to the delay before firing, from 0 up to but one hour less than random_days.
 	## cardinality = 0..1
 	random_days = int
+
+	### A random amount of hours to be added to the delay before firing, from 0 up to but not including random_hours. Equivalent to random_hours. Preserverd for backwards compatibility.
+	## cardinality = 0..1
+	random = int
+
+	### Specify a set of child effects to execute as part of this effect, with a percentage chance of randomly happening or not (as a group, not individually).
+	## cardinality = 0..1
+	random = {
+		chance = int
+		alias_name[effect] = alias_match_left[effect]
+	}
+
+	### Manually specify which tooltip to use for this effect.
+	## cardinality = 0..1
+	tooltip = localisation
 }
 
 ### Fires a news event.
@@ -2375,13 +2432,17 @@ alias[effect:unit_leader_event] = {
 	### The event to fire.
 	id = <event.unit_leader_event>
 
-	### The number of time to wait before firing the event, where a month is treated as 30 days.
+	### The number of hours to wait before firing the event. Note: hours, days, and months can all be used and will simply be added together.
 	## cardinality = 0..1
-	enum[hours_days_months] = int
+	hours = int
 
-	### A random amount of hours to be added to the delay before firing, from 0 up to but not including random_hours. Equivalent to random_hours. Preserverd for backwards compatibility.
+	### The number of days to wait before firing the event. Note: hours, days, and months can all be used and will simply be added together.
 	## cardinality = 0..1
-	random = int
+	days = int
+
+	### The number of months to wait before firing the event. Note: hours, days, and months can all be used and will simply be added together.
+	## cardinality = 0..1
+	months = int
 
 	### A random amount of hours to be added to the delay before firing, from 0 up to but not including random_hours.
 	## cardinality = 0..1
@@ -2390,6 +2451,21 @@ alias[effect:unit_leader_event] = {
 	### A random amount of days to be added to the delay before firing, from 0 up to but one hour less than random_days.
 	## cardinality = 0..1
 	random_days = int
+
+	### A random amount of hours to be added to the delay before firing, from 0 up to but not including random_hours. Equivalent to random_hours. Preserverd for backwards compatibility.
+	## cardinality = 0..1
+	random = int
+
+	### Specify a set of child effects to execute as part of this effect, with a percentage chance of randomly happening or not (as a group, not individually).
+	## cardinality = 0..1
+	random = {
+		chance = int
+		alias_name[effect] = alias_match_left[effect]
+	}
+
+	### Manually specify which tooltip to use for this effect.
+	## cardinality = 0..1
+	tooltip = localisation
 }
 
 ### Fires a unit leader event for owner country.

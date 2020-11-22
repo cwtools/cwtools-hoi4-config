@@ -91,7 +91,13 @@ spriteType = {
 		textureFile2 = scalar
 		size = { x = int y = int }
 		horizontal = bool
-		color = { float float float }
-		colortwo = { float float float }
+		color = {
+			## cardinality = 3..3
+			float
+		}
+		colortwo = {
+			## cardinality = 3..3
+			float
+		}
 	}
 }

@@ -293,6 +293,10 @@ values = {
 		party_popularity@<ideology>
 		party_popularity@ruling_party
 
+		### Popularity of targeted party. Example party_popularity@democratic. May also target ruling_party.
+		party_popularity_100@<ideology>
+		party_popularity_100@ruling_party
+
 		### Total political power of country.
 		political_power
 

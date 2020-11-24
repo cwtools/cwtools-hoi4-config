@@ -763,9 +763,17 @@ alias[effect:operative_leader_event] = {
 	## cardinality = 0..1
 	recipient = scope[country]
 
-	### The number of time to wait before firing the event, where a month is treated as 30 days.
+	### The number of hours to wait before firing the event. Note: hours, days, and months can all be used and will simply be added together.
 	## cardinality = 0..1
-	enum[hours_days_months] = int
+	hours = int
+
+	### The number of days to wait before firing the event. Note: hours, days, and months can all be used and will simply be added together.
+	## cardinality = 0..1
+	days = int
+
+	### The number of months to wait before firing the event. Note: hours, days, and months can all be used and will simply be added together.
+	## cardinality = 0..1
+	months = int
 
 	### A random amount of hours to be added to the delay before firing, from 0 up to but not including random_hours. Equivalent to random_hours. Preserverd for backwards compatibility.
 	## cardinality = 0..1
@@ -1019,12 +1027,12 @@ alias[effect:set_variable_to_random] = {
 
 ###sets a temp variable to a random value.
 ## scopes = { any }
-alias[effect:set_temp_variable_to_random] = variable_field_32
+alias[effect:set_temp_variable_to_random] = value_set[variable]
 
 ###sets a temp variable to a random value.
 ## scopes = { any }
 alias[effect:set_temp_variable_to_random] = {
-	var = variable_field_32
+	var = value_set[variable]
 	## cardinality = 0..1
 	min = variable_field_32
 	## cardinality = 0..1
@@ -1045,4 +1053,13 @@ alias[effect:add_victory_points] = {
 alias[effect:set_victory_points] = {
 	province = enum[provinces]
 	value = variable_field_32
+}
+
+###Removes wargoals of specified type for country in scope.
+## scopes = { country }
+alias[effect:remove_wargoal] = {
+	target = scope[country]
+	target = enum[country_tags]
+	type = <wargoal>
+	type = all
 }

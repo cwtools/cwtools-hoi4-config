@@ -1408,7 +1408,7 @@
 		"add_mines":	{
 			"supported_scope":	["COUNTRY"],
 			"supported_target":	["THIS", "ROOT", "PREV", "FROM", "OWNER", "CONTROLLER", "OCCUPIED", "CAPITAL"],
-			"description":	"Add mines to a strategic region for scoped country.\n add_mines = { region = 42 mines = 100 }"
+			"description":	"Add mines to a strategic region for scoped country.\n add_mines = { region = 42 amount = 100 }"
 		},
 		"set_fuel_ratio":	{
 			"supported_scope":	["COUNTRY"],

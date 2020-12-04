@@ -2624,6 +2624,9 @@ alias[effect:add_to_array] = {
 	### Optional, if not defined adds scope.
 	value = enum[country_tags]
 	## cardinality = 0..1
+	### Optional, if not defined adds scope.
+	value = value_set[token]
+	## cardinality = 0..1
 	### Optional, default is end. otherwise elements are shifted.
     index = int_variable_field_32
 }
@@ -2637,6 +2640,8 @@ alias[effect:add_to_array] = {
 	value_set[variable] = scope_field
 	value_set[array] = enum[country_tags]
 	value_set[variable] = enum[country_tags]
+	value_set[array] = value_set[token]
+	value_set[variable] = value_set[token]
 }
 
 ### Removes an element from an array using value or index.
@@ -2650,6 +2655,8 @@ alias[effect:remove_from_array] = {
 	value = scope_field
 	### Optional, use index or this. If neither it removes last element.
 	value = enum[country_tags]
+	### Optional, use index or this. If neither it removes last element.
+	value = value_set[token]
 }
 
 ### Removes an element from an array using value or index.
@@ -2657,6 +2664,7 @@ alias[effect:remove_from_array] = {
 alias[effect:remove_from_array] = {
 	array = value_set[array]
 	array = value_set[variable]
+	array = value_set[token]
 	### Optional, use value or this. If neither it removes last element.
     index = int_variable_field_32
 }
@@ -2670,6 +2678,8 @@ alias[effect:remove_from_array] = {
 	value_set[variable] = scope_field
 	value_set[array] = enum[country_tags]
 	value_set[variable] = enum[country_tags]
+	value_set[array] = value_set[token]
+	value_set[variable] = value_set[token]
 }
 
 ### Clears the contents of array.
@@ -2714,6 +2724,9 @@ alias[effect:add_to_temp_array] = {
 	### Optional, if not defined adds scope.
 	value = enum[country_tags]
 	## cardinality = 0..1
+	### Optional, if not defined adds scope.
+	value = value_set[token]
+	## cardinality = 0..1
 	### Optional, default is end. Otherwise elements are shifted.
     index = int_variable_field_32
 }
@@ -2727,6 +2740,8 @@ alias[effect:add_to_temp_array] = {
 	value_set[variable] = scope_field
 	value_set[array] = enum[country_tags]
 	value_set[variable] = enum[country_tags]
+	value_set[array] = value_set[token]
+	value_set[variable] = value_set[token]
 }
 
 ### Removes an element from a temporary array using value or index.
@@ -2740,6 +2755,8 @@ alias[effect:remove_from_temp_array] = {
 	value = scope_field
 	### Optional, use index or this. If neither it removes last element.
 	value = enum[country_tags]
+	### Optional, use index or this. If neither it removes last element.
+	value = value_set[token]
 }
 
 ### Removes an element from a temporary array using value or index.
@@ -2747,6 +2764,7 @@ alias[effect:remove_from_temp_array] = {
 alias[effect:remove_from_temp_array] = {
 	array = value_set[array]
 	array = value_set[variable]
+	array = value_set[token]
 	### Optional, use value or this. If neither it removes last element.
     index = int_variable_field_32
 }
@@ -2760,6 +2778,8 @@ alias[effect:remove_from_temp_array] = {
 	value_set[variable] = scope_field
 	value_set[array] = enum[country_tags]
 	value_set[variable] = enum[country_tags]
+	value_set[array] = value_set[token]
+	value_set[variable] = value_set[token]
 }
 
 ### Clears the contents of a temporary array.

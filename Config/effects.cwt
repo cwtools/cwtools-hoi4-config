@@ -2981,7 +2981,7 @@ alias[effect:find_highest_in_array] = {
 
 ### Add mines to a strategic region for scoped country.
 ## scope = country
-alias[effect:add_mines] = { region = <strategic_region> mines = int_variable_field }
+alias[effect:add_mines] = { region = <strategic_region> amount = int_variable_field }
 
 ### Set country's current fuel ratio relative to its capacity.
 ## scope = country

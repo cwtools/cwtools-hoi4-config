@@ -341,9 +341,13 @@ alias[effect:state_event] = <event.state_event>
 ### Sets a variable to a value or another variable.
 ## scope = any
 alias[effect:set_variable] = {
+	## cardinality = 1..2
 	value_set[variable] = variable_field_32
+	## cardinality = 1..2
 	value_set[variable] = scope_field
+	## cardinality = 1..2
 	value_set[variable] = enum[country_tags]
+	## cardinality = 1..2
 	value_set[variable] = value_set[token]
 	## cardinality = 0..1
 	tooltip = localisation
@@ -2045,6 +2049,7 @@ alias[effect:global_every_army_leader] = {
 ### Adds a value or a variable to another one.
 ## scope = any
 alias[effect:add_to_variable] = {
+	## cardinality = 1..2
 	value_set[variable] = variable_field_32
 	## cardinality = 0..1
 	tooltip = localisation
@@ -2061,6 +2066,7 @@ alias[effect:add_to_variable] = {
 ### Subtracts a value or a variable to another one.
 ## scope = any
 alias[effect:subtract_from_variable] = {
+	## cardinality = 1..2
 	value_set[variable] = variable_field_32
 	## cardinality = 0..1
 	tooltip = localisation
@@ -2077,6 +2083,7 @@ alias[effect:subtract_from_variable] = {
 ### Multiplies a variable to a value or another variable.
 ## scope = any
 alias[effect:multiply_variable] = {
+	## cardinality = 1..2
 	value_set[variable] = variable_field_32
 	## cardinality = 0..1
 	tooltip = localisation
@@ -2093,6 +2100,7 @@ alias[effect:multiply_variable] = {
 ### Divides a variable to a value or another variable.
 ## scope = any
 alias[effect:divide_variable] = {
+	## cardinality = 1..2
 	value_set[variable] = variable_field_32
 	## cardinality = 0..1
 	tooltip = localisation
@@ -2169,19 +2177,27 @@ alias[effect:add_skill_level] = int
 ### Adds a value or a variable to a temp variable.
 ## scope = any
 alias[effect:add_to_temp_variable] = {
+	## cardinality = 1..2
 	value_set[variable] = variable_field_32
+	## cardinality = 0..1
+	tooltip = localisation
 }
 ### Adds a value or a variable to a temp variable.
 ## scope = any
 alias[effect:add_to_temp_variable] = {
 	var = value_set[variable]
 	value = variable_field_32
+	## cardinality = 0..1
+	tooltip = localisation
 }
 
 ### Subtracts a value or a variable to a temp variable.
 ## scope = any
 alias[effect:subtract_from_temp_variable] = {
+	## cardinality = 1..2
 	value_set[variable] = variable_field_32
+	## cardinality = 0..1
+	tooltip = localisation
 }
 
 ### Subtracts a value or a variable to a temp variable.
@@ -2189,39 +2205,57 @@ alias[effect:subtract_from_temp_variable] = {
 alias[effect:subtract_from_temp_variable] = {
 	var = value_set[variable]
 	value = variable_field_32
+	## cardinality = 0..1
+	tooltip = localisation
 }
 
 ### Multiplies a temp variable to a value or another variable.
 ## scope = any
 alias[effect:multiply_temp_variable] = {
+	## cardinality = 1..2
 	value_set[variable] = variable_field_32
+	## cardinality = 0..1
+	tooltip = localisation
 }
 ### Multiplies a temp variable to a value or another variable.
 ## scope = any
 alias[effect:multiply_temp_variable] = {
 	var = value_set[variable]
 	value = variable_field_32
+	## cardinality = 0..1
+	tooltip = localisation
 }
 
 ### Divides a temp variable to a value or another variable.
 ## scope = any
 alias[effect:divide_temp_variable] = {
+	## cardinality = 1..2
 	value_set[variable] = variable_field_32
+	## cardinality = 0..1
+	tooltip = localisation
 }
 ### Divides a temp variable to a value or another variable.
 ## scope = any
 alias[effect:divide_temp_variable] = {
 	var = value_set[variable]
 	value = variable_field_32
+	## cardinality = 0..1
+	tooltip = localisation
 }
 
 ### Sets a temp variable to a value or another variable.
 ## scope = any
 alias[effect:set_temp_variable] = {
+	## cardinality = 1..2
 	value_set[variable] = variable_field_32
+	## cardinality = 1..2
 	value_set[variable] = scope_field
+	## cardinality = 1..2
 	value_set[variable] = enum[country_tags]
+	## cardinality = 1..2
 	value_set[variable] = value_set[token]
+	## cardinality = 0..1
+	tooltip = localisation
 }
 
 ### Sets a temp variable to a value or another variable.
@@ -2232,6 +2266,8 @@ alias[effect:set_temp_variable] = {
 	value = scope_field
 	value = enum[country_tags]
 	value = value_set[token]
+	## cardinality = 0..1
+	tooltip = localisation
 }
 
 ### Add a timed trait to unit leader.
@@ -2945,7 +2981,7 @@ alias[effect:find_highest_in_array] = {
 
 ### Add mines to a strategic region for scoped country.
 ## scope = country
-alias[effect:add_mines] = { region = <strategic_region> mines = int_variable_field }
+alias[effect:add_mines] = { region = <strategic_region> amount = int_variable_field }
 
 ### Set country's current fuel ratio relative to its capacity.
 ## scope = country

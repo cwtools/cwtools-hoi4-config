@@ -45,6 +45,11 @@ ai_strategy_plan = {
 	## cardinality = 0..1
 	desc = localisation
 
+	## cardinality = 0..1
+	allowed = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+
 	enable = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}

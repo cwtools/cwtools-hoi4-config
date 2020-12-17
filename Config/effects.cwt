@@ -248,13 +248,17 @@ alias[effect:country_event] = {
 	### The event to fire.
 	id = <event.country_event>
 
-	### The number of time to wait before firing the event, where a month is treated as 30 days.
+	### The number of hours to wait before firing the event. Note: hours, days, and months can all be used and will simply be added together.
 	## cardinality = 0..1
-	enum[hours_days_months] = int
+	hours = int
 
-	### A random amount of hours to be added to the delay before firing, from 0 up to but not including random_hours. Equivalent to random_hours. Preserverd for backwards compatibility.
+	### The number of days to wait before firing the event. Note: hours, days, and months can all be used and will simply be added together.
 	## cardinality = 0..1
-	random = int
+	days = int
+
+	### The number of months to wait before firing the event. Note: hours, days, and months can all be used and will simply be added together.
+	## cardinality = 0..1
+	months = int
 
 	### A random amount of hours to be added to the delay before firing, from 0 up to but not including random_hours.
 	## cardinality = 0..1
@@ -263,6 +267,21 @@ alias[effect:country_event] = {
 	### A random amount of days to be added to the delay before firing, from 0 up to but one hour less than random_days.
 	## cardinality = 0..1
 	random_days = int
+
+	### A random amount of hours to be added to the delay before firing, from 0 up to but not including random_hours. Equivalent to random_hours. Preserverd for backwards compatibility.
+	## cardinality = 0..1
+	random = int
+
+	### Specify a set of child effects to execute as part of this effect, with a percentage chance of randomly happening or not (as a group, not individually).
+	## cardinality = 0..1
+	random = {
+		chance = int
+		alias_name[effect] = alias_match_left[effect]
+	}
+
+	### Manually specify which tooltip to use for this effect.
+	## cardinality = 0..1
+	tooltip = localisation
 }
 
 ### Fires a country event.
@@ -275,13 +294,17 @@ alias[effect:state_event] = {
 	### The event to fire.
 	id = <event.state_event>
 
-	### The number of time to wait before firing the event, where a month is treated as 30 days.
+	### The number of hours to wait before firing the event. Note: hours, days, and months can all be used and will simply be added together.
 	## cardinality = 0..1
-	enum[hours_days_months] = int
+	hours = int
 
-	### A random amount of hours to be added to the delay before firing, from 0 up to but not including random_hours. Equivalent to random_hours. Preserverd for backwards compatibility.
+	### The number of days to wait before firing the event. Note: hours, days, and months can all be used and will simply be added together.
 	## cardinality = 0..1
-	random = int
+	days = int
+
+	### The number of months to wait before firing the event. Note: hours, days, and months can all be used and will simply be added together.
+	## cardinality = 0..1
+	months = int
 
 	### A random amount of hours to be added to the delay before firing, from 0 up to but not including random_hours.
 	## cardinality = 0..1
@@ -290,6 +313,21 @@ alias[effect:state_event] = {
 	### A random amount of days to be added to the delay before firing, from 0 up to but one hour less than random_days.
 	## cardinality = 0..1
 	random_days = int
+
+	### A random amount of hours to be added to the delay before firing, from 0 up to but not including random_hours. Equivalent to random_hours. Preserverd for backwards compatibility.
+	## cardinality = 0..1
+	random = int
+
+	### Specify a set of child effects to execute as part of this effect, with a percentage chance of randomly happening or not (as a group, not individually).
+	## cardinality = 0..1
+	random = {
+		chance = int
+		alias_name[effect] = alias_match_left[effect]
+	}
+
+	### Manually specify which tooltip to use for this effect.
+	## cardinality = 0..1
+	tooltip = localisation
 
 	trigger_for = scope[country]
 	trigger_for = enum[country_tags]
@@ -303,9 +341,14 @@ alias[effect:state_event] = <event.state_event>
 ### Sets a variable to a value or another variable.
 ## scope = any
 alias[effect:set_variable] = {
+	## cardinality = 1..2
 	value_set[variable] = variable_field_32
+	## cardinality = 1..2
 	value_set[variable] = scope_field
+	## cardinality = 1..2
 	value_set[variable] = enum[country_tags]
+	## cardinality = 1..2
+	value_set[variable] = value_set[token]
 	## cardinality = 0..1
 	tooltip = localisation
 }
@@ -316,6 +359,7 @@ alias[effect:set_variable] = {
 	value = variable_field_32
 	value = scope_field
 	value = enum[country_tags]
+	value = value_set[token]
 	## cardinality = 0..1
 	tooltip = localisation
 }
@@ -439,7 +483,7 @@ alias[effect:create_country_leader] = {
 	name = scalar
 	## cardinality = 0..1
 	desc = localisation
-	## cardinality = ~1..1
+	## cardinality = 0..1
 	picture = scalar
 	ideology = enum[sub_ideology]
 	## cardinality = 0..1
@@ -807,6 +851,11 @@ alias[effect:random_state] = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 	## cardinality = 0..1
+	prioritize = {
+		## cardinality = 1..inf
+		<state>
+	}
+	## cardinality = 0..1
 	tooltip = localisation
 	alias_name[effect] = alias_match_left[effect]
 }
@@ -893,13 +942,17 @@ alias[effect:news_event] = {
 	### The event to fire.
 	id = <event.news_event>
 
-	### The number of time to wait before firing the event, where a month is treated as 30 days.
+	### The number of hours to wait before firing the event. Note: hours, days, and months can all be used and will simply be added together.
 	## cardinality = 0..1
-	enum[hours_days_months] = int
+	hours = int
 
-	### A random amount of hours to be added to the delay before firing, from 0 up to but not including random_hours. Equivalent to random_hours. Preserverd for backwards compatibility.
+	### The number of days to wait before firing the event. Note: hours, days, and months can all be used and will simply be added together.
 	## cardinality = 0..1
-	random = int
+	days = int
+
+	### The number of months to wait before firing the event. Note: hours, days, and months can all be used and will simply be added together.
+	## cardinality = 0..1
+	months = int
 
 	### A random amount of hours to be added to the delay before firing, from 0 up to but not including random_hours.
 	## cardinality = 0..1
@@ -908,6 +961,21 @@ alias[effect:news_event] = {
 	### A random amount of days to be added to the delay before firing, from 0 up to but one hour less than random_days.
 	## cardinality = 0..1
 	random_days = int
+
+	### A random amount of hours to be added to the delay before firing, from 0 up to but not including random_hours. Equivalent to random_hours. Preserverd for backwards compatibility.
+	## cardinality = 0..1
+	random = int
+
+	### Specify a set of child effects to execute as part of this effect, with a percentage chance of randomly happening or not (as a group, not individually).
+	## cardinality = 0..1
+	random = {
+		chance = int
+		alias_name[effect] = alias_match_left[effect]
+	}
+
+	### Manually specify which tooltip to use for this effect.
+	## cardinality = 0..1
+	tooltip = localisation
 }
 
 ### Fires a news event.
@@ -1001,6 +1069,8 @@ alias[effect:start_civil_war] = {
 	## cardinality = 0..1
 	## push_scope = any
 	states_filter = { alias_name[trigger] = alias_match_left[trigger] }
+	## cardinality = 0..1
+	keep_political_leader = bool
 	## cardinality = 0..1
 	keep_unit_leaders = {
 		## cardinality = ~1..inf
@@ -1979,6 +2049,7 @@ alias[effect:global_every_army_leader] = {
 ### Adds a value or a variable to another one.
 ## scope = any
 alias[effect:add_to_variable] = {
+	## cardinality = 1..2
 	value_set[variable] = variable_field_32
 	## cardinality = 0..1
 	tooltip = localisation
@@ -1995,6 +2066,7 @@ alias[effect:add_to_variable] = {
 ### Subtracts a value or a variable to another one.
 ## scope = any
 alias[effect:subtract_from_variable] = {
+	## cardinality = 1..2
 	value_set[variable] = variable_field_32
 	## cardinality = 0..1
 	tooltip = localisation
@@ -2011,6 +2083,7 @@ alias[effect:subtract_from_variable] = {
 ### Multiplies a variable to a value or another variable.
 ## scope = any
 alias[effect:multiply_variable] = {
+	## cardinality = 1..2
 	value_set[variable] = variable_field_32
 	## cardinality = 0..1
 	tooltip = localisation
@@ -2027,6 +2100,7 @@ alias[effect:multiply_variable] = {
 ### Divides a variable to a value or another variable.
 ## scope = any
 alias[effect:divide_variable] = {
+	## cardinality = 1..2
 	value_set[variable] = variable_field_32
 	## cardinality = 0..1
 	tooltip = localisation
@@ -2103,19 +2177,27 @@ alias[effect:add_skill_level] = int
 ### Adds a value or a variable to a temp variable.
 ## scope = any
 alias[effect:add_to_temp_variable] = {
+	## cardinality = 1..2
 	value_set[variable] = variable_field_32
+	## cardinality = 0..1
+	tooltip = localisation
 }
 ### Adds a value or a variable to a temp variable.
 ## scope = any
 alias[effect:add_to_temp_variable] = {
 	var = value_set[variable]
 	value = variable_field_32
+	## cardinality = 0..1
+	tooltip = localisation
 }
 
 ### Subtracts a value or a variable to a temp variable.
 ## scope = any
 alias[effect:subtract_from_temp_variable] = {
+	## cardinality = 1..2
 	value_set[variable] = variable_field_32
+	## cardinality = 0..1
+	tooltip = localisation
 }
 
 ### Subtracts a value or a variable to a temp variable.
@@ -2123,38 +2205,57 @@ alias[effect:subtract_from_temp_variable] = {
 alias[effect:subtract_from_temp_variable] = {
 	var = value_set[variable]
 	value = variable_field_32
+	## cardinality = 0..1
+	tooltip = localisation
 }
 
 ### Multiplies a temp variable to a value or another variable.
 ## scope = any
 alias[effect:multiply_temp_variable] = {
+	## cardinality = 1..2
 	value_set[variable] = variable_field_32
+	## cardinality = 0..1
+	tooltip = localisation
 }
 ### Multiplies a temp variable to a value or another variable.
 ## scope = any
 alias[effect:multiply_temp_variable] = {
 	var = value_set[variable]
 	value = variable_field_32
+	## cardinality = 0..1
+	tooltip = localisation
 }
 
 ### Divides a temp variable to a value or another variable.
 ## scope = any
 alias[effect:divide_temp_variable] = {
+	## cardinality = 1..2
 	value_set[variable] = variable_field_32
+	## cardinality = 0..1
+	tooltip = localisation
 }
 ### Divides a temp variable to a value or another variable.
 ## scope = any
 alias[effect:divide_temp_variable] = {
 	var = value_set[variable]
 	value = variable_field_32
+	## cardinality = 0..1
+	tooltip = localisation
 }
 
 ### Sets a temp variable to a value or another variable.
 ## scope = any
 alias[effect:set_temp_variable] = {
+	## cardinality = 1..2
 	value_set[variable] = variable_field_32
+	## cardinality = 1..2
 	value_set[variable] = scope_field
+	## cardinality = 1..2
 	value_set[variable] = enum[country_tags]
+	## cardinality = 1..2
+	value_set[variable] = value_set[token]
+	## cardinality = 0..1
+	tooltip = localisation
 }
 
 ### Sets a temp variable to a value or another variable.
@@ -2164,6 +2265,9 @@ alias[effect:set_temp_variable] = {
 	value = variable_field_32
 	value = scope_field
 	value = enum[country_tags]
+	value = value_set[token]
+	## cardinality = 0..1
+	tooltip = localisation
 }
 
 ### Add a timed trait to unit leader.
@@ -2364,13 +2468,17 @@ alias[effect:unit_leader_event] = {
 	### The event to fire.
 	id = <event.unit_leader_event>
 
-	### The number of time to wait before firing the event, where a month is treated as 30 days.
+	### The number of hours to wait before firing the event. Note: hours, days, and months can all be used and will simply be added together.
 	## cardinality = 0..1
-	enum[hours_days_months] = int
+	hours = int
 
-	### A random amount of hours to be added to the delay before firing, from 0 up to but not including random_hours. Equivalent to random_hours. Preserverd for backwards compatibility.
+	### The number of days to wait before firing the event. Note: hours, days, and months can all be used and will simply be added together.
 	## cardinality = 0..1
-	random = int
+	days = int
+
+	### The number of months to wait before firing the event. Note: hours, days, and months can all be used and will simply be added together.
+	## cardinality = 0..1
+	months = int
 
 	### A random amount of hours to be added to the delay before firing, from 0 up to but not including random_hours.
 	## cardinality = 0..1
@@ -2379,6 +2487,21 @@ alias[effect:unit_leader_event] = {
 	### A random amount of days to be added to the delay before firing, from 0 up to but one hour less than random_days.
 	## cardinality = 0..1
 	random_days = int
+
+	### A random amount of hours to be added to the delay before firing, from 0 up to but not including random_hours. Equivalent to random_hours. Preserverd for backwards compatibility.
+	## cardinality = 0..1
+	random = int
+
+	### Specify a set of child effects to execute as part of this effect, with a percentage chance of randomly happening or not (as a group, not individually).
+	## cardinality = 0..1
+	random = {
+		chance = int
+		alias_name[effect] = alias_match_left[effect]
+	}
+
+	### Manually specify which tooltip to use for this effect.
+	## cardinality = 0..1
+	tooltip = localisation
 }
 
 ### Fires a unit leader event for owner country.
@@ -2858,7 +2981,7 @@ alias[effect:find_highest_in_array] = {
 
 ### Add mines to a strategic region for scoped country.
 ## scope = country
-alias[effect:add_mines] = { region = <strategic_region> mines = int_variable_field }
+alias[effect:add_mines] = { region = <strategic_region> amount = int_variable_field }
 
 ### Set country's current fuel ratio relative to its capacity.
 ## scope = country

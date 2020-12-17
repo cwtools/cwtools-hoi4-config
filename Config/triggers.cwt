@@ -1618,6 +1618,7 @@ alias[trigger:set_temp_variable] = {
 	value_set[variable] = variable_field_32
 	value_set[variable] = scope_field
 	value_set[variable] = enum[country_tags]
+	value_set[variable] = value_set[token]
 }
 
 ### Sets a temporary variable to a value or another variable.
@@ -1627,6 +1628,7 @@ alias[trigger:set_temp_variable] = {
 	value = variable_field_32
 	value = scope_field
 	value = enum[country_tags]
+	value = value_set[token]
 }
 
 ### Clamps a temp variable between two a values or another variables.

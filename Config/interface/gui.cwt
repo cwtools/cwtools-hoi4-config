@@ -24,7 +24,7 @@ containerWindowType = {
     ## cardinality = 0..inf
     ### Background texture
     background = {
-        ## cardinality = ~1..1
+        ## cardinality = 0..1
         name = scalar
         alias_name[gui_standard] = alias_match_left[gui_standard]
         alias_name[gui_image] = alias_match_left[gui_image]
@@ -340,9 +340,9 @@ alias[gui:browserType] = {
 alias[gui:instantTextBoxType] = {
     ### Name referenced by scripted gui
     name = scalar
-    ## cardinality = ~1..1
+    ## cardinality = 0..1
     text = localisation
-    ## cardinality = ~1..1
+    ## cardinality = 0..1
     text = localisation_inline
     ## cardinality = 0..1
     font = scalar
@@ -385,9 +385,9 @@ alias[gui:instantTextBoxType] = {
 alias[gui:editBoxType] = {
     ### Name referenced by scripted gui
     name = scalar
-    ## cardinality = ~1..1
+    ## cardinality = 0..1
     text = localisation
-    ## cardinality = ~1..1
+    ## cardinality = 0..1
     text = localisation_inline
     ## cardinality = 0..1
     font = scalar

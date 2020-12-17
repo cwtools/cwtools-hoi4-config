@@ -640,15 +640,15 @@ alias[gui_image:centerposition] = bool
 
 #GUI Localization
 alias[gui_localization:pdx_tooltip] = localisation
-alias[gui_localization:pdx_tooltip] = localisation_inline
+#alias[gui_localization:pdx_tooltip] = localisation_inline
 alias[gui_localization:pdx_tooltip_delayed] = localisation
-alias[gui_localization:pdx_tooltip_delayed] = localisation_inline
+#alias[gui_localization:pdx_tooltip_delayed] = localisation_inline
 ### PDX function, use pdx_tooltip instead
 alias[gui_localization:tooltip] = localisation
-alias[gui_localization:tooltip] = localisation_inline
+#alias[gui_localization:tooltip] = localisation_inline
 ### Text ontop of elements
 alias[gui_localization:text] = localisation
-alias[gui_localization:text] = localisation_inline
+#alias[gui_localization:text] = localisation_inline
 
 
 #GUI Animation

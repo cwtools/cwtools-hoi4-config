@@ -669,8 +669,8 @@ alias[gui_animation:hide_position] = {
 alias[gui_animation:show_animation_type] = enum[animationTypes]
 alias[gui_animation:hide_animation_type] = enum[animationTypes]
 alias[gui_animation:animation_type] = enum[animationTypes]
-alias[gui_animation:animation_time] = int
-alias[gui_animation:fade_time] = int
+alias[gui_animation:animation_time] = float
+alias[gui_animation:fade_time] = float
 alias[gui_animation:fade_type] = linear
 
 # GUI Sound

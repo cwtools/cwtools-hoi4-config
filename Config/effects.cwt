@@ -563,8 +563,8 @@ alias[effect:division_template] = {
 	}
 	## cardinality = 0..1
 	support = {
-		## cardinality = 0..5
-		<unit> = { x = 0 y = int[0..5] }
+		## cardinality = ~1..5
+		<unit> = { x = int[0..5] y = int[0..5] }
 	}
 	## cardinality = 0..1
 	template_counter = int

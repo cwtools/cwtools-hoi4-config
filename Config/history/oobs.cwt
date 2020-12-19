@@ -31,7 +31,7 @@ oob = {
 		## cardinality = 0..1
 		support = {
 			## cardinality = ~1..5
-			<unit> = { x = 0 y = int[0..5] }
+			<unit> = { x = int[0..5] y = int[0..5] }
 		}
 		## cardinality = 0..1
 		template_counter = int
@@ -65,7 +65,7 @@ oob = {
 			## cardinality = 0..inf
 			force_equipment_variants = {
 				## cardinality = ~1..inf
-				<equipment.regular_equip> = { 
+				<equipment.regular_equip> = {
 					owner = enum[country_tags]
 					## cardinality = 0..1
 					creator = enum[country_tags]
@@ -117,10 +117,10 @@ oob = {
 						### Order is important. Ace will be assigned to the wing above.
 						ace = {
 							modifier = <ace>
-							name = localisation_inline 
-							surname = localisation_inline 
+							name = localisation_inline
+							surname = localisation_inline
 							## cardinality = 0..1
-							callsign = localisation_inline 
+							callsign = localisation_inline
 							## cardinality = 0..1
 							portrait = int
 							## cardinality = 0..1
@@ -152,10 +152,10 @@ oob = {
 			### Order is important. Ace will be assigned to the wing above.
 			ace = {
 				modifier = <ace>
-				name = localisation_inline 
-				surname = localisation_inline 
+				name = localisation_inline
+				surname = localisation_inline
 				## cardinality = 0..1
-				callsign = localisation_inline 
+				callsign = localisation_inline
 				## cardinality = 0..1
 				portrait = int
 				## cardinality = 0..1
@@ -255,7 +255,7 @@ oob = {
 		picture = scalar
 		## cardinality = 0..1
 		portrait_path = scalar
-		
+
 		## cardinality = 0..1
 		flags = {
 			## cardinality = ~1..inf
@@ -263,7 +263,7 @@ oob = {
 				value = 1
 			}
 		}
-		
+
 		## cardinality = 0..1
 		gfx = scalar
 		### Sets starting traits for this leader. If empty, sets no traits. If missing, assigns a random trait.

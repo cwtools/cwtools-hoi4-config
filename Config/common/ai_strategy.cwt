@@ -189,6 +189,11 @@ alias[ai_strategy_rule:ai_strategy] = {
 	value = int
 }
 alias[ai_strategy_rule:ai_strategy] = {
+	type = research_tech
+	id = <technology>
+	value = int
+}
+alias[ai_strategy_rule:ai_strategy] = {
 	type = put_unit_buffers
 
 	ratio = float[0..1]

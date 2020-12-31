@@ -107,6 +107,12 @@ equipment = {
 		family = <equipment.archetype_equip>
 
 		interface_category = enum[interface_category]
+
+		## cardinality = 0..1
+		## replace_scope = { this = country root = country }
+		can_be_produced = {
+			alias_name[trigger] = alias_match_left[trigger]
+		}
 	}
 
 	subtype[air_equip] = {

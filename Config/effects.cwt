@@ -2572,6 +2572,7 @@ alias[effect:give_resource_rights] = {
 	receiver = enum[country_tags]
 	receiver = scope[country]
 	state = <state>
+	state = scope[state]
 }
 
 ### Remove resource right to state for scope country. remove_resource_rights = ID.

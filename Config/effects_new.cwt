@@ -322,6 +322,16 @@ alias[effect:teleport_armies] = {
 	to_province = enum[provinces]
 }
 
+###teleport armies in state to another state or province. example :teleport_armies = {   #only define one. if neither is defined will teleport to unit to their capital  to_state = 123 #id of the state to teleport  to_state_array = array_name #an array of states to teleport (will be randomly picked)  to_province = 123 #id of the province to teleport  limit = {      # trigger will be checked for owner of armies and will only teleport if true. scope if the owner of the army and prev is the scope that calls teleport_armies  } }
+## scopes = { STATE }
+alias[effect:teleport_armies] = {
+	## cardinality = 0..1
+	## push_scope = country
+	limit = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+}
+
 ###Executes children effects on every controlled state that fulfills the "limit" trigger. tooltip=key can be added to override tooltip title
 ## scopes = { COUNTRY }
 ## push_scope = state

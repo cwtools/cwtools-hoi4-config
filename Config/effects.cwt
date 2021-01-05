@@ -1580,6 +1580,14 @@ alias[effect:add_equipment_to_stockpile] = {
 alias[effect:swap_ideas] = {
 	remove_idea = enum[idea_name]
 	add_idea = enum[idea_name]
+
+	### Adds/subtracts X days from the new idea's timeout
+	## cardinality = 0..1
+	add_days = int
+
+	### Sets X days as the new idea's timeout
+	## cardinality = 0..1
+	days = int
 }
 
 ### Damages buildings in the current state.

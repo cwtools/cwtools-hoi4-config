@@ -5,6 +5,7 @@ modifiers = {
 	agency_upgrade_time = country
 	ai_badass_factor = country
 	ai_call_ally_desire_factor = country
+	ai_desired_divisions_factor = country
 	ai_focus_aggressive_factor = country
 	ai_focus_aviation_factor = country
 	ai_focus_defense_factor = country

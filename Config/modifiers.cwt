@@ -627,4 +627,26 @@ modifiers = {
 	operation_risk = intelligence_agency
 	operation_coordinated_strike_outcome = intelligence_agency
 	operation_coup_cost = intelligence_agency
+
+	##MD Unique modifiers
+	corruption_cost_factor = country
+	economic_cycles_cost_factor = country
+	internal_factions_cost_factor = country
+	bureaucracy_cost_factor = country
+	Military_Spending_cost_factor = country
+	crime_fighting_cost_factor = country
+	education_budget_cost_factor = country
+	health_budget_cost_factor = country
+	social_budget_cost_factor = country
+	trade_laws_cost_factor = country
+	Conscription_Law_cost_factor = country
+	Military_Status_Women_cost_factor = country
+	Foreign_Intervention_Law_cost_factor = country
+	Officer_Training_Law_cost_factor = country
+	Infantry_Weapon_Company_cost_factor = country
+	Vehicle_Company_cost_factor = country
+	Aircraft_Company_cost_factor = country
+	Helicopter_Company_cost_factor = country
+	Ship_Company_cost_factor = country
+	Submarine_Company_cost_factor = country
 }

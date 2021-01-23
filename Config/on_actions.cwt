@@ -238,7 +238,11 @@ types = {
         subtype[on_paradrop] = { }
         ## type_key_filter = on_ruling_party_change
         ###
-        subtype[on_ruling_party_change] = { }
+		subtype[on_ruling_party_change] = { }
+		## type_key_filter = on_stage_coup
+		###
+		subtype[on_stage_coup] = { }
+
     }
 }
 on_action = {
@@ -1345,5 +1349,19 @@ on_action = {
         effect = {
             alias_name[effect] = alias_match_left[effect]
         }
-    }
+	}
+
+	subtype[on_stage_coup] = {
+		## cardinality = 0..1
+		random_events = {
+            ## cardinality = 0..inf
+            int = 0
+            ## cardinality = 0..inf
+            int = <event.country_event>
+        }
+        ## cardinality = 0..1
+        effect = {
+            alias_name[effect] = alias_match_left[effect]
+        }
+	}
 }

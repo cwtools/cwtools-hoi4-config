@@ -325,6 +325,7 @@ alias[ai_strategy_rule:ai_strategy] = {
 	operation_target = scope[country]
 	operation_target = variable_field
 }
+
 enums = {
 	enum[ai_diplo_strats] = {
 		alliance
@@ -399,15 +400,6 @@ enums = {
 	}
 	enum[naval_mission_strats] = {
 		naval_mission_threshold
-	}
-	enum[naval_missions] = {
-		MISSION_TRAINING
-		MISSION_PATROL
-		MISSION_STRIKE_FORCE
-		MISSION_CONVOY_ESCORT
-		MISSION_CONVOY_RAIDING
-		MISSION_MINES_PLANTING
-		MISSION_MINES_SWEEPING
 	}
 	enum[ai_role_strats] = {
 		role_ratio

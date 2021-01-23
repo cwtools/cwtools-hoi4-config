@@ -39,7 +39,13 @@ enums = {
 	}
 
 	enum[naval_missions] = {
+		"MISSION_TRAINING"
+		"MISSION_PATROL"
+		"MISSION_STRIKE_FORCE"
 		"MISSION_CONVOY_ESCORT"
+		"MISSION_CONVOY_RAIDING"
+		"MISSION_MINES_PLANTING"
+		"MISSION_MINES_SWEEPING"
 	}
 
 	enum[equipment_categories] = {

@@ -6,6 +6,7 @@ enums = {
 		"Waking the Tiger"
 		"Man the Guns"
 		"La Resistance"
+		"Battle for the Bosporus"
 	}
 
 	enum[hours_days_months] = {

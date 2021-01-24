@@ -393,6 +393,7 @@ modifiers = {
 	send_volunteer_size = country
 	send_volunteers_tension = country
 	ships_at_battle_start = country
+	shore_bombardment_bonus = country
 	sortie_efficiency = country
 	special_forces_attack_factor = country
 	special_forces_cap = country

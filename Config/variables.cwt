@@ -24,28 +24,28 @@ values = {
 		# =========================
 
 		### Weight for an AI attitude attitude_allied against country. Example: GER.ai_attitude_allied_weight@ENG.
-		ai_attitude_allied_weight@enum[country_tags]
+		ai_attitude_allied_weight@scope[country]
 
 		### Weight for an AI attitude attitude_friendly against country. Example: GER.ai_attitude_friendly_weight@ENG.
-		ai_attitude_friendly_weight@enum[country_tags]
+		ai_attitude_friendly_weight@scope[country]
 
 		### Weight for an AI attitude attitude_hostile against country. Example: GER.ai_attitude_hostile_weight@ENG.
-		ai_attitude_hostile_weight@enum[country_tags]
+		ai_attitude_hostile_weight@scope[country]
 
 		### Returns 1 if AI is threatened.
 		ai_attitude_is_threatened
 
 		### Weight for an AI attitude attitude_neutral against country. Example: GER.ai_attitude_neutral_weight@ENG.
-		ai_attitude_neutral_weight@enum[country_tags]
+		ai_attitude_neutral_weight@scope[country]
 
 		### Weight for an AI attitude attitude_outraged against country. Example: GER.ai_attitude_outraged_weight@ENG.
-		ai_attitude_outraged_weight@enum[country_tags]
+		ai_attitude_outraged_weight@scope[country]
 
 		### Weight for an AI attitude attitude_protective against country. Example: GER.ai_attitude_protective_weight@ENG.
-		ai_attitude_protective_weight@enum[country_tags]
+		ai_attitude_protective_weight@scope[country]
 
 		### Weight for an AI attitude attitude_threatened against country. Example: GER.ai_attitude_threatened_weight@ENG.
-		ai_attitude_threatened_weight@enum[country_tags]
+		ai_attitude_threatened_weight@scope[country]
 
 		### Returns 1 if AI wants ally.
 		ai_attitude_wants_ally
@@ -66,73 +66,73 @@ values = {
 		ai_desire_<resource>
 
 		### AI strategy value activate_crypto against country. Example: GER.ai_strategy_activate_crypto@ENG.
-		ai_strategy_activate_crypto@enum[country_tags]
+		ai_strategy_activate_crypto@scope[country]
 
 		### AI strategy value alliance against country. Example: GER.ai_strategy_alliance@ENG.
-		ai_strategy_alliance@enum[country_tags]
+		ai_strategy_alliance@scope[country]
 
 		### AI strategy value antagonize against country. Example: GER.ai_strategy_antagonize@ENG.
-		ai_strategy_antagonize@enum[country_tags]
+		ai_strategy_antagonize@scope[country]
 
 		### AI strategy value befriend against country. Example: GER.ai_strategy_befriend@ENG.
-		ai_strategy_befriend@enum[country_tags]
+		ai_strategy_befriend@scope[country]
 
 		### AI strategy value conquer against country. Example: GER.ai_strategy_conquer@ENG.
-		ai_strategy_conquer@enum[country_tags]
+		ai_strategy_conquer@scope[country]
 
 		### AI strategy value consider_weak against country. Example: GER.ai_strategy_consider_weak@ENG.
-		ai_strategy_consider_weak@enum[country_tags]
+		ai_strategy_consider_weak@scope[country]
 
 		### AI strategy value contain against country. Example: GER.ai_strategy_contain@ENG.
-		ai_strategy_contain@enum[country_tags]
+		ai_strategy_contain@scope[country]
 
 		### AI strategy value declare_war against country. Example: GER.ai_strategy_declare_war@ENG.
-		ai_strategy_declare_war@enum[country_tags]
+		ai_strategy_declare_war@scope[country]
 
 		### AI strategy value decrypt_target against country. Example: GER.ai_strategy_decrypt_target@ENG.
-		ai_strategy_decrypt_target@enum[country_tags]
+		ai_strategy_decrypt_target@scope[country]
 
 		### AI strategy value dont_defend_ally_borders against country. Example: GER.ai_strategy_dont_defend_ally_borders@ENG.
-		ai_strategy_dont_defend_ally_borders@enum[country_tags]
+		ai_strategy_dont_defend_ally_borders@scope[country]
 
 		### AI strategy value force_defend_ally_borders against country. Example: GER.ai_strategy_force_defend_ally_borders@ENG.
-		ai_strategy_force_defend_ally_borders@enum[country_tags]
+		ai_strategy_force_defend_ally_borders@scope[country]
 
 		### AI strategy value ignore against country. Example: GER.ai_strategy_ignore@ENG.
-		ai_strategy_ignore@enum[country_tags]
+		ai_strategy_ignore@scope[country]
 
 		### AI strategy value ignore_claim against country. Example: GER.ai_strategy_ignore_claim@ENG.
-		ai_strategy_ignore_claim@enum[country_tags]
+		ai_strategy_ignore_claim@scope[country]
 
 		### AI strategy value influence against country. Example: GER.ai_strategy_influence@ENG.
-		ai_strategy_influence@enum[country_tags]
+		ai_strategy_influence@scope[country]
 
 		### AI strategy value invade against country. Example: GER.ai_strategy_invade@ENG.
-		ai_strategy_invade@enum[country_tags]
+		ai_strategy_invade@scope[country]
 
 		### AI strategy value occupation_policy against country. Example: GER.ai_strategy_occupation_policy@ENG.
-		ai_strategy_occupation_policy@enum[country_tags]
+		ai_strategy_occupation_policy@scope[country]
 
 		### AI strategy value prepare_for_war against country. Example: GER.ai_strategy_prepare_for_war@ENG.
-		ai_strategy_prepare_for_war@enum[country_tags]
+		ai_strategy_prepare_for_war@scope[country]
 
 		### AI strategy value protect against country. Example: GER.ai_strategy_protect@ENG.
-		ai_strategy_protect@enum[country_tags]
+		ai_strategy_protect@scope[country]
 
 		### AI strategy value send_volunteers_desire against country. Example: GER.ai_strategy_send_volunteers_desire@ENG.
-		ai_strategy_send_volunteers_desire@enum[country_tags]
+		ai_strategy_send_volunteers_desire@scope[country]
 
 		### AI strategy value support against country. Example: GER.ai_strategy_support@ENG.
-		ai_strategy_support@enum[country_tags]
+		ai_strategy_support@scope[country]
 
 		### Air intel against a target country. example GER.air_intel@ENG.
-		air_intel@enum[country_tags]
+		air_intel@scope[country]
 
 		### Army experience of a country.
 		army_experience
 
 		### Army intel against a target country. example GER.army_intel@ENG.
-		army_intel@enum[country_tags]
+		army_intel@scope[country]
 
 		# Country-scope
 		### Autonomy of scope country. -1 if not a subject.
@@ -142,7 +142,7 @@ values = {
 		capital
 
 		### Civilian intel against a target country. example GER.civilian_intel@ENG.
-		civilian_intel@enum[country_tags]
+		civilian_intel@scope[country]
 
 		### Total command power of country.
 		command_power
@@ -224,7 +224,7 @@ values = {
 		navy_experience
 
 		### Navy intel against a target country. example GER.navy_intel@ENG.
-		navy_intel@enum[country_tags]
+		navy_intel@scope[country]
 
 		### Number of armies.
 		num_armies
@@ -281,7 +281,7 @@ values = {
 		num_target_equipment_in_armies_k@<equipment>
 
 		### Opinion of a country targeted on another one. Example GER.opinion@ENG.
-		opinion@enum[country_tags]
+		opinion@scope[country]
 
 		### Returns the original tag of a country.
 		original_tag
@@ -364,7 +364,7 @@ values = {
 		days_since_capitulated
 
 		### (Trigger) Checks decryption ratio against a country. Example:  decryption_progress@GER.
-		decryption_progress@enum[country_tags]
+		decryption_progress@scope[country]
 
 		### (Trigger) Compares the estimated navy strength between the scope country and all its enemies.
 		enemies_naval_strength_ratio
@@ -385,7 +385,7 @@ values = {
 		has_added_tension_amount
 
 		### (Trigger) Checks the collaboration in a target country with our currently scoped country. Example has_collaboration@GER.
-		has_collaboration@enum[country_tags]
+		has_collaboration@scope[country]
 
 		### (Trigger) Check scope country legitimacy 0-100: Example has_legitimacy < 60.
 		has_legitimacy
@@ -412,7 +412,7 @@ values = {
 		mine_threat
 
 		### (Trigger) Will compare towards the amount of divisions a country has control over, if strength matters use has_army_size.
-		network_national_coverage@enum[country_tags]
+		network_national_coverage@scope[country]
 
 		### (Trigger) Will compare towards the amount of divisions a country has control over, if strength matters use has_army_size.
 		num_divisions
@@ -860,10 +860,10 @@ values = {
 		subjects
 
 		### Array of subjects of a tag.
-		subject_countries@enum[country_tags]
+		subject_countries@scope[country]
 
 		### Array of states onwned by subjects of a tag.
-		subject_states@enum[country_tags]
+		subject_states@scope[country]
 
 		#State dynamic variables
 		### Array of countries with cores on the scope state.

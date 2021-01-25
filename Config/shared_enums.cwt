@@ -27,6 +27,8 @@ enums = {
 		military_access
 		docking_rights
 		declare_war
+		join_allies
+		call_allies
 	}
 
 	enum[add_factor] = {

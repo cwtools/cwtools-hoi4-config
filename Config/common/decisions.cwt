@@ -177,6 +177,8 @@ decision = {
 	## cardinality = 0..1
 	name = localisation
 	## cardinality = 0..1
+	desc = localisation
+	## cardinality = 0..1
 	fire_only_once = bool
 
 	subtype[country] = {

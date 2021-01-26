@@ -99,5 +99,6 @@ spriteType = {
 			## cardinality = 3..3
 			float
 		}
+		steps = int
 	}
 }

@@ -140,6 +140,7 @@ values = {
 
 		### Capital state of the country
 		capital
+		historical_capital_for_country
 
 		### Civilian intel against a target country. example GER.civilian_intel@ENG.
 		civilian_intel@scope[country]
@@ -281,6 +282,11 @@ values = {
 		num_target_equipment_in_armies_k@<equipment>
 
 		### Opinion of a country targeted on another one. Example GER.opinion@ENG.
+		opinion@enum[country_tags]
+		opinion@ROOT
+		opinion@FROM
+		opinion@PREV
+		opinion@THIS
 		opinion@scope[country]
 
 		### Returns the original tag of a country.

@@ -308,7 +308,7 @@ alias[effect:teleport_armies] = {
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
-	to_state_array = variable_field
+	to_state_array = value_set[array]
 }
 
 ###teleport armies in state to another state or province. example :teleport_armies = {   #only define one. if neither is defined will teleport to unit to their capital  to_state = 123 #id of the state to teleport  to_state_array = array_name #an array of states to teleport (will be randomly picked)  to_province = 123 #id of the province to teleport  limit = {      # trigger will be checked for owner of armies and will only teleport if true. scope if the owner of the army and prev is the scope that calls teleport_armies  } }
@@ -1021,12 +1021,12 @@ alias[effect:set_leader_description] = localisation
 
 ###sets a variable to a random value.
 ## scopes = { any }
-alias[effect:set_variable_to_random] = variable_field_32
+alias[effect:set_variable_to_random] = value_set[variable]
 
 ###sets a variable to a random value.
 ## scopes = { any }
 alias[effect:set_variable_to_random] = {
-	var = variable_field_32
+	var = value_set[variable]
 	## cardinality = 0..1
 	min = variable_field_32
 	## cardinality = 0..1

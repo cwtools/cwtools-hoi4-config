@@ -363,6 +363,31 @@ enums = {
 		light_cruiser
 		screen_ship
 		submarine
+
+		attack_submarine
+		diesel_attack_submarine
+		missile_submarine
+		Nuclear_carrier
+		carrier
+		LHA
+		LPD
+		nuclear_cruiser
+		cruiser
+		destroyer
+		frigate
+		corvette
+
+		corvette_mtg
+		helicopter_operator_mtg
+		battleship_mtg
+		battle_cruiser_mtg
+		cruiser_mtg
+		stealth_destroyer_mtg
+		destroyer_mtg
+		frigate_mtg
+		corvette_mtg
+		missile_submarine_mtg
+		attack_submarine_mtg
 	}
 	complex_enum[unit_category] = {
 		path = "game/common/unit_tags"

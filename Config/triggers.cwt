@@ -1185,6 +1185,8 @@ alias[trigger:has_resources_amount] = {
 	amount = int
 	state = scope[state]
 	state = <state>
+	## cardinality = 0..1
+	delivered = bool
 }
 
 ### Checks for amount of resources in specified state.
@@ -1192,6 +1194,8 @@ alias[trigger:has_resources_amount] = {
 alias[trigger:has_resources_amount] = {
 	resource = <resource>
 	amount = int
+	## cardinality = 0..1
+	delivered = bool
 }
 
 ### Checks if the country has a bonus for the specified technology or category.

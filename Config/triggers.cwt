@@ -716,6 +716,8 @@ alias[trigger:free_building_slots] = {
 	size = int
 	## cardinality = 0..1
 	include_locked = bool
+	## cardinality = 0..1
+	province = enum[provinces]
 }
 
 ### Checks if a state is a demilitarized zone.

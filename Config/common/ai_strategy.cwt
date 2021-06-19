@@ -330,6 +330,7 @@ alias[ai_strategy_rule:ai_strategy] = {
 	operation_target = scope[country]
 	operation_target = variable_field
 }
+
 enums = {
 	enum[ai_diplo_strats] = {
 		alliance

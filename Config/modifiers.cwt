@@ -352,6 +352,7 @@ modifiers = {
 	planning_speed = country
 	pocket_penalty = country
 	political_advisor_cost_factor = country
+	political_leader_cost_factor = country
 	political_power_cost = country
 	political_power_factor = country
 	political_power_gain = country

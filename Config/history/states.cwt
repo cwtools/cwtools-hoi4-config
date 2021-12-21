@@ -54,16 +54,17 @@ state = {
 			## cardinality = 0..1
 			buildings = {
 				## cardinality = 0..inf
-				<building> = int[0..20]
+				<building.state> = int[0..20]
 				## cardinality = 0..inf
 				enum[provinces] = {
 					## cardinality = 0..inf
-					<building> = int[0..20]
+					<building.provincial> = int[0..20]
 				}
 			}
 			alias_name[effect] = alias_match_left[effect]
 		}
 	}
+	local_supplies = float[0..20]
 	provinces = {
 		## cardinality = ~1..inf
 		enum[provinces]

@@ -28,6 +28,9 @@ technology = {
 	xp_research_cost = int
 	## cardinality = 0..1
 	xp_research_bonus = float
+	subtype[doctrine] = {
+		xp_unlock_cost = int
+	}
 
 	## cardinality = 0..1
 	### Hides technology unless trigger is true.
@@ -47,13 +50,13 @@ technology = {
 		## cardinality = ~1..inf
 		<technology>
 	}
-	## cardinality = 0..1
+	## cardinality = 0..inf
 	### Enables listed units.
 	enable_subunits = {
 		## cardinality = ~1..inf
 		<unit>
 	}
-	## cardinality = 0..1
+	## cardinality = 0..inf
 	### Enables listed equipment.
 	enable_equipments = {
 		## cardinality = ~1..inf
@@ -66,7 +69,7 @@ technology = {
 		<module>
 	}
 
-	## cardinality = 0..1
+	## cardinality = 0..inf
 	### Sets max level of named building.
 	enable_building = {
 		building = <building>

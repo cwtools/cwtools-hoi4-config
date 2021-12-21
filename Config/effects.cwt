@@ -3150,11 +3150,11 @@ alias[effect:add_ai_strategy] = {
 	value = int
 }
 
-# ### Effect not shown in tooltips.
-# ## scope = any
-# alias[effect:hidden_effect] = {
-# 	alias_name[effect] = alias_match_left[effect]
-# }
+### Effect not shown in tooltips.
+## scope = any
+alias[effect:hidden_effect] = {
+	alias_name[effect] = alias_match_left[effect]
+}
 
 ### Adds legitimacy to scope country. Value has to be 0-100.
 ## scope = country

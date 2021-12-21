@@ -96,6 +96,19 @@ equipment = {
 		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	}
 
+	## cardinality = 0..1
+	## replace_scope = { this = country root = country }
+	can_be_produced = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	## cardinality = 0..1
+	## replace_scope = { this = country root = country }
+	can_be_lend_leased = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	## cardinality = 0..1
+	supply_truck = bool
+
 	subtype[archetype_equip] = {
 		### GFX reference used to define equipment picture in land-lease.
 		picture = scalar
@@ -108,11 +121,6 @@ equipment = {
 
 		interface_category = enum[interface_category]
 
-		## cardinality = 0..1
-		## replace_scope = { this = country root = country }
-		can_be_produced = {
-			alias_name[trigger] = alias_match_left[trigger]
-		}
 	}
 
 	subtype[air_equip] = {
@@ -123,6 +131,8 @@ equipment = {
 	}
 
 	subtype[regular_equip] = {
+		## cardinality = 0..1
+		abbreviation = localisation
 		### Which archetype equipment this equipment inherits from.
 		archetype = <equipment.archetype_equip>
 

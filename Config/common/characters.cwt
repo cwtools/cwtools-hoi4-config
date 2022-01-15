@@ -45,7 +45,6 @@ types = {
         }
 		## only_if_not = { corps_commander navy_leader }
 		subtype[field_marshal] = {
-			## cardinality = ~2..inf
 			field_marshal = {
 
 			}
@@ -115,6 +114,8 @@ character = {
 		## cardinality = 1..inf
 		country_leader = {
 			ideology = enum[sub_ideology]
+			## cardinality = 0..1
+			desc = localisation
 			## cardinality = 0..1
 			expire = date_field
 			### Sets starting traits for this leader.
@@ -306,6 +307,8 @@ character = {
 				## cardinality = 1..inf
 				country_leader = {
 					ideology = enum[sub_ideology]
+					## cardinality = 0..1
+					desc = localisation
 					## cardinality = 0..1
 					expire = date_field
 					### Sets starting traits for this leader.

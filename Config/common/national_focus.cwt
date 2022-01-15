@@ -41,7 +41,7 @@ focus_tree = {
 	## cardinality = 0..inf
 	shared_focus = <shared_focus>
 
-	## cardinality = ~1..1
+	## cardinality = 0..1
 	continuous_focus_position = {
 		x = int
 		y = int

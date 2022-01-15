@@ -1,11 +1,11 @@
 ## scope = country
 ## push_scope = state
 alias[effect:every_core_state] = {
-	## cardinality 0..1
+	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
-	## cardinality 0..1
+	## cardinality = 0..1
 	tooltip = localisation
 	alias_name[effect] = alias_match_left[effect]
 }
@@ -13,16 +13,16 @@ alias[effect:every_core_state] = {
 ## scope = country
 ## push_scope = state
 alias[effect:random_core_state] = {
-	## cardinality 0..1
+	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
-	## cardinality 0..1
+	## cardinality = 0..1
 	prioritize = {
-		## cardinality 1..inf
+		## cardinality = 1..inf
 		<state>
 	}
-	## cardinality 0..1
+	## cardinality = 0..1
 	tooltip = localisation
 	alias_name[effect] = alias_match_left[effect]
 }
@@ -71,16 +71,28 @@ alias[effect:uncomplete_national_focus] = {
 	### Default is no. If yes, the country is refunded the political power invested in the current focus if it's canceled as a result of its prerequisites being uncompleted.
 	## cardinality = 0..1
 	refund_political_power = bool
+	uses = int
+	cost_reduction = float
 }
+
+## scope = country
+alias[effect:add_doctrine_cost_reduction] = {
+	name = localisation
+	uses = int
+	cost_reduction = float[0..1]
+	### Doctrine categories only
+	category = enum[tech_category]
+}
+
 
 ## scope = country
 ## push_scope = character
 alias[effect:every_character] = {
-	## cardinality 0..1
+	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
-	## cardinality 0..1
+	## cardinality = 0..1
 	tooltip = localisation
 	alias_name[effect] = alias_match_left[effect]
 }
@@ -88,11 +100,11 @@ alias[effect:every_character] = {
 ## scope = country
 ## push_scope = character
 alias[effect:random_character] = {
-	## cardinality 0..1
+	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
-	## cardinality 0..1
+	## cardinality = 0..1
 	tooltip = localisation
 	alias_name[effect] = alias_match_left[effect]
 }
@@ -100,11 +112,11 @@ alias[effect:random_character] = {
 ## scope = { character country }
 alias[effect:add_corps_commander_role] = {
 	### required in country scope, optional in character scope
-	## cardinality 0..1
+	## cardinality = 0..1
 	character = <character>
-	## cardinality 0..1
+	## cardinality = 0..1
 	traits = {
-		## cardinality ~1..inf
+		## cardinality = ~1..inf
 		<unit_leader_trait>
 	}
 	skill = int_variable_field
@@ -117,11 +129,11 @@ alias[effect:add_corps_commander_role] = {
 ## scope = { character country }
 alias[effect:add_field_marshal_role] = {
 	### required in country scope, optional in character scope
-	## cardinality 0..1
+	## cardinality = 0..1
 	character = <character>
-	## cardinality 0..1
+	## cardinality = 0..1
 	traits = {
-		## cardinality ~1..inf
+		## cardinality = ~1..inf
 		<unit_leader_trait>
 	}
 	skill = int_variable_field
@@ -134,11 +146,11 @@ alias[effect:add_field_marshal_role] = {
 ## scope = { character country }
 alias[effect:add_naval_commander_role] = {
 	### required in country scope, optional in character scope
-	## cardinality 0..1
+	## cardinality = 0..1
 	character = <character>
-	## cardinality 0..1
+	## cardinality = 0..1
 	traits = {
-		## cardinality ~1..inf
+		## cardinality = ~1..inf
 		<unit_leader_trait>
 	}
 	skill = int_variable_field
@@ -151,19 +163,19 @@ alias[effect:add_naval_commander_role] = {
 ## scope = { character country }
 alias[effect:add_country_leader_role] = {
 	### required in country scope, optional in character scope
-	## cardinality 0..1
+	## cardinality = 0..1
 	character = <character>
 	### makes character lead their ideology party, default no
-	## cardinality 0..1
+	## cardinality = 0..1
 	promote_leader = bool
 	country_leader = {
 		ideology = enum[sub_ideology]
-		## cardinality 0..1
+		## cardinality = 0..1
 		traits = {
-			## cardinality ~1..inf
+			## cardinality = ~1..inf
 			<country_leader_trait>
 		}
-		## cardinality 0..1
+		## cardinality = 0..1
 		expire = date_field
 	}
 }
@@ -171,10 +183,10 @@ alias[effect:add_country_leader_role] = {
 ## scope = { character country }
 alias[effect:add_advisor_role] = {
 	### required in country scope, optional in character scope
-	## cardinality 0..1
+	## cardinality = 0..1
 	character = <character>
 	### hires advisor bypassing cost, default no
-	## cardinality 0..1
+	## cardinality = 0..1
 	activate = bool
 	advisor = {
 		slot = value[character_advisor_slot]
@@ -307,3 +319,19 @@ alias[effect:add_trait] = {
 	## cardinality = 0..1
 	slot = value[character_advisor_slot]
 }
+
+### Transfers character from scope country to target_country
+## scope = { country }
+alias[effect:set_nationality] = {
+	target_country = scope[country]
+	target_country = enum[country_tags]
+	character = <character>
+}
+
+### Transfers scoped character from PREV country to target
+## scope = { character }
+alias[effect:set_nationality] = scope[country]
+	target_country = enum[country_tags]
+### Transfers scoped character from PREV country to target
+## scope = { character }
+alias[effect:set_nationality] = enum[country_tags]

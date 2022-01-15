@@ -15,10 +15,10 @@ alias[effect:custom_effect_tooltip] = localisation
 
 ### Move capital to state.
 ## scope = country
-alias[effect:set_capital] = scope[state]
+alias[effect:set_capital] = { state = scope[state] }
 ### Move capital to state.
 ## scope = country
-alias[effect:set_capital] = <state>
+alias[effect:set_capital] = { state = <state> }
 
 ### Add core on state.
 ## scope = country

@@ -1,0 +1,98 @@
+### Check if any of the country's core states meet the trigger.
+## scope = country
+## push_scope = state
+alias[trigger:any_core_state] = {
+	## cardinality = 0..1
+	tooltip = localisation
+	alias_name[trigger] = alias_match_left[trigger]
+}
+
+### Check if all of the country's core states meet the trigger.
+## scope = country
+## push_scope = state
+alias[trigger:all_core_state] = {
+    ## cardinality = 0..1
+	tooltip = localisation
+	alias_name[trigger] = alias_match_left[trigger]
+}
+
+### check if any subject country meets the trigger.
+## scope = country
+## push_scope = country
+alias[trigger:any_subject_country] = {
+    ## cardinality = 0..1
+    tooltip = localisation
+    alias_name[trigger] = alias_match_left[trigger]
+}
+
+### check if all subject countries meet the trigger.
+## scope = country
+## push_scope = country
+alias[trigger:all_subject_country] = {
+    ## cardinality = 0..1
+    tooltip = localisation
+    alias_name[trigger] = alias_match_left[trigger]
+}
+
+### Checks if a state contains a railway at or above the specified level.
+## scope = any
+alias[trigger:has_railway_level] = {
+  level = int
+  state = scope[state]
+  state = <state>
+}
+
+### Check if country has leader with specified ID. Don't localize this. Tooltip only for debug.
+## scope = country
+alias[trigger:has_country_leader] = {
+	## cardinality = 0..1
+	ruling_only = bool
+    character = <character>
+}
+### Check if country has leader with specified ID. Don't localize this. Tooltip only for debug.
+## scope = country
+alias[trigger:has_country_leader] = {
+	## cardinality = 0..1
+	ruling_only = bool
+    id = int
+}
+### Check if country has leader with specified ID. Don't localize this. Tooltip only for debug.
+## scope = country
+alias[trigger:has_country_leader] = {
+	## cardinality = 0..1
+	ruling_only = bool
+    name = scalar
+}
+### Check if country has character with specified ID.
+## scope = country
+alias[trigger:has_country_leader] = <character>
+
+### Can the character be a country leader
+## scope = country
+alias[trigger:can_be_country_leader] = <character>
+
+### Check if country has character with specified ID.
+## scope = character
+alias[trigger:can_be_country_leader] = bool
+
+### Has character flag been set. Check flag val date set and days since set. Example: has_character_flag = test_flag.
+## scope = character
+## severity = warning
+alias[trigger:has_character_flag] = value[character_flag]
+
+### Has character flag been set. Check flag val date set and days since set. Example: has_character_flag = test_flag.
+## scope = character
+## severity = warning
+alias[trigger:character_flag] = {
+	flag = value[country_flag]
+	## cardinality = 0..1
+	value = int
+	## cardinality = 0..1
+	date = date_field
+	## cardinality = 0..1
+	days = int
+}
+
+### Check if country has idea.
+## scope = country
+alias[trigger:has_idea] = value[advisor_token]

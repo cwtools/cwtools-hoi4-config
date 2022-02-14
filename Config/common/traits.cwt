@@ -79,6 +79,8 @@ country_leader_trait = {
 			alias_name[air_stat] = alias_match_left[air_stat]
 		}
 	}
+	## cardinality = 0..1
+	command_cap = int
 	## cardinality = 0..inf
 	# targeted_modifier = single_alias_right[targeted_modifier]
 	alias_name[targeted_modifier_rule] = alias_match_left[targeted_modifier_rule]

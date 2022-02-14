@@ -19,6 +19,15 @@ alias[effect:set_capital] = scope[state]
 ### Move capital to state.
 ## scope = country
 alias[effect:set_capital] = <state>
+### Move capital to state.
+## scope = country
+alias[effect:set_capital] = { state = <state> }
+### Move capital to state.
+## scope = country
+alias[effect:set_capital] = {
+	state = <state>
+	remember_old_capital = bool
+}
 
 ### Add core on state.
 ## scope = country
@@ -1205,6 +1214,20 @@ alias[effect:add_tech_bonus] = {
 	name = localisation
 }
 
+### Adds a limited use doctrine bonus
+## scope = country
+alias[effect:add_doctrine_cost_reduction] = {
+	## cardinality = 0..inf
+	category = enum[tech_category]
+	## cardinality = 0..1
+	uses = int[1..32767]
+	## cardinality = 1..2
+	cost_reduction = float
+	## cardinality = 1..1
+	## severity = warning
+	name = localisation
+}
+
 ### Adds a limited use tech bonus.
 ## scope = state
 alias[effect:set_demilitarized_zone] = bool
@@ -2071,6 +2094,10 @@ alias[effect:add_to_variable] = {
 	tooltip = localisation
 }
 
+### Adds a value or a variable to another one.
+## scope = any
+alias[effect:add_to_variable] = { value_set[variable] = variable_field_32 }
+
 ### Subtracts a value or a variable to another one.
 ## scope = any
 alias[effect:subtract_from_variable] = {
@@ -2087,6 +2114,10 @@ alias[effect:subtract_from_variable] = {
 	## cardinality = 0..1
 	tooltip = localisation
 }
+
+### Subtracts a value or a variable to another one.
+## scope = any
+alias[effect:subtract_from_variable] = { value_set[variable] = variable_field_32 }
 
 ### Multiplies a variable to a value or another variable.
 ## scope = any
@@ -2105,6 +2136,11 @@ alias[effect:multiply_variable] = {
 	tooltip = localisation
 }
 
+### Multiplies a variable to a value or another variable.
+## scope = any
+alias[effect:multiply_variable] = { value_set[variable] = variable_field_32 }
+
+
 ### Divides a variable to a value or another variable.
 ## scope = any
 alias[effect:divide_variable] = {
@@ -2121,6 +2157,11 @@ alias[effect:divide_variable] = {
 	## cardinality = 0..1
 	tooltip = localisation
 }
+
+
+### Divides a variable to a value or another variable.
+## scope = any
+alias[effect:divide_variable] = { value_set[variable] = variable_field_32 }
 
 ### Clears a variable.
 ## scope = any
@@ -2198,6 +2239,9 @@ alias[effect:add_to_temp_variable] = {
 	## cardinality = 0..1
 	tooltip = localisation
 }
+### adds a value or a variable to a temp variable
+## scope = any
+alias[effect:add_to_temp_variable] = { value_set[variable] = variable_field_32 }
 
 ### Subtracts a value or a variable to a temp variable.
 ## scope = any
@@ -2217,6 +2261,10 @@ alias[effect:subtract_from_temp_variable] = {
 	tooltip = localisation
 }
 
+### adds a value or a variable to a temp variable
+## scope = any
+alias[effect:subtract_from_temp_variable] = { value_set[variable] = variable_field_32 }
+
 ### Multiplies a temp variable to a value or another variable.
 ## scope = any
 alias[effect:multiply_temp_variable] = {
@@ -2234,6 +2282,10 @@ alias[effect:multiply_temp_variable] = {
 	tooltip = localisation
 }
 
+### adds a value or a variable to a temp variable
+## scope = any
+alias[effect:multiply_temp_variable] = { value_set[variable] = variable_field_32 }
+
 ### Divides a temp variable to a value or another variable.
 ## scope = any
 alias[effect:divide_temp_variable] = {
@@ -2250,6 +2302,10 @@ alias[effect:divide_temp_variable] = {
 	## cardinality = 0..1
 	tooltip = localisation
 }
+
+### adds a value or a variable to a temp variable
+## scope = any
+alias[effect:divide_temp_variable] = { value_set[variable] = variable_field_32 }
 
 ### Sets a temp variable to a value or another variable.
 ## scope = any

@@ -152,7 +152,7 @@ types = {
         ## type_key_filter = on_weekly
         ###
         subtype[on_weekly] = { }
-        ## type_key_filter = on_monthly
+		## type_key_filter = on_monthly
         ###
         subtype[on_monthly] = { }
         ## type_key_filter = on_yearly

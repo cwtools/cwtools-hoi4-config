@@ -27,7 +27,10 @@ building = {
 	per_level_extra_cost = int
 
 	## cardinality = 0..1
+	## severity = warning
 	max_level = int
+	## cardinality = 0..1
+	## severity = warning
 	value = int
 
 	icon_frame = int
@@ -100,4 +103,11 @@ building = {
 	fuel_silo = yes
 	## cardinality = 0..1
 	fuel_gain_from_states = float
+
+	## cardinality = 0..1
+	allied_build = bool
+	## cardinality = 0..1
+	centered = bool
+	## cardinality = 0..1
+	supply_node = bool
 }

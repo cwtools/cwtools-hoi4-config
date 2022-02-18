@@ -248,6 +248,8 @@ alias[gui:buttonType] = {
     font = scalar
     ## cardinality = 0..1
     web_link = scalar
+	## cardinality = 0..1
+	no_clicksound = yes
 }
 ### Hardcoded
 alias[gui:OverlappingElementsBoxType] = {

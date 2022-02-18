@@ -103,6 +103,15 @@ unit_leader_trait = {
 	}
 	## cardinality = 0..1
 	trait_type = enum[trait_types]
+	## cardinality = 0..1
+	slot = enum[leader_slots]
+	## cardinality = 0..1
+	specialist_advisor_trait = enum[military_advisors_traits]
+	## cardinality = 0..1
+	expert_advisor_trait = enum[military_advisors_traits]
+	## cardinality = 0..1
+	genius_advisor_trait = enum[military_advisors_traits]
+
 	subtype[!naval_commander] = {
 		## cardinality = 0..4
 		### Direct bonus to this skill.
@@ -228,6 +237,7 @@ enums = {
 		coordination_skill_factor
 		maneuvering_skill_factor
 		planning_skill_factor
+		logistics_skill_factor
 	}
 	enum[unit_leader_types] = {
 		all
@@ -252,5 +262,164 @@ enums = {
 		amphibious_attack
 		paradrop
 	}
+	enum[leader_slots] = {
+		army_chief
+		high_command
+		navy_chief
+		air_chief
+	}
 
+	# Leader Traits
+	enum[military_advisors_traits] = {
+		army_regrouping_1
+		army_regrouping_2
+		army_regrouping_3
+		army_armored_1
+		army_armored_2
+		army_armored_3
+		army_CombinedArms_1
+		army_CombinedArms_2
+		army_CombinedArms_3
+		army_armoured_cavalry_1
+		army_armoured_cavalry_2
+		army_armoured_cavalry_3
+		army_entrenchment_1
+		army_entrenchment_2
+		army_entrenchment_3
+		army_infantry_1
+		army_infantry_2
+		army_infantry_3
+		navy_amphibious_assault_1
+		navy_amphibious_assault_2
+		navy_amphibious_assault_3
+		army_commando_1
+		army_commando_2
+		army_commando_3
+		air_airborne_1
+		air_airborne_2
+		air_airborne_3
+		army_air_cavalry_1
+		army_air_cavalry_2
+		army_air_cavalry_3
+		army_logistics_1
+		army_logistics_2
+		army_logistics_3
+		army_artillery_1
+		army_artillery_2
+		army_artillery_3
+		army_militia_1
+		army_militia_2
+		army_militia_3
+		army_concealment_1
+		army_concealment_2
+		army_concealment_3
+		navy_submarine_1
+		navy_submarine_2
+		navy_submarine_3
+		navy_screen_1
+		navy_screen_2
+		navy_screen_3
+		navy_anti_submarine_1
+		navy_anti_submarine_2
+		navy_anti_submarine_3
+		navy_naval_air_defense_1
+		navy_naval_air_defense_2
+		navy_naval_air_defense_3
+		navy_carrier_1
+		navy_carrier_2
+		navy_carrier_3
+		air_naval_strike_1
+		air_naval_strike_2
+		air_naval_strike_3
+		navy_capital_ship_1
+		navy_capital_ship_2
+		navy_capital_ship_3
+		navy_fleet_logistics_1
+		navy_fleet_logistics_2
+		navy_fleet_logistics_3
+		army_chief_logistics_1
+		army_chief_logistics_2
+		army_chief_logistics_3
+		army_chief_reform_1
+		army_chief_reform_2
+		army_chief_reform_3
+		army_chief_planning_1
+		army_chief_planning_2
+		army_chief_planning_3
+		army_chief_entrenchment_1
+		army_chief_entrenchment_2
+		army_chief_entrenchment_3
+		army_chief_maneuver_1
+		army_chief_maneuver_2
+		army_chief_maneuver_3
+		army_chief_offensive_1
+		army_chief_offensive_2
+		army_chief_offensive_3
+		army_chief_defensive_1
+		army_chief_defensive_2
+		army_chief_defensive_3
+		army_chief_organizational_1
+		army_chief_organizational_2
+		army_chief_organizational_3
+		army_chief_morale_1
+		army_chief_morale_2
+		army_chief_morale_3
+		army_chief_drill_1
+		army_chief_drill_2
+		army_chief_drill_3
+		navy_chief_maneuver_1
+		navy_chief_maneuver_2
+		navy_chief_maneuver_3
+		navy_chief_commerce_raiding_1
+		navy_chief_commerce_raiding_2
+		navy_chief_commerce_raiding_3
+		navy_chief_naval_aviation_1
+		navy_chief_naval_aviation_2
+		navy_chief_naval_aviation_3
+		navy_chief_decisive_battle_1
+		navy_chief_decisive_battle_2
+		navy_chief_decisive_battle_3
+		navy_chief_reform_1
+		navy_chief_reform_2
+		navy_chief_reform_3
+		air_chief_reform_1
+		air_chief_reform_2
+		air_chief_reform_3
+		air_chief_safety_1
+		air_chief_safety_2
+		air_chief_safety_3
+		air_chief_night_operations_1
+		air_chief_night_operations_2
+		air_chief_night_operations_3
+		air_chief_ground_support_1
+		air_chief_ground_support_2
+		air_chief_ground_support_3
+		air_chief_all_weather_1
+		air_chief_all_weather_2
+		air_chief_all_weather_3
+		air_air_combat_training_1
+		air_air_combat_training_2
+		air_air_combat_training_3
+		air_bomber_interception_1
+		air_bomber_interception_2
+		air_bomber_interception_3
+		air_air_superiority_1
+		air_air_superiority_2
+		air_air_superiority_3
+		air_close_air_support_1
+		air_close_air_support_2
+		air_close_air_support_3
+		air_strategic_bombing_1
+		air_strategic_bombing_2
+		air_strategic_bombing_3
+		air_tactical_bombing_1
+		air_tactical_bombing_2
+		air_tactical_bombing_3
+		air_pilot_training_1
+		air_pilot_training_2
+		air_pilot_training_3
+		air_force_multiplier_1
+		air_force_multiplier_2
+		air_force_multiplier_3
+	}
 }

@@ -27,6 +27,10 @@ technology = {
 	## cardinality = 0..1
 	xp_research_cost = int
 	## cardinality = 0..1
+	xp_unlock_cost = int
+	## cardinality = 0..1
+	xp_boost_cost = int
+	## cardinality = 0..1
 	xp_research_bonus = float
 
 	## cardinality = 0..1
@@ -66,7 +70,7 @@ technology = {
 		<module>
 	}
 
-	## cardinality = 0..1
+	## cardinality = 0..inf
 	### Sets max level of named building.
 	enable_building = {
 		building = <building>

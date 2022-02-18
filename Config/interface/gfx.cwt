@@ -69,6 +69,8 @@ spriteType = {
 	pause_on_loop = float
 	## cardinality = 0..1
 	alwaystransparent = bool
+	## cardinality = 0..1
+	clicksound = click
 	subtype[spriteType] = {
 		textureFile = filepath
 	}

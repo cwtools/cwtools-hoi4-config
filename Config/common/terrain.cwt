@@ -79,6 +79,13 @@ terrain = {
 		units = {
 			alias_name[unit_stat] = alias_match_left[unit_stat]
 		}
+
+		## cardinality = 0..1
+		combat_support_width = float
+		## cardinality = 0..1
+		supply_flow_penalty_factor = float
+		## cardinality = 0..1
+		truck_attrition_factor = float
 	}
 }
 

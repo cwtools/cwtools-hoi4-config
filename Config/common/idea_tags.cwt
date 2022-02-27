@@ -8,7 +8,7 @@ types = {
 		}
 		## only_if_not = { slot }
 		subtype[no_slot] = {
-			
+
 		}
 	}
 }
@@ -36,5 +36,29 @@ idea_category = {
 	subtype[slot] = {
 		## cardinality = 1..inf
 		slot = value_set[idea_slot]
+	}
+
+	## cardinality = 0..inf
+	character_slot = enum[character_slot_types]
+
+	## cardinality = 0..1
+	type = enum[idea_tag_type]
+
+	## cardinality = 0..1
+	politics_tab = bool
+}
+
+enums = {
+	enum[idea_tag_type] = {
+		air_spirit
+		navy_spirit
+		army_spirit
+		national_spirit
+	}
+	enum[character_slot_types] = {
+		army_chief
+		navy_chief
+		air_chief
+		high_command
 	}
 }

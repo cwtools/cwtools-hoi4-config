@@ -146,8 +146,8 @@ alias[gui:dropDownBoxType] = {
         ## cardinality = 0..1
         ### Special size version for buttons
         size = {
-            x = int
-            y = int
+            x = float
+            y = float
         }
         alias_name[gui_standard] = alias_match_left[gui_standard]
         alias_name[gui_image] = alias_match_left[gui_image]

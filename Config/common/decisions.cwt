@@ -261,22 +261,15 @@ decision = {
 		## cardinality = 0..1
 		highlight_state_targets = {
 			## cardinality = ~1..inf
-			alias_name[trigger] = alias_match_left[trigger]
+			state = <state>
+			## cardinality = ~1..inf
+			state = variable_field
 		}
-	}
-
-	## cardinality = 0..1
-	highlight_state_targets = {
-		## cardinality = ~1..inf
-		state = <state>
-		## cardinality = ~1..inf
-		state = variable_field
-	}
-
-	## cardinality = 0..1
-	highlight_provinces = {
-		## cardinality = ~1..inf
-		enum[provinces]
+		## cardinality = 0..1
+		highlight_provinces = {
+			## cardinality = ~1..inf
+			enum[provinces]
+		}
 	}
 
 	## cardinality = 0..1

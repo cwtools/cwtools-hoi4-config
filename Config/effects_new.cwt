@@ -1074,4 +1074,6 @@ alias[effect:remove_wargoal] = {
 	type = all
 }
 
-alias[effect:recruit_character] = scope[characters]
+###Retires a Character
+## scopes = { country }
+alias[effect:retire_character] = scalar

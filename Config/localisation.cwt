@@ -54,10 +54,4 @@ localisation_commands = {
     # for tokens
     GetTokenKey = any
     GetTokenLocalizedKey = any
-	GetToken/Army = any
-	GetToken/Airforce = any
-	GetToken/Navy = any
-	GetToken/Civilian = any
-	GetToken/Resistance = any
-	GetToken/Sabotage = any
 }

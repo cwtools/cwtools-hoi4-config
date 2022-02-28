@@ -49,7 +49,7 @@ scopes = {
 		aliases = { state }
 	}
 	"Unit Leader" = {
-		aliases = { unit_leader unitleader }
+		aliases = { unit_leader unitleader character }
 	}
 	Combat = {
 		aliases = { combat }

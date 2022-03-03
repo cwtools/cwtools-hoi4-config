@@ -609,6 +609,7 @@ modifiers = {
 	supply_factor = country
 	truck_attrition_factor = country
 	army_attack_speed_factor = country
+	navy_anti_air_attack = country
 
 	# Unit leader
 	acclimatization_cold_climate_gain_factor = unit_leader

@@ -2282,29 +2282,33 @@ alias[effect:multiply_temp_variable] = {
 	tooltip = localisation
 }
 
-### adds a value or a variable to a temp variable
+### Multiplies a temp variable to a value or another variable.
 ## scope = any
 alias[effect:multiply_temp_variable] = { value_set[variable] = variable_field_32 }
 
 ### Divides a temp variable to a value or another variable.
 ## scope = any
 alias[effect:divide_temp_variable] = {
-	## cardinality = 1..2
+	## cardinality = 0..1
 	value_set[variable] = variable_field_32
 	## cardinality = 0..1
 	tooltip = localisation
 }
+
 ### Divides a temp variable to a value or another variable.
 ## scope = any
 alias[effect:divide_temp_variable] = {
+	## cardinality = 0..1
 	var = value_set[variable]
+	## cardinality = 0..1
 	value = variable_field_32
 	## cardinality = 0..1
 	tooltip = localisation
 }
 
-### adds a value or a variable to a temp variable
+### Divides a value or variable to a temp variable
 ## scope = any
+## cardinality = 0..1
 alias[effect:divide_temp_variable] = { value_set[variable] = variable_field_32 }
 
 ### Sets a temp variable to a value or another variable.

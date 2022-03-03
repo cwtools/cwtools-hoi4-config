@@ -223,8 +223,10 @@ alias[gui:buttonType] = {
     ## cardinality = 0..1
     ### Special size version for buttons
     size = {
-        x = int
-        y = int
+		x = int
+		x = percentage_field
+		y = int
+		y = percentage_field
     }
     alias_name[gui_standard] = alias_match_left[gui_standard]
     alias_name[gui_image] = alias_match_left[gui_image]
@@ -269,8 +271,10 @@ alias[gui:gridBoxType] = {
     ### Dimensions of slot, does not clip entries
     slotsize = {
         width = int
+		width = float
         width = percentage_field
         height = int
+		height = float
         height = percentage_field
     }
     ### Adds entries horizontally
@@ -324,8 +328,14 @@ alias[gui:positionType] = {
     # cardinality = ~1..1
     name = scalar
     position = {
+		## cardinality = 0..1
         x = int
+		## cardinality = 0..1
+		x = float
+		## cardinality = 0..1
         y = int
+		## cardinality = 0..1
+		y = float
     }
 }
 ###Browser, hardcoded
@@ -350,8 +360,12 @@ alias[gui:instantTextBoxType] = {
     font = scalar
     ## cardinality = 0..1
     maxWidth = int
+	## cardinality = 0..1
+	maxWidth = percentage_field
     ## cardinality = 0..1
     maxHeight = int
+	## cardinality = 0..1
+	maxHeight = percentage_field
     ## cardinality = 0..1
     format = enum[guiTextFormats]
     ## cardinality = 0..1
@@ -366,11 +380,11 @@ alias[gui:instantTextBoxType] = {
     borderSize = { x = int y = int }
     ## cardinality = 0..1
     #DEBUG
-    ### Missing Descriptiion, need testing
+    ### Missing Description, need testing
     textureFile = <spriteType>
     ## cardinality = 0..1
     #DEBUG
-    ### Vertical alignement in text box
+    ### Vertical alignment in text box
     vertical_alignment = enum[guiTextFormatsVertical]
     ## cardinality = 0..1
     #DEBUG
@@ -651,7 +665,12 @@ alias[gui_localization:tooltip] = localisation
 ### Text ontop of elements
 alias[gui_localization:text] = localisation
 #alias[gui_localization:text] = localisation_inline
-
+#alias[gui_localization:pdx_disabled_tooltip] = localisation_inline
+alias[gui_localization:pdx_disabled_tooltip] = localisation
+#alias[gui_localization:pdx_disabled_tooltip] = localisation_inline
+#alias[gui_localization:pdx_disabled_tooltip_delayed] = localisation_inline
+alias[gui_localization:pdx_disabled_tooltip_delayed] = localisation
+#alias[gui_localization:pdx_disabled_tooltip_delayed] = localisation_inline
 
 #GUI Animation
 ### Position before animation in pixels

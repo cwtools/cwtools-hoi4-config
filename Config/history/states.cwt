@@ -35,7 +35,7 @@ state = {
 			## cardinality = 0..inf
 			enum[provinces] = {
 				## cardinality = 0..inf
-				<building> = int[0..20]
+				<building> = int[0..50]
 			}
 		}
 		alias_name[effect] = alias_match_left[effect]
@@ -58,7 +58,7 @@ state = {
 				## cardinality = 0..inf
 				enum[provinces] = {
 					## cardinality = 0..inf
-					<building> = int[0..20]
+					<building> = int[0..50]
 				}
 			}
 			alias_name[effect] = alias_match_left[effect]

@@ -252,6 +252,16 @@ alias[effect:add_advisor_role] = {
 ## scope = { any }
 alias[effect:retire_character] = <character>
 
+### renames character
+## scope = { character }
+alias[effect:set_character_name] = localisation
+### renames character
+## scope = { country character }
+alias[effect:set_character_name] = {
+	character = <character>
+	name = localisation
+}
+
 ### makes character head of their ideology party
 ## scope = { country }
 alias[effect:promote_character] = <character>

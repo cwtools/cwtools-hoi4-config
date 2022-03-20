@@ -385,6 +385,7 @@ alias[trigger:country_exists] = enum[country_tags]
 ### Checks for amount of ships in specified area.
 ## scope = country
 alias[trigger:ships_in_area] = {
+	## cardinality = 0..1
 	type = <unit.ship_unit>
 	area = <strategic_region>
 	size = int

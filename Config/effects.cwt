@@ -1081,7 +1081,7 @@ alias[effect:start_civil_war] = {
 	keep_unit_leaders_trigger = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
-	alias_name[effect] = alias_match_left[effect]
+	#alias_name[effect] = alias_match_left[effect]
 }
 
 ### Retires a country leader and removes him as leader of his party, making the next in line the new party and country leader.

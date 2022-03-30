@@ -855,6 +855,11 @@ alias[effect:random_controlled_state] = {
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
+	## cardinality = 0..1
+	prioritize = {
+		## cardinality = 1..inf
+		<state>
+	}
 	alias_name[effect] = alias_match_left[effect]
 }
 
@@ -1076,4 +1081,4 @@ alias[effect:remove_wargoal] = {
 
 ###Retires a Character
 ## scopes = { country }
-alias[effect:retire_character] = scalar
+alias[effect:retire_character] = enum[characters]

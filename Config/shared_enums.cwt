@@ -61,4 +61,12 @@ enums = {
 		navy
 		air
 	}
+
+	complex_enum[characters] = {
+		path = "game/common/characters"
+		start_from_root = yes
+		name = {
+			enum_name = scalar
+		}
+	}
 }

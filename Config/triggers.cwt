@@ -1366,15 +1366,24 @@ alias[trigger:has_relation_modifier] = {
 ## scope = state
 alias[trigger:any_province_building_level] = {
 	province = {
+		## cardinality = 0..1
 		all_provinces = yes
 		## cardinality = 0..1
 		limit_to_border = yes
+		## cardinality = 0..1
+		limit_to_coastal = yes
+		## cardinality = 0..1
+		limit_to_naval_base = yes
 	}
 	province = {
 		## cardinality = 1..inf
 		id = enum[provinces]
 		## cardinality = 0..1
 		limit_to_border = yes
+		## cardinality = 0..1
+		limit_to_coastal = yes
+		## cardinality = 0..1
+		limit_to_naval_base = yes
 	}
 	building = <building.provincial>
 	level = int

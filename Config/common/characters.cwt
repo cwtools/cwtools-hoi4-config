@@ -1,0 +1,221 @@
+types = {
+	type[character] = {
+		skip_root_key = characters
+		path = "game/common/characters"
+		unique = yes
+	}
+}
+
+enums = {
+	enum[gender] = {
+		male
+		female
+	}
+	enum[character_slot] = {
+		political_advisor
+		theorist
+		high_command
+		air_chief
+		army_chief
+		navy_chief
+	}
+}
+
+## push_scope = country
+character = {
+	## cardinality = 0..1
+	name = localisation
+
+	## cardinality = 0..1
+	gender = enum[gender]
+
+	## cardinality = 0..1
+	## replace_scope = { root = character this = any from = any }
+	allowed = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+
+	## cardinality = 0..1
+	## replace_scope = { root = character this = any from = any }
+	allowed_civil_war = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+
+	portraits = {
+		## cardinality = 0..1
+		civilian = {
+			large = filepath
+		}
+		## cardinality = 0..1
+		army = {
+			## cardinality = 0..1
+			large = filepath
+			## cardinality = 0..1
+			small = filepath
+		}
+		## cardinality = 0..1
+		navy = {
+			## cardinality = 0..1
+			large = filepath
+			## cardinality = 0..1
+			small = filepath
+		}
+	}
+
+	## cardinality = 0..inf
+	country_leader = {
+		desc = localisation
+		ideology = enum[sub_ideology]
+
+		traits = {
+			## cardinality = 0..inf
+			<country_leader_trait>
+		}
+
+		## cardinality = 0..1
+		expire = date
+
+		## cardinality = 0..1
+		id = int
+	}
+
+	## cardinality = 0..inf
+	advisor = {
+		cost = int
+		removal_cost = int
+
+		### If high_command or theorist, requires ledger as well
+		slot = enum[character_slot]
+
+		## cardinality = 0..inf
+		name = localisation
+
+		## cardinality = 0..1
+		idea_token = localisation
+
+		## cardinality = 0..1
+		ledger = enum[ledgers]
+
+		traits = {
+			## cardinality = 0..inf
+			<country_leader_trait>
+		}
+
+		## cardinality = 0..1
+		## replace_scope = { root = character this = any from = any }
+		allowed = {
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+
+		## cardinality = 0..1
+		## replace_scope = { root = character this = any from = any }
+		visible = {
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+
+		## cardinality = 0..1
+		## replace_scope = { root = character this = any from = any }
+		available = {
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+
+		## cardinality = 0..1
+		on_add = {
+			## cardinality = ~1..inf
+			alias_name[effect] = alias_match_left[effect]
+		}
+
+		## cardinality = 0..1
+		on_remove = {
+			## cardinality = ~1..inf
+			alias_name[effect] = alias_match_left[effect]
+		}
+
+		## cardinality = 0..1
+		## replace_scope = { root = character this = any from = any }
+		do_effect = {
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+
+		## cardinality = 0..1
+		ai_will_do = {
+			## cardinality = 0..1
+			enum[base_factor] = float
+			## cardinality = ~1..inf
+			alias_name[modifier_rule] = alias_match_left[modifier_rule]
+		}
+	}
+
+	## cardinality = 0..1
+	field_marshal = {
+		desc = localisation
+
+		## cardinality = 1..1
+		skill = int
+
+		## cardinality = 0..4
+		enum[unit_leader_skills] = int
+
+		traits = {
+			## cardinality = 0..inf
+			<unit_leader_trait>
+		}
+
+		## cardinality = 0..1
+		legacy_id = int
+
+		## cardinality = 0..1
+		## replace_scope = { root = country this = any from = any }
+		visible = {
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+	}
+
+	## cardinality = 0..1
+	corps_commander = {
+		desc = localisation
+
+		skill = int
+
+		## cardinality = 0..4
+		enum[unit_leader_skills] = int
+
+		traits = {
+			## cardinality = 0..inf
+			<unit_leader_trait>
+		}
+
+		## cardinality = 0..1
+		legacy_id = int
+
+		## cardinality = 0..1
+		## replace_scope = { root = country this = any from = any }
+		visible = {
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+	}
+
+	## cardinality = 0..1
+	navy_leader = {
+		desc = localisation
+
+		skill = int
+
+		## cardinality = 0..4
+		enum[naval_leader_skills] = int
+
+		traits = {
+			## cardinality = 0..inf
+			<unit_leader_trait>
+		}
+
+		## cardinality = 0..1
+		legacy_id = int
+
+		## cardinality = 0..1
+		## replace_scope = { root = country this = any from = any }
+		visible = {
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+	}
+}

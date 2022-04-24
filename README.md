@@ -1,4 +1,12 @@
-cwtools-hoi4-config
+## Crab Fork
+
+Welcome to Crab's fork of the cwtools-hoi4-config. I am working on updating the entire config to support all new NSB modding options as well as fix some issues with the existing configs.
+
+Lots has changed in HOI4 since 2019 (Last time this config was updated) so please bare with me as I update. Feel free to clone and make contributions, just create a branch and Pull Request and I will review and merge when I can.
+
+Thanks!
+
+## cwtools-hoi4-config
 .cwt config files for Hearts of Iron IV
 
 To use these:

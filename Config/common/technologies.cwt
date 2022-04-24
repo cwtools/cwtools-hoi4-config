@@ -25,9 +25,13 @@ technology = {
 	## cardinality = 0..1
 	xp_research_type = enum[experience_types]
 	## cardinality = 0..1
-	xp_research_cost = int
-	## cardinality = 0..1
 	xp_research_bonus = float
+
+	## cardinality = 0..1
+	xp_unlock_cost = int
+
+	## cardinality = 0..1
+	xp_boost_cost = int
 
 	## cardinality = 0..1
 	### Hides technology unless trigger is true.
@@ -101,6 +105,12 @@ technology = {
 
 	## cardinality = 0..1
 	sub_tech_index = int
+
+	## cardinality = 0..1
+	coordination_bonus = float
+
+	## cardinality = 0..1
+	force_use_small_tech_layout = bool
 
 	## cardinality = 0..inf
 	### Which folder(s) tech appears in.

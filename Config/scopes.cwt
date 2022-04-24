@@ -54,6 +54,9 @@ scopes = {
 	Combat = {
 		aliases = { combat }
 	}
+	Character = {
+		aliases = { character }
+	}
 	Air = {
 		aliases = { air }
 	}

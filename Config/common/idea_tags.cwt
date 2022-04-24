@@ -8,8 +8,17 @@ types = {
 		}
 		## only_if_not = { slot }
 		subtype[no_slot] = {
-			
+
 		}
+	}
+}
+
+enums = {
+	enum[spirit_types] = {
+		national_spirit
+		army_spirit
+		navy_spirit
+		air_spirit
 	}
 }
 
@@ -25,6 +34,15 @@ idea_category = {
 
 	## cardinality = 0..1
 	cost = int
+
+	## cardinality = 0..1
+	type = enum[spirit_types]
+
+	## cardinality = 0..1
+	politics_tab = bool
+
+	## cardinality = 0..1
+	character_slot = enum[character_slot]
 
 	## cardinality = 0..1
 	removal_cost = int

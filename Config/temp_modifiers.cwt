@@ -14,22 +14,28 @@ alias[modifier_rule:modifier] = {
 	alias_name[trigger] = alias_match_left[trigger]
 }
 
+alias[modifier:value_set[tech_category]_cost_factor] = float
+
+alias[modifier:<combat_tactic>_preferred_weight_factor] = int
+alias[modifier:<equipment>_design_cost_factor] = float
 alias[modifier:<ideology>_acceptance] = int
 alias[modifier:<ideology>_drift] = float
-alias[modifier:local_resources_<resource>] = int
-alias[modifier:country_resource_cost_<resource>] = int
-alias[modifier:state_resource_cost_<resource>] = int
+alias[modifier:<modifier_definition>] = float
 alias[modifier:country_resource_<resource>] = int
-alias[modifier:state_resource_<resource>] = int
-alias[modifier:temporary_state_resource_<resource>] = int
+alias[modifier:country_resource_cost_<resource>] = int
+alias[modifier:custom_modifier_tooltip] = localisation
 alias[modifier:enum[sub_unit_modifiers]] = float
+alias[modifier:experience_gain_<unit>_combat_factor] = float
+alias[modifier:hidden_modifier] = { alias_name[modifier] = alias_match_left[modifier] }
+alias[modifier:local_resources_<resource>] = int
 alias[modifier:production_speed_<building>_factor] = float
 alias[modifier:repair_speed_<building>_factor] = float
-alias[modifier:<modifier_definition>] = float
-alias[modifier:hidden_modifier] = {
-	alias_name[modifier] = alias_match_left[modifier]
-}
-alias[modifier:custom_modifier_tooltip] = localisation
+alias[modifier:state_production_speed_<building>_factor] = float
+alias[modifier:state_resource_<resource>] = int
+alias[modifier:state_resource_cost_<resource>] = int
+alias[modifier:temporary_state_resource_<resource>] = int
+alias[modifier:trait_<unit_leader_trait>_xp_gain_factor] = float
+alias[modifier:unit_<unit>_design_cost_factor] = float
 
 #unit stats
 alias[unit_stat:acclimatization_cold_climate_gain_factor] = float
@@ -66,6 +72,7 @@ alias[unit_stat:naval_invasion_prep_speed] = float
 alias[unit_stat:paradrop_organization_factor] = float
 alias[unit_stat:paratrooper_aa_defense] = float
 alias[unit_stat:paratrooper_count_per_plane] = float
+alias[unit_stat:railway_gun_attack] = float
 alias[unit_stat:recon] = float
 alias[unit_stat:reliability_factor] = float
 alias[unit_stat:reliability] = float
@@ -125,9 +132,9 @@ alias[air_stat:air_bombing] = float
 alias[air_stat:air_defence] = float
 alias[air_stat:air_defense] = float
 alias[air_stat:air_ground_attack] = float
+alias[air_stat:air_mission_efficiency] = float
 alias[air_stat:air_range] = float
 alias[air_stat:air_superiority] = float
-alias[air_stat:air_mission_efficiency] = float
 alias[air_stat:carrier_size] = float
 alias[air_stat:default_carrier_composition_weight] = float
 alias[air_stat:naval_strike_attack] = float
@@ -135,13 +142,14 @@ alias[air_stat:naval_strike_targetting] = float
 
 #for terrain modifiers
 alias[unit_stat:<terrain>] = { alias_name[unit_stat] = alias_match_left[unit_stat] }
-alias[unit_stat:night] = { alias_name[unit_stat] = alias_match_left[unit_stat] }
 alias[unit_stat:amphibious] = { alias_name[unit_stat] = alias_match_left[unit_stat] }
 alias[unit_stat:fort] = { alias_name[unit_stat] = alias_match_left[unit_stat] }
+alias[unit_stat:night] = { alias_name[unit_stat] = alias_match_left[unit_stat] }
 alias[unit_stat:river] = { alias_name[unit_stat] = alias_match_left[unit_stat] }
 
 #unit leader trait modifiers
 alias[unit_leader_modifier:air_superiority_bonus_in_combat] = float
+alias[unit_leader_modifier:army_attack_speed_factor] = float
 alias[unit_leader_modifier:cannot_use_abilities] = int[0..1]
 alias[unit_leader_modifier:cas_damage_reduction] = float
 alias[unit_leader_modifier:equipment_capture] = float
@@ -155,6 +163,8 @@ alias[unit_leader_modifier:reassignment_duration_factor] = float
 alias[unit_leader_modifier:recon_factor_while_entrenched] = float
 alias[unit_leader_modifier:shore_bombardment_bonus] = float
 alias[unit_leader_modifier:skill_bonus_factor] = float
+alias[unit_leader_modifier:supply_factor] = float
+alias[unit_leader_modifier:truck_attrition_factor] = float
 alias[unit_leader_modifier:wounded_chance_factor] = float
 
 alias[unit_leader_modifier:<terrain>] = { alias_name[unit_stat] = alias_match_left[unit_stat] }

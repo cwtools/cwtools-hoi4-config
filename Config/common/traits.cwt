@@ -100,7 +100,15 @@ unit_leader_trait = {
 		enum[unit_leader_types]
 	}
 	## cardinality = 0..1
+	slot = enum[character_slot]
+	## cardinality = 0..1
 	trait_type = enum[trait_types]
+	## cardinality = 0..1
+	specialist_advisor_trait = <country_leader_trait>
+	## cardinality = 0..1
+	expert_advisor_trait = <country_leader_trait>
+	## cardinality = 0..1
+	genius_advisor_trait = <country_leader_trait>
 	subtype[!naval_commander] = {
 		## cardinality = 0..4
 		### Direct bonus to this skill.
@@ -215,6 +223,12 @@ enums = {
 		logistics_skill
 		planning_skill
 	}
+	enum[naval_leader_skills] = {
+		attack_skill
+		defense_skill
+		maneuvering_skill
+		coordination_skill
+	}
 	enum[army_leader_skill_factors] = {
 		attack_skill_factor
 		defense_skill_factor
@@ -224,6 +238,7 @@ enums = {
 	enum[naval_leader_skill_factors] = {
 		attack_skill_factor
 		coordination_skill_factor
+		logistics_skill_factor
 		maneuvering_skill_factor
 		planning_skill_factor
 	}

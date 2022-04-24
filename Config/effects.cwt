@@ -584,6 +584,10 @@ alias[effect:add_country_leader_trait] = <country_leader_trait>
 ## scope = country
 alias[effect:remove_country_leader_trait] = <country_leader_trait>
 
+### Recruits character to active country.
+## scope = country
+alias[effect:recruit_character] = <character>
+
 ### Set properties of a political party.
 ## scope = country
 alias[effect:set_political_party] = {

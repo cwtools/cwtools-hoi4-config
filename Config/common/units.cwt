@@ -32,6 +32,10 @@ types = {
 unit = {
 	### 3D map asset.
 	sprite = scalar
+
+	## cardinality = 0..1
+	abbreviation = scalar
+
 	#enum[unit_sprites]
 	subtype[land_unit] = {
 		need = {
@@ -69,7 +73,7 @@ unit = {
 
 		## cardinality = 0..1
 		### division designer group
-		group = localisation_inline
+		group = enum[unit_groups]
 
 		### unit type
 		type = {
@@ -127,6 +131,10 @@ unit = {
 		## cardinality = 0..1
 		### Blocks adding same unit types to a template.
 		same_support_type = <unit.support_unit>
+
+		## cardinality = 0..1
+		### Blocks adding same unit types to a template.
+		same_support_type = enum[unit_types]
 	}
 
 	subtype[ship_unit] = {
@@ -286,8 +294,8 @@ division_name = {
 
 enums = {
 	enum[land_map_icons] = {
-		infantry
 		armored
+		infantry
 		other
 	}
 	enum[ship_map_icons] = {
@@ -296,49 +304,61 @@ enums = {
 		uboat
 	}
 	enum[unit_groups] = {
+		armor
 		infantry
-		support
 		mobile
+		support
+	}
+	enum[armor_types] = {
 		armor
 	}
 	enum[unit_types] = {
-		infantry
-		support
-		artillery
-		rocket
-		anti_tank
-		anti_air
-		motorized
-		cavalry
-		mechanized
-		armor
-		fighter
-		cas
-		naval_bomber
-		interceptor
-		suicide
-		tactical_bomber
-		strategic_bomber
 		air_transport
-		missile
-		submarine
-		screen_ship
+		amphibious
+		anti_air
+		anti_tank
+		armor
+		artillery
 		capital_ship
 		carrier
+		cas
+		cavalry
 		convoy
+		fighter
+		flame
+		floating_harbor
+		infantry
+		interceptor
+		mechanized
+		missile
+		motorized
+		naval_bomber
 		paratroopers
+		railway_gun
+		rocket
 		scout_plane
+		screen_ship
+		strategic_bomber
+		submarine
+		suicide
+		support
+		tactical_bomber
+		train
 	}
 	enum[land_units] = {
-		infantry
-		support
-		artillery
-		rocket
-		anti_tank
+		amphibious
 		anti_air
-		motorized
-		mechanized
+		anti_tank
 		armor
+		artillery
+		flame
+		infantry
+		mechanized
+		motorized
+		railway_gun
+		rocket
+		support
+		train
 	}
 	enum[air_units] = {
 		air_transport
@@ -359,6 +379,7 @@ enums = {
 		carrier
 		convoy
 		destroyer
+		floating_harbor
 		heavy_cruiser
 		light_cruiser
 		screen_ship

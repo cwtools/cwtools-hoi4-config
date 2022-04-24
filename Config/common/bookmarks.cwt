@@ -2,6 +2,12 @@ types = {
 	type[bookmark] = {
 		path = "game/common/bookmarks"
 		skip_root_key = bookmarks
+		enum[country_tags] = {
+			subtype[major_bookmark] = { }
+			subtype[minor_bookmark] = {
+				minor = yes
+			}
+		}
 	}
 }
 
@@ -19,6 +25,16 @@ bookmark = {
 	enum[country_tags] = {
 		## cardinality = 0..1
 		minor = yes
+
+		## cardinality = 0..8
+		subtype[major_bookmark] = {
+			#
+		}
+
+		## cardinality = 0..8
+		subtype[minor_bookmark] = {
+			#
+		}
 
 		history = localisation
 		ideology = <ideology>
@@ -54,5 +70,4 @@ bookmark = {
 		randomize_weather = 12345
 		randomize_weather = 22345
 	}
-
 }

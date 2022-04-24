@@ -1,9 +1,13 @@
 types = {
 	type[equipment] = {
 		skip_root_key = equipments
+		skip_root_key = duplicate_archetypes
 		path = "game/common/units/equipment"
 		subtype[archetype_equip] = {
 			is_archetype = yes
+		}
+		subtype[dupe_archetype_equip] = {
+			for_each = { }
 		}
 		subtype[regular_equip] = {
 			## cardinality = 0..1
@@ -19,6 +23,17 @@ types = {
 			}
 			## cardinality = 0..1
 			archetype = <equipment.naval_equip>
+		}
+		subtype[armor_equip] = {
+			## cardinality = 0..1
+			type = enum[armor_types]
+			## cardinality = 0..1
+			type = {
+				## cardinality = 1..inf
+				enum[armor_types]
+			}
+			## cardinality = 0..1
+			archetype = <equipment.armor_equip>
 		}
 		subtype[air_equip] = {
 			## cardinality = 0..1
@@ -59,6 +74,15 @@ equipment = {
 	## cardinality = 0..1
 	### Limits the equipment from appearing before the specified year. Optional.
 	year = int
+
+	## cardinality = 0..1
+	abbreviation = scalar
+
+	## cardinality = 0..1
+	derived_variant_name = localisation
+
+	## cardinality = 0..1
+	alias = <unit>
 
 	## cardinality = 0..1
 	### Specifies an entry as an archetype entry. All non-archetype entries inherit.
@@ -115,6 +139,23 @@ equipment = {
 		}
 	}
 
+	subtype[dupe_archetype_equip] = {
+		## cardinality = 0..1
+		for_each = {
+			variant_name = {
+				find_and_replace = {
+					## cardinality = 2..2
+					scalar
+				}
+			}
+
+			## cardinality = 0..1
+			hardness = {
+				set = float
+			}
+		}
+	}
+
 	subtype[air_equip] = {
 		## cardinality = 0..1
 		carrier_capable = yes
@@ -124,7 +165,12 @@ equipment = {
 
 	subtype[regular_equip] = {
 		### Which archetype equipment this equipment inherits from.
+		## cardinality = 0..1
 		archetype = <equipment.archetype_equip>
+
+		### Which duplicated archetype equipment this equipment inherits from.
+		## cardinality = 0..1
+		archetype = <equipment.dupe_archetype_equip>
 
 		## cardinality = 0..1
 		### Which equipment is parent to this equipment (i.e. which does it supercede).
@@ -142,6 +188,49 @@ equipment = {
 		can_convert_from = {
 			## cardinality = 1..5
 			<equipment.regular_equip>
+		}
+	}
+
+	subtype[armor_equip] = {
+		## cardinality = 0..1
+		### List of module slots and their details.
+		module_slots = {
+			## cardinality = 0..inf
+			enum[module_slots] = {
+				required = bool
+				allowed_module_categories = {
+					## cardinality = 1..inf
+					enum[module_categories]
+				}
+				## cardinality = 0..1
+				gfx = scalar
+			}
+			## cardinality = 0..inf
+			enum[module_slots] = enum[module_slots]
+			## cardinality = 0..inf
+			enum[module_slots] = inherit
+		}
+
+		## cardinality = 0..1
+		### All parent module slots will directly inherited with no modifications.
+		module_slots = inherit
+
+		## cardinality = 0..inf
+		### Any number of module count limits can be specified. They are automatically inherited by child equipment types. An inherited limit is overridden if the child has a limit with exactly the same match conditions.
+		module_count_limit = {
+			## cardinality = 0..1
+			category = enum[module_categories]
+			## cardinality = 0..1
+			module = <module>
+			count = int
+		}
+
+		### List of modules assigned to module slots for the default equipment variant for this type.
+		default_modules = {
+			## cardinality = 0..inf
+			enum[module_slots] = <module>
+			## cardinality = 0..inf
+			enum[module_slots] = empty
 		}
 	}
 
@@ -198,6 +287,9 @@ equipment = {
 	type = enum[unit_types]
 
 	## cardinality = 0..1
+	supply_truck = bool
+
+	## cardinality = 0..1
 	### Internal type: what kind of unit can use this equipment.
 	type = {
 		## cardinality = 1..inf
@@ -223,10 +315,55 @@ equipment = {
 		## cardinality = ~1..4
 		<upgrade>
 	}
+
+	## cardinality = 0..1
+	## replace_scope = { root = country this = any from = any }
+	can_be_lend_leased = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
 }
 
 upgrade = {
 	max_level = int
+
+	## cardinality = 0..1
+	abbreviation = scalar
+
+	## cardinality = 0..1
+	linear_cost = {
+		## cardinality = 0..1
+		cost_by_level = int
+
+		## cardinality = 0..1
+		cost_by_level_for_licensed_equipment = int
+	}
+
+	## cardinality = 0..1
+	level_requirements = {
+		## cardinality = 0..20
+		enum[armor_levels] = {
+			## cardinality = ~1..inf
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+	}
+
+	## cardinality = 0..1
+	resource_cost_thresholds = {
+		## cardinality = 0..20
+		enum[armor_levels] = {
+			## cardinality = ~1..inf
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+	}
+
+	## cardinality = 0..1
+	add_stats = {
+		alias_name[unit_stat] = alias_match_left[naval_stat]
+		alias_name[naval_stat] = alias_match_left[naval_stat]
+		## cardinality = 0..1
+		build_cost_ic = int
+	}
+
 	alias_name[unit_stat] = alias_match_left[unit_stat]
 	subtype[naval_upgrade] = {
 		cost = naval
@@ -243,6 +380,15 @@ upgrade = {
 
 module = {
 	category = enum[module_categories]
+
+	## cardinality = 0..1
+	abbreviation = scalar
+	## cardinality = 0..1
+	forbid_equipment_type_exact_match = enum[unit_types]
+	## cardinality = 0..1
+	allow_equipment_type = enum[unit_types]
+	## cardinality = 0..inf
+	forbid_equipment_type = enum[unit_types]
 	## cardinality = 0..1
 	gui_category = enum[module_categories]
 	## cardinality = 0..1
@@ -252,12 +398,31 @@ module = {
 	## cardinality = 0..1
 	sfx = scalar
 	## cardinality = 0..1
+	xp_cost = int
+	## cardinality = 0..1
 	add_equipment_type = enum[unit_types]
+
+	## cardinality = 0..1
 	add_stats = {
 		alias_name[unit_stat] = alias_match_left[naval_stat]
 		alias_name[naval_stat] = alias_match_left[naval_stat]
 		## cardinality = 0..1
 		build_cost_ic = int
+	}
+
+	## cardinality = 0..inf
+	allowed_module_categories = {
+		## cardinality = 0..1
+		main_armament_slot = {
+			## cardinality = 1..inf
+			enum[module_categories]
+		}
+	}
+
+	## cardinality = 0..1
+	forbid_equipment_type_exact_match_for_category = {
+		## cardinality = 0..inf
+		enum[module_categories] = enum[unit_types]
 	}
 
 	## cardinality = 0..1
@@ -286,7 +451,7 @@ module = {
 		module_category = enum[module_categories]
 		## cardinality = 0..1
 		module = <module>
-		convert_cost_ic = int
+		convert_cost_ic = float
 		## cardinality = 0..1
 		convert_cost_resources = {
 			## cardinality = ~1..10
@@ -338,6 +503,28 @@ critical_part = {
 }
 
 enums = {
+	enum[armor_levels] = {
+		1
+		2
+		3
+		4
+		5
+		6
+		7
+		8
+		9
+		10
+		11
+		12
+		13
+		14
+		15
+		16
+		17
+		18
+		19
+		20
+	}
 	enum[equip_group_by] = {
 		archetype
 		type

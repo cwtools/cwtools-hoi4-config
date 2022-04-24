@@ -372,6 +372,18 @@ ai_equipment_design_group = {
 					upgrade = current
 				}
 			}
+
+			## cardinality = 0..1
+			upgrades = {
+				## cardinality = 0..4
+				<upgrade> = int
+
+				## cardinality = 0..4
+				<upgrade> = {
+					enum[base_factor] = float
+					alias_name[modifier_rule] = alias_match_left[modifier_rule]
+				}
+			}
 		}
 
 		### List of hard requirements that all must match for this design to be usable. These follow the same pattern as a slot entry above within target_variant = { modules = { ... } }, but without being tied to an individual slot.

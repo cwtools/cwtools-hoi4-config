@@ -18,6 +18,7 @@ state = {
 		## cardinality = ~1..inf
 		<resource> = float
 	}
+	## cardinality = 0..1
 	history = {
 		owner = enum[country_tags]
 		## cardinality = 0..1
@@ -72,6 +73,7 @@ state = {
 	## cardinality = 0..1
 	buildings_max_level_factor = float
 	state_category = <state_category>
+	local_supplies = float
 	## cardinality = 0..1
 	impassable = yes
 }

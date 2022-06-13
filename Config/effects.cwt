@@ -1113,6 +1113,8 @@ alias[effect:create_wargoal] = {
 		<state>
 	}
 	## cardinality = 0..1
+	generator = core_states
+	## cardinality = 0..1
 	generator = owned_states
 	## cardinality = 0..1
 	expire = date_field

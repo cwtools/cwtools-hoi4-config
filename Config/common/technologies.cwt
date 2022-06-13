@@ -27,6 +27,8 @@ technology = {
 	## cardinality = 0..1
 	xp_research_cost = int
 	## cardinality = 0..1
+	xp_boost_cost = int
+	## cardinality = 0..1
 	xp_research_bonus = float
 	subtype[doctrine] = {
 		xp_unlock_cost = int
@@ -175,6 +177,8 @@ technology = {
 		alias_name[effect] = alias_match_left[effect]
 	}
 
+	## cardinality = 0..1
+	force_use_small_tech_layout = yes
 	## cardinality = 0..1
 	show_effect_as_desc = bool
 	## cardinality = 0..1

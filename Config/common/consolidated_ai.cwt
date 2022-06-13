@@ -276,7 +276,7 @@ ai_template = {
 }
 
 ai_equipment_design_group = {
-	### Only category = naval is currently supported, starting with version 1.6.0.
+	### naval category is supported from version 1.6.0, and land category from version 1.11.0
 	category = enum[equipment_categories]
 
 	### Exclusionary list of countries that will not use this design group.
@@ -370,6 +370,20 @@ ai_equipment_design_group = {
 					### Optionally, for upgrading existing equipment to a this design, you can require that this slot must have a better module in order to use this design. Example upgrade > current. Alternatively, you can require that it must use exactly the same module that is already on the existing equipment. Example upgrade = current.
 					## cardinality = 0..1
 					upgrade = current
+				}
+			}
+			###
+			## cardinality = 0..1
+			upgrades = {
+				## cardinality = 0..4
+				<upgrade> = int
+				## cardinality = 0..4
+				<upgrade> = {
+					enum[base_factor] = int
+					modifier = {
+						alias_name[trigger] = alias_match_left[trigger]
+						enum[add_factor] = int
+					}
 				}
 			}
 		}

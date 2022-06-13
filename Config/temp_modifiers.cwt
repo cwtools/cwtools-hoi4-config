@@ -162,3 +162,12 @@ alias[unit_leader_modifier:night] = { alias_name[unit_stat] = alias_match_left[u
 alias[unit_leader_modifier:amphibious] = { alias_name[unit_stat] = alias_match_left[unit_stat] }
 alias[unit_leader_modifier:fort] = { alias_name[unit_stat] = alias_match_left[unit_stat] }
 alias[unit_leader_modifier:river] = { alias_name[unit_stat] = alias_match_left[unit_stat] }
+
+#NSB
+alias[modifier:enum[tech_category]_cost_factor] = float
+alias[modifier:trait_<unit_leader_trait.gainable_trait>_xp_gain_factor] = float
+alias[modifier:<unit_leader_trait.gainable_trait>_xp_gain_factor] = float
+alias[modifier:unit_<unit>_design_cost_factor] = float
+alias[modifier:<equipment.archetype_equip>_design_cost_factor] = float
+alias[modifier:experience_gain_<unit>_combat_factor] = float
+alias[modifier:<combat_tactic>_preferred_weight_factor] = float

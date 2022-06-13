@@ -375,6 +375,7 @@ enums = {
 		agency_ai_per_upgrade_factories_factor
 		garrison_reinforcement_priority
 		operation_equipment_priority
+		railway_gun_divisions_ratio
 	}
 	enum[pp_strats] = {
 		pp_spend_amount

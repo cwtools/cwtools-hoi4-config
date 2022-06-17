@@ -26,6 +26,8 @@ autonomy = {
 	manpower_influence = float[0..1]
 
 	rule = {
+		## cardinality = 0..1
+		desc = localisation
 		## cardinality = 0..20
 		enum[game_rules] = bool
 	}

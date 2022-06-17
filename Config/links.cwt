@@ -49,6 +49,13 @@ links = {
         data_source = enum[country_tags]
     }
 
+    character = {
+        output_scope = character
+        input_scopes = country
+        from_data = yes
+        data_source = <character>
+    }
+
     var = {
         desc =  eventtarget_link_desc_var
         from_data = yes

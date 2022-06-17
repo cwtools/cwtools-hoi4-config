@@ -32,6 +32,9 @@ technology = {
 	xp_boost_cost = int
 	## cardinality = 0..1
 	xp_research_bonus = float
+	subtype[doctrine] = {
+		xp_unlock_cost = int
+	}
 
 	## cardinality = 0..1
 	### Hides technology unless trigger is true.
@@ -51,13 +54,13 @@ technology = {
 		## cardinality = ~1..inf
 		<technology>
 	}
-	## cardinality = 0..1
+	## cardinality = 0..inf
 	### Enables listed units.
 	enable_subunits = {
 		## cardinality = ~1..inf
 		<unit>
 	}
-	## cardinality = 0..1
+	## cardinality = 0..inf
 	### Enables listed equipment.
 	enable_equipments = {
 		## cardinality = ~1..inf
@@ -176,6 +179,8 @@ technology = {
 		alias_name[effect] = alias_match_left[effect]
 	}
 
+	## cardinality = 0..1
+	force_use_small_tech_layout = yes
 	## cardinality = 0..1
 	show_effect_as_desc = bool
 	## cardinality = 0..1

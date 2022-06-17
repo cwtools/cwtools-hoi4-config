@@ -54,17 +54,12 @@ enums = {
 
 	enum[equipment_categories] = {
 		naval
+		land
 	}
 
 	enum[experience_types] = {
 		army
 		navy
 		air
-	}
-
-	complex_enum[characters] = {
-		path = "game/common/characters"
-		start_from_root = yes
-		name = scalar
 	}
 }

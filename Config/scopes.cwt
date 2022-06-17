@@ -16,8 +16,9 @@ alias[trigger:NOT] = {
 	alias_name[trigger] = alias_match_left[trigger]
 }
 
-alias[trigger:NOR] = { alias_name[trigger] = alias_match_left[trigger] }
-alias[trigger:NAND] = { alias_name[trigger] = alias_match_left[trigger] }
+#NOR and NAND are not available for use in HoI4; well NOR is, but that's Norway's TAG in base game
+#alias[trigger:NOR] = { alias_name[trigger] = alias_match_left[trigger] }
+#alias[trigger:NAND] = { alias_name[trigger] = alias_match_left[trigger] }
 alias[trigger:AND] = { alias_name[trigger] = alias_match_left[trigger] }
 alias[trigger:OR] = { alias_name[trigger] = alias_match_left[trigger] }
 
@@ -25,8 +26,9 @@ alias[effect:NOT] = {
 	alias_name[effect] = alias_match_left[effect]
 }
 
-alias[effect:NOR] = { alias_name[effect] = alias_match_left[effect] }
-alias[effect:NAND] = { alias_name[effect] = alias_match_left[effect] }
+#NOR and NAND are not available for use in HoI4; well NOR is, but that's Norway's TAG in base game
+#alias[effect:NOR] = { alias_name[effect] = alias_match_left[effect] }
+#alias[effect:NAND] = { alias_name[effect] = alias_match_left[effect] }
 alias[effect:AND] = { alias_name[effect] = alias_match_left[effect] }
 alias[effect:OR] = { alias_name[effect] = alias_match_left[effect] }
 
@@ -47,6 +49,10 @@ scopes = {
 	}
 	State = {
 		aliases = { state }
+	}
+	Character = {
+		aliases = { character }
+		is_subscope_of = { country }
 	}
 	"Unit Leader" = {
 		aliases = { unit_leader unitleader character }

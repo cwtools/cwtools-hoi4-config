@@ -18,6 +18,13 @@ types = {
 		subtype[land_unit] = {
 			map_icon_category = enum[land_map_icons]
 		}
+		subtype[armor_unit] = {
+			type = {
+				armor
+				## cardinality = 0..8
+				enum[land_units]
+			}
+		}
 		subtype[catch] = {
 		}
 	}
@@ -30,6 +37,8 @@ types = {
 }
 
 unit = {
+	## cardinality = 0..1
+	abbreviation = localisation
 	### 3D map asset.
 	sprite = scalar
 	#enum[unit_sprites]
@@ -328,6 +337,10 @@ enums = {
 		convoy
 		paratroopers
 		scout_plane
+		floating_harbor
+		railway_gun
+		train
+		flame
 	}
 	enum[land_units] = {
 		infantry

@@ -44,6 +44,13 @@ building = {
 	has_destroyed_mesh = bool
 
 	## cardinality = 0..1
+	allied_build = bool
+	## cardinality = 0..1
+	centered = bool
+	## cardinality = 0..1
+	supply_node = bool
+
+	## cardinality = 0..1
 	shares_slots = bool
 	## cardinality = 0..1
 	infrastructure_construction_effect = bool

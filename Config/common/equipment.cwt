@@ -20,6 +20,17 @@ types = {
 			## cardinality = 0..1
 			archetype = <equipment.naval_equip>
 		}
+		subtype[armor_equip] = {
+			## cardinality = 0..1
+			type = armor
+			## cardinality = 0..1
+			type = {
+				## cardinality = 1..inf
+				enum[ship_units]
+			}
+			## cardinality = 0..1
+			archetype = <equipment.armor_equip>
+		}
 		subtype[air_equip] = {
 			## cardinality = 0..1
 			type = enum[air_units]
@@ -30,6 +41,15 @@ types = {
 			}
 			## cardinality = 0..1
 			archetype = <equipment.air_equip>
+		}
+		subtype[designable_equip] = {
+			## cardinality = 0..1
+			### List of module slots and their details.
+			module_slots = {
+			}
+			## cardinality = 0..1
+			### All parent module slots will directly inherited with no modifications.
+			module_slots = inherit
 		}
 	}
 	type[upgrade] = {
@@ -96,6 +116,19 @@ equipment = {
 		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	}
 
+	## cardinality = 0..1
+	## replace_scope = { this = country root = country }
+	can_be_produced = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	## cardinality = 0..1
+	## replace_scope = { this = country root = country }
+	can_be_lend_leased = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	## cardinality = 0..1
+	supply_truck = bool
+
 	subtype[archetype_equip] = {
 		### GFX reference used to define equipment picture in land-lease.
 		picture = scalar
@@ -108,11 +141,6 @@ equipment = {
 
 		interface_category = enum[interface_category]
 
-		## cardinality = 0..1
-		## replace_scope = { this = country root = country }
-		can_be_produced = {
-			alias_name[trigger] = alias_match_left[trigger]
-		}
 	}
 
 	subtype[air_equip] = {
@@ -123,6 +151,8 @@ equipment = {
 	}
 
 	subtype[regular_equip] = {
+		## cardinality = 0..1
+		abbreviation = localisation
 		### Which archetype equipment this equipment inherits from.
 		archetype = <equipment.archetype_equip>
 
@@ -145,12 +175,7 @@ equipment = {
 		}
 	}
 
-	subtype[naval_equip] = {
-		## cardinality = 0..1
-		visual_tech_level_addition = int
-		## cardinality = 0..1
-		model = scalar
-
+	subtype[designable_equip] = {
 		## cardinality = 0..1
 		### List of module slots and their details.
 		module_slots = {
@@ -190,7 +215,18 @@ equipment = {
 			enum[module_slots] = <module>
 			## cardinality = 0..inf
 			enum[module_slots] = empty
-		}
+		}		
+	}
+	subtype[naval_equip] = {
+		## cardinality = 0..1
+		visual_tech_level_addition = int
+		## cardinality = 0..1
+		model = scalar
+	}
+
+	subtype[armor_equip] = {
+		## cardinality = 0..1
+		derived_variant_name = localisation
 	}
 
 	## cardinality = 0..1

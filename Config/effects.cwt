@@ -15,7 +15,7 @@ alias[effect:custom_effect_tooltip] = localisation
 
 ### Move capital to state.
 ## scope = country
-alias[effect:set_capital] = scope[state]
+alias[effect:set_capital] = { state = scope[state] }
 ### Move capital to state.
 ## scope = country
 alias[effect:set_capital] = <state>
@@ -1090,7 +1090,7 @@ alias[effect:start_civil_war] = {
 	keep_unit_leaders_trigger = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
-	alias_name[effect] = alias_match_left[effect]
+	#alias_name[effect] = alias_match_left[effect]
 }
 
 ### Retires a country leader and removes him as leader of his party, making the next in line the new party and country leader.
@@ -1121,6 +1121,8 @@ alias[effect:create_wargoal] = {
 		## cardinality = 0..inf
 		<state>
 	}
+	## cardinality = 0..1
+	generator = core_states
 	## cardinality = 0..1
 	generator = owned_states
 	## cardinality = 0..1
@@ -3210,11 +3212,11 @@ alias[effect:add_ai_strategy] = {
 	value = int
 }
 
-# ### Effect not shown in tooltips.
-# ## scope = any
-# alias[effect:hidden_effect] = {
-# 	alias_name[effect] = alias_match_left[effect]
-# }
+### Effect not shown in tooltips.
+## scope = any
+alias[effect:hidden_effect] = {
+	alias_name[effect] = alias_match_left[effect]
+}
 
 ### Adds legitimacy to scope country. Value has to be 0-100.
 ## scope = country

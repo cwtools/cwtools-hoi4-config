@@ -2268,7 +2268,7 @@ alias[effect:subtract_from_temp_variable] = { value_set[variable] = variable_fie
 ### Multiplies a temp variable to a value or another variable.
 ## scope = any
 alias[effect:multiply_temp_variable] = {
-	## cardinality = 1..2
+	## cardinality = 0..1
 	value_set[variable] = variable_field_32
 	## cardinality = 0..1
 	tooltip = localisation

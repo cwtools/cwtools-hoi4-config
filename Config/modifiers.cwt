@@ -563,6 +563,7 @@ modifiers = {
 	Rhizome_Manoeuver_preferred_weight_factor = country
 	own_operative_intel_extraction_rate = country
 	local_resources = country
+	no_compliance_gain = country
 
 	# State
 	army_speed_factor_for_controller = state

@@ -1081,4 +1081,8 @@ alias[effect:remove_wargoal] = {
 
 ###Retires a Character
 ## scopes = { country }
-alias[effect:retire_character] = enum[characters]
+alias[effect:retire_character] = scalar
+
+###Recruits a Character
+## scopes = { country }
+alias[effect:recruit_character] = scalar

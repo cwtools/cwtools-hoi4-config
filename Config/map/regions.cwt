@@ -48,6 +48,7 @@ strategic_region = {
 				## cardinality = 2..2
 				float
 			}
+			## cardinality = 0..1
 			temperature_day_night = {
 				## cardinality = 2..2
 				float

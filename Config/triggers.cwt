@@ -385,6 +385,7 @@ alias[trigger:country_exists] = enum[country_tags]
 ### Checks for amount of ships in specified area.
 ## scope = country
 alias[trigger:ships_in_area] = {
+	## cardinality = 0..1
 	type = <unit.ship_unit>
 	area = <strategic_region>
 	size = int
@@ -1220,34 +1221,35 @@ alias[trigger:has_template_majority_unit] = <unit>
 ## scope = combat
 alias[trigger:min_planning] = float
 
+#moved to triggers_nsb.cwt
 ### Check if country has leader with specified ID. Don't localize this. Tooltip only for debug.
 ## scope = country
-alias[trigger:has_country_leader] = {
-	## cardinality = 0..1
-	id = int
-	## cardinality = 0..1
-	ruling_only = bool
-
-	## cardinality = 0..1
-	name = scalar
-}
-
-### Check if country has leader with specified ID. Don't localize this. Tooltip only for debug.
-## scope = country
-alias[trigger:has_country_leader] = {
-	name = scalar
-	## cardinality = 0..1
-	ruling_only = bool
-}
+#alias[trigger:has_country_leader] = {
+#	## cardinality = 0..1
+#	id = int
+#	## cardinality = 0..1
+#	ruling_only = bool
+#
+#	## cardinality = 0..1
+#	name = scalar
+#}
 
 ### Check if country has leader with specified ID. Don't localize this. Tooltip only for debug.
 ## scope = country
-alias[trigger:has_country_leader] = {
-	id = int
-	name = scalar
-	## cardinality = 0..1
-	ruling_only = bool
-}
+#alias[trigger:has_country_leader] = {
+#	name = scalar
+#	## cardinality = 0..1
+#	ruling_only = bool
+#}
+
+### Check if country has leader with specified ID. Don't localize this. Tooltip only for debug.
+## scope = country
+#alias[trigger:has_country_leader] = {
+#	id = int
+#	name = scalar
+#	## cardinality = 0..1
+#	ruling_only = bool
+#}
 
 ### Compares current country's army experience with right side value.
 ## scope = country

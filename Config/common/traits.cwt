@@ -18,6 +18,10 @@ types = {
 		subtype[land_commander] = {
 			type = land
 		}
+		subtype[land_naval_commander] = {
+			type = {
+			}
+		}
 		subtype[assignable_trait] = {
 			trait_type = assignable_trait
 			trait_type = assignable_terrain_trait
@@ -29,6 +33,9 @@ types = {
 		subtype[gainable_trait] = {
 			gain_xp_leader = {
 			}
+		}
+		subtype[military_advisor_trait] = {
+			slot = value[character_advisor_slot]
 		}
 	}
 }
@@ -157,6 +164,12 @@ unit_leader_trait = {
 		custom_prerequisite_tooltip = localisation
 		## cardinality = 0..1
 		num_parents_needed = int
+	}
+	subtype[military_advisor_trait] = {
+		slot = value[character_advisor_slot]
+		specialist_advisor_trait = <country_leader_trait>
+		expert_advisor_trait = <country_leader_trait>
+		genius_advisor_trait = <country_leader_trait>
 	}
 	## cardinality = 0..1
 	field_marshal_modifier = {

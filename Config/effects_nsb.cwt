@@ -1,0 +1,347 @@
+## scope = country
+## push_scope = state
+alias[effect:every_core_state] = {
+	## cardinality = 0..1
+	limit = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	## cardinality = 0..1
+	tooltip = localisation
+	alias_name[effect] = alias_match_left[effect]
+}
+
+## scope = country
+## push_scope = state
+alias[effect:random_core_state] = {
+	## cardinality = 0..1
+	limit = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	## cardinality = 0..1
+	prioritize = {
+		## cardinality = 1..inf
+		<state>
+	}
+	## cardinality = 0..1
+	tooltip = localisation
+	alias_name[effect] = alias_match_left[effect]
+}
+
+### transfers state (owns and controls) to target
+## scope = { state }
+alias[effect:transfer_state_to] = enum[country_tags]
+### transfers state (owns and controls) to target
+## scope = { state }
+alias[effect:transfer_state_to] = scope[country]
+
+### transfers state (owns) to target, control changes only if at peace with controller and controller doesn't have rule can_occupy_non_war
+## scope = { state }
+alias[effect:set_state_owner_to] = enum[country_tags]
+### transfers state (owns) to target, control changes only if at peace with controller and controller doesn't have rule can_occupy_non_war
+## scope = { state }
+alias[effect:set_state_owner_to] = scope[country]
+
+### transfers state (controls only) to target
+## scope = { state }
+alias[effect:set_state_controller_to] = enum[country_tags]
+### transfers state (controls only) to target
+## scope = { state }
+alias[effect:set_state_controller_to] = scope[country]
+
+### releases target country from owned and controlled states of scoped country
+## scope = { country }
+alias[effect:release_on_controlled] = enum[country_tags]
+### releases target country from owned and controlled states of scoped country
+## scope = { country }
+alias[effect:release_on_controlled] = scope[country]
+
+### releases target country from owned and controlled states as a puppet of scoped country
+## scope = { country }
+alias[effect:release_puppet_on_controlled] = enum[country_tags]
+### releases target country from owned and controlled states as a puppet of scoped country
+## scope = { country }
+alias[effect:release_puppet_on_controlled] = scope[country]
+
+## scope = country
+alias[effect:uncomplete_national_focus] = {
+	focus = <focus>
+	### Default is no. If yes, all proceeding focuses will also be uncompleted if their prerequisite aren't met after the preceeding focuses are uncompleted.
+	## cardinality = 0..1
+	uncomplete_children = bool
+	### Default is no. If yes, the country is refunded the political power invested in the current focus if it's canceled as a result of its prerequisites being uncompleted.
+	## cardinality = 0..1
+	refund_political_power = bool
+	uses = int
+	cost_reduction = float
+}
+
+## scope = country
+alias[effect:add_doctrine_cost_reduction] = {
+	name = localisation
+	uses = int
+	cost_reduction = float[0..1]
+	### Doctrine categories only
+	category = enum[tech_category]
+}
+
+
+## scope = country
+## push_scope = character
+alias[effect:every_character] = {
+	## cardinality = 0..1
+	limit = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	## cardinality = 0..1
+	tooltip = localisation
+	alias_name[effect] = alias_match_left[effect]
+}
+
+## scope = country
+## push_scope = character
+alias[effect:random_character] = {
+	## cardinality = 0..1
+	limit = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	## cardinality = 0..1
+	tooltip = localisation
+	alias_name[effect] = alias_match_left[effect]
+}
+
+## scope = { character country }
+alias[effect:add_corps_commander_role] = {
+	### required in country scope, optional in character scope
+	## cardinality = 0..1
+	character = <character>
+	## cardinality = 0..1
+	traits = {
+		## cardinality = ~1..inf
+		<unit_leader_trait>
+	}
+	skill = int_variable_field
+	attack_skill = int_variable_field
+	defense_skill = int_variable_field
+	planning_skill = int_variable_field
+	logistics_skill = int_variable_field
+}
+
+## scope = { character country }
+alias[effect:add_field_marshal_role] = {
+	### required in country scope, optional in character scope
+	## cardinality = 0..1
+	character = <character>
+	## cardinality = 0..1
+	traits = {
+		## cardinality = ~1..inf
+		<unit_leader_trait>
+	}
+	skill = int_variable_field
+	attack_skill = int_variable_field
+	defense_skill = int_variable_field
+	planning_skill = int_variable_field
+	logistics_skill = int_variable_field
+}
+
+## scope = { character country }
+alias[effect:add_naval_commander_role] = {
+	### required in country scope, optional in character scope
+	## cardinality = 0..1
+	character = <character>
+	## cardinality = 0..1
+	traits = {
+		## cardinality = ~1..inf
+		<unit_leader_trait>
+	}
+	skill = int_variable_field
+	attack_skill = int_variable_field
+	defense_skill = int_variable_field
+	maneuvering_skill = int_variable_field
+	coordination_skill = int_variable_field
+}
+
+## scope = { character country }
+alias[effect:add_country_leader_role] = {
+	### required in country scope, optional in character scope
+	## cardinality = 0..1
+	character = <character>
+	### makes character lead their ideology party, default no
+	## cardinality = 0..1
+	promote_leader = bool
+	country_leader = {
+		ideology = enum[sub_ideology]
+		## cardinality = 0..1
+		traits = {
+			## cardinality = ~1..inf
+			<country_leader_trait>
+		}
+		## cardinality = 0..1
+		expire = date_field
+	}
+}
+
+## scope = { character country }
+alias[effect:add_advisor_role] = {
+	### required in country scope, optional in character scope
+	## cardinality = 0..1
+	character = <character>
+	### hires advisor bypassing cost, default no
+	## cardinality = 0..1
+	activate = bool
+	advisor = {
+		slot = value[character_advisor_slot]
+		idea_token = value_set[advisor_token]
+		## replace_scope = { this = character root = country }
+		## cardinality = 0..1
+		allowed = {
+			## cardinality = ~1..inf
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+		## replace_scope = { this = character root = country }
+		## cardinality = 0..1
+		visible = {
+			## cardinality = ~1..inf
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+		## replace_scope = { this = character root = country }
+		## cardinality = 0..1
+		available = {
+			## cardinality = ~1..inf
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+		### Sets advsior effects.
+		## cardinality = ~1..1
+		traits = {
+			## cardinality = 0..inf
+			<country_leader_trait>
+		}
+		## cardinality = 0..1
+		ledger = enum[ledgers]
+		### overrides default cost of advisor
+		## cardinality = 0..1
+		cost = int
+		### cost to remove advisor, -1 prevents removal
+		## cardinality = 0..1
+		removal_cost = int
+		## cardinality = 0..1
+		## replace_scope = { this = character root = country }
+		ai_will_do = {
+			enum[base_factor] = variable_field
+			alias_name[modifier_rule] = alias_match_left[modifier_rule]
+		}
+		## replace_scope = { this = character root = country }
+		## cardinality = 0..1
+		on_add = {
+			alias_name[effect] = alias_match_left[effect]
+		}
+		## replace_scope = { this = character root = country }
+		## cardinality = 0..1
+		on_remove = {
+			alias_name[effect] = alias_match_left[effect]
+		}
+		### While it is used in vanilla and doesn't throw errors, I can't get it to work reliably so I suspect there is some hard-coded strangeness going on here.
+		## replace_scope = { this = character root = country }
+		## cardinality = 0..1
+		do_effect = {
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+	}
+}
+
+### removes character from all roles and availability
+## scope = { any }
+alias[effect:retire_character] = <character>
+
+### renames character
+## scope = { character }
+alias[effect:set_character_name] = localisation
+### renames character
+## scope = { country character }
+alias[effect:set_character_name] = {
+	character = <character>
+	name = localisation
+}
+
+### makes character head of their ideology party
+## scope = { country }
+alias[effect:promote_character] = <character>
+### makes character head of their ideology party
+## scope = { country }
+alias[effect:promote_character] = {
+	character = <character>
+	### must match the character's country leader sub-ideology
+	ideology = enum[sub_ideology]
+}
+
+### makes character head of their ideology party
+## scope = { character }
+alias[effect:promote_character] = bool
+### makes character head of their ideology party
+## scope = { character }
+alias[effect:promote_character] = enum[sub_ideology]
+### makes character head of their ideology party
+## scope = { character }
+alias[effect:promote_character] = {
+	ideology = enum[sub_ideology]
+}
+
+## scope = { character }
+alias[effect:swap_country_leader_traits] = {
+	remove = <country_leader_trait>
+	add = <country_leader_trait>
+	ideology = enum[sub_ideology]
+}
+
+## scope = { character }
+alias[effect:set_character_flag] = value_set[character_flag]
+## scope = { character }
+alias[effect:modify_character_flag] = {
+	flag = value[character_flag]
+	value = int_variable_field
+}
+## scope = { character }
+alias[effect:clr_character_flag] = value[character_flag]
+
+### Hires advisor (adds advisor idea)
+## scope = { country }
+alias[effect:activate_advisor] = value[advisor_token]
+
+### Fires advisor (removes advisor idea)
+## scope = { country }
+alias[effect:deactivate_advisor] = value[advisor_token]
+
+### makes character head of their ideology party
+## scope = { country character }
+alias[effect:add_trait] = {
+	## cardinality = 0..1
+	character = <character>
+	trait = <unit_leader_trait>
+}
+### makes character head of their ideology party
+## scope = { country character }
+alias[effect:add_trait] = {
+	## cardinality = 0..1
+	character = <character>
+	trait = <country_leader_trait>
+	### must match the character's country leader sub-ideology
+	## cardinality = 0..1
+	ideology = enum[sub_ideology]
+	## cardinality = 0..1
+	slot = value[character_advisor_slot]
+}
+
+### Transfers character from scope country to target_country
+## scope = { country }
+alias[effect:set_nationality] = {
+	target_country = scope[country]
+	target_country = enum[country_tags]
+	character = <character>
+}
+
+### Transfers scoped character from PREV country to target
+## scope = { character }
+alias[effect:set_nationality] = scope[country]
+	target_country = enum[country_tags]
+### Transfers scoped character from PREV country to target
+## scope = { character }
+alias[effect:set_nationality] = enum[country_tags]

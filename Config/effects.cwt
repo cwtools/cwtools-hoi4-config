@@ -2418,6 +2418,7 @@ alias[effect:recall_attache] = enum[country_tags]
 alias[effect:activate_targeted_decision] = {
 	target = scope[country]
 	target = enum[country_tags]
+	target = <state>
 	decision = <decision>
 }
 

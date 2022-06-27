@@ -954,6 +954,20 @@ on_action = {
         }
     }
     ## replace_scope = { THIS = country ROOT = country }
+    subtype[on_weekly_<TAG>] = {
+        ## cardinality = 0..1
+        random_events = {
+            ## cardinality = 0..inf
+            int = 0
+            ## cardinality = 0..inf
+            int = <event.country_event>
+        }
+        ## cardinality = 0..1
+        effect = {
+            alias_name[effect] = alias_match_left[effect]
+        }
+    }
+    ## replace_scope = { THIS = country ROOT = country }
     subtype[on_monthly] = {
         ## cardinality = 0..1
         random_events = {

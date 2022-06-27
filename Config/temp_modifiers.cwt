@@ -56,6 +56,7 @@ alias[unit_stat:fuel_consumption] = float
 alias[unit_stat:hard_attack] = float
 alias[unit_stat:hardness] = float
 alias[unit_stat:initiative] = float
+alias[unit_stat:initiative_factor] = float
 alias[unit_stat:lend_lease_cost] = float
 alias[unit_stat:manpower] = float
 alias[unit_stat:max_organisation] = float
@@ -96,6 +97,7 @@ alias[naval_stat:naval_invasion_penalty] = float
 alias[naval_stat:naval_mine_hit_chance] = float
 alias[naval_stat:naval_mines_damage_factor] = float
 alias[naval_stat:naval_morale_factor] = float
+alias[naval_stat:naval_morale] = float
 alias[naval_stat:naval_range] = float
 alias[naval_stat:naval_retreat_chance] = float
 alias[naval_stat:naval_speed_factor] = float
@@ -165,9 +167,12 @@ alias[unit_leader_modifier:river] = { alias_name[unit_stat] = alias_match_left[u
 
 #NSB
 alias[modifier:enum[tech_category]_cost_factor] = float
+# alias[modifier:cat_enum[tech_category]_cost_factor] = float
 alias[modifier:trait_<unit_leader_trait.gainable_trait>_xp_gain_factor] = float
 alias[modifier:<unit_leader_trait.gainable_trait>_xp_gain_factor] = float
 alias[modifier:unit_<unit>_design_cost_factor] = float
 alias[modifier:<equipment.archetype_equip>_design_cost_factor] = float
+alias[modifier:production_cost_max_<equipment.archetype_equip>] = float nrm_ship_hull_cruiser
 alias[modifier:experience_gain_<unit>_combat_factor] = float
+alias[modifier:experience_gain_<unit>_training_factor] = float
 alias[modifier:<combat_tactic>_preferred_weight_factor] = float

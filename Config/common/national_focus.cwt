@@ -85,9 +85,14 @@ focus_tree = {
 		## severity = warning
 		icon = <spriteType>
 
+		## severity = warning
 		cost = float
-		x = int
-		y = int
+
+		## severity = warning
+		x = float
+
+		## severity = warning
+		y = float
 
 		## cardinality = 0..inf
 		offset = {

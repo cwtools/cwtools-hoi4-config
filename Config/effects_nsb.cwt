@@ -71,8 +71,6 @@ alias[effect:uncomplete_national_focus] = {
 	### Default is no. If yes, the country is refunded the political power invested in the current focus if it's canceled as a result of its prerequisites being uncompleted.
 	## cardinality = 0..1
 	refund_political_power = bool
-	uses = int
-	cost_reduction = float
 }
 
 ## scope = country

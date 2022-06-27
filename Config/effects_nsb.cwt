@@ -115,6 +115,8 @@ alias[effect:add_corps_commander_role] = {
 	## cardinality = 0..1
 	character = <character>
 	## cardinality = 0..1
+	desc = localisation
+	## cardinality = 0..1
 	traits = {
 		## cardinality = ~1..inf
 		<unit_leader_trait>
@@ -132,6 +134,8 @@ alias[effect:add_field_marshal_role] = {
 	## cardinality = 0..1
 	character = <character>
 	## cardinality = 0..1
+	desc = localisation
+	## cardinality = 0..1
 	traits = {
 		## cardinality = ~1..inf
 		<unit_leader_trait>
@@ -148,6 +152,8 @@ alias[effect:add_naval_commander_role] = {
 	### required in country scope, optional in character scope
 	## cardinality = 0..1
 	character = <character>
+	## cardinality = 0..1
+	desc = localisation
 	## cardinality = 0..1
 	traits = {
 		## cardinality = ~1..inf

@@ -495,6 +495,7 @@ modifiers = {
 	land_doctrine_cost_factor = country
 	railway_gun_bombardment_factor = country
 	army_advisor_cost_factor = country
+	# Preferred tactic/trait stuff move to composite
 	tactic_elastic_defense_preferred_weight_factor = country
 	tactic_infantry_charge_preferred_weight_factor = country
 	tactic_danger_close_combat_preferred_weight_factor = country

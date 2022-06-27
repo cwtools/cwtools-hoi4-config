@@ -1008,15 +1008,15 @@ alias[effect:set_country_leader_description] = {
 }
 
 ### Changes the name of unit leader. no tooltip is generated.
-## scope = { UNIT_LEADER }
+## scope = { unit_leader }
 alias[effect:set_leader_name] = localisation_inline
 
 ### Changes the portrait of unit leader. no tooltip is generated.
-## scope = { UNIT_LEADER }
+## scope = { unit_leader }
 alias[effect:set_leader_portrait] = <spriteType>
 
 ### Changes the description of unit leader. no tooltip is generated.
-## scope = { UNIT_LEADER }
+## scope = { character unit_leader }
 alias[effect:set_leader_description] = localisation
 
 ###sets a variable to a random value.

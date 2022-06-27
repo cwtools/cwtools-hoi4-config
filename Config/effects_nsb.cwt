@@ -298,9 +298,9 @@ alias[effect:swap_country_leader_traits] = {
 	ideology = enum[sub_ideology]
 }
 
-## scope = { character }
+## scope = { character unit_leader }
 alias[effect:set_character_flag] = value_set[character_flag]
-## scope = { character }
+## scope = { character unit_leader }
 alias[effect:modify_character_flag] = {
 	flag = value[character_flag]
 	value = int_variable_field
@@ -317,14 +317,14 @@ alias[effect:activate_advisor] = value[advisor_token]
 alias[effect:deactivate_advisor] = value[advisor_token]
 
 ### makes character head of their ideology party
-## scope = { country character }
+## scope = { country character unit_leader }
 alias[effect:add_trait] = {
 	## cardinality = 0..1
 	character = <character>
 	trait = <unit_leader_trait>
 }
 ### makes character head of their ideology party
-## scope = { country character }
+## scope = { country character unit_leader }
 alias[effect:add_trait] = {
 	## cardinality = 0..1
 	character = <character>

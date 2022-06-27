@@ -30,7 +30,7 @@ alias[trigger:else] = {
 }
 
 ### Compare leader skill levels.
-## scope = { unit_leader combat }
+## scope = { unit_leader combat character }
 alias[trigger:skill] = int
 
 ### Check if we are in this combat phase.
@@ -691,7 +691,7 @@ alias[trigger:is_core_of] = enum[country_tags]
 alias[trigger:is_ai] = bool
 
 ### Check if sides leader has trait.
-## scope = { unit_leader combat }
+## scope = { character unit_leader combat }
 alias[trigger:has_trait] = <unit_leader_trait>
 
 ### Check if side has reserves waiting.

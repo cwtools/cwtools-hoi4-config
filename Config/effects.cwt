@@ -548,7 +548,7 @@ alias[effect:create_unit] = {
 alias[effect:sound_effect] = scalar
 
 ### Promotes general to field marshal.
-## scope = unit_leader
+## scope = { character unit_leader }
 alias[effect:promote_leader] = bool
 
 ### Randomize weather effect.
@@ -698,7 +698,7 @@ alias[effect:create_navy_leader] = {
 alias[effect:remove_unit_leader_trait] = <unit_leader_trait>
 
 ### Add trait to unit leader.
-## scope = unit_leader
+## scope = { character unit_leader }
 alias[effect:add_unit_leader_trait] = <unit_leader_trait>
 
 ### Adds new namespace.
@@ -1970,11 +1970,11 @@ alias[effect:set_nationality] = scope[country]
 alias[effect:set_nationality] = enum[country_tags]
 
 ### Demotes field marshal to general.
-## scope = unit_leader
+## scope = { character unit_leader }
 alias[effect:demote_leader] = yes
 
 ### Retires scope unit leader.
-## scope = unit_leader
+## scope = { character unit_leader }
 alias[effect:retire] = bool
 
 ### Add command power to country.
@@ -2170,7 +2170,7 @@ alias[effect:add_offsite_building] = {
 alias[effect:replace_unit_leader_trait] = replace_me
 
 ### Adds a max assignable trait slot for a general.
-## scope = unit_leader
+## scope = { character unit_leader }
 alias[effect:add_max_trait] = int
 
 ### Adds a skill level to a unit leader.
@@ -2467,7 +2467,7 @@ alias[effect:set_truce] = {
 alias[effect:round_variable] = variable_field_32
 
 ### Fires a unit leader event for owner country.
-## scope = unit_leader
+## scope = { character unit_leader }
 alias[effect:unit_leader_event] = {
 	### The event to fire.
 	id = <event.unit_leader_event>
@@ -2509,7 +2509,7 @@ alias[effect:unit_leader_event] = {
 }
 
 ### Fires a unit leader event for owner country.
-## scope = unit_leader
+## scope = { character unit_leader }
 alias[effect:unit_leader_event] = <event.unit_leader_event>
 
 ### Finalizes border war between two states, wins or cancels it.

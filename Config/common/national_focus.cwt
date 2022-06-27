@@ -217,6 +217,12 @@ focus_tree = {
 			alias_name[effect] = alias_match_left[effect]
 		}
 
+		## cardinality = 0..1
+		on_uncomplete = {
+			## cardinality = ~1..inf
+			alias_name[effect] = alias_match_left[effect]
+		}
+
 		## cardinality = ~1..1
 		completion_reward = {
 			## cardinality = ~1..inf
@@ -376,6 +382,12 @@ shared_focus = {
 	## cardinality = 0..1
 	## push_scope = any
 	complete_tooltip = {
+		## cardinality = ~1..inf
+		alias_name[effect] = alias_match_left[effect]
+	}
+
+	## cardinality = 0..1
+	on_uncomplete = {
 		## cardinality = ~1..inf
 		alias_name[effect] = alias_match_left[effect]
 	}

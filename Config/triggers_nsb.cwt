@@ -163,9 +163,12 @@ alias[trigger:has_navy_ledger] = bool
 ### Checks if the current character has an air ledger.
 ## scope = character
 alias[trigger:has_air_ledger] = bool
-### Checks if the current character is in the character slot
+### Checks if the current character is in the character slot.
 ## scope = character
 alias[trigger:is_character_slot] = value[character_advisor_slot]
+###Checks if the current character is not hired, with the exception of the specified slot.
+## scope = character
+alias[trigger:not_already_hired_except_as] = value[character_advisor_slot]
 
 ### Has character flag been set. Check flag val date set and days since set. Example: has_character_flag = test_flag.
 ## scope = character

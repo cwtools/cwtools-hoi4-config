@@ -364,6 +364,16 @@ alias[effect:add_trait] = {
 	## cardinality = 0..1
 	slot = value[character_advisor_slot]
 }
+## scope = { country character }
+alias[effect:remove_trait] = {
+	## cardinality = 0..1
+	character = <character>
+	trait = <country_leader_trait>
+	## cardinality = 0..1
+	ideology = enum[sub_ideology]
+	## cardinality = 0..1
+	slot = value[character_advisor_slot]
+}
 
 ### Transfers character from scope country to target_country
 ## scope = { country }

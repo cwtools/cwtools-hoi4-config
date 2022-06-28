@@ -194,21 +194,6 @@ modifiers = {
 	war_support_weekly = country
 	war_support_weekly_factor = country
 	weekly_manpower = country
-	target_sabotage_risk = country
-	operation_capture_cipher_outcome = country
-	operation_capture_cipher_risk = country
-	operation_steal_tech_risk = country
-	operation_steal_tech_outcome = country
-	operation_boost_resistance_risk = country
-	operation_boost_resistance_outcome = country
-	operation_make_resistance_contacts_risk = country
-	operation_make_resistance_contacts_cost = country
-	operation_infiltrate_risk = country
-	operation_rescue_operative_risk = country
-	operation_rescue_operative_cost = country
-	target_sabotage_cost = country
-	operation_collaboration_government_outcome = country
-	enemy_intel_network_gain_factor_over_occupied_tag = country
 
 	# State
 	army_speed_factor_for_controller = state #army_speed_factor_for_controller
@@ -369,21 +354,6 @@ modifiers = {
 	submarine_attack = unit_leader
 	unit_leader_as_advisor_cp_cost_factor = unit_leader
 	wounded_chance_factor = unit_leader
-	target_sabotage_risk = unit_leader
-	operation_capture_cipher_outcome = unit_leader
-	operation_capture_cipher_risk = unit_leader
-	operation_steal_tech_risk = unit_leader
-	operation_steal_tech_outcome = unit_leader
-	operation_boost_resistance_risk = unit_leader
-	operation_boost_resistance_outcome = unit_leader
-	operation_make_resistance_contacts_risk = unit_leader
-	operation_make_resistance_contacts_cost = unit_leader
-	operation_infiltrate_risk = unit_leader
-	operation_rescue_operative_risk = unit_leader
-	operation_rescue_operative_cost = unit_leader
-	target_sabotage_cost = unit_leader
-	operation_collaboration_government_outcome = unit_leader
-	enemy_intel_network_gain_factor_over_occupied_tag = unit_leader
 
 	# Air
 	air_accidents = air
@@ -484,6 +454,21 @@ modifiers = {
 	propaganda_mission_factor = intelligence_agency #propaganda_mission_factor
 	root_out_resistance_effectiveness_factor = intelligence_agency #root_out_resistance_effectiveness_factor
 	target_sabotage_factor = intelligence_agency #target_sabotage_factor
+	target_sabotage_risk = intelligence_agency
+	operation_capture_cipher_outcome = intelligence_agency
+	operation_capture_cipher_risk = intelligence_agency
+	operation_steal_tech_risk = intelligence_agency
+	operation_steal_tech_outcome = intelligence_agency
+	operation_boost_resistance_risk = intelligence_agency
+	operation_boost_resistance_outcome = intelligence_agency
+	operation_make_resistance_contacts_risk = intelligence_agency
+	operation_make_resistance_contacts_cost = intelligence_agency
+	operation_infiltrate_risk = intelligence_agency
+	operation_rescue_operative_risk = intelligence_agency
+	operation_rescue_operative_cost = intelligence_agency
+	target_sabotage_cost = intelligence_agency
+	operation_collaboration_government_outcome = intelligence_agency
+	enemy_intel_network_gain_factor_over_occupied_tag = intelligence_agency
 
 	# Aggressive
 	annex_cost_factor = aggressive #annex_cost_factor

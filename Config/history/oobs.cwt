@@ -111,6 +111,8 @@ oob = {
 							owner = enum[country_tags]
 							## cardinality = 0..1
 							creator = enum[country_tags]
+							## cardinality = 0..1
+							create_if_missing = bool
 							amount = int
 						}
 						## cardinality = 0..inf
@@ -148,6 +150,8 @@ oob = {
 				owner = enum[country_tags]
 				## cardinality = 0..1
 				creator = enum[country_tags]
+				## cardinality = 0..1
+				create_if_missing = bool
 				amount = int
 			}
 			## cardinality = 0..inf

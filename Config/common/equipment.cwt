@@ -183,7 +183,7 @@ equipment = {
 			enum[module_slots] = {
 				required = bool
 				allowed_module_categories = {
-					## cardinality = 1..inf
+					## cardinality = 0..inf
 					enum[module_categories]
 				}
 				## cardinality = 0..1

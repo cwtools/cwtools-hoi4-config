@@ -16,6 +16,10 @@ country_history = {
 	## cardinality = 0..inf
 	recruit_character = <character>
 
+	### Set country's current train buffer
+	## cardinality = 0..inf
+	starting_train_buffer = float
+
 	## cardinality = 0..inf
 	date_field = {
 

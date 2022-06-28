@@ -347,6 +347,23 @@ alias[ai_strategy_rule:ai_strategy] = {
 	operation_target = scope[country]
 	operation_target = variable_field
 }
+alias[ai_strategy_rule:ai_strategy] = {
+	type = min_wanted_supply_trucks
+	value = int
+}
+alias[ai_strategy_rule:ai_strategy] = {
+	type = wanted_supply_trucks
+	value = int
+}
+alias[ai_strategy_rule:ai_strategy] = {
+	type = min_wanted_supply_trains
+
+	value = int
+}
+alias[ai_strategy_rule:ai_strategy] = {
+	type = wanted_supply_trains
+	value = int
+}
 
 enums = {
 	enum[ai_diplo_strats] = {

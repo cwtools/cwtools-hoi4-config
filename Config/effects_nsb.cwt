@@ -114,6 +114,8 @@ alias[effect:add_corps_commander_role] = {
 	defense_skill = int_variable_field
 	planning_skill = int_variable_field
 	logistics_skill = int_variable_field
+	## cardinality = 0..1
+	legacy_id = value_set[unit_leader_ids]
 }
 
 ## scope = { character country }
@@ -133,6 +135,8 @@ alias[effect:add_field_marshal_role] = {
 	defense_skill = int_variable_field
 	planning_skill = int_variable_field
 	logistics_skill = int_variable_field
+	## cardinality = 0..1
+	legacy_id = value_set[unit_leader_ids]
 }
 
 ## scope = { character country }
@@ -152,6 +156,8 @@ alias[effect:add_naval_commander_role] = {
 	defense_skill = int_variable_field
 	maneuvering_skill = int_variable_field
 	coordination_skill = int_variable_field
+	## cardinality = 0..1
+	legacy_id = value_set[unit_leader_ids]
 }
 
 ## scope = { character country }

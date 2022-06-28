@@ -694,6 +694,8 @@ alias[effect:create_navy_leader] = {
 	## cardinality = 0..1
 	id = value_set[unit_leader_ids]
 	## cardinality = 0..1
+	legacy_id = value_set[unit_leader_ids]
+	## cardinality = 0..1
 	female = bool
 }
 
@@ -1424,6 +1426,8 @@ alias[effect:create_field_marshal] = {
 	## cardinality = 0..1
 	id = value_set[unit_leader_ids]
 	## cardinality = 0..1
+	legacy_id = value_set[unit_leader_ids]
+	## cardinality = 0..1
 	female = bool
 }
 
@@ -1459,6 +1463,8 @@ alias[effect:create_corps_commander] = {
 	logistics_skill = int
 	## cardinality = 0..1
 	id = value_set[unit_leader_ids]
+	## cardinality = 0..1
+	legacy_id = value_set[unit_leader_ids]
 	## cardinality = 0..1
 	female = bool
 }

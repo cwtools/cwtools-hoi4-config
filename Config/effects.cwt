@@ -772,6 +772,41 @@ alias[effect:annex_country] = {
 	transfer_troops = bool
 }
 
+### Starts railway construction for amount of levels in specified state or province.
+## scope = any
+alias[effect:build_railway] = {
+	path = {
+		## cardinality = 1..inf
+		enum[provinces]
+	}
+	## cardinality = 0..1
+	build_only_on_allied = bool
+	## cardinality = 0..100
+	level = bool
+}
+
+### Starts railway construction for amount of levels in specified state or province.
+## scope = any
+alias[effect:build_railway] = {
+	## cardinality = 0..1
+	build_only_on_allied = bool
+	## cardinality = 0..100
+	level = bool
+	start_province = enum[provinces]
+	target_province = enum[provinces]
+}
+
+### Starts railway construction for amount of levels in specified state or province.
+## scope = any
+alias[effect:build_railway] = {
+	## cardinality = 0..1
+	build_only_on_allied = bool
+	## cardinality = 0..100
+	level = bool
+	start_state = int
+	target_state = int
+}
+
 ### Starts building construction for amount of levels in specified state or province.
 ## scope = state
 alias[effect:add_building_construction] = {

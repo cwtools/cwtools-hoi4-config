@@ -336,6 +336,10 @@ alias[trigger:has_government] = <ideology>
 
 ### Does country government (ruling party) belong to ideology group.
 ## scope = country
+alias[trigger:has_country_leader_ideology] = <ideology>
+
+### Does country government (ruling party) belong to ideology group.
+## scope = country
 alias[trigger:has_government] = scope[country]
 
 ### Has state flag been setCheck flag val date set and days since set.

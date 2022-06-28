@@ -254,7 +254,7 @@ decision = {
 		}
 		custom_cost_text = localisation
 	}
-	
+
 	## cardinality = 0..1
 	ai_hint_pp_cost = int
 
@@ -278,6 +278,11 @@ decision = {
 			## cardinality = ~1..inf
 			enum[provinces]
 		}
+
+		## cardinality = 0..1
+		highlight_color_before_active = int
+		## cardinality = 0..1
+		highlight_color_while_active = int
 	}
 
 

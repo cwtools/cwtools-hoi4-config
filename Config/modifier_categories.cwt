@@ -9,7 +9,7 @@ modifier_categories = {
         supported_scopes = { unit_leader }
     }
     air = {
-        supported_scopes = { air country unit_leader}
+        supported_scopes = { air unit_leader country }
     }
     intelligence_agency = {
         supported_scopes = { country unit_leader }

@@ -1219,6 +1219,22 @@ alias[effect:add_tech_bonus] = {
 	name = localisation
 }
 
+### Adds a limited use doctrine bonus
+## scope = country
+alias[effect:add_doctrine_cost_reduction] = {
+	## cardinality = 0..inf
+	category = enum[tech_category]
+	## cardinality = 0..inf
+	technology = <technology>
+	## cardinality = 0..1
+	uses = int[1..32767]
+	## cardinality = 1..2
+	cost_reduction = float
+	## cardinality = 1..1
+	## severity = warning
+	name = localisation
+}
+
 ### Adds a limited use tech bonus.
 ## scope = state
 alias[effect:set_demilitarized_zone] = bool

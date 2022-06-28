@@ -74,16 +74,6 @@ alias[effect:uncomplete_national_focus] = {
 }
 
 ## scope = country
-alias[effect:add_doctrine_cost_reduction] = {
-	name = localisation
-	uses = int
-	cost_reduction = float[0..1]
-	### Doctrine categories only
-	category = enum[tech_category]
-}
-
-
-## scope = country
 ## push_scope = character
 alias[effect:every_character] = {
 	## cardinality = 0..1

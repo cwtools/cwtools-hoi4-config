@@ -322,6 +322,8 @@ alias[effect:promote_character] = {
 alias[effect:swap_country_leader_traits] = {
 	remove = <country_leader_trait>
 	add = <country_leader_trait>
+	
+	## cardinality = 0..1
 	ideology = enum[sub_ideology]
 }
 

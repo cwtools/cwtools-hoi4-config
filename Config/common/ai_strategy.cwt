@@ -128,6 +128,11 @@ alias[ai_strategy_rule:ai_strategy] = {
 	value = int
 }
 alias[ai_strategy_rule:ai_strategy] = {
+	type = land_xp_spend_priority
+	id = enum[land_xp_targets]
+	value = int
+}
+alias[ai_strategy_rule:ai_strategy] = {
 	type = area_priority
 	id = <ai_area>
 	value = int
@@ -388,6 +393,10 @@ enums = {
 		decision
 		relation
 		guarantee
+	}
+	enum[land_xp_targets] = {
+		division_template
+		upgrade_xp_cutoff
 	}
 	enum[unit_strats] = {
 		equipment_production_factor

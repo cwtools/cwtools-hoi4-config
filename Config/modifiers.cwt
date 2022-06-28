@@ -201,6 +201,10 @@ modifiers = {
 	army_leader_cost_factor = country
 	army_leader_start_level = country
 	navy_leader_start_level = country
+	recruitable_population_factor = country
+	paradrop_organization_factor = country
+	river_crossing_factor = country
+	recruitable_population = country
 
 	# State
 	army_speed_factor_for_controller = state #army_speed_factor_for_controller
@@ -467,6 +471,7 @@ modifiers = {
 	root_out_resistance_effectiveness_factor = intelligence_agency #root_out_resistance_effectiveness_factor
 	target_sabotage_factor = intelligence_agency #target_sabotage_factor
 	target_sabotage_risk = intelligence_agency
+	target_sabotage_cost = intelligence_agency
 	operation_capture_cipher_outcome = intelligence_agency
 	operation_capture_cipher_risk = intelligence_agency
 	operation_steal_tech_risk = intelligence_agency
@@ -478,7 +483,10 @@ modifiers = {
 	operation_infiltrate_risk = intelligence_agency
 	operation_rescue_operative_risk = intelligence_agency
 	operation_rescue_operative_cost = intelligence_agency
-	target_sabotage_cost = intelligence_agency
+	operation_rescue_operative_outcome = intelligence_agency
+	operation_coordinated_strike_risk = intelligence_agency
+	operation_coordinated_strike_cost = intelligence_agency
+	operation_coordinated_strike_outcome = intelligence_agency
 	operation_collaboration_government_outcome = intelligence_agency
 	enemy_intel_network_gain_factor_over_occupied_tag = intelligence_agency
 

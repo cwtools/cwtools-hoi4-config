@@ -99,6 +99,9 @@ alias[trigger:any_country] = {
 ## scope = any
 alias[trigger:check_variable] = {
 	value[variable] = variable_field_32
+	### Defaults to greater_than_or_equals.
+	## cardinality = 0..1
+	compare = enum[var_compares]
 }
 
 ### Compares a variable to a number or variable.
@@ -110,7 +113,7 @@ alias[trigger:check_variable] = {
 ### Compares a variable to a number or variable.
 ## scope = any
 alias[trigger:check_variable] = {
-	variable_field_32 = value[variable]
+	variable_field_32 = value[variable]	
 }
 
 ### Compares a variable to a number or variable.
@@ -129,6 +132,16 @@ alias[trigger:check_variable] = {
 ## scope = any
 alias[trigger:check_variable] = {
 	var = variable_field_32
+	value = variable_field_32
+	## cardinality = 0..1
+	### Defaults to greater_than_or_equals.
+	compare = enum[var_compares]
+}
+
+### Compares a variable to a number or variable.
+## scope = any
+alias[trigger:check_variable] = {
+	var = value[variable]
 	value = variable_field_32
 	## cardinality = 0..1
 	### Defaults to greater_than_or_equals.

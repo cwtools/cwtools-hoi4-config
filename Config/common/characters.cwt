@@ -129,6 +129,11 @@ character = {
 				<country_leader_trait>
 			}
 			## cardinality = 0..1
+			research_bonus = {
+				## cardinality = 1..inf
+				enum[tech_category] = float
+			}
+			## cardinality = 0..1
 			enum[character_ids] = value_set[country_leader_ids]
 		}
 	}
@@ -264,6 +269,11 @@ character = {
 				<country_leader_trait>
 			}
 			## cardinality = 0..1
+			research_bonus = {
+				## cardinality = 1..inf
+				enum[tech_category] = float
+			}
+			## cardinality = 0..1
 			ledger = enum[ledgers]
 			### overrides default cost of advisor
 			## cardinality = 0..1
@@ -338,6 +348,11 @@ character = {
 					traits = {
 						## cardinality = 0..inf
 						<country_leader_trait>
+					}
+					## cardinality = 0..1
+					research_bonus = {
+						## cardinality = 1..inf
+						enum[tech_category] = float
 					}
 					## cardinality = 0..1
 					enum[character_ids] = value_set[country_leader_ids]
@@ -466,6 +481,11 @@ character = {
 					traits = {
 						## cardinality = 0..inf
 						<country_leader_trait>
+					}
+					## cardinality = 0..1
+					research_bonus = {
+						## cardinality = 1..inf
+						enum[tech_category] = float
 					}
 					## cardinality = 0..1
 					ledger = enum[ledgers]

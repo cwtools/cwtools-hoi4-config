@@ -97,6 +97,7 @@ alias[naval_stat:naval_invasion_penalty] = float
 alias[naval_stat:naval_mine_hit_chance] = float
 alias[naval_stat:naval_mines_damage_factor] = float
 alias[naval_stat:naval_morale_factor] = float
+alias[naval_stat:naval_morale] = float
 alias[naval_stat:naval_range] = float
 alias[naval_stat:naval_retreat_chance] = float
 alias[naval_stat:naval_speed_factor] = float

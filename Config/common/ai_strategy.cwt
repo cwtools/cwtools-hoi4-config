@@ -202,6 +202,15 @@ alias[ai_strategy_rule:ai_strategy] = {
 	value = int
 }
 alias[ai_strategy_rule:ai_strategy] = {
+	type = scorched_earth_prio
+	id = scope[country]
+	## cardinality = 0..1
+	states = {
+		## cardinality = ~1..inf
+		int
+	}
+}
+alias[ai_strategy_rule:ai_strategy] = {
 	type = put_unit_buffers
 
 	ratio = float[0..1]

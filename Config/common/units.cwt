@@ -231,6 +231,11 @@ ship_name = {
 		enum[ship_units]
 	}
 	## cardinality = 0..1
+	link_numbering_with = {
+		## cardinality = ~1..inf
+		<ship_name>
+	}
+	## cardinality = 0..1
 	prefix = scalar
 	## cardinality = 0..1
 	fallback_name = scalar

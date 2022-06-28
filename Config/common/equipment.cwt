@@ -183,7 +183,7 @@ equipment = {
 			enum[module_slots] = {
 				required = bool
 				allowed_module_categories = {
-					## cardinality = 1..inf
+					## cardinality = 0..inf
 					enum[module_categories]
 				}
 				## cardinality = 0..1
@@ -293,7 +293,7 @@ module = {
 		alias_name[unit_stat] = alias_match_left[naval_stat]
 		alias_name[naval_stat] = alias_match_left[naval_stat]
 		## cardinality = 0..1
-		build_cost_ic = int
+		build_cost_ic = float
 	}
 
 	## cardinality = 0..1
@@ -322,7 +322,7 @@ module = {
 		module_category = enum[module_categories]
 		## cardinality = 0..1
 		module = <module>
-		convert_cost_ic = int
+		convert_cost_ic = float
 		## cardinality = 0..1
 		convert_cost_resources = {
 			## cardinality = ~1..10
@@ -334,7 +334,7 @@ module = {
 		<critical_part>
 	}
 	## cardinality = 0..1
-	dismantle_cost_ic = int
+	dismantle_cost_ic = float
 	## cardinality = 0..1
 	dismantle_cost_resources = {
 		## cardinality = ~1..10

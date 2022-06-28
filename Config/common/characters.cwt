@@ -108,6 +108,8 @@ character = {
 			alias_name[trigger] = alias_match_left[trigger]
 		}
 		## cardinality = 0..1
+		name = localisation
+		## cardinality = 0..1
 		gender = female
 	}
 	subtype[country_leader] = {
@@ -118,11 +120,18 @@ character = {
 			desc = localisation
 			## cardinality = 0..1
 			expire = date_field
+			## cardinality = 0..1
+			name = localisation
 			### Sets starting traits for this leader.
 			## cardinality = 0..1
 			traits = {
 				## cardinality = 0..inf
 				<country_leader_trait>
+			}
+			## cardinality = 0..1
+			research_bonus = {
+				## cardinality = 1..inf
+				enum[tech_category] = float
 			}
 			## cardinality = 0..1
 			enum[character_ids] = value_set[country_leader_ids]
@@ -147,6 +156,8 @@ character = {
 			logistics_skill = int
 			## cardinality = 0..1
 			enum[character_ids] = value_set[unit_leader_ids]
+			## cardinality = 0..1
+			name = localisation
 			### Sets starting traits for this leader.
 			## cardinality = 0..1
 			traits = {
@@ -211,6 +222,8 @@ character = {
 			coordination_skill = int
 			## cardinality = 0..1
 			enum[character_ids] = value_set[unit_leader_ids]
+			## cardinality = 0..1
+			name = localisation
 			### Sets starting traits for this leader.
 			## cardinality = 0..1
 			traits = {
@@ -247,11 +260,18 @@ character = {
 			available = {
 				alias_name[trigger] = alias_match_left[trigger]
 			}
+			## cardinality = 0..1
+			name = localisation
 			### Sets advsior effects.
 			## cardinality = ~1..1
 			traits = {
 				## cardinality = 0..inf
 				<country_leader_trait>
+			}
+			## cardinality = 0..1
+			research_bonus = {
+				## cardinality = 1..inf
+				enum[tech_category] = float
 			}
 			## cardinality = 0..1
 			ledger = enum[ledgers]
@@ -305,6 +325,8 @@ character = {
 				}
 			}
 			## cardinality = 0..1
+			name = localisation
+			## cardinality = 0..1
 			gender = female
 			## cardinality = 0..1
 			## replace_scope = { this = character root = country }
@@ -319,11 +341,18 @@ character = {
 					desc = localisation
 					## cardinality = 0..1
 					expire = date_field
+					## cardinality = 0..1
+					name = localisation
 					### Sets starting traits for this leader.
 					## cardinality = 0..1
 					traits = {
 						## cardinality = 0..inf
 						<country_leader_trait>
+					}
+					## cardinality = 0..1
+					research_bonus = {
+						## cardinality = 1..inf
+						enum[tech_category] = float
 					}
 					## cardinality = 0..1
 					enum[character_ids] = value_set[country_leader_ids]
@@ -345,6 +374,8 @@ character = {
 					logistics_skill = int
 					## cardinality = 0..1
 					enum[character_ids] = value_set[unit_leader_ids]
+					## cardinality = 0..1
+					name = localisation
 					### Sets starting traits for this leader.
 					## cardinality = 0..1
 					traits = {
@@ -375,6 +406,8 @@ character = {
 					logistics_skill = int
 					## cardinality = 0..1
 					enum[character_ids] = value_set[unit_leader_ids]
+					## cardinality = 0..1
+					name = localisation
 					### Sets starting traits for this leader.
 					## cardinality = 0..1
 					traits = {
@@ -405,6 +438,8 @@ character = {
 					coordination_skill = int
 					## cardinality = 0..1
 					enum[character_ids] = value_set[unit_leader_ids]
+					## cardinality = 0..1
+					name = localisation
 					### Sets starting traits for this leader.
 					## cardinality = 0..1
 					traits = {
@@ -439,11 +474,18 @@ character = {
 					available = {
 						alias_name[trigger] = alias_match_left[trigger]
 					}
+					## cardinality = 0..1
+					name = localisation
 					### Sets advsior effects.
 					## cardinality = ~1..1
 					traits = {
 						## cardinality = 0..inf
 						<country_leader_trait>
+					}
+					## cardinality = 0..1
+					research_bonus = {
+						## cardinality = 1..inf
+						enum[tech_category] = float
 					}
 					## cardinality = 0..1
 					ledger = enum[ledgers]
@@ -489,6 +531,7 @@ enums = {
 	enum[character_portrait_types] = {
 		civilian
 		army
+		navy
 	}
 	enum[character_portrait_sizes] = {
 		large

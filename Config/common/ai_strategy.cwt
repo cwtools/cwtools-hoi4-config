@@ -83,8 +83,11 @@ ai_strategy_plan = {
 
 	## cardinality = 0..1
 	ideas = {
-		## cardinality = ~1..inf
+		## cardinality = 0..inf
 		enum[idea_name] = int
+
+		## cardinality = 0..inf
+		value[advisor_token] = int
 	}
 
 	## cardinality = 0..1
@@ -125,6 +128,11 @@ alias[ai_strategy_rule:ai_strategy] = {
 alias[ai_strategy_rule:ai_strategy] = {
 	type = enum[pp_strats]
 	id = enum[pp_targets]
+	value = int
+}
+alias[ai_strategy_rule:ai_strategy] = {
+	type = land_xp_spend_priority
+	id = enum[land_xp_targets]
 	value = int
 }
 alias[ai_strategy_rule:ai_strategy] = {
@@ -192,6 +200,15 @@ alias[ai_strategy_rule:ai_strategy] = {
 	type = research_tech
 	id = <technology>
 	value = int
+}
+alias[ai_strategy_rule:ai_strategy] = {
+	type = scorched_earth_prio
+	id = scope[country]
+	## cardinality = 0..1
+	states = {
+		## cardinality = ~1..inf
+		int
+	}
 }
 alias[ai_strategy_rule:ai_strategy] = {
 	type = put_unit_buffers
@@ -330,6 +347,23 @@ alias[ai_strategy_rule:ai_strategy] = {
 	operation_target = scope[country]
 	operation_target = variable_field
 }
+alias[ai_strategy_rule:ai_strategy] = {
+	type = min_wanted_supply_trucks
+	value = int
+}
+alias[ai_strategy_rule:ai_strategy] = {
+	type = wanted_supply_trucks
+	value = int
+}
+alias[ai_strategy_rule:ai_strategy] = {
+	type = min_wanted_supply_trains
+
+	value = int
+}
+alias[ai_strategy_rule:ai_strategy] = {
+	type = wanted_supply_trains
+	value = int
+}
 
 enums = {
 	enum[ai_diplo_strats] = {
@@ -376,6 +410,7 @@ enums = {
 		garrison_reinforcement_priority
 		operation_equipment_priority
 		railway_gun_divisions_ratio
+		naval_invasion_focus
 	}
 	enum[pp_strats] = {
 		pp_spend_amount
@@ -388,6 +423,10 @@ enums = {
 		decision
 		relation
 		guarantee
+	}
+	enum[land_xp_targets] = {
+		division_template
+		upgrade_xp_cutoff
 	}
 	enum[unit_strats] = {
 		equipment_production_factor

@@ -612,6 +612,10 @@ alias[effect:set_politics] = {
 	last_election = date_field
 	## cardinality = 0..1
 	election_frequency = int
+	## cardinality = 0..1
+	name = localisation
+	## cardinality = 0..1
+	long_name = localisation
 }
 
 ### Set country political party popilarities.
@@ -690,6 +694,8 @@ alias[effect:create_navy_leader] = {
 	## cardinality = 0..1
 	id = value_set[unit_leader_ids]
 	## cardinality = 0..1
+	legacy_id = value_set[unit_leader_ids]
+	## cardinality = 0..1
 	female = bool
 }
 
@@ -766,6 +772,41 @@ alias[effect:annex_country] = {
 	target = enum[country_tags]
 	## cardinality = 0..1
 	transfer_troops = bool
+}
+
+### Starts railway construction for amount of levels in specified state or province.
+## scope = any
+alias[effect:build_railway] = {
+	path = {
+		## cardinality = 1..inf
+		enum[provinces]
+	}
+	## cardinality = 0..1
+	build_only_on_allied = bool
+	## cardinality = 0..100
+	level = bool
+}
+
+### Starts railway construction for amount of levels in specified state or province.
+## scope = any
+alias[effect:build_railway] = {
+	## cardinality = 0..1
+	build_only_on_allied = bool
+	## cardinality = 0..100
+	level = bool
+	start_province = enum[provinces]
+	target_province = enum[provinces]
+}
+
+### Starts railway construction for amount of levels in specified state or province.
+## scope = any
+alias[effect:build_railway] = {
+	## cardinality = 0..1
+	build_only_on_allied = bool
+	## cardinality = 0..100
+	level = bool
+	start_state = int
+	target_state = int
 }
 
 ### Starts building construction for amount of levels in specified state or province.
@@ -1215,6 +1256,22 @@ alias[effect:add_tech_bonus] = {
 	name = localisation
 }
 
+### Adds a limited use doctrine bonus
+## scope = country
+alias[effect:add_doctrine_cost_reduction] = {
+	## cardinality = 0..inf
+	category = enum[tech_category]
+	## cardinality = 0..inf
+	technology = <technology>
+	## cardinality = 0..1
+	uses = int[1..32767]
+	## cardinality = 1..2
+	cost_reduction = float
+	## cardinality = 1..1
+	## severity = warning
+	name = localisation
+}
+
 ### Adds a limited use tech bonus.
 ## scope = state
 alias[effect:set_demilitarized_zone] = bool
@@ -1369,6 +1426,8 @@ alias[effect:create_field_marshal] = {
 	## cardinality = 0..1
 	id = value_set[unit_leader_ids]
 	## cardinality = 0..1
+	legacy_id = value_set[unit_leader_ids]
+	## cardinality = 0..1
 	female = bool
 }
 
@@ -1404,6 +1463,8 @@ alias[effect:create_corps_commander] = {
 	logistics_skill = int
 	## cardinality = 0..1
 	id = value_set[unit_leader_ids]
+	## cardinality = 0..1
+	legacy_id = value_set[unit_leader_ids]
 	## cardinality = 0..1
 	female = bool
 }
@@ -1464,6 +1525,9 @@ alias[effect:add_to_war] = {
 ## scope = country
 alias[effect:show_ideas_tooltip] = enum[idea_name]
 
+## scope = country
+alias[effect:show_unit_leaders_tooltip] = <character>
+
 ### Creates a new equipment variant.
 ## scope = country
 alias[effect:create_equipment_variant] = {
@@ -1473,6 +1537,8 @@ alias[effect:create_equipment_variant] = {
 	name_group = <ship_name>
 	## cardinality = 0..1
 	parent_version = int
+	## cardinality = 0..1
+	role_icon_index = int
 	## cardinality = 0..1
 	upgrades = {
 		## cardinality = 0..4
@@ -1634,9 +1700,38 @@ alias[effect:set_autonomy] = {
 	## cardinality = 0..1
 	freedom_level = float[0..1]
 	## cardinality = 0..1
-	end_wars = bol
+	end_wars = no 
 	## cardinality = 0..1
-	end_civil_wars = bol
+	end_civil_wars = no 
+}
+
+### Makes autonomy of specified level and country.
+## scope = country
+alias[effect:set_autonomy] = {
+	target = scope[country]
+	target = enum[country_tags]
+	autonomous_state = <autonomy>
+	autonomous_state = autonomy_free
+	## cardinality = 0..1
+	freedom_level = float[0..1]
+	## cardinality = 0..1
+	end_wars = no 
+	## cardinality = 0..1
+	end_civil_wars = no 
+	
+}
+
+### Makes autonomy of specified level and country.
+## scope = country
+alias[effect:set_autonomy] = {
+	target = scope[country]
+	target = enum[country_tags]
+	freedom_level = float[0..1]
+	## cardinality = 0..1
+	end_wars = no 
+	## cardinality = 0..1
+	end_civil_wars = no 
+	
 }
 
 ### Adds country to technology sharing group of specified name.

@@ -30,6 +30,8 @@ enums = {
 		declare_war
 		join_allies
 		call_allies
+		improve_relation
+		befriend
 	}
 
 	enum[add_factor] = {

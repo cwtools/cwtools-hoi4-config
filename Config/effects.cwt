@@ -612,6 +612,10 @@ alias[effect:set_politics] = {
 	last_election = date_field
 	## cardinality = 0..1
 	election_frequency = int
+	## cardinality = 0..1
+	name = localisation
+	## cardinality = 0..1
+	long_name = localisation
 }
 
 ### Set country political party popilarities.

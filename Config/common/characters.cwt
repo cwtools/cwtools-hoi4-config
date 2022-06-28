@@ -531,6 +531,7 @@ enums = {
 	enum[character_portrait_types] = {
 		civilian
 		army
+		navy
 	}
 	enum[character_portrait_sizes] = {
 		large

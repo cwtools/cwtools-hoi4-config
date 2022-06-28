@@ -56,6 +56,7 @@ alias[unit_stat:fuel_consumption] = float
 alias[unit_stat:hard_attack] = float
 alias[unit_stat:hardness] = float
 alias[unit_stat:initiative] = float
+alias[unit_stat:initiative_factor] = float
 alias[unit_stat:lend_lease_cost] = float
 alias[unit_stat:manpower] = float
 alias[unit_stat:max_organisation] = float

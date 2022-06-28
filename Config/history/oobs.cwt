@@ -129,6 +129,8 @@ oob = {
 						## cardinality = 0..inf
 						### Order is important. start_experience_factor will be assigned to the ace above.
 						start_experience_factor = float[0..1]
+						## cardinality = 0..inf
+						name = localisation_inline
 					}
 				}
 			}
@@ -164,6 +166,8 @@ oob = {
 			## cardinality = 0..inf
 			### Order is important. start_experience_factor will be assigned to the ace above.
 			start_experience_factor = float[0..1]
+			## cardinality = 0..inf
+			name = localisation_inline
 		}
 	}
 

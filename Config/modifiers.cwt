@@ -194,6 +194,11 @@ modifiers = {
 	war_support_weekly = country
 	war_support_weekly_factor = country
 	weekly_manpower = country
+	navy_leader_cost_factor = country
+	military_leader_cost_factor = country
+	army_leader_cost_factor = country
+	army_leader_start_level = country
+	navy_leader_start_level = country
 
 	# State
 	army_speed_factor_for_controller = state #army_speed_factor_for_controller
@@ -354,6 +359,11 @@ modifiers = {
 	submarine_attack = unit_leader
 	unit_leader_as_advisor_cp_cost_factor = unit_leader
 	wounded_chance_factor = unit_leader
+	navy_leader_cost_factor = unit_leader
+	military_leader_cost_factor = unit_leader
+	army_leader_cost_factor = unit_leader
+	army_leader_start_level = unit_leader
+	navy_leader_start_level = unit_leader
 
 	# Air
 	air_accidents = air

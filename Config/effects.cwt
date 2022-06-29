@@ -1525,6 +1525,10 @@ alias[effect:add_to_war] = {
 ## scope = country
 alias[effect:show_ideas_tooltip] = enum[idea_name]
 
+### Show what idea does.
+## scope = country
+alias[effect:show_ideas_tooltip] = value[advisor_token]
+
 ## scope = country
 alias[effect:show_unit_leaders_tooltip] = <character>
 

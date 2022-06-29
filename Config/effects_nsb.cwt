@@ -65,6 +65,7 @@ alias[effect:release_puppet_on_controlled] = scope[country]
 ## scope = country
 alias[effect:uncomplete_national_focus] = {
 	focus = <focus>
+	focus = <shared_focus>
 	### Default is no. If yes, all proceeding focuses will also be uncompleted if their prerequisite aren't met after the preceeding focuses are uncompleted.
 	## cardinality = 0..1
 	uncomplete_children = bool

@@ -259,6 +259,7 @@ enums = {
 		army
 		navy
 		air
+		military
 		invalid
 		civilian
 		hidden

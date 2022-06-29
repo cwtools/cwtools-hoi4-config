@@ -303,6 +303,12 @@ character = {
 			do_effect = {
 				alias_name[trigger] = alias_match_left[trigger]
 			}
+			### Modifiers that are applied to tag while the advisor is active.
+			## replace_scope = { this = character root = country }
+			## cardinality = 0..1
+			modifier = {
+				alias_name[modifier] = alias_match_left[modifier]
+			}
 		}
 	}
 	subtype[instanced] = {
@@ -516,6 +522,12 @@ character = {
 					## cardinality = 0..1
 					do_effect = {
 						alias_name[trigger] = alias_match_left[trigger]
+					}
+					### Modifiers that are applied to tag while the advisor is active.
+					## replace_scope = { this = character root = country }
+					## cardinality = 0..1
+					modifier = {
+						alias_name[modifier] = alias_match_left[modifier]
 					}
 				}
 			}

@@ -39,7 +39,7 @@ oob = {
 		priority = int
 	}
 
-	## cardinality = 0..1
+	## cardinality = 0..inf
 	instant_effect = {
 		alias_name[effect] = alias_match_left[effect]
 	}

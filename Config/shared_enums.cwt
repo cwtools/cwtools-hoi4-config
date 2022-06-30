@@ -64,4 +64,10 @@ enums = {
 		navy
 		air
 	}
+	
+	enum[command_cap] = {
+		@tier1
+		@tier2
+		@tier3
+	}
 }

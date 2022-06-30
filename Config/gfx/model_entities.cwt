@@ -27,6 +27,7 @@ pdxmesh = {
 	scale = float
 
 	## cardinality = 0..inf
+	## severity = warning
 	animation = {
 		id = scalar
 		type = <model_animation>
@@ -62,6 +63,7 @@ entity = {
 	name = scalar
 
 	## cardinality = 0..1
+	## severity = warning
 	pdxmesh = <pdxmesh>
 	## cardinality = 0..1
 	pdxmesh = "empty_mesh"

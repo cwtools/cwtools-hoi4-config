@@ -148,6 +148,12 @@ alias[trigger:check_variable] = {
 	compare = enum[var_compares]
 }
 
+### Compares a variable to a number or variable.
+## scope = any
+alias[trigger:check_variable] = {
+	old_ideology_token = token:<ideology>
+}
+
 enums = {
 	enum[var_compares] = {
 		less_than

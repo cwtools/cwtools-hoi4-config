@@ -364,6 +364,11 @@ alias[ai_strategy_rule:ai_strategy] = {
 	type = wanted_supply_trains
 	value = int
 }
+alias[ai_strategy_rule:ai_strategy] = {
+	type = theatre_distribution_demand_increase
+	id = <state>
+	value = int
+}
 
 enums = {
 	enum[ai_diplo_strats] = {

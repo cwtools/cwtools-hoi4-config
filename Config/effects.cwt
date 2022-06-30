@@ -1557,6 +1557,8 @@ alias[effect:create_equipment_variant] = {
 	}
 	## cardinality = 0..1
 	obsolete = yes
+	## cardinality = 0..1
+	icon = filepath
 }
 
 ### Adds an equipment production.

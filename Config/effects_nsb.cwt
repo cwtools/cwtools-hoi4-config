@@ -435,3 +435,13 @@ alias[effect:every_possible_country] = {
 	tooltip = localisation
 	alias_name[effect] = alias_match_left[effect]
 }
+
+### Display in tooltip every character that fulfills the "limit" trigger.
+## scopes = { COUNTRY }
+## push_scope = character
+alias[effect:character_list_tooltip] = {
+    ## cardinality = 0..1
+	limit = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+}

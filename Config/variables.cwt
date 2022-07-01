@@ -474,6 +474,9 @@ values = {
 		### (Trigger) Checks the number of available operative slots a country has.
 		num_operative_slots
 
+		### (Trigger) check the number of factories in owned states excluding any gained or lost through trade, relations, modifiers etc.
+		num_of_owned_factories
+
 		### (Trigger) Number of researched technologies.
 		num_researched_technologies
 

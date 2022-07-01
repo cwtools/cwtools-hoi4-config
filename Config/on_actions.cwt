@@ -53,6 +53,9 @@ types = {
         ## type_key_filter = on_capitulation
         ###
         subtype[on_capitulation] = { }
+        ## type_key_filter = on_capitulation_immediate
+        ###
+        subtype[on_capitulation_immediate] = { }
         ## type_key_filter = on_uncapitulation
         ###
         subtype[on_uncapitulation] = { }
@@ -479,6 +482,20 @@ on_action = {
     }
     ## replace_scope = { THIS = country ROOT = country FROM = country }
     subtype[on_capitulation] = {
+        ## cardinality = 0..1
+        random_events = {
+            ## cardinality = 0..inf
+            int = 0
+            ## cardinality = 0..inf
+            int = <event.country_event>
+        }
+        ## cardinality = 0..1
+        effect = {
+            alias_name[effect] = alias_match_left[effect]
+        }
+    }
+    ## replace_scope = { THIS = country ROOT = country FROM = country }
+    subtype[on_capitulation_immediate] = {
         ## cardinality = 0..1
         random_events = {
             ## cardinality = 0..inf

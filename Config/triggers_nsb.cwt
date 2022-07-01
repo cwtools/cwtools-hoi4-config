@@ -206,3 +206,7 @@ alias[trigger:has_terrain] = <terrain>
 ### Returns true if the country is a dynamic country (tag is D01-D50)
 ## scope = country
 alias[trigger:is_dynamic_country] = bool
+
+### check if country has a buildable non-obsolete design based on an archetype
+## scope = country
+alias[trigger:has_design_based_on] = <equipment.archetype_equip>

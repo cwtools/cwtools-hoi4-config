@@ -956,6 +956,11 @@ alias[effect:random_neighbor_state] = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 	## cardinality = 0..1
+	prioritize = {
+		## cardinality = 1..inf
+		<state>
+	}
+	## cardinality = 0..1
 	tooltip = localisation
 	alias_name[effect] = alias_match_left[effect]
 }

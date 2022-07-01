@@ -398,7 +398,7 @@ alias[effect:set_nationality] = scope[country]
 ## scope = { character }
 alias[effect:set_nationality] = enum[country_tags]
 
-###Executes children effects on every subject country that fulfills the "limit" trigger. tooltip=key can be defined to override tooltip title
+### Executes children effects on every subject country that fulfills the "limit" trigger. tooltip=key can be defined to override tooltip title
 ## scopes = { COUNTRY }
 ## push_scope = country
 alias[effect:every_subject_country] = {
@@ -411,7 +411,19 @@ alias[effect:every_subject_country] = {
 	alias_name[effect] = alias_match_left[effect]
 }
 
-###Executes children effects on every country that fulfills the "limit" trigger. Difference with every_country is that it includes countries not yet present on the map. tooltip=key can be defined to override tooltip title.
+### Executes child effects on random subject country that fulfills the limit.
+## scopes = { COUNTRY }
+## push_scope = country
+alias[effect:random_subject_country] = {
+    ## cardinality = 0..1
+	limit = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	alias_name[effect] = alias_match_left[effect]
+}
+
+
+### Executes children effects on every country that fulfills the "limit" trigger. Difference with every_country is that it includes countries not yet present on the map. tooltip=key can be defined to override tooltip title.
 ## scopes = { COUNTRY }
 ## push_scope = country
 alias[effect:every_possible_country] = {

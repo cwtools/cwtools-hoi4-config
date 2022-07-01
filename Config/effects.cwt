@@ -1558,6 +1558,7 @@ alias[effect:show_unit_leaders_tooltip] = <character>
 ### Creates a new equipment variant.
 ## scope = country
 alias[effect:create_equipment_variant] = {
+	## cardinality = 0..1
 	name = scalar
 	type = <equipment.regular_equip>
 	type = value[nsb_armor_variants]

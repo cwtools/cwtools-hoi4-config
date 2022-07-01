@@ -202,3 +202,7 @@ alias[trigger:num_of_controlled_factories] = int
 ### Checks if a country has any province of the specified terrain type. Example: has_terrain = mountain
 ## scope = country
 alias[trigger:has_terrain] = <terrain>
+
+### Returns true if the country is a dynamic country (tag is D01-D50)
+## scope = country
+alias[trigger:is_dynamic_country] = bool

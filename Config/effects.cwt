@@ -1537,6 +1537,7 @@ alias[effect:show_unit_leaders_tooltip] = <character>
 alias[effect:create_equipment_variant] = {
 	name = scalar
 	type = <equipment.regular_equip>
+	type = value[nsb_armor_variants]
 	## cardinality = 0..1
 	name_group = <ship_name>
 	## cardinality = 0..1

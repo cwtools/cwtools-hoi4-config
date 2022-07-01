@@ -332,6 +332,7 @@ ai_equipment_design_group = {
 
 			### The equipment archetype or equipment type that the variant must use to match.
 			type = <equipment>
+			type = value[nsb_armor_variants]
 
 			### The matching requirements on individual module slots.
 			modules = {

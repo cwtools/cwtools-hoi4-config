@@ -194,3 +194,11 @@ alias[trigger:has_ideology] = enum[sub_ideology]
 ###Checks if the current character has a country leader role matching the ideology group
 ## scope = character
 alias[trigger:has_ideology_group] = <ideology>
+
+### Check the number of factories in controlled states excluding any gained or lost through trade, relations, modifiers etc.
+## scope = country
+alias[trigger:num_of_controlled_factories] = int
+
+### Checks if a country has any province of the specified terrain type. Example: has_terrain = mountain
+## scope = country
+alias[trigger:has_terrain] = <terrain>

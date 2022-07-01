@@ -450,6 +450,9 @@ values = {
 		### (Trigger) Check amount of civilian factories available for a new project to use.
 		num_of_civilian_factories_available_for_projects
 
+		### (Trigger) Check the number of factories in controlled states excluding any gained or lost through trade, relations, modifiers etc.
+		num_of_controlled_factories
+
 		### (Trigger) Check amount of controlled states.
 		num_of_controlled_states
 

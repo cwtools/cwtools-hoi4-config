@@ -25,10 +25,10 @@ alias[trigger:any_subject_country] = {
 	alias_name[trigger] = alias_match_left[trigger]
 }
 
-### check if all subject countries meet the trigger.
+### check if all subject countries meet the trigger. tooltip=key can be defined to override title.
 ## scope = country
 ## push_scope = country
-alias[trigger:all_subject_country] = {
+alias[trigger:all_subject_countries] = {
 	## cardinality = 0..1
 	tooltip = localisation
 	alias_name[trigger] = alias_match_left[trigger]

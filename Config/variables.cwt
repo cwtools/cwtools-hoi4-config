@@ -564,6 +564,9 @@ values = {
 		### (Trigger) Checks for state strategic value.
 		state_strategic_value
 
+		### (Trigger) Uncapped_resistance_target temp variable can be used for getting resistance that that is not capped to 0-100
+		uncapped_resistance_target
+
 
 		# =============================
 		# UNIT LEADER DYNAMIC VARIABLES

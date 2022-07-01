@@ -5,6 +5,12 @@ types = {
 		subtype[doctrine] = {
 			doctrine = yes
 		}
+		subtype[nsb_armor_tech] = {
+			folder = {
+				name = nsb_armour_folder
+				position = { x = float y = float }
+			}
+		}
 	}
 	type[tech_sharing_group] = {
 		path = "game/common/technology_sharing"
@@ -63,6 +69,10 @@ technology = {
 	enable_equipments = {
 		## cardinality = ~1..inf
 		<equipment>
+		subtype[nsb_armor_tech] = {
+			## cardinality = ~1..inf
+			value_set[nsb_armor_variants]
+		}
 	}
 	## cardinality = 0..inf
 	### Enables listed equipment modules.

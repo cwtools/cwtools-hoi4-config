@@ -93,6 +93,14 @@ idea = {
 					alias_name[naval_stat] = alias_match_left[naval_stat]
 					alias_name[air_stat] = alias_match_left[air_stat]
 				}
+				## cardinality = 0..inf
+				enum[nsb_armor_archetypes] = {
+					## cardinality = 0..1
+					instant = bool
+					alias_name[unit_stat] = alias_match_left[unit_stat]
+					alias_name[naval_stat] = alias_match_left[naval_stat]
+					alias_name[air_stat] = alias_match_left[air_stat]
+				}
 			}
 			## cardinality = 0..1
 			traits = {
@@ -209,6 +217,14 @@ idea = {
 				}
 				## cardinality = 0..inf
 				<unit> = {
+					## cardinality = 0..1
+					instant = bool
+					alias_name[unit_stat] = alias_match_left[unit_stat]
+					alias_name[naval_stat] = alias_match_left[naval_stat]
+					alias_name[air_stat] = alias_match_left[air_stat]
+				}
+				## cardinality = 0..inf
+				enum[nsb_armor_archetypes] = {
 					## cardinality = 0..1
 					instant = bool
 					alias_name[unit_stat] = alias_match_left[unit_stat]

@@ -783,8 +783,14 @@ alias[effect:build_railway] = {
 	}
 	## cardinality = 0..1
 	build_only_on_allied = bool
-	## cardinality = 0..100
-	level = bool
+	## cardinality = 0..1
+	level = int[1..5]
+	### Option 3: Specify start & end state IDs. It will pick provinces with the best node (capital > nodes > naval ) start_state = 50 target_state = 100
+	### Option 2: Specify start & end province IDs. It will pick the shortest path. If provinces are not valid and if fallback = yes it will use states of those provs and use in option 3.start_province = 42 target_province = 84
+	### Option 1: List of provinces to draw railways. If fallback = yes uses start and end provinces of the path as fallback in option 2. path = { 10 20 30 40 }.
+	### Default no. If yes, each option will try to fallback to next one.
+	## cardinality = 0..1
+	fallback = yes
 }
 
 ### Starts railway construction for amount of levels in specified state or province.
@@ -792,10 +798,16 @@ alias[effect:build_railway] = {
 alias[effect:build_railway] = {
 	## cardinality = 0..1
 	build_only_on_allied = bool
-	## cardinality = 0..100
-	level = bool
+	## cardinality = 0..1
+	level = int[1..5]
 	start_province = enum[provinces]
 	target_province = enum[provinces]
+	### Option 3: Specify start & end state IDs. It will pick provinces with the best node (capital > nodes > naval ) start_state = 50 target_state = 100
+	### Option 2: Specify start & end province IDs. It will pick the shortest path. If provinces are not valid and if fallback = yes it will use states of those provs and use in option 3.start_province = 42 target_province = 84
+	### Option 1: List of provinces to draw railways. If fallback = yes uses start and end provinces of the path as fallback in option 2. path = { 10 20 30 40 }.
+	### Default no. If yes, each option will try to fallback to next one.
+	## cardinality = 0..1
+	fallback = yes
 }
 
 ### Starts railway construction for amount of levels in specified state or province.
@@ -803,10 +815,16 @@ alias[effect:build_railway] = {
 alias[effect:build_railway] = {
 	## cardinality = 0..1
 	build_only_on_allied = bool
-	## cardinality = 0..100
-	level = bool
-	start_state = int
-	target_state = int
+	## cardinality = 0..1
+	level = int[1..5]
+	start_state = <state>
+	target_state = <state>
+	### Option 3: Specify start & end state IDs. It will pick provinces with the best node (capital > nodes > naval ) start_state = 50 target_state = 100
+	### Option 2: Specify start & end province IDs. It will pick the shortest path. If provinces are not valid and if fallback = yes it will use states of those provs and use in option 3.start_province = 42 target_province = 84
+	### Option 1: List of provinces to draw railways. If fallback = yes uses start and end provinces of the path as fallback in option 2. path = { 10 20 30 40 }.
+	### Default no. If yes, each option will try to fallback to next one.
+	## cardinality = 0..1
+	fallback = yes
 }
 
 ### Starts building construction for amount of levels in specified state or province.

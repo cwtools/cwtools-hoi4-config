@@ -971,6 +971,9 @@ modifiers = {
 	army_attack_speed_factor = state
 	supply_factor = state
 	truck_attrition_factor = state
+	attrition_for_controller = state
+	enemy_operative_detection_chance = state
+	enemy_operative_detection_chance_over_occupied_tag = state
 
 	operation_risk = intelligence_agency
 	operation_cost = intelligence_agency

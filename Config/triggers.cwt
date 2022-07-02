@@ -717,6 +717,10 @@ alias[trigger:is_ai] = bool
 ## scope = { character unit_leader combat }
 alias[trigger:has_trait] = <unit_leader_trait>
 
+### Check if sides leader has trait.
+## scope = { character }
+alias[trigger:has_trait] = <country_leader_trait>
+
 ### Check if side has reserves waiting.
 ## scope = combat
 alias[trigger:has_reserves] = bool

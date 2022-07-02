@@ -256,7 +256,7 @@ equipment = {
 	## cardinality = 0..3
 	### List of upgrade names.
 	upgrades = {
-		## cardinality = ~1..4
+		## cardinality = ~1..inf
 		<upgrade>
 	}
 }

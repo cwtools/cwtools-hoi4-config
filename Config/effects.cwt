@@ -1144,6 +1144,8 @@ alias[effect:start_civil_war] = {
 	## cardinality = 0..1
 	keep_political_leader = bool
 	## cardinality = 0..1
+	keep_political_party_members = bool
+	## cardinality = 0..1
 	keep_unit_leaders = {
 		## cardinality = ~1..inf
 		value[unit_leader_ids]
@@ -1153,7 +1155,8 @@ alias[effect:start_civil_war] = {
 	keep_unit_leaders_trigger = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
-	#alias_name[effect] = alias_match_left[effect]
+	## cardinality = ~1..inf
+	alias_name[effect] = alias_match_left[effect]
 }
 
 ### Retires a country leader and removes him as leader of his party, making the next in line the new party and country leader.

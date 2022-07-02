@@ -10,6 +10,9 @@ dynamic_modifier = {
 	## severity = warning
 	### Optional, will show up in guis if icon is specified.
 	icon = <spriteType>
+	
+	## cardinality = 0..1
+	attacker_modifier = yes
 
 	## cardinality = 0..1
 	### Optional, the modifier won't apply if not enabled.

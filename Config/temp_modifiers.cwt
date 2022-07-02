@@ -24,6 +24,7 @@ alias[modifier:state_resource_<resource>] = int
 alias[modifier:temporary_state_resource_<resource>] = int
 alias[modifier:enum[sub_unit_modifiers]] = float
 alias[modifier:production_speed_<building>_factor] = float
+alias[modifier:state_production_speed_<building>_factor] = float
 alias[modifier:repair_speed_<building>_factor] = float
 alias[modifier:<modifier_definition>] = float
 alias[modifier:value[idea_slot]_cost_factor] = float

@@ -119,8 +119,19 @@ alias[effect:add_corps_commander_role] = {
 	legacy_id = value_set[unit_leader_ids]
 }
 
-## scope = { character }
+### Remove unit leader role to character
+## scope = { character unit_leader }
 alias[effect:remove_unit_leader_role] = bool
+
+### Remove unit leader role to character
+## scope = { country }
+alias[effect:remove_unit_leader_role] = <character>
+
+### Remove unit leader role to character
+## scope = { country }
+alias[effect:remove_unit_leader_role] = {
+	character = <character>
+}
 
 ## scope = { character country }
 alias[effect:add_field_marshal_role] = {
@@ -314,7 +325,7 @@ alias[effect:promote_character] = {
 }
 
 ### makes character head of their ideology party
-## scope = { character }
+## scope = { character unit_leader }
 alias[effect:promote_character] = bool
 ### makes character head of their ideology party
 ## scope = { character }

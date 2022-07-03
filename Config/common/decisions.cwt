@@ -256,9 +256,6 @@ decision = {
 	}
 
 	## cardinality = 0..1
-	ai_hint_pp_cost = int
-
-	## cardinality = 0..1
 	## replace_scope = { this = state root = country }
 	highlight_states = {
 		## cardinality = 0..1

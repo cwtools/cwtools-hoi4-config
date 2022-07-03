@@ -75,6 +75,19 @@ alias[trigger:all_character] = {
 ## severity = warning
 alias[trigger:has_character_flag] = value[character_flag]
 
+### Has character flag been set. Check flag val date set and days since set. Example: has_character_flag = test_flag.
+## scope = { character unit_leader }
+## severity = warning
+alias[trigger:has_character_flag] = {
+	flag = value[character_flag]
+	## cardinality = 0..1
+	value = int
+	## cardinality = 0..1
+	date = date_field
+	## cardinality = 0..1
+	days = int
+}
+
 ### Returns true if scoped country has character. Example: has_character = GER_erwin_rommel
 ## scope = country
 alias[trigger:has_character] = <character>

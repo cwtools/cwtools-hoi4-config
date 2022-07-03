@@ -60,28 +60,28 @@ event = {
 	}
 	## cardinality = 0..1
 	hidden = yes
-	## error_if_only_match = This is the default value and can be ommitted
+	## error_if_only_match = This is the default value and can be omitted
 	## severity = info
 	## cardinality = 0..1
 	hidden = no
 
 	## cardinality = 0..1
 	major = yes
-	## error_if_only_match = This is the default value and can be ommitted
+	## error_if_only_match = This is the default value and can be omitted
 	## severity = info
 	## cardinality = 0..1
 	major = no
 
 	## cardinality = 0..1
 	fire_only_once = yes
-	## error_if_only_match = This is the default value and can be ommitted
+	## error_if_only_match = This is the default value and can be omitted
 	## severity = info
 	## cardinality = 0..1
 	fire_only_once = no
 
 	## cardinality = 0..1
 	is_triggered_only = yes
-	## error_if_only_match = This is the default value and can be ommitted
+	## error_if_only_match = This is the default value and can be omitted
 	## severity = info
 	## cardinality = 0..1
 	is_triggered_only = no

@@ -255,6 +255,7 @@ ship_name = {
 	ordered = {
 		## cardinality = ~1..inf
 		int = {
+			## cardinality = 1..2
 			scalar
 		}
 	}
@@ -293,6 +294,7 @@ division_name = {
 	ordered = {
 		## cardinality = ~1..inf
 		int = {
+			## cardinality = 1..2
 			scalar
 		}
 	}

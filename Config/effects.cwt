@@ -2251,15 +2251,15 @@ alias[effect:divide_variable] = {
 alias[effect:clear_variable] = variable_field_32
 
 ### Adds attack skill to a unit leader.
-## scope = unit_leader
+## scope = { character unit_leader }
 alias[effect:add_attack] = int
 
 ### Adds defense skill to a unit leader.
-## scope = unit_leader
+## scope = { character unit_leader }
 alias[effect:add_defense] = int
 
 ### Adds planning skill to a unit leader.
-## scope = unit_leader
+## scope = { character unit_leader }
 alias[effect:add_planning] = int
 
 ### Localizes name of category and displays tooltip that shows it will be unlocked.
@@ -2283,7 +2283,7 @@ alias[effect:load_focus_tree] = {
 }
 
 ### Adds logistics skill to a unit leader.
-## scope = unit_leader
+## scope = { character unit_leader }
 alias[effect:add_logistics] = int
 
 ### Add an offsite building to a country.
@@ -2709,9 +2709,11 @@ alias[effect:become_exiled_in] = {
 alias[effect:set_faction_name] = localisation
 
 ### Adds maneuver skill to a unit leader.
+## scope = { character unit_leader }
 alias[effect:add_maneuver] = int
 
 ### Adds maneuver skill to a unit leader.
+## scope = { character unit_leader }
 alias[effect:add_coordination] = int
 
 ### Gives rights to take resources from specified state. give_resource_rights = { receiver = <TAG> state = <id> }.

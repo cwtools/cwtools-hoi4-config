@@ -157,7 +157,7 @@ alias[ai_strategy_rule:ai_strategy] = {
 	value = int
 }
 alias[ai_strategy_rule:ai_strategy] = {
-	type = naval_avoid_region
+	type = enum[strat_region_strats]
 	id = <strategic_region>
 	value = int
 }
@@ -167,6 +167,11 @@ alias[ai_strategy_rule:ai_strategy] = {
 }
 alias[ai_strategy_rule:ai_strategy] = {
 	type = enum[state_strats]
+	id = int
+	value = int
+}
+alias[ai_strategy_rule:ai_strategy] = {
+	type = factory_build_score_factor
 	target = int
 	value = int
 }
@@ -439,8 +444,12 @@ enums = {
 		template_prio
 		unit_ratio
 	}
+	enum[strat_region_strats] = {
+		naval_convoy_raid_region
+		naval_avoid_region
+	}
 	enum[state_strats] = {
-		factory_build_score_factor
+		theatre_distribution_demand_increase
 	}
 	enum[state_strats_with_id] = {
 		build_building

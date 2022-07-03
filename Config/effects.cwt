@@ -1573,7 +1573,7 @@ alias[effect:create_equipment_variant] = {
 	role_icon_index = int
 	## cardinality = 0..1
 	upgrades = {
-		## cardinality = 0..4
+		## cardinality = 0..inf
 		<upgrade> = int
 	}
 	## cardinality = 0..1

@@ -95,6 +95,9 @@ graphical_terrain = {
 enums = {
 	enum[terrain_modifiers] = {
 		combat_width
+		combat_support_width
+		supply_flow_penalty_factor
+		truck_attrition_factor
 		attrition
 		enemy_army_bonus_air_superiority_factor
 		sickness_chance

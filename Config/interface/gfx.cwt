@@ -82,11 +82,14 @@ spriteType = {
 		tilingCenter = bool
 		size = { x = int y = int }
 	}
-	subtype[maskedShieldType]  = {
+	subtype[maskedShieldType] = {
 		textureFile1 = scalar
 		textureFile2 = scalar
 	}
-	subtype[progressbartype]  = {
+	subtype[textSpriteType] = {
+		textureFile = filepath
+	}
+	subtype[progressbartype] = {
 		textureFile1 = scalar
 		textureFile2 = scalar
 		size = { x = int y = int }

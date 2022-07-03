@@ -30,6 +30,8 @@ localisation_commands = {
     GetID = any
     GetTag = any
     GetCapital = any
+	GetCapitalVictoryPointName = any
+	GetNonIdeologyNameDef = any
 
     # TODO: Confirm
     GetNameAdj = any

@@ -456,3 +456,17 @@ alias[effect:character_list_tooltip] = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 }
+
+### set portraits for the target character. Syntax is similar to character files.
+## scope = { character country }
+alias[effect:set_portraits] = {
+	## cardinality = 0..1
+	character = <character>
+	### Portrait(s), army and/or civilian
+	## cardinality = ~1..2
+	enum[character_portrait_types] = {
+		### Portrait(s), large and/or small
+		## cardinality = ~1..2
+		enum[character_portrait_sizes] = scalar
+	}
+}

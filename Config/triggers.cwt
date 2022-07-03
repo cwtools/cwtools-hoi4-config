@@ -809,7 +809,7 @@ alias[trigger:has_equipment] = { <equipment> = int_variable_field }
 
 ### Check amount of total factories.
 ## scope = country
-alias[trigger:num_of_factories] = int
+alias[trigger:num_of_factories] = variable_field
 
 ###  = { focus = id progress = 0.5 }.
 ## scope = country
@@ -903,7 +903,7 @@ alias[trigger:has_volunteers_amount_from] = {
 
 ### Check amount of controlled stats.
 ## scope = country
-alias[trigger:num_of_controlled_states] = int
+alias[trigger:num_of_controlled_states] = variable_field
 
 ### Checks if the current scope was ever the specified country.
 ## scope = { country combat }
@@ -1690,7 +1690,7 @@ alias[trigger:clamp_temp_variable] = {
 
 ### Check amount of civilian factories available for a new project to use.
 ## scope = country
-alias[trigger:num_of_civilian_factories_available_for_projects] = int
+alias[trigger:num_of_civilian_factories_available_for_projects] = variable_field
 
 ### Checks if current scope or global scope has the specified event target saved.
 ## scope = any

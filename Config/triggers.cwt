@@ -2216,7 +2216,7 @@ alias[trigger:<building>] = int_variable_field
 
 ### Checks ideology popularity.
 ## scope = country
-alias[trigger:<ideology>] = float
+alias[trigger:<ideology>] = variable_field
 
 ### Changes scope to opposing army/navy.
 ## scope = { unit_leader combat }

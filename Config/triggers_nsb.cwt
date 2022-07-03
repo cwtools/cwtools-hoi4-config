@@ -210,3 +210,7 @@ alias[trigger:is_dynamic_country] = bool
 ### check if country has a buildable non-obsolete design based on an archetype
 ## scope = country
 alias[trigger:has_design_based_on] = <equipment.archetype_equip>
+
+### check the number of factories in owned states excluding any gained or lost through trade, relations, modifiers etc.
+## scope = country
+alias[trigger:num_of_owned_factories] = variable_field

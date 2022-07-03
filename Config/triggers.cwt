@@ -1398,12 +1398,16 @@ alias[trigger:any_province_building_level] = {
 		all_provinces = yes
 		## cardinality = 0..1
 		limit_to_border = yes
+		## cardinality = 0..1
+		limit_to_coastal = yes
 	}
 	province = {
 		## cardinality = 1..inf
 		id = enum[provinces]
 		## cardinality = 0..1
 		limit_to_border = yes
+		## cardinality = 0..1
+		limit_to_coastal = yes
 	}
 	building = <building.provincial>
 	level = int

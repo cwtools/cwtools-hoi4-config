@@ -364,11 +364,11 @@ alias[gui:instantTextBoxType] = {
     borderSize = { x = int y = int }
     ## cardinality = 0..1
     #DEBUG
-    ### Missing Descriptiion, need testing
+    ### Missing Description, need testing
     textureFile = <spriteType>
     ## cardinality = 0..1
     #DEBUG
-    ### Vertical alignement in text box
+    ### Vertical alignment in text box
     vertical_alignment = enum[guiTextFormatsVertical]
     ## cardinality = 0..1
     #DEBUG
@@ -469,7 +469,7 @@ alias[gui:extendedScrollbarType] = {
     ###Start position of slider
     startValue = float
     ##cardinality  = 0..1
-    ###Size of slider incriment
+    ###Size of slider increment
     stepSize = float
     ##cardinality  = 0..1
     ###Horizontal or vertical slider
@@ -723,14 +723,15 @@ enums = {
     }
     enum[guiTextFormats] = {
         left
-        right
         center
         centre
+        right
     }
     enum[guiTextFormatsVertical] = {
+        top
         center
-        up
-        down
+        centre
+        bottom
     }
     complex_enum[horizontal_scrollbar_types] = {
         path = "game/interface"

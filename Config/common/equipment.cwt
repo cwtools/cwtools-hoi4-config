@@ -170,7 +170,7 @@ equipment = {
 		family = <equipment.regular_equip>
 		## cardinality = 0..1
 		can_convert_from = {
-			## cardinality = 1..5
+			## cardinality = 1..inf
 			<equipment.regular_equip>
 		}
 	}

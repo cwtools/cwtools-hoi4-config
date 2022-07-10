@@ -257,12 +257,12 @@ alias[effect:add_advisor_role] = {
 			alias_name[modifier_rule] = alias_match_left[modifier_rule]
 		}
 		## replace_scope = { this = character root = country }
-		## cardinality = 0..1
+		## cardinality = 0..inf
 		on_add = {
 			alias_name[effect] = alias_match_left[effect]
 		}
 		## replace_scope = { this = character root = country }
-		## cardinality = 0..1
+		## cardinality = 0..inf
 		on_remove = {
 			alias_name[effect] = alias_match_left[effect]
 		}

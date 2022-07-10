@@ -115,12 +115,12 @@ idea = {
 				## cardinality = ~1..inf
 				<country_leader_trait>
 			}
-			## cardinality = 0..1
+			## cardinality = 0..inf
 			on_add = {
 				## cardinality = ~1..inf
 				alias_name[effect] = alias_match_left[effect]
 			}
-			## cardinality = 0..1
+			## cardinality = 0..inf
 			on_remove = {
 				## cardinality = ~1..inf
 				alias_name[effect] = alias_match_left[effect]
@@ -265,12 +265,12 @@ idea = {
 				## cardinality = ~1..inf
 				<country_leader_trait>
 			}
-			## cardinality = 0..1
+			## cardinality = 0..inf
 			on_add = {
 				## cardinality = ~1..inf
 				alias_name[effect] = alias_match_left[effect]
 			}
-			## cardinality = 0..1
+			## cardinality = 0..inf
 			on_remove = {
 				## cardinality = ~1..inf
 				alias_name[effect] = alias_match_left[effect]

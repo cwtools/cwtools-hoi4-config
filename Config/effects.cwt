@@ -790,7 +790,7 @@ alias[effect:build_railway] = {
 	### Option 1: List of provinces to draw railways. If fallback = yes uses start and end provinces of the path as fallback in option 2. path = { 10 20 30 40 }.
 	### Default no. If yes, each option will try to fallback to next one.
 	## cardinality = 0..1
-	fallback = yes
+	fallback = bool
 }
 
 ### Starts railway construction for amount of levels in specified state or province.
@@ -807,7 +807,7 @@ alias[effect:build_railway] = {
 	### Option 1: List of provinces to draw railways. If fallback = yes uses start and end provinces of the path as fallback in option 2. path = { 10 20 30 40 }.
 	### Default no. If yes, each option will try to fallback to next one.
 	## cardinality = 0..1
-	fallback = yes
+	fallback = bool
 }
 
 ### Starts railway construction for amount of levels in specified state or province.
@@ -824,7 +824,7 @@ alias[effect:build_railway] = {
 	### Option 1: List of provinces to draw railways. If fallback = yes uses start and end provinces of the path as fallback in option 2. path = { 10 20 30 40 }.
 	### Default no. If yes, each option will try to fallback to next one.
 	## cardinality = 0..1
-	fallback = yes
+	fallback = bool
 }
 
 ### Starts building construction for amount of levels in specified state or province.

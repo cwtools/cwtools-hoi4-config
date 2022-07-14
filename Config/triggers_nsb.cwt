@@ -244,3 +244,38 @@ alias[trigger:has_design_based_on] = <equipment.archetype_equip>
 ###Check the number of factories in owned states excluding any gained or lost through trade, relations, modifiers etc.
 ## scope = country
 alias[trigger:num_of_owned_factories] = variable_field
+
+###Checks if a railway can be built according to specifications
+## scope = country
+alias[trigger:can_build_railway] = {
+	path = {
+		## cardinality = 1..inf
+		enum[provinces]
+	}
+	## cardinality = 0..1
+	build_only_on_allied = bool
+	## cardinality = 0..1
+	fallback = bool
+}
+
+###Checks if a railway can be built according to specifications
+## scope = country
+alias[trigger:can_build_railway] = {
+	## cardinality = 0..1
+	build_only_on_allied = bool
+	start_province = enum[provinces]
+	target_province = enum[provinces]
+	## cardinality = 0..1
+	fallback = bool
+}
+
+###Checks if a railway can be built according to specifications
+## scope = country
+alias[trigger:can_build_railway] = {
+	## cardinality = 0..1
+	build_only_on_allied = bool
+	start_state = <state>
+	target_state = <state>
+	## cardinality = 0..1
+	fallback = bool
+}

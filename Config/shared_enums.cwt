@@ -30,6 +30,8 @@ enums = {
 		declare_war
 		join_allies
 		call_allies
+		improve_relation
+		befriend
 	}
 
 	enum[add_factor] = {
@@ -61,5 +63,41 @@ enums = {
 		army
 		navy
 		air
+	}
+	
+	enum[command_cap] = {
+		@tier1
+		@tier2
+		@tier3
+	}
+
+	enum[nsb_armor_archetypes] = {
+		light_tank_chassis
+		medium_tank_chassis
+		heavy_tank_chassis
+		super_heavy_tank_chassis
+		modern_tank_chassis
+		amphibious_tank_chassis
+		light_tank_artillery_chassis
+		light_tank_destroyer_chassis
+		light_tank_aa_chassis
+		light_tank_amphibious_chassis
+		light_tank_flame_chassis
+		medium_tank_artillery_chassis
+		medium_tank_destroyer_chassis
+		medium_tank_aa_chassis
+		medium_tank_amphibious_chassis
+		medium_tank_flame_chassis
+		heavy_tank_artillery_chassis
+		heavy_tank_destroyer_chassis
+		heavy_tank_aa_chassis
+		heavy_tank_amphibious_chassis
+		heavy_tank_flame_chassis
+		super_heavy_tank_artillery_chassis
+		super_heavy_tank_destroyer_chassis
+		super_heavy_tank_aa_chassis
+		modern_tank_artillery_chassis
+		modern_tank_destroyer_chassis
+		modern_tank_aa_chassis
 	}
 }

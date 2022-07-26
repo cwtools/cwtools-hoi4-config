@@ -30,7 +30,7 @@ alias[trigger:else] = {
 }
 
 ### Compare leader skill levels.
-## scope = { unit_leader combat }
+## scope = { unit_leader combat character }
 alias[trigger:skill] = int
 
 ### Check if we are in this combat phase.
@@ -99,6 +99,9 @@ alias[trigger:any_country] = {
 ## scope = any
 alias[trigger:check_variable] = {
 	value[variable] = variable_field_32
+	### Defaults to greater_than_or_equals.
+	## cardinality = 0..1
+	compare = enum[var_compares]
 }
 
 ### Compares a variable to a number or variable.
@@ -110,7 +113,7 @@ alias[trigger:check_variable] = {
 ### Compares a variable to a number or variable.
 ## scope = any
 alias[trigger:check_variable] = {
-	variable_field_32 = value[variable]
+	variable_field_32 = value[variable]	
 }
 
 ### Compares a variable to a number or variable.
@@ -133,6 +136,22 @@ alias[trigger:check_variable] = {
 	## cardinality = 0..1
 	### Defaults to greater_than_or_equals.
 	compare = enum[var_compares]
+}
+
+### Compares a variable to a number or variable.
+## scope = any
+alias[trigger:check_variable] = {
+	var = value[variable]
+	value = variable_field_32
+	## cardinality = 0..1
+	### Defaults to greater_than_or_equals.
+	compare = enum[var_compares]
+}
+
+### Compares a variable to a number or variable.
+## scope = any
+alias[trigger:check_variable] = {
+	old_ideology_token = token:<ideology>
 }
 
 enums = {
@@ -333,6 +352,10 @@ alias[trigger:controls_state] = <state>
 ### Does country government (ruling party) belong to ideology group.
 ## scope = country
 alias[trigger:has_government] = <ideology>
+
+### Does country government (ruling party) belong to ideology group.
+## scope = country
+alias[trigger:has_country_leader_ideology] = <ideology>
 
 ### Does country government (ruling party) belong to ideology group.
 ## scope = country
@@ -691,8 +714,12 @@ alias[trigger:is_core_of] = enum[country_tags]
 alias[trigger:is_ai] = bool
 
 ### Check if sides leader has trait.
-## scope = { unit_leader combat }
+## scope = { character unit_leader combat }
 alias[trigger:has_trait] = <unit_leader_trait>
+
+### Check if sides leader has trait.
+## scope = { character }
+alias[trigger:has_trait] = <country_leader_trait>
 
 ### Check if side has reserves waiting.
 ## scope = combat
@@ -782,7 +809,7 @@ alias[trigger:has_equipment] = { <equipment> = int_variable_field }
 
 ### Check amount of total factories.
 ## scope = country
-alias[trigger:num_of_factories] = int
+alias[trigger:num_of_factories] = variable_field
 
 ###  = { focus = id progress = 0.5 }.
 ## scope = country
@@ -876,7 +903,7 @@ alias[trigger:has_volunteers_amount_from] = {
 
 ### Check amount of controlled stats.
 ## scope = country
-alias[trigger:num_of_controlled_states] = int
+alias[trigger:num_of_controlled_states] = variable_field
 
 ### Checks if the current scope was ever the specified country.
 ## scope = { country combat }
@@ -1371,12 +1398,16 @@ alias[trigger:any_province_building_level] = {
 		all_provinces = yes
 		## cardinality = 0..1
 		limit_to_border = yes
+		## cardinality = 0..1
+		limit_to_coastal = yes
 	}
 	province = {
 		## cardinality = 1..inf
 		id = enum[provinces]
 		## cardinality = 0..1
 		limit_to_border = yes
+		## cardinality = 0..1
+		limit_to_coastal = yes
 	}
 	building = <building.provincial>
 	level = int
@@ -1663,7 +1694,7 @@ alias[trigger:clamp_temp_variable] = {
 
 ### Check amount of civilian factories available for a new project to use.
 ## scope = country
-alias[trigger:num_of_civilian_factories_available_for_projects] = int
+alias[trigger:num_of_civilian_factories_available_for_projects] = variable_field
 
 ### Checks if current scope or global scope has the specified event target saved.
 ## scope = any
@@ -2185,7 +2216,7 @@ alias[trigger:<building>] = int_variable_field
 
 ### Checks ideology popularity.
 ## scope = country
-alias[trigger:<ideology>] = float
+alias[trigger:<ideology>] = variable_field
 
 ### Changes scope to opposing army/navy.
 ## scope = { unit_leader combat }

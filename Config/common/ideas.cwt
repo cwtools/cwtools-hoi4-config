@@ -86,7 +86,23 @@ idea = {
 					alias_name[air_stat] = alias_match_left[air_stat]
 				}
 				## cardinality = 0..inf
+				enum[unit_category] = {
+					## cardinality = 0..1
+					instant = bool
+					alias_name[unit_stat] = alias_match_left[unit_stat]
+					alias_name[naval_stat] = alias_match_left[naval_stat]
+					alias_name[air_stat] = alias_match_left[air_stat]
+				}
+				## cardinality = 0..inf
 				<unit> = {
+					## cardinality = 0..1
+					instant = bool
+					alias_name[unit_stat] = alias_match_left[unit_stat]
+					alias_name[naval_stat] = alias_match_left[naval_stat]
+					alias_name[air_stat] = alias_match_left[air_stat]
+				}
+				## cardinality = 0..inf
+				enum[nsb_armor_archetypes] = {
 					## cardinality = 0..1
 					instant = bool
 					alias_name[unit_stat] = alias_match_left[unit_stat]
@@ -99,12 +115,12 @@ idea = {
 				## cardinality = ~1..inf
 				<country_leader_trait>
 			}
-			## cardinality = 0..1
+			## cardinality = 0..inf
 			on_add = {
 				## cardinality = ~1..inf
 				alias_name[effect] = alias_match_left[effect]
 			}
-			## cardinality = 0..1
+			## cardinality = 0..inf
 			on_remove = {
 				## cardinality = ~1..inf
 				alias_name[effect] = alias_match_left[effect]
@@ -141,6 +157,12 @@ idea = {
 			default = bool
 			## cardinality = 0..1
 			cancel_if_invalid = no
+			### If cancel_if_invalid = no, removes the idea using the triggers in this category
+			## cardinality = 0..1
+			cancel = {
+				## cardinality = ~1..inf
+				alias_name[trigger] = alias_match_left[trigger]
+			}
 			## error_if_only_match = This is the default value and can be ommitted
 			## severity = info
 			## cardinality = 0..1
@@ -208,7 +230,23 @@ idea = {
 					alias_name[air_stat] = alias_match_left[air_stat]
 				}
 				## cardinality = 0..inf
+				enum[unit_category] = {
+					## cardinality = 0..1
+					instant = bool
+					alias_name[unit_stat] = alias_match_left[unit_stat]
+					alias_name[naval_stat] = alias_match_left[naval_stat]
+					alias_name[air_stat] = alias_match_left[air_stat]
+				}
+				## cardinality = 0..inf
 				<unit> = {
+					## cardinality = 0..1
+					instant = bool
+					alias_name[unit_stat] = alias_match_left[unit_stat]
+					alias_name[naval_stat] = alias_match_left[naval_stat]
+					alias_name[air_stat] = alias_match_left[air_stat]
+				}
+				## cardinality = 0..inf
+				enum[nsb_armor_archetypes] = {
 					## cardinality = 0..1
 					instant = bool
 					alias_name[unit_stat] = alias_match_left[unit_stat]
@@ -227,12 +265,12 @@ idea = {
 				## cardinality = ~1..inf
 				<country_leader_trait>
 			}
-			## cardinality = 0..1
+			## cardinality = 0..inf
 			on_add = {
 				## cardinality = ~1..inf
 				alias_name[effect] = alias_match_left[effect]
 			}
-			## cardinality = 0..1
+			## cardinality = 0..inf
 			on_remove = {
 				## cardinality = ~1..inf
 				alias_name[effect] = alias_match_left[effect]
@@ -259,6 +297,7 @@ enums = {
 		army
 		navy
 		air
+		military
 		invalid
 		civilian
 		hidden

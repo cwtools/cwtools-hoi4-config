@@ -180,6 +180,9 @@ decision = {
 	desc = localisation
 	## cardinality = 0..1
 	fire_only_once = bool
+	### Tell the AI how much the decision would cost if it had a normal PP cost (use when custom_cost_trigger is used)
+	## cardinality = 0..1
+	ai_hint_pp_cost = int
 
 	subtype[country] = {
 		### Check if this decision can be activated.
@@ -225,6 +228,10 @@ decision = {
 			enum[base_factor] = variable_field
 			alias_name[modifier_rule] = alias_match_left[modifier_rule]
 		}
+
+		### Allow the decision to be visible even when the target is not existing (tag not spawned/destroyed etc.)
+		## cardinality = 0..1
+		target_non_existing = bool
 	}
 
 	## cardinality = 0..1
@@ -268,6 +275,11 @@ decision = {
 			## cardinality = ~1..inf
 			enum[provinces]
 		}
+
+		## cardinality = 0..1
+		highlight_color_before_active = int
+		## cardinality = 0..1
+		highlight_color_while_active = int
 	}
 
 

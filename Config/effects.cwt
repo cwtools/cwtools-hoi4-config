@@ -15,10 +15,18 @@ alias[effect:custom_effect_tooltip] = localisation
 
 ### Move capital to state.
 ## scope = country
-alias[effect:set_capital] = { state = scope[state] }
+alias[effect:set_capital] = {
+	state = scope[state]
+	## cardinality = 0..1
+	remember_old_capital = no
+}
 ### Move capital to state.
 ## scope = country
-alias[effect:set_capital] = { state = <state> }
+alias[effect:set_capital] = {
+	state = <state>
+	## cardinality = 0..1
+	remember_old_capital = no
+}
 
 ### Add core on state.
 ## scope = country
@@ -540,7 +548,7 @@ alias[effect:create_unit] = {
 alias[effect:sound_effect] = scalar
 
 ### Promotes general to field marshal.
-## scope = unit_leader
+## scope = { character unit_leader }
 alias[effect:promote_leader] = bool
 
 ### Randomize weather effect.
@@ -604,6 +612,10 @@ alias[effect:set_politics] = {
 	last_election = date_field
 	## cardinality = 0..1
 	election_frequency = int
+	## cardinality = 0..1
+	name = localisation
+	## cardinality = 0..1
+	long_name = localisation
 }
 
 ### Set country political party popilarities.
@@ -682,6 +694,8 @@ alias[effect:create_navy_leader] = {
 	## cardinality = 0..1
 	id = value_set[unit_leader_ids]
 	## cardinality = 0..1
+	legacy_id = value_set[unit_leader_ids]
+	## cardinality = 0..1
 	female = bool
 }
 
@@ -690,7 +704,7 @@ alias[effect:create_navy_leader] = {
 alias[effect:remove_unit_leader_trait] = <unit_leader_trait>
 
 ### Add trait to unit leader.
-## scope = unit_leader
+## scope = { character unit_leader }
 alias[effect:add_unit_leader_trait] = <unit_leader_trait>
 
 ### Adds new namespace.
@@ -758,6 +772,59 @@ alias[effect:annex_country] = {
 	target = enum[country_tags]
 	## cardinality = 0..1
 	transfer_troops = bool
+}
+
+### Starts railway construction for amount of levels in specified state or province.
+## scope = any
+alias[effect:build_railway] = {
+	path = {
+		## cardinality = 1..inf
+		enum[provinces]
+	}
+	## cardinality = 0..1
+	build_only_on_allied = bool
+	## cardinality = 0..1
+	level = int[1..5]
+	### Option 3: Specify start & end state IDs. It will pick provinces with the best node (capital > nodes > naval ) start_state = 50 target_state = 100
+	### Option 2: Specify start & end province IDs. It will pick the shortest path. If provinces are not valid and if fallback = yes it will use states of those provs and use in option 3.start_province = 42 target_province = 84
+	### Option 1: List of provinces to draw railways. If fallback = yes uses start and end provinces of the path as fallback in option 2. path = { 10 20 30 40 }.
+	### Default no. If yes, each option will try to fallback to next one.
+	## cardinality = 0..1
+	fallback = bool
+}
+
+### Starts railway construction for amount of levels in specified state or province.
+## scope = any
+alias[effect:build_railway] = {
+	## cardinality = 0..1
+	build_only_on_allied = bool
+	## cardinality = 0..1
+	level = int[1..5]
+	start_province = enum[provinces]
+	target_province = enum[provinces]
+	### Option 3: Specify start & end state IDs. It will pick provinces with the best node (capital > nodes > naval ) start_state = 50 target_state = 100
+	### Option 2: Specify start & end province IDs. It will pick the shortest path. If provinces are not valid and if fallback = yes it will use states of those provs and use in option 3.start_province = 42 target_province = 84
+	### Option 1: List of provinces to draw railways. If fallback = yes uses start and end provinces of the path as fallback in option 2. path = { 10 20 30 40 }.
+	### Default no. If yes, each option will try to fallback to next one.
+	## cardinality = 0..1
+	fallback = bool
+}
+
+### Starts railway construction for amount of levels in specified state or province.
+## scope = any
+alias[effect:build_railway] = {
+	## cardinality = 0..1
+	build_only_on_allied = bool
+	## cardinality = 0..1
+	level = int[1..5]
+	start_state = <state>
+	target_state = <state>
+	### Option 3: Specify start & end state IDs. It will pick provinces with the best node (capital > nodes > naval ) start_state = 50 target_state = 100
+	### Option 2: Specify start & end province IDs. It will pick the shortest path. If provinces are not valid and if fallback = yes it will use states of those provs and use in option 3.start_province = 42 target_province = 84
+	### Option 1: List of provinces to draw railways. If fallback = yes uses start and end provinces of the path as fallback in option 2. path = { 10 20 30 40 }.
+	### Default no. If yes, each option will try to fallback to next one.
+	## cardinality = 0..1
+	fallback = bool
 }
 
 ### Starts building construction for amount of levels in specified state or province.
@@ -887,6 +954,11 @@ alias[effect:random_neighbor_state] = {
 	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
+	}
+	## cardinality = 0..1
+	prioritize = {
+		## cardinality = 1..inf
+		<state>
 	}
 	## cardinality = 0..1
 	tooltip = localisation
@@ -1072,6 +1144,8 @@ alias[effect:start_civil_war] = {
 	## cardinality = 0..1
 	keep_political_leader = bool
 	## cardinality = 0..1
+	keep_political_party_members = bool
+	## cardinality = 0..1
 	keep_unit_leaders = {
 		## cardinality = ~1..inf
 		value[unit_leader_ids]
@@ -1081,7 +1155,8 @@ alias[effect:start_civil_war] = {
 	keep_unit_leaders_trigger = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
-	#alias_name[effect] = alias_match_left[effect]
+	## cardinality = ~1..inf
+	alias_name[effect] = alias_match_left[effect]
 }
 
 ### Retires a country leader and removes him as leader of his party, making the next in line the new party and country leader.
@@ -1202,6 +1277,22 @@ alias[effect:add_tech_bonus] = {
 	category = enum[tech_category]
 	## cardinality = 0..inf
 	technology = <technology>
+	## cardinality = 1..1
+	## severity = warning
+	name = localisation
+}
+
+### Adds a limited use doctrine bonus
+## scope = country
+alias[effect:add_doctrine_cost_reduction] = {
+	## cardinality = 0..inf
+	category = enum[tech_category]
+	## cardinality = 0..inf
+	technology = <technology>
+	## cardinality = 0..1
+	uses = int[1..32767]
+	## cardinality = 1..2
+	cost_reduction = float
 	## cardinality = 1..1
 	## severity = warning
 	name = localisation
@@ -1361,6 +1452,8 @@ alias[effect:create_field_marshal] = {
 	## cardinality = 0..1
 	id = value_set[unit_leader_ids]
 	## cardinality = 0..1
+	legacy_id = value_set[unit_leader_ids]
+	## cardinality = 0..1
 	female = bool
 }
 
@@ -1396,6 +1489,8 @@ alias[effect:create_corps_commander] = {
 	logistics_skill = int
 	## cardinality = 0..1
 	id = value_set[unit_leader_ids]
+	## cardinality = 0..1
+	legacy_id = value_set[unit_leader_ids]
 	## cardinality = 0..1
 	female = bool
 }
@@ -1456,18 +1551,29 @@ alias[effect:add_to_war] = {
 ## scope = country
 alias[effect:show_ideas_tooltip] = enum[idea_name]
 
+### Show what idea does.
+## scope = country
+alias[effect:show_ideas_tooltip] = value[advisor_token]
+
+## scope = country
+alias[effect:show_unit_leaders_tooltip] = <character>
+
 ### Creates a new equipment variant.
 ## scope = country
 alias[effect:create_equipment_variant] = {
+	## cardinality = 0..1
 	name = scalar
 	type = <equipment.regular_equip>
+	type = value[nsb_armor_variants]
 	## cardinality = 0..1
 	name_group = <ship_name>
 	## cardinality = 0..1
 	parent_version = int
 	## cardinality = 0..1
+	role_icon_index = int
+	## cardinality = 0..1
 	upgrades = {
-		## cardinality = 0..4
+		## cardinality = 0..inf
 		<upgrade> = int
 	}
 	## cardinality = 0..1
@@ -1479,13 +1585,16 @@ alias[effect:create_equipment_variant] = {
 	}
 	## cardinality = 0..1
 	obsolete = yes
+	## cardinality = 0..1
+	icon = filepath
 }
 
 ### Adds an equipment production.
 ## scope = country
 alias[effect:add_equipment_production] = {
 	equipment = {
-		type = <equipment.regular_equip>
+		type = <equipment>
+		type = value[nsb_armor_variants]
 		## cardinality = 0..1
 		creator = enum[country_tags]
 		## cardinality = 0..1
@@ -1570,6 +1679,7 @@ alias[effect:random_other_country] = {
 ## scope = country
 alias[effect:add_equipment_to_stockpile] = {
 	type = <equipment>
+	type = value[nsb_armor_variants]
 	amount = int_variable_field
 	## cardinality = 0..1
 	producer = scope[country]
@@ -1580,8 +1690,12 @@ alias[effect:add_equipment_to_stockpile] = {
 ### Swap 2 ideas.
 ## scope = country
 alias[effect:swap_ideas] = {
+	### TEMP FIX - be careful when using variables to store ideas
+	remove_idea = value[variable]
 	remove_idea = enum[idea_name]
 	add_idea = enum[idea_name]
+	### TEMP FIX - be careful when using variables to store ideas
+	add_idea = value[variable]
 
 	### Adds/subtracts X days from the new idea's timeout
 	## cardinality = 0..1
@@ -1625,6 +1739,10 @@ alias[effect:set_autonomy] = {
 	autonomy_state = autonomy_free
 	## cardinality = 0..1
 	freedom_level = float[0..1]
+	## cardinality = 0..1
+	end_wars = no 
+	## cardinality = 0..1
+	end_civil_wars = no 
 }
 
 ### Makes autonomy of specified level and country.
@@ -1636,6 +1754,11 @@ alias[effect:set_autonomy] = {
 	autonomous_state = autonomy_free
 	## cardinality = 0..1
 	freedom_level = float[0..1]
+	## cardinality = 0..1
+	end_wars = no 
+	## cardinality = 0..1
+	end_civil_wars = no 
+	
 }
 
 ### Makes autonomy of specified level and country.
@@ -1644,6 +1767,11 @@ alias[effect:set_autonomy] = {
 	target = scope[country]
 	target = enum[country_tags]
 	freedom_level = float[0..1]
+	## cardinality = 0..1
+	end_wars = no 
+	## cardinality = 0..1
+	end_civil_wars = no 
+	
 }
 
 ### Adds country to technology sharing group of specified name.
@@ -1854,7 +1982,7 @@ alias[effect:random_unit_leader] = {
 
 ### Executes children effects on unit leaders that fulfills the "limit" trigger.
 ## scope = country
-## push_scope = unit_leader
+## push_scope = any
 alias[effect:every_unit_leader] = {
 	## cardinality = 0..1
 	limit = {
@@ -1882,7 +2010,7 @@ alias[effect:random_army_leader] = {
 
 ### Executes children effects on army leaders that fulfills the "limit" trigger.
 ## scope = country
-## push_scope = any
+## push_scope = { unit_leader character }
 alias[effect:every_army_leader] = {
 	## cardinality = 0..1
 	limit = {
@@ -1977,11 +2105,11 @@ alias[effect:set_nationality] = scope[country]
 alias[effect:set_nationality] = enum[country_tags]
 
 ### Demotes field marshal to general.
-## scope = unit_leader
+## scope = { character unit_leader }
 alias[effect:demote_leader] = yes
 
 ### Retires scope unit leader.
-## scope = unit_leader
+## scope = { character unit_leader }
 alias[effect:retire] = bool
 
 ### Add command power to country.
@@ -2129,15 +2257,15 @@ alias[effect:divide_variable] = {
 alias[effect:clear_variable] = variable_field_32
 
 ### Adds attack skill to a unit leader.
-## scope = unit_leader
+## scope = { character unit_leader }
 alias[effect:add_attack] = int
 
 ### Adds defense skill to a unit leader.
-## scope = unit_leader
+## scope = { character unit_leader }
 alias[effect:add_defense] = int
 
 ### Adds planning skill to a unit leader.
-## scope = unit_leader
+## scope = { character unit_leader }
 alias[effect:add_planning] = int
 
 ### Localizes name of category and displays tooltip that shows it will be unlocked.
@@ -2161,7 +2289,7 @@ alias[effect:load_focus_tree] = {
 }
 
 ### Adds logistics skill to a unit leader.
-## scope = unit_leader
+## scope = { character unit_leader }
 alias[effect:add_logistics] = int
 
 ### Add an offsite building to a country.
@@ -2177,7 +2305,7 @@ alias[effect:add_offsite_building] = {
 alias[effect:replace_unit_leader_trait] = replace_me
 
 ### Adds a max assignable trait slot for a general.
-## scope = unit_leader
+## scope = { character unit_leader }
 alias[effect:add_max_trait] = int
 
 ### Adds a skill level to a unit leader.
@@ -2433,7 +2561,15 @@ alias[effect:recall_attache] = enum[country_tags]
 alias[effect:activate_targeted_decision] = {
 	target = scope[country]
 	target = enum[country_tags]
-	decision = <decision>
+	decision = <decision.country>
+}
+
+### Activates targeted decisions or mission, ignoring its normal trigger conditions, cooldown and fire only once. Cannot activate if active in interface.
+## scope = country
+alias[effect:activate_targeted_decision] = {
+	target = scope[state]
+	target = <state>
+	decision = <decision.state_targeted>
 }
 
 ### Removes targeted decisions or mission.
@@ -2445,7 +2581,15 @@ alias[effect:remove_targeted_decision] = <decision>
 alias[effect:remove_targeted_decision] = {
 	target = scope[country]
 	target = enum[country_tags]
-	decision = <decision>
+	decision = <decision.country>
+}
+
+### Removes targeted decisions or mission.
+## scope = country
+alias[effect:remove_targeted_decision] = {
+	target = scope[state]
+	target = <state>
+	decision = <decision.state_targeted>
 }
 
 ### Modify amount of days of a timed idea.
@@ -2473,7 +2617,7 @@ alias[effect:set_truce] = {
 alias[effect:round_variable] = variable_field_32
 
 ### Fires a unit leader event for owner country.
-## scope = unit_leader
+## scope = { character unit_leader }
 alias[effect:unit_leader_event] = {
 	### The event to fire.
 	id = <event.unit_leader_event>
@@ -2515,7 +2659,7 @@ alias[effect:unit_leader_event] = {
 }
 
 ### Fires a unit leader event for owner country.
-## scope = unit_leader
+## scope = { character unit_leader }
 alias[effect:unit_leader_event] = <event.unit_leader_event>
 
 ### Finalizes border war between two states, wins or cancels it.
@@ -2571,9 +2715,11 @@ alias[effect:become_exiled_in] = {
 alias[effect:set_faction_name] = localisation
 
 ### Adds maneuver skill to a unit leader.
+## scope = { character unit_leader }
 alias[effect:add_maneuver] = int
 
 ### Adds maneuver skill to a unit leader.
+## scope = { character unit_leader }
 alias[effect:add_coordination] = int
 
 ### Gives rights to take resources from specified state. give_resource_rights = { receiver = <TAG> state = <id> }.

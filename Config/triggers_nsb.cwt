@@ -1,4 +1,4 @@
-### Check if any of the country's core states meet the trigger.
+###Check if any of the country's core states meet the trigger.
 ## scope = country
 ## push_scope = state
 alias[trigger:any_core_state] = {
@@ -7,7 +7,7 @@ alias[trigger:any_core_state] = {
 	alias_name[trigger] = alias_match_left[trigger]
 }
 
-### Check if all of the country's core states meet the trigger.
+###Check if all of the country's core states meet the trigger.
 ## scope = country
 ## push_scope = state
 alias[trigger:all_core_state] = {
@@ -16,7 +16,7 @@ alias[trigger:all_core_state] = {
 	alias_name[trigger] = alias_match_left[trigger]
 }
 
-### check if any subject country meets the trigger.
+###Check if any subject country meets the trigger.
 ## scope = country
 ## push_scope = country
 alias[trigger:any_subject_country] = {
@@ -25,16 +25,16 @@ alias[trigger:any_subject_country] = {
 	alias_name[trigger] = alias_match_left[trigger]
 }
 
-### check if all subject countries meet the trigger.
+###Check if all subject countries meet the trigger. tooltip=key can be defined to override title.
 ## scope = country
 ## push_scope = country
-alias[trigger:all_subject_country] = {
+alias[trigger:all_subject_countries] = {
 	## cardinality = 0..1
 	tooltip = localisation
 	alias_name[trigger] = alias_match_left[trigger]
 }
 
-### Checks if a state contains a railway at or above the specified level.
+###Checks if a state contains a railway at or above the specified level.
 ## scope = any
 alias[trigger:has_railway_level] = {
   level = int
@@ -52,7 +52,7 @@ alias[trigger:has_available_resources_in_country] = {
 # -- Character stuff -- #
 # --------------------- #
 
-###check if any character meets the trigger. tooltip=key can be defined to override title
+###Check if any character meets the trigger. tooltip=key can be defined to override title.
 ## scope = country
 ## push_scope = character
 alias[trigger:any_character] = {
@@ -61,7 +61,7 @@ alias[trigger:any_character] = {
 	alias_name[trigger] = alias_match_left[trigger]
 }
 
-###check if all characters meets the trigger. tooltip=key can be defined to override title
+###Check if all characters meets the trigger. tooltip=key can be defined to override title.
 ## scope = country
 ## push_scope = character
 alias[trigger:all_character] = {
@@ -70,104 +70,137 @@ alias[trigger:all_character] = {
 	alias_name[trigger] = alias_match_left[trigger]
 }
 
-### Has character flag been set. Check flag val date set and days since set. Example: has_character_flag = test_flag.
-## scope = character
+###Has character flag been set. Check flag val date set and days since set.
+## scope = { character unit_leader }
 ## severity = warning
 alias[trigger:has_character_flag] = value[character_flag]
 
-### Returns true if scoped country has character. Example: has_character = GER_erwin_rommel
+###Has character flag been set. Check flag val date set and days since set.
+## scope = { character unit_leader }
+## severity = warning
+alias[trigger:has_character_flag] = {
+	flag = value[character_flag]
+	## cardinality = 0..1
+	value = int
+	## cardinality = 0..1
+	date = date_field
+	## cardinality = 0..1
+	days = int
+}
+
+###Returns true if scoped country has character.
 ## scope = country
 alias[trigger:has_character] = <character>
 ### Checks whether the character matches the character ID
-## scope = character
+## scope = { character unit_leader }
 alias[trigger:is_character] = <character>
 
-### Check if country has leader with specified ID. Don't localize this. Tooltip only for debug.
+###Check if country has leader with specified ID. Don't localize this. Tooltip only for debug.
 ## scope = country
 alias[trigger:has_country_leader] = {
 	## cardinality = 0..1
 	ruling_only = bool
 	character = <character>
 }
-### Check if country has leader with specified ID. Don't localize this. Tooltip only for debug.
+###Check if country has leader with specified ID. Don't localize this. Tooltip only for debug.
 ## scope = country
 alias[trigger:has_country_leader] = {
 	## cardinality = 0..1
 	ruling_only = bool
 	id = int
 }
-### Check if country has leader with specified ID. Don't localize this. Tooltip only for debug.
+###Check if country has leader with specified ID. Don't localize this. Tooltip only for debug.
 ## scope = country
 alias[trigger:has_country_leader] = {
 	## cardinality = 0..1
 	ruling_only = bool
 	name = scalar
 }
-### Check if country has character with specified ID.
+###Check if country has character with specified ID.
 ## scope = country
 alias[trigger:has_country_leader] = <character>
 
-### Can the character be a country leader
+###Can the character be a country leader.
 ## scope = country
 alias[trigger:can_be_country_leader] = <character>
 
-### Can the character be a country leader
+###Can the character be a country leader.
 ## scope = character
 alias[trigger:can_be_country_leader] = bool
 
-### Checks if the current character is an army chief.
+###Checks if the current character is an army chief.
 ## scope = character
 alias[trigger:is_army_chief] = bool
-### Checks if the current character is an advisor.
+
+###Checks if the current character is an advisor.
 ## scope = character
 alias[trigger:is_advisor] = bool
-### Checks if the current character is a political advisor.
+
+###Checks if the current character is a political advisor.
 ## scope = character
 alias[trigger:is_political_advisor] = bool
-### Checks if the current character is a theorist.
+
+###Checks if the current character is a theorist.
 ## scope = character
 alias[trigger:is_theorist] = bool
-### Checks if the current character is a navy chief.
+
+###Checks if the current character is a navy chief.
 ## scope = character
 alias[trigger:is_navy_chief] = bool
-### Checks if the current character is an air chief.
+
+###Checks if the current character is an air chief.
 ## scope = character
 alias[trigger:is_air_chief] = bool
-### Checks if the current character is in high command.
+
+###Checks if the current character is in high command.
 ## scope = character
 alias[trigger:is_high_command] = bool
-### Checks if the current character is a country leader.
+
+###Checks if the current character is a country leader.
 ## scope = character
 alias[trigger:is_country_leader] = bool
-### Checks if the current character is a unit leader.
+
+###Checks if the current character is a unit leader.
 ## scope = character
 alias[trigger:is_unit_leader] = bool
-### Checks if the current character is an army leader.
+
+###Checks if the current character is an army leader.
 ## scope = { character unit_leader }
 alias[trigger:is_army_leader] = bool
-### Checks if the current character is a corps commander.
+
+###Checks if the current character is a corps commander.
 ## scope = { character unit_leader }
 alias[trigger:is_corps_commander] = bool
-### Checks if the current character is a navy leader.
+
+###Checks if the current character is a navy leader.
 ## scope = { character unit_leader }
 alias[trigger:is_navy_leader] = bool
-### Checks if the current character is an operative.
+
+###Checks if the current character is an operative.
 ## scope = character
 alias[trigger:is_operative] = bool
-### Checks if the current character has an army ledger.
+
+###Checks if the current character has an army ledger.
 ## scope = character
 alias[trigger:has_army_ledger] = bool
-### Checks if the current character has a navy ledger.
+
+###Checks if the current character has a navy ledger.
 ## scope = character
 alias[trigger:has_navy_ledger] = bool
-### Checks if the current character has an air ledger.
+
+###Checks if the current character has an air ledger.
 ## scope = character
 alias[trigger:has_air_ledger] = bool
-### Checks if the current character is in the character slot
+
+###Checks if the current character is in the character slot.
 ## scope = character
 alias[trigger:is_character_slot] = value[character_advisor_slot]
 
-### Has character flag been set. Check flag val date set and days since set. Example: has_character_flag = test_flag.
+###Checks if the current character is not hired, with the exception of the specified slot.
+## scope = character
+alias[trigger:not_already_hired_except_as] = value[character_advisor_slot]
+
+###Has character flag been set. Check flag val date set and days since set.
 ## scope = character
 ## severity = warning
 alias[trigger:character_flag] = {
@@ -180,14 +213,73 @@ alias[trigger:character_flag] = {
 	days = int
 }
 
-### Check if country has idea.
+###Check if country has idea.
 ## scope = country
 alias[trigger:has_idea] = value[advisor_token]
 
-###Checks if the current character has a country leader role matching the sub-ideology
+###Checks if the current character has a country leader role matching the sub-ideology.
 ## scope = character
 alias[trigger:has_ideology] = enum[sub_ideology]
 
-###Checks if the current character has a country leader role matching the ideology group
+###Checks if the current character has a country leader role matching the ideology group.
 ## scope = character
 alias[trigger:has_ideology_group] = <ideology>
+
+###Check the number of factories in controlled states excluding any gained or lost through trade, relations, modifiers etc.
+## scope = country
+alias[trigger:num_of_controlled_factories] = variable_field
+
+###Checks if a country has any province of the specified terrain type.
+## scope = country
+alias[trigger:has_terrain] = <terrain>
+
+###Returns true if the country is a dynamic country (tag is D01-D50).
+## scope = country
+alias[trigger:is_dynamic_country] = bool
+
+###Check if country has a buildable non-obsolete design based on an archetype.
+## scope = country
+alias[trigger:has_design_based_on] = <equipment.archetype_equip>
+
+###Check the number of factories in owned states excluding any gained or lost through trade, relations, modifiers etc.
+## scope = country
+alias[trigger:num_of_owned_factories] = variable_field
+
+###Checks if a railway can be built according to specifications
+## scope = country
+alias[trigger:can_build_railway] = {
+	path = {
+		## cardinality = 1..inf
+		enum[provinces]
+	}
+	## cardinality = 0..1
+	build_only_on_allied = bool
+	## cardinality = 0..1
+	fallback = bool
+}
+
+###Checks if a railway can be built according to specifications
+## scope = country
+alias[trigger:can_build_railway] = {
+	## cardinality = 0..1
+	build_only_on_allied = bool
+	start_province = enum[provinces]
+	target_province = enum[provinces]
+	## cardinality = 0..1
+	fallback = bool
+}
+
+###Checks if a railway can be built according to specifications
+## scope = country
+alias[trigger:can_build_railway] = {
+	## cardinality = 0..1
+	build_only_on_allied = bool
+	start_state = <state>
+	target_state = <state>
+	## cardinality = 0..1
+	fallback = bool
+}
+
+### TEMP FIX - be careful when using variables to store ideas. Checks if country has idea.
+## scope = country
+alias[trigger:has_idea] = value[variable]

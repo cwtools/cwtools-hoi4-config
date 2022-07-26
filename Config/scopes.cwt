@@ -39,7 +39,7 @@ alias[effect:OVERLORD] = { alias_name[effect] = alias_match_left[effect] }
 ## push_Scope = country
 alias[effect:CONTROLLER] = { alias_name[effect] = alias_match_left[effect] }
 
-## scope = country
+## scope = country state
 ## push_scope = state
 alias[effect:capital_scope] = { alias_name[effect] = alias_match_left[effect] }
 
@@ -62,6 +62,42 @@ scopes = {
 	}
 	Air = {
 		aliases = { air }
+	}
+	Aggressive = {
+		aliases = { aggressive }
+	}
+	Ai = {
+		aliases = { ai }
+	}
+	Army = {
+		aliases = { army }
+	}
+	Autonomy = {
+		aliases = { autonomy }
+	}
+	Defensive = {
+		aliases = { defensive }
+	}
+	"Government in Exile" = {
+		aliases = { government_in_exile }
+	}
+	"Intelligence Agency" = {
+		aliases = { intelligence_agency }
+	}
+	"Military Advancements" = {
+		aliases = { military_advancements }
+	}
+	Naval = {
+		aliases = { naval }
+	}
+	Peace = {
+		aliases = { peace }
+	}
+	Politics = {
+		aliases = { politics }
+	}
+	"War Production" = {
+		aliases = { war_production }
 	}
 	Operation = {
 		aliases = { operation }

@@ -328,12 +328,15 @@ ai_equipment_design_group = {
 		### Specifications about how a matching equipment variant should be designed.
 		target_variant = {
 			### An additional weight indicating how much the particular design is worth, if it matches.
+			## cardinality = 0..1
 			match_value = float
 
 			### The equipment archetype or equipment type that the variant must use to match.
 			type = <equipment>
+			type = value[nsb_armor_variants]
 
 			### The matching requirements on individual module slots.
+			## cardinality = 0..1
 			modules = {
 				### A slot can be assigned a module category. Any other module category fails the match. When designing an equipment variant, the latest available will be favored.
 				## cardinality = 0..inf
@@ -375,11 +378,12 @@ ai_equipment_design_group = {
 			###
 			## cardinality = 0..1
 			upgrades = {
-				## cardinality = 0..4
+				## cardinality = 0..inf
 				<upgrade> = int
-				## cardinality = 0..4
+				## cardinality = 0..inf
 				<upgrade> = {
 					enum[base_factor] = int
+					## cardinality = 1..inf
 					modifier = {
 						alias_name[trigger] = alias_match_left[trigger]
 						enum[add_factor] = int

@@ -64,6 +64,7 @@ state = {
 			alias_name[effect] = alias_match_left[effect]
 		}
 	}
+	## cardinality = 0..1
 	local_supplies = float[0..20]
 	provinces = {
 		## cardinality = ~1..inf

@@ -108,6 +108,8 @@ character = {
 			alias_name[trigger] = alias_match_left[trigger]
 		}
 		## cardinality = 0..1
+		name = localisation
+		## cardinality = 0..1
 		gender = female
 	}
 	subtype[country_leader] = {
@@ -118,11 +120,18 @@ character = {
 			desc = localisation
 			## cardinality = 0..1
 			expire = date_field
+			## cardinality = 0..1
+			name = localisation
 			### Sets starting traits for this leader.
 			## cardinality = 0..1
 			traits = {
 				## cardinality = 0..inf
 				<country_leader_trait>
+			}
+			## cardinality = 0..1
+			research_bonus = {
+				## cardinality = 1..inf
+				enum[tech_category] = float
 			}
 			## cardinality = 0..1
 			enum[character_ids] = value_set[country_leader_ids]
@@ -131,6 +140,8 @@ character = {
 
 	subtype[corps_commander] = {
 		corps_commander = {
+			## cardinality = 0..1
+			desc = localisation
 			## cardinality = 0..1
 			expire = date_field
 			## cardinality = ~1..1
@@ -145,6 +156,8 @@ character = {
 			logistics_skill = int
 			## cardinality = 0..1
 			enum[character_ids] = value_set[unit_leader_ids]
+			## cardinality = 0..1
+			name = localisation
 			### Sets starting traits for this leader.
 			## cardinality = 0..1
 			traits = {
@@ -161,6 +174,8 @@ character = {
 	}
 	subtype[field_marshal] = {
 		field_marshal = {
+			## cardinality = 0..1
+			desc = localisation
 			## cardinality = 0..1
 			expire = date_field
 			## cardinality = ~1..1
@@ -192,6 +207,8 @@ character = {
 	subtype[navy_leader] = {
 		navy_leader = {
 			## cardinality = 0..1
+			desc = localisation
+			## cardinality = 0..1
 			expire = date_field
 			## cardinality = ~1..1
 			skill = int
@@ -205,6 +222,8 @@ character = {
 			coordination_skill = int
 			## cardinality = 0..1
 			enum[character_ids] = value_set[unit_leader_ids]
+			## cardinality = 0..1
+			name = localisation
 			### Sets starting traits for this leader.
 			## cardinality = 0..1
 			traits = {
@@ -223,6 +242,8 @@ character = {
 		## cardinality = 1..inf
 		advisor = {
 			slot = value[character_advisor_slot]
+			## cardinality = 0..1
+			desc = localisation
 			idea_token = value_set[advisor_token]
 			## replace_scope = { this = character root = country }
 			## cardinality = 0..1
@@ -239,11 +260,18 @@ character = {
 			available = {
 				alias_name[trigger] = alias_match_left[trigger]
 			}
+			## cardinality = 0..1
+			name = localisation
 			### Sets advsior effects.
 			## cardinality = ~1..1
 			traits = {
 				## cardinality = 0..inf
 				<country_leader_trait>
+			}
+			## cardinality = 0..1
+			research_bonus = {
+				## cardinality = 1..inf
+				enum[tech_category] = float
 			}
 			## cardinality = 0..1
 			ledger = enum[ledgers]
@@ -260,12 +288,12 @@ character = {
 				alias_name[modifier_rule] = alias_match_left[modifier_rule]
 			}
 			## replace_scope = { this = character root = country }
-			## cardinality = 0..1
+			## cardinality = 0..inf
 			on_add = {
 				alias_name[effect] = alias_match_left[effect]
 			}
 			## replace_scope = { this = character root = country }
-			## cardinality = 0..1
+			## cardinality = 0..inf
 			on_remove = {
 				alias_name[effect] = alias_match_left[effect]
 			}
@@ -274,6 +302,12 @@ character = {
 			## cardinality = 0..1
 			do_effect = {
 				alias_name[trigger] = alias_match_left[trigger]
+			}
+			### Modifiers that are applied to tag while the advisor is active.
+			## replace_scope = { this = character root = country }
+			## cardinality = 0..1
+			modifier = {
+				alias_name[modifier] = alias_match_left[modifier]
 			}
 		}
 	}
@@ -297,6 +331,8 @@ character = {
 				}
 			}
 			## cardinality = 0..1
+			name = localisation
+			## cardinality = 0..1
 			gender = female
 			## cardinality = 0..1
 			## replace_scope = { this = character root = country }
@@ -311,11 +347,18 @@ character = {
 					desc = localisation
 					## cardinality = 0..1
 					expire = date_field
+					## cardinality = 0..1
+					name = localisation
 					### Sets starting traits for this leader.
 					## cardinality = 0..1
 					traits = {
 						## cardinality = 0..inf
 						<country_leader_trait>
+					}
+					## cardinality = 0..1
+					research_bonus = {
+						## cardinality = 1..inf
+						enum[tech_category] = float
 					}
 					## cardinality = 0..1
 					enum[character_ids] = value_set[country_leader_ids]
@@ -337,6 +380,8 @@ character = {
 					logistics_skill = int
 					## cardinality = 0..1
 					enum[character_ids] = value_set[unit_leader_ids]
+					## cardinality = 0..1
+					name = localisation
 					### Sets starting traits for this leader.
 					## cardinality = 0..1
 					traits = {
@@ -367,6 +412,8 @@ character = {
 					logistics_skill = int
 					## cardinality = 0..1
 					enum[character_ids] = value_set[unit_leader_ids]
+					## cardinality = 0..1
+					name = localisation
 					### Sets starting traits for this leader.
 					## cardinality = 0..1
 					traits = {
@@ -397,6 +444,8 @@ character = {
 					coordination_skill = int
 					## cardinality = 0..1
 					enum[character_ids] = value_set[unit_leader_ids]
+					## cardinality = 0..1
+					name = localisation
 					### Sets starting traits for this leader.
 					## cardinality = 0..1
 					traits = {
@@ -431,11 +480,18 @@ character = {
 					available = {
 						alias_name[trigger] = alias_match_left[trigger]
 					}
+					## cardinality = 0..1
+					name = localisation
 					### Sets advsior effects.
 					## cardinality = ~1..1
 					traits = {
 						## cardinality = 0..inf
 						<country_leader_trait>
+					}
+					## cardinality = 0..1
+					research_bonus = {
+						## cardinality = 1..inf
+						enum[tech_category] = float
 					}
 					## cardinality = 0..1
 					ledger = enum[ledgers]
@@ -452,12 +508,12 @@ character = {
 						alias_name[modifier_rule] = alias_match_left[modifier_rule]
 					}
 					## replace_scope = { this = character root = country }
-					## cardinality = 0..1
+					## cardinality = 0..inf
 					on_add = {
 						alias_name[effect] = alias_match_left[effect]
 					}
 					## replace_scope = { this = character root = country }
-					## cardinality = 0..1
+					## cardinality = 0..inf
 					on_remove = {
 						alias_name[effect] = alias_match_left[effect]
 					}
@@ -466,6 +522,12 @@ character = {
 					## cardinality = 0..1
 					do_effect = {
 						alias_name[trigger] = alias_match_left[trigger]
+					}
+					### Modifiers that are applied to tag while the advisor is active.
+					## replace_scope = { this = character root = country }
+					## cardinality = 0..1
+					modifier = {
+						alias_name[modifier] = alias_match_left[modifier]
 					}
 				}
 			}
@@ -481,6 +543,7 @@ enums = {
 	enum[character_portrait_types] = {
 		civilian
 		army
+		navy
 	}
 	enum[character_portrait_sizes] = {
 		large

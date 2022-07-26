@@ -9,9 +9,42 @@ modifier_categories = {
         supported_scopes = { unit_leader }
     }
     air = {
-        supported_scopes = { air }
+        supported_scopes = { air unit_leader country }
     }
     intelligence_agency = {
         supported_scopes = { country unit_leader }
     }
+	aggressive = {
+		supported_scopes = { aggressive unit_leader country }
+	}
+	ai = {
+		supported_scopes = { ai unit_leader country }
+	}
+	army = {
+		supported_scopes = { army unit_leader country }
+	}
+	autonomy = {
+		supported_scopes = { autonomy unit_leader country }
+	}
+	defensive = {
+		supported_scopes = { defensive unit_leader country }
+	}
+	government_in_exile = {
+		supported_scopes = { government_in_exile unit_leader country }
+	}
+	military_advancements = {
+		supported_scopes = { military_advancements unit_leader country  }
+	}
+	naval = {
+		supported_scopes = { naval unit_leader country }
+	}
+	peace = {
+		supported_scopes = { peace unit_leader country }
+	}
+	politics = {
+		supported_scopes = { politics unit_leader country }
+	}
+	war_production = {
+		supported_scopes = { war_production unit_leader state country }
+	}
 }

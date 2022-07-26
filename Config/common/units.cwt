@@ -38,7 +38,7 @@ types = {
 
 unit = {
 	## cardinality = 0..1
-	abbreviation = localisation
+	abbreviation = localisation_inline
 	### 3D map asset.
 	sprite = scalar
 	#enum[unit_sprites]
@@ -46,6 +46,8 @@ unit = {
 		need = {
 			## cardinality = ~1..inf
 			<equipment> = int
+			## cardinality = 0..1
+			value[nsb_armor_variants] = int
 		}
 		ai_priority = int
 
@@ -231,6 +233,11 @@ ship_name = {
 		enum[ship_units]
 	}
 	## cardinality = 0..1
+	link_numbering_with = {
+		## cardinality = ~1..inf
+		<ship_name>
+	}
+	## cardinality = 0..1
 	prefix = scalar
 	## cardinality = 0..1
 	fallback_name = scalar
@@ -250,6 +257,7 @@ ship_name = {
 	ordered = {
 		## cardinality = ~1..inf
 		int = {
+			## cardinality = 1..2
 			scalar
 		}
 	}
@@ -288,6 +296,7 @@ division_name = {
 	ordered = {
 		## cardinality = ~1..inf
 		int = {
+			## cardinality = 1..2
 			scalar
 		}
 	}
@@ -352,6 +361,7 @@ enums = {
 		motorized
 		mechanized
 		armor
+		amphibious
 	}
 	enum[air_units] = {
 		air_transport

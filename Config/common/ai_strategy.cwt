@@ -26,6 +26,7 @@ ai_strategy = {
 	enable_reverse = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
+	## cardinality = 0..1
 	enable = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
@@ -83,8 +84,11 @@ ai_strategy_plan = {
 
 	## cardinality = 0..1
 	ideas = {
-		## cardinality = ~1..inf
+		## cardinality = 0..inf
 		enum[idea_name] = int
+
+		## cardinality = 0..inf
+		value[advisor_token] = int
 	}
 
 	## cardinality = 0..1
@@ -128,6 +132,11 @@ alias[ai_strategy_rule:ai_strategy] = {
 	value = int
 }
 alias[ai_strategy_rule:ai_strategy] = {
+	type = land_xp_spend_priority
+	id = enum[land_xp_targets]
+	value = int
+}
+alias[ai_strategy_rule:ai_strategy] = {
 	type = area_priority
 	id = <ai_area>
 	value = int
@@ -149,7 +158,7 @@ alias[ai_strategy_rule:ai_strategy] = {
 	value = int
 }
 alias[ai_strategy_rule:ai_strategy] = {
-	type = naval_avoid_region
+	type = enum[strat_region_strats]
 	id = <strategic_region>
 	value = int
 }
@@ -159,6 +168,11 @@ alias[ai_strategy_rule:ai_strategy] = {
 }
 alias[ai_strategy_rule:ai_strategy] = {
 	type = enum[state_strats]
+	id = int
+	value = int
+}
+alias[ai_strategy_rule:ai_strategy] = {
+	type = factory_build_score_factor
 	target = int
 	value = int
 }
@@ -192,6 +206,15 @@ alias[ai_strategy_rule:ai_strategy] = {
 	type = research_tech
 	id = <technology>
 	value = int
+}
+alias[ai_strategy_rule:ai_strategy] = {
+	type = scorched_earth_prio
+	id = scope[country]
+	## cardinality = 0..1
+	states = {
+		## cardinality = ~1..inf
+		int
+	}
 }
 alias[ai_strategy_rule:ai_strategy] = {
 	type = put_unit_buffers
@@ -330,6 +353,28 @@ alias[ai_strategy_rule:ai_strategy] = {
 	operation_target = scope[country]
 	operation_target = variable_field
 }
+alias[ai_strategy_rule:ai_strategy] = {
+	type = min_wanted_supply_trucks
+	value = int
+}
+alias[ai_strategy_rule:ai_strategy] = {
+	type = wanted_supply_trucks
+	value = int
+}
+alias[ai_strategy_rule:ai_strategy] = {
+	type = min_wanted_supply_trains
+
+	value = int
+}
+alias[ai_strategy_rule:ai_strategy] = {
+	type = wanted_supply_trains
+	value = int
+}
+alias[ai_strategy_rule:ai_strategy] = {
+	type = theatre_distribution_demand_increase
+	id = <state>
+	value = int
+}
 
 enums = {
 	enum[ai_diplo_strats] = {
@@ -376,6 +421,7 @@ enums = {
 		garrison_reinforcement_priority
 		operation_equipment_priority
 		railway_gun_divisions_ratio
+		naval_invasion_focus
 	}
 	enum[pp_strats] = {
 		pp_spend_amount
@@ -389,14 +435,22 @@ enums = {
 		relation
 		guarantee
 	}
+	enum[land_xp_targets] = {
+		division_template
+		upgrade_xp_cutoff
+	}
 	enum[unit_strats] = {
 		equipment_production_factor
 		equipment_production_min_factories
 		template_prio
 		unit_ratio
 	}
+	enum[strat_region_strats] = {
+		naval_convoy_raid_region
+		naval_avoid_region
+	}
 	enum[state_strats] = {
-		factory_build_score_factor
+		theatre_distribution_demand_increase
 	}
 	enum[state_strats_with_id] = {
 		build_building

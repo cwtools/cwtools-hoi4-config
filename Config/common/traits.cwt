@@ -85,6 +85,14 @@ country_leader_trait = {
 			alias_name[naval_stat] = alias_match_left[naval_stat]
 			alias_name[air_stat] = alias_match_left[air_stat]
 		}
+		## cardinality = 0..inf
+		enum[nsb_armor_archetypes] = {
+			## cardinality = 0..1
+			instant = bool
+			alias_name[unit_stat] = alias_match_left[unit_stat]
+			alias_name[naval_stat] = alias_match_left[naval_stat]
+			alias_name[air_stat] = alias_match_left[air_stat]
+		}
 	}
 	## cardinality = 0..inf
 	# targeted_modifier = single_alias_right[targeted_modifier]
@@ -97,6 +105,9 @@ country_leader_trait = {
 		enum[base_factor] = float
 		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	}
+	### Define how much CP will be subtracted when advisor is appointed
+	## cardinality = 0..1
+	command_cap = enum[command_cap]
 }
 
 ## push_scope = unit_leader

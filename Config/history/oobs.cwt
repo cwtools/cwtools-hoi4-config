@@ -39,7 +39,7 @@ oob = {
 		priority = int
 	}
 
-	## cardinality = 0..1
+	## cardinality = 0..inf
 	instant_effect = {
 		alias_name[effect] = alias_match_left[effect]
 	}
@@ -69,6 +69,8 @@ oob = {
 					owner = enum[country_tags]
 					## cardinality = 0..1
 					creator = enum[country_tags]
+					## cardinality = 0..1
+					version_name = scalar
 				}
 			}
 		}
@@ -111,6 +113,8 @@ oob = {
 							owner = enum[country_tags]
 							## cardinality = 0..1
 							creator = enum[country_tags]
+							## cardinality = 0..1
+							create_if_missing = bool
 							amount = int
 						}
 						## cardinality = 0..inf
@@ -129,6 +133,8 @@ oob = {
 						## cardinality = 0..inf
 						### Order is important. start_experience_factor will be assigned to the ace above.
 						start_experience_factor = float[0..1]
+						## cardinality = 0..inf
+						name = localisation_inline
 					}
 				}
 			}
@@ -146,6 +152,8 @@ oob = {
 				owner = enum[country_tags]
 				## cardinality = 0..1
 				creator = enum[country_tags]
+				## cardinality = 0..1
+				create_if_missing = bool
 				amount = int
 			}
 			## cardinality = 0..inf
@@ -164,6 +172,8 @@ oob = {
 			## cardinality = 0..inf
 			### Order is important. start_experience_factor will be assigned to the ace above.
 			start_experience_factor = float[0..1]
+			## cardinality = 0..inf
+			name = localisation_inline
 		}
 	}
 

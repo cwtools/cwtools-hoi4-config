@@ -18,6 +18,7 @@ ability = {
 
 	type = enum[ability_unit_leader_types]
 
+	## cardinality = 0..1
 	allowed = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}

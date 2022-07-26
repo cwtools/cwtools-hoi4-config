@@ -113,6 +113,8 @@ alias[effect:create_operative_leader] = {
 	portrait_tag_override = enum[country_tags]
 	## cardinality = 0..1
 	female = bool
+	## cardinality = 0..1
+	skill = int
 }
 
 ###Capture an operative. Can be used from a scope and a target that is either a country or a unit leader.

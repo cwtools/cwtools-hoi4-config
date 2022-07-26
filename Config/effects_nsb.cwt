@@ -471,3 +471,13 @@ alias[effect:set_portraits] = {
 		enum[character_portrait_sizes] = scalar
 	}
 }
+
+### Recruits character. Use only in history files
+## scope = { country }
+alias[effect:recruit_character] = <character>
+### TEMP FIX - be careful when using variables to store ideas. Remove idea from country.
+## scope = country
+alias[effect:remove_ideas] = value[variable]
+### TEMP FIX - be careful when using variables to store ideas. Adds idea from country.
+## scope = country
+alias[effect:add_ideas] = value[variable]

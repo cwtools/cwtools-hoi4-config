@@ -279,3 +279,7 @@ alias[trigger:can_build_railway] = {
 	## cardinality = 0..1
 	fallback = bool
 }
+
+### TEMP FIX - be careful when using variables to store ideas. Checks if country has idea.
+## scope = country
+alias[trigger:has_idea] = value[variable]

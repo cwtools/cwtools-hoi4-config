@@ -46,7 +46,7 @@ unit = {
 		need = {
 			## cardinality = ~1..inf
 			<equipment> = int
-			## cardinality = ~1..inf
+			## cardinality = 0..1
 			value[nsb_armor_variants] = int
 		}
 		ai_priority = int

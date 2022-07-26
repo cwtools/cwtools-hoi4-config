@@ -1690,8 +1690,12 @@ alias[effect:add_equipment_to_stockpile] = {
 ### Swap 2 ideas.
 ## scope = country
 alias[effect:swap_ideas] = {
+	### TEMP FIX - be careful when using variables to store ideas
+	remove_idea = value[variable]
 	remove_idea = enum[idea_name]
 	add_idea = enum[idea_name]
+	### TEMP FIX - be careful when using variables to store ideas
+	add_idea = value[variable]
 
 	### Adds/subtracts X days from the new idea's timeout
 	## cardinality = 0..1
@@ -1978,7 +1982,7 @@ alias[effect:random_unit_leader] = {
 
 ### Executes children effects on unit leaders that fulfills the "limit" trigger.
 ## scope = country
-## push_scope = unit_leader
+## push_scope = any
 alias[effect:every_unit_leader] = {
 	## cardinality = 0..1
 	limit = {
@@ -2006,7 +2010,7 @@ alias[effect:random_army_leader] = {
 
 ### Executes children effects on army leaders that fulfills the "limit" trigger.
 ## scope = country
-## push_scope = any
+## push_scope = { unit_leader character }
 alias[effect:every_army_leader] = {
 	## cardinality = 0..1
 	limit = {

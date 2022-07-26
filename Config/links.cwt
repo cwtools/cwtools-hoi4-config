@@ -19,7 +19,7 @@ links = {
     # Custom data links ####
     owner = {
         output_scope = country
-        input_scopes = { unit_leader combat state }
+        input_scopes = { unit_leader combat state country }
     }
 
     controller = {

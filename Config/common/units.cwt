@@ -46,6 +46,8 @@ unit = {
 		need = {
 			## cardinality = ~1..inf
 			<equipment> = int
+			## cardinality = ~1..inf
+			value[nsb_armor_variants] = int
 		}
 		ai_priority = int
 
@@ -359,6 +361,7 @@ enums = {
 		motorized
 		mechanized
 		armor
+		amphibious
 	}
 	enum[air_units] = {
 		air_transport

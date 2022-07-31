@@ -57,6 +57,7 @@ autonomy = {
 
 	## cardinality = 0..1
 	allowed_levels_filter = {
+		## cardinality = 1..inf
 		<autonomy>
 	}
 

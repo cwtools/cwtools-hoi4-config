@@ -700,7 +700,7 @@ alias[effect:create_navy_leader] = {
 }
 
 ### Remove trait from unit leader.
-## scope = unit_leader
+## scope = { character unit_leader }
 alias[effect:remove_unit_leader_trait] = <unit_leader_trait>
 
 ### Add trait to unit leader.

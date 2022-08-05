@@ -217,6 +217,8 @@ alias[effect:add_advisor_role] = {
 	activate = bool
 	advisor = {
 		slot = value[character_advisor_slot]
+		## cardinality = 0..1
+		desc = localisation
 		idea_token = value_set[advisor_token]
 		## replace_scope = { this = character root = country }
 		## cardinality = 0..1

@@ -119,6 +119,8 @@ alias[effect:add_corps_commander_role] = {
 	planning_skill = int_variable_field
 	logistics_skill = int_variable_field
 	## cardinality = 0..1
+	female = bool
+	## cardinality = 0..1
 	legacy_id = value_set[unit_leader_ids]
 }
 

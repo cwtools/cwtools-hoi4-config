@@ -182,6 +182,8 @@ equipment = {
 	subtype[regular_equip] = {
 		## cardinality = 0..1
 		abbreviation = localisation_inline
+		## cardinality = 0..1
+		derived_variant_name = localisation_inline
 		### Which archetype equipment this equipment inherits from.
 		archetype = <equipment.archetype_equip>
 

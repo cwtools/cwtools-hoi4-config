@@ -1121,6 +1121,7 @@ alias[effect:hold_election] = enum[country_tags]
 alias[effect:add_popularity] = {
 	ideology = <ideology>
 	ideology = variable_field
+	ideology = enum[country_tags]
 	popularity = variable_field
 }
 

@@ -440,7 +440,7 @@ decision = {
 	enum[war_with_target_on] = bool
 
 	## cardinality = 0..1
-	days_re_enable = int
+	days_re_enable = int_variable_field
 
 	## cardinality = 0..1
 	fixed_random_seed = bool

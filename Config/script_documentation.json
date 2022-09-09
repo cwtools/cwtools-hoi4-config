@@ -271,7 +271,7 @@
 			"description":	"create navy leader for country"
 		},
 		"remove_unit_leader_trait":	{
-			"supported_scope":	["UNIT_LEADER"],
+			"supported_scope":	["UNIT_LEADER", "CHARACTER"],
 			"supported_target":	["none"],
 			"description":	"remove trait from unit leader"
 		},
@@ -763,7 +763,7 @@
 		"transfer_ship":	{
 			"supported_scope":	["COUNTRY"],
 			"supported_target":	["none"],
-			"description":	"Transfers ship from scope country to target country.\nExample:\nENG={\n  transfer_ship={\n    prefer_name = \"HMS Achilles\"\n    type = light_cruiser\n    target = NZL\n  }\n}"
+			"description":	"Transfers ship from scope country to target country.\nExample:\nENG={\n  transfer_ship={\n    prefer_name = \"HMS Achilles\"\n    type = light_cruiser\n    target = NZL\n    exclude_refitting = yes #optional, default is no; Exclude ships currently being refitted from the search.\n  }\n}"
 		},
 		"set_state_category":	{
 			"supported_scope":	["STATE"],

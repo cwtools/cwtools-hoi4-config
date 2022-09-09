@@ -700,7 +700,7 @@ alias[effect:create_navy_leader] = {
 }
 
 ### Remove trait from unit leader.
-## scope = unit_leader
+## scope = { character unit_leader }
 alias[effect:remove_unit_leader_trait] = <unit_leader_trait>
 
 ### Add trait to unit leader.
@@ -1821,6 +1821,8 @@ alias[effect:transfer_ship] = {
 	type = <unit.ship_unit>
 	target = scope[country]
 	target = enum[country_tags]
+	## cardinality = 0..1
+	exclude_refitting = bool
 }
 
 ### Sets the category of a state.

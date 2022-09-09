@@ -278,6 +278,7 @@ upgrade = {
 }
 
 module = {
+	abbreviation = scalar
 	category = enum[module_categories]
 	## cardinality = 0..1
 	gui_category = enum[module_categories]

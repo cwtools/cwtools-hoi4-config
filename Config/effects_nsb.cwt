@@ -218,6 +218,8 @@ alias[effect:add_advisor_role] = {
 	advisor = {
 		slot = value[character_advisor_slot]
 		idea_token = value_set[advisor_token]
+		## cardinality = 0..1
+		desc = localisation
 		## replace_scope = { this = character root = country }
 		## cardinality = 0..1
 		allowed = {
@@ -279,24 +281,6 @@ alias[effect:add_advisor_role] = {
 			alias_name[modifier] = alias_match_left[modifier]
 		}
 	}
-}
-
-## scope = { character country }
-alias[effect:add_advisor_role] = {
-	### required in country scope, optional in character scope
-	## cardinality = 0..1
-	character = <character>
-	## cardinality = 0..1
-	slot = value[character_advisor_slot]
-}
-
-## scope = { character country }
-alias[effect:remove_advisor_role] = {
-	### required in country scope, optional in character scope
-	## cardinality = 0..1
-	character = <character>
-	## cardinality = 0..1
-	slot = value[character_advisor_slot]
 }
 
 ### removes character from all roles and availability
@@ -375,7 +359,10 @@ alias[effect:add_trait] = {
 alias[effect:add_trait] = {
 	## cardinality = 0..1
 	character = <character>
+	## cardinality = 0..1
+	character = scope[character]
 	trait = <country_leader_trait>
+	trait = <unit_leader_trait>
 	### must match the character's country leader sub-ideology
 	## cardinality = 0..1
 	ideology = enum[sub_ideology]
@@ -386,6 +373,8 @@ alias[effect:add_trait] = {
 alias[effect:remove_trait] = {
 	## cardinality = 0..1
 	character = <character>
+	## cardinality = 0..1
+	character = scope[character]
 	trait = <country_leader_trait>
 	trait = <unit_leader_trait>
 	## cardinality = 0..1

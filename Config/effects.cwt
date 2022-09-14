@@ -1738,9 +1738,9 @@ alias[effect:set_autonomy] = {
 	## cardinality = 0..1
 	freedom_level = float[0..1]
 	## cardinality = 0..1
-	end_wars = no 
+	end_wars = no
 	## cardinality = 0..1
-	end_civil_wars = no 
+	end_civil_wars = no
 }
 
 ### Makes autonomy of specified level and country.
@@ -1753,10 +1753,10 @@ alias[effect:set_autonomy] = {
 	## cardinality = 0..1
 	freedom_level = float[0..1]
 	## cardinality = 0..1
-	end_wars = no 
+	end_wars = no
 	## cardinality = 0..1
-	end_civil_wars = no 
-	
+	end_civil_wars = no
+
 }
 
 ### Makes autonomy of specified level and country.
@@ -1766,10 +1766,10 @@ alias[effect:set_autonomy] = {
 	target = enum[country_tags]
 	freedom_level = float[0..1]
 	## cardinality = 0..1
-	end_wars = no 
+	end_wars = no
 	## cardinality = 0..1
-	end_civil_wars = no 
-	
+	end_civil_wars = no
+
 }
 
 ### Adds country to technology sharing group of specified name.
@@ -2187,7 +2187,6 @@ alias[effect:global_every_army_leader] = {
 ### Adds a value or a variable to another one.
 ## scope = any
 alias[effect:add_to_variable] = {
-	## cardinality = 1..2
 	value_set[variable] = variable_field_32
 	## cardinality = 0..1
 	tooltip = localisation

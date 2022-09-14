@@ -326,7 +326,7 @@ alias[effect:promote_character] = {
 alias[effect:swap_country_leader_traits] = {
 	remove = <country_leader_trait>
 	add = <country_leader_trait>
-	
+
 	## cardinality = 0..1
 	ideology = enum[sub_ideology]
 }
@@ -507,5 +507,11 @@ alias[effect:damage_units] = {
 	### Damage navies
 	## cardinality = 0..1
 	navy = bool
+}
 
+### This is to force the update of a custom map mode.
+## scope = { country }
+alias[effect:force_update_map_mode] = {
+	## cardinality = ~1..2
+	mapmode = <scripted_map_modes>
 }

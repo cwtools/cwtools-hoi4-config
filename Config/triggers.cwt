@@ -113,7 +113,7 @@ alias[trigger:check_variable] = {
 ### Compares a variable to a number or variable.
 ## scope = any
 alias[trigger:check_variable] = {
-	variable_field_32 = value[variable]	
+	variable_field_32 = value[variable]
 }
 
 ### Compares a variable to a number or variable.
@@ -1474,6 +1474,10 @@ alias[trigger:has_stability] = float
 ### Check value of war_support 0-1. Example has_war_support < 0.6.
 ## scope = country
 alias[trigger:has_war_support] = float
+
+### Check value of war_support 0-1. Example has_war_support < 0.6.
+## scope = country
+alias[trigger:has_war_support] = variable_field_32
 
 ### Check if all unit leaders meets the trigger.
 ## scope = country

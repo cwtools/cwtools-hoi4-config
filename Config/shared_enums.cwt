@@ -8,6 +8,7 @@ enums = {
 		"La Resistance"
 		"Battle for the Bosporus"
 		"No Step Back"
+		"By Blood Alone"
 	}
 
 	enum[hours_days_months] = {

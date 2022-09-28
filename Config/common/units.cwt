@@ -350,6 +350,7 @@ enums = {
 		railway_gun
 		train
 		flame
+		maritime_patrol_plane
 	}
 	enum[land_units] = {
 		infantry

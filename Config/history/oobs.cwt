@@ -155,6 +155,8 @@ oob = {
 				## cardinality = 0..1
 				create_if_missing = bool
 				amount = int
+				## cardinality = 0..1
+				version_name = value[variant_name]
 			}
 			## cardinality = 0..inf
 			### Order is important. Ace will be assigned to the wing above.

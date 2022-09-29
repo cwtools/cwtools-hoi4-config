@@ -2765,6 +2765,10 @@ alias[effect:set_oob] = <oob>
 ## scope = country
 alias[effect:set_naval_oob] = <oob>
 
+### Registers an Order of Battle (OOB) file to be loaded for a country at game start, replacing any previously registered OOB (with key "air") on that country.
+## scope = country
+alias[effect:set_air_oob] = <oob>
+
 ### Adds an element to an array.
 ## scope = any
 alias[effect:add_to_array] = {

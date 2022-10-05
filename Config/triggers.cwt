@@ -432,6 +432,8 @@ alias[trigger:has_navy_size] = {
 	unit = <unit.ship_unit>
 	## cardinality = 0..1
 	archetype = <equipment.archetype_equip>
+	## cardinality = 0..1
+	archetype = <duplicate_archetypes>
 }
 
 ### Check amount of military factories.
@@ -1335,6 +1337,7 @@ alias[trigger:has_license] = {
 	from = scope[country]
 	from = enum[country_tags]
 	archetype = <equipment.archetype_equip>
+	archetype = <duplicate_archetypes>
 }
 
 ### Country has specific active license.
@@ -1354,6 +1357,7 @@ alias[trigger:is_licensing_to]  = {
 	target = scope[country]
 	target = enum[country_tags]
 	archetype = <equipment.archetype_equip>
+	archetype = <duplicate_archetypes>
 }
 
 ### Country is licensing specific equipment to target. License is active.
@@ -1861,6 +1865,7 @@ alias[trigger:divisions_in_border_state] = {
 ## scope = country
 alias[trigger:stockpile_ratio] = {
 	archetype = <equipment.archetype_equip>
+	archetype = <duplicate_archetypes>
 	ratio = float
 }
 

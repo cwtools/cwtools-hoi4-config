@@ -177,6 +177,8 @@ unit = {
 		need = {
 			## cardinality = ~1..inf
 			<equipment> = int
+			## cardinality = 0..1
+			value[bba_air_variants] = int
 		}
 		type = {
 			## cardinality = ~1..inf

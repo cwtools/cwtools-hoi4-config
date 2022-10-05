@@ -118,6 +118,15 @@ oob = {
 							amount = int
 						}
 						## cardinality = 0..inf
+						value[bba_air_variants] = {
+							owner = enum[country_tags]
+							## cardinality = 0..1
+							creator = enum[country_tags]
+							## cardinality = 0..1
+							create_if_missing = bool
+							amount = int
+						}
+						## cardinality = 0..inf
 						### Order is important. Ace will be assigned to the wing above.
 						ace = {
 							modifier = <ace>
@@ -147,8 +156,19 @@ oob = {
 		<state> = {
 			# should have something to force ace to be directly after <equipment.air_equip>
 
-			## cardinality = 1..inf
+			## cardinality = 0..inf
 			<equipment.air_equip> = {
+				owner = enum[country_tags]
+				## cardinality = 0..1
+				creator = enum[country_tags]
+				## cardinality = 0..1
+				create_if_missing = bool
+				amount = int
+				## cardinality = 0..1
+				version_name = value[variant_name]
+			}
+			## cardinality = 0..inf
+			value[bba_air_variants] = {
 				owner = enum[country_tags]
 				## cardinality = 0..1
 				creator = enum[country_tags]

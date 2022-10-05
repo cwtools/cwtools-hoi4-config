@@ -1,6 +1,7 @@
 types = {
 	type[equipment] = {
 		skip_root_key = equipments
+		skip_root_key = duplicate_archetypes
 		path = "game/common/units/equipment"
 		subtype[archetype_equip] = {
 			is_archetype = yes
@@ -72,6 +73,10 @@ types = {
 	type[critical_part] = {
 		skip_root_key = critical_parts
 		path = "game/common/units/critical_parts"
+	}
+	type[duplicate_archetypes] = {
+		skip_root_key = duplicate_archetypes
+		path = "game/common/units/equipment"
 	}
 }
 

@@ -116,6 +116,33 @@ decision_category = {
 	}
 
 	## cardinality = 0..1
+	## replace_scope = { this = state root = country }
+	highlight_states = {
+		## cardinality = 0..1
+		highlight_states_trigger = {
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+		## cardinality = 0..1
+		highlight_state_targets = {
+			## cardinality = ~1..inf
+			state = <state>
+			## cardinality = ~1..inf
+			state = variable_field
+		}
+	
+		## cardinality = 0..1
+		highlight_provinces = {
+			## cardinality = ~1..inf
+			enum[provinces]
+		}
+
+		## cardinality = 0..1
+		highlight_color_before_active = int
+		## cardinality = 0..1
+		highlight_color_while_active = int
+	}
+
+	## cardinality = 0..1
 	visibility_type = enum[targeted_decisions_state_map_modes]
 
 	## cardinality = 0..inf

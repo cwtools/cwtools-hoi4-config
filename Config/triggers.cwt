@@ -2279,3 +2279,10 @@ alias[trigger:has_bombing_war_support] = float
 ### Check value of bombing_war_support. This becomes more negative as the malus grows (it won't be positive). Example bombing_war_support < 0.
 ## scope = country
 alias[trigger:has_bombing_war_support] = variable_field_32
+
+### Has a certain amount of resources
+## scope = country
+alias[trigger:has_resources_in_country] = {
+	resource = <resource>
+	amount = int_variable_field
+}

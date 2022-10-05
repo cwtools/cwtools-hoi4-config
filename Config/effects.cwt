@@ -2187,6 +2187,7 @@ alias[effect:global_every_army_leader] = {
 ### Adds a value or a variable to another one.
 ## scope = any
 alias[effect:add_to_variable] = {
+	## cardinality = 1..2
 	value_set[variable] = variable_field_32
 	## cardinality = 0..1
 	tooltip = localisation

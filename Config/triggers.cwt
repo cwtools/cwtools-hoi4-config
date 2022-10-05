@@ -2255,3 +2255,27 @@ alias[trigger:has_intelligence_agency] = bool
 ### Is impassable state
 ## scope = state
 alias[trigger:impassable] = bool
+
+### Check value of casualties_war_support. This becomes more negative as the malus grows (it won't be positive). Example casualties_war_support < 0.
+## scope = country
+alias[trigger:has_casualties_war_support] = float
+
+### Check value of casualties_war_support. This becomes more negative as the malus grows (it won't be positive). Example casualties_war_support < 0.
+## scope = country
+alias[trigger:has_casualties_war_support] = variable_field_32
+
+### Check value of convoys_war_support. This becomes more negative as the malus grows (it won't be positive). Example convoys_war_support < 0.
+## scope = country
+alias[trigger:has_convoys_war_support] = float
+
+### Check value of convoys_war_support. This becomes more negative as the malus grows (it won't be positive). Example convoys_war_support < 0.
+## scope = country
+alias[trigger:has_convoys_war_support] = variable_field_32
+
+### Check value of bombing_war_support. This becomes more negative as the malus grows (it won't be positive). Example bombing_war_support < 0.
+## scope = country
+alias[trigger:has_bombing_war_support] = float
+
+### Check value of bombing_war_support. This becomes more negative as the malus grows (it won't be positive). Example bombing_war_support < 0.
+## scope = country
+alias[trigger:has_bombing_war_support] = variable_field_32

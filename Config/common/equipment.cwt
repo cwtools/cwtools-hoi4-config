@@ -311,6 +311,7 @@ module = {
 	add_stats = {
 		alias_name[unit_stat] = alias_match_left[naval_stat]
 		alias_name[naval_stat] = alias_match_left[naval_stat]
+		alias_name[air_stat] = alias_match_left[air_stat]
 		## cardinality = 0..1
 		build_cost_ic = float
 	}
@@ -328,11 +329,13 @@ module = {
 	add_average_stats = {
 		alias_name[unit_stat] = alias_match_left[naval_stat]
 		alias_name[naval_stat] = alias_match_left[naval_stat]
+		alias_name[air_stat] = alias_match_left[air_stat]
 	}
 	## cardinality = 0..10
 	multiply_stats = {
 		alias_name[unit_stat] = alias_match_left[naval_stat]
 		alias_name[naval_stat] = alias_match_left[naval_stat]
+		alias_name[air_stat] = alias_match_left[air_stat]
 	}
 
 	## cardinality = 0..10
@@ -367,6 +370,14 @@ module = {
 			## cardinality = 0..inf
 			enum[module_categories]
 		}
+	}
+
+	## cardinality = 0..1
+	allow_mission_type = enum[allowed_air_unit_missions]
+	## cardinality = 0..1
+	allow_mission_type = {
+		## cardinality = 1..inf
+		enum[allowed_air_unit_missions]
 	}
 
 	## cardinality = 0..1

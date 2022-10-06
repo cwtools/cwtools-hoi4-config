@@ -1083,3 +1083,11 @@ alias[effect:remove_wargoal] = {
 	type = <wargoal>
 	type = all
 }
+
+### Start peace conference
+## scopes = { country }
+alias[effect:start_peace_conference] = {
+	tag = scope[country]
+	tag = enum[country_tags]
+	score_factor = float
+}

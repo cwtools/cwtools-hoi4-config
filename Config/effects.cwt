@@ -1157,6 +1157,9 @@ alias[effect:start_civil_war] = {
 	}
 	## cardinality = ~1..inf
 	alias_name[effect] = alias_match_left[effect]
+	### If true, no characters will be transferred to revolter and scripts should take care of that
+	## cardinality = 0..1
+	keep_all_characters = bool
 }
 
 ### Retires a country leader and removes him as leader of his party, making the next in line the new party and country leader.

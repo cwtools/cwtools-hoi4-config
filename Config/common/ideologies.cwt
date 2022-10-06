@@ -25,6 +25,8 @@ ideology = {
 			}
 		}
 
+		ai_ideology_wanted_units_factor = float
+
 		dynamic_faction_names = {
 			## cardinality = 0..inf
 			localisation

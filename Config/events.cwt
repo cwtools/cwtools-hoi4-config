@@ -87,6 +87,13 @@ event = {
 	is_triggered_only = no
 
 	## cardinality = 0..1
+	minor_flavor = yes
+	## error_if_only_match = This is the default value and can be omitted
+	## severity = info
+	## cardinality = 0..1
+	minor_flavor = no
+
+	## cardinality = 0..1
 	timeout_days = int
 
 	## cardinality = 0..1

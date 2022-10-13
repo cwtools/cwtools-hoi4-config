@@ -1691,6 +1691,8 @@ alias[effect:add_equipment_to_stockpile] = {
 	producer = scope[country]
 	## cardinality = 0..1
 	producer = enum[country_tags]
+	## cardinality = 0..1
+	version_name = value[variant_name]
 }
 
 ### Swap 2 ideas.

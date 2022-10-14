@@ -2417,7 +2417,7 @@ alias[effect:set_temp_variable] = {
 }
 
 ### Add a timed trait to unit leader.
-## scope = unit_leader
+## scope = { character unit_leader }
 alias[effect:add_timed_unit_leader_trait] = {
 	trait = <unit_leader_trait>
 	days = int

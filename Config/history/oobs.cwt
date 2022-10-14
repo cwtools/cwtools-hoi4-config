@@ -198,7 +198,7 @@ oob = {
 			name = localisation_inline
 		}
 		## cardinality = 0..inf
-		localisation_inline = {
+		scalar = {
 			# should have something to force ace to be directly after <equipment.air_equip>
 
 			## cardinality = 0..inf

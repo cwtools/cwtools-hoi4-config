@@ -152,8 +152,53 @@ oob = {
 
 	## cardinality = 0..1
 	air_wings = {
-		## cardinality = 1..inf
+		## cardinality = 0..inf
 		<state> = {
+			# should have something to force ace to be directly after <equipment.air_equip>
+
+			## cardinality = 0..inf
+			<equipment.air_equip> = {
+				owner = enum[country_tags]
+				## cardinality = 0..1
+				creator = enum[country_tags]
+				## cardinality = 0..1
+				create_if_missing = bool
+				amount = int
+				## cardinality = 0..1
+				version_name = value[variant_name]
+			}
+			## cardinality = 0..inf
+			value[bba_air_variants] = {
+				owner = enum[country_tags]
+				## cardinality = 0..1
+				creator = enum[country_tags]
+				## cardinality = 0..1
+				create_if_missing = bool
+				amount = int
+				## cardinality = 0..1
+				version_name = value[variant_name]
+			}
+			## cardinality = 0..inf
+			### Order is important. Ace will be assigned to the wing above.
+			ace = {
+				modifier = <ace>
+				name = localisation_inline
+				surname = localisation_inline
+				## cardinality = 0..1
+				callsign = localisation_inline
+				## cardinality = 0..1
+				portrait = int
+				## cardinality = 0..1
+				is_female = yes
+			}
+			## cardinality = 0..inf
+			### Order is important. start_experience_factor will be assigned to the ace above.
+			start_experience_factor = float[0..1]
+			## cardinality = 0..inf
+			name = localisation_inline
+		}
+		## cardinality = 0..inf
+		localisation_inline = {
 			# should have something to force ace to be directly after <equipment.air_equip>
 
 			## cardinality = 0..inf

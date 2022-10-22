@@ -283,24 +283,53 @@ equipment = {
 }
 
 upgrade = {
+	## cardinality = 0..1
+	abbreviation = localisation_inline
+
+	### The max number of upgrades possible for any given unit
 	max_level = int
 	alias_name[unit_stat] = alias_match_left[unit_stat]
 	subtype[naval_upgrade] = {
+		### The experience type that is used by the designer
 		cost = naval
 		alias_name[naval_stat] = alias_match_left[naval_stat]
 	}
 	subtype[air_upgrade] = {
+		### The experience type that is used by the designer
 		cost = air
 		alias_name[air_stat] = alias_match_left[air_stat]
 	}
 	subtype[land_upgrade] = {
+		### The experience type that is used by the designer
 		cost = land
+	}
+
+	## cardinality = 0..1
+	### The cost for the upgrade is determined by the following linearity
+	linear_cost = {
+		## cardinality = 0..1
+		### The linear cost for non-licensed equipment
+		cost_by_level = int
+		## cardinality = 0..1
+		### The linear cost for licensed foreign equipment upgrades
+		cost_by_level_for_licensed_equipment = int
+	}
+
+	## cardinality = 0..1
+	### Adds the provided stats to the given equipment type
+	add_stats = {
+		alias_name[unit_stat] = alias_match_left[naval_stat]
+		alias_name[naval_stat] = alias_match_left[naval_stat]
+		alias_name[air_stat] = alias_match_left[air_stat]
+		## cardinality = 0..1
+		build_cost_ic = float
 	}
 }
 
 module = {
 	## cardinality = 0..1
 	abbreviation = localisation_inline
+	### The category of the module
 	category = enum[module_categories]
 	## cardinality = 0..1
 	gui_category = enum[module_categories]
@@ -313,6 +342,7 @@ module = {
 	## cardinality = 0..1
 	add_equipment_type = enum[unit_types]
 	## cardinality = 0..1
+	### Adds the provided stats to the given module
 	add_stats = {
 		alias_name[unit_stat] = alias_match_left[naval_stat]
 		alias_name[naval_stat] = alias_match_left[naval_stat]
@@ -326,6 +356,7 @@ module = {
 	manpower = int
 
 	## cardinality = 0..1
+	### Changes the required amount of resources for an equipment design
 	build_cost_resources = {
 		## cardinality = 0..10
 		<resource> = int

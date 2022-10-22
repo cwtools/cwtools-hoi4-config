@@ -1591,6 +1591,8 @@ alias[effect:create_equipment_variant] = {
 	obsolete = yes
 	## cardinality = 0..1
 	icon = filepath
+	## cardinality = 0..1
+	icon = <spriteType>
 }
 
 ### Adds an equipment production.

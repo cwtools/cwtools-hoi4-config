@@ -52,6 +52,8 @@ wargoal = {
 	annex_cost = int
 	## cardinality = 0..1
 	force_government_cost = int
+	## cardinality = 0..1
+	take_states_threat_factor = float
 
 	## cardinality = 0..1
 	expire = int

@@ -1694,7 +1694,9 @@ alias[effect:add_equipment_to_stockpile] = {
 	## cardinality = 0..1
 	producer = enum[country_tags]
 	## cardinality = 0..1
-	version_name = value[variant_name]
+	version_name = localisation_inline
+	## cardinality = 0..1
+	variant_name = localisation_inline
 }
 
 ### Swap 2 ideas.
@@ -1903,6 +1905,8 @@ alias[effect:create_production_license] = {
 		type = <equipment.regular_equip>
 	}
 	cost_factor = float
+	## cardinality = 0..1
+	version = int
 }
 
 ### Adds a static modifier between current scope and target.
@@ -2805,14 +2809,24 @@ alias[effect:add_to_array] = {
 ### Adds an element to an array.
 ## scope = any
 alias[effect:add_to_array] = {
+	## cardinality = 0..1
 	value_set[array] = variable_field_32
+	## cardinality = 0..1
 	value_set[variable] = variable_field_32
+	## cardinality = 0..1
 	value_set[array] = scope_field
+	## cardinality = 0..1
 	value_set[variable] = scope_field
+	## cardinality = 0..1
 	value_set[array] = enum[country_tags]
+	## cardinality = 0..1
 	value_set[variable] = enum[country_tags]
+	## cardinality = 0..1
 	value_set[array] = value_set[token]
+	## cardinality = 0..1
 	value_set[variable] = value_set[token]
+	## cardinality = 0..1
+	value_set[array] = variable_field_32
 }
 
 ### Removes an element from an array using value or index.

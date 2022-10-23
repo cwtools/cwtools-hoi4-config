@@ -129,7 +129,7 @@ decision_category = {
 			## cardinality = ~1..inf
 			state = variable_field
 		}
-	
+
 		## cardinality = 0..1
 		highlight_provinces = {
 			## cardinality = ~1..inf
@@ -149,10 +149,10 @@ decision_category = {
 	on_map_area = {
 		name = localisation
 		zoom = int
-		
+
 		## cardinality = 0..1
 		state = <state>
-		
+
 		## cardinality = 0..1
 		targets = {
 			## cardinality = 0..inf
@@ -163,13 +163,13 @@ decision_category = {
 		target_array = value[array]
 		## cardinality = 0..inf
 		target_array = variable_field
-		
+
 		## cardinality = 0..1
 		## replace_scope = { this = country root = country from = state }
 		target_trigger = {
 			alias_name[trigger] = alias_match_left[trigger]
 		}
-		
+
 		## cardinality = 0..1
 		## replace_scope = { this = country root = country }
 		target_root_trigger = {
@@ -252,7 +252,9 @@ decision = {
 		## cardinality = 0..1
 		## replace_scope = { this = country root = country from = country }
 		ai_will_do = {
+			## cardinality = 0..1
 			enum[base_factor] = variable_field
+			## cardinality = ~1..inf
 			alias_name[modifier_rule] = alias_match_left[modifier_rule]
 		}
 
@@ -296,7 +298,7 @@ decision = {
 			## cardinality = ~1..inf
 			state = variable_field
 		}
-	
+
 		## cardinality = 0..1
 		highlight_provinces = {
 			## cardinality = ~1..inf
@@ -438,7 +440,7 @@ decision = {
 				## cardinality = ~1..inf
 				state = variable_field
 			}
-		
+
 			## cardinality = 0..1
 			highlight_provinces = {
 				## cardinality = ~1..inf

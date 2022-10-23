@@ -1914,7 +1914,7 @@ alias[effect:create_production_license] = {
 alias[effect:add_relation_modifier] = {
 	target = scope[country]
 	target = enum[country_tags]
-	modifier = <static_modifier.relation_modifier>
+	modifier = <static_modifier>
 }
 
 
@@ -1923,7 +1923,7 @@ alias[effect:add_relation_modifier] = {
 alias[effect:remove_relation_modifier] = {
 	target = scope[country]
 	target = enum[country_tags]
-	modifier = <static_modifier.relation_modifier>
+	modifier = <static_modifier>
 }
 
 ### Sets specific level of a building construction for amount of levels in specified state or province.

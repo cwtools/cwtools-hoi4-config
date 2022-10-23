@@ -1392,7 +1392,7 @@ alias[trigger:ai_has_role_division] = value[ai_roles]
 alias[trigger:has_relation_modifier] = {
 	target = scope[country]
 	target = enum[country_tags]
-	modifier = <static_modifier.relation_modifier>
+	modifier = <static_modifier>
 }
 
 ### In the current state, checks if any province within the specified limit has a building of the specified level.

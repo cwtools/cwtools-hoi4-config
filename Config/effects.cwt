@@ -565,6 +565,8 @@ alias[effect:division_template] = {
 	is_locked = bool
 	## cardinality = 0..1
 	is_fake_intel_division = bool
+	## cardinality = 0..1
+	force_allow_recruiting = bool
 	regiments = {
 		## cardinality = 1..25
 		<unit> = { x = int[0..5] y = int[0..5] }

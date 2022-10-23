@@ -287,3 +287,12 @@ alias[trigger:can_build_railway] = {
 ### Checks if country has idea.
 ## scope = country
 alias[trigger:has_idea] = value[variable]
+
+### Check if any country that has core on the state meets the trigger.
+## scope = state
+## push_scope = country
+alias[trigger:any_country_with_core] = {
+	## cardinality = 0..1
+	tooltip = localisation
+	alias_name[trigger] = alias_match_left[trigger]
+}

@@ -51,7 +51,7 @@ types = {
 }
 
 decision_category = {
-	## cardinality = 0..1
+	## cardinality = 0..inf
 	icon = scalar
 	## cardinality = 0..inf
 	## replace_scope = { this = country root = country }

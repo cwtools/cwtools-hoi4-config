@@ -1,0 +1,83 @@
+types = {
+	type[balance_of_power] = {
+		path = "game/common/bop"
+	}
+}
+
+balance_of_power = {
+    ## cardinality = 0..1
+    initial_value = float[-1..1]
+    left_side = value[bop_side]
+    right_side = value[bop_side]
+    decision_category = <decision_category>
+    ### The "middle ground"
+    range = {
+        id = value_set[bop_range_id]
+        min = float[-1..1]
+        max = float[-1..1]
+        ## replace_scope = { this = country root = country }
+        ## cardinality = 0..1
+		modifier = {
+			## cardinality = 0..inf
+			alias_name[modifier] = alias_match_left[modifier]
+		}
+        ## replace_scope = { this = country root = country }
+        ## cardinality = 0..1
+		on_activate = {
+            ## cardinality = 0..inf
+            limit = {
+                alias_name[trigger] = alias_match_left[trigger]
+            }
+            ## cardinality = 0..inf
+            alias_name[effect] = alias_match_left[effect]
+		}
+        ## replace_scope = { this = country root = country }
+        ## cardinality = 0..1
+		on_deactivate = {
+            ## cardinality = 0..inf
+            limit = {
+                alias_name[trigger] = alias_match_left[trigger]
+            }
+            ## cardinality = 0..inf
+            alias_name[effect] = alias_match_left[effect]
+		}
+    }
+    ### BOP sides
+    ## cardinality = 2..inf
+    side = {
+        id = value_set[bop_side]
+        icon = <spriteType>
+        ## cardinality = 1..inf
+        range = {
+            id = value_set[bop_range_id]
+            min = float[-1..1]
+            max = float[-1..1]
+            ## replace_scope = { this = country root = country }
+            ## cardinality = 0..1
+            modifier = {
+                ## cardinality = 0..inf
+                alias_name[modifier] = alias_match_left[modifier]
+            }
+            ## replace_scope = { this = country root = country }
+            ## cardinality = 0..1
+            on_activate = {
+                ## cardinality = 0..inf
+                limit = {
+                    alias_name[trigger] = alias_match_left[trigger]
+                }
+                ## cardinality = 0..inf
+                alias_name[effect] = alias_match_left[effect]
+            }
+            ## replace_scope = { this = country root = country }
+            ## cardinality = 0..1
+            on_deactivate = {
+                ## cardinality = 0..inf
+                limit = {
+                    alias_name[trigger] = alias_match_left[trigger]
+                }
+                ## cardinality = 0..inf
+                alias_name[effect] = alias_match_left[effect]
+            }
+        }
+    }
+}

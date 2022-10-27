@@ -1549,7 +1549,7 @@ alias[trigger:is_assigned] = bool
 alias[trigger:num_units] = int
 
 ### Is_field_marshal = yes/no - Checks if the current unit leader is a field marshall.
-## scope = { unit_leader combat }
+## scope = { unit_leader combat character }
 alias[trigger:is_field_marshal] = bool
 
 ### Has unit leader flag been setCheck flag val date set and days since set.

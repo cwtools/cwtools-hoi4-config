@@ -1447,7 +1447,10 @@ alias[trigger:amount_taken_ideas] = {
 	amount = int
 	## cardinality = 0..1
 	slots = {
+		## cardinality = 0..inf
 		value[idea_slot]
+		## cardinality = 0..inf
+		value[character_advisor_slot]
 	}
 }
 

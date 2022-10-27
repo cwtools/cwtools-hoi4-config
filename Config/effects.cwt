@@ -2325,7 +2325,7 @@ alias[effect:replace_unit_leader_trait] = replace_me
 alias[effect:add_max_trait] = int
 
 ### Adds a skill level to a unit leader.
-## scope = unit_leader
+## scope = { character unit_leader }
 alias[effect:add_skill_level] = int
 
 ### Adds a value or a variable to a temp variable.

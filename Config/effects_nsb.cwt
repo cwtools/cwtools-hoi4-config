@@ -515,3 +515,14 @@ alias[effect:force_update_map_mode] = {
 	## cardinality = ~1..2
 	mapmode = <scripted_map_modes>
 }
+
+### Create railway gun effect
+## scope = { any }
+alias[effect:create_railway_gun] = {
+	equipment = railway_gun_equipment_1
+	## cardinality = 0..1
+	name = localisation_inline
+	### optional, created in capital otherwise
+	## cardinality = 0..1
+	location = enum[provinces] 
+}

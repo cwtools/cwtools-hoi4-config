@@ -49,7 +49,7 @@ ideology = {
 		}
 
 		## cardinality = 0..1
-		can_host_government_in_exile = yes
+		can_host_government_in_exile = bool
 		war_impact_on_world_tension = float
 		faction_impact_on_world_tension = float
 

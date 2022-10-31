@@ -169,6 +169,10 @@ equipment = {
 			## cardinality = 1..inf
 			enum[allowed_air_unit_missions]
 		}
+		## cardinality = 0..1
+		type_override = enum[module_slots]
+		## cardinality = 0..1
+		substitute = <equipment.air_equip>
 	}
 
 	subtype[regular_equip] = {
@@ -236,6 +240,8 @@ equipment = {
 			enum[module_slots] = <module>
 			## cardinality = 0..inf
 			enum[module_slots] = empty
+			## cardinality = 0..inf
+			enum[module_slots] = inherit
 		}
 	}
 	subtype[naval_equip] = {

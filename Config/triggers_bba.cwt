@@ -43,3 +43,11 @@ alias[trigger:power_balance_weekly_change] = {
     id = <balance_of_power>
     value = float[-1..1]
 }
+
+### Check if division has this battalion as majority in template
+## scope = any
+alias[trigger:division_has_majority_template] = <unit>
+
+### Check if division has this battalion in template
+## scope = any
+alias[trigger:division_has_battalion_in_template] = <unit>

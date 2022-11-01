@@ -788,7 +788,7 @@ alias[effect:operative_leader_event] = {
 	months = variable_field
 
 	### A random amount of hours to be added to the delay before firing, from 0 up to but not including random_hours. Equivalent to random_hours. Preserverd for backwards compatibility.
-	## error_if_only_match = This is an deprecated command. While it does work it is better to use random_hours or random_days.
+	## error_if_only_match = This is an deprecated command. The command is used to delay an event trigger by a random number of hours from 0 to the provided value. It is better to avoid confusion to use random_hours.
 	## severity = info
 	## cardinality = 0..1
 	random = variable_field

@@ -1,0 +1,53 @@
+
+### Checks if country has specific balance of power.
+## scope = country
+alias[trigger:has_power_balance] = {
+    id = <balance_of_power>
+}
+
+### Checks if country has any balance of power.
+## scope = country
+alias[trigger:has_any_power_balance] = bool
+
+### Checks if country has balance of power modifier.
+## scope = country
+alias[trigger:has_power_balance_modifier] = {
+    id = <balance_of_power>
+    modifier = <static_modifier>
+}
+
+### Checks if BOP is in certain range.
+## scope = country
+alias[trigger:is_power_balance_in_range] = {
+    id = <balance_of_power>
+    range = value[bop_range_id]
+}
+
+### Checks if BOP is more or less than certain value (> <).
+## scope = country
+alias[trigger:power_balance_value] = {
+    id = <balance_of_power>
+    value = float[-1..1]
+}
+
+### Checks if BOP daily drift is more or less than certain value (> <).
+## scope = country
+alias[trigger:power_balance_daily_change] = {
+    id = <balance_of_power>
+    value = float[-1..1]
+}
+
+### Checks if BOP weekly drift is more or less than certain value (> <).
+## scope = country
+alias[trigger:power_balance_weekly_change] = {
+    id = <balance_of_power>
+    value = float[-1..1]
+}
+
+### Check if division has this battalion as majority in template
+## scope = any
+alias[trigger:division_has_majority_template] = <unit>
+
+### Check if division has this battalion in template
+## scope = any
+alias[trigger:division_has_battalion_in_template] = <unit>

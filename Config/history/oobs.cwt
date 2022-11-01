@@ -58,6 +58,23 @@ oob = {
 			}
 			location = enum[provinces]
 			division_template = scalar
+			### Defines a unique name for this unit's division commander
+			## cardinality = 0..1
+			unique = {
+				## cardinality = ~1..inf
+				scalar
+			}
+			### Defines a unique portraits for this unit'ss division commander
+			## cardinality = 0..1
+			portraits = {
+				### Portrait(s), army and/or civilian
+				## cardinality = ~1..2
+				army = {
+					### Portrait(s), large (leader) and/or small (advisor)
+					## cardinality = ~1..2
+					enum[character_portrait_sizes] = scalar
+				}
+			}
 			## cardinality = 0..1
 			start_experience_factor = float[0..1]
 			## cardinality = 0..1
@@ -118,6 +135,15 @@ oob = {
 							amount = int
 						}
 						## cardinality = 0..inf
+						value[bba_air_variants] = {
+							owner = enum[country_tags]
+							## cardinality = 0..1
+							creator = enum[country_tags]
+							## cardinality = 0..1
+							create_if_missing = bool
+							amount = int
+						}
+						## cardinality = 0..inf
 						### Order is important. Ace will be assigned to the wing above.
 						ace = {
 							modifier = <ace>
@@ -143,11 +169,11 @@ oob = {
 
 	## cardinality = 0..1
 	air_wings = {
-		## cardinality = 1..inf
+		## cardinality = 0..inf
 		<state> = {
 			# should have something to force ace to be directly after <equipment.air_equip>
 
-			## cardinality = 1..inf
+			## cardinality = 0..inf
 			<equipment.air_equip> = {
 				owner = enum[country_tags]
 				## cardinality = 0..1
@@ -155,6 +181,64 @@ oob = {
 				## cardinality = 0..1
 				create_if_missing = bool
 				amount = int
+				## cardinality = 0..1
+				version_name = value[variant_name]
+			}
+			## cardinality = 0..inf
+			value[bba_air_variants] = {
+				owner = enum[country_tags]
+				## cardinality = 0..1
+				creator = enum[country_tags]
+				## cardinality = 0..1
+				create_if_missing = bool
+				amount = int
+				## cardinality = 0..1
+				version_name = value[variant_name]
+			}
+			## cardinality = 0..inf
+			### Order is important. Ace will be assigned to the wing above.
+			ace = {
+				modifier = <ace>
+				name = localisation_inline
+				surname = localisation_inline
+				## cardinality = 0..1
+				callsign = localisation_inline
+				## cardinality = 0..1
+				portrait = int
+				## cardinality = 0..1
+				is_female = yes
+			}
+			## cardinality = 0..inf
+			### Order is important. start_experience_factor will be assigned to the ace above.
+			start_experience_factor = float[0..1]
+			## cardinality = 0..inf
+			name = localisation_inline
+		}
+		## cardinality = 0..inf
+		scalar = {
+			# should have something to force ace to be directly after <equipment.air_equip>
+
+			## cardinality = 0..inf
+			<equipment.air_equip> = {
+				owner = enum[country_tags]
+				## cardinality = 0..1
+				creator = enum[country_tags]
+				## cardinality = 0..1
+				create_if_missing = bool
+				amount = int
+				## cardinality = 0..1
+				version_name = value[variant_name]
+			}
+			## cardinality = 0..inf
+			value[bba_air_variants] = {
+				owner = enum[country_tags]
+				## cardinality = 0..1
+				creator = enum[country_tags]
+				## cardinality = 0..1
+				create_if_missing = bool
+				amount = int
+				## cardinality = 0..1
+				version_name = value[variant_name]
 			}
 			## cardinality = 0..inf
 			### Order is important. Ace will be assigned to the wing above.

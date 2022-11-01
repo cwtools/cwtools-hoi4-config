@@ -28,8 +28,10 @@ containerWindowType = {
         name = scalar
         alias_name[gui_standard] = alias_match_left[gui_standard]
         alias_name[gui_image] = alias_match_left[gui_image]
-        alias_name[gui_sound] = alias_match_left[gui_sound]
-        alias_name[gui_localization] = alias_match_left[gui_localization]
+        ## cardinality = 0..1
+		alias_name[gui_sound] = alias_match_left[gui_sound]
+        ## cardinality = 0..1
+		alias_name[gui_localization] = alias_match_left[gui_localization]
     }
     alias_name[gui] = alias_match_left[gui]
     alias_name[gui_standard] = alias_match_left[gui_standard]
@@ -111,6 +113,10 @@ alias[gui:dropDownBoxType] = {
     clipping = bool
     ## cardinality = 0..1
     fullscreen = bool
+	## cardinality = 0..1
+	switch_frame_on_expand = bool
+	## cardinality = 0..1
+	expandedOnTop = bool
     ## cardinality = 0..inf
     ### Background texture
     background = {
@@ -157,6 +163,7 @@ alias[gui:dropDownBoxType] = {
         buttonText = localisation_inline
         ## cardinality = 0..1
         buttonFont = scalar
+		## cardinality = 0..1
         alias_name[gui_localization] = alias_match_left[gui_localization]
         ## cardinality = 0..inf
         shortcut = scalar
@@ -248,6 +255,8 @@ alias[gui:buttonType] = {
     font = scalar
     ## cardinality = 0..1
     web_link = scalar
+	## cardinality = 0..1
+	no_clicksound = bool
 }
 ### Hardcoded
 alias[gui:OverlappingElementsBoxType] = {
@@ -264,6 +273,8 @@ alias[gui:gridBoxType] = {
     ### Name referenced by scripted gui
     name = scalar
     alias_name[gui_standard] = alias_match_left[gui_standard]
+
+	## cardinality = 0..1
     ### Dimensions of slot, does not clip entries
     slotsize = {
         width = int
@@ -323,7 +334,9 @@ alias[gui:positionType] = {
     name = scalar
     position = {
         x = int
+		x = float
         y = int
+		y = float
     }
 }
 ###Browser, hardcoded
@@ -348,8 +361,12 @@ alias[gui:instantTextBoxType] = {
     font = scalar
     ## cardinality = 0..1
     maxWidth = int
+	## cardinality = 0..1
+	maxWidth = percentage_field
     ## cardinality = 0..1
     maxHeight = int
+	## cardinality = 0..1
+	maxHeight = percentage_field
     ## cardinality = 0..1
     format = enum[guiTextFormats]
     ## cardinality = 0..1
@@ -445,6 +462,8 @@ alias[gui:checkboxType] = {
 alias[gui:extendedScrollbarType] = {
     name = scalar
     alias_name[gui_standard] = alias_match_left[gui_standard]
+
+	## cardinality = 0..1
     background = {
         ## cardinality = ~1..1
         name = scalar
@@ -479,14 +498,18 @@ alias[gui:extendedScrollbarType] = {
     smooth_scrolling = float
     ##cardinality  = 0..1
     clickonly = bool
+	##cardinality = 0..1
+	setTrackFrameOnChange = bool
     ##cardinality  = 1..1
     ###Slider for scroll bar
     slider = {
         name = scalar
         alias_name[gui_image] = alias_match_left[gui_image]
         position = {
-            x = int
-            y = int
+			x = int
+			x = float
+			y = int
+			y = float
         }
         alias_name[gui_localization] = alias_match_left[gui_localization]
     }
@@ -496,9 +519,12 @@ alias[gui:extendedScrollbarType] = {
         name = scalar
         alias_name[gui_image] = alias_match_left[gui_image]
         position = {
-            x = int
-            y = int
+			x = int
+			x = float
+			y = int
+			y = float
         }
+		alias_name[gui_localization] = alias_match_left[gui_localization]
     }
     ##cardinality  = 0..1
     ###Increase button
@@ -507,8 +533,10 @@ alias[gui:extendedScrollbarType] = {
         alias_name[gui_image] = alias_match_left[gui_image]
         alias_name[gui_sound] = alias_match_left[gui_sound]
         position = {
-            x = int
-            y = int
+			x = int
+			x = float
+			y = int
+			y = float
         }
         alias_name[gui_localization] = alias_match_left[gui_localization]
     }
@@ -519,8 +547,10 @@ alias[gui:extendedScrollbarType] = {
         alias_name[gui_image] = alias_match_left[gui_image]
         alias_name[gui_sound] = alias_match_left[gui_sound]
         position = {
-            x = int
-            y = int
+			x = int
+			x = float
+			y = int
+			y = float
         }
         alias_name[gui_localization] = alias_match_left[gui_localization]
     }
@@ -530,8 +560,10 @@ alias[gui:extendedScrollbarType] = {
         name = scalar
         alias_name[gui_image] = alias_match_left[gui_image]
         position = {
-            x = int
-            y = int
+			x = int
+			x = float
+			y = int
+			y = float
         }
         alias_name[gui_localization] = alias_match_left[gui_localization]
     }
@@ -649,21 +681,28 @@ alias[gui_localization:tooltip] = localisation
 ### Text ontop of elements
 alias[gui_localization:text] = localisation
 #alias[gui_localization:text] = localisation_inline
-
+alias[gui_localization:pdx_disabled_tooltip] = localisation
+#alias[gui_localization:text] = localisation_inline
+alias[gui_localization:pdx_disabled_tooltip_delayed] = localisation
+#alias[gui_localization:text] = localisation_inline
 
 #GUI Animation
 ### Position before animation in pixels
 alias[gui_animation:show_position] = {
     x = int
+	x = float
     x = percentage_field
     y = int
+	y = float
     y = percentage_field
 }
 ### Position returned to when hiding
 alias[gui_animation:hide_position] = {
     x = int
+	x = float
     x = percentage_field
     y = int
+	y = float
     y = percentage_field
 }
 alias[gui_animation:show_animation_type] = enum[animationTypes]

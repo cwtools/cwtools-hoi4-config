@@ -276,11 +276,15 @@ alias[effect:country_event] = {
 	## cardinality = 0..1
 	random_days = variable_field
 
-	### A random amount of hours to be added to the delay before firing, from 0 up to but not including random_hours. Equivalent to random_hours. Preserverd for backwards compatibility.
+	### A random amount of hours to be added to the delay before firing, from 0 up to but not including random_hours. Equivalent to random_hours. Preserved for backwards compatibility.
+	## error_if_only_match = This is an deprecated command. The command is used to delay an event trigger by a random number of hours from 0 to the provided value. It is better to avoid confusion to use random_hours.
+	## severity = info
 	## cardinality = 0..1
 	random = variable_field
 
 	### Specify a set of child effects to execute as part of this effect, with a percentage chance of randomly happening or not (as a group, not individually).
+	## error_if_only_match = This is an deprecated command. The command is used to delay an event trigger by a random number of hours from 0 to the provided value. It is better to avoid confusion to use random_hours.
+	## severity = info
 	## cardinality = 0..1
 	random = {
 		chance = variable_field
@@ -322,11 +326,15 @@ alias[effect:state_event] = {
 	## cardinality = 0..1
 	random_days = variable_field
 
-	### A random amount of hours to be added to the delay before firing, from 0 up to but not including random_hours. Equivalent to random_hours. Preserverd for backwards compatibility.
+	### A random amount of hours to be added to the delay before firing, from 0 up to but not including random_hours. Equivalent to random_hours. Preserved for backwards compatibility.
+	## error_if_only_match = This is an deprecated command. The command is used to delay an event trigger by a random number of hours from 0 to the provided value. It is better to avoid confusion to use random_hours.
+	## severity = info
 	## cardinality = 0..1
 	random = variable_field
 
 	### Specify a set of child effects to execute as part of this effect, with a percentage chance of randomly happening or not (as a group, not individually).
+	## error_if_only_match = This is an deprecated command. The command is used to delay an event trigger by a random number of hours from 0 to the provided value. It is better to avoid confusion to use random_hours.
+	## severity = info
 	## cardinality = 0..1
 	random = {
 		chance = variable_field
@@ -495,7 +503,7 @@ alias[effect:create_country_leader] = {
 	picture = scalar
 	ideology = enum[sub_ideology]
 	## cardinality = 0..1
-	expire = date_field
+	expire = datetime_field
 	## cardinality = 0..1
 	traits = {
 		## cardinality = ~1..inf
@@ -565,6 +573,8 @@ alias[effect:division_template] = {
 	is_locked = bool
 	## cardinality = 0..1
 	is_fake_intel_division = bool
+	## cardinality = 0..1
+	force_allow_recruiting = bool
 	regiments = {
 		## cardinality = 1..25
 		<unit> = { x = int[0..5] y = int[0..5] }
@@ -700,7 +710,7 @@ alias[effect:create_navy_leader] = {
 }
 
 ### Remove trait from unit leader.
-## scope = unit_leader
+## scope = { character unit_leader }
 alias[effect:remove_unit_leader_trait] = <unit_leader_trait>
 
 ### Add trait to unit leader.
@@ -1034,11 +1044,15 @@ alias[effect:news_event] = {
 	## cardinality = 0..1
 	random_days = variable_field
 
-	### A random amount of hours to be added to the delay before firing, from 0 up to but not including random_hours. Equivalent to random_hours. Preserverd for backwards compatibility.
+	### A random amount of hours to be added to the delay before firing, from 0 up to but not including random_hours. Equivalent to random_hours. Preserved for backwards compatibility.
+	## error_if_only_match = This is an deprecated command. The command is used to delay an event trigger by a random number of hours from 0 to the provided value. It is better to avoid confusion to use random_hours.
+	## severity = info
 	## cardinality = 0..1
 	random = variable_field
 
 	### Specify a set of child effects to execute as part of this effect, with a percentage chance of randomly happening or not (as a group, not individually).
+	## error_if_only_match = This is an deprecated command. The command is used to delay an event trigger by a random number of hours from 0 to the provided value. It is better to avoid confusion to use random_hours.
+	## severity = info
 	## cardinality = 0..1
 	random = {
 		chance = variable_field
@@ -1157,6 +1171,9 @@ alias[effect:start_civil_war] = {
 	}
 	## cardinality = ~1..inf
 	alias_name[effect] = alias_match_left[effect]
+	### If true, no characters will be transferred to revolter and scripts should take care of that
+	## cardinality = 0..1
+	keep_all_characters = bool
 }
 
 ### Retires a country leader and removes him as leader of his party, making the next in line the new party and country leader.
@@ -1562,9 +1579,10 @@ alias[effect:show_unit_leaders_tooltip] = <character>
 ## scope = country
 alias[effect:create_equipment_variant] = {
 	## cardinality = 0..1
-	name = scalar
+	name = value_set[variant_name]
 	type = <equipment.regular_equip>
 	type = value[nsb_armor_variants]
+	type = value[bba_air_variants]
 	## cardinality = 0..1
 	name_group = <ship_name>
 	## cardinality = 0..1
@@ -1587,6 +1605,8 @@ alias[effect:create_equipment_variant] = {
 	obsolete = yes
 	## cardinality = 0..1
 	icon = filepath
+	## cardinality = 0..1
+	icon = <spriteType>
 }
 
 ### Adds an equipment production.
@@ -1595,10 +1615,13 @@ alias[effect:add_equipment_production] = {
 	equipment = {
 		type = <equipment>
 		type = value[nsb_armor_variants]
+		type = value[bba_air_variants]
 		## cardinality = 0..1
 		creator = enum[country_tags]
 		## cardinality = 0..1
 		version_name = localisation_inline
+		## cardinality = 0..1
+		version = int
 	}
 	## cardinality = 0..1
 	name = scalar
@@ -1680,21 +1703,24 @@ alias[effect:random_other_country] = {
 alias[effect:add_equipment_to_stockpile] = {
 	type = <equipment>
 	type = value[nsb_armor_variants]
+	type = enum[bba_air_equipment]
 	amount = int_variable_field
 	## cardinality = 0..1
 	producer = scope[country]
 	## cardinality = 0..1
 	producer = enum[country_tags]
+	## cardinality = 0..1
+	version_name = localisation_inline
+	## cardinality = 0..1
+	variant_name = localisation_inline
 }
 
 ### Swap 2 ideas.
 ## scope = country
 alias[effect:swap_ideas] = {
-	### TEMP FIX - be careful when using variables to store ideas
 	remove_idea = value[variable]
 	remove_idea = enum[idea_name]
 	add_idea = enum[idea_name]
-	### TEMP FIX - be careful when using variables to store ideas
 	add_idea = value[variable]
 
 	### Adds/subtracts X days from the new idea's timeout
@@ -1740,9 +1766,9 @@ alias[effect:set_autonomy] = {
 	## cardinality = 0..1
 	freedom_level = float[0..1]
 	## cardinality = 0..1
-	end_wars = no 
+	end_wars = no
 	## cardinality = 0..1
-	end_civil_wars = no 
+	end_civil_wars = no
 }
 
 ### Makes autonomy of specified level and country.
@@ -1755,10 +1781,10 @@ alias[effect:set_autonomy] = {
 	## cardinality = 0..1
 	freedom_level = float[0..1]
 	## cardinality = 0..1
-	end_wars = no 
+	end_wars = no
 	## cardinality = 0..1
-	end_civil_wars = no 
-	
+	end_civil_wars = no
+
 }
 
 ### Makes autonomy of specified level and country.
@@ -1768,10 +1794,10 @@ alias[effect:set_autonomy] = {
 	target = enum[country_tags]
 	freedom_level = float[0..1]
 	## cardinality = 0..1
-	end_wars = no 
+	end_wars = no
 	## cardinality = 0..1
-	end_civil_wars = no 
-	
+	end_civil_wars = no
+
 }
 
 ### Adds country to technology sharing group of specified name.
@@ -1821,6 +1847,8 @@ alias[effect:transfer_ship] = {
 	type = <unit.ship_unit>
 	target = scope[country]
 	target = enum[country_tags]
+	## cardinality = 0..1
+	exclude_refitting = bool
 }
 
 ### Sets the category of a state.
@@ -1891,8 +1919,11 @@ alias[effect:create_production_license] = {
 	target = enum[country_tags]
 	equipment = {
 		type = <equipment.regular_equip>
+		## cardinality = 0..1
+		version = int
 	}
 	cost_factor = float
+
 }
 
 ### Adds a static modifier between current scope and target.
@@ -1900,7 +1931,7 @@ alias[effect:create_production_license] = {
 alias[effect:add_relation_modifier] = {
 	target = scope[country]
 	target = enum[country_tags]
-	modifier = <static_modifier.relation_modifier>
+	modifier = <static_modifier>
 }
 
 
@@ -1909,7 +1940,7 @@ alias[effect:add_relation_modifier] = {
 alias[effect:remove_relation_modifier] = {
 	target = scope[country]
 	target = enum[country_tags]
-	modifier = <static_modifier.relation_modifier>
+	modifier = <static_modifier>
 }
 
 ### Sets specific level of a building construction for amount of levels in specified state or province.
@@ -2131,7 +2162,7 @@ alias[effect:unlock_decision_tooltip] = {
 }
 
 ### Add buffs to units that are belongs to the army group/navy of this unit leader.
-## scope = unit_leader
+## scope = { character unit_leader }
 alias[effect:add_temporary_buff_to_units] = {
 	## cardinality = 0..1
 	combat_offense = float
@@ -2309,7 +2340,7 @@ alias[effect:replace_unit_leader_trait] = replace_me
 alias[effect:add_max_trait] = int
 
 ### Adds a skill level to a unit leader.
-## scope = unit_leader
+## scope = { character unit_leader }
 alias[effect:add_skill_level] = int
 
 ### Adds a value or a variable to a temp variable.
@@ -2409,7 +2440,7 @@ alias[effect:set_temp_variable] = {
 }
 
 ### Add a timed trait to unit leader.
-## scope = unit_leader
+## scope = { character unit_leader }
 alias[effect:add_timed_unit_leader_trait] = {
 	trait = <unit_leader_trait>
 	days = int
@@ -2642,11 +2673,15 @@ alias[effect:unit_leader_event] = {
 	## cardinality = 0..1
 	random_days = variable_field
 
-	### A random amount of hours to be added to the delay before firing, from 0 up to but not including random_hours. Equivalent to random_hours. Preserverd for backwards compatibility.
+	### A random amount of hours to be added to the delay before firing, from 0 up to but not including random_hours. Equivalent to random_hours. Preserved for backwards compatibility.
+	## error_if_only_match = This is an deprecated command. The command is used to delay an event trigger by a random number of hours from 0 to the provided value. It is better to avoid confusion to use random_hours.
+	## severity = info
 	## cardinality = 0..1
 	random = variable_field
 
 	### Specify a set of child effects to execute as part of this effect, with a percentage chance of randomly happening or not (as a group, not individually).
+	## error_if_only_match = This is an deprecated command. The command is used to delay an event trigger by a random number of hours from 0 to the provided value. It is better to avoid confusion to use random_hours.
+	## severity = info
 	## cardinality = 0..1
 	random = {
 		chance = variable_field
@@ -2766,6 +2801,10 @@ alias[effect:set_oob] = <oob>
 ## scope = country
 alias[effect:set_naval_oob] = <oob>
 
+### Registers an Order of Battle (OOB) file to be loaded for a country at game start, replacing any previously registered OOB (with key "air") on that country.
+## scope = country
+alias[effect:set_air_oob] = <oob>
+
 ### Adds an element to an array.
 ## scope = any
 alias[effect:add_to_array] = {
@@ -2791,14 +2830,24 @@ alias[effect:add_to_array] = {
 ### Adds an element to an array.
 ## scope = any
 alias[effect:add_to_array] = {
+	## cardinality = 0..1
 	value_set[array] = variable_field_32
+	## cardinality = 0..1
 	value_set[variable] = variable_field_32
+	## cardinality = 0..1
 	value_set[array] = scope_field
+	## cardinality = 0..1
 	value_set[variable] = scope_field
+	## cardinality = 0..1
 	value_set[array] = enum[country_tags]
+	## cardinality = 0..1
 	value_set[variable] = enum[country_tags]
+	## cardinality = 0..1
 	value_set[array] = value_set[token]
+	## cardinality = 0..1
 	value_set[variable] = value_set[token]
+	## cardinality = 0..1
+	value_set[array] = variable_field_32
 }
 
 ### Removes an element from an array using value or index.

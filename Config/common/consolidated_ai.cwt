@@ -334,6 +334,7 @@ ai_equipment_design_group = {
 			### The equipment archetype or equipment type that the variant must use to match.
 			type = <equipment>
 			type = value[nsb_armor_variants]
+			type = value[bba_air_variants]
 
 			### The matching requirements on individual module slots.
 			## cardinality = 0..1
@@ -383,7 +384,7 @@ ai_equipment_design_group = {
 				## cardinality = 0..inf
 				<upgrade> = {
 					enum[base_factor] = int
-					## cardinality = 1..inf
+					## cardinality = 0..inf
 					modifier = {
 						alias_name[trigger] = alias_match_left[trigger]
 						enum[add_factor] = int

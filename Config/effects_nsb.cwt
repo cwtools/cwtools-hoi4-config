@@ -193,7 +193,7 @@ alias[effect:add_country_leader_role] = {
 			<country_leader_trait>
 		}
 		## cardinality = 0..1
-		expire = date_field
+		expire = datetime_field
 	}
 }
 
@@ -217,7 +217,11 @@ alias[effect:add_advisor_role] = {
 	activate = bool
 	advisor = {
 		slot = value[character_advisor_slot]
+		## cardinality = 0..1
+		desc = localisation
 		idea_token = value_set[advisor_token]
+		## cardinality = 0..1
+		desc = localisation
 		## replace_scope = { this = character root = country }
 		## cardinality = 0..1
 		allowed = {
@@ -281,24 +285,6 @@ alias[effect:add_advisor_role] = {
 	}
 }
 
-## scope = { character country }
-alias[effect:add_advisor_role] = {
-	### required in country scope, optional in character scope
-	## cardinality = 0..1
-	character = <character>
-	## cardinality = 0..1
-	slot = value[character_advisor_slot]
-}
-
-## scope = { character country }
-alias[effect:remove_advisor_role] = {
-	### required in country scope, optional in character scope
-	## cardinality = 0..1
-	character = <character>
-	## cardinality = 0..1
-	slot = value[character_advisor_slot]
-}
-
 ### removes character from all roles and availability
 ## scope = { any }
 alias[effect:retire_character] = <character>
@@ -340,13 +326,23 @@ alias[effect:promote_character] = {
 alias[effect:swap_country_leader_traits] = {
 	remove = <country_leader_trait>
 	add = <country_leader_trait>
-	
+
 	## cardinality = 0..1
 	ideology = enum[sub_ideology]
 }
 
 ## scope = { character unit_leader }
 alias[effect:set_character_flag] = value_set[character_flag]
+
+## scope = { character unit_leader }
+alias[effect:set_character_flag] = {
+	flag = value[character_flag]
+	## cardinality = 0..1
+	value = int
+	## cardinality = 0..1
+	days = int
+}
+
 ## scope = { character unit_leader }
 alias[effect:modify_character_flag] = {
 	flag = value[character_flag]
@@ -375,7 +371,10 @@ alias[effect:add_trait] = {
 alias[effect:add_trait] = {
 	## cardinality = 0..1
 	character = <character>
+	## cardinality = 0..1
+	character = scope[character]
 	trait = <country_leader_trait>
+	trait = <unit_leader_trait>
 	### must match the character's country leader sub-ideology
 	## cardinality = 0..1
 	ideology = enum[sub_ideology]
@@ -386,6 +385,8 @@ alias[effect:add_trait] = {
 alias[effect:remove_trait] = {
 	## cardinality = 0..1
 	character = <character>
+	## cardinality = 0..1
+	character = scope[character]
 	trait = <country_leader_trait>
 	trait = <unit_leader_trait>
 	## cardinality = 0..1
@@ -475,9 +476,63 @@ alias[effect:set_portraits] = {
 ### Recruits character. Use only in history files
 ## scope = { country }
 alias[effect:recruit_character] = <character>
-### TEMP FIX - be careful when using variables to store ideas. Remove idea from country.
+### Remove idea from country.
 ## scope = country
 alias[effect:remove_ideas] = value[variable]
-### TEMP FIX - be careful when using variables to store ideas. Adds idea from country.
+### Adds idea from country.
 ## scope = country
 alias[effect:add_ideas] = value[variable]
+
+### damages units for given conditions. no tooltip generated
+## scope = { country }
+alias[effect:damage_units] = {
+	### specify a location
+	## cardinality = 0..1
+	province = enum[provinces]
+	## cardinality = 0..1
+	state = <state>
+	## cardinality = 0..1
+	state = scope[state]
+	## cardinality = 0..1
+	region = <strategic_region>
+    ## cardinality = 0..1
+	limit = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	## cardinality = 0..1
+	damage = float
+	## cardinality = 0..1
+	org_damage = float
+	## cardinality = 0..1
+	str_damage = float
+	### will damage a ratio damage to total org/str of unit if set
+	## cardinality = 0..1
+	ratio = bool
+	### you can limit army templates
+	## cardinality = 0..1
+	template = localisation_inline
+	### Damage armies
+	## cardinality = 0..1
+	army = bool
+	### Damage navies
+	## cardinality = 0..1
+	navy = bool
+}
+
+### This is to force the update of a custom map mode.
+## scope = { country }
+alias[effect:force_update_map_mode] = {
+	## cardinality = ~1..2
+	mapmode = <scripted_map_modes>
+}
+
+### Create railway gun effect
+## scope = { any }
+alias[effect:create_railway_gun] = {
+	equipment = railway_gun_equipment_1
+	## cardinality = 0..1
+	name = localisation_inline
+	### optional, created in capital otherwise
+	## cardinality = 0..1
+	location = enum[provinces] 
+}

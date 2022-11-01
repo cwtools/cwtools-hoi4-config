@@ -19,8 +19,7 @@ types = {
 			type = land
 		}
 		subtype[land_naval_commander] = {
-			type = {
-			}
+			type = { land navy }
 		}
 		subtype[assignable_trait] = {
 			trait_type = assignable_trait
@@ -93,6 +92,14 @@ country_leader_trait = {
 			alias_name[naval_stat] = alias_match_left[naval_stat]
 			alias_name[air_stat] = alias_match_left[air_stat]
 		}
+		## cardinality = 0..inf
+		enum[bba_air_equipment] = {
+			## cardinality = 0..1
+			instant = bool
+			alias_name[unit_stat] = alias_match_left[unit_stat]
+			alias_name[naval_stat] = alias_match_left[naval_stat]
+			alias_name[air_stat] = alias_match_left[air_stat]
+		}
 	}
 	## cardinality = 0..inf
 	# targeted_modifier = single_alias_right[targeted_modifier]
@@ -126,6 +133,13 @@ unit_leader_trait = {
 		### Bonus for gaining this skill.
 		## cardinality = 0..4
 		enum[army_leader_skill_factors] = int
+	}
+	subtype[land_naval_commander] = {
+		### Bonus for gaining this skill.
+		## cardinality = 0..4
+		enum[army_leader_skill_factors] = int
+		## cardinality = 0..4
+		enum[naval_leader_skill_factors] = int
 	}
 	subtype[naval_commander] = {
 		## cardinality = 0..1
@@ -229,6 +243,17 @@ unit_leader_trait = {
 		## cardinality = 0..1
 		enum[base_factor] = float
 		alias_name[modifier_rule] = alias_match_left[modifier_rule]
+	}
+	### Triggers to enable gaining XP for this trait
+	## cardinality = 0..1
+	unit_trigger = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	### Unit types to be affected by the trait
+	## cardinality = 0..1
+	unit_type = {
+		## cardinality = 1..inf
+		type = <unit>
 	}
 }
 

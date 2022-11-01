@@ -75,7 +75,11 @@ scripted_gui = {
 			# This will mess up scopes, as CWTools cannot determine what sort of scope will be in an array.
 			change_scope = bool
 			### GUI container name of the entry.
+			## cardinality = 0..1
 			entry_container = scalar
+			### GUI container name, but scoped to country, use one of entry_container or this one
+			## cardinality = 0..1
+			country_scope_entry_container = scalar
 			## cardinality = 0..1
 			### current index and value is also stored as temp variables and can be used in effects/triggers if wanted. You can rename them to another temp variables
 			index = scalar

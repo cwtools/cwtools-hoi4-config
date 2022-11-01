@@ -1,0 +1,72 @@
+### Enable Balance of Power or update its values
+## scope = country
+alias[effect:set_power_balance] = {
+	id = <balance_of_power>
+	### Whether or not to reset the power balance to the initial value, default = no
+	## cardinality = 0..1
+	set_default = bool
+	### Manually set BOP side to ine defined in balance of power sides. Will keep the last set side if not specified
+	## cardinality = 0..1
+	right_side = value[bop_side]
+	### Manually set BOP side to ine defined in balance of power sides. Will keep the last set side if not specified
+	## cardinality = 0..1
+	left_side = value[bop_side]
+	### if specified will set the value of the power balance, this option will override the effect of set_default so the two options should not be used together. if neither set_default or set_value is specified the current value of the power balance will not change
+	## cardinality = 0..1
+	set_value = float[-1..1]
+}
+
+### Disable specific BOP. Check that it is assigned via has_power_balance first
+## scope = country
+alias[effect:remove_power_balance] = {
+    id = <balance_of_power>
+}
+
+### Add a new side to BOP
+## scope = country
+alias[effect:add_power_balance_side] = {
+	id = <balance_of_power>
+	side = value[bop_side]
+}
+
+### Remove side to BOP
+## scope = country
+alias[effect:remove_power_balance_side] = {
+	id = <balance_of_power>
+	side = value[bop_side]
+}
+
+### Add value to balance of power. Float from -1 to 1, adding 0.25 will change BoP to the right by 25%
+## scope = country
+alias[effect:add_power_balance_value] = {
+	id = <balance_of_power>
+	value = float[-1..1]
+}
+
+### Change GFX of one of the BoP sides
+## scope = country
+alias[effect:set_power_balance_gfx] = {
+	id = <balance_of_power>
+	side = value[bop_side]
+	gfx = <spriteType>
+}
+
+### Add modifier to Balance of Power
+## scope = country
+alias[effect:add_power_balance_modifier] = {
+    id = <balance_of_power>
+    modifier = <static_modifier>
+}
+
+### Remove modifier from Balance of Power. Check if it added to BOP with has_power_balance_modifier first
+## scope = country
+alias[effect:remove_power_balance_modifier] = {
+    id = <balance_of_power>
+    modifier = <static_modifier>
+}
+
+### Remove all modifiers from Balance of Power
+## scope = country
+alias[effect:remove_all_power_balance_modifiers] = {
+    id = <balance_of_power>
+}

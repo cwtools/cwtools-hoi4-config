@@ -1,6 +1,7 @@
 types = {
 	type[equipment] = {
 		skip_root_key = equipments
+		skip_root_key = duplicate_archetypes
 		path = "game/common/units/equipment"
 		subtype[archetype_equip] = {
 			is_archetype = yes
@@ -72,6 +73,10 @@ types = {
 	type[critical_part] = {
 		skip_root_key = critical_parts
 		path = "game/common/units/critical_parts"
+	}
+	type[duplicate_archetypes] = {
+		skip_root_key = duplicate_archetypes
+		path = "game/common/units/equipment"
 	}
 }
 
@@ -148,6 +153,26 @@ equipment = {
 		carrier_capable = yes
 		air_map_icon_frame = int
 		interface_overview_category_index = int
+
+		## cardinality = 0..1
+		allowed_types = enum[air_units]
+		## cardinality = 0..1
+		allowed_types = {
+			## cardinality = 1..inf
+			enum[air_units]
+		}
+
+		## cardinality = 0..1
+		allow_mission_type = enum[allowed_air_unit_missions]
+		## cardinality = 0..1
+		allow_mission_type = {
+			## cardinality = 1..inf
+			enum[allowed_air_unit_missions]
+		}
+		## cardinality = 0..1
+		type_override = enum[module_slots]
+		## cardinality = 0..1
+		substitute = <equipment.air_equip>
 	}
 
 	subtype[regular_equip] = {
@@ -215,7 +240,9 @@ equipment = {
 			enum[module_slots] = <module>
 			## cardinality = 0..inf
 			enum[module_slots] = empty
-		}		
+			## cardinality = 0..inf
+			enum[module_slots] = inherit
+		}
 	}
 	subtype[naval_equip] = {
 		## cardinality = 0..1
@@ -262,22 +289,53 @@ equipment = {
 }
 
 upgrade = {
+	## cardinality = 0..1
+	abbreviation = localisation_inline
+
+	### The max number of upgrades possible for any given unit
 	max_level = int
 	alias_name[unit_stat] = alias_match_left[unit_stat]
 	subtype[naval_upgrade] = {
+		### The experience type that is used by the designer
 		cost = naval
 		alias_name[naval_stat] = alias_match_left[naval_stat]
 	}
 	subtype[air_upgrade] = {
+		### The experience type that is used by the designer
 		cost = air
 		alias_name[air_stat] = alias_match_left[air_stat]
 	}
 	subtype[land_upgrade] = {
+		### The experience type that is used by the designer
 		cost = land
+	}
+
+	## cardinality = 0..1
+	### The cost for the upgrade is determined by the following linearity
+	linear_cost = {
+		## cardinality = 0..1
+		### The linear cost for non-licensed equipment
+		cost_by_level = int
+		## cardinality = 0..1
+		### The linear cost for licensed foreign equipment upgrades
+		cost_by_level_for_licensed_equipment = int
+	}
+
+	## cardinality = 0..1
+	### Adds the provided stats to the given equipment type
+	add_stats = {
+		alias_name[unit_stat] = alias_match_left[naval_stat]
+		alias_name[naval_stat] = alias_match_left[naval_stat]
+		alias_name[air_stat] = alias_match_left[air_stat]
+		## cardinality = 0..1
+		build_cost_ic = float
 	}
 }
 
 module = {
+	## cardinality = 0..1
+	abbreviation = localisation_inline
+	### The category of the module
 	category = enum[module_categories]
 	## cardinality = 0..1
 	gui_category = enum[module_categories]
@@ -289,9 +347,12 @@ module = {
 	sfx = scalar
 	## cardinality = 0..1
 	add_equipment_type = enum[unit_types]
+	## cardinality = 0..1
+	### Adds the provided stats to the given module
 	add_stats = {
 		alias_name[unit_stat] = alias_match_left[naval_stat]
 		alias_name[naval_stat] = alias_match_left[naval_stat]
+		alias_name[air_stat] = alias_match_left[air_stat]
 		## cardinality = 0..1
 		build_cost_ic = float
 	}
@@ -301,6 +362,7 @@ module = {
 	manpower = int
 
 	## cardinality = 0..1
+	### Changes the required amount of resources for an equipment design
 	build_cost_resources = {
 		## cardinality = 0..10
 		<resource> = int
@@ -309,11 +371,13 @@ module = {
 	add_average_stats = {
 		alias_name[unit_stat] = alias_match_left[naval_stat]
 		alias_name[naval_stat] = alias_match_left[naval_stat]
+		alias_name[air_stat] = alias_match_left[air_stat]
 	}
 	## cardinality = 0..10
 	multiply_stats = {
 		alias_name[unit_stat] = alias_match_left[naval_stat]
 		alias_name[naval_stat] = alias_match_left[naval_stat]
+		alias_name[air_stat] = alias_match_left[air_stat]
 	}
 
 	## cardinality = 0..10
@@ -340,6 +404,26 @@ module = {
 		## cardinality = ~1..10
 		<resource> = int
 	}
+
+	## cardinality = 0..1
+	allowed_module_categories = {
+		## cardinality = 0..inf
+		enum[module_slots] = {
+			## cardinality = 0..inf
+			enum[module_categories]
+		}
+	}
+
+	## cardinality = 0..1
+	allow_mission_type = enum[allowed_air_unit_missions]
+	## cardinality = 0..1
+	allow_mission_type = {
+		## cardinality = 1..inf
+		enum[allowed_air_unit_missions]
+	}
+
+	## cardinality = 0..1
+	xp_cost = int
 }
 
 critical_part = {

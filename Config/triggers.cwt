@@ -113,7 +113,7 @@ alias[trigger:check_variable] = {
 ### Compares a variable to a number or variable.
 ## scope = any
 alias[trigger:check_variable] = {
-	variable_field_32 = value[variable]	
+	variable_field_32 = value[variable]
 }
 
 ### Compares a variable to a number or variable.
@@ -432,6 +432,8 @@ alias[trigger:has_navy_size] = {
 	unit = <unit.ship_unit>
 	## cardinality = 0..1
 	archetype = <equipment.archetype_equip>
+	## cardinality = 0..1
+	archetype = <duplicate_archetypes>
 }
 
 ### Check amount of military factories.
@@ -1335,6 +1337,7 @@ alias[trigger:has_license] = {
 	from = scope[country]
 	from = enum[country_tags]
 	archetype = <equipment.archetype_equip>
+	archetype = <duplicate_archetypes>
 }
 
 ### Country has specific active license.
@@ -1354,6 +1357,7 @@ alias[trigger:is_licensing_to]  = {
 	target = scope[country]
 	target = enum[country_tags]
 	archetype = <equipment.archetype_equip>
+	archetype = <duplicate_archetypes>
 }
 
 ### Country is licensing specific equipment to target. License is active.
@@ -1388,7 +1392,7 @@ alias[trigger:ai_has_role_division] = value[ai_roles]
 alias[trigger:has_relation_modifier] = {
 	target = scope[country]
 	target = enum[country_tags]
-	modifier = <static_modifier.relation_modifier>
+	modifier = <static_modifier>
 }
 
 ### In the current state, checks if any province within the specified limit has a building of the specified level.
@@ -1443,7 +1447,10 @@ alias[trigger:amount_taken_ideas] = {
 	amount = int
 	## cardinality = 0..1
 	slots = {
+		## cardinality = 0..inf
 		value[idea_slot]
+		## cardinality = 0..inf
+		value[character_advisor_slot]
 	}
 }
 
@@ -1474,6 +1481,10 @@ alias[trigger:has_stability] = float
 ### Check value of war_support 0-1. Example has_war_support < 0.6.
 ## scope = country
 alias[trigger:has_war_support] = float
+
+### Check value of war_support 0-1. Example has_war_support < 0.6.
+## scope = country
+alias[trigger:has_war_support] = variable_field_32
 
 ### Check if all unit leaders meets the trigger.
 ## scope = country
@@ -1538,7 +1549,7 @@ alias[trigger:is_assigned] = bool
 alias[trigger:num_units] = int
 
 ### Is_field_marshal = yes/no - Checks if the current unit leader is a field marshall.
-## scope = { unit_leader combat }
+## scope = { unit_leader combat character }
 alias[trigger:is_field_marshal] = bool
 
 ### Has unit leader flag been setCheck flag val date set and days since set.
@@ -1857,6 +1868,7 @@ alias[trigger:divisions_in_border_state] = {
 ## scope = country
 alias[trigger:stockpile_ratio] = {
 	archetype = <equipment.archetype_equip>
+	archetype = <duplicate_archetypes>
 	ratio = float
 }
 
@@ -2251,3 +2263,34 @@ alias[trigger:has_intelligence_agency] = bool
 ### Is impassable state
 ## scope = state
 alias[trigger:impassable] = bool
+
+### Check value of casualties_war_support. This becomes more negative as the malus grows (it won't be positive). Example casualties_war_support < 0.
+## scope = country
+alias[trigger:has_casualties_war_support] = float
+
+### Check value of casualties_war_support. This becomes more negative as the malus grows (it won't be positive). Example casualties_war_support < 0.
+## scope = country
+alias[trigger:has_casualties_war_support] = variable_field_32
+
+### Check value of convoys_war_support. This becomes more negative as the malus grows (it won't be positive). Example convoys_war_support < 0.
+## scope = country
+alias[trigger:has_convoys_war_support] = float
+
+### Check value of convoys_war_support. This becomes more negative as the malus grows (it won't be positive). Example convoys_war_support < 0.
+## scope = country
+alias[trigger:has_convoys_war_support] = variable_field_32
+
+### Check value of bombing_war_support. This becomes more negative as the malus grows (it won't be positive). Example bombing_war_support < 0.
+## scope = country
+alias[trigger:has_bombing_war_support] = float
+
+### Check value of bombing_war_support. This becomes more negative as the malus grows (it won't be positive). Example bombing_war_support < 0.
+## scope = country
+alias[trigger:has_bombing_war_support] = variable_field_32
+
+### Has a certain amount of resources
+## scope = country
+alias[trigger:has_resources_in_country] = {
+	resource = <resource>
+	amount = int_variable_field
+}

@@ -11,6 +11,12 @@ types = {
 				position = { x = float y = float }
 			}
 		}
+		subtype[bba_air_tech] = {
+			folder = {
+				name = bba_air_techs_folder
+				position = { x = float y = float }
+			}
+		}	
 	}
 	type[tech_sharing_group] = {
 		path = "game/common/technology_sharing"
@@ -67,11 +73,24 @@ technology = {
 	## cardinality = 0..inf
 	### Enables listed equipment.
 	enable_equipments = {
-		## cardinality = ~1..inf
+		## cardinality = 0..1
+		limit = {
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+		
+		## cardinality = 0..inf
 		<equipment>
+		## cardinality = 0..inf
+		<duplicate_archetypes>
+		## cardinality = 0..inf
 		subtype[nsb_armor_tech] = {
 			## cardinality = ~1..inf
 			value_set[nsb_armor_variants]
+		}
+		## cardinality = 0..inf
+		subtype[bba_air_tech] = {
+			## cardinality = ~1..inf
+			value_set[bba_air_variants]
 		}
 	}
 	## cardinality = 0..inf

@@ -241,6 +241,10 @@ alias[trigger:is_dynamic_country] = bool
 ## scope = country
 alias[trigger:has_design_based_on] = <equipment.archetype_equip>
 
+###Check if country has a buildable non-obsolete design based on an archetype.
+## scope = country
+alias[trigger:has_design_based_on] = <duplicate_archetypes>
+
 ###Check the number of factories in owned states excluding any gained or lost through trade, relations, modifiers etc.
 ## scope = country
 alias[trigger:num_of_owned_factories] = variable_field
@@ -280,6 +284,15 @@ alias[trigger:can_build_railway] = {
 	fallback = bool
 }
 
-### TEMP FIX - be careful when using variables to store ideas. Checks if country has idea.
+### Checks if country has idea.
 ## scope = country
 alias[trigger:has_idea] = value[variable]
+
+### Check if any country that has core on the state meets the trigger.
+## scope = state
+## push_scope = country
+alias[trigger:any_country_with_core] = {
+	## cardinality = 0..1
+	tooltip = localisation
+	alias_name[trigger] = alias_match_left[trigger]
+}

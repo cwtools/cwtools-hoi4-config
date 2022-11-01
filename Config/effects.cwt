@@ -1624,8 +1624,6 @@ alias[effect:add_equipment_production] = {
 		version = int
 	}
 	## cardinality = 0..1
-	version = int
-	## cardinality = 0..1
 	name = scalar
 	## cardinality = 0..1
 	amount = int

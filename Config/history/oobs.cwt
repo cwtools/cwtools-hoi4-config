@@ -58,6 +58,23 @@ oob = {
 			}
 			location = enum[provinces]
 			division_template = scalar
+			### Defines a unique name for this unit's division commander
+			## cardinality = 0..1
+			unique = {
+				## cardinality = ~1..inf
+				scalar
+			}
+			### Defines a unique portraits for this unit'ss division commander
+			## cardinality = 0..1
+			portraits = {
+				### Portrait(s), army and/or civilian
+				## cardinality = ~1..2
+				army = {
+					### Portrait(s), large (leader) and/or small (advisor)
+					## cardinality = ~1..2
+					enum[character_portrait_sizes] = scalar
+				}
+			}
 			## cardinality = 0..1
 			start_experience_factor = float[0..1]
 			## cardinality = 0..1

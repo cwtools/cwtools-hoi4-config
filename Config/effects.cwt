@@ -1620,7 +1620,11 @@ alias[effect:add_equipment_production] = {
 		creator = enum[country_tags]
 		## cardinality = 0..1
 		version_name = localisation_inline
+		## cardinality = 0..1
+		version = int
 	}
+	## cardinality = 0..1
+	version = int
 	## cardinality = 0..1
 	name = scalar
 	## cardinality = 0..1
@@ -1917,10 +1921,11 @@ alias[effect:create_production_license] = {
 	target = enum[country_tags]
 	equipment = {
 		type = <equipment.regular_equip>
+		## cardinality = 0..1
+		version = int
 	}
 	cost_factor = float
-	## cardinality = 0..1
-	version = int
+
 }
 
 ### Adds a static modifier between current scope and target.

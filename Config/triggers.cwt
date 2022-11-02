@@ -1399,11 +1399,18 @@ alias[trigger:has_relation_modifier] = {
 ## scope = state
 alias[trigger:any_province_building_level] = {
 	province = {
+		### Sets the scope to all provinces within the state
+		## cardinality = 1..inf
 		all_provinces = yes
+		### Limits the province scope to only border provinces
 		## cardinality = 0..1
 		limit_to_border = yes
+		### Limits the province scope to only coastal provinces
 		## cardinality = 0..1
 		limit_to_coastal = yes
+		### Limits the province scope to provinces with a naval base
+		## cardinality = 0..1
+		limit_to_naval_base = yes
 	}
 	province = {
 		## cardinality = 1..inf
@@ -1412,6 +1419,8 @@ alias[trigger:any_province_building_level] = {
 		limit_to_border = yes
 		## cardinality = 0..1
 		limit_to_coastal = yes
+		## cardinality = 0..1
+		limit_to_naval_base = yes
 	}
 	building = <building.provincial>
 	level = int

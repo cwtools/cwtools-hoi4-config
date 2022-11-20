@@ -448,6 +448,7 @@ enums = {
 	enum[strat_region_strats] = {
 		naval_convoy_raid_region
 		naval_avoid_region
+		strategic_air_importance
 	}
 	enum[state_strats] = {
 		theatre_distribution_demand_increase

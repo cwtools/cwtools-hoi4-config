@@ -205,6 +205,7 @@ alias[ai_strategy_rule:ai_strategy] = {
 alias[ai_strategy_rule:ai_strategy] = {
 	type = research_tech
 	id = <technology>
+	id = int
 	value = int
 }
 alias[ai_strategy_rule:ai_strategy] = {

@@ -48,6 +48,17 @@ alias[trigger:has_available_resources_in_country] = {
 	amount = int_variable_field
 }
 
+## scope = country
+alias[trigger:has_resources_rights] = {
+	state = scope[state]
+	state = <state>
+	## cardinality = 0..1
+	resources = {
+		## cardinality = 1..inf
+		<resource>
+	}
+}
+
 # --------------------- #
 # -- Character stuff -- #
 # --------------------- #

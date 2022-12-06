@@ -2764,6 +2764,11 @@ alias[effect:give_resource_rights] = {
 	receiver = scope[country]
 	state = <state>
 	state = scope[state]
+	## cardinality = 0..1
+	resources = {
+		## cardinality = 1..inf
+		<resource>
+	}
 }
 
 ### Remove resource right to state for scope country. remove_resource_rights = ID.

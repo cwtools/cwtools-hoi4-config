@@ -867,6 +867,8 @@ alias[effect:add_building_construction] = {
 		## cardinality = 0..1
 		limit_to_victory_point = int
 		## cardinality = 0..1
+		limit_to_border_country = enum[country_tags]
+		## cardinality = 0..1
 		level = int_variable_field
 	}
 	province = {

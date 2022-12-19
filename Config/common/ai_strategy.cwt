@@ -424,6 +424,7 @@ enums = {
 		railway_gun_divisions_ratio
 		naval_invasion_focus
 		naval_invasion_supremacy_weight
+		avoid_starting_wars
 	}
 	enum[pp_strats] = {
 		pp_spend_amount

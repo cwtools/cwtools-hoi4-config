@@ -406,7 +406,14 @@ alias[effect:set_nationality] = {
 ### Transfers scoped character from PREV country to target
 ## scope = { character }
 alias[effect:set_nationality] = scope[country]
+
+### Transfers scoped character from PREV country to target
+## scope = { character }
+alias[effect:set_nationality] = {
+	target_country = scope[country]
 	target_country = enum[country_tags]
+}
+
 ### Transfers scoped character from PREV country to target
 ## scope = { character }
 alias[effect:set_nationality] = enum[country_tags]

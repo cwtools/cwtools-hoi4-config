@@ -44,6 +44,13 @@ alias[trigger:power_balance_weekly_change] = {
     value = float[-1..1]
 }
 
+### Checks if country has specific balance of power side active.
+## scope = country
+alias[trigger:is_power_balance_side_active] = {
+    id = <balance_of_power>
+    side = value[bop_side]
+}
+
 ### Check if division has this battalion as majority in template
 ## scope = any
 alias[trigger:division_has_majority_template] = <unit>

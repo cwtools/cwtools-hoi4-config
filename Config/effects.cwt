@@ -735,6 +735,14 @@ alias[effect:puppet] = scope[country]
 ## scope = country
 alias[effect:puppet] = enum[country_tags]
 
+### Puppets specified country.
+## scope = country
+alias[effect:puppet] = {
+	target = scope[country]
+	target = enum[country_tags]
+	end_wars = bool
+}
+
 ### Set controller for state.
 ## scope = country
 alias[effect:set_state_controller] = scope[state]

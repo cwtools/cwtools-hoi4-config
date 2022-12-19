@@ -78,3 +78,7 @@ alias[trigger:num_divisions_in_states] = {
         <unit>
     }
 }
+
+### Check if tag has war with major
+## scope = country
+alias[trigger:has_war_with_major] = bool

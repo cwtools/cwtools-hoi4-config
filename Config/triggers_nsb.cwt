@@ -59,6 +59,16 @@ alias[trigger:has_resources_rights] = {
 	}
 }
 
+## scope = state
+alias[trigger:has_resources_rights] = {
+	receiver = enum[country_tags]
+	## cardinality = 0..1
+	resources = {
+		## cardinality = 1..inf
+		<resource>
+	}
+}
+
 # --------------------- #
 # -- Character stuff -- #
 # --------------------- #

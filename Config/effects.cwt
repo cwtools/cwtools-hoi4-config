@@ -812,6 +812,11 @@ alias[effect:build_railway] = {
 	level = int[1..5]
 	start_province = enum[provinces]
 	target_province = enum[provinces]
+	## cardinality = 0..1
+	path = {
+		## cardinality = 1..inf
+		enum[provinces]
+	}
 	### Option 3: Specify start & end state IDs. It will pick provinces with the best node (capital > nodes > naval ) start_state = 50 target_state = 100
 	### Option 2: Specify start & end province IDs. It will pick the shortest path. If provinces are not valid and if fallback = yes it will use states of those provs and use in option 3.start_province = 42 target_province = 84
 	### Option 1: List of provinces to draw railways. If fallback = yes uses start and end provinces of the path as fallback in option 2. path = { 10 20 30 40 }.
@@ -829,6 +834,11 @@ alias[effect:build_railway] = {
 	level = int[1..5]
 	start_state = <state>
 	target_state = <state>
+	## cardinality = 0..1
+	path = {
+		## cardinality = 1..inf
+		enum[provinces]
+	}
 	### Option 3: Specify start & end state IDs. It will pick provinces with the best node (capital > nodes > naval ) start_state = 50 target_state = 100
 	### Option 2: Specify start & end province IDs. It will pick the shortest path. If provinces are not valid and if fallback = yes it will use states of those provs and use in option 3.start_province = 42 target_province = 84
 	### Option 1: List of provinces to draw railways. If fallback = yes uses start and end provinces of the path as fallback in option 2. path = { 10 20 30 40 }.

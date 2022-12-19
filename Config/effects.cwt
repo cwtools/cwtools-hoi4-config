@@ -1778,9 +1778,9 @@ alias[effect:set_autonomy] = {
 	## cardinality = 0..1
 	freedom_level = float[0..1]
 	## cardinality = 0..1
-	end_wars = no
+	end_wars = bool
 	## cardinality = 0..1
-	end_civil_wars = no
+	end_civil_wars = bool
 }
 
 ### Makes autonomy of specified level and country.
@@ -1793,9 +1793,9 @@ alias[effect:set_autonomy] = {
 	## cardinality = 0..1
 	freedom_level = float[0..1]
 	## cardinality = 0..1
-	end_wars = no
+	end_wars = bool
 	## cardinality = 0..1
-	end_civil_wars = no
+	end_civil_wars = bool
 
 }
 
@@ -1806,9 +1806,9 @@ alias[effect:set_autonomy] = {
 	target = enum[country_tags]
 	freedom_level = float[0..1]
 	## cardinality = 0..1
-	end_wars = no
+	end_wars = bool
 	## cardinality = 0..1
-	end_civil_wars = no
+	end_civil_wars = bool
 
 }
 

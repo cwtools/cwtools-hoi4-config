@@ -58,3 +58,23 @@ alias[trigger:division_has_majority_template] = <unit>
 ### Check if division has this battalion in template
 ## scope = any
 alias[trigger:division_has_battalion_in_template] = <unit>
+
+### Checks if states have divisions
+## scope = country
+alias[trigger:num_divisions_in_states] = {
+    count = int
+    states = {
+        ## cardinality = ~1..inf
+        <state>
+    }
+    ## cardinality = 0..1
+    types = {
+        ## cardinality = ~1..inf
+        <unit>
+    }
+    ## cardinality = 0..1
+    exclude = {
+        ## cardinality = ~1..inf
+        <unit>
+    }
+}

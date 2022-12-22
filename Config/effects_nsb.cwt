@@ -282,6 +282,8 @@ alias[effect:add_advisor_role] = {
 		modifier = {
 			alias_name[modifier] = alias_match_left[modifier]
 		}
+		## cardinality = 0..1
+		can_be_fired = bool
 	}
 }
 

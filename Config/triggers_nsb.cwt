@@ -317,3 +317,7 @@ alias[trigger:any_country_with_core] = {
 	tooltip = localisation
 	alias_name[trigger] = alias_match_left[trigger]
 }
+
+### Check if character has specific advisor role
+## scope = character
+alias[trigger:has_advisor_role] = enum[allowed_advisor_role]

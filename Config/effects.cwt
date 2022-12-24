@@ -1595,6 +1595,9 @@ alias[effect:show_ideas_tooltip] = value[advisor_token]
 ## scope = country
 alias[effect:show_unit_leaders_tooltip] = <character>
 
+## scope = country
+alias[effect:show_unit_leaders_tooltip] = value[variable]
+
 ### Creates a new equipment variant.
 ## scope = country
 alias[effect:create_equipment_variant] = {

@@ -142,4 +142,13 @@ enums = {
 		high_command
 		second_in_command
 	}
+
+	enum[sabotaged_resources_var] = {
+		sabotaged_oil
+		sabotaged_aluminium
+		sabotaged_rubber
+		sabotaged_tungsten
+		sabotaged_steel
+		sabotaged_chromium
+	}
 }

@@ -466,6 +466,9 @@ idea = {
 			ledger = enum[ledgers]
 		}
 	}
+	### DO NOT REMOVE - these empty entries are needed for amount_taken_ideas to work correctly
+	## cardinality = 0..inf
+	enum[allowed_advisor_role] = { }
 }
 
 enums = {

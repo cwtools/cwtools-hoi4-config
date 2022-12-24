@@ -60,6 +60,8 @@ country_tag_alias = {
 	}
 	## cardinality = 0..1
 	fallback = enum[explicit_country_tags]
+	## cardinality = 0..1
+	fallback = enum[country_tags]
 }
 
 enums = {

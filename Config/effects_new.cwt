@@ -423,6 +423,9 @@ alias[effect:every_occupied_country] = {
 
 ###Adds resistance target to the scoped state.
 ## scopes = { STATE }
+alias[effect:add_resistance_target] = variable_field
+###Adds resistance target to the scoped state.
+## scopes = { STATE }
 alias[effect:add_resistance_target] = {
 	amount = variable_field
 	## cardinality = ~0..1

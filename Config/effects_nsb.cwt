@@ -240,9 +240,9 @@ alias[effect:add_advisor_role] = {
 	activate = bool
 	advisor = {
 		slot = value[character_advisor_slot]
-		## cardinality = 0..1
-		desc = localisation
 		idea_token = value_set[advisor_token]
+		## cardinality = 0..1
+		name = localisation
 		## cardinality = 0..1
 		desc = localisation
 		## replace_scope = { this = character root = country }
@@ -584,4 +584,89 @@ alias[effect:create_railway_gun] = {
 	### optional, created in capital otherwise
 	## cardinality = 0..1
 	location = enum[provinces] 
+}
+
+### Generate character
+## scopes = { country }
+alias[effect:generate_character] = {
+	token_base = value_set[advisor_token]
+	advisor = {
+		slot = value[character_advisor_slot]
+		## cardinality = 0..1
+		name = localisation
+		## cardinality = 0..1
+		desc = localisation
+		## replace_scope = { this = character root = country }
+		## cardinality = 0..1
+		allowed = {
+			## cardinality = ~1..inf
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+		## replace_scope = { this = character root = country }
+		## cardinality = 0..1
+		visible = {
+			## cardinality = ~1..inf
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+		## replace_scope = { this = character root = country }
+		## cardinality = 0..1
+		available = {
+			## cardinality = ~1..inf
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+		### Sets advsior effects.
+		## cardinality = ~1..1
+		traits = {
+			## cardinality = 0..inf
+			<country_leader_trait>
+		}
+		## cardinality = 0..1
+		ledger = enum[ledgers]
+		### overrides default cost of advisor
+		## cardinality = 0..1
+		cost = int
+		### cost to remove advisor, -1 prevents removal
+		## cardinality = 0..1
+		removal_cost = int
+		## cardinality = 0..1
+		## replace_scope = { this = character root = country }
+		ai_will_do = {
+			enum[base_factor] = variable_field
+			alias_name[modifier_rule] = alias_match_left[modifier_rule]
+		}
+		## replace_scope = { this = character root = country }
+		## cardinality = 0..inf
+		on_add = {
+			alias_name[effect] = alias_match_left[effect]
+		}
+		## replace_scope = { this = character root = country }
+		## cardinality = 0..inf
+		on_remove = {
+			alias_name[effect] = alias_match_left[effect]
+		}
+		### While it is used in vanilla and doesn't throw errors, I can't get it to work reliably so I suspect there is some hard-coded strangeness going on here.
+		## replace_scope = { this = character root = country }
+		## cardinality = 0..1
+		do_effect = {
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+		### Modifiers that are applied to tag while the advisor is active.
+		## replace_scope = { this = character root = country }
+		## cardinality = 0..1
+		modifier = {
+			alias_name[modifier] = alias_match_left[modifier]
+		}
+		## cardinality = 0..1
+		can_be_fired = bool
+	}
+	### Should have at least one portrait defined
+	portraits = {
+		### Portrait(s), army and/or civilian
+		## cardinality = ~1..2
+		enum[character_portrait_types] = {
+			### Portrait(s), large (leader) and/or small (advisor)
+			## cardinality = ~1..2
+			enum[character_portrait_sizes] = scalar
+		}
+	}
 }

@@ -895,5 +895,8 @@ values = {
 		### Array of countries with cores on the scope state.
 		core_countries
 
+		# MISC
+		### Variable used in on_actions
+		character
 	}
 }

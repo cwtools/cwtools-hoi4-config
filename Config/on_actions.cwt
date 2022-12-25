@@ -152,12 +152,18 @@ types = {
         ## type_key_filter = on_daily
         ###
         subtype[on_daily] = { }
+        ###
+        subtype[on_daily[country_tags]] = { }
         ## type_key_filter = on_weekly
         ###
         subtype[on_weekly] = { }
+        ###
+        subtype[on_weekly[country_tags]] = { }
         ## type_key_filter = on_monthly
         ###
         subtype[on_monthly] = { }
+        ###
+        subtype[on_monthly_enum[country_tags]] = { }
         ## type_key_filter = on_yearly
 		###
 		subtype[on_yearly] = { }
@@ -263,8 +269,6 @@ types = {
 		## type_key_filter = on_add_history
 		###
         subtype[on_add_history] = { }
-        ###
-        subtype[on_monthly_enum[country_tags]] = { }
     }
 }
 on_action = {
@@ -970,6 +974,20 @@ on_action = {
         }
     }
     ## replace_scope = { THIS = country ROOT = country }
+    subtype[on_daily_enum[country_tags]] = {
+        ## cardinality = 0..1
+        random_events = {
+            ## cardinality = 0..inf
+            int = 0
+            ## cardinality = 0..inf
+            int = <event.country_event>
+        }
+        ## cardinality = 0..1
+        effect = {
+            alias_name[effect] = alias_match_left[effect]
+        }
+	}
+    ## replace_scope = { THIS = country ROOT = country }
     subtype[on_weekly] = {
         ## cardinality = 0..1
         random_events = {
@@ -983,6 +1001,20 @@ on_action = {
             alias_name[effect] = alias_match_left[effect]
         }
     }
+    ## replace_scope = { THIS = country ROOT = country }
+    subtype[on_weekly_enum[country_tags]] = {
+        ## cardinality = 0..1
+        random_events = {
+            ## cardinality = 0..inf
+            int = 0
+            ## cardinality = 0..inf
+            int = <event.country_event>
+        }
+        ## cardinality = 0..1
+        effect = {
+            alias_name[effect] = alias_match_left[effect]
+        }
+	}
     ## replace_scope = { THIS = country ROOT = country }
     subtype[on_monthly] = {
         ## cardinality = 0..1

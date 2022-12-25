@@ -53,8 +53,8 @@ types = {
 decision_category = {
 	## cardinality = 0..inf
 	icon = scalar
-	## cardinality = 0..inf
 	## replace_scope = { this = country root = country }
+	## cardinality = 0..inf
 	icon = {
 		key = scalar
 		trigger = {
@@ -182,10 +182,10 @@ decision_category = {
 }
 
 decision = {
-	## cardinality = 0..1
-	icon = scalar
 	## cardinality = 0..inf
+	icon = scalar
 	## replace_scope = { this = country root = country }
+	## cardinality = 0..inf
 	icon = {
 		key = scalar
 		trigger = {

@@ -251,7 +251,20 @@ types = {
 		## type_key_filter = on_stage_coup
 		###
 		subtype[on_stage_coup] = { }
-
+		## type_key_filter = on_peaceconference_started
+		###
+        subtype[on_peaceconference_started] = { }
+		## type_key_filter = on_unit_leader_promote_from_ranks_veteran
+		###
+        subtype[on_unit_leader_promote_from_ranks_veteran] = { }
+		## type_key_filter = on_unit_leader_promote_from_ranks_green
+		###
+        subtype[on_unit_leader_promote_from_ranks_green] = { }
+		## type_key_filter = on_add_history
+		###
+        subtype[on_add_history] = { }
+        ###
+        subtype[on_monthly_enum[country_tags]] = { }
     }
 }
 on_action = {
@@ -984,6 +997,20 @@ on_action = {
             alias_name[effect] = alias_match_left[effect]
         }
 	}
+    ## replace_scope = { THIS = country ROOT = country }
+    subtype[on_monthly_enum[country_tags]] = {
+        ## cardinality = 0..1
+        random_events = {
+            ## cardinality = 0..inf
+            int = 0
+            ## cardinality = 0..inf
+            int = <event.country_event>
+        }
+        ## cardinality = 0..1
+        effect = {
+            alias_name[effect] = alias_match_left[effect]
+        }
+	}
 	subtype[on_yearly] = {
         ## cardinality = 0..1
         random_events = {
@@ -1415,4 +1442,33 @@ on_action = {
             alias_name[effect] = alias_match_left[effect]
         }
 	}
+
+    ## replace_scope = { ROOT = country FROM = country }
+    subtype[on_peaceconference_started] = {
+        ## cardinality = 0..1
+        effect = {
+            alias_name[effect] = alias_match_left[effect]
+        }        
+    }
+
+    subtype[on_unit_leader_promote_from_ranks_veteran] = {
+        ## cardinality = 0..1
+        effect = {
+            alias_name[effect] = alias_match_left[effect]
+        }        
+    }
+
+    subtype[on_unit_leader_promote_from_ranks_green] = {
+        ## cardinality = 0..1
+        effect = {
+            alias_name[effect] = alias_match_left[effect]
+        }        
+    }
+
+    subtype[on_add_history] = {
+        ## cardinality = 0..1
+        effect = {
+            alias_name[effect] = alias_match_left[effect]
+        }        
+    }
 }

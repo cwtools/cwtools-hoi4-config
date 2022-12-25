@@ -1357,7 +1357,7 @@ alias[effect:set_equipment_fraction] = float
 
 ### Adds country threat.
 ## scope = country
-alias[effect:add_threat] = float[-100..100]
+alias[effect:add_threat] = variable_field
 
 ### Sends to target scope specified amount of equipment.
 ## scope = country
@@ -1446,7 +1446,7 @@ alias[effect:create_import] = {
 ### Adds country threat.
 ## scope = country
 alias[effect:add_named_threat] = {
-	threat = float
+	threat = variable_field
 	name = localisation
 }
 

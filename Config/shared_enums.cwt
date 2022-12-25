@@ -143,15 +143,6 @@ enums = {
 		second_in_command
 	}
 
-	enum[sabotaged_resources_var] = {
-		sabotaged_oil
-		sabotaged_aluminium
-		sabotaged_rubber
-		sabotaged_tungsten
-		sabotaged_steel
-		sabotaged_chromium
-	}
-
 	enum[KR_building_target_states_var] = {
 		building_target_states_1
 		building_target_states_2

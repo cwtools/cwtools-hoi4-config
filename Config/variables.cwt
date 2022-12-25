@@ -564,6 +564,9 @@ values = {
 		### (Trigger) Checks for state strategic value.
 		state_strategic_value
 
+		### Sabotaged resource in state.
+		sabotaged_<resource>
+
 		### (Trigger) Uncapped_resistance_target temp variable can be used for getting resistance that that is not capped to 0-100
 		uncapped_resistance_target
 

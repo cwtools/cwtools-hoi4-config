@@ -32,6 +32,4 @@ dynamic_modifier = {
 	alias_keys_field[modifier] = variable_field
 	## cardinality = 0..inf
 	alias_keys_field[modifier] = localisation
-	## cardinality = 0..inf
-	alias_keys_field[modifier] = enum[sabotaged_resources_var]
 }

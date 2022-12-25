@@ -128,6 +128,9 @@ values = {
 		### Air intel against a target country. example GER.air_intel@ENG.
 		air_intel@scope[country]
 
+		### KR-specific variable to manage tag ambition areas
+		ambition_area_enum[country_tags]
+
 		### Army experience of a country.
 		army_experience
 

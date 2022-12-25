@@ -840,6 +840,11 @@ values = {
 
 		### Array of enemies at war with.
 		enemies
+		enemies^0
+		enemies^1
+		enemies^2
+		enemies^3
+		enemies^4
 
 		### Array of enemies at war with with allies.
 		enemies_of_allies

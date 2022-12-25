@@ -96,3 +96,11 @@ alias[trigger:has_railway_connection] = {
 	start_province = enum[provinces]
 	target_province = enum[provinces]
 }
+
+### Checks if country is a loser in peace conference
+## scope = country
+alias[trigger:pc_is_loser] = bool
+
+### Checks if country is a winner in peace conference
+## scope = country
+alias[trigger:pc_is_winner] = bool

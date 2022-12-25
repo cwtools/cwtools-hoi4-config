@@ -70,3 +70,8 @@ alias[effect:remove_power_balance_modifier] = {
 alias[effect:remove_all_power_balance_modifiers] = {
     id = <balance_of_power>
 }
+
+## scope = character
+alias[effect:add_random_valid_trait_from_unit] = {
+    character = <character>
+}

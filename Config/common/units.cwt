@@ -384,6 +384,7 @@ enums = {
 		strategic_bomber
 		suicide
 		tactical_bomber
+		maritime_patrol_plane
 	}
 	enum[ship_units] = {
 		battle_cruiser

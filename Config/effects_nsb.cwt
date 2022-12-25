@@ -310,6 +310,17 @@ alias[effect:add_advisor_role] = {
 	}
 }
 
+## scope = { character country }
+alias[effect:remove_advisor_role] = {
+	### required in country scope, optional in character scope
+	## cardinality = 0..1
+	character = <character>
+	### required in country scope, optional in character scope
+	## cardinality = 0..1
+	character = value[variable]
+	slot = value[character_advisor_slot]
+}
+
 ### removes character from all roles and availability
 ## scope = { any }
 alias[effect:retire_character] = <character>
@@ -590,12 +601,16 @@ alias[effect:create_railway_gun] = {
 ## scopes = { country }
 alias[effect:generate_character] = {
 	token_base = value_set[advisor_token]
+	## cardinality = 0..1
+	name = localisation
 	advisor = {
 		slot = value[character_advisor_slot]
 		## cardinality = 0..1
 		name = localisation
 		## cardinality = 0..1
 		desc = localisation
+		## cardinality = 0..1
+		idea_token = value_set[variable]
 		## replace_scope = { this = character root = country }
 		## cardinality = 0..1
 		allowed = {

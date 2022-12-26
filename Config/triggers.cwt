@@ -1620,10 +1620,6 @@ alias[trigger:has_variable] = value[variable]
 ## scope = any
 alias[trigger:has_variable] = variable_field
 
-### Checks if a variable exists in a scope.
-## scope = any
-alias[trigger:has_variable] = enum[KR_building_target_states_var]
-
 ### Check unit leader has specified ID. Don't localize this. Tooltip only for debug.
 ## scope = { unit_leader combat }
 alias[trigger:has_id] = int

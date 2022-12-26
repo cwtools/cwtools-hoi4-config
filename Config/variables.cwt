@@ -895,32 +895,6 @@ values = {
 		character
 
 		### KR-specifc variables
-		empowered_trade_unions
-		empowered_executive
-		empowered_legislative
-		generic_army_chief_off
-		generic_army_chief_def
-		generic_navy_chief_decisive_bat
-		generic_navy_anti_submarine
-		generic_air_close_air_sup
-		generic_air_chief_all_weather
-		generic_army_art
-		generic_army_log
-		generic_navy_fleet_log
-		generic_air_combat_trainer
-		enemies^0
-		enemies^1
-		enemies^2
-		enemies^3
-		enemies^4
-		LEC_voters^0
-		core_countries^0
-		paired_impassable:owner
-		owner:overlord
-		controller:overlord
-		old_ideology_token
-		capital:distance_to@GER.capital
 		is_in_coalition_with_@token:<ideology>
-		highest_scored_country
 	}
 }

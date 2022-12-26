@@ -142,22 +142,4 @@ enums = {
 		high_command
 		second_in_command
 	}
-
-	enum[KR_building_target_states_var] = {
-		building_target_states_1
-		building_target_states_2
-		building_target_states_3
-		building_target_states_4
-		building_target_states_5
-		building_target_states_6
-		building_target_states_7
-		building_target_states_8
-		building_target_states_9
-		building_target_states_10
-		building_target_states_11
-		building_target_states_12
-		building_target_states_13
-		building_target_states_14
-		building_target_states_15
-	}
 }

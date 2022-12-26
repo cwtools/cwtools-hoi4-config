@@ -21,9 +21,13 @@ oob = {
 		## cardinality = 0..1
 		division_names_group = <division_name>
 		## cardinality = 0..1
+		override_model = <entity>
+		## cardinality = 0..1
 		template_counter = int
 		## cardinality = 0..1
 		is_locked = bool
+		## cardinality = 0..1
+		division_cap = int
 		regiments = {
 			## cardinality = 1..25
 			<unit> = { x = int[0..5] y = int[0..5] }

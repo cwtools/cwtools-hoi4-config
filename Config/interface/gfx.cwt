@@ -16,6 +16,10 @@ types = {
 		subtype[textSpriteType] = { }
 		## type_key_filter = progressbartype
 		subtype[progressbartype] = { }
+		## type_key_filter = pieChartType
+		subtype[pieChartType] = { }
+		## type_key_filter = circularProgressBarType
+		subtype[circularProgressBarType] = { }
 	}
 }
 
@@ -69,6 +73,8 @@ spriteType = {
 	pause_on_loop = float
 	## cardinality = 0..1
 	alwaystransparent = bool
+	## cardinality = 0..1
+	generate_mip_maps = bool
 	subtype[spriteType] = {
 		textureFile = filepath
 	}
@@ -81,6 +87,8 @@ spriteType = {
 		## cardinality = 0..1
 		tilingCenter = bool
 		size = { x = int y = int }
+		## cardinality = 0..1
+		animation_rate_spf = int
 	}
 	subtype[maskedShieldType] = {
 		textureFile1 = scalar
@@ -88,6 +96,8 @@ spriteType = {
 	}
 	subtype[textSpriteType] = {
 		textureFile = filepath
+		## cardinality = 0..1
+		clicksound = click
 	}
 	subtype[progressbartype] = {
 		textureFile1 = scalar
@@ -103,5 +113,15 @@ spriteType = {
 			float
 		}
 		steps = int
+	}
+	subtype[pieChartType] = {
+		size = int
+	}
+	subtype[circularProgressBarType] = {
+		textureFile1 = scalar
+		textureFile2 = scalar
+		size = int
+		rotation = int
+		amount = int
 	}
 }

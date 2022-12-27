@@ -191,7 +191,7 @@ alias[effect:add_naval_commander_role] = {
 	legacy_id = value_set[unit_leader_ids]
 }
 
-## scope = { character country }
+## scope = { character country unit_leader }
 alias[effect:add_country_leader_role] = {
 	### required in country scope, optional in character scope
 	## cardinality = 0..1

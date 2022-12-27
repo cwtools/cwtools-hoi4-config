@@ -1468,6 +1468,14 @@ alias[effect:create_import] = {
 	exporter = enum[country_tags]
 }
 
+### Issues embargo on target country.
+## scope = country
+alias[effect:send_embargo] = scope[country]
+
+### Issues embargo on target country.
+## scope = country
+alias[effect:send_embargo] = enum[country_tags]
+
 ### Adds country threat.
 ## scope = country
 alias[effect:add_named_threat] = {

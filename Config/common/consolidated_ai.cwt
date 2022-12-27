@@ -254,12 +254,12 @@ ai_template = {
 
 			regiments = {
 				## cardinality = 1..25
-				<unit> = int
+				<unit> = [0..24]
 			}
 			## cardinality = 0..1
 			support = {
 				## cardinality = 0..5
-				<unit> = int
+				<unit> = [0..4]
 			}
 		}
 		allowed_types = {

@@ -585,17 +585,33 @@ alias[effect:division_template] = {
 	division_cap = int
 	regiments = {
 		## cardinality = 1..25
-		<unit> = { x = int[0..5] y = int[0..5] }
+		<unit> = { x = int[0..4] y = int[0..4] }
 	}
 	## cardinality = 0..1
 	support = {
 		## cardinality = ~1..5
-		<unit> = { x = int[0..5] y = int[0..5] }
+		<unit> = { x = 0 y = int[0..4] }
 	}
 	## cardinality = 0..1
 	template_counter = int
 	## cardinality = 0..1
 	priority = int
+}
+
+### Adds units to a division template.
+## scope = country
+alias[effect:add_units_to_division_template] = {
+	template_name = localisation_inline
+	## cardinality = 0..1
+	regiments = {
+		## cardinality = 1..25
+		<unit> = int[0..24]
+	}
+	## cardinality = 0..1
+	support = {
+		## cardinality = ~1..5
+		<unit> = int[0..4]
+	}
 }
 
 ### Change the ideology of active leader.
@@ -2582,6 +2598,20 @@ alias[effect:cancel_border_war] = {
 alias[effect:set_division_template_lock] = {
 	division_template = localisation_inline
 	is_locked = bool
+}
+
+### Set cap for a division template.
+## scope = country
+alias[effect:set_division_template_cap] = {
+	division_template = localisation_inline
+	division_cap = int
+}
+
+### Set division template to allow force recruiting.
+## scope = country
+alias[effect:set_division_force_allow_recruiting] = {
+	division_template = localisation_inline
+	force_allow_recruiting = bool
 }
 
 ### Delete a template and its units.

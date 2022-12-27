@@ -34,12 +34,12 @@ oob = {
 		division_cap = int
 		regiments = {
 			## cardinality = 1..25
-			<unit> = { x = int[0..5] y = int[0..5] }
+			<unit> = { x = int[0..4] y = int[0..4] }
 		}
 		## cardinality = 0..1
 		support = {
 			## cardinality = ~1..5
-			<unit> = { x = int[0..5] y = int[0..5] }
+			<unit> = { x = 0 y = int[0..5] }
 		}
 		## cardinality = 0..1
 		template_counter = int

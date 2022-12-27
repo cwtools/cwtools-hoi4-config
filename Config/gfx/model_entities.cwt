@@ -69,6 +69,9 @@ entity = {
 	pdxmesh = "empty_mesh"
 
 	## cardinality = 0..1
+	version = int
+
+	## cardinality = 0..1
 	cull_radius = float
 
 	## cardinality = 0..1

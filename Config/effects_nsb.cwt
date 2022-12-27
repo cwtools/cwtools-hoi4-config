@@ -331,6 +331,10 @@ alias[effect:retire_character] = <character>
 ## scope = { any }
 alias[effect:retire_character] = value[variable]
 
+### removes character from all roles and availability
+## scope = { any }
+alias[effect:retire_character] = scope[character]
+
 ### renames character
 ## scope = { character }
 alias[effect:set_character_name] = localisation

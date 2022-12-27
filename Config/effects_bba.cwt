@@ -75,3 +75,13 @@ alias[effect:remove_all_power_balance_modifiers] = {
 alias[effect:add_random_valid_trait_from_unit] = {
     character = <character>
 }
+## scope = { country character }
+alias[effect:set_can_be_fired_in_advisor_role] = {
+	## cardinality = 0..1
+    character = <character>
+	## cardinality = 0..1
+	character = scope[character]
+	## cardinality = 0..1
+	slot = enum[allowed_advisor_role]
+	value = bool
+}

@@ -192,6 +192,11 @@ decision = {
 			alias_name[trigger] = alias_match_left[trigger]
 		}
 	}
+
+	## cardinality = 0..1
+	cosmetic_tag = enum[country_tags]
+	## cardinality = 0..1
+	cosmetic_ideology = <ideology>
 	## cardinality = 0..1
 	priority = int
 	## cardinality = 0..1

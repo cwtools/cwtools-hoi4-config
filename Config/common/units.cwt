@@ -4,6 +4,7 @@ types = {
 		path = "game/common/units"
 		path_strict = yes
 		subtype[air_unit] = {
+			type = enum[air_units]
 			type = {
 				## cardinality = 1..10
 				enum[air_units]
@@ -180,6 +181,7 @@ unit = {
 			## cardinality = 0..1
 			value[bba_air_variants] = int
 		}
+		type = enum[air_units]
 		type = {
 			## cardinality = ~1..inf
 			enum[air_units]

@@ -264,6 +264,8 @@ alias[effect:add_country_leader_role] = {
 		}
 		## cardinality = 0..1
 		expire = datetime_field
+		## cardinality = 0..1
+		id = int
 	}
 }
 

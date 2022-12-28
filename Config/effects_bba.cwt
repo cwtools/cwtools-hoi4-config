@@ -41,6 +41,8 @@ alias[effect:remove_power_balance_side] = {
 alias[effect:add_power_balance_value] = {
 	id = <balance_of_power>
 	value = float[-1..1]
+	## cardinality = 0..1
+	tooltip_side = localisation
 }
 
 ### Change GFX of one of the BoP sides

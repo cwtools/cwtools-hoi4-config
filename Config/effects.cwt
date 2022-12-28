@@ -765,6 +765,7 @@ alias[effect:puppet] = {
 	target = scope[country]
 	target = enum[country_tags]
 	end_wars = bool
+	end_civil_wars = bool
 }
 
 ### Set controller for state.

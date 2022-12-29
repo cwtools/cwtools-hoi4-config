@@ -115,12 +115,31 @@ alias[trigger:has_character] = <character>
 ###Returns true if scoped country has character.
 ## scope = country
 alias[trigger:has_character] = value[variable]
+###Returns true if scoped country has character.
+## scope = country
+alias[trigger:has_character] = value[event_target]
+###Returns true if scoped country has character.
+## scope = country
+alias[trigger:has_character] = value[global_event_target]
+###Returns true if scoped country has character.
+## scope = country
+alias[trigger:has_character] = scope[character]
+
 ### Checks whether the character matches the character ID
 ## scope = { character unit_leader }
 alias[trigger:is_character] = <character>
-### Checks whether the character matches the character ID
+### Checks whether the character matches the variable
 ## scope = { character unit_leader }
 alias[trigger:is_character] = value[variable]
+### Checks whether the character matches the event target
+## scope = { character unit_leader }
+alias[trigger:is_character] = value[event_target]
+### Checks whether the character matches the global event target
+## scope = { character unit_leader }
+alias[trigger:is_character] = value[global_event_target]
+### Checks whether the character matches the scope
+## scope = { character unit_leader }
+alias[trigger:is_character] = scope[character]
 
 ###Check if country has leader with specified ID. Don't localize this. Tooltip only for debug.
 ## scope = country
@@ -129,6 +148,9 @@ alias[trigger:has_country_leader] = {
 	ruling_only = bool
 	character = <character>
 	character = value[variable]
+	character = value[event_target]
+	character = value[global_event_target]
+	character = scope[character]
 }
 ###Check if country has leader with specified ID. Don't localize this. Tooltip only for debug.
 ## scope = country
@@ -147,18 +169,34 @@ alias[trigger:has_country_leader] = {
 ###Check if country has character with specified ID.
 ## scope = country
 alias[trigger:has_country_leader] = <character>
-
 ###Check if country has character with specified ID.
 ## scope = country
 alias[trigger:has_country_leader] = value[variable]
+###Check if country has character with specified ID.
+## scope = country
+alias[trigger:has_country_leader] = value[event_target]
+###Check if country has character with specified ID.
+## scope = country
+alias[trigger:has_country_leader] = value[global_event_target]
+###Check if country has character with specified ID.
+## scope = country
+alias[trigger:has_country_leader] = scope[character]
 
 ###Can the character be a country leader.
 ## scope = country
 alias[trigger:can_be_country_leader] = <character>
-
 ###Can the character be a country leader.
 ## scope = country
 alias[trigger:can_be_country_leader] = value[variable]
+###Can the character be a country leader.
+## scope = country
+alias[trigger:can_be_country_leader] = value[event_target]
+###Can the character be a country leader.
+## scope = country
+alias[trigger:can_be_country_leader] = value[global_event_target]
+###Can the character be a country leader.
+## scope = country
+alias[trigger:can_be_country_leader] = scope[character]
 
 ###Can the character be a country leader.
 ## scope = character

@@ -1783,11 +1783,11 @@ alias[trigger:logistics_skill_level] = int
 alias[trigger:planning_skill_level] = int
 
 ### Is_leading_army_group = yes/no - Checks if the current unit leader is leading an army group (not single army).
-## scope = { unit_leader combat }
+## scope = { unit_leader combat character }
 alias[trigger:is_leading_army_group] = bool
 
 ### Is_leading_army = yes/no - Checks if the current unit leader is leading a single army (not army group).
-## scope = { unit_leader combat }
+## scope = { unit_leader combat character }
 alias[trigger:is_leading_army] = bool
 
 ### Prints all variables in scope and temp variables to a file.

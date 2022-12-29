@@ -33,5 +33,11 @@ values = {
 		subject_states
 		### Arguments for debugging commands
 		args
+
+		### Array of current political advisors
+		political_advisor
+		
+		### Array of current high command advisors
+		high_command
 	}
 }

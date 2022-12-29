@@ -890,9 +890,24 @@ values = {
 		### Array of countries with cores on the scope state.
 		core_countries
 
-		# MISC
+		# Character variables
 		### Variable used in on_actions
 		character
+
+		### Variable to access current country leader
+		country_leader
+
+		### Variable to access current theorist
+		theorist
+		
+		### Variable to access current army chief
+		army_chief
+		
+		### Variable to access current navy chief
+		navy_chief
+		
+		### Variable to access current air chief
+		air_chief
 
 		### KR-specifc variables
 		is_in_coalition_with_@token:<ideology>

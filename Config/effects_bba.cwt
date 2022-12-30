@@ -97,3 +97,22 @@ alias[effect:set_can_be_fired_in_advisor_role] = {
 	slot = enum[allowed_advisor_role]
 	value = bool
 }
+
+## scope = country
+## push_scope = unit
+alias[effect:every_country_division] = {
+    ## cardinality = 0..1
+	limit = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	## cardinality = 0..1
+	tooltip = localisation
+	alias_name[effect] = alias_match_left[effect]
+}
+
+### Change divisions in scope to selected template
+## scope = unit
+alias[effect:change_division_template] = {
+	division_template = localisation_inline
+}
+

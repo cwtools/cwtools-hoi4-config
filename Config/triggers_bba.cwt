@@ -52,11 +52,11 @@ alias[trigger:is_power_balance_side_active] = {
 }
 
 ### Check if division has this battalion as majority in template
-## scope = any
+## scope = unit
 alias[trigger:division_has_majority_template] = <unit>
 
 ### Check if division has this battalion in template
-## scope = any
+## scope = unit
 alias[trigger:division_has_battalion_in_template] = <unit>
 
 ### Checks if states have divisions

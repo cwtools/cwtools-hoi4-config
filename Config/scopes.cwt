@@ -106,4 +106,7 @@ scopes = {
 	Invalid = {
 		aliases = { invalid InvalidScope }
 	}
+	Unit = {
+		aliases = { unit }
+	}
 }

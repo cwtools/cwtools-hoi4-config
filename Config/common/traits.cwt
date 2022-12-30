@@ -245,6 +245,7 @@ unit_leader_trait = {
 		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	}
 	### Triggers to enable gaining XP for this trait
+	## push_scope = unit
 	## cardinality = 0..1
 	unit_trigger = {
 		alias_name[trigger] = alias_match_left[trigger]

@@ -765,6 +765,7 @@ alias[effect:puppet] = {
 	target = scope[country]
 	target = enum[country_tags]
 	end_wars = bool
+	## cardinality = 0..1
 	end_civil_wars = bool
 }
 

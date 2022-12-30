@@ -132,4 +132,14 @@ enums = {
 		large_plane_airframe
 		large_plane_maritime_patrol_plane_airframe
 	}
+
+	enum[allowed_advisor_role] = {
+		political_advisor
+		theorist
+		army_chief
+		navy_chief
+		air_chief
+		high_command
+		second_in_command
+	}
 }

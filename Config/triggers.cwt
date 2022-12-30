@@ -496,6 +496,15 @@ alias[trigger:is_guaranteed_by] = scope[country]
 ## scope = country
 alias[trigger:is_guaranteed_by] = enum[country_tags]
 
+### Check if embargoed by specified country.
+## scope = country
+alias[trigger:is_embargoed_by] = enum[country_tags]
+
+### Check if embargoed by specified country.
+## scope = country
+alias[trigger:is_embargoed_by] = enum[country_tags]
+
+
 ### Check if country has guaranteed specified country.
 ## scope = country
 alias[trigger:has_guaranteed] = scope[country]
@@ -1399,11 +1408,18 @@ alias[trigger:has_relation_modifier] = {
 ## scope = state
 alias[trigger:any_province_building_level] = {
 	province = {
+		### Sets the scope to all provinces within the state
+		## cardinality = 1..inf
 		all_provinces = yes
+		### Limits the province scope to only border provinces
 		## cardinality = 0..1
 		limit_to_border = yes
+		### Limits the province scope to only coastal provinces
 		## cardinality = 0..1
 		limit_to_coastal = yes
+		### Limits the province scope to provinces with a naval base
+		## cardinality = 0..1
+		limit_to_naval_base = yes
 	}
 	province = {
 		## cardinality = 1..inf
@@ -1412,6 +1428,8 @@ alias[trigger:any_province_building_level] = {
 		limit_to_border = yes
 		## cardinality = 0..1
 		limit_to_coastal = yes
+		## cardinality = 0..1
+		limit_to_naval_base = yes
 	}
 	building = <building.provincial>
 	level = int
@@ -1553,12 +1571,12 @@ alias[trigger:num_units] = int
 alias[trigger:is_field_marshal] = bool
 
 ### Has unit leader flag been setCheck flag val date set and days since set.
-## scope = { unit_leader combat }
+## scope = { unit_leader combat character }
 ## severity = warning
 alias[trigger:has_unit_leader_flag] = value[leader_flag]
 
 ### Has unit leader flag been setCheck flag val date set and days since set.
-## scope = { unit_leader combat }
+## scope = { unit_leader combat character }
 ## severity = warning
 alias[trigger:has_unit_leader_flag] = {
 	flag = value[leader_flag]
@@ -1765,11 +1783,11 @@ alias[trigger:logistics_skill_level] = int
 alias[trigger:planning_skill_level] = int
 
 ### Is_leading_army_group = yes/no - Checks if the current unit leader is leading an army group (not single army).
-## scope = { unit_leader combat }
+## scope = { unit_leader combat character }
 alias[trigger:is_leading_army_group] = bool
 
 ### Is_leading_army = yes/no - Checks if the current unit leader is leading a single army (not army group).
-## scope = { unit_leader combat }
+## scope = { unit_leader combat character }
 alias[trigger:is_leading_army] = bool
 
 ### Prints all variables in scope and temp variables to a file.

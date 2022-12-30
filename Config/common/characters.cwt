@@ -243,6 +243,8 @@ character = {
 		advisor = {
 			slot = value[character_advisor_slot]
 			## cardinality = 0..1
+			name = localisation
+			## cardinality = 0..1
 			desc = localisation
 			idea_token = value_set[advisor_token]
 			## replace_scope = { this = character root = country }
@@ -309,6 +311,8 @@ character = {
 			modifier = {
 				alias_name[modifier] = alias_match_left[modifier]
 			}
+			## cardinality = 0..1
+			can_be_fired = bool
 		}
 	}
 	subtype[instanced] = {
@@ -465,6 +469,10 @@ character = {
 				advisor = {
 					slot = value[character_advisor_slot]
 					idea_token = value_set[advisor_token]
+					## cardinality = 0..1
+					name = localisation
+					## cardinality = 0..1
+					desc = localisation
 					## replace_scope = { this = character root = country }
 					## cardinality = 0..1
 					allowed = {
@@ -480,8 +488,6 @@ character = {
 					available = {
 						alias_name[trigger] = alias_match_left[trigger]
 					}
-					## cardinality = 0..1
-					name = localisation
 					### Sets advsior effects.
 					## cardinality = ~1..1
 					traits = {
@@ -529,6 +535,8 @@ character = {
 					modifier = {
 						alias_name[modifier] = alias_match_left[modifier]
 					}
+					## cardinality = 0..1
+					can_be_fired = bool
 				}
 			}
 		}

@@ -570,24 +570,48 @@ alias[effect:division_template] = {
 	## cardinality = 0..1
 	division_names_group = <division_name>
 	## cardinality = 0..1
+	override_model = <entity>
+	## cardinality = 0..1
 	is_locked = bool
+	## cardinality = 0..1
+	force_allow_recruiting = bool
+	## cardinality = 0..1
+	obsolete = bool
 	## cardinality = 0..1
 	is_fake_intel_division = bool
 	## cardinality = 0..1
 	force_allow_recruiting = bool
+	## cardinality = 0..1
+	division_cap = int
 	regiments = {
 		## cardinality = 1..25
-		<unit> = { x = int[0..5] y = int[0..5] }
+		<unit> = { x = int[0..4] y = int[0..4] }
 	}
 	## cardinality = 0..1
 	support = {
 		## cardinality = ~1..5
-		<unit> = { x = int[0..5] y = int[0..5] }
+		<unit> = { x = 0 y = int[0..4] }
 	}
 	## cardinality = 0..1
 	template_counter = int
 	## cardinality = 0..1
 	priority = int
+}
+
+### Adds units to a division template.
+## scope = country
+alias[effect:add_units_to_division_template] = {
+	template_name = localisation_inline
+	## cardinality = 0..1
+	regiments = {
+		## cardinality = 1..25
+		<unit> = int[0..24]
+	}
+	## cardinality = 0..1
+	support = {
+		## cardinality = ~1..5
+		<unit> = int[0..4]
+	}
 }
 
 ### Change the ideology of active leader.
@@ -735,6 +759,16 @@ alias[effect:puppet] = scope[country]
 ## scope = country
 alias[effect:puppet] = enum[country_tags]
 
+### Puppets specified country.
+## scope = country
+alias[effect:puppet] = {
+	target = scope[country]
+	target = enum[country_tags]
+	end_wars = bool
+	## cardinality = 0..1
+	end_civil_wars = bool
+}
+
 ### Set controller for state.
 ## scope = country
 alias[effect:set_state_controller] = scope[state]
@@ -812,6 +846,11 @@ alias[effect:build_railway] = {
 	level = int[1..5]
 	start_province = enum[provinces]
 	target_province = enum[provinces]
+	## cardinality = 0..1
+	path = {
+		## cardinality = 1..inf
+		enum[provinces]
+	}
 	### Option 3: Specify start & end state IDs. It will pick provinces with the best node (capital > nodes > naval ) start_state = 50 target_state = 100
 	### Option 2: Specify start & end province IDs. It will pick the shortest path. If provinces are not valid and if fallback = yes it will use states of those provs and use in option 3.start_province = 42 target_province = 84
 	### Option 1: List of provinces to draw railways. If fallback = yes uses start and end provinces of the path as fallback in option 2. path = { 10 20 30 40 }.
@@ -829,6 +868,11 @@ alias[effect:build_railway] = {
 	level = int[1..5]
 	start_state = <state>
 	target_state = <state>
+	## cardinality = 0..1
+	path = {
+		## cardinality = 1..inf
+		enum[provinces]
+	}
 	### Option 3: Specify start & end state IDs. It will pick provinces with the best node (capital > nodes > naval ) start_state = 50 target_state = 100
 	### Option 2: Specify start & end province IDs. It will pick the shortest path. If provinces are not valid and if fallback = yes it will use states of those provs and use in option 3.start_province = 42 target_province = 84
 	### Option 1: List of provinces to draw railways. If fallback = yes uses start and end provinces of the path as fallback in option 2. path = { 10 20 30 40 }.
@@ -866,6 +910,8 @@ alias[effect:add_building_construction] = {
 		limit_to_victory_point = yes
 		## cardinality = 0..1
 		limit_to_victory_point = int
+		## cardinality = 0..1
+		limit_to_border_country = enum[country_tags]
 		## cardinality = 0..1
 		level = int_variable_field
 	}
@@ -1101,6 +1147,7 @@ alias[effect:hold_election] = enum[country_tags]
 alias[effect:add_popularity] = {
 	ideology = <ideology>
 	ideology = variable_field
+	ideology = enum[country_tags]
 	popularity = variable_field
 }
 
@@ -1211,7 +1258,7 @@ alias[effect:create_wargoal] = {
 	## cardinality = 0..1
 	expire = date_field
 	## cardinality = 0..1
-	expire = 0
+	expire = int
 }
 
 ### Add state claim by country.
@@ -1337,7 +1384,7 @@ alias[effect:set_equipment_fraction] = float
 
 ### Adds country threat.
 ## scope = country
-alias[effect:add_threat] = float[-100..100]
+alias[effect:add_threat] = variable_field
 
 ### Sends to target scope specified amount of equipment.
 ## scope = country
@@ -1423,10 +1470,18 @@ alias[effect:create_import] = {
 	exporter = enum[country_tags]
 }
 
+### Issues embargo on target country.
+## scope = country
+alias[effect:send_embargo] = scope[country]
+
+### Issues embargo on target country.
+## scope = country
+alias[effect:send_embargo] = enum[country_tags]
+
 ### Adds country threat.
 ## scope = country
 alias[effect:add_named_threat] = {
-	threat = float
+	threat = variable_field
 	name = localisation
 }
 
@@ -1574,6 +1629,14 @@ alias[effect:show_ideas_tooltip] = value[advisor_token]
 
 ## scope = country
 alias[effect:show_unit_leaders_tooltip] = <character>
+## scope = country
+alias[effect:show_unit_leaders_tooltip] = value[variable]
+## scope = country
+alias[effect:show_unit_leaders_tooltip] = value[event_target]
+## scope = country
+alias[effect:show_unit_leaders_tooltip] = value[global_event_target]
+## scope = country
+alias[effect:show_unit_leaders_tooltip] = scope[character]
 
 ### Creates a new equipment variant.
 ## scope = country
@@ -1766,9 +1829,9 @@ alias[effect:set_autonomy] = {
 	## cardinality = 0..1
 	freedom_level = float[0..1]
 	## cardinality = 0..1
-	end_wars = no
+	end_wars = bool
 	## cardinality = 0..1
-	end_civil_wars = no
+	end_civil_wars = bool
 }
 
 ### Makes autonomy of specified level and country.
@@ -1781,9 +1844,9 @@ alias[effect:set_autonomy] = {
 	## cardinality = 0..1
 	freedom_level = float[0..1]
 	## cardinality = 0..1
-	end_wars = no
+	end_wars = bool
 	## cardinality = 0..1
-	end_civil_wars = no
+	end_civil_wars = bool
 
 }
 
@@ -1794,9 +1857,9 @@ alias[effect:set_autonomy] = {
 	target = enum[country_tags]
 	freedom_level = float[0..1]
 	## cardinality = 0..1
-	end_wars = no
+	end_wars = bool
 	## cardinality = 0..1
-	end_civil_wars = no
+	end_civil_wars = bool
 
 }
 
@@ -1999,7 +2062,7 @@ alias[effect:set_war_support] = variable_field[0..1]
 
 ### Executes children effects on random unit leader that fulfills the "limit" trigger.
 ## scope = country
-## push_scope = unit_leader
+## push_scope = { character unit_leader }
 alias[effect:random_unit_leader] = {
 	## cardinality = 0..1
 	limit = {
@@ -2013,7 +2076,7 @@ alias[effect:random_unit_leader] = {
 
 ### Executes children effects on unit leaders that fulfills the "limit" trigger.
 ## scope = country
-## push_scope = any
+## push_scope = { character unit_leader }
 alias[effect:every_unit_leader] = {
 	## cardinality = 0..1
 	limit = {
@@ -2027,7 +2090,7 @@ alias[effect:every_unit_leader] = {
 
 ### Executes children effects on random army leader that fulfills the "limit" trigger.
 ## scope = country
-## push_scope = any
+## push_scope = { character unit_leader }
 alias[effect:random_army_leader] = {
 	## cardinality = 0..1
 	limit = {
@@ -2547,6 +2610,26 @@ alias[effect:set_division_template_lock] = {
 	is_locked = bool
 }
 
+### Set cap for a division template.
+## scope = country
+alias[effect:set_division_template_cap] = {
+	division_template = localisation_inline
+	division_cap = int
+}
+
+### Remove cap for a division template.
+## scope = country
+alias[effect:clear_division_template_cap] = {
+	division_template = localisation_inline
+}
+
+### Set division template to allow force recruiting.
+## scope = country
+alias[effect:set_division_force_allow_recruiting] = {
+	division_template = localisation_inline
+	force_allow_recruiting = bool
+}
+
 ### Delete a template and its units.
 ## scope = country
 alias[effect:delete_unit_template_and_units] = {
@@ -2764,6 +2847,11 @@ alias[effect:give_resource_rights] = {
 	receiver = scope[country]
 	state = <state>
 	state = scope[state]
+	## cardinality = 0..1
+	resources = {
+		## cardinality = 1..inf
+		<resource>
+	}
 }
 
 ### Remove resource right to state for scope country. remove_resource_rights = ID.

@@ -128,6 +128,9 @@ values = {
 		### Air intel against a target country. example GER.air_intel@ENG.
 		air_intel@scope[country]
 
+		### KR-specific variable to manage tag ambition areas
+		ambition_area_enum[country_tags]
+
 		### Army experience of a country.
 		army_experience
 
@@ -564,6 +567,9 @@ values = {
 		### (Trigger) Checks for state strategic value.
 		state_strategic_value
 
+		### Sabotaged resource in state.
+		sabotaged_<resource>
+
 		### (Trigger) Uncapped_resistance_target temp variable can be used for getting resistance that that is not capped to 0-100
 		uncapped_resistance_target
 
@@ -884,5 +890,26 @@ values = {
 		### Array of countries with cores on the scope state.
 		core_countries
 
+		# Character variables
+		### Variable used in on_actions
+		character
+
+		### Variable to access current country leader
+		country_leader
+
+		### Variable to access current theorist
+		theorist
+		
+		### Variable to access current army chief
+		army_chief
+		
+		### Variable to access current navy chief
+		navy_chief
+		
+		### Variable to access current air chief
+		air_chief
+
+		### KR-specifc variables
+		is_in_coalition_with_@token:<ideology>
 	}
 }

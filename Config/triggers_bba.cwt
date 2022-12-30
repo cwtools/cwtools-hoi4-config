@@ -44,10 +44,63 @@ alias[trigger:power_balance_weekly_change] = {
     value = float[-1..1]
 }
 
+### Checks if country has specific balance of power side active.
+## scope = country
+alias[trigger:is_power_balance_side_active] = {
+    id = <balance_of_power>
+    side = value[bop_side]
+}
+
 ### Check if division has this battalion as majority in template
-## scope = any
+## scope = unit
 alias[trigger:division_has_majority_template] = <unit>
 
 ### Check if division has this battalion in template
-## scope = any
+## scope = unit
 alias[trigger:division_has_battalion_in_template] = <unit>
+
+### Checks if states have divisions
+## scope = country
+alias[trigger:num_divisions_in_states] = {
+    count = int
+    states = {
+        ## cardinality = ~1..inf
+        <state>
+    }
+    ## cardinality = 0..1
+    types = {
+        ## cardinality = ~1..inf
+        <unit>
+    }
+    ## cardinality = 0..1
+    exclude = {
+        ## cardinality = ~1..inf
+        <unit>
+    }
+}
+
+### Check if tag has war with major
+## scope = country
+alias[trigger:has_war_with_major] = bool
+
+### Checks if there is a railway connection between provinces/states
+## scope = country
+alias[trigger:has_railway_connection] = {
+	start_state = <state>
+	target_state = <state>
+}
+
+### Checks if there is a railway connection between provinces/states
+## scope = country
+alias[trigger:has_railway_connection] = {
+	start_province = enum[provinces]
+	target_province = enum[provinces]
+}
+
+### Checks if country is a loser in peace conference
+## scope = country
+alias[trigger:pc_is_loser] = bool
+
+### Checks if country is a winner in peace conference
+## scope = country
+alias[trigger:pc_is_winner] = bool

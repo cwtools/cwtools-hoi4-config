@@ -178,7 +178,7 @@ operation = {
 	### Determines required token(s) - against target country - to launch the operation
 	## cardinality = 0..1
 	required_tokens = {
-		## cardinality = ~1..inf
+		## cardinality = 0..inf
 		<operation_token>
 	}
 

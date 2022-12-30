@@ -1,59 +1,92 @@
 localisation_commands = {
+    ### Date
+    GetDateText = any
+    GetDate = any
+    GetMonth = any
+    GetYear = any
+    ### Name
     GetName = any
+    GetNameWithFlag = any
     GetNameDef = any
     GetNameDefCap = any
+    GetTag = any
     GetAdjective = any
     GetAdjectiveCap = any
+    GetOldName = any
+    GetOldNameDef = any
+    GetOldNameDefCap = any
+    GetOldAdjective = any
+    GetOldAdjectiveCap = any
+    GetNonIdeologyName = any
+    GetNonIdeologyNameDef = any
+    GetNonIdeologyNameDefCap = any
+    GetNonIdeologyAdjective = any
+    GetNonIdeologyAdjectiveCap = any
+    ### Country
     GetLeader = any
-    GetRulingParty = any
-    GetRulingIdeology = any
-    GetRulingIdeologyNoun = any
-    GetPartySupport = any
-    GetLastElection = any
     GetManpower = any
     GetFactionName = any
+    GetAgency = any
     GetFlag = any
-    GetNameWithFlag = any
+    ### Politics
+    GetPartySupport = any
+    GetLastElection = any
+    GetRulingParty = any
+    GetRulingPartyLong = any
+    GetRulingIdeology = any
+    GetRulingIdeologyNoun = any
     GetCommunistParty = any
     GetDemocraticParty = any
     GetFascistParty = any
     GetNeutralParty = any
-	GetDate = any
-    GetDateText = any
-    GetYear = any
-    GetHerselfHimself = any
-    GetHerHis = any
+    GetCommunistLeader = any
+    GetDemocraticLeader = any
+    GetFascistLeader = any
+    GetNeutralLeader = any
+    ### State
+    GetID = any
+    GetCapitalVictoryPointName = any
+    ### Character
+    GetSurname = any
+    GetFullName = any
     GetSheHe = any
     GetSheHeCap = any
+    GetHerHim = any
+    GetHerHimCap = any
+    GetHerHis = any
+    GetHerHisCap = any
+    GetHersHis = any
+    GetHersHisCap = any
+    GetHerselfHimself = any
+    GetHerselfHimselfCap = any
+    ### Ideology
+    GetIdeology = any
+    GetIdeologyGroup = any
+    ### Air
     GetRank = any
-    GetManchuriaPuppet = any
-    GetID = any
-    GetTag = any
-    GetCapital = any
-	GetCapitalVictoryPointName = any
-	GetNonIdeologyNameDef = any
-
-    # TODO: Confirm
-    GetNameAdj = any
-    GetSurname = air
-    GetFullName = air
-    GetHerHim = air
-    GetSurname = air
-    GetAceType = air
+    GetCodeName = any
+    GetCallsign = air
     GetWing = air
     GetWingShort = air
-    GetCallsign = air
+    GetAceType = air
     GetMissionRegion = air
-
-    GetOldAdjective = any
-    GetOldAdjectiveCap = any
-    GetOldNameDef = any
-    GetOldName = any
-    GetRulingPartyLong = any
-
-    GetMonth = any
-
-    # for tokens
+    ### Token/date
     GetTokenKey = any
     GetTokenLocalizedKey = any
+    GetDateString = any
+    GetDateStringShortMonth = any
+    GetDateStringNoHour = any
+    GetDateStringNoHourLong = any
+    ### BOP
+    GetActiveSideName = any
+    GetTrendingSideName = any
+    GetRightSideName = any
+    GetLeftSideName = any
+    GetChangeRateDesc = any
+    GetPowerBalanceName = any
+    GetPowerBalanceModDesc = any
+    GetActiveRangeName = any
+    GetActiveRangeModDesc = any
+    GetActiveRangeRuleDesc = any
+    GetBopTrendTexticon = any
 }

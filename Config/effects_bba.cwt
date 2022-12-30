@@ -41,6 +41,8 @@ alias[effect:remove_power_balance_side] = {
 alias[effect:add_power_balance_value] = {
 	id = <balance_of_power>
 	value = float[-1..1]
+	## cardinality = 0..1
+	tooltip_side = localisation
 }
 
 ### Change GFX of one of the BoP sides
@@ -70,3 +72,47 @@ alias[effect:remove_power_balance_modifier] = {
 alias[effect:remove_all_power_balance_modifiers] = {
     id = <balance_of_power>
 }
+
+## scope = character
+alias[effect:add_random_valid_trait_from_unit] = {
+    character = <character>
+	character = value[variable]
+	character = value[event_target]
+	character = value[global_event_target]
+	character = scope[character]
+}
+## scope = { country character }
+alias[effect:set_can_be_fired_in_advisor_role] = {
+	## cardinality = 0..1
+    character = <character>
+	## cardinality = 0..1
+	character = value[variable]
+	## cardinality = 0..1
+	character = value[event_target]
+	## cardinality = 0..1
+	character = value[global_event_target]
+	## cardinality = 0..1
+	character = scope[character]
+	## cardinality = 0..1
+	slot = enum[allowed_advisor_role]
+	value = bool
+}
+
+## scope = country
+## push_scope = unit
+alias[effect:every_country_division] = {
+    ## cardinality = 0..1
+	limit = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	## cardinality = 0..1
+	tooltip = localisation
+	alias_name[effect] = alias_match_left[effect]
+}
+
+### Change divisions in scope to selected template
+## scope = unit
+alias[effect:change_division_template] = {
+	division_template = localisation_inline
+}
+

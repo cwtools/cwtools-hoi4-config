@@ -173,11 +173,17 @@ equipment = {
 		type_override = enum[module_slots]
 		## cardinality = 0..1
 		substitute = <equipment.air_equip>
+		## cardinality = 0..1
+		derived_variant_name = localisation
+		## cardinality = 0..1
+		ai_type = enum[allowed_ai_type_planes]
 	}
 
 	subtype[regular_equip] = {
 		## cardinality = 0..1
 		abbreviation = localisation_inline
+		## cardinality = 0..1
+		derived_variant_name = localisation_inline
 		### Which archetype equipment this equipment inherits from.
 		archetype = <equipment.archetype_equip>
 
@@ -469,6 +475,14 @@ enums = {
 		interface_category_screen_ships
 		interface_category_other_ships
 		interface_category_air
+	}
+	enum[allowed_ai_type_planes] = {
+		cv_fighter
+		cv_interceptor
+		cv_cas
+		cv_naval_bomber
+		cv_suicide
+		heavy_fighter
 	}
 	complex_enum[module_slots] = {
 		path = "game/common/units/equipment"

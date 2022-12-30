@@ -128,6 +128,7 @@ technology = {
 		<technology> = int
 	}
 	### Multiplier to base tech cost in defines.lua
+	## cardinality = 0..1
 	research_cost = float
 	## cardinality = 0..1
 	### When ahead of time penalty reaches 0.

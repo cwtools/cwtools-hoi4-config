@@ -15,6 +15,15 @@ country_history = {
 	### adds character to country
 	## cardinality = 0..inf
 	recruit_character = <character>
+	### adds character to country
+	## cardinality = 0..inf
+	recruit_character = value[event_target]
+	### adds character to country
+	## cardinality = 0..inf
+	recruit_character = value[global_event_target]
+	### adds character to country
+	## cardinality = 0..inf
+	recruit_character = scope[character]
 
 	### Set country's current train buffer
 	## cardinality = 0..inf
@@ -33,5 +42,14 @@ country_history = {
 		### adds character to country
 		## cardinality = 0..inf
 		recruit_character = <character>
+		### adds character to country
+		## cardinality = 0..inf
+		recruit_character = value[event_target]
+		### adds character to country
+		## cardinality = 0..inf
+		recruit_character = value[global_event_target]
+		### adds character to country
+		## cardinality = 0..inf
+		recruit_character = scope[character]
 	}
 }

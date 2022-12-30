@@ -53,8 +53,8 @@ types = {
 decision_category = {
 	## cardinality = 0..inf
 	icon = scalar
-	## cardinality = 0..inf
 	## replace_scope = { this = country root = country }
+	## cardinality = 0..inf
 	icon = {
 		key = scalar
 		trigger = {
@@ -182,16 +182,21 @@ decision_category = {
 }
 
 decision = {
-	## cardinality = 0..1
-	icon = scalar
 	## cardinality = 0..inf
+	icon = scalar
 	## replace_scope = { this = country root = country }
+	## cardinality = 0..inf
 	icon = {
 		key = scalar
 		trigger = {
 			alias_name[trigger] = alias_match_left[trigger]
 		}
 	}
+
+	## cardinality = 0..1
+	cosmetic_tag = enum[country_tags]
+	## cardinality = 0..1
+	cosmetic_ideology = <ideology>
 	## cardinality = 0..1
 	priority = int
 	## cardinality = 0..1

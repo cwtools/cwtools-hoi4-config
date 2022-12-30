@@ -205,6 +205,7 @@ alias[ai_strategy_rule:ai_strategy] = {
 alias[ai_strategy_rule:ai_strategy] = {
 	type = research_tech
 	id = <technology>
+	id = int
 	value = int
 }
 alias[ai_strategy_rule:ai_strategy] = {
@@ -422,6 +423,8 @@ enums = {
 		operation_equipment_priority
 		railway_gun_divisions_ratio
 		naval_invasion_focus
+		naval_invasion_supremacy_weight
+		avoid_starting_wars
 	}
 	enum[pp_strats] = {
 		pp_spend_amount
@@ -448,6 +451,7 @@ enums = {
 	enum[strat_region_strats] = {
 		naval_convoy_raid_region
 		naval_avoid_region
+		strategic_air_importance
 	}
 	enum[state_strats] = {
 		theatre_distribution_demand_increase

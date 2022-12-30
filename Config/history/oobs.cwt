@@ -21,17 +21,25 @@ oob = {
 		## cardinality = 0..1
 		division_names_group = <division_name>
 		## cardinality = 0..1
+		override_model = <entity>
+		## cardinality = 0..1
 		template_counter = int
 		## cardinality = 0..1
 		is_locked = bool
+		## cardinality = 0..1
+		force_allow_recruiting = bool
+		## cardinality = 0..1
+		obsolete = bool
+		## cardinality = 0..1
+		division_cap = int
 		regiments = {
 			## cardinality = 1..25
-			<unit> = { x = int[0..5] y = int[0..5] }
+			<unit> = { x = int[0..4] y = int[0..4] }
 		}
 		## cardinality = 0..1
 		support = {
 			## cardinality = ~1..5
-			<unit> = { x = int[0..5] y = int[0..5] }
+			<unit> = { x = 0 y = int[0..5] }
 		}
 		## cardinality = 0..1
 		template_counter = int
@@ -78,7 +86,9 @@ oob = {
 			## cardinality = 0..1
 			start_experience_factor = float[0..1]
 			## cardinality = 0..1
-			start_equipment_factor = float
+			start_equipment_factor = float[0..1]
+			## cardinality = 0..1
+			start_manpower_factor = float[0..1]
 			## cardinality = 0..inf
 			force_equipment_variants = {
 				## cardinality = ~1..inf

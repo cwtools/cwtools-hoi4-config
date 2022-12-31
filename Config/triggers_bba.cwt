@@ -55,6 +55,14 @@ alias[trigger:is_power_balance_side_active] = {
 ## scope = unit
 alias[trigger:division_has_majority_template] = <unit>
 
+### Check if any division in country division has fullfils the triggers
+## scope = country
+## push_scope = unit
+alias[effect:any_country_division] = {
+    ## cardinality = 1..inf
+    alias_name[trigger] = alias_match_left[trigger]
+}
+
 ### Check if division has this battalion in template
 ## scope = unit
 alias[trigger:division_has_battalion_in_template] = <unit>

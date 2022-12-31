@@ -333,6 +333,47 @@ alias[gui:gridBoxType] = {
 		alias_name[gui_localization] = alias_match_left[gui_localization]
     }
 }
+
+### Dynamic List
+alias[gui:listBoxType] = {
+    ### Name referenced by scripted gui
+    name = scalar
+    alias_name[gui_standard] = alias_match_left[gui_standard]
+
+    ## cardinality = 0..1
+    horizontal = int[0..1]
+    ## cardinality = 0..1
+    spacing = int
+    ## cardinality = 0..1
+    alwaystransparent = bool
+    ## cardinality = 0..1
+    scrollbartype = enum[scrollbar_types]
+    ## cardinality = 0..1
+    borderSize = { x = int y = int }
+    ## cardinality = 0..1
+    offset = { x = int y = int }
+}
+
+### Dynamic List
+alias[gui:smoothListBoxType] = {
+    ### Name referenced by scripted gui
+    name = scalar
+    alias_name[gui_standard] = alias_match_left[gui_standard]
+
+    ## cardinality = 0..1
+    horizontal = int[0..1]
+    ## cardinality = 0..1
+    spacing = int
+    ## cardinality = 0..1
+    alwaystransparent = bool
+    ## cardinality = 0..1
+    scrollbartype = enum[scrollbar_types]
+    ## cardinality = 0..1
+    borderSize = { x = int y = int }
+    ## cardinality = 0..1
+    offset = { x = int y = int }
+}
+
 ###Non-clickable icon
 alias[gui:iconType] = {
     ### Name referenced by scripted gui

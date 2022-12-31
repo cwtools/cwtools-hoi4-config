@@ -103,6 +103,8 @@ enums = {
 		contributes_operatives
 		units_deployed_to_overlord
 		can_boost_own_ideology
+		can_generate_female_unit_leaders
+		can_generate_female_country_leaders
 	}
 
 	enum[ai_ideology] = {

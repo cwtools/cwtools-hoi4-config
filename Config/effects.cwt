@@ -1407,6 +1407,15 @@ alias[effect:set_rule] = {
 	enum[game_rules] = bool
 }
 
+### Adds rule to country.
+## scope = country
+alias[effect:set_relation_rule] = {
+	target = scope[country]
+	target = enum[country_tags]
+	## cardinality = 1..inf
+	enum[game_rules] = bool
+}
+
 ### Set up a diplomatic relation between two nations.
 ## scope = country
 alias[effect:diplomatic_relation] = {

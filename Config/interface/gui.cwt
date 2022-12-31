@@ -343,7 +343,7 @@ alias[gui:iconType] = {
 }
 ###Unknown, seems to be only used with hardcoded things
 alias[gui:positionType] = {
-    # cardinality = ~1..1
+    ## cardinality = ~1..1
     name = scalar
     position = {
         x = int
@@ -351,6 +351,8 @@ alias[gui:positionType] = {
         y = int
 		y = float
     }
+    ## cardinality = 0..1
+    scale = float
 }
 ###Browser, hardcoded
 alias[gui:browserType] = {

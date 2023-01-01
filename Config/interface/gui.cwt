@@ -276,6 +276,8 @@ alias[gui:OverlappingElementsBoxType] = {
     spacing = float
     ## cardinality = 0..1
     format = enum[guiTextFormats]
+    ## cardinality = 0..1
+    first_on_top = bool
 }
 ### Dynamic List
 alias[gui:gridBoxType] = {

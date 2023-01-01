@@ -242,6 +242,8 @@ alias[gui:buttonType] = {
         x = int
         y = int
     }
+    ## cardinality = 0..1
+    borderSize = { x = int y = int }
     alias_name[gui_standard] = alias_match_left[gui_standard]
     alias_name[gui_image] = alias_match_left[gui_image]
     ## cardinality = 0..1

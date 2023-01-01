@@ -720,6 +720,51 @@ alias[gui_animation:hide_position] = {
 	y = float
     y = percentage_field
 }
+### Position returned to when closed
+alias[gui_animation:closed_position] = {
+    x = int
+	x = float
+    x = percentage_field
+    y = int
+	y = float
+    y = percentage_field
+}
+### Position returned to when open
+alias[gui_animation:open_position] = {
+    x = int
+	x = float
+    x = percentage_field
+    y = int
+	y = float
+    y = percentage_field
+}
+### Position returned to when peeking
+alias[gui_animation:peek_position] = {
+    x = int
+	x = float
+    x = percentage_field
+    y = int
+	y = float
+    y = percentage_field
+}
+### Position returned to when peeking (top left check)
+alias[gui_animation:peek_check_top_left] = {
+    x = int
+	x = float
+    x = percentage_field
+    y = int
+	y = float
+    y = percentage_field
+}
+### Position returned to when peeking (size)
+alias[gui_animation:peek_check_size] = {
+    width = int
+	width = float
+    width = percentage_field
+    height = int
+	height = float
+    height = percentage_field
+}
 alias[gui_animation:show_animation_type] = enum[animationTypes]
 alias[gui_animation:hide_animation_type] = enum[animationTypes]
 alias[gui_animation:animation_type] = enum[animationTypes]

@@ -76,7 +76,10 @@ alias[gui:containerWindowType] = {
         name = scalar
         alias_name[gui_standard] = alias_match_left[gui_standard]
         alias_name[gui_image] = alias_match_left[gui_image]
-        alias_name[gui_localization] = alias_match_left[gui_localization]
+        ## cardinality = 0..1
+		alias_name[gui_sound] = alias_match_left[gui_sound]
+        ## cardinality = 0..1
+		alias_name[gui_localization] = alias_match_left[gui_localization]
     }
     alias_name[gui] = alias_match_left[gui]
     alias_name[gui_standard] = alias_match_left[gui_standard]
@@ -124,7 +127,10 @@ alias[gui:dropDownBoxType] = {
         name = scalar
         alias_name[gui_standard] = alias_match_left[gui_standard]
         alias_name[gui_image] = alias_match_left[gui_image]
-        alias_name[gui_localization] = alias_match_left[gui_localization]
+        ## cardinality = 0..1
+		alias_name[gui_sound] = alias_match_left[gui_sound]
+        ## cardinality = 0..1
+		alias_name[gui_localization] = alias_match_left[gui_localization]
     }
     alias_name[gui] = alias_match_left[gui]
     alias_name[gui_standard] = alias_match_left[gui_standard]
@@ -198,9 +204,12 @@ alias[gui:dropDownBoxType] = {
         background = {
             ## cardinality = 0..1
             name = scalar
-            alias_name[gui_standard] = alias_match_left[gui_standard]
-            alias_name[gui_image] = alias_match_left[gui_image]
-            alias_name[gui_localization] = alias_match_left[gui_localization]
+			alias_name[gui_standard] = alias_match_left[gui_standard]
+			alias_name[gui_image] = alias_match_left[gui_image]
+			## cardinality = 0..1
+			alias_name[gui_sound] = alias_match_left[gui_sound]
+			## cardinality = 0..1
+			alias_name[gui_localization] = alias_match_left[gui_localization]
         }
         alias_name[gui] = alias_match_left[gui]
         alias_name[gui_standard] = alias_match_left[gui_standard]
@@ -314,8 +323,10 @@ alias[gui:gridBoxType] = {
         name = scalar
         alias_name[gui_standard] = alias_match_left[gui_standard]
         alias_name[gui_image] = alias_match_left[gui_image]
-        alias_name[gui_sound] = alias_match_left[gui_sound]
-        alias_name[gui_localization] = alias_match_left[gui_localization]
+        ## cardinality = 0..1
+		alias_name[gui_sound] = alias_match_left[gui_sound]
+        ## cardinality = 0..1
+		alias_name[gui_localization] = alias_match_left[gui_localization]
     }
 }
 ###Non-clickable icon
@@ -469,8 +480,10 @@ alias[gui:extendedScrollbarType] = {
         name = scalar
         alias_name[gui_standard] = alias_match_left[gui_standard]
         alias_name[gui_image] = alias_match_left[gui_image]
-        alias_name[gui_sound] = alias_match_left[gui_sound]
-        alias_name[gui_localization] = alias_match_left[gui_localization]
+        ## cardinality = 0..1
+		alias_name[gui_sound] = alias_match_left[gui_sound]
+        ## cardinality = 0..1
+		alias_name[gui_localization] = alias_match_left[gui_localization]
     }
     ##cardinality  = 0..1
     ###Size in px of tiling

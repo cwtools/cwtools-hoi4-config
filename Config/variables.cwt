@@ -573,6 +573,47 @@ values = {
 		### (Trigger) Uncapped_resistance_target temp variable can be used for getting resistance that that is not capped to 0-100
 		uncapped_resistance_target
 
+		### State modifier variable
+		modifier@army_speed_factor_for_controller
+		modifier@compliance_gain
+		modifier@compliance_growth
+		modifier@compliance_growth_on_our_occupied_states
+		modifier@enemy_intel_network_gain_factor_over_occupied_tag
+		modifier@enemy_spy_negative_status_factor
+		modifier@intel_network_gain
+		modifier@intel_network_gain_factor
+		modifier@local_building_slots
+		modifier@local_building_slots_factor
+		modifier@local_factories
+		modifier@local_factory_sabotage
+		modifier@local_intel_to_enemies
+		modifier@local_manpower
+		modifier@local_non_core_manpower
+		modifier@local_non_core_supply_impact_factor
+		modifier@local_resources
+		modifier@local_resources_factor
+		modifier@local_supplies
+		modifier@local_supplies_for_controller
+		modifier@local_supply_impact_factor
+		modifier@mobilization_speed
+		modifier@non_core_manpower
+		modifier@recruitable_population
+		modifier@recruitable_population_factor
+		modifier@required_garrison_factor
+		modifier@resistance_activity
+		modifier@resistance_damage_to_garrison
+		modifier@resistance_decay
+		modifier@resistance_garrison_penetration_chance
+		modifier@resistance_growth
+		modifier@resistance_target
+		modifier@starting_compliance
+		modifier@state_production_speed_buildings_factor
+		modifier@state_repair_speed_infrastructure_factor
+		modifier@state_resources_factor
+		modifier@supply_factor
+		modifier@truck_attrition
+		modifier@truck_attrition_factor
+
 
 		# =============================
 		# UNIT LEADER DYNAMIC VARIABLES

@@ -952,5 +952,11 @@ values = {
 
 		### KR-specifc variables
 		is_in_coalition_with_@token:<ideology>
+		token:zhili
+		token:manchu_qing
+		token:fengtian
+		token:federalists
+		token:left_kuomintang
+		token:right_kuomintang
 	}
 }

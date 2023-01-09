@@ -108,50 +108,21 @@ alias[trigger:check_variable] = {
 ## scope = any
 alias[trigger:check_variable] = {
 	variable_field_32 = variable_field_32
-}
-
-### Compares a variable to a number or variable.
-## scope = any
-alias[trigger:check_variable] = {
 	variable_field_32 = value[variable]
-}
-
-### Compares a variable to a number or variable.
-## scope = any
-alias[trigger:check_variable] = {
 	variable_field_32 = enum[country_tags]
-}
-
-### Compares a variable to a number or variable.
-## scope = any
-alias[trigger:check_variable] = {
 	variable_field_32 = scope[country]
-}
-
-### Compares a variable to a number or variable.
-## scope = any
-alias[trigger:check_variable] = {
-	var = variable_field_32
-	value = variable_field_32
-	## cardinality = 0..1
-	### Defaults to greater_than_or_equals.
-	compare = enum[var_compares]
+	variable_field_32 = value[token]
 }
 
 ### Compares a variable to a number or variable.
 ## scope = any
 alias[trigger:check_variable] = {
 	var = value[variable]
+	var = variable_field_32
 	value = variable_field_32
 	## cardinality = 0..1
 	### Defaults to greater_than_or_equals.
 	compare = enum[var_compares]
-}
-
-### Compares a variable to a number or variable.
-## scope = any
-alias[trigger:check_variable] = {
-	old_ideology_token = token:<ideology>
 }
 
 enums = {

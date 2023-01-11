@@ -122,10 +122,20 @@ alias[effect:add_corps_commander_role] = {
 		## cardinality = ~1..inf
 		<unit_leader_trait>
 	}
+	### Optional for effect_tooltip
+	## cardinality = 0..1
 	skill = int_variable_field
+	### Optional for effect_tooltip
+	## cardinality = 0..1
 	attack_skill = int_variable_field
+	### Optional for effect_tooltip
+	## cardinality = 0..1
 	defense_skill = int_variable_field
+	### Optional for effect_tooltip
+	## cardinality = 0..1
 	planning_skill = int_variable_field
+	### Optional for effect_tooltip
+	## cardinality = 0..1
 	logistics_skill = int_variable_field
 	## cardinality = 0..1
 	female = bool

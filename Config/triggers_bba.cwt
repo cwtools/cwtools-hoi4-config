@@ -104,3 +104,11 @@ alias[trigger:pc_is_loser] = bool
 ### Checks if country is a winner in peace conference
 ## scope = country
 alias[trigger:pc_is_winner] = bool
+
+### Checks if country has war with wargoal against target
+## scope = country
+alias[trigger:has_war_with_wargoal_against] = {
+	target = scope[country]
+	target = enum[country_tags]
+	type = <wargoal>
+}

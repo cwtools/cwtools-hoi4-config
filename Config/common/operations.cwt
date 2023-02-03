@@ -30,6 +30,7 @@ operation = {
 	### The number of operatives requires to be assigned to an operation for it to start
 	operatives = int
 
+	## cardinality = 0..1
 	is_captured_cipher = bool
 
 	### Every operation has a hard requirement of network strength in the target country Integer [0-100]

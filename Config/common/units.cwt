@@ -362,6 +362,9 @@ enums = {
 		train
 		flame
 		maritime_patrol_plane
+		cv_naval_bomber
+		cv_cas
+		cv_fighter
 	}
 	enum[land_units] = {
 		infantry

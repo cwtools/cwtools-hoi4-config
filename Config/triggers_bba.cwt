@@ -112,3 +112,6 @@ alias[trigger:has_war_with_wargoal_against] = {
 	target = enum[country_tags]
 	type = <wargoal>
 }
+
+## scope = character
+alias[trigger:is_hired_as_advisor] = bool

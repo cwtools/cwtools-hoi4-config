@@ -1127,7 +1127,7 @@ alias[trigger:enemies_strength_ratio] = float
 
 ### Returns true if the game has the specified custom difficulty on.
 ## scope = any
-alias[trigger:has_custom_difficulty_setting] = enum[difficulty_settings]
+alias[trigger:has_custom_difficulty_setting] = value[difficulty_setting]
 
 ### Returns true if the game has any custom difficulty on.
 ## scope = any

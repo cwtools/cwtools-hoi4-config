@@ -402,6 +402,14 @@ enums = {
 		light_cruiser
 		screen_ship
 		submarine
+		
+		# MD Specific
+		corvette
+		frigate
+		attack_submarine
+		missile_submarine
+		helicopter_operator
+		stealth_destroyer
 	}
 	enum[allowed_air_unit_missions] = {
 		paradrop

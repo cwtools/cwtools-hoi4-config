@@ -1491,6 +1491,14 @@ alias[effect:send_embargo] = scope[country]
 ## scope = country
 alias[effect:send_embargo] = enum[country_tags]
 
+### Removes embargo from target country.
+## scope = country
+alias[effect:break_embargo] = scope[country]
+
+### Removes embargo from target country.
+## scope = country
+alias[effect:break_embargo] = enum[country_tags]
+
 ### Adds country threat.
 ## scope = country
 alias[effect:add_named_threat] = {

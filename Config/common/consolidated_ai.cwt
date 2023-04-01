@@ -415,22 +415,35 @@ ai_equipment_design_group = {
 
 values = {
     value[ai_roles] = {
-        armor
-        cavalry
-        garrison
-        infantry
-        marines
-        mechanized
-        motorized
-        mountaineers
-        paratroopers
-		suppression
-		mobile
-		artillery
-		cas
+		# infantry
+		infantry
 		anti_tank
+		artillery
+		bicycle_battalion
+		cavalry
+		garrison
+		marines
+		mechanized
+		militia
+		mobile
+		motorized
+		mountaineers
+		paratroopers
+		suppression
+		fake_intel_unit
 
-        naval_capital
+		# armor
+		armor
+		light_armor
+		medium_armor
+		heavy_armor
+		modern_armor
+
+		# planes
+		cas
+
+		# ships
+		naval_capital
         naval_carrier
         naval_screen
         naval_sub

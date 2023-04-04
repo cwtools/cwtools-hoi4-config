@@ -52,6 +52,9 @@ enums = {
 		tactical_withdrawal
 		seize_bridge
 		hold_bridge
+
+		# MD Phase
+		main
 	}
 	enum[attack_defend] = {
 		attacker

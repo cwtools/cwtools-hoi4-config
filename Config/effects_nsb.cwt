@@ -141,6 +141,10 @@ alias[effect:add_corps_commander_role] = {
 	female = bool
 	## cardinality = 0..1
 	legacy_id = value_set[unit_leader_ids]
+	## cardinality = 0..1
+	visible = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
 }
 
 ### Remove unit leader role to character
@@ -208,6 +212,10 @@ alias[effect:add_field_marshal_role] = {
 	logistics_skill = int_variable_field
 	## cardinality = 0..1
 	legacy_id = value_set[unit_leader_ids]
+	## cardinality = 0..1
+	visible = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
 }
 
 ## scope = { character country }
@@ -241,6 +249,10 @@ alias[effect:add_naval_commander_role] = {
 	coordination_skill = int_variable_field
 	## cardinality = 0..1
 	legacy_id = value_set[unit_leader_ids]
+	## cardinality = 0..1
+	visible = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
 }
 
 ## scope = { character country unit_leader }

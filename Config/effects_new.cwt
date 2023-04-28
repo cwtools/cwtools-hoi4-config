@@ -1100,3 +1100,7 @@ alias[effect:start_peace_conference] = {
 	tag = enum[country_tags]
 	score_factor = float
 }
+
+### Sets specific occupation law where available
+## scopes = { country }
+alias[effect:set_occupation_law_where_available] = <occupation_law>

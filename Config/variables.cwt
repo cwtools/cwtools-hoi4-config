@@ -614,6 +614,11 @@ values = {
 		modifier@truck_attrition
 		modifier@truck_attrition_factor
 
+		### Occupier tag
+		occupier
+
+		### Occupied tag
+		occupied
 
 		# =============================
 		# UNIT LEADER DYNAMIC VARIABLES

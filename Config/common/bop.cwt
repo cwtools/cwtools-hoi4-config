@@ -11,6 +11,7 @@ balance_of_power = {
     right_side = value[bop_side]
     decision_category = <decision_category>
     ### The "middle ground"
+    ## cardinality = 0..inf
     range = {
         id = value_set[bop_range_id]
         min = float[-1..1]

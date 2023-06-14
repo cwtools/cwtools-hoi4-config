@@ -559,6 +559,10 @@ alias[effect:force_enable_resistance] = {
 	occupied = enum[country_tags]
 }
 
+###Force disables resistance for scoped state
+## scopes = { STATE }
+alias[effect:force_disable_resistance] = bool
+
 ###Force disables resistance for scoped state. The resistance will be active even if other conditions doesn't satisfy (even if it is core or resistance check trigger is false).
 ## scopes = { STATE }
 alias[effect:force_disable_resistance] = scope[country]

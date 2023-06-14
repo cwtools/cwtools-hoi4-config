@@ -116,3 +116,8 @@ alias[effect:change_division_template] = {
 	division_template = localisation_inline
 }
 
+## scope = country
+alias[effect:remove_civil_war_target] = scope[country]
+
+## scope = country
+alias[effect:remove_civil_war_target] = enum[country_tags]

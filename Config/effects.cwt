@@ -3209,6 +3209,7 @@ alias[effect:remove_dynamic_modifier] = {
 	### Optional, state or country tag or a variable contains that. if specified the dynamic variable will target that scope.
 	scope = scope[country]
 
+	## cardinality = 0..1
 	### Optional, state or country tag or a variable contains that. if specified the dynamic variable will target that scope.
 	scope = <state>
 
@@ -3230,6 +3231,7 @@ alias[effect:add_dynamic_modifier] = {
 	### Optional, state or country tag or a variable contains that. if specified the dynamic variable will target that scope.
 	scope = scope[country]
 
+	## cardinality = 0..1
 	### Optional, state or country tag or a variable contains that. if specified the dynamic variable will target that scope.
 	scope = <state>
 

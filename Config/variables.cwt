@@ -504,6 +504,9 @@ values = {
 		### (Trigger) Checks the target conscription amount of the country.
 		target_conscription_amount
 
+		### (Trigger) Power balance value of a country
+		power_balance_value
+
 
 		# =======================
 		# STATE DYNAMIC VARIABLES

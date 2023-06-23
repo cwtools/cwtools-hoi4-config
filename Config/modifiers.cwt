@@ -482,6 +482,9 @@ modifiers = {
 	war_support_weekly = country
 	war_support_weekly_factor = country
 	weekly_manpower = country
+	weekly_casualties_war_support = country
+	weekly_convoys_war_support = country
+	weekly_bombing_war_support = country
 
 	# defensive
 	armor_factor = defensive

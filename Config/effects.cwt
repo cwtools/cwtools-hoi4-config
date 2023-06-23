@@ -3662,3 +3662,6 @@ alias[effect:retire_ideology_leader] = variable_field
 
 ## scope = country
 alias[effect:play_song] = scalar
+
+## scope = country
+alias[effect:scoped_play_song] = scalar

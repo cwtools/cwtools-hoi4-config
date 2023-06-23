@@ -2215,10 +2215,10 @@ alias[effect:modify_unit_leader_flag] = {
 alias[effect:clr_unit_leader_flag] = value[leader_flag]
 
 ### Sets the country that owns current scope general.
-## scope = unit_leader
+## scope = { character unit_leader }
 alias[effect:set_nationality] = scope[country]
 ### Sets the country that owns current scope general.
-## scope = unit_leader
+## scope = { character unit_leader }
 alias[effect:set_nationality] = enum[country_tags]
 
 ### Demotes field marshal to general.
@@ -2836,14 +2836,14 @@ alias[effect:swap_ruler_traits] = {
 }
 
 ### Add random trait from specified list to unit leader. add_random_trait = { old_guard brilliant_strategist inflexible_strategist }.
-## scope = unit_leader
+## scope = { character unit_leader }
 alias[effect:add_random_trait] = {
 	## cardinality = 1..inf
 	<unit_leader_trait>
 }
 
 ### Remove exile tag from scope unit leader. remove_exile_tag = yes.
-## scope = unit_leader
+## scope = { character unit_leader }
 alias[effect:remove_exile_tag] = yes
 
 ### Set_legitimacy = 10. Sets legitimacy on scope country to specified value. Value has to be 0-100.

@@ -69,6 +69,7 @@ alias[unit_stat:naval_invasion_prep_speed] = float
 alias[unit_stat:paradrop_organization_factor] = float
 alias[unit_stat:paratrooper_aa_defense] = float
 alias[unit_stat:paratrooper_count_per_plane] = float
+alias[unit_stat:railway_gun_attack] = float
 alias[unit_stat:recon] = float
 alias[unit_stat:reliability_factor] = float
 alias[unit_stat:reliability] = float

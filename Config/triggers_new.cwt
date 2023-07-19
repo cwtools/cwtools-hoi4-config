@@ -544,17 +544,17 @@ alias[effect:has_allowed_idea_with_traits] = {
 }
 
 ###Is leading volunteers in the target.
-## scopes = { UNIT_LEADER }
+## scopes = { UNIT_LEADER character }
 alias[effect:is_leading_volunteer_group] = scope[country]
 
 ###Is leading volunteers in the target.
-## scopes = { UNIT_LEADER }
+## scopes = { UNIT_LEADER character }
 alias[effect:is_leading_volunteer_group] = enum[country_tags]
 
 ###Is leading volunteers in a country with the original tag.
-## scopes = { UNIT_LEADER }
+## scopes = { UNIT_LEADER character }
 alias[effect:is_leading_volunteer_group_with_original_country] = scope[country]
 
 ###Is leading volunteers in a country with the original tag.
-## scopes = { UNIT_LEADER }
+## scopes = { UNIT_LEADER character }
 alias[effect:is_leading_volunteer_group_with_original_country] = enum[country_tags]

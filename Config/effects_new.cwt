@@ -1108,3 +1108,65 @@ alias[effect:start_peace_conference] = {
 ### Sets specific occupation law where available
 ## scopes = { country }
 alias[effect:set_occupation_law_where_available] = <occupation_law>
+
+###Randomize a temporary variable.
+## scopes = { any }
+alias[effect:randomize_temp_variable] = variable_field
+
+###Randomize a temporary variable.
+## scopes = { any }
+alias[effect:randomize_temp_variable] = {
+	var = variable_field_32
+	distribution = uniform
+}
+
+###Randomize a temporary variable.
+## scopes = { any }
+alias[effect:randomize_temp_variable] = {
+	var = variable_field_32
+	distribution = binomial
+}
+
+###Randomize a temporary variable.
+## scopes = { any }
+alias[effect:randomize_temp_variable] = {
+	var = variable_field_32
+	distribution = uniform
+	min = variable_field_32
+	max = variable_field_32
+}
+
+###Randomize a temporary variable.
+## scopes = { any }
+alias[effect:randomize_temp_variable] = {
+	var = variable_field_32
+	distribution = binomial
+	min = variable_field_32
+	max = variable_field_32
+}
+
+###Randomize a temporary variable.
+## scopes = { any }
+alias[effect:randomize_temp_variable] = {
+	var = variable_field_32
+	distribution = binomial
+	## cardinality = 0..1
+	min = variable_field_32
+	lambda = variable_field_32
+}
+
+###Sets a temp variable to a random value.
+## scopes = { any }
+alias[effect:set_temp_variable_to_random] = value_set[variable]
+
+###Sets a temp variable to a random value.
+## scopes = { any }
+alias[effect:set_temp_variable_to_random] = {
+	var = value_set[variable]
+	## cardinality = 0..1
+	min = variable_field_32
+	## cardinality = 0..1
+	max = variable_field_32
+	## cardinality = 0..1
+	integer = bool
+}

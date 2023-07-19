@@ -87,6 +87,26 @@ alias[trigger:num_divisions_in_states] = {
     }
 }
 
+### Checks if states have divisions
+## scope = country
+alias[trigger:num_battalions_in_states] = {
+    count = int
+    states = {
+        ## cardinality = ~1..inf
+        <state>
+    }
+    ## cardinality = 0..1
+    types = {
+        ## cardinality = ~1..inf
+        <unit>
+    }
+    ## cardinality = 0..1
+    exclude = {
+        ## cardinality = ~1..inf
+        <unit>
+    }
+}
+
 ### Check if tag has war with major
 ## scope = country
 alias[trigger:has_war_with_major] = bool

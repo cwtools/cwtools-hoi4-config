@@ -475,6 +475,13 @@ alias[trigger:is_embargoed_by] = enum[country_tags]
 ## scope = country
 alias[trigger:is_embargoed_by] = scope[country]
 
+### Check if you are embargoing a specific country
+## scope = country
+alias[trigger:is_embargoing] = scope[country]
+
+### Check if you are embargoing a specific country
+## scope = country
+alias[trigger:is_embargoing] = enum[country_tags]
 
 ### Check if country has guaranteed specified country.
 ## scope = country

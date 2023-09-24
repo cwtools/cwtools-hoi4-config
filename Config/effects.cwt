@@ -1409,6 +1409,10 @@ alias[effect:send_equipment] = {
 alias[effect:set_rule] = {
 	## cardinality = 1..inf
 	enum[game_rules] = bool
+
+	## cardinality = 0..1
+	desc = localisation
+}
 }
 
 ### Adds rule to country.

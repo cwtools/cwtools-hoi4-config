@@ -1413,6 +1413,18 @@ alias[effect:set_rule] = {
 	## cardinality = 0..1
 	desc = localisation
 }
+
+### Adds rule to country's party.
+## scope = country
+alias[effect:set_party_rule] = {
+	ideology = <ideology>
+	ideology = variable_field
+
+	## cardinality = 1..inf
+	enum[game_rules] = bool
+
+	## cardinality = 0..1
+	desc = localisation
 }
 
 ### Adds rule to country.

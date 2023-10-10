@@ -9,6 +9,21 @@ alias[trigger:OVERLORD] = { alias_name[trigger] = alias_match_left[trigger] }
 ## push_scope = state
 alias[trigger:capital_scope] = { alias_name[trigger] = alias_match_left[trigger] }
 
+## scope = country
+## push_scope = state
+alias[trigger:THIS.capital_scope] = { alias_name[trigger] = alias_match_left[trigger] }
+
+## scope = country
+## push_scope = state
+alias[trigger:FROM.capital_scope] = { alias_name[trigger] = alias_match_left[trigger] }
+
+## scope = country
+## push_scope = state
+alias[trigger:ROOT.capital_scope] = { alias_name[trigger] = alias_match_left[trigger] }
+
+## scope = country
+## push_scope = state
+alias[trigger:PREV.capital_scope] = { alias_name[trigger] = alias_match_left[trigger] }
 
 alias[effect:scope_field] = { alias_name[effect] = alias_match_left[effect] }
 
@@ -42,6 +57,22 @@ alias[effect:CONTROLLER] = { alias_name[effect] = alias_match_left[effect] }
 ## scope = country state
 ## push_scope = state
 alias[effect:capital_scope] = { alias_name[effect] = alias_match_left[effect] }
+
+## scope = country
+## push_scope = state
+alias[effect:THIS.capital_scope] = { alias_name[effect] = alias_match_left[effect] }
+
+## scope = country
+## push_scope = state
+alias[effect:FROM.capital_scope] = { alias_name[effect] = alias_match_left[effect] }
+
+## scope = country
+## push_scope = state
+alias[effect:ROOT.capital_scope] = { alias_name[effect] = alias_match_left[effect] }
+
+## scope = country
+## push_scope = state
+alias[effect:PREV.capital_scope] = { alias_name[effect] = alias_match_left[effect] }
 
 scopes = {
 	Country = {
@@ -86,6 +117,9 @@ scopes = {
 	}
 	"Military Advancements" = {
 		aliases = { military_advancements }
+	}
+	"Military Industrial Organizations" = {
+		aliases = { military_industrial_organization }
 	}
 	Naval = {
 		aliases = { naval }

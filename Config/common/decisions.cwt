@@ -548,6 +548,8 @@ decision = {
 			value[variable]
 			## cardinality = 0..inf
 			variable_field
+			## cardinality = 0..inf
+			state = <state>
 		}
 
 		## cardinality = 0..1

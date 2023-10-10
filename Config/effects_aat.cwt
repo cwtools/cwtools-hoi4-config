@@ -1,0 +1,79 @@
+###Executes children effects on MIOs that fulfils the "limit" trigger. tooltip=key can be added to override tooltip title
+## scope = country
+## push_scope = military_industrial_organization
+alias[effect:every_military_industrial_organization] = {
+    ## cardinality = 0..1
+    tooltip = localisation
+    ## cardinality = 0..1
+	limit = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+    ## cardinality = 1..inf
+    alias_name[effect] = alias_match_left[effect]
+}
+
+### Unlock MIO trait tooltip
+## scope = military_industrial_organization
+alias[effect:unlock_mio_trait_tooltip] = value[mio_token]
+
+### Increase MIO funds gain factor
+## scope = military_industrial_organization
+alias[effect:add_mio_funds_gain_factor] = variable_field
+
+### Increase MIO size (level)
+## scope = military_industrial_organization
+alias[effect:add_mio_size] = int
+
+### Increase MIO research bonus
+## scope = military_industrial_organization
+alias[effect:add_mio_research_bonus] = float
+
+### Complete specific MIO trait. Make sure the trait is actually available for current MIO
+## scope = military_industrial_organization
+alias[effect:complete_mio_trait] = value[mio_token]
+
+### Change MIO political power assign cost to research tech (base - 0.1 pp daily)
+## scope = military_industrial_organization
+alias[effect:add_mio_design_team_assign_cost] = float
+
+### Has no effect?
+## scope = military_industrial_organization
+alias[effect:add_mio_design_team_change_cost] = float
+
+### Add MIO funds. Level 1 -> Level 2 to costs 1k, costs increase per each level
+## scope = military_industrial_organization
+alias[effect:add_mio_funds] = variable_field
+
+### Display a tooltip of provided MIO
+## scope = country
+alias[effect:unlock_military_industrial_organization_tooltip] = mio:<military_industrial_organization>
+
+### Display a tooltip of provided MIO
+## scope = country
+alias[effect:show_mio_tooltip] = <military_industrial_organization>
+
+### Add CIC funds to the tag
+## scope = country
+alias[effect:add_cic] = variable_field
+
+### Add equipment subsidy to a tag
+## scope = country
+alias[effect:add_equipment_subsidy] = {
+    cic = variable_field
+    equipment_type = enum[equipment_bonus_type]
+    ## cardinality = 0..1
+    seller_trigger = {
+        ## cardinality = ~1..inf
+        alias_name[trigger] = alias_match_left[trigger]
+    }
+    ### CWTools doesn't support verification of this trigger, be careful
+    ## cardinality = 0..1
+    seller_trigger = scalar
+    ## cardinality = 0..1
+    seller_tags = {
+        ## cardinality = 0..inf
+        enum[country_tags]
+        ## cardinality = 0..inf
+        scope[country]
+    } 
+}

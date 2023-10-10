@@ -353,7 +353,9 @@ alias[trigger:can_build_railway] = {
 	## cardinality = 0..1
 	build_only_on_allied = bool
 	start_state = <state>
+	start_state = scope[state]
 	target_state = <state>
+	target_state = scope[state]
 	## cardinality = 0..1
 	fallback = bool
 }

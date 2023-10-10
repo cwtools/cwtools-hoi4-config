@@ -1,0 +1,32 @@
+
+### Checks if state is one island
+## scope = state
+alias[trigger:is_one_state_island] = bool
+
+### Checks if current MIO is the provided one
+## scope = military_industrial_organization
+alias[trigger:is_military_industrial_organization] = <military_industrial_organization>
+
+### Checks the size of the MIO
+## scope = military_industrial_organization
+alias[trigger:has_mio_size] = int[1..inf]
+
+### Checks if MIO is affecting specific equipment
+## scope = military_industrial_organization
+alias[trigger:has_mio_equipment_type] = enum[equipment_bonus_type]
+
+### Checks if MIO is affecting specific equipment
+## scope = military_industrial_organization
+alias[trigger:has_mio_equipment_type] = <equipment>
+
+### Checks if MIO is affecting specific equipment
+## scope = military_industrial_organization
+alias[trigger:has_mio_equipment_type] = <equipment_group>
+
+### Checks if tag has specific MIO
+## scope = country
+alias[trigger:has_military_industrial_organization] = <military_industrial_organization>
+
+### Checks if MIO is available
+## scope = military_industrial_organization
+alias[trigger:is_mio_available] = bool

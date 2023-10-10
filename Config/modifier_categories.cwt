@@ -47,4 +47,7 @@ modifier_categories = {
 	war_production = {
 		supported_scopes = { war_production unit_leader state country }
 	}
+	military_industrial_organization = {
+		supported_scopes = { military_industrial_organization }
+	}
 }

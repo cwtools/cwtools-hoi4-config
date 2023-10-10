@@ -316,6 +316,9 @@ ai_equipment_design_group = {
 		}
 
 		## cardinality = 0..1
+		name = scalar
+
+		## cardinality = 0..1
 		role_icon_index = int
 
 		### List of triggers that must all be true for the design to be usable; true by default if empty or missing.
@@ -323,6 +326,10 @@ ai_equipment_design_group = {
 		enable = {
 			alias_name[trigger] = alias_match_left[trigger]
 		}
+
+		### Not sure what it does, possibly hides it for players?
+		## cardinality = 0..1
+		visible = bool
 
 		## cardinality = 0..1
 		### Specifications about how a matching equipment variant should be designed.

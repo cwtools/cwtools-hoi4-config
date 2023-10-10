@@ -2,6 +2,7 @@ enums = {
 	enum[dlc] = {
 		"Poland: United and Ready"
 		"Together for Victory"
+		"Axis Armor Pack"
 		"Death or Dishonor"
 		"Waking the Tiger"
 		"Man the Guns"
@@ -9,6 +10,7 @@ enums = {
 		"Battle for the Bosporus"
 		"No Step Back"
 		"By Blood Alone"
+		"Arms Against Tyranny"
 	}
 
 	enum[hours_days_months] = {
@@ -33,6 +35,7 @@ enums = {
 		call_allies
 		improve_relation
 		befriend
+		market_access_rights
 	}
 
 	enum[add_factor] = {
@@ -131,15 +134,5 @@ enums = {
 		medium_plane_scout_plane_airframe
 		large_plane_airframe
 		large_plane_maritime_patrol_plane_airframe
-	}
-
-	enum[allowed_advisor_role] = {
-		political_advisor
-		theorist
-		army_chief
-		navy_chief
-		air_chief
-		high_command
-		second_in_command
 	}
 }

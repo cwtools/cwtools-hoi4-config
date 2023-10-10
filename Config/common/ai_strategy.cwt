@@ -42,7 +42,8 @@ ai_strategy = {
 }
 
 ai_strategy_plan = {
-	name = localisation
+	## cardinality = 0..1
+	name = scalar
 	## cardinality = 0..1
 	desc = localisation
 
@@ -71,9 +72,9 @@ ai_strategy_plan = {
 	## cardinality = 0..1
 	focus_factors = {
 		## cardinality = 0..inf
-		<focus> = int
+		<focus> = float
 		## cardinality = 0..inf
-		<shared_focus> = int
+		<shared_focus> = float
 	}
 
 	## cardinality = 0..1
@@ -124,6 +125,7 @@ alias[ai_strategy_rule:ai_strategy] = {
 alias[ai_strategy_rule:ai_strategy] = {
 	type = enum[equipment_strats]
 	id = <equipment>
+	id = enum[unit_types]
 	value = int
 }
 alias[ai_strategy_rule:ai_strategy] = {
@@ -133,7 +135,17 @@ alias[ai_strategy_rule:ai_strategy] = {
 }
 alias[ai_strategy_rule:ai_strategy] = {
 	type = land_xp_spend_priority
-	id = enum[land_xp_targets]
+	id = enum[ai_xp_targets]
+	value = int
+}
+alias[ai_strategy_rule:ai_strategy] = {
+	type = air_xp_spend_priority
+	id = enum[ai_xp_targets]
+	value = int
+}
+alias[ai_strategy_rule:ai_strategy] = {
+	type = navy_xp_spend_priority
+	id = enum[ai_xp_targets]
 	value = int
 }
 alias[ai_strategy_rule:ai_strategy] = {
@@ -156,7 +168,9 @@ alias[ai_strategy_rule:ai_strategy] = {
 	type = dont_join_wars_with
 	id = enum[country_tags]
 	id = scope[country]
+	## cardinality = 0..1
 	target_country = enum[country_tags]
+	## cardinality = 0..1
 	target_country = scope[country]
 	value = int
 }
@@ -171,6 +185,11 @@ alias[ai_strategy_rule:ai_strategy] = {
 }
 alias[ai_strategy_rule:ai_strategy] = {
 	type = enum[no_id_strats]
+	value = int
+}
+alias[ai_strategy_rule:ai_strategy] = {
+	type = enum[state_strats]
+	target = <state>
 	value = int
 }
 alias[ai_strategy_rule:ai_strategy] = {
@@ -324,6 +343,16 @@ alias[ai_strategy_rule:ai_strategy] = {
 	operation_target = scope[country]
 	operation_target = variable_field
 }
+alias[ai_strategy_rule:ai_strategy] = {
+	type = enum[market_seller_strats]
+	## cardinality = 0..1
+	equipment_type = <equipment>
+	## cardinality = 0..1
+	seller = scope[country]
+	## cardinality = 0..1
+	seller = enum[country_tags]
+	value = int
+}
 
 enums = {
 	enum[ai_diplo_strats] = {
@@ -347,11 +376,18 @@ enums = {
 		send_volunteers_desire
 		support
 		front_armor_score
+		equipment_market_trade_desire
+		avoid_starting_wars
 	}
 	enum[equipment_strats] = {
 		equipment_variant_production_factor
 		save_equipment
 		production_upgrade_desire_offset
+		equipment_production_surplus_management
+		equipment_market_buying_threshold
+		equipment_market_for_sale_threshold
+		equipment_market_for_sale_factor
+		equipment_market_min_for_sale	
 	}
 	enum[no_id_strats] = {
 		added_military_to_civilian_factory_ratio
@@ -377,6 +413,7 @@ enums = {
 		wanted_supply_trucks
 		min_wanted_supply_trains
 		wanted_supply_trains
+		equipment_market_spend_factories
 	}
 	enum[pp_strats] = {
 		pp_spend_amount
@@ -390,7 +427,7 @@ enums = {
 		relation
 		guarantee
 	}
-	enum[land_xp_targets] = {
+	enum[ai_xp_targets] = {
 		division_template
 		upgrade_xp_cutoff
 	}
@@ -460,5 +497,8 @@ enums = {
 	enum[diplo_action_strats] = {
 		diplo_action_desire
 		diplo_action_acceptance
+	}
+	enum[market_seller_strats] = {
+		equipment_market_buy
 	}
 }

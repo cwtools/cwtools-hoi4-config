@@ -53,47 +53,7 @@ country_leader_trait = {
 	## cardinality = 0..1
 	equipment_bonus = {
 		## cardinality = 0..inf
-		<equipment> = {
-			## cardinality = 0..1
-			instant = bool
-			alias_name[unit_stat] = alias_match_left[unit_stat]
-			alias_name[naval_stat] = alias_match_left[naval_stat]
-			alias_name[air_stat] = alias_match_left[air_stat]
-		}
-		## cardinality = 0..inf
-		enum[tech_category] = {
-			## cardinality = 0..1
-			instant = bool
-			alias_name[unit_stat] = alias_match_left[unit_stat]
-			alias_name[naval_stat] = alias_match_left[naval_stat]
-			alias_name[air_stat] = alias_match_left[air_stat]
-		}
-		## cardinality = 0..inf
-		enum[unit_types] = {
-			## cardinality = 0..1
-			instant = bool
-			alias_name[unit_stat] = alias_match_left[unit_stat]
-			alias_name[naval_stat] = alias_match_left[naval_stat]
-			alias_name[air_stat] = alias_match_left[air_stat]
-		}
-		## cardinality = 0..inf
-		<unit> = {
-			## cardinality = 0..1
-			instant = bool
-			alias_name[unit_stat] = alias_match_left[unit_stat]
-			alias_name[naval_stat] = alias_match_left[naval_stat]
-			alias_name[air_stat] = alias_match_left[air_stat]
-		}
-		## cardinality = 0..inf
-		enum[nsb_armor_archetypes] = {
-			## cardinality = 0..1
-			instant = bool
-			alias_name[unit_stat] = alias_match_left[unit_stat]
-			alias_name[naval_stat] = alias_match_left[naval_stat]
-			alias_name[air_stat] = alias_match_left[air_stat]
-		}
-		## cardinality = 0..inf
-		enum[bba_air_equipment] = {
+		enum[equipment_bonus_type] = {
 			## cardinality = 0..1
 			instant = bool
 			alias_name[unit_stat] = alias_match_left[unit_stat]
@@ -236,6 +196,7 @@ unit_leader_trait = {
 	}
 	## cardinality = 0..1
 	trait_xp_factor = {
+		## cardinality = 1..inf
 		<unit_leader_trait> = float
 	}
 	## cardinality = 0..1
@@ -255,6 +216,21 @@ unit_leader_trait = {
 	unit_type = {
 		## cardinality = 1..inf
 		type = <unit>
+	}
+	### Any traits that should be taken before making this one available
+	## cardinality = 0..1
+	any_parent = {
+		## cardinality = 1..inf
+		<unit_leader_trait>
+	}
+	### All traits that should be taken before making this one available
+	## cardinality = 0..1
+	parent = {
+		traits = {
+			## cardinality = 1..inf
+			<unit_leader_trait>
+		}
+		num_parents_needed = int[1..100]
 	}
 }
 

@@ -4,7 +4,15 @@ types = {
 		skip_root_key = duplicate_archetypes
 		path = "game/common/units/equipment"
 		subtype[archetype_equip] = {
+			## cardinality = 0..1
 			is_archetype = yes
+			## cardinality = 0..1
+			only_duplicate_archetype = yes
+			## cardinality = 0..1
+			variant_name = {
+				## cardinality = 1..inf
+				value_set[equipment_variant] = <equipment>
+			}
 		}
 		subtype[regular_equip] = {
 			## cardinality = 0..1
@@ -27,7 +35,7 @@ types = {
 			## cardinality = 0..1
 			type = {
 				## cardinality = 1..inf
-				enum[ship_units]
+				enum[land_units]
 			}
 			## cardinality = 0..1
 			archetype = <equipment.armor_equip>
@@ -146,6 +154,40 @@ equipment = {
 
 		interface_category = enum[interface_category]
 
+		## cardinality = 0..1
+		only_duplicate_archetype = yes
+		## cardinality = 0..1
+		variant_name = {
+			## cardinality = 1..inf
+			value_set[equipment_variant] = <equipment>
+		}
+
+		## cardinality = 0..1
+		### Prevent this archetype from being identified as using the plane designer
+		module_slots = none
+
+		## cardinality = 0..1
+		for_each = {
+			## cardinality = 0..inf
+			enum[allowed_air_unit_missions] = {
+				set = float
+			}
+			## cardinality = 0..inf
+			variant_name = {
+				## cardinality = 0..inf
+				find_and_replace = {
+					## cardinality = 0..inf
+					scalar
+				}
+			}
+			## cardinality = 0..inf
+			enum[equipment_stat] = {
+				set = float
+			}
+		}
+
+		## cardinality = 1..inf
+		forbid_mission_type = enum[allowed_air_unit_missions]
 	}
 
 	subtype[air_equip] = {

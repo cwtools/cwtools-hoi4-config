@@ -1,0 +1,42 @@
+enums = {
+	complex_enum[allowed_advisor_role] = {
+		path = "game/common"
+		path_file = "script_enums.txt"
+		start_from_root = yes
+		name = {
+			script_enum_advisor_slot_type = {
+				enum_name
+			}
+		}
+	}
+	complex_enum[equipment_bonus_type] = {
+		path = "game/common"
+		path_file = "script_enums.txt"
+		start_from_root = yes
+		name = {
+			script_enum_equipment_bonus_type = {
+				enum_name
+			}
+		}
+	}
+	complex_enum[production_stat] = {
+		path = "game/common"
+		path_file = "script_enums.txt"
+		start_from_root = yes
+		name = {
+			script_enum_production_stat = {
+				enum_name
+			}
+		}
+	}
+	complex_enum[equipment_stat] = {
+		path = "game/common"
+		path_file = "script_enums.txt"
+		start_from_root = yes
+		name = {
+			script_enum_equipment_stat = {
+				enum_name
+			}
+		}
+	}
+}

@@ -58,7 +58,7 @@ alias[trigger:division_has_majority_template] = <unit>
 ### Check if any division in country division has fullfils the triggers
 ## scope = country
 ## push_scope = unit
-alias[effect:any_country_division] = {
+alias[trigger:any_country_division] = {
     ## cardinality = 1..inf
     alias_name[trigger] = alias_match_left[trigger]
 }

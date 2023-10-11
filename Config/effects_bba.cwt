@@ -101,6 +101,36 @@ alias[effect:set_can_be_fired_in_advisor_role] = {
 ## scope = country
 ## push_scope = unit
 alias[effect:every_country_division] = {
+	### Apply the effect to this number of randomly selected entities
+	## cardinality = 0..1
+	random_select_amount = int[1..inf]
+    ## cardinality = 0..1
+	limit = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	## cardinality = 0..1
+	tooltip = localisation
+	alias_name[effect] = alias_match_left[effect]
+}
+
+## scope = state
+## push_scope = unit
+alias[effect:every_state_division] = {
+	### Apply the effect to this number of randomly selected entities
+	## cardinality = 0..1
+	random_select_amount = int[1..inf]
+    ## cardinality = 0..1
+	limit = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	## cardinality = 0..1
+	tooltip = localisation
+	alias_name[effect] = alias_match_left[effect]
+}
+
+## scope = state
+## push_scope = unit
+alias[effect:any_state_division] = {
     ## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
@@ -116,3 +146,12 @@ alias[effect:change_division_template] = {
 	division_template = localisation_inline
 }
 
+### Set unit org to a specific value
+## scope = unit
+alias[effect:set_unit_organization] = float
+
+## scope = country
+alias[effect:remove_civil_war_target] = scope[country]
+
+## scope = country
+alias[effect:remove_civil_war_target] = enum[country_tags]

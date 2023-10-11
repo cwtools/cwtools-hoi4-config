@@ -69,6 +69,7 @@ alias[unit_stat:naval_invasion_prep_speed] = float
 alias[unit_stat:paradrop_organization_factor] = float
 alias[unit_stat:paratrooper_aa_defense] = float
 alias[unit_stat:paratrooper_count_per_plane] = float
+alias[unit_stat:railway_gun_attack] = float
 alias[unit_stat:recon] = float
 alias[unit_stat:reliability_factor] = float
 alias[unit_stat:reliability] = float
@@ -95,7 +96,9 @@ alias[naval_stat:mines_planting] = float
 alias[naval_stat:mines_sweeping] = float
 alias[naval_stat:naval_accidents_chance] = float
 alias[naval_stat:naval_damage_factor] = float
+alias[naval_stat:naval_heavy_gun_hit_chance_factor] = float
 alias[naval_stat:naval_invasion_penalty] = float
+alias[naval_stat:naval_light_gun_hit_chance_factor] = float
 alias[naval_stat:naval_mine_hit_chance] = float
 alias[naval_stat:naval_mines_damage_factor] = float
 alias[naval_stat:naval_morale_factor] = float
@@ -109,6 +112,7 @@ alias[naval_stat:naval_speed_factor] = float
 alias[naval_stat:naval_speed] = float
 alias[naval_stat:naval_supremacy_factor] = float
 alias[naval_stat:naval_torpedo_hit_chance_factor] = float
+alias[naval_stat:naval_weather_penalty_factor] = float
 alias[naval_stat:navy_casualty_on_sink] = float
 alias[naval_stat:navy_fuel_consumption_factor] = float
 alias[naval_stat:navy_org_factor] = float
@@ -140,9 +144,11 @@ alias[air_stat:carrier_size] = float
 alias[air_stat:default_carrier_composition_weight] = float
 alias[air_stat:naval_strike_attack] = float
 alias[air_stat:naval_strike_targetting] = float
+alias[air_stat:thrust] = float
 
 #for terrain modifiers
 alias[unit_stat:<terrain>] = { alias_name[unit_stat] = alias_match_left[unit_stat] }
+alias[unit_stat:enum[region_weather]] = { alias_name[unit_stat] = alias_match_left[unit_stat] }
 alias[unit_stat:night] = { alias_name[unit_stat] = alias_match_left[unit_stat] }
 alias[unit_stat:amphibious] = { alias_name[unit_stat] = alias_match_left[unit_stat] }
 alias[unit_stat:fort] = { alias_name[unit_stat] = alias_match_left[unit_stat] }

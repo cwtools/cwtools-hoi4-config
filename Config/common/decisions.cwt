@@ -127,6 +127,8 @@ decision_category = {
 			## cardinality = ~1..inf
 			state = <state>
 			## cardinality = ~1..inf
+			state = scope[state]
+			## cardinality = ~1..inf
 			state = variable_field
 		}
 
@@ -301,6 +303,8 @@ decision = {
 			## cardinality = ~1..inf
 			state = <state>
 			## cardinality = ~1..inf
+			state = scope[state]
+			## cardinality = ~1..inf
 			state = variable_field
 		}
 
@@ -443,6 +447,8 @@ decision = {
 				## cardinality = ~1..inf
 				state = <state>
 				## cardinality = ~1..inf
+				state = scope[state]
+				## cardinality = ~1..inf
 				state = variable_field
 			}
 
@@ -542,6 +548,8 @@ decision = {
 			value[variable]
 			## cardinality = 0..inf
 			variable_field
+			## cardinality = 0..inf
+			state = <state>
 		}
 
 		## cardinality = 0..1

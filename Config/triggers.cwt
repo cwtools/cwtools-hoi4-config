@@ -98,60 +98,72 @@ alias[trigger:any_country] = {
 ### Compares a variable to a number or variable.
 ## scope = any
 alias[trigger:check_variable] = {
+	#### 1..2 is needed to support tooltips
+	## cardinality = 1..2
+	variable_field_32 = variable_field_32
+	### Defaults to greater_than_or_equals.
+	## cardinality = 0..1
+	compare = enum[var_compares]
+	## cardinality = 0..1
+	tooltip = localisation
+}
+
+### Compares a variable to a number or variable.
+## scope = any
+alias[trigger:check_variable] = {
+	#### 1..2 is needed to support tooltips
+	## cardinality = 1..2
 	value[variable] = variable_field_32
 	### Defaults to greater_than_or_equals.
 	## cardinality = 0..1
 	compare = enum[var_compares]
-}
-
-### Compares a variable to a number or variable.
-## scope = any
-alias[trigger:check_variable] = {
-	variable_field_32 = variable_field_32
-}
-
-### Compares a variable to a number or variable.
-## scope = any
-alias[trigger:check_variable] = {
-	variable_field_32 = value[variable]
-}
-
-### Compares a variable to a number or variable.
-## scope = any
-alias[trigger:check_variable] = {
-	variable_field_32 = enum[country_tags]
-}
-
-### Compares a variable to a number or variable.
-## scope = any
-alias[trigger:check_variable] = {
-	variable_field_32 = scope[country]
-}
-
-### Compares a variable to a number or variable.
-## scope = any
-alias[trigger:check_variable] = {
-	var = variable_field_32
-	value = variable_field_32
 	## cardinality = 0..1
-	### Defaults to greater_than_or_equals.
-	compare = enum[var_compares]
+	tooltip = localisation
+}
+
+### Compares a variable to a number or variable.
+## scope = any
+alias[trigger:check_variable] = {
+	#### 1..2 is needed to support tooltips
+	## cardinality = 1..2
+	variable_field_32 = enum[country_tags]
+	## cardinality = 0..1
+	tooltip = localisation
+}
+
+### Compares a variable to a number or variable.
+## scope = any
+alias[trigger:check_variable] = {
+	#### 1..2 is needed to support tooltips
+	## cardinality = 1..2
+	variable_field_32 = scope[country]
+	## cardinality = 0..1
+	tooltip = localisation
+}
+
+### Compares a variable to a number or variable.
+## scope = any
+alias[trigger:check_variable] = {
+	#### 1..2 is needed to support tooltips
+	## cardinality = 1..2
+	variable_field_32 = value[token]
+	## cardinality = 0..1
+	tooltip = localisation
 }
 
 ### Compares a variable to a number or variable.
 ## scope = any
 alias[trigger:check_variable] = {
 	var = value[variable]
+	var = variable_field_32
+	## error_if_only_match = You can compare variables directly, without "var" and "value"
+	## severity = info
 	value = variable_field_32
 	## cardinality = 0..1
 	### Defaults to greater_than_or_equals.
 	compare = enum[var_compares]
-}
-
-### Compares a variable to a number or variable.
-## scope = any
-alias[trigger:check_variable] = {
-	old_ideology_token = token:<ideology>
+	## cardinality = 0..1
+	tooltip = localisation
 }
 
 enums = {
@@ -394,6 +406,8 @@ alias[trigger:divisions_in_state] = {
 	state = scope[state]
 	state = <state>
 	## cardinality = 0..1
+	unit = <unit>
+	## cardinality = 0..1
 	type = enum[land_units]
 }
 
@@ -480,6 +494,10 @@ alias[trigger:is_in_faction_with] = scope[country]
 ## scope = country
 alias[trigger:is_in_faction_with] = enum[country_tags]
 
+### Check if member of same faction as specified country.
+## scope = country
+alias[trigger:is_in_faction_with] = value[variable]
+
 ### Check if member of any faction.
 ## scope = country
 alias[trigger:is_in_faction] = bool
@@ -496,13 +514,21 @@ alias[trigger:is_guaranteed_by] = scope[country]
 ## scope = country
 alias[trigger:is_guaranteed_by] = enum[country_tags]
 
+### Check if embargoing specified country.
+## scope = country
+alias[trigger:is_embargoing] = enum[country_tags]
+
+### Check if embargoing specified country.
+## scope = country
+alias[trigger:is_embargoing] = scope[country]
+
 ### Check if embargoed by specified country.
 ## scope = country
 alias[trigger:is_embargoed_by] = enum[country_tags]
 
 ### Check if embargoed by specified country.
 ## scope = country
-alias[trigger:is_embargoed_by] = enum[country_tags]
+alias[trigger:is_embargoed_by] = scope[country]
 
 
 ### Check if country has guaranteed specified country.
@@ -818,6 +844,10 @@ alias[trigger:custom_trigger_tooltip] = {
 ## scope = country
 alias[trigger:has_equipment] = { <equipment> = int_variable_field }
 
+### Checks for amount of equipment stored.
+## scope = country
+alias[trigger:has_equipment] = { value[equipment_variant] = int_variable_field }
+
 ### Check amount of total factories.
 ## scope = country
 alias[trigger:num_of_factories] = variable_field
@@ -849,7 +879,7 @@ alias[trigger:ships_in_state_ports] = {
 	state = <state>
 	size = float
 	## cardinality = 0..1
-	type = <unit.ship_unit>
+	type = enum[ship_units]
 }
 
 ### Check if country is a major.
@@ -1156,7 +1186,7 @@ alias[trigger:enemies_strength_ratio] = float
 
 ### Returns true if the game has the specified custom difficulty on.
 ## scope = any
-alias[trigger:has_custom_difficulty_setting] = enum[difficulty_settings]
+alias[trigger:has_custom_difficulty_setting] = value[difficulty_setting]
 
 ### Returns true if the game has any custom difficulty on.
 ## scope = any
@@ -1594,11 +1624,11 @@ alias[trigger:has_decision] = <decision>
 
 ### Checks if available command power is more or less that specified value.
 ## scope = country
-alias[trigger:command_power] = float
+alias[trigger:command_power] = variable_field
 
 ### Checks if daily command power increase is more or less that specified value.
 ## scope = country
-alias[trigger:command_power_daily] = float
+alias[trigger:command_power_daily] = variable_field
 
 ### Checks if state is fully controlled by specified tag.
 ## scope = state

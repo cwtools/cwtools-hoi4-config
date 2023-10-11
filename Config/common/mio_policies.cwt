@@ -1,0 +1,117 @@
+types = {
+	type[mio_policy] = {
+		path = "game/common/military_industrial_organization/policies"
+	}
+}
+
+## replace_scope = { this = military_industrial_organization from = country }
+mio_policy = {
+	### if loc key TAG_my_MIO_token exists, use it (where TAG is the tag of the MIO owner),
+	### else use loc key my_MIO_token,
+	### loc key may use scripted loc, scope will be set with the country owning the policy
+	## cardinality = 0..1
+	name = scalar
+	### If icon provided, use GFX_key.
+	### If gfx key GFX_TAG_my_MIO_token exists, use it (where TAG is the tag of the MIO owner).
+	### If gfx key GFX_my_MIO_token exists, use it.
+	### Else use GFX_idea_unknown
+	## cardinality = 0..1
+	icon = scalar
+
+	### optional, default is define DEFAULT_INITIAL_POLICY_ATTACH_COST
+	## cardinality = 0..1
+	cost = int
+	### optional, default is DEFAULT_INITIAL_ATTACH_POLICY_COOLDOWN
+	## cardinality = 0..1
+	cooldown = int
+	### MIO scope
+	### Allowed is evaluated when starting the game for all MIOs.
+	### If trigger returns false, the policy will never be considered for this MIO later in-game.
+	## cardinality = 0..1
+	allowed = {
+		## cardinality = ~1..inf
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	### Current MIO scope.
+	### Visible is evaluated when displaying the MIO UIs / policy screen.
+	### If trigger returns false, then the policy is not visible for the player.
+	## cardinality = 0..1
+	visible = {
+		## cardinality = ~1..inf
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	### Current MIO scope.
+	### Available is evaluated when displaying the MIO UIs / policy screen.
+	### If trigger returns false, then the policy is visible but disabled and greyed-out.
+	## cardinality = 0..1
+	available = {
+		## cardinality = ~1..inf
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	### Defines the bonus given when the policy is attached to a MIO, and the MIO is assigned to an equipment variant.
+	### Note it's different from equipment_bonus in traits. Here you have to give the equipment category/archetype/type.
+	## cardinality = 0..1
+	equipment_bonus = {
+		## cardinality = 0..inf
+		enum[equipment_bonus_type] = {
+			## cardinality = ~1..inf
+			enum[equipment_stat] = variable_field
+		}
+		## cardinality = 0..inf
+		<equipment_group> = {
+			## cardinality = ~1..inf
+			enum[equipment_stat] = variable_field
+		}
+		### can use this keyword to apply to all equipments in departments of the attached MIO
+		## cardinality = 0..inf
+		same_as_mio = {
+			## cardinality = ~1..inf
+			enum[equipment_stat] = variable_field
+		}
+	}
+
+	### Defines the bonus given when the policy is attached to a MIO, and the MIO is assigned to a production line.
+	### Note it's different from equipment_bonus in traits. Here you have to give the equipment category/archetype/type.
+	## cardinality = 0..1
+	production_bonus = {
+		## cardinality = 0..inf
+		enum[equipment_bonus_type] = {
+			## cardinality = ~1..inf
+			enum[production_stat] = variable_field
+		}
+		## cardinality = 0..inf
+		<equipment_group> = {
+			## cardinality = ~1..inf
+			enum[production_stat] = variable_field
+		}
+		### can use this keyword to apply to all equipments in departments of the attached MIO
+		## cardinality = 0..inf
+		same_as_mio = {
+			## cardinality = ~1..inf
+			enum[production_stat] = variable_field
+		}
+	}
+	## cardinality = 0..1
+	organization_modifier = {
+		## cardinality = ~1..inf
+		alias_name[modifier] = alias_match_left[modifier]
+	}
+	## cardinality = 0..1
+	on_add = {
+		## cardinality = ~1..inf
+		alias_name[effect] = alias_match_left[effect]
+	}
+	## cardinality = 0..1
+	on_remove = {
+		## cardinality = ~1..inf
+		alias_name[effect] = alias_match_left[effect]
+	}
+	### This affects how likely AI is to spend PP on this policy
+	## cardinality = 0..1
+	ai_will_do = {
+		## cardinality = 0..1
+		enum[base_factor] = float
+		## cardinality = 0..inf
+		alias_name[modifier_rule] = alias_match_left[modifier_rule]
+	}
+}

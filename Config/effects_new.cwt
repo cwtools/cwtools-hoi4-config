@@ -40,6 +40,7 @@ alias[effect:delete_unit] = {
 alias[effect:delete_unit] = {
 	## cardinality = 0..1
 	template = scalar
+	## cardinality = 0..1
 	id = variable_field
 	## cardinality = 0..1
 	state = <state>
@@ -152,6 +153,9 @@ alias[effect:random_operative] = {
 ## scopes = { COUNTRY OPERATION }
 ## push_scope = unit_leader
 alias[effect:every_operative] = {
+	### Apply the effect to this number of randomly selected entities
+	## cardinality = 0..1
+	random_select_amount = int[1..inf]
     ## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
@@ -342,6 +346,9 @@ alias[effect:teleport_armies] = {
 ## scopes = { COUNTRY }
 ## push_scope = state
 alias[effect:every_controlled_state] = {
+	### Apply the effect to this number of randomly selected entities
+	## cardinality = 0..1
+	random_select_amount = int[1..inf]
     ## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
@@ -415,6 +422,9 @@ alias[effect:random_occupied_country] = {
 ## scopes = { COUNTRY }
 ## push_scope = country
 alias[effect:every_occupied_country] = {
+	### Apply the effect to this number of randomly selected entities
+	## cardinality = 0..1
+	random_select_amount = int[1..inf]
     ## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
@@ -488,6 +498,9 @@ alias[effect:random_country_with_original_tag] = {
 ## scopes = { any }
 ## push_scope = country
 alias[effect:every_country_with_original_tag] = {
+	### Apply the effect to this number of randomly selected entities
+	## cardinality = 0..1
+	random_select_amount = int[1..inf]
 	original_tag_to_check = enum[country_tags]
 	original_tag_to_check = scope[country]
     ## cardinality = 0..1
@@ -558,6 +571,10 @@ alias[effect:force_enable_resistance] = {
 	occupied = scope[country]
 	occupied = enum[country_tags]
 }
+
+###Force disables resistance for scoped state
+## scopes = { STATE }
+alias[effect:force_disable_resistance] = bool
 
 ###Force disables resistance for scoped state. The resistance will be active even if other conditions doesn't satisfy (even if it is core or resistance check trigger is false).
 ## scopes = { STATE }
@@ -784,29 +801,29 @@ alias[effect:operative_leader_event] = {
 
 	### The number of hours to wait before firing the event. Note: hours, days, and months can all be used and will simply be added together.
 	## cardinality = 0..1
-	hours = variable_field
+	hours = variable_field[1..24]
 
 	### The number of days to wait before firing the event. Note: hours, days, and months can all be used and will simply be added together.
 	## cardinality = 0..1
-	days = variable_field
+	days = variable_field[1..31]
 
 	### The number of months to wait before firing the event. Note: hours, days, and months can all be used and will simply be added together.
 	## cardinality = 0..1
-	months = variable_field
-
-	### A random amount of hours to be added to the delay before firing, from 0 up to but not including random_hours. Equivalent to random_hours. Preserverd for backwards compatibility.
-	## error_if_only_match = This is an deprecated command. The command is used to delay an event trigger by a random number of hours from 0 to the provided value. It is better to avoid confusion to use random_hours.
-	## severity = info
-	## cardinality = 0..1
-	random = variable_field
+	months = variable_field[1..12]
 
 	### A random amount of hours to be added to the delay before firing, from 0 up to but not including random_hours.
 	## cardinality = 0..1
-	random_hours = variable_field
+	random_hours = variable_field[1..inf]
 
 	### A random amount of days to be added to the delay before firing, from 0 up to but one hour less than random_days.
 	## cardinality = 0..1
-	random_days = variable_field
+	random_days = variable_field[1..inf]
+
+	### A random amount of hours to be added to the delay before firing, from 0 up to but not including random_hours. Equivalent to random_hours. Preserved for backwards compatibility.
+	## error_if_only_match = This is an deprecated command. The command is used to delay an event trigger by a random number of hours from 0 to the provided value. It is better to avoid confusion to use random_hours.
+	## severity = info
+	## cardinality = 0..1
+	random = variable_field[1..inf]
 
 	### Specify a set of child effects to execute as part of this effect, with a percentage chance of randomly happening or not (as a group, not individually).
 	## cardinality = 0..1
@@ -1099,4 +1116,70 @@ alias[effect:start_peace_conference] = {
 	tag = scope[country]
 	tag = enum[country_tags]
 	score_factor = float
+}
+
+### Sets specific occupation law where available
+## scopes = { country }
+alias[effect:set_occupation_law_where_available] = <occupation_law>
+
+###Randomize a temporary variable.
+## scopes = { any }
+alias[effect:randomize_temp_variable] = variable_field
+
+###Randomize a temporary variable.
+## scopes = { any }
+alias[effect:randomize_temp_variable] = {
+	var = variable_field_32
+	distribution = uniform
+}
+
+###Randomize a temporary variable.
+## scopes = { any }
+alias[effect:randomize_temp_variable] = {
+	var = variable_field_32
+	distribution = binomial
+}
+
+###Randomize a temporary variable.
+## scopes = { any }
+alias[effect:randomize_temp_variable] = {
+	var = variable_field_32
+	distribution = uniform
+	min = variable_field_32
+	max = variable_field_32
+}
+
+###Randomize a temporary variable.
+## scopes = { any }
+alias[effect:randomize_temp_variable] = {
+	var = variable_field_32
+	distribution = binomial
+	min = variable_field_32
+	max = variable_field_32
+}
+
+###Randomize a temporary variable.
+## scopes = { any }
+alias[effect:randomize_temp_variable] = {
+	var = variable_field_32
+	distribution = binomial
+	## cardinality = 0..1
+	min = variable_field_32
+	lambda = variable_field_32
+}
+
+###Sets a temp variable to a random value.
+## scopes = { any }
+alias[effect:set_temp_variable_to_random] = value_set[variable]
+
+###Sets a temp variable to a random value.
+## scopes = { any }
+alias[effect:set_temp_variable_to_random] = {
+	var = value_set[variable]
+	## cardinality = 0..1
+	min = variable_field_32
+	## cardinality = 0..1
+	max = variable_field_32
+	## cardinality = 0..1
+	integer = bool
 }

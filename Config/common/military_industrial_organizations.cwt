@@ -1,0 +1,547 @@
+types = {
+	type[military_industrial_organization] = {
+		path = "game/common/military_industrial_organization/organizations"
+	}
+}
+
+## replace_scope = { this = military_industrial_organization from = country }
+military_industrial_organization = {
+	### If name provided, use TAG_loc_key if it exists. if not use loc_key (where TAG is the tag of the MIO owner).
+	### If localization key TAG_my_MIO_token exists - use it else use loc key my_MIO_token.
+	### Loc key may use scripted loc, scope will be set with this MIO.
+	## cardinality = 0..1
+	name = scalar
+	### If icon provided, use GFX_key.
+	### If gfx key GFX_TAG_my_MIO_token exists, use it (where TAG is the tag of the MIO owner).
+	### If gfx key GFX_my_MIO_token exists, use it.
+	### Else use GFX_idea_unknown
+	## cardinality = 0..1
+	icon = scalar
+	## cardinality = 0..1
+	include = <military_industrial_organization>
+	## replace_scope = { this = country }
+	## cardinality = 0..1
+	allowed = {
+		## cardinality = ~1..inf
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	## cardinality = 0..1
+	visible = {
+		## cardinality = ~1..inf
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	## cardinality = 0..1
+	available = {
+		## cardinality = ~1..inf
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	## cardinality = 0..1
+	equipment_type = {
+		## cardinality = 0..inf
+		enum[equipment_bonus_type]
+		## cardinality = 0..inf
+		<equipment_group>
+	}
+	## cardinality = 0..1
+	research_categories = {
+		## cardinality = ~1..inf
+		enum[tech_category]
+	}
+
+	## cardinality = 0..1
+	on_design_team_assigned_to_tech = {
+		## cardinality = ~1..inf
+		alias_name[effect] = alias_match_left[effect]
+	}
+	## cardinality = 0..1
+	on_design_team_assigned_to_variant = {
+		## cardinality = ~1..inf
+		alias_name[effect] = alias_match_left[effect]
+	}
+	## cardinality = 0..1
+	on_industrial_manufacturer_assigned = {
+		## cardinality = ~1..inf
+		alias_name[effect] = alias_match_left[effect]
+	}
+	## cardinality = 0..1
+	on_tech_research_cancelled = {
+		## cardinality = ~1..inf
+		alias_name[effect] = alias_match_left[effect]
+	}
+	## cardinality = 0..1
+	on_tech_research_completed = {
+		## cardinality = ~1..inf
+		alias_name[effect] = alias_match_left[effect]
+	}
+	## cardinality = 0..1
+	on_industrial_manufacturer_unassigned = {
+		## cardinality = ~1..inf
+		alias_name[effect] = alias_match_left[effect]
+	}
+
+	### default is define DESIGN_TEAM_RESEARCH_BONUS
+	## cardinality = 0..1
+	research_bonus = float
+
+	### default is define DEFAULT_INITIAL_TASK_CAPACITY
+	## cardinality = 0..1
+	task_capacity = int
+	
+	### Flavor texts are displayed above the trait tree. They are typically here to describe a column of traits - there is only room for 1 line!
+	### You can have several flavor texts - repeat the tree_flavor_text block.
+	### Use x to choose where to put the text on the horizontal axis. x should be the horizontal coordinate of the cell where the center of the text will be.
+	### For the text to be aligned with a point between 2 cells, use a decimal number. (e.g. x = 1.2).
+	## cardinality = 0..inf
+	tree_header_text = {
+		text = scalar
+		x = float
+	}
+
+	## cardinality = 0..1
+	ai_will_do = {
+		## cardinality = 0..1
+		enum[base_factor] = float
+		alias_name[modifier_rule] = alias_match_left[modifier_rule]
+	}
+
+	### In addition to the traits in trees, MIO can have an initial trait.
+	### This one is unlocked from the start, and the bonuses applies directly.
+	## cardinality = 0..1
+	initial_trait = {
+		## cardinality = 0..1
+		token = value_set[mio_token]
+		## cardinality = 0..1
+		name = scalar
+		## cardinality = 0..1
+		icon = scalar
+		## cardinality = 0..1
+		limit_to_equipment_type = {
+			## cardinality = 0..inf
+			enum[equipment_bonus_type]
+			## cardinality = 0..inf
+			<equipment_group>
+		}
+		## cardinality = 0..1
+		equipment_bonus = {
+			## cardinality = ~1..inf
+			enum[equipment_stat] = variable_field
+		}
+		## cardinality = 0..1
+		production_bonus = {
+			## cardinality = ~1..inf
+			enum[production_stat] = variable_field
+		}
+		## cardinality = 0..1
+		organization_modifier = {
+			## cardinality = ~1..inf
+			alias_name[modifier] = alias_match_left[modifier]
+		}
+	}
+
+	## cardinality = 0..inf
+	trait = {
+		token = value_set[mio_token]
+		### Same naming rules as with MIO itself
+		## cardinality = 0..1
+		name = scalar
+		## cardinality = 0..1
+		icon = scalar
+		### If yes, trait background will be golden to indicate an interesting trait
+		## cardinality = 0..1
+		special_trait_background = yes
+		## error_if_only_match = This is the default value and can be ommitted
+		## severity = info
+		## cardinality = 0..1
+		special_trait_background = no
+
+		## cardinality = 0..1
+		parent = {
+			traits = {
+				## cardinality = 1..inf
+				value[mio_token]
+			}
+			### The number of parents that needs to be unlocked, default 1
+			## cardinality = 0..1
+			num_parents_needed = int[1..inf] 
+	  	}
+		### Short hand for "parent = { traits = { parent traits } num_parents_needed = 1 }"
+		## cardinality = 0..inf
+		any_parent = {
+			## cardinality = 1..inf
+			value[mio_token]
+		}
+		### Short hand for "parent = { traits = { parent traits } num_parents_needed = N }" where N is the number of parent traits
+		## cardinality = 0..inf
+		all_parents = {
+			## cardinality = 1..inf
+			value[mio_token]
+		}
+
+		### The trait can be mutually exclusive with another (or more)
+		### Note that the other trait should also have the mutually_exclusive parameter set
+		## cardinality = 0..1
+		mutually_exclusive = {
+			## cardinality = 1..inf
+			value[mio_token]
+		}
+
+		## cardinality = 0..1
+		visible = {
+			## cardinality = ~1..inf
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+		## cardinality = 0..1
+		available = {
+			## cardinality = ~1..inf
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+		## cardinality = 0..1
+		on_complete = {
+			## cardinality = ~1..inf
+			alias_name[effect] = alias_match_left[effect]
+		}
+		## cardinality = 0..1
+		limit_to_equipment_type = {
+			## cardinality = 0..inf
+			enum[equipment_bonus_type]
+			## cardinality = 0..inf
+			<equipment_group>
+		}
+		## cardinality = 0..1
+		equipment_bonus = {
+			## cardinality = ~1..inf
+			enum[equipment_stat] = variable_field
+		}
+		## cardinality = 0..1
+		production_bonus = {
+			## cardinality = ~1..inf
+			enum[production_stat] = variable_field
+		}
+		## cardinality = 0..1
+		organization_modifier = {
+			## cardinality = ~1..inf
+			alias_name[modifier] = alias_match_left[modifier]
+		}
+
+		### Defines where the trait will be positioned in the tree grid. x=0 y=0 is the top left position.
+		### Do not reuse the same position twice.
+		position = {
+			x = int
+			y = int
+		}
+		### By default position is the absolute coordinate in the tree grid.
+		### If relative_position_id is provided, it becomes a delta applied to the input trait position
+		## cardinality = 0..1
+		relative_position_id = value[mio_token]
+
+		### AI weight modifier for this trait.
+		### Warning : if the trait is part of a central tree, the trait's ai_will_do will override the central tree's!
+		## cardinality = 0..1
+		ai_will_do = {
+			## cardinality = 0..1
+			enum[base_factor] = float
+			## cardinality = 0..inf
+			alias_name[modifier_rule] = alias_match_left[modifier_rule]
+		}
+	}
+
+	### In order to override with default/empty value, put parameter name in delete_included_values.
+	### All parameters are eligible except the trait ones (see below).
+	## cardinality = 0..1
+	delete_included_values = {
+		## cardinality = 0..1
+		name
+		## cardinality = 0..1
+		icon
+		## cardinality = 0..1
+		allowed
+		## cardinality = 0..1
+		visible
+		## cardinality = 0..1
+		available
+		## cardinality = 0..1
+		equipment_type
+		## cardinality = 0..1
+		research_categories
+		## cardinality = 0..1
+		on_design_team_assigned_to_tech
+		## cardinality = 0..1
+		on_design_team_assigned_to_variant
+		## cardinality = 0..1
+		on_industrial_manufacturer_assigned
+		## cardinality = 0..1
+		on_tech_research_cancelled
+		## cardinality = 0..1
+		on_tech_research_completed
+		## cardinality = 0..1
+		on_industrial_manufacturer_unassigned
+		## cardinality = 0..1
+		research_bonus
+		## cardinality = 0..1
+		task_capacity
+		## cardinality = 0..1
+		tree_header_text
+		## cardinality = 0..1
+		ai_will_do
+	}
+	### Use this parameter to add traits when inheriting another MIO's tree
+	## cardinality = 0..inf
+	add_trait = {
+		token = value_set[mio_token]
+		### Same naming rules as with MIO itself
+		## cardinality = 0..1
+		name = scalar
+		## cardinality = 0..1
+		icon = scalar
+		### If yes, trait background will be golden to indicate an interesting trait
+		## cardinality = 0..1
+		special_trait_background = yes
+		## error_if_only_match = This is the default value and can be ommitted
+		## severity = info
+		## cardinality = 0..1
+		special_trait_background = no
+
+		## cardinality = 0..1
+		parent = {
+			traits = {
+				## cardinality = 1..inf
+				value[mio_token]
+			}
+			### The number of parents that needs to be unlocked, default 1
+			## cardinality = 0..1
+			num_parents_needed = int[1..inf] 
+	  	}
+		### Short hand for "parent = { traits = { parent traits } num_parents_needed = 1 }"
+		## cardinality = 0..inf
+		any_parent = {
+			## cardinality = 1..inf
+			value[mio_token]
+		}
+		### Short hand for "parent = { traits = { parent traits } num_parents_needed = N }" where N is the number of parent traits
+		## cardinality = 0..inf
+		all_parents = {
+			## cardinality = 1..inf
+			value[mio_token]
+		}
+
+		### The trait can be mutually exclusive with another (or more)
+		### Note that the other trait should also have the mutually_exclusive parameter set
+		## cardinality = 0..1
+		mutually_exclusive = {
+			## cardinality = 1..inf
+			value[mio_token]
+		}
+
+		## cardinality = 0..1
+		visible = {
+			## cardinality = ~1..inf
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+		## cardinality = 0..1
+		available = {
+			## cardinality = ~1..inf
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+		## cardinality = 0..1
+		on_complete = {
+			## cardinality = ~1..inf
+			alias_name[effect] = alias_match_left[effect]
+		}
+		## cardinality = 0..1
+		limit_to_equipment_type = {
+			## cardinality = 0..inf
+			enum[equipment_bonus_type]
+			## cardinality = 0..inf
+			<equipment_group>
+		}
+		## cardinality = 0..1
+		equipment_bonus = {
+			## cardinality = ~1..inf
+			enum[equipment_stat] = variable_field
+		}
+		## cardinality = 0..1
+		production_bonus = {
+			## cardinality = ~1..inf
+			enum[production_stat] = variable_field
+		}
+		## cardinality = 0..1
+		organization_modifier = {
+			## cardinality = ~1..inf
+			alias_name[modifier] = alias_match_left[modifier]
+		}
+
+		### Defines where the trait will be positioned in the tree grid. x=0 y=0 is the top left position.
+		### Do not reuse the same position twice.
+		position = {
+			x = int
+			y = int
+		}
+		### By default position is the absolute coordinate in the tree grid.
+		### If relative_position_id is provided, it becomes a delta applied to the input trait position
+		## cardinality = 0..1
+		relative_position_id = value[mio_token]
+
+		### AI weight modifier for this trait.
+		### Warning : if the trait is part of a central tree, the trait's ai_will_do will override the central tree's!
+		## cardinality = 0..1
+		ai_will_do = {
+			## cardinality = 0..1
+			enum[base_factor] = float
+			## cardinality = 0..inf
+			alias_name[modifier_rule] = alias_match_left[modifier_rule]
+		}
+	}
+	### Remove specific traits when inheriting another MIO's tree
+	## cardinality = 0..inf
+	remove_trait = {
+		## cardinality = ~1..inf
+		value[mio_token]
+	}
+	### Override specific trait when inheriting another MIO's tree
+	## cardinality = 0..inf
+	override_trait = {
+		token = value[mio_token]
+		### Same naming rules as with MIO itself
+		## cardinality = 0..1
+		name = scalar
+		## cardinality = 0..1
+		icon = scalar
+		### If yes, trait background will be golden to indicate an interesting trait
+		## cardinality = 0..1
+		special_trait_background = yes
+		## error_if_only_match = This is the default value and can be ommitted
+		## severity = info
+		## cardinality = 0..1
+		special_trait_background = no
+
+		## cardinality = 0..1
+		parent = {
+			traits = {
+				## cardinality = 1..inf
+				value[mio_token]
+			}
+			### The number of parents that needs to be unlocked, default 1
+			## cardinality = 0..1
+			num_parents_needed = int[1..inf] 
+	  	}
+		### Short hand for "parent = { traits = { parent traits } num_parents_needed = 1 }"
+		## cardinality = 0..inf
+		any_parent = {
+			## cardinality = 1..inf
+			value[mio_token]
+		}
+		### Short hand for "parent = { traits = { parent traits } num_parents_needed = N }" where N is the number of parent traits
+		## cardinality = 0..inf
+		all_parents = {
+			## cardinality = 1..inf
+			value[mio_token]
+		}
+
+		### The trait can be mutually exclusive with another (or more)
+		### Note that the other trait should also have the mutually_exclusive parameter set
+		## cardinality = 0..1
+		mutually_exclusive = {
+			## cardinality = 1..inf
+			value[mio_token]
+		}
+
+		## cardinality = 0..1
+		visible = {
+			## cardinality = ~1..inf
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+		## cardinality = 0..1
+		available = {
+			## cardinality = ~1..inf
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+		## cardinality = 0..1
+		on_complete = {
+			## cardinality = ~1..inf
+			alias_name[effect] = alias_match_left[effect]
+		}
+		## cardinality = 0..1
+		limit_to_equipment_type = {
+			## cardinality = 0..inf
+			enum[equipment_bonus_type]
+			## cardinality = 0..inf
+			<equipment_group>
+		}
+		## cardinality = 0..1
+		equipment_bonus = {
+			## cardinality = ~1..inf
+			enum[equipment_stat] = variable_field
+		}
+		## cardinality = 0..1
+		production_bonus = {
+			## cardinality = ~1..inf
+			enum[production_stat] = variable_field
+		}
+		## cardinality = 0..1
+		organization_modifier = {
+			## cardinality = ~1..inf
+			alias_name[modifier] = alias_match_left[modifier]
+		}
+
+		### Defines where the trait will be positioned in the tree grid. x=0 y=0 is the top left position.
+		### Do not reuse the same position twice.
+		## cardinality = 0..1
+		position = {
+			x = int
+			y = int
+		}
+		### By default position is the absolute coordinate in the tree grid.
+		### If relative_position_id is provided, it becomes a delta applied to the input trait position
+		## cardinality = 0..1
+		relative_position_id = value[mio_token]
+
+		### AI weight modifier for this trait.
+		### Warning : if the trait is part of a central tree, the trait's ai_will_do will override the central tree's!
+		## cardinality = 0..1
+		ai_will_do = {
+			## cardinality = 0..1
+			enum[base_factor] = float
+			## cardinality = 0..inf
+			alias_name[modifier_rule] = alias_match_left[modifier_rule]
+		}
+		### In order to override with default/empty value, put parameter name in delete_included_values.
+		### All parameters are eligible.
+		## cardinality = 0..1
+		delete_included_values = {
+			## cardinality = 0..1
+			name
+			## cardinality = 0..1
+			icon
+			## cardinality = 0..1
+			allowed
+			## cardinality = 0..1
+			visible
+			## cardinality = 0..1
+			available
+			## cardinality = 0..1
+			equipment_type
+			## cardinality = 0..1
+			research_categories
+			## cardinality = 0..1
+			on_design_team_assigned_to_tech
+			## cardinality = 0..1
+			on_design_team_assigned_to_variant
+			## cardinality = 0..1
+			on_industrial_manufacturer_assigned
+			## cardinality = 0..1
+			on_tech_research_cancelled
+			## cardinality = 0..1
+			on_tech_research_completed
+			## cardinality = 0..1
+			on_industrial_manufacturer_unassigned
+			## cardinality = 0..1
+			research_bonus
+			## cardinality = 0..1
+			task_capacity
+			## cardinality = 0..1
+			tree_header_text
+			## cardinality = 0..1
+			ai_will_do
+		}
+	}
+}

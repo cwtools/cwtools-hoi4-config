@@ -1,6 +1,9 @@
 ## scope = country
 ## push_scope = state
 alias[effect:every_core_state] = {
+	### Apply the effect to this number of randomly selected entities
+	## cardinality = 0..1
+	random_select_amount = int[1..inf]
 	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
@@ -77,6 +80,9 @@ alias[effect:uncomplete_national_focus] = {
 ## scope = country
 ## push_scope = character
 alias[effect:every_character] = {
+	### Apply the effect to this number of randomly selected entities
+	## cardinality = 0..1
+	random_select_amount = int[1..inf]
 	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
@@ -122,15 +128,29 @@ alias[effect:add_corps_commander_role] = {
 		## cardinality = ~1..inf
 		<unit_leader_trait>
 	}
+	### Optional for effect_tooltip
+	## cardinality = 0..1
 	skill = int_variable_field
+	### Optional for effect_tooltip
+	## cardinality = 0..1
 	attack_skill = int_variable_field
+	### Optional for effect_tooltip
+	## cardinality = 0..1
 	defense_skill = int_variable_field
+	### Optional for effect_tooltip
+	## cardinality = 0..1
 	planning_skill = int_variable_field
+	### Optional for effect_tooltip
+	## cardinality = 0..1
 	logistics_skill = int_variable_field
 	## cardinality = 0..1
 	female = bool
 	## cardinality = 0..1
 	legacy_id = value_set[unit_leader_ids]
+	## cardinality = 0..1
+	visible = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
 }
 
 ### Remove unit leader role to character
@@ -198,6 +218,10 @@ alias[effect:add_field_marshal_role] = {
 	logistics_skill = int_variable_field
 	## cardinality = 0..1
 	legacy_id = value_set[unit_leader_ids]
+	## cardinality = 0..1
+	visible = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
 }
 
 ## scope = { character country }
@@ -231,6 +255,10 @@ alias[effect:add_naval_commander_role] = {
 	coordination_skill = int_variable_field
 	## cardinality = 0..1
 	legacy_id = value_set[unit_leader_ids]
+	## cardinality = 0..1
+	visible = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
 }
 
 ## scope = { character country unit_leader }
@@ -451,6 +479,7 @@ alias[effect:promote_character] = {
 	character = <character>
 	### must match the character's country leader sub-ideology
 	ideology = enum[sub_ideology]
+	ideology = <ideology>
 }
 
 ### makes character head of their ideology party
@@ -461,8 +490,12 @@ alias[effect:promote_character] = bool
 alias[effect:promote_character] = enum[sub_ideology]
 ### makes character head of their ideology party
 ## scope = { character }
+alias[effect:promote_character] = <ideology>
+### makes character head of their ideology party
+## scope = { character }
 alias[effect:promote_character] = {
 	ideology = enum[sub_ideology]
+	ideology = <ideology>
 }
 
 ## scope = { character }
@@ -593,6 +626,9 @@ alias[effect:set_nationality] = enum[country_tags]
 ## scopes = { COUNTRY }
 ## push_scope = country
 alias[effect:every_subject_country] = {
+	### Apply the effect to this number of randomly selected entities
+	## cardinality = 0..1
+	random_select_amount = int[1..inf]
     ## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
@@ -618,6 +654,9 @@ alias[effect:random_subject_country] = {
 ## scopes = { COUNTRY }
 ## push_scope = country
 alias[effect:every_possible_country] = {
+	### Apply the effect to this number of randomly selected entities
+	## cardinality = 0..1
+	random_select_amount = int[1..inf]
     ## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
@@ -681,9 +720,15 @@ alias[effect:remove_ideas] = value[variable]
 ### Adds idea from country.
 ## scope = country
 alias[effect:add_ideas] = value[variable]
+### Adds idea from country.
+## scope = country
+alias[effect:add_ideas] = value[advisor_token]
+### Remove idea from country.
+## scope = country
+alias[effect:remove_ideas] = value[advisor_token]
 
 ### damages units for given conditions. no tooltip generated
-## scope = { country }
+## scope = { country state }
 alias[effect:damage_units] = {
 	### specify a location
 	## cardinality = 0..1

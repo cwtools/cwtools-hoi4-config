@@ -76,12 +76,19 @@ unit = {
 		can_be_parachuted = bool
 
 		## cardinality = 0..1
+		affects_speed = no
+
+		## cardinality = 0..1
+		### Marine commando
+		can_exfiltrate_from_coast = bool
+
+		## cardinality = 0..1
 		### use this equipment for speed
 		transport = <equipment>
 
 		## cardinality = 0..1
 		### division designer group
-		group = localisation_inline
+		group = scalar
 
 		### unit type
 		type = {
@@ -126,7 +133,7 @@ unit = {
 
 		## cardinality = 0..1
 		### Division designer group.
-		group = localisation_inline
+		group = scalar
 		### Unit type.
 		type = {
 			## cardinality = ~1..inf
@@ -139,6 +146,22 @@ unit = {
 		## cardinality = 0..1
 		### Blocks adding same unit types to a template.
 		same_support_type = <unit.support_unit>
+
+		## cardinality = 0..1
+		### Blocks adding same unit types to a template.
+		same_support_type = enum[land_units]
+
+		## cardinality = 0..1
+		battalion_mult = {
+			## cardinality = 1..inf
+			category = enum[unit_category]
+			## cardinality = 0..inf
+			alias_name[unit_stat] = alias_match_left[unit_stat]
+			alias_name[naval_stat] = alias_match_left[naval_stat]
+			alias_name[air_stat] = alias_match_left[air_stat]
+			## cardinality = 0..1
+			add = bool
+		}
 	}
 
 	subtype[ship_unit] = {
@@ -362,6 +385,11 @@ enums = {
 		train
 		flame
 		maritime_patrol_plane
+		cv_naval_bomber
+		cv_cas
+		cv_fighter
+		heavy_fighter
+		amphibious
 	}
 	enum[land_units] = {
 		infantry
@@ -374,6 +402,8 @@ enums = {
 		mechanized
 		armor
 		amphibious
+		flame
+		railway_gun
 	}
 	enum[air_units] = {
 		air_transport
@@ -387,6 +417,7 @@ enums = {
 		suicide
 		tactical_bomber
 		maritime_patrol_plane
+		heavy_fighter
 	}
 	enum[ship_units] = {
 		battle_cruiser
@@ -399,6 +430,14 @@ enums = {
 		light_cruiser
 		screen_ship
 		submarine
+		
+		# MD Specific
+		corvette
+		frigate
+		attack_submarine
+		missile_submarine
+		helicopter_operator
+		stealth_destroyer
 	}
 	enum[allowed_air_unit_missions] = {
 		paradrop

@@ -55,6 +55,14 @@ alias[trigger:is_power_balance_side_active] = {
 ## scope = unit
 alias[trigger:division_has_majority_template] = <unit>
 
+### Check if any division in country division has fullfils the triggers
+## scope = country
+## push_scope = unit
+alias[trigger:any_country_division] = {
+    ## cardinality = 1..inf
+    alias_name[trigger] = alias_match_left[trigger]
+}
+
 ### Check if division has this battalion in template
 ## scope = unit
 alias[trigger:division_has_battalion_in_template] = <unit>
@@ -62,6 +70,26 @@ alias[trigger:division_has_battalion_in_template] = <unit>
 ### Checks if states have divisions
 ## scope = country
 alias[trigger:num_divisions_in_states] = {
+    count = int
+    states = {
+        ## cardinality = ~1..inf
+        <state>
+    }
+    ## cardinality = 0..1
+    types = {
+        ## cardinality = ~1..inf
+        <unit>
+    }
+    ## cardinality = 0..1
+    exclude = {
+        ## cardinality = ~1..inf
+        <unit>
+    }
+}
+
+### Checks if states have divisions
+## scope = country
+alias[trigger:num_battalions_in_states] = {
     count = int
     states = {
         ## cardinality = ~1..inf
@@ -104,3 +132,22 @@ alias[trigger:pc_is_loser] = bool
 ### Checks if country is a winner in peace conference
 ## scope = country
 alias[trigger:pc_is_winner] = bool
+
+### Checks if country has war with wargoal against target
+## scope = country
+alias[trigger:has_war_with_wargoal_against] = {
+	target = scope[country]
+	target = enum[country_tags]
+	type = <wargoal>
+}
+
+### Checks if country has war with any wargoal against target
+## scope = country
+alias[trigger:has_war_with_wargoal_against] = scope[country]
+
+### Checks if country has war with any wargoal against target
+## scope = country
+alias[trigger:has_war_with_wargoal_against] = enum[country_tags]
+
+## scope = character
+alias[trigger:is_hired_as_advisor] = bool

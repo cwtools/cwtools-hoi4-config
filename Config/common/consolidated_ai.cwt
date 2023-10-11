@@ -316,6 +316,9 @@ ai_equipment_design_group = {
 		}
 
 		## cardinality = 0..1
+		name = scalar
+
+		## cardinality = 0..1
 		role_icon_index = int
 
 		### List of triggers that must all be true for the design to be usable; true by default if empty or missing.
@@ -323,6 +326,10 @@ ai_equipment_design_group = {
 		enable = {
 			alias_name[trigger] = alias_match_left[trigger]
 		}
+
+		### Not sure what it does, possibly hides it for players?
+		## cardinality = 0..1
+		visible = bool
 
 		## cardinality = 0..1
 		### Specifications about how a matching equipment variant should be designed.
@@ -415,22 +422,35 @@ ai_equipment_design_group = {
 
 values = {
     value[ai_roles] = {
-        armor
-        cavalry
-        garrison
-        infantry
-        marines
-        mechanized
-        motorized
-        mountaineers
-        paratroopers
-		suppression
-		mobile
-		artillery
-		cas
+		# infantry
+		infantry
 		anti_tank
+		artillery
+		bicycle_battalion
+		cavalry
+		garrison
+		marines
+		mechanized
+		militia
+		mobile
+		motorized
+		mountaineers
+		paratroopers
+		suppression
+		fake_intel_unit
 
-        naval_capital
+		# armor
+		armor
+		light_armor
+		medium_armor
+		heavy_armor
+		modern_armor
+
+		# planes
+		cas
+
+		# ships
+		naval_capital
         naval_carrier
         naval_screen
         naval_sub

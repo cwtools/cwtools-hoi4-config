@@ -19,7 +19,7 @@ links = {
     # Custom data links ####
     owner = {
         output_scope = country
-        input_scopes = { unit_leader combat state country unit }
+        input_scopes = { unit_leader combat state country unit military_industrial_organization }
     }
 
     controller = {
@@ -57,7 +57,6 @@ links = {
     }
 
     var = {
-        desc =  eventtarget_link_desc_var
         from_data = yes
         type = both
         prefix = var:
@@ -65,7 +64,6 @@ links = {
     }
 
     temp_var = {
-        desc =  eventtarget_link_desc_var
         from_data = yes
         type = both
         prefix = temp_var:
@@ -98,5 +96,13 @@ links = {
         data = <operation>
         data = <technology>
         data = <idea>
+    }
+
+    mio = {
+        prefix = mio:
+        output_scope = military_industrial_organization
+        input_scopes = country
+        from_data = yes
+        data_source = <military_industrial_organization>
     }
 }

@@ -1,0 +1,18 @@
+types = {
+	type[equipment_group] = {
+		path = "game/common/equipment_groups"
+	}
+}
+
+equipment_group = {
+    ## cardinality = 0..1
+    description = scalar
+    ### This can be a type, an archetype or a category.
+    ### You can also include existing groups in the equipment type list.
+    equipment_type = {
+        ## cardinality = 0..inf
+        enum[equipment_bonus_type]
+        ## cardinality = 0..inf
+        <equipment_group>
+    }
+}

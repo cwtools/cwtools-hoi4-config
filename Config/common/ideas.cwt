@@ -61,6 +61,8 @@ idea = {
 			rule = {
 				## cardinality = ~1..inf
 				enum[game_rules] = bool
+				## cardinality = 0..1
+				desc = scalar
 			}
 			## cardinality = 0..1
 			research_bonus = {
@@ -70,47 +72,7 @@ idea = {
 			## cardinality = 0..1
 			equipment_bonus = {
 				## cardinality = 0..inf
-				<equipment> = {
-					## cardinality = 0..1
-					instant = bool
-					alias_name[unit_stat] = alias_match_left[unit_stat]
-					alias_name[naval_stat] = alias_match_left[naval_stat]
-					alias_name[air_stat] = alias_match_left[air_stat]
-				}
-				## cardinality = 0..inf
-				enum[unit_types] = {
-					## cardinality = 0..1
-					instant = bool
-					alias_name[unit_stat] = alias_match_left[unit_stat]
-					alias_name[naval_stat] = alias_match_left[naval_stat]
-					alias_name[air_stat] = alias_match_left[air_stat]
-				}
-				## cardinality = 0..inf
-				enum[unit_category] = {
-					## cardinality = 0..1
-					instant = bool
-					alias_name[unit_stat] = alias_match_left[unit_stat]
-					alias_name[naval_stat] = alias_match_left[naval_stat]
-					alias_name[air_stat] = alias_match_left[air_stat]
-				}
-				## cardinality = 0..inf
-				<unit> = {
-					## cardinality = 0..1
-					instant = bool
-					alias_name[unit_stat] = alias_match_left[unit_stat]
-					alias_name[naval_stat] = alias_match_left[naval_stat]
-					alias_name[air_stat] = alias_match_left[air_stat]
-				}
-				## cardinality = 0..inf
-				enum[nsb_armor_archetypes] = {
-					## cardinality = 0..1
-					instant = bool
-					alias_name[unit_stat] = alias_match_left[unit_stat]
-					alias_name[naval_stat] = alias_match_left[naval_stat]
-					alias_name[air_stat] = alias_match_left[air_stat]
-				}
-				## cardinality = 0..inf
-				enum[bba_air_equipment] = {
+				enum[equipment_bonus_type] = {
 					## cardinality = 0..1
 					instant = bool
 					alias_name[unit_stat] = alias_match_left[unit_stat]
@@ -218,51 +180,13 @@ idea = {
 			rule = {
 				## cardinality = ~1..inf
 				enum[game_rules] = bool
+				## cardinality = 0..1
+				desc = scalar
 			}
 			## cardinality = 0..1
 			equipment_bonus = {
 				## cardinality = 0..inf
-				<equipment> = {
-					## cardinality = 0..1
-					instant = bool
-					alias_name[unit_stat] = alias_match_left[unit_stat]
-					alias_name[naval_stat] = alias_match_left[naval_stat]
-					alias_name[air_stat] = alias_match_left[air_stat]
-				}
-				## cardinality = 0..inf
-				enum[unit_types] = {
-					## cardinality = 0..1
-					instant = bool
-					alias_name[unit_stat] = alias_match_left[unit_stat]
-					alias_name[naval_stat] = alias_match_left[naval_stat]
-					alias_name[air_stat] = alias_match_left[air_stat]
-				}
-				## cardinality = 0..inf
-				enum[unit_category] = {
-					## cardinality = 0..1
-					instant = bool
-					alias_name[unit_stat] = alias_match_left[unit_stat]
-					alias_name[naval_stat] = alias_match_left[naval_stat]
-					alias_name[air_stat] = alias_match_left[air_stat]
-				}
-				## cardinality = 0..inf
-				<unit> = {
-					## cardinality = 0..1
-					instant = bool
-					alias_name[unit_stat] = alias_match_left[unit_stat]
-					alias_name[naval_stat] = alias_match_left[naval_stat]
-					alias_name[air_stat] = alias_match_left[air_stat]
-				}
-				## cardinality = 0..inf
-				enum[nsb_armor_archetypes] = {
-					## cardinality = 0..1
-					instant = bool
-					alias_name[unit_stat] = alias_match_left[unit_stat]
-					alias_name[naval_stat] = alias_match_left[naval_stat]
-					alias_name[air_stat] = alias_match_left[air_stat]
-				}
-				## cardinality = 0..inf
-				enum[bba_air_equipment] = {
+				enum[equipment_bonus_type] = {
 					## cardinality = 0..1
 					instant = bool
 					alias_name[unit_stat] = alias_match_left[unit_stat]
@@ -378,51 +302,13 @@ idea = {
 			rule = {
 				## cardinality = ~1..inf
 				enum[game_rules] = bool
+				## cardinality = 0..1
+				desc = scalar
 			}
 			## cardinality = 0..1
 			equipment_bonus = {
 				## cardinality = 0..inf
-				<equipment> = {
-					## cardinality = 0..1
-					instant = bool
-					alias_name[unit_stat] = alias_match_left[unit_stat]
-					alias_name[naval_stat] = alias_match_left[naval_stat]
-					alias_name[air_stat] = alias_match_left[air_stat]
-				}
-				## cardinality = 0..inf
-				enum[unit_types] = {
-					## cardinality = 0..1
-					instant = bool
-					alias_name[unit_stat] = alias_match_left[unit_stat]
-					alias_name[naval_stat] = alias_match_left[naval_stat]
-					alias_name[air_stat] = alias_match_left[air_stat]
-				}
-				## cardinality = 0..inf
-				enum[unit_category] = {
-					## cardinality = 0..1
-					instant = bool
-					alias_name[unit_stat] = alias_match_left[unit_stat]
-					alias_name[naval_stat] = alias_match_left[naval_stat]
-					alias_name[air_stat] = alias_match_left[air_stat]
-				}
-				## cardinality = 0..inf
-				<unit> = {
-					## cardinality = 0..1
-					instant = bool
-					alias_name[unit_stat] = alias_match_left[unit_stat]
-					alias_name[naval_stat] = alias_match_left[naval_stat]
-					alias_name[air_stat] = alias_match_left[air_stat]
-				}
-				## cardinality = 0..inf
-				enum[nsb_armor_archetypes] = {
-					## cardinality = 0..1
-					instant = bool
-					alias_name[unit_stat] = alias_match_left[unit_stat]
-					alias_name[naval_stat] = alias_match_left[naval_stat]
-					alias_name[air_stat] = alias_match_left[air_stat]
-				}
-				## cardinality = 0..inf
-				enum[bba_air_equipment] = {
+				enum[equipment_bonus_type] = {
 					## cardinality = 0..1
 					instant = bool
 					alias_name[unit_stat] = alias_match_left[unit_stat]

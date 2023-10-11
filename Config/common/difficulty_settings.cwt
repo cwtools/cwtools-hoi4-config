@@ -1,0 +1,16 @@
+types = {
+	type[difficulty_setting] = {
+		path = "game/common/difficulty_settings"
+		skip_root_key = difficulty_settings
+	}
+}
+
+difficulty_setting = {
+    key = value_set[difficulty_setting]
+    modifier = <static_modifier>
+    countries = {
+        ## cardinality = ~1..inf
+		enum[country_tags]
+    }
+    multiplier = float
+}

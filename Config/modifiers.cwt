@@ -2,7 +2,7 @@ modifiers = {
 	# aggressive
 	annex_cost_factor = aggressive
 	army_armor_attack_factor = aggressive
-	army_armor_speed_factor = aggressive 
+	army_armor_speed_factor = aggressive
 	army_artillery_attack_factor = aggressive
 	army_attack_against_major_factor = aggressive
 	army_attack_against_minor_factor = aggressive
@@ -311,7 +311,10 @@ modifiers = {
 	compliance_growth_on_our_occupied_states = country
 	conscription = country
 	conscription_factor = country
-	consumer_goods_factor = country
+	cic_construction_boost = country
+	cic_construction_boost_factor = country
+	consumer_goods_factor = country # Consumer Goods Factor/Modifier to Base Value
+	consumer_goods_expected_value = country # Consumer Goods Base Value
 	conversion_cost_civ_to_mil_factor = country
 	conversion_cost_mil_to_civ_factor = country
 	critical_receive_chance = country
@@ -482,6 +485,9 @@ modifiers = {
 	war_support_weekly = country
 	war_support_weekly_factor = country
 	weekly_manpower = country
+	weekly_casualties_war_support = country
+	weekly_convoys_war_support = country
+	weekly_bombing_war_support = country
 
 	# defensive
 	armor_factor = defensive
@@ -691,8 +697,13 @@ modifiers = {
 	compliance_growth_on_our_occupied_states = state
 	disable_strategic_redeployment = state
 	disable_strategic_redeployment_for_controller = state
+	enemy_army_speed_factor = state
+	enemy_attrition = state
 	enemy_intel_network_gain_factor_over_occupied_tag = state
+	enemy_local_supplies = state
 	enemy_spy_negative_status_factor = state
+	enemy_truck_attrition_factor = state
+	equipment_capture_for_controller = state
 	intel_network_gain = state
 	intel_network_gain_factor = state
 	local_building_slots = state
@@ -993,4 +1004,12 @@ modifiers = {
 	target_sabotage_risk = intelligence_agency
 	target_sabotage_cost = intelligence_agency
 	target_sabotage_outcome = intelligence_agency
+
+	military_industrial_organization_research_bonus = military_industrial_organization
+	military_industrial_organization_design_team_assign_cost = military_industrial_organization
+	military_industrial_organization_design_team_change_cost = military_industrial_organization
+	military_industrial_organization_industrial_manufacturer_assign_cost = military_industrial_organization
+	military_industrial_organization_task_capacity = military_industrial_organization
+	military_industrial_organization_size_up_requirement = military_industrial_organization
+	military_industrial_organization_funds_gain = military_industrial_organization
 }

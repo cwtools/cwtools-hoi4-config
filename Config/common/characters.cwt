@@ -343,201 +343,205 @@ character = {
 			allowed_civil_war = {
 				alias_name[trigger] = alias_match_left[trigger]
 			}
-			subtype[country_leader] = {
-				## cardinality = 1..inf
-				country_leader = {
-					ideology = enum[sub_ideology]
-					## cardinality = 0..1
-					desc = localisation
-					## cardinality = 0..1
-					expire = datetime_field
-					## cardinality = 0..1
-					name = localisation
-					### Sets starting traits for this leader.
-					## cardinality = 0..1
-					traits = {
-						## cardinality = 0..inf
-						<country_leader_trait>
-					}
-					## cardinality = 0..1
-					research_bonus = {
-						## cardinality = 1..inf
-						enum[tech_category] = float
-					}
-					## cardinality = 0..1
-					enum[character_ids] = value_set[country_leader_ids]
-				}
-			}
-			subtype[corps_commander] = {
-				corps_commander = {
-					## cardinality = 0..1
-					expire = datetime_field
-					## cardinality = ~1..1
-					skill = int
-					## cardinality = ~1..1
-					attack_skill = int
-					## cardinality = ~1..1
-					defense_skill = int
-					## cardinality = ~1..1
-					planning_skill = int
-					## cardinality = ~1..1
-					logistics_skill = int
-					## cardinality = 0..1
-					enum[character_ids] = value_set[unit_leader_ids]
-					## cardinality = 0..1
-					name = localisation
-					### Sets starting traits for this leader.
-					## cardinality = 0..1
-					traits = {
-						## cardinality = 0..inf
-						<unit_leader_trait>
-					}
-					### Can the player see this character as a unit leader.
-					## replace_scope = { this = character root = country }
-					## cardinality = 0..1
-					visible = {
-						alias_name[trigger] = alias_match_left[trigger]
-					}
-				}
-			}
-			subtype[field_marshal] = {
-				field_marshal = {
-					## cardinality = 0..1
-					expire = datetime_field
-					## cardinality = ~1..1
-					skill = int
-					## cardinality = ~1..1
-					attack_skill = int
-					## cardinality = ~1..1
-					defense_skill = int
-					## cardinality = ~1..1
-					planning_skill = int
-					## cardinality = ~1..1
-					logistics_skill = int
-					## cardinality = 0..1
-					enum[character_ids] = value_set[unit_leader_ids]
-					## cardinality = 0..1
-					name = localisation
-					### Sets starting traits for this leader.
-					## cardinality = 0..1
-					traits = {
-						## cardinality = 0..inf
-						<unit_leader_trait>
-					}
-					### Can the player see this character as a unit leader.
-					## replace_scope = { this = character root = country }
-					## cardinality = 0..1
-					visible = {
-						alias_name[trigger] = alias_match_left[trigger]
-					}
-				}
-			}
-			subtype[navy_leader] = {
-				navy_leader = {
-					## cardinality = 0..1
-					expire = datetime_field
-					## cardinality = ~1..1
-					skill = int
-					## cardinality = ~1..1
-					attack_skill = int
-					## cardinality = ~1..1
-					defense_skill = int
-					## cardinality = ~1..1
-					maneuvering_skill = int
-					## cardinality = ~1..1
-					coordination_skill = int
-					## cardinality = 0..1
-					enum[character_ids] = value_set[unit_leader_ids]
-					## cardinality = 0..1
-					name = localisation
-					### Sets starting traits for this leader.
-					## cardinality = 0..1
-					traits = {
-						## cardinality = 0..inf
-						<unit_leader_trait>
-					}
-					### Can the player see this character as a unit leader.
-					## replace_scope = { this = character root = country }
-					## cardinality = 0..1
-					visible = {
-						alias_name[trigger] = alias_match_left[trigger]
-					}
-				}
-			}
-			subtype[advisor] = {
-				## cardinality = 1..inf
-				advisor = {
-					slot = value[character_advisor_slot]
-					idea_token = value_set[advisor_token]
-					## cardinality = 0..1
-					name = localisation
-					## cardinality = 0..1
-					desc = localisation
-					## replace_scope = { this = character root = country }
-					## cardinality = 0..1
-					allowed = {
-						alias_name[trigger] = alias_match_left[trigger]
-					}
-					## replace_scope = { this = character root = country }
-					## cardinality = 0..1
-					visible = {
-						alias_name[trigger] = alias_match_left[trigger]
-					}
-					## replace_scope = { this = character root = country }
-					## cardinality = 0..1
-					available = {
-						alias_name[trigger] = alias_match_left[trigger]
-					}
-					### Sets advsior effects.
-					## cardinality = ~1..1
-					traits = {
-						## cardinality = 0..inf
-						<country_leader_trait>
-					}
-					## cardinality = 0..1
-					research_bonus = {
-						## cardinality = 1..inf
-						enum[tech_category] = float
-					}
-					## cardinality = 0..1
-					ledger = enum[ledgers]
-					### overrides default cost of advisor
-					## cardinality = 0..1
-					cost = int
-					### cost to remove advisor, -1 prevents removal
-					## cardinality = 0..1
-					removal_cost = int
-					## cardinality = 0..1
-					## replace_scope = { this = character root = country }
-					ai_will_do = {
-						enum[base_factor] = variable_field
-						alias_name[modifier_rule] = alias_match_left[modifier_rule]
-					}
-					## replace_scope = { this = character root = country }
+			### Country leader subtype
+			## cardinality = 0..inf
+			country_leader = {
+				ideology = enum[sub_ideology]
+				## cardinality = 0..1
+				desc = localisation
+				## cardinality = 0..1
+				expire = datetime_field
+				## cardinality = 0..1
+				name = localisation
+				### Sets starting traits for this leader.
+				## cardinality = 0..1
+				traits = {
 					## cardinality = 0..inf
-					on_add = {
-						alias_name[effect] = alias_match_left[effect]
-					}
-					## replace_scope = { this = character root = country }
-					## cardinality = 0..inf
-					on_remove = {
-						alias_name[effect] = alias_match_left[effect]
-					}
-					### While it is used in vanilla and doesn't throw errors, I can't get it to work reliably so I suspect there is some hard-coded strangeness going on here.
-					## replace_scope = { this = character root = country }
-					## cardinality = 0..1
-					do_effect = {
-						alias_name[trigger] = alias_match_left[trigger]
-					}
-					### Modifiers that are applied to tag while the advisor is active.
-					## replace_scope = { this = character root = country }
-					## cardinality = 0..1
-					modifier = {
-						alias_name[modifier] = alias_match_left[modifier]
-					}
-					## cardinality = 0..1
-					can_be_fired = bool
+					<country_leader_trait>
 				}
+				## cardinality = 0..1
+				research_bonus = {
+					## cardinality = 1..inf
+					enum[tech_category] = float
+				}
+				## cardinality = 0..1
+				enum[character_ids] = value_set[country_leader_ids]
+			}
+			### Corps commander subtype
+			## cardinality = 0..1
+			corps_commander = {
+				## cardinality = 0..1
+				desc = localisation
+				## cardinality = 0..1
+				expire = datetime_field
+				## cardinality = ~1..1
+				skill = int
+				## cardinality = ~1..1
+				attack_skill = int
+				## cardinality = ~1..1
+				defense_skill = int
+				## cardinality = ~1..1
+				planning_skill = int
+				## cardinality = ~1..1
+				logistics_skill = int
+				## cardinality = 0..1
+				enum[character_ids] = value_set[unit_leader_ids]
+				## cardinality = 0..1
+				name = localisation
+				### Sets starting traits for this leader.
+				## cardinality = 0..1
+				traits = {
+					## cardinality = 0..inf
+					<unit_leader_trait>
+				}
+				### Can the player see this character as a unit leader.
+				## replace_scope = { this = character root = country }
+				## cardinality = 0..1
+				visible = {
+					alias_name[trigger] = alias_match_left[trigger]
+				}
+			}
+			### Field marshal subtype
+			## cardinality = 0..1
+			field_marshal = {
+				## cardinality = 0..1
+				desc = localisation
+				## cardinality = 0..1
+				expire = datetime_field
+				## cardinality = ~1..1
+				skill = int
+				## cardinality = ~1..1
+				attack_skill = int
+				## cardinality = ~1..1
+				defense_skill = int
+				## cardinality = ~1..1
+				planning_skill = int
+				## cardinality = ~1..1
+				logistics_skill = int
+				## cardinality = 0..1
+				enum[character_ids] = value_set[unit_leader_ids]
+				## cardinality = 0..1
+				name = localisation
+				### Sets starting traits for this leader.
+				## cardinality = 0..1
+				traits = {
+					## cardinality = 0..inf
+					<unit_leader_trait>
+				}
+				### Can the player see this character as a unit leader.
+				## replace_scope = { this = character root = country }
+				## cardinality = 0..1
+				visible = {
+					alias_name[trigger] = alias_match_left[trigger]
+				}
+			}
+			### Navy leader subtype
+			## cardinality = 0..1
+			navy_leader = {
+				## cardinality = 0..1
+				desc = localisation
+				## cardinality = 0..1
+				expire = datetime_field
+				## cardinality = ~1..1
+				skill = int
+				## cardinality = ~1..1
+				attack_skill = int
+				## cardinality = ~1..1
+				defense_skill = int
+				## cardinality = ~1..1
+				maneuvering_skill = int
+				## cardinality = ~1..1
+				coordination_skill = int
+				## cardinality = 0..1
+				enum[character_ids] = value_set[unit_leader_ids]
+				## cardinality = 0..1
+				name = localisation
+				### Sets starting traits for this leader.
+				## cardinality = 0..1
+				traits = {
+					## cardinality = 0..inf
+					<unit_leader_trait>
+				}
+				### Can the player see this character as a unit leader.
+				## replace_scope = { this = character root = country }
+				## cardinality = 0..1
+				visible = {
+					alias_name[trigger] = alias_match_left[trigger]
+				}
+			}
+			### Advisor subtype
+			## cardinality = 0..inf
+			advisor = {
+				slot = value[character_advisor_slot]
+				idea_token = value_set[advisor_token]
+				## cardinality = 0..1
+				name = localisation
+				## cardinality = 0..1
+				desc = localisation
+				## replace_scope = { this = character root = country }
+				## cardinality = 0..1
+				allowed = {
+					alias_name[trigger] = alias_match_left[trigger]
+				}
+				## replace_scope = { this = character root = country }
+				## cardinality = 0..1
+				visible = {
+					alias_name[trigger] = alias_match_left[trigger]
+				}
+				## replace_scope = { this = character root = country }
+				## cardinality = 0..1
+				available = {
+					alias_name[trigger] = alias_match_left[trigger]
+				}
+				### Sets advsior effects.
+				## cardinality = ~1..1
+				traits = {
+					## cardinality = 0..inf
+					<country_leader_trait>
+				}
+				## cardinality = 0..1
+				research_bonus = {
+					## cardinality = 1..inf
+					enum[tech_category] = float
+				}
+				## cardinality = 0..1
+				ledger = enum[ledgers]
+				### overrides default cost of advisor
+				## cardinality = 0..1
+				cost = int
+				### cost to remove advisor, -1 prevents removal
+				## cardinality = 0..1
+				removal_cost = int
+				## cardinality = 0..1
+				## replace_scope = { this = character root = country }
+				ai_will_do = {
+					enum[base_factor] = variable_field
+					alias_name[modifier_rule] = alias_match_left[modifier_rule]
+				}
+				## replace_scope = { this = character root = country }
+				## cardinality = 0..inf
+				on_add = {
+					alias_name[effect] = alias_match_left[effect]
+				}
+				## replace_scope = { this = character root = country }
+				## cardinality = 0..inf
+				on_remove = {
+					alias_name[effect] = alias_match_left[effect]
+				}
+				### While it is used in vanilla and doesn't throw errors, I can't get it to work reliably so I suspect there is some hard-coded strangeness going on here.
+				## replace_scope = { this = character root = country }
+				## cardinality = 0..1
+				do_effect = {
+					alias_name[trigger] = alias_match_left[trigger]
+				}
+				### Modifiers that are applied to tag while the advisor is active.
+				## replace_scope = { this = character root = country }
+				## cardinality = 0..1
+				modifier = {
+					alias_name[modifier] = alias_match_left[modifier]
+				}
+				## cardinality = 0..1
+				can_be_fired = bool
 			}
 		}
 	}

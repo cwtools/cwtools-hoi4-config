@@ -256,9 +256,17 @@ shared_focus = {
 	## cardinality = 0..1
 	text = localisation
 
-	## cardinality = ~1..1
-	## severity = warning
+	## cardinality = 0..inf
 	icon = <spriteType>
+	## cardinality = 0..inf
+	icon = {
+		## cardinality = 0..1
+		trigger = {
+			## cardinality = 0..inf
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+		value = <spriteType>
+	}
 	cost = float
 	x = int
 	y = int

@@ -453,79 +453,17 @@ alias[trigger:network_national_coverage] = {
 	value = variable_field
 }
 
-###Randomize a temporary variable.
-## scopes = { any }
-alias[effect:randomize_temp_variable] = variable_field
-
-###Randomize a temporary variable.
-## scopes = { any }
-alias[effect:randomize_temp_variable] = {
-	var = variable_field_32
-	distribution = uniform
-}
-
-###Randomize a temporary variable.
-## scopes = { any }
-alias[effect:randomize_temp_variable] = {
-	var = variable_field_32
-	distribution = binomial
-}
-
-###Randomize a temporary variable.
-## scopes = { any }
-alias[effect:randomize_temp_variable] = {
-	var = variable_field_32
-	distribution = uniform
-	min = variable_field_32
-	max = variable_field_32
-}
-
-###Randomize a temporary variable.
-## scopes = { any }
-alias[effect:randomize_temp_variable] = {
-	var = variable_field_32
-	distribution = binomial
-	min = variable_field_32
-	max = variable_field_32
-}
-
-###Randomize a temporary variable.
-## scopes = { any }
-alias[effect:randomize_temp_variable] = {
-	var = variable_field_32
-	distribution = binomial
-	## cardinality = 0..1
-	min = variable_field_32
-	lambda = variable_field_32
-}
-
-###Sets a temp variable to a random value.
-## scopes = { any }
-alias[effect:set_temp_variable_to_random] = value_set[variable]
-
-###Sets a temp variable to a random value.
-## scopes = { any }
-alias[effect:set_temp_variable_to_random] = {
-	var = value_set[variable]
-	## cardinality = 0..1
-	min = variable_field_32
-	## cardinality = 0..1
-	max = variable_field_32
-	## cardinality = 0..1
-	integer = bool
-}
-
 ###Checks whether a state is impassable.
 ## scopes = { state }
-alias[effect:impassable] = bool
+alias[trigger:impassable] = bool
 
 ###Number of researched technologies.
 ## scopes = { COUNTRY }
-alias[effect:num_researched_technologies] = int_variable_field
+alias[trigger:num_researched_technologies] = int_variable_field
 
 ###Checks if country has allowed ideas with specific traits more than limit.
 ## scopes = { COUNTRY }
-alias[effect:has_allowed_idea_with_traits] = {
+alias[trigger:has_allowed_idea_with_traits] = {
 	idea = <country_leader_trait>
 	idea = {
 		## cardinality = 1..inf
@@ -544,17 +482,17 @@ alias[effect:has_allowed_idea_with_traits] = {
 }
 
 ###Is leading volunteers in the target.
-## scopes = { UNIT_LEADER }
-alias[effect:is_leading_volunteer_group] = scope[country]
+## scopes = { UNIT_LEADER character }
+alias[trigger:is_leading_volunteer_group] = scope[country]
 
 ###Is leading volunteers in the target.
-## scopes = { UNIT_LEADER }
-alias[effect:is_leading_volunteer_group] = enum[country_tags]
+## scopes = { UNIT_LEADER character }
+alias[trigger:is_leading_volunteer_group] = enum[country_tags]
 
 ###Is leading volunteers in a country with the original tag.
-## scopes = { UNIT_LEADER }
-alias[effect:is_leading_volunteer_group_with_original_country] = scope[country]
+## scopes = { UNIT_LEADER character }
+alias[trigger:is_leading_volunteer_group_with_original_country] = scope[country]
 
 ###Is leading volunteers in a country with the original tag.
-## scopes = { UNIT_LEADER }
-alias[effect:is_leading_volunteer_group_with_original_country] = enum[country_tags]
+## scopes = { UNIT_LEADER character }
+alias[trigger:is_leading_volunteer_group_with_original_country] = enum[country_tags]

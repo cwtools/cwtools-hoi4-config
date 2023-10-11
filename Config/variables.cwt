@@ -504,6 +504,9 @@ values = {
 		### (Trigger) Checks the target conscription amount of the country.
 		target_conscription_amount
 
+		### (Trigger) Power balance value of a country
+		power_balance_value
+
 
 		# =======================
 		# STATE DYNAMIC VARIABLES
@@ -573,6 +576,57 @@ values = {
 		### (Trigger) Uncapped_resistance_target temp variable can be used for getting resistance that that is not capped to 0-100
 		uncapped_resistance_target
 
+		### State modifier variable
+		modifier@army_speed_factor_for_controller
+		modifier@compliance_gain
+		modifier@compliance_growth
+		modifier@compliance_growth_on_our_occupied_states
+		modifier@enemy_army_speed_factor
+		modifier@enemy_attrition
+		modifier@enemy_intel_network_gain_factor_over_occupied_tag
+		modifier@enemy_local_supplies
+		modifier@enemy_spy_negative_status_factor
+		modifier@enemy_truck_attrition_factor
+		modifier@equipment_capture_for_controller
+		modifier@intel_network_gain
+		modifier@intel_network_gain_factor
+		modifier@local_building_slots
+		modifier@local_building_slots_factor
+		modifier@local_factories
+		modifier@local_factory_sabotage
+		modifier@local_intel_to_enemies
+		modifier@local_manpower
+		modifier@local_non_core_manpower
+		modifier@local_non_core_supply_impact_factor
+		modifier@local_resources
+		modifier@local_resources_factor
+		modifier@local_supplies
+		modifier@local_supplies_for_controller
+		modifier@local_supply_impact_factor
+		modifier@mobilization_speed
+		modifier@non_core_manpower
+		modifier@recruitable_population
+		modifier@recruitable_population_factor
+		modifier@required_garrison_factor
+		modifier@resistance_activity
+		modifier@resistance_damage_to_garrison
+		modifier@resistance_decay
+		modifier@resistance_garrison_penetration_chance
+		modifier@resistance_growth
+		modifier@resistance_target
+		modifier@starting_compliance
+		modifier@state_production_speed_buildings_factor
+		modifier@state_repair_speed_infrastructure_factor
+		modifier@state_resources_factor
+		modifier@supply_factor
+		modifier@truck_attrition
+		modifier@truck_attrition_factor
+
+		### Occupier tag
+		occupier
+
+		### Occupied tag
+		occupied
 
 		# =============================
 		# UNIT LEADER DYNAMIC VARIABLES
@@ -911,5 +965,11 @@ values = {
 
 		### KR-specifc variables
 		is_in_coalition_with_@token:<ideology>
+		token:zhili
+		token:manchu_qing
+		token:fengtian
+		token:federalists
+		token:left_kuomintang
+		token:right_kuomintang
 	}
 }

@@ -76,7 +76,10 @@ alias[gui:containerWindowType] = {
         name = scalar
         alias_name[gui_standard] = alias_match_left[gui_standard]
         alias_name[gui_image] = alias_match_left[gui_image]
-        alias_name[gui_localization] = alias_match_left[gui_localization]
+        ## cardinality = 0..1
+		alias_name[gui_sound] = alias_match_left[gui_sound]
+        ## cardinality = 0..1
+		alias_name[gui_localization] = alias_match_left[gui_localization]
     }
     alias_name[gui] = alias_match_left[gui]
     alias_name[gui_standard] = alias_match_left[gui_standard]
@@ -124,7 +127,10 @@ alias[gui:dropDownBoxType] = {
         name = scalar
         alias_name[gui_standard] = alias_match_left[gui_standard]
         alias_name[gui_image] = alias_match_left[gui_image]
-        alias_name[gui_localization] = alias_match_left[gui_localization]
+        ## cardinality = 0..1
+		alias_name[gui_sound] = alias_match_left[gui_sound]
+        ## cardinality = 0..1
+		alias_name[gui_localization] = alias_match_left[gui_localization]
     }
     alias_name[gui] = alias_match_left[gui]
     alias_name[gui_standard] = alias_match_left[gui_standard]
@@ -198,9 +204,12 @@ alias[gui:dropDownBoxType] = {
         background = {
             ## cardinality = 0..1
             name = scalar
-            alias_name[gui_standard] = alias_match_left[gui_standard]
-            alias_name[gui_image] = alias_match_left[gui_image]
-            alias_name[gui_localization] = alias_match_left[gui_localization]
+			alias_name[gui_standard] = alias_match_left[gui_standard]
+			alias_name[gui_image] = alias_match_left[gui_image]
+			## cardinality = 0..1
+			alias_name[gui_sound] = alias_match_left[gui_sound]
+			## cardinality = 0..1
+			alias_name[gui_localization] = alias_match_left[gui_localization]
         }
         alias_name[gui] = alias_match_left[gui]
         alias_name[gui_standard] = alias_match_left[gui_standard]
@@ -233,6 +242,8 @@ alias[gui:buttonType] = {
         x = int
         y = int
     }
+    ## cardinality = 0..1
+    borderSize = { x = int y = int }
     alias_name[gui_standard] = alias_match_left[gui_standard]
     alias_name[gui_image] = alias_match_left[gui_image]
     ## cardinality = 0..1
@@ -267,6 +278,8 @@ alias[gui:OverlappingElementsBoxType] = {
     spacing = float
     ## cardinality = 0..1
     format = enum[guiTextFormats]
+    ## cardinality = 0..1
+    first_on_top = bool
 }
 ### Dynamic List
 alias[gui:gridBoxType] = {
@@ -314,10 +327,53 @@ alias[gui:gridBoxType] = {
         name = scalar
         alias_name[gui_standard] = alias_match_left[gui_standard]
         alias_name[gui_image] = alias_match_left[gui_image]
-        alias_name[gui_sound] = alias_match_left[gui_sound]
-        alias_name[gui_localization] = alias_match_left[gui_localization]
+        ## cardinality = 0..1
+		alias_name[gui_sound] = alias_match_left[gui_sound]
+        ## cardinality = 0..1
+		alias_name[gui_localization] = alias_match_left[gui_localization]
     }
 }
+
+### Dynamic List
+alias[gui:listBoxType] = {
+    ### Name referenced by scripted gui
+    name = scalar
+    alias_name[gui_standard] = alias_match_left[gui_standard]
+
+    ## cardinality = 0..1
+    horizontal = int[0..1]
+    ## cardinality = 0..1
+    spacing = int
+    ## cardinality = 0..1
+    alwaystransparent = bool
+    ## cardinality = 0..1
+    scrollbartype = enum[scrollbar_types]
+    ## cardinality = 0..1
+    borderSize = { x = int y = int }
+    ## cardinality = 0..1
+    offset = { x = int y = int }
+}
+
+### Dynamic List
+alias[gui:smoothListBoxType] = {
+    ### Name referenced by scripted gui
+    name = scalar
+    alias_name[gui_standard] = alias_match_left[gui_standard]
+
+    ## cardinality = 0..1
+    horizontal = int[0..1]
+    ## cardinality = 0..1
+    spacing = int
+    ## cardinality = 0..1
+    alwaystransparent = bool
+    ## cardinality = 0..1
+    scrollbartype = enum[scrollbar_types]
+    ## cardinality = 0..1
+    borderSize = { x = int y = int }
+    ## cardinality = 0..1
+    offset = { x = int y = int }
+}
+
 ###Non-clickable icon
 alias[gui:iconType] = {
     ### Name referenced by scripted gui
@@ -330,7 +386,7 @@ alias[gui:iconType] = {
 }
 ###Unknown, seems to be only used with hardcoded things
 alias[gui:positionType] = {
-    # cardinality = ~1..1
+    ## cardinality = ~1..1
     name = scalar
     position = {
         x = int
@@ -338,6 +394,8 @@ alias[gui:positionType] = {
         y = int
 		y = float
     }
+    ## cardinality = 0..1
+    scale = float
 }
 ###Browser, hardcoded
 alias[gui:browserType] = {
@@ -469,8 +527,10 @@ alias[gui:extendedScrollbarType] = {
         name = scalar
         alias_name[gui_standard] = alias_match_left[gui_standard]
         alias_name[gui_image] = alias_match_left[gui_image]
-        alias_name[gui_sound] = alias_match_left[gui_sound]
-        alias_name[gui_localization] = alias_match_left[gui_localization]
+        ## cardinality = 0..1
+		alias_name[gui_sound] = alias_match_left[gui_sound]
+        ## cardinality = 0..1
+		alias_name[gui_localization] = alias_match_left[gui_localization]
     }
     ##cardinality  = 0..1
     ###Size in px of tiling
@@ -704,6 +764,51 @@ alias[gui_animation:hide_position] = {
     y = int
 	y = float
     y = percentage_field
+}
+### Position returned to when closed
+alias[gui_animation:closed_position] = {
+    x = int
+	x = float
+    x = percentage_field
+    y = int
+	y = float
+    y = percentage_field
+}
+### Position returned to when open
+alias[gui_animation:open_position] = {
+    x = int
+	x = float
+    x = percentage_field
+    y = int
+	y = float
+    y = percentage_field
+}
+### Position returned to when peeking
+alias[gui_animation:peek_position] = {
+    x = int
+	x = float
+    x = percentage_field
+    y = int
+	y = float
+    y = percentage_field
+}
+### Position returned to when peeking (top left check)
+alias[gui_animation:peek_check_top_left] = {
+    x = int
+	x = float
+    x = percentage_field
+    y = int
+	y = float
+    y = percentage_field
+}
+### Position returned to when peeking (size)
+alias[gui_animation:peek_check_size] = {
+    width = int
+	width = float
+    width = percentage_field
+    height = int
+	height = float
+    height = percentage_field
 }
 alias[gui_animation:show_animation_type] = enum[animationTypes]
 alias[gui_animation:hide_animation_type] = enum[animationTypes]

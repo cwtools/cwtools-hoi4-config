@@ -44,7 +44,7 @@ scripted_gui = {
 	## cardinality = 0..1
 	### Any GUI container name. Use only if parent_window_token doesn't have a corresponding token.
 	parent_window_name = <containerWindowType>_instance
-	## cardinality = 0..1
+	## cardinality = 0..inf
 	### By default the scripted guis will update the gui with every gameplay change (every hourly tick. every time you click something that affects game etc). For large scripted guis this can become quite heavy. If you scripted gui is not updated regularly and you know when it will needs an update, you can use the dirty variable feature. dirty = var_name Once this is defined, the game will check if the value of variable named "var_name" is updated or not. It will only update the scripted gui if that value is changed. It will read the variable from the scope of the scripted gui (player scope or targeted scope etc). When you call an effect that will change the contents of a scripted gui, you can also call `add_to_variable = { var_name = 1 }` to change that dirty variable to retrigger and update on the interface
 	dirty = value_set[variable]
 

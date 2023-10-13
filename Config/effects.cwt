@@ -178,6 +178,8 @@ alias[effect:every_country] = {
 	## cardinality = 0..1
 	random_select_amount = int[1..inf]
 	## cardinality = 0..1
+	display_individual_scopes = bool
+	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
@@ -209,6 +211,8 @@ alias[effect:every_neighbor_country] = {
 	## cardinality = 0..1
 	random_select_amount = int[1..inf]
 	## cardinality = 0..1
+	display_individual_scopes = bool
+	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
@@ -239,6 +243,8 @@ alias[effect:every_enemy_country] = {
 	### Apply the effect to this number of randomly selected entities
 	## cardinality = 0..1
 	random_select_amount = int[1..inf]
+	## cardinality = 0..1
+	display_individual_scopes = bool
 	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
@@ -1067,6 +1073,8 @@ alias[effect:every_state] = {
 	## cardinality = 0..1
 	random_select_amount = int[1..inf]
 	## cardinality = 0..1
+	display_individual_scopes = bool
+	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
@@ -1084,6 +1092,8 @@ alias[effect:every_owned_state] = {
 	## cardinality = 0..1
 	random_select_amount = int[1..inf]
 	## cardinality = 0..1
+	display_individual_scopes = bool
+	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
@@ -1100,6 +1110,8 @@ alias[effect:every_neighbor_state] = {
 	### Apply the effect to this number of randomly selected entities
 	## cardinality = 0..1
 	random_select_amount = int[1..inf]
+	## cardinality = 0..1
+	display_individual_scopes = bool
 	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
@@ -1837,6 +1849,8 @@ alias[effect:every_other_country] = {
 	## cardinality = 0..1
 	random_select_amount = int[1..inf]
 	## cardinality = 0..1
+	display_individual_scopes = bool
+	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
@@ -2184,6 +2198,8 @@ alias[effect:every_unit_leader] = {
 	## cardinality = 0..1
 	random_select_amount = int[1..inf]
 	## cardinality = 0..1
+	display_individual_scopes = bool
+	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
@@ -2215,6 +2231,8 @@ alias[effect:every_army_leader] = {
 	## cardinality = 0..1
 	random_select_amount = int[1..inf]
 	## cardinality = 0..1
+	display_individual_scopes = bool
+	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
@@ -2245,6 +2263,8 @@ alias[effect:every_navy_leader] = {
 	### Apply the effect to this number of randomly selected entities
 	## cardinality = 0..1
 	random_select_amount = int[1..inf]
+	## cardinality = 0..1
+	display_individual_scopes = bool
 	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
@@ -2384,6 +2404,8 @@ alias[effect:global_every_army_leader] = {
 	### Apply the effect to this number of randomly selected entities
 	## cardinality = 0..1
 	random_select_amount = int[1..inf]
+	## cardinality = 0..1
+	display_individual_scopes = bool
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}

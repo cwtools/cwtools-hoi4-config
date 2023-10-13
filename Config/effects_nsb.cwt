@@ -5,6 +5,8 @@ alias[effect:every_core_state] = {
 	## cardinality = 0..1
 	random_select_amount = int[1..inf]
 	## cardinality = 0..1
+	display_individual_scopes = bool
+	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
@@ -83,6 +85,8 @@ alias[effect:every_character] = {
 	### Apply the effect to this number of randomly selected entities
 	## cardinality = 0..1
 	random_select_amount = int[1..inf]
+	## cardinality = 0..1
+	display_individual_scopes = bool
 	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
@@ -629,6 +633,8 @@ alias[effect:every_subject_country] = {
 	### Apply the effect to this number of randomly selected entities
 	## cardinality = 0..1
 	random_select_amount = int[1..inf]
+	## cardinality = 0..1
+	display_individual_scopes = bool
     ## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
@@ -657,6 +663,8 @@ alias[effect:every_possible_country] = {
 	### Apply the effect to this number of randomly selected entities
 	## cardinality = 0..1
 	random_select_amount = int[1..inf]
+	## cardinality = 0..1
+	display_individual_scopes = bool
     ## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]

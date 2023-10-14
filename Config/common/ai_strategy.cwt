@@ -458,6 +458,7 @@ enums = {
 	enum[ai_role_strats] = {
 		role_ratio
 		build_army
+		build_airplane
 	}
 	enum[building_strats] = {
 		building_target

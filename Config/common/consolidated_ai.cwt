@@ -447,7 +447,20 @@ values = {
 		modern_armor
 
 		# planes
+		fighter
 		cas
+		naval_bomber
+		tactical_bomber
+		heavy_fighter
+		interceptor
+		scout_plane
+		suicide
+		strategic_bomber
+		cv_fighter
+		cv_cas
+		cv_naval_bomber
+		cv_suicide
+		cv_interceptor
 
 		# ships
 		naval_capital

@@ -398,6 +398,7 @@ enums = {
 
 	enum[parent_window_token] = {
 		top_bar #(attached to top bar that contains resources and stuff)
+		topbar
 
 		# 8 tabs that shows up when you click on buttons next to your country flag
 		decision_tab

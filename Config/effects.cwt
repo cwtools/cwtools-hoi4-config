@@ -1889,7 +1889,7 @@ alias[effect:random_other_country] = {
 alias[effect:add_equipment_to_stockpile] = {
 	type = <equipment>
 	type = value[nsb_armor_variants]
-	type = enum[bba_air_equipment]
+	type = enum[bba_air_variants]
 	type = value[variable]
 
 	amount = int_variable_field

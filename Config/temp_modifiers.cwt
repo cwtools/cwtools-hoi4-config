@@ -145,6 +145,7 @@ alias[air_stat:default_carrier_composition_weight] = float
 alias[air_stat:naval_strike_attack] = float
 alias[air_stat:naval_strike_targetting] = float
 alias[air_stat:thrust] = float
+alias[air_stat:night_penalty] = float
 
 #for terrain modifiers
 alias[unit_stat:<terrain>] = { alias_name[unit_stat] = alias_match_left[unit_stat] }

@@ -111,6 +111,7 @@ oob = {
 				}
 			}
 			## cardinality = 0..inf
+			### Defines a unique name for the division's commander
 			officer = {
 				name = scalar
 			}

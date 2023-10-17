@@ -85,6 +85,18 @@ focus_tree = {
 		## severity = warning
 		icon = <spriteType>
 
+		## cardinality = 0..inf
+		icon = {
+			## cardinality = 0..1
+			trigger = {
+				## cardinality = ~1..inf
+				alias_name[trigger] = alias_match_left[trigger]
+			}
+
+			## cardinality = ~1..1
+			value = <spriteType>
+		}
+
 		## severity = warning
 		cost = float
 

@@ -2,12 +2,16 @@
 ## scope = country
 ## push_scope = military_industrial_organization
 alias[effect:every_military_industrial_organization] = {
-    ## cardinality = 0..1
-    tooltip = localisation
-    ## cardinality = 0..1
+	### Apply the effect to this number of randomly selected entities
+	## cardinality = 0..1
+	random_select_amount = int[1..inf]
+	## cardinality = 0..1
+	display_individual_scopes = bool
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
+    ## cardinality = 0..1
+    tooltip = localisation
     ## cardinality = 1..inf
     alias_name[effect] = alias_match_left[effect]
 }

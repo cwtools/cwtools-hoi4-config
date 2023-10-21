@@ -105,6 +105,9 @@ equipment = {
 	is_convertable = bool
 
 	## cardinality = 0..1
+	one_use_only = bool
+
+	## cardinality = 0..1
 	### Determines if this equipment is available without unlocking from a technology.
 	active = bool
 
@@ -370,6 +373,15 @@ upgrade = {
 	}
 
 	## cardinality = 0..1
+	### Resource values defined here will increase the resource cost construction
+	resource_cost_thresholds = {
+		scalar = {
+			## cardinality = ~1..10
+			<resource> = int
+		}
+	}
+
+	## cardinality = 0..1
 	### Adds the provided stats to the given equipment type
 	add_stats = {
 		alias_name[unit_stat] = alias_match_left[naval_stat]
@@ -405,6 +417,11 @@ module = {
 	sfx = scalar
 	## cardinality = 0..1
 	add_equipment_type = enum[unit_types]
+	## cardinality = 0..1
+	add_equipment_type = {
+		## cardinality = 0..inf
+		enum[unit_types]
+	}
 	## cardinality = 0..1
 	### Adds the provided stats to the given module
 	add_stats = {
@@ -480,10 +497,11 @@ module = {
 		enum[allowed_air_unit_missions]
 	}
 
-	## cardinality = 0..1
+	## cardinality = 0..inf
 	mission_type_stats = {
 		## cardinality = 1..1
 		limit = {
+			## cardinality = 1..inf
 			enum[allowed_air_unit_missions]
 		}
 
@@ -515,9 +533,10 @@ module = {
 	}
 
 	## cardinality = 0..1
-	### Prevents equipment module types from being added
+	### Prevents equipment module from being added to a specific plane airframe type
 	forbid_equipment_type_exact_match_for_category = {
-		alias_name[module_categories] = enum[unit_types]
+		## cardinality = 0..inf
+		enum[module_categories] = enum[unit_types]
 	}
 
 	## cardinality = 0..1
@@ -567,6 +586,9 @@ enums = {
 		interface_category_screen_ships
 		interface_category_other_ships
 		interface_category_air
+
+		# Missile
+		missile
 	}
 	enum[allowed_ai_type_planes] = {
 		cv_fighter
@@ -575,6 +597,7 @@ enums = {
 		cv_naval_bomber
 		cv_suicide
 		heavy_fighter
+		interceptor
 	}
 	complex_enum[module_slots] = {
 		path = "game/common/units/equipment"

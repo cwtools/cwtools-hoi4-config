@@ -81,11 +81,10 @@ focus_tree = {
 		## cardinality = 0..1
 		text = localisation
 
-		## cardinality = ~1..1
-		## severity = warning
+		## cardinality = ~1..inf
 		icon = <spriteType>
 
-		## cardinality = 0..inf
+		## cardinality = ~1..inf
 		icon = {
 			## cardinality = 0..1
 			trigger = {

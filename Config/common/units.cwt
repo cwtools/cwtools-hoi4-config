@@ -321,6 +321,9 @@ unit = {
 		can_be_parachuted = bool
 
 		## cardinality = 0..1
+		can_exfiltrate_from_coast = bool
+
+		## cardinality = 0..1
 		### Use this equipment for speed.
 		transport = <equipment>
 
@@ -620,7 +623,7 @@ enums = {
 		light_cruiser
 		screen_ship
 		submarine
-		
+
 		# MD Specific
 		corvette
 		frigate
@@ -628,6 +631,8 @@ enums = {
 		missile_submarine
 		helicopter_operator
 		stealth_destroyer
+		anti_air
+		artillery
 	}
 	enum[allowed_air_unit_missions] = {
 		paradrop

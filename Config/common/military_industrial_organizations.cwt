@@ -16,7 +16,7 @@ military_industrial_organization = {
 	### If gfx key GFX_my_MIO_token exists, use it.
 	### Else use GFX_idea_unknown
 	## cardinality = 0..1
-	icon = scalar
+	icon = <spriteType>
 	## cardinality = 0..1
 	include = <military_industrial_organization>
 	## replace_scope = { this = country }
@@ -113,7 +113,7 @@ military_industrial_organization = {
 		## cardinality = 0..1
 		name = scalar
 		## cardinality = 0..1
-		icon = scalar
+		icon = <spriteType>
 		## cardinality = 0..1
 		limit_to_equipment_type = {
 			## cardinality = 0..inf
@@ -145,7 +145,7 @@ military_industrial_organization = {
 		## cardinality = 0..1
 		name = scalar
 		## cardinality = 0..1
-		icon = scalar
+		icon = <spriteType>
 		### If yes, trait background will be golden to indicate an interesting trait
 		## cardinality = 0..1
 		special_trait_background = yes
@@ -292,7 +292,7 @@ military_industrial_organization = {
 		## cardinality = 0..1
 		name = scalar
 		## cardinality = 0..1
-		icon = scalar
+		icon = <spriteType>
 		### If yes, trait background will be golden to indicate an interesting trait
 		## cardinality = 0..1
 		special_trait_background = yes
@@ -405,7 +405,7 @@ military_industrial_organization = {
 		## cardinality = 0..1
 		name = scalar
 		## cardinality = 0..1
-		icon = scalar
+		icon = <spriteType>
 		### If yes, trait background will be golden to indicate an interesting trait
 		## cardinality = 0..1
 		special_trait_background = yes

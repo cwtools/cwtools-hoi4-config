@@ -27,6 +27,14 @@ alias[trigger:has_mio_equipment_type] = <equipment_group>
 ## scope = country
 alias[trigger:has_military_industrial_organization] = <military_industrial_organization>
 
-### Checks if MIO is available
+### Checks if MIO is available AND visible
 ## scope = military_industrial_organization
 alias[trigger:is_mio_available] = bool
+
+### Checks if MIO is visible
+## scope = military_industrial_organization
+alias[trigger:is_mio_visible] = bool
+
+### Checks if MIO is visible
+## scope = military_industrial_organization
+alias[trigger:has_mio_trait] = value[mio_token]

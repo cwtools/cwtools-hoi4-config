@@ -1724,6 +1724,8 @@ alias[effect:add_to_war] = {
 	enemy = enum[country_tags]
 	## cardinality = 0..1
 	hostility_reason = localisation
+	## cardinality = 0..1
+	single_target_only = bool
 }
 
 ### Show what idea does.

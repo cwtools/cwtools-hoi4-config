@@ -36,6 +36,7 @@ enums = {
 		improve_relation
 		befriend
 		market_access_rights
+		embargo
 	}
 
 	enum[add_factor] = {

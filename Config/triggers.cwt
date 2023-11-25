@@ -193,10 +193,6 @@ alias[trigger:area] = <supply_area>
 ## scope = any
 alias[trigger:threat] = float[0..1]
 
-### Check the global threat value. 0-100 value.
-## scope = any
-alias[trigger:threat] = float[0..100]
-
 ### Always returns specified value.
 ## scope = any
 alias[trigger:always] = bool

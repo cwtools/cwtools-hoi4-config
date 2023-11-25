@@ -1,6 +1,6 @@
 types = {
 	type[building] = {
-		path = "game/common/building"
+		path = "game/common/buildings"
 		skip_root_key = buildings
 		localisation = {
 			## required

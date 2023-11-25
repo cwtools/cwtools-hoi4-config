@@ -504,9 +504,102 @@ values = {
 		### (Trigger) Checks the target conscription amount of the country.
 		target_conscription_amount
 
-		### (Trigger) Power balance value of a country
-		power_balance_value
-
+		### (Trigger) Total constructions of air_base
+		total_constructed_air_base
+		### (Trigger) Total constructions of anti_air
+		total_constructed_anti_air
+		### (Trigger) Total constructions of civilian_factory
+		total_constructed_civilian_factory
+		### (Trigger) Total constructions of dockyard
+		total_constructed_dockyard
+		### (Trigger) Total constructions of fuel_silo
+		total_constructed_fuel_silo
+		### (Trigger) Total constructions of infrastructure
+		total_constructed_infrastructure
+		### (Trigger) Total constructions of land_fort
+		total_constructed_land_fort
+		### (Trigger) Total constructions of military_factory
+		total_constructed_military_factory
+		### (Trigger) Total constructions of naval_fort
+		total_constructed_naval_fort
+		### (Trigger) Total constructions of nuclear_reactor
+		total_constructed_nuclear_reactor
+		### (Trigger) Total constructions of other
+		total_constructed_other
+		### (Trigger) Total constructions of port
+		total_constructed_port
+		### (Trigger) Total constructions of radar
+		total_constructed_radar
+		### (Trigger) Total constructions of refinery
+		total_constructed_refinery
+		### (Trigger) Total constructions of rocket_site
+		total_constructed_rocket_site
+		### (Trigger) Total constructions of supply_node
+		total_constructed_supply_node
+		### (Trigger) Total produced equipment of type
+		total_equipment_produced_
+		### (Trigger) Total produced equipment of typeair_transport
+		total_equipment_produced_air_transport
+		### (Trigger) Total produced equipment of typeamphibious
+		total_equipment_produced_amphibious
+		### (Trigger) Total produced equipment of typeanti_air
+		total_equipment_produced_anti_air
+		### (Trigger) Total produced equipment of typeanti_tank
+		total_equipment_produced_anti_tank
+		### (Trigger) Total produced equipment of typearmor
+		total_equipment_produced_armor
+		### (Trigger) Total produced equipment of typeartillery
+		total_equipment_produced_artillery
+		### (Trigger) Total produced equipment of typecapital_ship
+		total_equipment_produced_capital_ship
+		### (Trigger) Total produced equipment of typecarrier
+		total_equipment_produced_carrier
+		### (Trigger) Total produced equipment of typecas
+		total_equipment_produced_cas
+		### (Trigger) Total produced equipment of typeconvoy
+		total_equipment_produced_convoy
+		### (Trigger) Total produced equipment of typefighter
+		total_equipment_produced_fighter
+		### (Trigger) Total produced equipment of typeflame
+		total_equipment_produced_flame
+		### (Trigger) Total produced equipment of typefloating_harbor
+		total_equipment_produced_floating_harbor
+		### (Trigger) Total produced equipment of typeheavy_fighter
+		total_equipment_produced_heavy_fighter
+		### (Trigger) Total produced equipment of typeinfantry
+		total_equipment_produced_infantry
+		### (Trigger) Total produced equipment of typeinterceptor
+		total_equipment_produced_interceptor
+		### (Trigger) Total produced equipment of typemaritime_patrol_plane
+		total_equipment_produced_maritime_patrol_plane
+		### (Trigger) Total produced equipment of typemechanized
+		total_equipment_produced_mechanized
+		### (Trigger) Total produced equipment of typemissile
+		total_equipment_produced_missile
+		### (Trigger) Total produced equipment of typemotorized
+		total_equipment_produced_motorized
+		### (Trigger) Total produced equipment of typenaval_bomber
+		total_equipment_produced_naval_bomber
+		### (Trigger) Total produced equipment of typerailway_gun
+		total_equipment_produced_railway_gun
+		### (Trigger) Total produced equipment of typerocket
+		total_equipment_produced_rocket
+		### (Trigger) Total produced equipment of typescout_plane
+		total_equipment_produced_scout_plane
+		### (Trigger) Total produced equipment of typescreen_ship
+		total_equipment_produced_screen_ship
+		### (Trigger) Total produced equipment of typestrategic_bomber
+		total_equipment_produced_strategic_bomber
+		### (Trigger) Total produced equipment of typesubmarine
+		total_equipment_produced_submarine
+		### (Trigger) Total produced equipment of typesuicide
+		total_equipment_produced_suicide
+		### (Trigger) Total produced equipment of typesupport
+		total_equipment_produced_support
+		### (Trigger) Total produced equipment of typetactical_bomber
+		total_equipment_produced_tactical_bomber
+		### (Trigger) Total produced equipment of typetrain
+		total_equipment_produced_train
 
 		# =======================
 		# STATE DYNAMIC VARIABLES

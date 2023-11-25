@@ -2232,11 +2232,11 @@ alias[trigger:days_since_last_strategic_bombing] = int
 
 ### A trigger to check how dangerous enemy mines are for a country. Controlled by NAVAL_MINE_DANGER defines. Returns a value between 0 and 1. Example: mine_threat > 0.5.
 ## scope = country
-alias[trigger:mine_threat] = float
+alias[trigger:mine_threat] = float[0..1]
 
 ### A trigger to check convoy threat for a country. Controlled by NAVAL_CONVOY_DANGER defines. Returns a value between 0 and 1. Example: convoy_threat > 0.5.
 ## scope = country
-alias[trigger:convoy_threat] = float
+alias[trigger:convoy_threat] = float[0..1]
 
 ### Checks the casualties infliced by the speficied country to the scopped country.
 ## scope = country

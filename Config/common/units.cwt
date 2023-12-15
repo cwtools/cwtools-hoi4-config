@@ -581,6 +581,7 @@ enums = {
 		cv_naval_bomber
 		cv_cas
 		cv_fighter
+		cv_interceptor
 		heavy_fighter
 		amphibious
 	}

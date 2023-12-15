@@ -387,7 +387,8 @@ enums = {
 		equipment_market_buying_threshold
 		equipment_market_for_sale_threshold
 		equipment_market_for_sale_factor
-		equipment_market_min_for_sale	
+		equipment_market_min_for_sale
+		equipment_market_max_for_sale
 	}
 	enum[no_id_strats] = {
 		added_military_to_civilian_factory_ratio

@@ -2563,10 +2563,20 @@ alias[effect:add_skill_level] = int
 ## scope = any
 alias[effect:add_to_temp_variable] = {
 	## cardinality = 1..2
+	value_set[variable] = value[variable]
+	## cardinality = 0..1
+	tooltip = localisation
+}
+
+### Adds a value or a variable to a temp variable.
+## scope = any
+alias[effect:add_to_temp_variable] = {
+	## cardinality = 1..2
 	value_set[variable] = variable_field_32
 	## cardinality = 0..1
 	tooltip = localisation
 }
+
 ### Adds a value or a variable to a temp variable.
 ## scope = any
 alias[effect:add_to_temp_variable] = {

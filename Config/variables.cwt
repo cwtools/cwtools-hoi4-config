@@ -651,6 +651,9 @@ values = {
 		### Checks the current resistance target.
 		resistance_target
 
+		### Checks the current resistance target value that is not modifier by law.
+		resistance_target_without_law
+
 		### (Trigger) Checks for state strategic value.
 		state_and_terrain_strategic_value
 

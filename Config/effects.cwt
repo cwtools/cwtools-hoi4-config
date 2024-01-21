@@ -1537,11 +1537,16 @@ alias[effect:add_resource] = {
 ## scope = country
 alias[effect:remove_unit_leader] = value[unit_leader_ids]
 
-### Add time limited idea to country idea, add_timed_idea = { idea = id days = number_of_days }.
+### Add time limited idea to country idea, supports days/months/years.
 ## scope = country
 alias[effect:add_timed_idea] = {
 	idea = enum[idea_name]
+	## cardinality = 0..1
 	days = int_variable_field
+	## cardinality = 0..1
+	months = int_variable_field
+	## cardinality = 0..1
+	years = int_variable_field
 }
 
 ### Stops specefied country being a puppet of current country.

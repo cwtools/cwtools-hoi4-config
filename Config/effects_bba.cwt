@@ -40,7 +40,7 @@ alias[effect:remove_power_balance_side] = {
 ## scope = country
 alias[effect:add_power_balance_value] = {
 	id = <balance_of_power>
-	value = float[-1..1]
+	value = float[-2..2]
 	## cardinality = 0..1
 	tooltip_side = localisation
 }

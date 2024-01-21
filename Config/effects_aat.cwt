@@ -82,3 +82,11 @@ alias[effect:add_equipment_subsidy] = {
         scope[country]
     } 
 }
+
+### Change MIO name
+## scope = military_industrial_organization
+alias[effect:set_mio_name_key] = localisation
+
+### Change MIO icon
+## scope = military_industrial_organization
+alias[effect:set_mio_icon] = <spriteType>

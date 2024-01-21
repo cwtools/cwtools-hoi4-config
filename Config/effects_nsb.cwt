@@ -795,6 +795,7 @@ alias[effect:generate_character] = {
 	token_base = value_set[advisor_token]
 	## cardinality = 0..1
 	name = localisation
+	## cardinality = 0..1
 	advisor = {
 		slot = value[character_advisor_slot]
 		## cardinality = 0..1
@@ -866,6 +867,7 @@ alias[effect:generate_character] = {
 		## cardinality = 0..1
 		can_be_fired = bool
 	}
+	## cardinality = 0..1
 	### Should have at least one portrait defined
 	portraits = {
 		### Portrait(s), army and/or civilian

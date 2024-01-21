@@ -479,6 +479,8 @@ alias[trigger:has_allowed_idea_with_traits] = {
 	## cardinality = 0..1
 	### # if specified, these ideas will be ignored.
 	ignore = enum[idea_name]
+	## cardinality = 0..1
+	characters = bool
 }
 
 ###Is leading volunteers in the target.

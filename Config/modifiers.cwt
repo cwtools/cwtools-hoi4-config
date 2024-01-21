@@ -96,6 +96,7 @@ modifiers = {
 	ai_license_acceptance = ai
 
 	# air
+	ace_effectiveness_factor = air
 	air_accidents = air
 	air_accidents_factor = air
 	air_ace_bonuses_factor = air
@@ -207,6 +208,7 @@ modifiers = {
 	cavalry_attack_factor = army
 	cavalry_defence_factor = army
 	combat_width_factor = army
+	coastal_bunker_effectiveness_factor = army
 	coordination_bonus = army
 	defence = army
 	defense_bonus_against = army
@@ -224,6 +226,7 @@ modifiers = {
 	female_random_army_leader_chance = army
 	heat_attrition = army
 	heat_attrition_factor = army
+	land_bunker_effectiveness_factor = army
 	land_night_attack = army
 	local_org_regain = army
 	max_commander_army_size = army
@@ -488,6 +491,9 @@ modifiers = {
 	weekly_casualties_war_support = country
 	weekly_convoys_war_support = country
 	weekly_bombing_war_support = country
+	air_spirit_category_type_cost_factor = country
+	land_spirit_category_type_cost_factor = country
+	navy_spirit_category_type_cost_factor = country
 
 	# defensive
 	armor_factor = defensive

@@ -38,3 +38,13 @@ alias[trigger:is_mio_visible] = bool
 ### Checks if MIO is visible
 ## scope = military_industrial_organization
 alias[trigger:has_mio_trait] = value[mio_token]
+
+### Checks num of planes stationed in a region
+## scope = country
+alias[trigger:num_planes_stationed_in_regions]  = {
+    value = int
+    regions = { 
+        ## cardinality = 1..inf
+	    <strategic_region>
+    }
+}

@@ -590,6 +590,7 @@ enums = {
 
 	enum[targeted_decisions_state_map_modes] = {
 		map_only
+		decision_view_only
 		map_and_decisions_view
 	}
 }

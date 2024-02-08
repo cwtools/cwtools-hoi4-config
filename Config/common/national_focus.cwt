@@ -1,5 +1,12 @@
 types = {
 	## unique = yes
+	## type_key_filter = style
+	type[focus_style] = {
+		path = "game/common/national_focus"
+		name_field = "name"
+	}
+
+	## unique = yes
 	## type_key_filter = focus_tree
 	type[focus_tree] = {
 		path = "game/common/national_focus"
@@ -15,10 +22,22 @@ types = {
 	}
 
 	## unique = yes
-	## type_key_filter = shared_focus
+	## replace_scope = { root = country this = country }
+	## type_key_filter = { joint_focus shared_focus }
 	type[shared_focus] = {
 		path = "game/common/national_focus"
 		name_field = "id"
+
+		## only_if_not = { joint_focus }
+		## type_key_filter = shared_focus
+		subtype[shared] = {
+		}
+
+		## only_if_not = { shared_focus }
+		## type_key_filter = joint_focus
+		subtype[joint_focus] = {
+		}
+
 	}
 }
 
@@ -75,6 +94,7 @@ focus_tree = {
 	}
 
 	## cardinality = 0..inf
+	## push_scope = country
 	focus = {
 		id = localisation
 
@@ -84,9 +104,13 @@ focus_tree = {
 		## cardinality = ~1..inf
 		icon = <spriteType>
 
+		## cardinality = 0..1
+		text_icon = <focus_style>
+
 		## cardinality = ~1..inf
 		icon = {
 			## cardinality = 0..1
+			## replace_scope = { root = country this = country }
 			trigger = {
 				## cardinality = ~1..inf
 				alias_name[trigger] = alias_match_left[trigger]
@@ -112,6 +136,7 @@ focus_tree = {
 			## cardinality = 0..1
 			y = int
 			## cardinality = 0..1
+			## replace_scope = { root = country this = country }
 			trigger = {
 				alias_name[trigger] = alias_match_left[trigger]
 			}
@@ -191,24 +216,28 @@ focus_tree = {
 		}
 
 		## cardinality = 0..1
+		## replace_scope = { root = country this = country }
 		bypass = {
 			## cardinality = ~1..inf
 			alias_name[trigger] = alias_match_left[trigger]
 		}
 
 		## cardinality = 0..1
+		## replace_scope = { root = country this = country }
 		allow_branch = {
 			## cardinality = ~1..inf
 			alias_name[trigger] = alias_match_left[trigger]
 		}
 
 		## cardinality = 0..1
+		## replace_scope = { root = country this = country }
 		available = {
 			## cardinality = ~1..inf
 			alias_name[trigger] = alias_match_left[trigger]
 		}
 
 		## cardinality = 0..1
+		## replace_scope = { root = country this = country }
 		cancel = {
 			## cardinality = ~1..inf
 			alias_name[trigger] = alias_match_left[trigger]
@@ -221,6 +250,7 @@ focus_tree = {
 		}
 
 		## cardinality = 0..1
+		## replace_scope = { root = country this = country }
 		select_effect = {
 			## cardinality = ~1..inf
 			alias_name[effect] = alias_match_left[effect]
@@ -234,12 +264,14 @@ focus_tree = {
 		}
 
 		## cardinality = 0..1
+		## replace_scope = { root = country this = country }
 		on_uncomplete = {
 			## cardinality = ~1..inf
 			alias_name[effect] = alias_match_left[effect]
 		}
 
 		## cardinality = ~1..1
+		## replace_scope = { root = country this = country }
 		completion_reward = {
 			## cardinality = ~1..inf
 			alias_name[effect] = alias_match_left[effect]
@@ -272,12 +304,16 @@ shared_focus = {
 	## cardinality = 0..inf
 	icon = {
 		## cardinality = 0..1
+		## replace_scope = { root = country this = country }
 		trigger = {
 			## cardinality = 0..inf
 			alias_name[trigger] = alias_match_left[trigger]
 		}
 		value = <spriteType>
 	}
+	## cardinality = 0..1
+	text_icon = <focus_style>
+
 	cost = float
 	x = int
 	y = int
@@ -368,27 +404,60 @@ shared_focus = {
 	}
 
 	## cardinality = 0..1
+	## replace_scope = { root = country this = country }
 	bypass = {
 		## cardinality = ~1..inf
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 
 	## cardinality = 0..1
+	## replace_scope = { root = country this = country }
 	allow_branch = {
 		## cardinality = ~1..inf
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 
 	## cardinality = 0..1
+	## replace_scope = { root = country this = country }
 	available = {
 		## cardinality = ~1..inf
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 
 	## cardinality = 0..1
+	## replace_scope = { root = country this = country }
 	cancel = {
 		## cardinality = ~1..inf
 		alias_name[trigger] = alias_match_left[trigger]
+	}
+
+	subtype[joint_focus] = {
+		### Check if country is considered joint for the focus.
+		## cardinality = ~1..1
+		## replace_scope = { root = country this = country }
+		joint_trigger = {
+			## cardinality = ~1..inf
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+
+		## cardinality = 0..1
+		## replace_scope = { root = country this = country }
+		completion_reward_joint_originator = {
+			## cardinality = ~1..inf
+			alias_name[effect] = alias_match_left[effect]
+		}
+		## cardinality = 0..1
+		## replace_scope = { root = country this = country }
+		completion_reward_joint_member = {
+			## cardinality = ~1..inf
+			alias_name[effect] = alias_match_left[effect]
+		}
+		## cardinality = 0..1
+		## replace_scope = { root = country this = country }
+		completion_reward = {
+			## cardinality = ~1..inf
+			alias_name[effect] = alias_match_left[effect]
+		}
 	}
 
 	## cardinality = 0..1
@@ -416,10 +485,13 @@ shared_focus = {
 		alias_name[effect] = alias_match_left[effect]
 	}
 
-	## cardinality = ~1..1
-	completion_reward = {
-		## cardinality = ~1..inf
-		alias_name[effect] = alias_match_left[effect]
+	subtype[shared] = {
+		## cardinality = ~1..1
+		## replace_scope = { root = country this = country }
+		completion_reward = {
+			## cardinality = ~1..inf
+			alias_name[effect] = alias_match_left[effect]
+		}
 	}
 
 	## cardinality = 0..1
@@ -434,4 +506,25 @@ shared_focus = {
 		## cardinality = ~1..inf
 		value_set[focus_filter]
 	}
+}
+
+
+style = {
+	## cardinality = 1..1
+	name = scalar
+
+	## cardinality = 0..1
+	default = yes
+	## cardinality = 0..1
+	## error_if_only_match = This is the default value and can be omitted
+	default = no
+
+	## cardinality = 1..1
+	unavailable = <spriteType>
+	## cardinality = 1..1
+	completed = <spriteType>
+	## cardinality = 1..1
+	available = <spriteType>
+	## cardinality = 1..1
+	current = <spriteType>
 }

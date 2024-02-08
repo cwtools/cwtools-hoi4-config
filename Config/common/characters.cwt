@@ -39,7 +39,7 @@ types = {
 			## cardinality = ~2..inf
 			instance = {
 				corps_commander = {
-					
+
 				}
 			}
         }
@@ -111,6 +111,10 @@ character = {
 		name = localisation
 		## cardinality = 0..1
 		gender = female
+		## cardinality = 0..1
+		gender = male
+		## cardinality = 0..1
+		gender = undefined
 	}
 	subtype[country_leader] = {
 		## cardinality = 1..inf
@@ -321,7 +325,7 @@ character = {
 		instance = {
 			## replace_scope = { this = character root = country }
 			allowed = {
-				alias_name[trigger] = alias_match_left[trigger]				
+				alias_name[trigger] = alias_match_left[trigger]
 			}
 			name = localisation
 			### Should have at least one portrait defined
@@ -338,6 +342,10 @@ character = {
 			name = localisation
 			## cardinality = 0..1
 			gender = female
+			## cardinality = 0..1
+			gender = male
+			## cardinality = 0..1
+			gender = undefined
 			## cardinality = 0..1
 			## replace_scope = { this = character root = country }
 			allowed_civil_war = {

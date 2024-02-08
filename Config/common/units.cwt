@@ -6,6 +6,9 @@ types = {
 		subtype[infantry] = {
 			group = infantry
 		}
+		subtype[infantry] = {
+			group = { infantry }
+		}
 		subtype[armor] = {
 			group = armor
 		}

@@ -228,7 +228,7 @@ alias[trigger:garrison_manpower_need] = variable_field
 alias[trigger:agency_upgrade_number] = variable_field
 
 ###Checks whether the operative is performing the given mission.
-## scopes = { UNIT_LEADER }
+## scopes = { operative }
 alias[trigger:operative_leader_mission] = enum[operative_missions]
 
 ###Compare the intel of the scoped country with the specified one.
@@ -246,7 +246,7 @@ alias[trigger:compare_intel_with] = {
 
 ###Check if all operatives meets the trigger. tooltip=key can be defined to override title.
 ## scopes = { COUNTRY OPERATION }
-## push_scope = UNIT_LEADER
+## push_scope = operative
 alias[trigger:all_operative_leader] = {
 	## cardinality = 0..1
 	tooltip = localisation
@@ -255,7 +255,7 @@ alias[trigger:all_operative_leader] = {
 
 ###Check if any operatives meets the trigger. tooltip=key can be defined to override title.
 ## scopes = { COUNTRY OPERATION }
-## push_scope = UNIT_LEADER
+## push_scope = operative
 alias[trigger:any_operative_leader] = {
 	## cardinality = 0..1
 	tooltip = localisation
@@ -263,7 +263,7 @@ alias[trigger:any_operative_leader] = {
 }
 
 ###Checks whether the operative has the matching captured status.
-## scopes = { UNIT_LEADER }
+## scopes = { operative }
 alias[trigger:is_operative_captured] = bool
 
 ###Compare the absolute, percentage based, intel level the scoped country has over the specified one.
@@ -426,7 +426,7 @@ alias[trigger:is_preparing_operation] = {
 }
 
 ###Checks whether the operative is performing the given operation.
-## scopes = { UNIT_LEADER }
+## scopes = { operative }
 alias[trigger:operative_leader_operation] = <operation>
 
 ###Checks if the country could potentially declare a war on the target (according to game rules, relationship, etc... ).
@@ -438,11 +438,11 @@ alias[trigger:can_declare_war_on] = scope[country]
 alias[trigger:can_declare_war_on] = enum[country_tags]
 
 ###Checks whether the operative has the specified nationality. NOTE: this is invalid on non-operatives.
-## scopes = { UNIT_LEADER }
+## scopes = { operative }
 alias[trigger:has_nationality] = scope[country]
 
 ###Checks whether the operative has the specified nationality. NOTE: this is invalid on non-operatives.
-## scopes = { UNIT_LEADER }
+## scopes = { operative }
 alias[trigger:has_nationality] = enum[country_tags]
 
 ###Checks network national coverage you have over a country.

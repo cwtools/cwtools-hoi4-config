@@ -363,7 +363,15 @@ alias[trigger:has_government] = <ideology>
 
 ### Does country government (ruling party) belong to ideology group.
 ## scope = country
+alias[trigger:has_government] = enum[sub_ideology]
+
+### Does country government (ruling party) belong to ideology group.
+## scope = country
 alias[trigger:has_country_leader_ideology] = <ideology>
+
+### Does country government (ruling party) belong to ideology group.
+## scope = country
+alias[trigger:has_country_leader_ideology] = enum[sub_ideology]
 
 ### Does country government (ruling party) belong to ideology group.
 ## scope = country
@@ -420,6 +428,8 @@ alias[trigger:country_exists] = enum[country_tags]
 alias[trigger:ships_in_area] = {
 	## cardinality = 0..1
 	type = <unit.ship_unit>
+	## cardinality = 0..1
+	type = enum[ship_units]
 	area = <strategic_region>
 	size = int
 }
@@ -1239,7 +1249,7 @@ alias[trigger:has_cavalry_ratio] = float
 
 ### Check the number of states occupied by nation.
 ## scope = country
-alias[trigger:num_occupied_states] = int
+alias[trigger:num_occupied_states] = int_variable_field
 
 ### Check for damaged buildings of nation.
 ## scope = country

@@ -114,6 +114,9 @@ alias[trigger:has_character_flag] = {
 alias[trigger:has_character] = <character>
 ###Returns true if scoped country has character.
 ## scope = country
+alias[trigger:has_character] = value[character_token]
+###Returns true if scoped country has character.
+## scope = country
 alias[trigger:has_character] = value[variable]
 ###Returns true if scoped country has character.
 ## scope = country
@@ -128,6 +131,9 @@ alias[trigger:has_character] = scope[character]
 ### Checks whether the character matches the character ID
 ## scope = { character unit_leader }
 alias[trigger:is_character] = <character>
+### Checks whether the character matches the character ID
+## scope = { character unit_leader }
+alias[trigger:is_character] = value[character_token]
 ### Checks whether the character matches the variable
 ## scope = { character unit_leader }
 alias[trigger:is_character] = value[variable]
@@ -147,6 +153,7 @@ alias[trigger:has_country_leader] = {
 	## cardinality = 0..1
 	ruling_only = bool
 	character = <character>
+	character = value[character_token]
 	character = value[variable]
 	character = value[event_target]
 	character = value[global_event_target]
@@ -171,6 +178,9 @@ alias[trigger:has_country_leader] = {
 alias[trigger:has_country_leader] = <character>
 ###Check if country has character with specified ID.
 ## scope = country
+alias[trigger:has_country_leader] = value[character_token]
+###Check if country has character with specified ID.
+## scope = country
 alias[trigger:has_country_leader] = value[variable]
 ###Check if country has character with specified ID.
 ## scope = country
@@ -185,6 +195,9 @@ alias[trigger:has_country_leader] = scope[character]
 ###Can the character be a country leader.
 ## scope = country
 alias[trigger:can_be_country_leader] = <character>
+###Can the character be a country leader.
+## scope = country
+alias[trigger:can_be_country_leader] = value[character_token]
 ###Can the character be a country leader.
 ## scope = country
 alias[trigger:can_be_country_leader] = value[variable]

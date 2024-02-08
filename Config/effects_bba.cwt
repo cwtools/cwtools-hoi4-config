@@ -73,9 +73,10 @@ alias[effect:remove_all_power_balance_modifiers] = {
     id = <balance_of_power>
 }
 
-## scope = character
+## scope = unit
 alias[effect:add_random_valid_trait_from_unit] = {
     character = <character>
+    character = value_set[character_token]
 	character = value[variable]
 	character = value[event_target]
 	character = value[global_event_target]
@@ -85,6 +86,8 @@ alias[effect:add_random_valid_trait_from_unit] = {
 alias[effect:set_can_be_fired_in_advisor_role] = {
 	## cardinality = 0..1
     character = <character>
+	## cardinality = 0..1
+    character = value_set[character_token]
 	## cardinality = 0..1
 	character = value[variable]
 	## cardinality = 0..1
@@ -123,18 +126,6 @@ alias[effect:every_state_division] = {
 	random_select_amount = int[1..inf]
 	## cardinality = 0..1
 	display_individual_scopes = bool
-    ## cardinality = 0..1
-	limit = {
-		alias_name[trigger] = alias_match_left[trigger]
-	}
-	## cardinality = 0..1
-	tooltip = localisation
-	alias_name[effect] = alias_match_left[effect]
-}
-
-## scope = state
-## push_scope = unit
-alias[effect:any_state_division] = {
     ## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]

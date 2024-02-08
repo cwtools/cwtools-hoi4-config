@@ -338,6 +338,7 @@ modifiers = {
 	enemy_operative_harmed_time_factor = country
 	enemy_operative_intel_extraction_rate = country
 	enemy_spy_negative_status_factor = country
+	embargo_threshold_factor = country
 	equipment_capture = country
 	equipment_capture_factor = country
 	equipment_conversion_speed = country
@@ -493,6 +494,7 @@ modifiers = {
 	weekly_bombing_war_support = country
 	air_spirit_category_type_cost_factor = country
 	land_spirit_category_type_cost_factor = country
+	army_spirit_category_type_cost_factor = country
 	navy_spirit_category_type_cost_factor = country
 
 	# defensive
@@ -695,6 +697,7 @@ modifiers = {
 	drift_defence_factor = politics
 	guarantee_cost = politics
 	master_ideology_drift = politics
+	power_balance_weekly = politics
 
 	# state
 	army_speed_factor_for_controller = state
@@ -743,6 +746,9 @@ modifiers = {
 	resistance_target_on_our_occupied_states = state
 	starting_compliance = state
 	state_production_speed_buildings_factor = state
+	state_repair_speed_air_base_factor = state
+	state_repair_speed_arms_factory_factor = state
+	state_repair_speed_industrial_complex_factor = state
 	state_repair_speed_infrastructure_factor = state
 	state_resources_factor = state
 	supply_factor = state

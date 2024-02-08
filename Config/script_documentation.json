@@ -23,7 +23,7 @@
 		"set_capital":	{
 			"supported_scope":	["COUNTRY"],
 			"supported_target":	["none"],
-			"description":	"move capital to state"
+			"description":	"move capital to state\nExample:\nset_capital = {\n\tstate = 1234\n\tremember_old_capital = no #default = yes\n}"
 		},
 		"add_state_core":	{
 			"supported_scope":	["COUNTRY"],
@@ -170,15 +170,35 @@
 			"supported_target":	["any"],
 			"description":	"Add opinion modifier(s) to target(s)"
 		},
+		"teleport_railway_guns_to_deploy_province":	{
+			"supported_scope":	["COUNTRY"],
+			"supported_target":	["THIS", "ROOT", "PREV", "FROM", "OWNER", "CONTROLLER", "OCCUPIED", "CAPITAL"],
+			"description":	"Teleport the target country's railway guns to the province to which railway guns are deployed."
+		},
 		"remove_opinion_modifier":	{
 			"supported_scope":	["COUNTRY"],
 			"supported_target":	["any"],
 			"description":	"Remove opinion modifier from target"
 		},
+		"create_railway_gun":	{
+			"supported_scope":	["any"],
+			"supported_target":	["none"],
+			"description":	"Create railway gun effect, just like in OOB, example:\ncreate_railway_gun = {\n\tequipment = railway_gun_equipment_1\n\tname = \"Created Railway Gun\" #optional\n\tlocation = 12406 #optional, created in capital otherwise\n}"
+		},
 		"create_country_leader":	{
 			"supported_scope":	["COUNTRY"],
 			"supported_target":	["none"],
-			"description":	"creates a leader and adds it to proper party in country\n\nExample:\ncreate_country_leader = {\n\tname = \"Leader Name\"\n\tdesc = \"LEADER_DESC_LOCALIZATION_TAG\"\n\tpicture = \"Portrait_leader_name.dds\" # picture = \"....\" also supported for backwards compatibility\n\texpire = \"1965.1.1\"\n\tideology = despotism\n\ttraits = {\n\t\tthe_director\n\t}\n}"
+			"description":	"creates a leader and adds it to proper party in country\nif a character with the same token, or the same name already exists, then just add the country leader role.\n\nExample:\ncreate_country_leader = {\n\tname = \"Leader Name\"\n\tname = XXX_leader_name # optional, faster to find an already existing character\n\tdesc = \"LEADER_DESC_LOCALIZATION_TAG\"\n\tpicture = \"Portrait_leader_name.dds\" # picture = \"....\" also supported for backwards compatibility\n\texpire = \"1965.1.1\"\n\tideology = despotism\n\ttraits = {\n\t\tthe_director\n\t}\n}"
+		},
+		"random_subject_country":	{
+			"supported_scope":	["COUNTRY"],
+			"supported_target":	["none"],
+			"description":	"Executes child effects on random subject country that fulfills the limit."
+		},
+		"every_subject_country":	{
+			"supported_scope":	["COUNTRY"],
+			"supported_target":	["none"],
+			"description":	"Executes children effects on every subject country that fulfills the \"limit\" trigger. tooltip=key can be defined to override tooltip title"
 		},
 		"log":	{
 			"supported_scope":	["any"],
@@ -190,13 +210,33 @@
 			"supported_target":	["none"],
 			"description":	"Create unit effect, just like in OOB, example: \ncreate_unit = { \n\t# unit detauls \n\tdivision = \"name = \\\"1. Northern Redemption Army\\\" division_template = \\\"Redemption Army\\\" start_experience_factor = 0.5\" \n\t# country to spawn unit for \n\towner = MAN \n\t \n\t \n\t# a prov id can be specified \n\tprioritize_location = 12406 \n\t \n\t# can be set to yes to be able to spawn units on enemy provs. \n\tallow_spawning_on_enemy_provs = no \n\t# province controllers can be scored using this scorer. otherwise it will prio your owned provs first, friendly provs second.  \n\t# it will also prio provs with scores and less units firstl \n\tcountry_score = { \n\t\tbase = 100 \n\t\t \n\t\tmodifier = { \n\t\t\ttag = MAN \n\t\t\tadd = 100 \n\t\t} \n\t} \n   count = 1 # can be specified to spawn more than one units \n   id = 42 # an id can be given to delete units later on}"
 		},
+		"activate_advisor":	{
+			"supported_scope":	["COUNTRY"],
+			"supported_target":	["none"],
+			"description":	"Place an advisor in their respective role slot\n\nExample:\nactivate_advisor = GER_character_token_air_chief\n"
+		},
+		"deactivate_advisor":	{
+			"supported_scope":	["COUNTRY"],
+			"supported_target":	["none"],
+			"description":	"Dismiss an advisor from their currently occupied role slot\n\nExample:\ndeactivate_advisor = GER_character_token_air_chief\n"
+		},
 		"sound_effect":	{
 			"supported_scope":	["any"],
 			"supported_target":	["none"],
 			"description":	"Plays sound effect"
 		},
+		"add_trait":	{
+			"supported_scope":	["COUNTRY", "CHARACTER"],
+			"supported_target":	["none"],
+			"description":	"add trait from specified list to character.\nadd_trait = {\n\tcharacter = GER_character_token # optional if inside character scope\n\ttrait = brilliant_strategist\n\tslot = political_advisor #Only required for updating advisor\n\tideology = fascism_ideology #Only required for updating country leader\n}"
+		},
+		"remove_trait":	{
+			"supported_scope":	["COUNTRY", "CHARACTER"],
+			"supported_target":	["none"],
+			"description":	"remove trait from specified list to character.\nremove_trait = {\n\tcharacter = GER_character_token # optional if inside character scope\n\ttrait = brilliant_strategist\n\tslot = political_advisor #Only required for updating advisor\n\tideology = fascism_ideology #Only required for updating country leader\n}"
+		},
 		"promote_leader":	{
-			"supported_scope":	["UNIT_LEADER"],
+			"supported_scope":	["CHARACTER"],
 			"supported_target":	["none"],
 			"description":	"promotes general to field marshal"
 		},
@@ -216,14 +256,14 @@
 			"description":	"change the ideology of active leader"
 		},
 		"add_country_leader_trait":	{
-			"supported_scope":	["COUNTRY"],
+			"supported_scope":	["COUNTRY", "CHARACTER"],
 			"supported_target":	["none"],
-			"description":	"add trait to active country leader"
+			"description":	"Add country leader trait to the scoped character or scoped country's leader.\nIn scoped character, will need to give the ideology if the character has several country leader roles.\nExample 1: SOV_joseph_stalin = { add_country_leader_trait = underage_monarch }\nExample 2: HUN_mikl�s_horthy = { add_country_leader_trait = { ideology = oligarchism trait = anti_communist } }\nExample 3: SOV = { add_country_leader_trait = underage_monarch }"
 		},
 		"remove_country_leader_trait":	{
-			"supported_scope":	["COUNTRY"],
+			"supported_scope":	["COUNTRY", "CHARACTER"],
 			"supported_target":	["none"],
-			"description":	"remove trait from active country leader"
+			"description":	"Remove country leader trait from the scoped character or scoped country's leader.\nIn scoped character, will need to give the ideology if the character has several country leader roles.\nExample 1: SOV_joseph_stalin = { remove_country_leader_trait = underage_monarch }\nExample 2: HUN_mikl�s_horthy = { remove_country_leader_trait = { ideology = oligarchism trait = anti_communist } }\nExample 3: SOV = { remove_country_leader_trait = underage_monarch }"
 		},
 		"set_political_party":	{
 			"supported_scope":	["COUNTRY"],
@@ -233,7 +273,7 @@
 		"set_politics":	{
 			"supported_scope":	["COUNTRY"],
 			"supported_target":	["none"],
-			"description":	"set country political status"
+			"description":	"set_politics: \nruling_party = key of new ruling ideology\nelections_allowed = yes/no\noptional (renames the ruling party and displays correct loc):\nlong_name = loc_key\nname = loc_key"
 		},
 		"add_ideas":	{
 			"supported_scope":	["COUNTRY"],
@@ -261,7 +301,7 @@
 			"description":	"sets technology level(s) on country. example : set_technology = { \n\tinfantry_weapons = 1 \n\tinfantry_weapons1 = 1 \n\tinfantry_weapons2 = 1 \n\timproved_infantry_weapons = 1 \n\tpopup = no # default is yes. if set to no, no pop up will display for player \n}"
 		},
 		"gain_xp":	{
-			"supported_scope":	["UNIT_LEADER"],
+			"supported_scope":	["CHARACTER"],
 			"supported_target":	["any"],
 			"description":	"Grant experience to the scoped in unit leader. Cannot be used to remove experience.\nThe unit leader is promoted to the next skill level if applicable.\nExample:\ngain_xp = 5\n"
 		},
@@ -271,19 +311,14 @@
 			"description":	"create navy leader for country"
 		},
 		"remove_unit_leader_trait":	{
-			"supported_scope":	["UNIT_LEADER", "CHARACTER"],
+			"supported_scope":	["CHARACTER"],
 			"supported_target":	["none"],
-			"description":	"remove trait from unit leader"
+			"description":	"Remove trait from unit leader\nExample: SOV_konstantin_rokossovsky = { remove_unit_leader_trait = media_personality }"
 		},
 		"add_unit_leader_trait":	{
-			"supported_scope":	["UNIT_LEADER"],
+			"supported_scope":	["CHARACTER"],
 			"supported_target":	["none"],
-			"description":	"add trait to unit leader"
-		},
-		"add_namespace":	{
-			"supported_scope":	["any"],
-			"supported_target":	["none"],
-			"description":	"adds new namespace"
+			"description":	"Add trait to unit leader.\nExample: SOV_konstantin_rokossovsky = { add_unit_leader_trait = media_personality }"
 		},
 		"set_state_owner":	{
 			"supported_scope":	["COUNTRY"],
@@ -428,7 +463,7 @@
 		"start_civil_war":	{
 			"supported_scope":	["COUNTRY"],
 			"supported_target":	["THIS", "ROOT", "PREV", "FROM", "OWNER", "CONTROLLER", "OCCUPIED", "CAPITAL"],
-			"description":	"Given ideology starts a civil war in the country.\nstart_civil_war = {\n\tideology = revolting ideology\n\truling party = ruling party for country\n\tsize = 0-1 Size modifier of the revolt. Affects stockpile, army, air and navy as well\n\tarmy_ratio = 0-1 Overrides size modifier for army\n\tnavy_ratio = 0-1 Overrides size modifier for navy\n\tair_ratio = 0-1 Overrides size modifier for air\n\tkeep_unit_leaders specify ID of unit leaders that remain with the original country\n\tkeep_unit_leaders_trigger Trigger for unit leaders to remain with the original country\n\tstates States that go to the revolter. Use \"all\" to include all states.\n\tstates_filter States that go to the revolter. Filtering trigger on the states scripted to go to the revolter.\n\t ... effect list ... # you can list effects that will run on civil war country\n}"
+			"description":	"Given ideology starts a civil war in the country.\nstart_civil_war = {\n\tideology = revolting ideology\n\truling_party = ruling party for country\n\tsize = 0-1 Size modifier of the revolt. Affects stockpile, army, air and navy as well\n\tarmy_ratio = 0-1 Overrides size modifier for army\n\tnavy_ratio = 0-1 Overrides size modifier for navy\n\tair_ratio = 0-1 Overrides size modifier for air\n\tkeep_unit_leaders specify ID of unit leaders that remain with the original country\n\tkeep_unit_leaders_trigger Trigger for unit leaders to remain with the original country\n\tstates States that go to the revolter. Use \"all\" to include all states.\n\tstates_filter States that go to the revolter. Filtering trigger on the states scripted to go to the revolter.\n\tkeep_political_leader = yes/no # optional, default is no; If yes, the party leader of the revolting ideology will not join the revolter as its leader.\n\tkeep_political_party_members = yes/no # optional, default is no; If yes, it will keep the non main leaders of the party leaders in original country\n\t ... effect list ... # you can list effects that will run on civil war country\n}"
 		},
 		"retire_country_leader":	{
 			"supported_scope":	["COUNTRY"],
@@ -553,7 +588,7 @@
 		"set_rule":	{
 			"supported_scope":	["COUNTRY"],
 			"supported_target":	["none"],
-			"description":	"Adds rule to country"
+			"description":	"Adds rule to country. This one overrides all other rules on country \nset_rule = { \n desc = desc_key # a description can be given to rule (you can get original tooltip using DESC key) \n can_not_declare_war = yes \n}"
 		},
 		"diplomatic_relation":	{
 			"supported_scope":	["COUNTRY"],
@@ -571,7 +606,7 @@
 			"description":	"Adds/removes resource production to state\n\nExample:\nadd_resource = {\n  type = steel #resource type to add/destroy  amount = 5 #amount to add\n  state = 42 #can be also read from scope\n  days = 60 #a resource can be added/removed temporarily}\n"
 		},
 		"remove_unit_leader":	{
-			"supported_scope":	["COUNTRY", "UNIT_LEADER"],
+			"supported_scope":	["COUNTRY", "CHARACTER"],
 			"supported_target":	["none"],
 			"description":	"remove a unit leader ( remove_unit_leader=ID )"
 		},
@@ -638,7 +673,7 @@
 		"complete_national_focus":	{
 			"supported_scope":	["COUNTRY"],
 			"supported_target":	["none"],
-			"description":	"unlocks a focus for a country"
+			"description":	"completes a focus for a country"
 		},
 		"set_party_name":	{
 			"supported_scope":	["COUNTRY"],
@@ -668,7 +703,7 @@
 		"create_equipment_variant":	{
 			"supported_scope":	["COUNTRY"],
 			"supported_target":	["none"],
-			"description":	"Creates a new equipment variant.\nExample:\ncreate_equipment_variant = {\n\tname = \"Yorktown Class\"\n\ttype = ship_hull_carrier_2\n\tparent_version = 1  #default = 0\n\tobsolete = yes      #default = no\n\tname_group = ship_name_group_name      #default = empty/none\n\trole_icon_index = 3      #default just inherits from parent or remains unset\n\trole_icon_index = 0      #alternative, explicitly unset\n\trole_icon_index = auto   #uses AI design logic to pick\n\tupgrades = {        #optional, inherits from parent\n\t\tship_deckspace_upgrade = 1\n\t\tcarrier_armor_upgrade = 2\n\t}\n\tmodules = {         #optional, inherits from parent\n\t\tfixed_ship_deck_slot_1 = ship_deck_space\n\t\tfront_1_custom_slot = ship_armor_carrier_deck\n\t\tfixed_ship_deck_slot_2 = empty #overrides parent\n\t}\n}"
+			"description":	"Creates a new equipment variant.\nExample:\ncreate_equipment_variant = {\n\tname = \"Yorktown Class\"\n\ttype = ship_hull_carrier_2\n\tparent_version = 1  #default = 0\n\tobsolete = yes      #default = no\n\tname_group = ship_name_group_name      #default = empty/none\n\trole_icon_index = 3      #default just inherits from parent or remains unset\n\trole_icon_index = 0      #alternative, explicitly unset\n\trole_icon_index = auto   #uses AI design logic to pick\n\tupgrades = {        #optional, inherits from parent\n\t\tship_deckspace_upgrade = 1\n\t\tcarrier_armor_upgrade = 2\n\t}\n\tmodules = {         #optional, inherits from parent\n\t\tfixed_ship_deck_slot_1 = ship_deck_space\n\t\tfront_1_custom_slot = ship_armor_carrier_deck\n\t\tfixed_ship_deck_slot_2 = empty #overrides parent\n\t}\n\tmodel = \"GER_light_armor_2_entity\"\n\ticon = \"gfx/interface/technologies/ger_basic_light_tank.dds\" #can also use GFX name e.g: \"GFX_GER_basic_light_tank_medium\"\n}\n"
 		},
 		"add_equipment_production":	{
 			"supported_scope":	["COUNTRY"],
@@ -723,7 +758,7 @@
 		"set_autonomy":	{
 			"supported_scope":	["COUNTRY"],
 			"supported_target":	["THIS", "ROOT", "PREV", "FROM", "OWNER", "CONTROLLER", "OCCUPIED", "CAPITAL"],
-			"description":	"makes autonomy of specified level and country.\nExample:\nset_autonomy = {\ntarget=ENG\nautonomy_state = nautonomy_puppet\nfreedom_level=0.5\n}"
+			"description":	"makes autonomy of specified level and country.\nExample:\nset_autonomy = {\n  target=ENG \n  autonomy_state = autonomy_puppet \n  freedom_level=0.5 \n  end_wars  = yes # default yes. will not cancel non civil wars if set to no\n  end_civil_wars = yes # default yes. will not cancel civil wars if set to no\n}"
 		},
 		"add_to_tech_sharing_group":	{
 			"supported_scope":	["COUNTRY"],
@@ -813,7 +848,7 @@
 		"create_production_license":	{
 			"supported_scope":	["COUNTRY"],
 			"supported_target":	["none"],
-			"description":	"Creates production license\nExample: create_production_license = {\n\ttarget = TAG # target for licensing\n\tcost_factor = 1.0 # cost factor for the deal\n\tequipment = { # classical equipment reference\n\t\ttype = light_tank_equipment_2\n\t\tversion = 0\n\t}\n}"
+			"description":	"Creates production license\nExample: create_production_license = {\n\ttarget = TAG # target for licensing\n\tcost_factor = 1.0 # cost factor for the deal\n\tequipment = { # classical equipment reference\n\t\ttype = light_tank_equipment_2\n\t\tversion = 0\n\t\tnew_prioritised = no ## default yes, you can force using version control this way\n\t}\n}"
 		},
 		"add_relation_modifier":	{
 			"supported_scope":	["COUNTRY"],
@@ -886,34 +921,34 @@
 			"description":	"Destroys ships of specified country and amount\nExample: \nENG={ \n\tdestroy_ships = {\n\t\ttype=light_cruiser\n\t\tcount=all #or number\n\t}\n}"
 		},
 		"set_unit_leader_flag":	{
-			"supported_scope":	["UNIT_LEADER"],
+			"supported_scope":	["CHARACTER"],
 			"supported_target":	["none"],
-			"description":	"set unit leader flag"
+			"description":	"set unit leader flag\nThis effect is deprecated in favor of set_character_flag."
 		},
 		"modify_unit_leader_flag":	{
-			"supported_scope":	["UNIT_LEADER"],
+			"supported_scope":	["CHARACTER"],
 			"supported_target":	["none"],
-			"description":	"modify unit leader flag. Only modifies if flag already exists.\nExample: _modify_unit_leader_flag_ = { flag = <name> value = <number> }"
+			"description":	"modify unit leader flag. Only modifies if flag already exists.\nExample: _modify_unit_leader_flag_ = { flag = <name> value = <number> }\nThis effect is deprecated in favor of modify_character_flag."
 		},
 		"clr_unit_leader_flag":	{
-			"supported_scope":	["UNIT_LEADER"],
+			"supported_scope":	["CHARACTER"],
 			"supported_target":	["none"],
-			"description":	"clear unit leader flag"
+			"description":	"clear unit leader flag\nThis effect is deprecated in favor of clr_character_flag."
 		},
 		"set_nationality":	{
-			"supported_scope":	["UNIT_LEADER"],
+			"supported_scope":	["COUNTRY", "CHARACTER"],
 			"supported_target":	["none"],
-			"description":	"Set the new country owner for the scoped in unit leader.\nNote that this is not related to operative nationalities added via add_nationality.\nNote that for operative, this will temporarily lock their slot on the country of origin.\n"
+			"description":	"Transfer from one country to another for the character in scope.\nNote that this is not related to operative nationalities added via add_nationality.\nNote that for operative, this will temporarily lock their slot on the country of origin.\n\nExamples:\nSOV = { # origin country\n\tmy_character = {\n\tset_nationality = POL # target country\n}\nSOV = { # origin country\n\tset_nationality = {\n\t\ttarget_country = POL\n\t\tcharacter = my_character\n\t}\n}\n"
 		},
 		"demote_leader":	{
-			"supported_scope":	["UNIT_LEADER"],
+			"supported_scope":	["CHARACTER"],
 			"supported_target":	["none"],
 			"description":	"Demotes field marshal to general"
 		},
 		"retire":	{
-			"supported_scope":	["UNIT_LEADER"],
+			"supported_scope":	["CHARACTER"],
 			"supported_target":	["none"],
-			"description":	"Retires scope unit leader"
+			"description":	"Retires character, use in character scope"
 		},
 		"add_command_power":	{
 			"supported_scope":	["COUNTRY"],
@@ -926,12 +961,12 @@
 			"description":	"show what decision does\nExample: unlock_decision_tooltip = some_decision_here\nExample:\nunlock_decision_tooltip = {\n    decision = <some_decision>\n    show_effect_tooltip = yes # default is no\n    show_modifiers = yes # default is no\n}\n"
 		},
 		"add_temporary_buff_to_units":	{
-			"supported_scope":	["UNIT_LEADER"],
+			"supported_scope":	["CHARACTER"],
 			"supported_target":	["none"],
 			"description":	"Add buffs to units that are belongs to the army group/navy of this unit leader"
 		},
 		"boost_planning":	{
-			"supported_scope":	["UNIT_LEADER"],
+			"supported_scope":	["CHARACTER"],
 			"supported_target":	["none"],
 			"description":	"Boost planning of units that are belongs to the army group/navy of this unit leader"
 		},
@@ -976,17 +1011,17 @@
 			"description":	"Clears a variable\nExample: clear_variable = num_dogs"
 		},
 		"add_attack":	{
-			"supported_scope":	["UNIT_LEADER"],
+			"supported_scope":	["CHARACTER"],
 			"supported_target":	["none"],
-			"description":	"Adds attack skill to a unit leader\nExample: add_attack = 1"
+			"description":	"Adds attack skill to a character\nExample: add_attack = 1"
 		},
 		"add_defense":	{
-			"supported_scope":	["UNIT_LEADER"],
+			"supported_scope":	["CHARACTER"],
 			"supported_target":	["none"],
 			"description":	"Adds defense skill to a unit leader\nExample: add_defense = 1"
 		},
 		"add_planning":	{
-			"supported_scope":	["UNIT_LEADER"],
+			"supported_scope":	["CHARACTER"],
 			"supported_target":	["none"],
 			"description":	"Adds planning skill to a unit leader\nExample: add_planning = 1"
 		},
@@ -1006,7 +1041,7 @@
 			"description":	"Sets what focus tree a country uses, retains finished shared focuses."
 		},
 		"add_logistics":	{
-			"supported_scope":	["UNIT_LEADER"],
+			"supported_scope":	["CHARACTER"],
 			"supported_target":	["none"],
 			"description":	"Adds logistics skill to a unit leader\nExample: add_logistics = 1"
 		},
@@ -1016,12 +1051,12 @@
 			"description":	"Add an offsite building to a country"
 		},
 		"replace_unit_leader_trait":	{
-			"supported_scope":	["UNIT_LEADER"],
+			"supported_scope":	["CHARACTER"],
 			"supported_target":	["none"],
 			"description":	"add trait to unit leader"
 		},
 		"free_operative":	{
-			"supported_scope":	["COUNTRY", "UNIT_LEADER"],
+			"supported_scope":	["COUNTRY", "CHARACTER"],
 			"supported_target":	["THIS", "ROOT", "PREV", "FROM"],
 			"description":	"Free an operative\nCan be used from a scope and a target that is either a country or a unit leader.\nGER = { free_operative = PREV } # where PREV is an operative (unit leader)\nfree_operative = { captured_by = GER } # where the scope is an unit leader\n"
 		},
@@ -1031,12 +1066,12 @@
 			"description":	"Free a random captured operative of a certain tag by a certain tag\nCan be used from a country scope of the operative in question.\n`all` is optional, default value is no - if set to yes it will free all operatives captured by the target country\nGER = { free_random_operative = { all = yes captured_by = ENG } }\n"
 		},
 		"add_max_trait":	{
-			"supported_scope":	["UNIT_LEADER"],
+			"supported_scope":	["CHARACTER"],
 			"supported_target":	["none"],
 			"description":	"Adds a max assignable trait slot for a general\nExample: add_max_trait = 1"
 		},
 		"add_skill_level":	{
-			"supported_scope":	["UNIT_LEADER"],
+			"supported_scope":	["CHARACTER"],
 			"supported_target":	["none"],
 			"description":	"Adds a skill level to a unit leader\nExample: add_skill_level = 1"
 		},
@@ -1066,7 +1101,7 @@
 			"description":	"Sets a temp variable to a value or another variable\nExample: set_temp_variable = {\nvar = num_dogs\n\tvalue = 42\n\ttooltip = loc_str_id_with_LEFT_and_RIGHT  #localized text with LEFT and RIGHT tokens in it, tokens will replaced by values\n}"
 		},
 		"add_timed_unit_leader_trait":	{
-			"supported_scope":	["UNIT_LEADER"],
+			"supported_scope":	["CHARACTER"],
 			"supported_target":	["none"],
 			"description":	"add a timed trait to unit leader"
 		},
@@ -1106,7 +1141,7 @@
 			"description":	"Delete a template and its units\nExample: delete_unit_template_and_units = { \ndivision_template = <name> \ndisband = no #if yes, will refund equipment/manpower. default is no\n}"
 		},
 		"print_variables":	{
-			"supported_scope":	["STATE", "COUNTRY", "UNIT_LEADER"],
+			"supported_scope":	["STATE", "COUNTRY", "CHARACTER"],
 			"supported_target":	["none"],
 			"description":	"prints all variables in scope and temp variables to a file\nExample: print_variables = {\nfile = log_file\ntext = header_text\nappend = yes\nprint_global = yes\nvar_list = { a b c } #optional\n}"
 		},
@@ -1156,7 +1191,7 @@
 			"description":	"Rounds a variable\nExample: round_variable = num_dogs"
 		},
 		"unit_leader_event":	{
-			"supported_scope":	["UNIT_LEADER"],
+			"supported_scope":	["CHARACTER"],
 			"supported_target":	["none"],
 			"description":	"Fires a unit leader event for owner country.\nExample:\nunit_leader_event = {\n\tid = generic.17 # The event to fire.\n\t# Optional Fields:\n\thours = 12 # The number of hours to wait before firing the event.\n\tdays = 5 # The number of days to wait before firing the event.\n\tmonths = 1 # The number of months to wait before firing the event, where a month is treated as 30 days.\n\t\t# Note:  hours, days, and months can all be used and will simply be added together.\n\trandom_hours = 18 # A random amount of hours to be added to the delay before firing, from 0 up to but not including random_hours.\n\trandom_days = 2 # A random amount of days to be added to the delay before firing, from 0 up to but one hour less than random_days.\n\t\t# Note:  random_hours and random_days can both be used and will simply be added together.\n\trandom = 6 # Equivalent to random_hours; preserverd for backwards compatibility.\n\trandom = { chance = 50 ... } # Specify a set of child effects to execute as part of this effect, with a percentage chance of randomly happening or not (as a group, not individually).\n\ttooltip = generic.17.t # Manually specify which tooltip to use for this effect.\n}\n"
 		},
@@ -1168,10 +1203,10 @@
 		"create_operative_leader":	{
 			"supported_scope":	["COUNTRY"],
 			"supported_target":	["none"],
-			"description":	"create operative for country\ncreate_operative_leader = {\n\tbypass_recruitment = no # whether the operative is directly added to the list of available operatives \n\tavailable_to_spy_master = yes # whether the operative can be recruited by the spy master. Only makes sense if bypass_recruitment is 'no'.\n\tportrait_tag_override = TAG # when selectiong the portrait for the operative, consider that tag instead of the country the operative will operate for\t# Additionally supports the common token to other create_x_leader effects\n}\n"
+			"description":	"create operative for country\ncreate_operative_leader = {\n\tbypass_recruitment = no # whether the operative is directly added to the list of available operatives \n\tavailable_to_spy_master = yes # whether the operative can be recruited by the spy master. Only makes sense if bypass_recruitment is 'no'.\n\tportrait_tag_override = TAG # when selectiong the portrait for the operative, consider that tag instead of the country the operative will operate for gfx = GFX_portrait_alexander_rado # specify the GFX entry that the portrait will be based on, otherwise a random one will be generated.\n\t# Additionally supports the common token to other create_x_leader effects\n}\n"
 		},
 		"capture_operative":	{
-			"supported_scope":	["COUNTRY", "UNIT_LEADER"],
+			"supported_scope":	["COUNTRY", "CHARACTER"],
 			"supported_target":	["THIS", "ROOT", "PREV", "FROM"],
 			"description":	"Capture an operative\nCan be used from a scope and a target that is either a country or a unit leader.\nExamples:\nGER = {\n    capture_operative = PREV  # where PREV is an operative (unit leader)\n    # or    capture_operative = {\n        operative = PREV\n        ignore_death_chance = yes  # optional: whether the death chance on capture should be ignored\n    }\n}\n\ncapture_operative = { captured_by = GER } # where the scope is an unit leader\n"
 		},
@@ -1211,12 +1246,12 @@
 			"description":	"swap 2 traits on current ruler. \n Syntax: swap_ruler_traits = { remove = <trait> add = <trait> }"
 		},
 		"add_random_trait":	{
-			"supported_scope":	["UNIT_LEADER"],
+			"supported_scope":	["CHARACTER"],
 			"supported_target":	["none"],
 			"description":	"add random trait from specified list to unit leader. add_random_trait = { old_guard brilliant_strategist inflexible_strategist }"
 		},
 		"remove_exile_tag":	{
-			"supported_scope":	["UNIT_LEADER"],
+			"supported_scope":	["CHARACTER"],
 			"supported_target":	["none"],
 			"description":	"remove exile tag from scope unit leader. remove_exile_tag = yes"
 		},
@@ -1236,12 +1271,12 @@
 			"description":	"set_faction_name = NEW_LOC_KEY. Sets the faction name to whatever the new key localises to."
 		},
 		"add_maneuver":	{
-			"supported_scope":	["UNIT_LEADER"],
+			"supported_scope":	["CHARACTER"],
 			"supported_target":	["none"],
 			"description":	"Adds maneuver skill to a unit leader\nExample: add_maneuver = 1"
 		},
 		"add_coordination":	{
-			"supported_scope":	["UNIT_LEADER"],
+			"supported_scope":	["CHARACTER"],
 			"supported_target":	["none"],
 			"description":	"Adds maneuver skill to a unit leader\nExample: add_coordination = 1"
 		},
@@ -1266,9 +1301,9 @@
 			"description":	"Rounds a temporary variable\nExample: round_temp_variable = num_dogs"
 		},
 		"supply_units":	{
-			"supported_scope":	["UNIT_LEADER"],
+			"supported_scope":	["CHARACTER"],
 			"supported_target":	["none"],
-			"description":	"Give supply to units being controlled by this leader. \nExample supply_units = 24"
+			"description":	"Give [hours] of supply to units being controlled by this leader. \nExample supply_units = 24"
 		},
 		"set_faction_leader":	{
 			"supported_scope":	["COUNTRY"],
@@ -1356,17 +1391,17 @@
 			"description":	"Runs the effect for a random element in array\nExample: random_scope_in_array = {\n\tarray = array_name\n\tlimit = { ... trigger ... } a trigger to limit scopes\n\tbreak = break_name #optional (default 'break') set this temp variable to non zero to break the loop\n #effect 1\n #effect 2 ...\n}"
 		},
 		"force_update_dynamic_modifier":	{
-			"supported_scope":	["STATE", "COUNTRY", "UNIT_LEADER"],
+			"supported_scope":	["STATE", "COUNTRY", "CHARACTER"],
 			"supported_target":	["THIS", "ROOT", "PREV", "FROM", "OWNER", "CONTROLLER", "OCCUPIED", "CAPITAL"],
 			"description":	"updates the modifiers in current scope (use if you don't want to wait for daily update to update them):\nforce_update_dynamic_modifier = yes\n"
 		},
 		"remove_dynamic_modifier":	{
-			"supported_scope":	["STATE", "COUNTRY", "UNIT_LEADER"],
+			"supported_scope":	["STATE", "COUNTRY", "CHARACTER"],
 			"supported_target":	["THIS", "ROOT", "PREV", "FROM", "OWNER", "CONTROLLER", "OCCUPIED", "CAPITAL"],
 			"description":	"removes a dynamic modifier from country/state/unit leader:\nremove_dynamic_modifier = {\n    modifier = dynamic_modifier_name\n    scope = GER #optional, specify if it is specified while adding the modifier\n}\n"
 		},
 		"add_dynamic_modifier":	{
-			"supported_scope":	["STATE", "COUNTRY", "UNIT_LEADER"],
+			"supported_scope":	["STATE", "COUNTRY", "CHARACTER"],
 			"supported_target":	["THIS", "ROOT", "PREV", "FROM", "OWNER", "CONTROLLER", "OCCUPIED", "CAPITAL"],
 			"description":	"adds a dynamic modifier to country/state/unit leader. Updates the cooldown if exists:\nadd_dynamic_modifier = {\n    modifier = dynamic_modifier_name\n    days = 42 #will be temporary if specified    scope = GER #optional, state or country tag or a variable contains that. if specified the dynamic variable will target that scope\n}\n"
 		},
@@ -1384,6 +1419,16 @@
 			"supported_scope":	["any"],
 			"supported_target":	["THIS", "ROOT", "PREV", "FROM", "OWNER", "CONTROLLER", "OCCUPIED", "CAPITAL"],
 			"description":	"meta effects can be used for building effects from strings and running them. following example will give Germany 42 pp:\nmeta_effect = {\n    text = {\n        [COUNTRY] = {\n            add_political_power = [POW]\n        }\n    }\n    COUNTRY = \"GER\"\n    POW = 42\n    debug = no #set to yes if you want to see what game actually executes\n}\n"
+		},
+		"add_victory_points":	{
+			"supported_scope":	["any"],
+			"supported_target":	["any"],
+			"description":	"adds victory point to province\nadd_victory_points = {\n  province = 42\n  value = 5\n}"
+		},
+		"set_victory_points":	{
+			"supported_scope":	["any"],
+			"supported_target":	["any"],
+			"description":	"sets victory points for a province\nset_victory_points = {\n  province = 42\n  value = 5\n}"
 		},
 		"launch_nuke":	{
 			"supported_scope":	["COUNTRY"],
@@ -1408,7 +1453,7 @@
 		"add_mines":	{
 			"supported_scope":	["COUNTRY"],
 			"supported_target":	["THIS", "ROOT", "PREV", "FROM", "OWNER", "CONTROLLER", "OCCUPIED", "CAPITAL"],
-			"description":	"Add mines to a strategic region for scoped country.\n add_mines = { region = 42 amount = 100 }"
+			"description":	"Add mines to a strategic region for scoped country.\n add_mines = { region = 42 mines = 100 }"
 		},
 		"set_fuel_ratio":	{
 			"supported_scope":	["COUNTRY"],
@@ -1419,6 +1464,11 @@
 			"supported_scope":	["COUNTRY"],
 			"supported_target":	["THIS", "ROOT", "PREV", "FROM", "OWNER", "CONTROLLER", "OCCUPIED", "CAPITAL"],
 			"description":	"Ends the exile of of the current scope's country"
+		},
+		"remove_advisor_role":	{
+			"supported_scope":	["COUNTRY", "CHARACTER"],
+			"supported_target":	["none"],
+			"description":	"remove advisor role to character\n\nExample:\nremove_advisor_role = {\n\tcharacter = \"GER_Character_Token\" # optional if inside character scope\n\tslot = air_chief}\n"
 		},
 		"kill_ideology_leader":	{
 			"supported_scope":	["COUNTRY"],
@@ -1616,12 +1666,12 @@
 			"description":	"refer to randomize_temp_variable"
 		},
 		"harm_operative_leader":	{
-			"supported_scope":	["UNIT_LEADER"],
+			"supported_scope":	["CHARACTER"],
 			"supported_target":	["none"],
 			"description":	"Harm an operative. The specified value is subject to modifiers.\nharm_operative_leader = 12\n"
 		},
 		"force_operative_leader_into_hiding":	{
-			"supported_scope":	["UNIT_LEADER"],
+			"supported_scope":	["CHARACTER"],
 			"supported_target":	["none"],
 			"description":	"Force an operative into hiding, preventing him from performing mission. The specified values is subject to modifiers\nforce_operative_leader_into_hiding = 12\n"
 		},
@@ -1631,12 +1681,12 @@
 			"description":	"Add the specified amount of intel over a specified country\nGER = {\n  add_intel = {\n    target = POL\n    civilian_intel = 3\n    army_intel = 1\n    # zero field can be omitted\n    # navy_intel = 0\n    # airforce_intel = 0\n  }\n}\n"
 		},
 		"operative_leader_event":	{
-			"supported_scope":	["UNIT_LEADER"],
+			"supported_scope":	["CHARACTER"],
 			"supported_target":	["none"],
 			"description":	"Fires a operative leader event for owner country.\nExample:\noperative_leader_event = {\n\tid = generic.17 # The event to fire.\n\t# Optional Fields:\n\toriginator = TAG # The originator of the event (default to the owner of the operative)\n\trecipient = TAG # The recipient of the event (default to the owner of the operative)\n\thours = 12 # The number of hours to wait before firing the event.\n\tdays = 5 # The number of days to wait before firing the event.\n\tmonths = 1 # The number of months to wait before firing the event, where a month is treated as 30 days.\n\t\t# Note:  hours, days, and months can all be used and will simply be added together.\n\trandom_hours = 18 # A random amount of hours to be added to the delay before firing, from 0 up to but not including random_hours.\n\trandom_days = 2 # A random amount of days to be added to the delay before firing, from 0 up to but one hour less than random_days.\n\t\t# Note:  random_hours and random_days can both be used and will simply be added together.\n\trandom = 6 # Equivalent to random_hours; preserverd for backwards compatibility.\n\trandom = { chance = 50 ... } # Specify a set of child effects to execute as part of this effect, with a percentage chance of randomly happening or not (as a group, not individually).\n\ttooltip = generic.17.t # Manually specify which tooltip to use for this effect.\n\tset_from = TAG # Set the scope of the From in the scripted localization\n\tset_from_from = TAG # Set the scope of the From.From in the scripted localization\n\tset_root = TAG # Set the scope of the Root in the scripted localization\n}\n"
 		},
 		"kill_operative":	{
-			"supported_scope":	["COUNTRY", "UNIT_LEADER"],
+			"supported_scope":	["COUNTRY", "CHARACTER"],
 			"supported_target":	["THIS", "ROOT", "PREV", "FROM"],
 			"description":	"Kills an operative. This will temporarily lock the slot they occupy\nExamples:\nGER = {\n    kill_operative = PREV  # where PREV is an operative (unit leader)\n    # or\n    kill_operative = {\n        operative = PREV\n    }\n}\n\nkill_operative = { killed_by = GER } # where the scope is an unit leader\n"
 		},
@@ -1653,7 +1703,7 @@
 		"add_civil_war_target":	{
 			"supported_scope":	["COUNTRY"],
 			"supported_target":	["THIS", "ROOT", "PREV", "FROM", "OWNER", "CONTROLLER", "OCCUPIED", "CAPITAL"],
-			"description":	"Adds a civil war target to a specific country\n Usage: add_civil_war_target = TAG"
+			"description":	"Adds a civil war target to a specific country\n Usage: civill_war_target = TAG"
 		},
 		"modulo_temp_variable":	{
 			"supported_scope":	["any"],
@@ -1696,12 +1746,12 @@
 			"description":	"sets a variable to a random value. example \nset_variable_to_random = num_dogs #sets num_dogs a random value between [0, 1) \nset_variable_to_random = { \n\tvar = num_dogs #variable to set \n\tmin = 5 #default 0. value will be set in between [min, max) \n\tmax = 10 #default 1. value will be set in between [min, max) \n\tinteger = yes #default no. if yes the number value will be an integer \n} \n"
 		},
 		"set_leader_name":	{
-			"supported_scope":	["UNIT_LEADER"],
+			"supported_scope":	["CHARACTER"],
 			"supported_target":	["any"],
 			"description":	"changes the name of unit leader. no tooltip is generated\nset_leader_name = \"James Boned\"\n"
 		},
 		"set_leader_portrait":	{
-			"supported_scope":	["UNIT_LEADER"],
+			"supported_scope":	["CHARACTER"],
 			"supported_target":	["any"],
 			"description":	"changes the portrait of unit leader. no tooltip is generated\nset_leader_portrait = \"GFX_portrait_italy_emperor_mussolini\"\n"
 		},
@@ -1711,7 +1761,7 @@
 			"description":	"changes the description of country leader. no tooltip is generated\nset_country_leader_name = {\n  ideology = neutrality # can be ommitted. if so it will change the portrait of current ruler\n  desc = \"DESC_KEY\"\n}"
 		},
 		"set_leader_description":	{
-			"supported_scope":	["UNIT_LEADER"],
+			"supported_scope":	["CHARACTER"],
 			"supported_target":	["any"],
 			"description":	"changes the description of unit leader. no tooltip is generated\nset_leader_description = \"DESC_KEY\"\n"
 		},
@@ -1721,7 +1771,7 @@
 			"description":	"Special effect for executing the Coordinated Strike Operation. amount determines how often the simulation is run"
 		},
 		"add_nationality":	{
-			"supported_scope":	["UNIT_LEADER"],
+			"supported_scope":	["CHARACTER"],
 			"supported_target":	["THIS", "ROOT", "PREV", "FROM", "OWNER", "CONTROLLER", "OCCUPIED", "CAPITAL"],
 			"description":	"Add the specified nationalty to the scoped-in operative. Examples:\nadd_nationality = ROOT\nadd_nationality = FRA\n"
 		},
@@ -1731,14 +1781,79 @@
 			"description":	"The scoped in country recall the volunteers sent to the target country.\nExample:\n# FRA recalls the volunteers it sent to SPR\nFRA = { recall_volunteers_from = SPR }\n"
 		},
 		"turn_operative":	{
-			"supported_scope":	["COUNTRY", "UNIT_LEADER"],
+			"supported_scope":	["COUNTRY", "CHARACTER"],
 			"supported_target":	["THIS", "ROOT", "PREV", "FROM"],
 			"description":	"An operative is turned by the specified country.\nThis transfers the operative to the target country and make it appear as killed to the country of origin (increases the death counter and lock the slot).\nThis fires the on_action on_operative_death with as killer the target country.\nIf the target country is the owner of the operative, this has no effect and an error is logged.\n\nWARN: the on_action might execute immediatly, before any effect listed after the occurence of turn_operative.\n\nExamples:\nGER = {\n    turn_operative = PREV  # where PREV is an operative (unit leader)\n    # or\n    turn_operative = {\n        operative = PREV\n    }\n}\n\nturn_operative = { turned_by = GER } # where the scope is an unit leader\n"
+		},
+		"every_character":	{
+			"supported_scope":	["COUNTRY"],
+			"supported_target":	["none"],
+			"description":	"Executes children effects on every character that fulfills the \"limit\" trigger."
+		},
+		"random_character":	{
+			"supported_scope":	["COUNTRY"],
+			"supported_target":	["none"],
+			"description":	"Executes children effects on random characters that fulfills the \"limit\" trigger. tooltip=key can be added to override tooltip title"
+		},
+		"add_doctrine_cost_reduction":	{
+			"supported_scope":	["COUNTRY"],
+			"supported_target":	["none"],
+			"description":	"adds a limited use cost reduction for doctrines"
 		},
 		"set_garrison_strength":	{
 			"supported_scope":	["STATE"],
 			"supported_target":	["any"],
 			"description":	"set initial garrison strength. Example: set_garrison_strength = 0.5"
+		},
+		"add_corps_commander_role":	{
+			"supported_scope":	["COUNTRY", "CHARACTER"],
+			"supported_target":	["none"],
+			"description":	"add corps commander role to character\n\nExample:\nadd_corps_commander_role = {\n\tcharacter = GER_Character_token # optional if inside character scope\n\ttraits = {  }\n\tskill = 4\n\tattack_skill = 2\n\tdefense_skill = 3\n\tplanning_skill = 3\n\tlogistics_skill = 5\n\t}\n}"
+		},
+		"add_field_marshal_role":	{
+			"supported_scope":	["COUNTRY", "CHARACTER"],
+			"supported_target":	["none"],
+			"description":	"add field marshall role to character\n\nExample:\nadd_field_marshal_role = {\n\tcharacter = GER_Character_token # optional if inside character scope\n\ttraits = {  }\n\tskill = 4\n\tattack_skill = 2\n\tdefense_skill = 3\n\tplanning_skill = 3\n\tlogistics_skill = 5\n\t}\n}"
+		},
+		"add_naval_commander_role":	{
+			"supported_scope":	["COUNTRY", "CHARACTER"],
+			"supported_target":	["none"],
+			"description":	"Add naval commander to character\n\nExample:\nadd_naval_commander_role = {\n\tcharacter = GER_Character_token # optional if inside character scope\n\ttraits = { spotter }\n\tskill = 4\n\tattack_skill = 3\n\tdefense_skill = 3\n\tmaneuvering_skill = 3\n\tcoordination_skill = 4\n\t}\n}"
+		},
+		"add_country_leader_role":	{
+			"supported_scope":	["COUNTRY", "CHARACTER"],
+			"supported_target":	["none"],
+			"description":	"add country leader role to character\n\nExample:\nadd_country_leader_role = {\n\tcharacter = \"GER_Character_Token\" # optional if inside character scope\n\tpromote_leader = yes\n\tcountry_leader = {\n\t\tideology = socialism\n\t\texpire = \"1965.1.1.1\"\n\t\ttraits = {\n\t\t\twar_industrialist\n\t\t}\n\t}\n}\n"
+		},
+		"add_advisor_role":	{
+			"supported_scope":	["COUNTRY", "CHARACTER"],
+			"supported_target":	["none"],
+			"description":	"add advisor role to character\nMay directly activate (aka hire) using activate = yes\n\nExample:\nadd_advisor_role = {\n\tcharacter = \"GER_Character_Token\" # optional if inside character scope\n\tadvisor = {\n\t\tslot = air_chief\n\t\tcost = 50\n\t\tidea_token = GER_character_token_air_chief\n\t\ttraits = {\n\t\t\tair_chief_ground_support_2\n\t\t}\n\t\tallowed = {...}\n\t}\n\tactivate = yes\n}\n"
+		},
+		"retire_character":	{
+			"supported_scope":	["COUNTRY"],
+			"supported_target":	["none"],
+			"description":	"Un-assigns a character from a nation and all its corresponding jobs, advisor, unit leader, country leader\n\nExample:\nretire_character = GER_Character_Token\n"
+		},
+		"recruit_character":	{
+			"supported_scope":	["COUNTRY"],
+			"supported_target":	["none"],
+			"description":	"Attach a character to a country. Must be in country scope.\n\nExample:\nGER = { recruit_character = GER_Character_token }\n"
+		},
+		"promote_character":	{
+			"supported_scope":	["COUNTRY", "CHARACTER"],
+			"supported_target":	["none"],
+			"description":	"promotes character to the head of their political party.If this is the ruling party, the character becomes country leader.if the character has several country leader role (i.e. several ideologies), then it is mandatory to provide the ideology to promote.\n\nExample in country scope:\npromote_character = GER_erwin_rommel\npromote_character = {\n  character = GER_erwin_rommel\n  ideology = nazism\n}\n\n\nExample in character scope:\npromote_character = yes\npromote_character = nazism\npromote_character = {\n  ideology = nazism\n}"
+		},
+		"play_song":	{
+			"supported_scope":	["any"],
+			"supported_target":	["none"],
+			"description":	"Plays song from database"
+		},
+		"scoped_play_song":	{
+			"supported_scope":	["COUNTRY"],
+			"supported_target":	["none"],
+			"description":	"Plays song from database only on in current scope's player"
 		},
 		"release_on_controlled":	{
 			"supported_scope":	["COUNTRY"],
@@ -1749,12 +1864,167 @@
 			"supported_scope":	["COUNTRY"],
 			"supported_target":	["THIS", "ROOT", "PREV", "FROM", "OWNER", "CONTROLLER", "OCCUPIED", "CAPITAL"],
 			"description":	"releases specified country as puppet using states you own or control"
+		},
+		"create_entity":	{
+			"supported_scope":	["any"],
+			"supported_target":	["any"],
+			"description":	"creates an entity on map\ncreate_entity = {\n  entity = entity_name #gfx entry \n  id = 123 # can be ommitted. if given you can use this id to access entity in later times. will replace existing entity if it exists\n  var = var_name # can be ommitted. if given the id will be stored in this value so the entity can be accessed in later times \n  # position can be set using following. you can specify a province/state or can enter a manual coordinate. you can do both and the coordinate will shift the state/province coordinate \n  x = 42 \n  y = 21 \n  province = 123 \n  state = 42 \n  z = 3 #if wanted you can specify a z to shift height of the entity\n  rotation = 1.2 # angle in radians \n  scale = 10.0 # scale of entity \n  min_zoom = 100.0 # min zoom needed to show entity \n  visible = scripted_trigger_name # a scripted trigger name to show or hide an entity. scope is player country}"
+		},
+		"destroy_entity":	{
+			"supported_scope":	["any"],
+			"supported_target":	["any"],
+			"description":	"destroys an existing entity\ndestroy_entity = 123 #id\n"
+		},
+		"set_entity_movement":	{
+			"supported_scope":	["any"],
+			"supported_target":	["any"],
+			"description":	"sets the position & rotation of an existing entity using two coordinates\nset_entity_movement = {\n  id = 123 # id of entity \n  start = { \n    # position can be set using following \n    x = 42 \n    y = 21 \n    province = 123 \n    state = 42 \n    z = 3 #if wanted you can specify a z to shift height of the entity\n  } \n  target = { \n    # position can be set using following \n    x = 42 \n    y = 21 \n    province = 123 \n    state = 42 \n    z = 3 #if wanted you can specify a z to shift height of the entity\n  } \n  ratio = 0.5 # a ratio in between 0 - 1. the entity is positioned in between start & target position using this ratio \n  rotation = 1.2 # angle in radio, entity is rotated using the direction and this angle is added after that \n}"
+		},
+		"set_entity_position":	{
+			"supported_scope":	["any"],
+			"supported_target":	["any"],
+			"description":	"sets the position of existing entity\nset_entity_position = {\n  id = 123 # id of entity \n  # position can be set using following \n  x = 42 \n  y = 21 \n  province = 123 \n  state = 42 \n  z = 3 #if wanted you can specify a z to shift height of the entity\n}"
+		},
+		"set_entity_rotation":	{
+			"supported_scope":	["any"],
+			"supported_target":	["any"],
+			"description":	"sets the rotation of existing entity\nset_entity_rotation = {\n  id = 123 # id of entity \n  rotation = 0.23 # angle in radians \n}"
+		},
+		"set_entity_scale":	{
+			"supported_scope":	["any"],
+			"supported_target":	["any"],
+			"description":	"sets the scale of existing entity\nset_entity_scale = {\n  id = 123 # id of entity \n  scale = 5.0 \n}"
+		},
+		"remove_decision_on_cooldown":	{
+			"supported_scope":	["COUNTRY"],
+			"supported_target":	["none"],
+			"description":	"Removes decision on cooldown to reactivate or remove. \nExample: remove_decision_on_cooldown = some_decision_here"
+		},
+		"force_update_map_mode":	{
+			"supported_scope":	["any"],
+			"supported_target":	["any"],
+			"description":	"force rebuilds map mode. no tooltip generated.\nforce_update_map_mode = { \n  limit = { always = yes } # limit to check against player\n  mapmode = scripted_map_mode_name\n"
+		},
+		"damage_units":	{
+			"supported_scope":	["any"],
+			"supported_target":	["any"],
+			"description":	"damages units for given conditions. no tooltip generated\ndamage_units = {\n  #specify a location\n  province = 42\n  state = 5\n  region = 5\n  limit = { always = yes } #you can add a trigger for country check\n  damage = 0.5 #if defined will damage both org & str damage with this amount\n  org_damage = 0.5\n  str_damage = 0.5\n  ratio = yes #will damage a ratio damage to total org/str of unit if set\n  template = \"template_name\" #you can limit army templates to damage  army = yes #will damage armies\n  navy = yes #will damage navies\n}"
+		},
+		"uncomplete_national_focus":	{
+			"supported_scope":	["COUNTRY"],
+			"supported_target":	["none"],
+			"description":	"uncompletes a focus for a country. If specified, the 'on_uncomplete' effect will be executed on each uncompleted focus.\nExample: uncomplete_national_focus = {\n\tfocus = GER_oppose_hitler\n\tuncomplete_children = yes # Optional. Default is no. If yes, all proceeding focuses will also be uncompleted if their prerequisite aren't met after the preceeding focuses are uncompleted.\n\trefund_political_power = no # Optional. Default is no. If yes, the country is refunded the political power invested in the current focus if it's canceled as a result of its prerequisites being uncompleted.\n}\n"
+		},
+		"build_railway":	{
+			"supported_scope":	["any"],
+			"supported_target":	["any"],
+			"description":	"Builds/adds railway level between two provinces or along a path. Example:\nbuild_railway = {\n  level = 1 # Defaults to 1\n  build_only_on_allied = yes # No by default. If yes and the effect scope is country, it will only build on allied territories for the country\n\n  # You can specify a weight function that will be used in pathing. The scope will be the controller of the province it is trying to path to.\n  # A negative value will make it not to path to that controller.\n  # Non-negative values will be used as a path cost for that province.\n  controller_priority = {\n    base = 1\n\n    modifier = {\n      tag = MAN\n      add = 2\n    }\n  }\n\n  # The following options are used for picking a path. You can specify multiple options and it will pick in following order:\n  fallback = yes # Default no. If yes, each option will try to fallback to next one.\n  # option 1: List of provinces to draw railways. If fallback = yes uses start and end provinces of the path as fallback in option 2.\n  path = { 10 20 30 40 }\n  # option 2: Specify start & end province IDs. It will pick the shortest path. If provinces are not valid and if fallback = yes it will use states of those provs and use in option 3.\n  start_province = 42\n  target_province = 84\n  # option 3: Specify start & end state IDs. It will pick provinces with the best node (capital > nodes > naval )\n  start_state = 50\n  target_state = 100\n}\n"
+		},
+		"remove_wargoal":	{
+			"supported_scope":	["COUNTRY"],
+			"supported_target":	["none"],
+			"description":	"removes war goal type targetting nation targetExample:\nremove_wargoal = {\n\ttype = take_state\n\ttarget = FRA\n}"
+		},
+		"set_entity_animation":	{
+			"supported_scope":	["any"],
+			"supported_target":	["any"],
+			"description":	"sets the rotation of existing entity\nset_entity_animation = {\n  id = 123 # id of entity \n  animation = \"shoot_lasers\" \n}"
+		},
+		"swap_country_leader_traits":	{
+			"supported_scope":	["CHARACTER"],
+			"supported_target":	["none"],
+			"description":	"swap 2 traits on a country leader. \n Syntax: swap_country_leader_traits = { remove = <trait> add = <trait> [ideology = <ideology>] }"
+		},
+		"set_character_flag":	{
+			"supported_scope":	["CHARACTER"],
+			"supported_target":	["none"],
+			"description":	"set character flag"
+		},
+		"modify_character_flag":	{
+			"supported_scope":	["CHARACTER"],
+			"supported_target":	["none"],
+			"description":	"modify character flag. Only modifies if flag already exists.\nExample: _modify_character_flag_ = { flag = <name> value = <number> }"
+		},
+		"clr_character_flag":	{
+			"supported_scope":	["CHARACTER"],
+			"supported_target":	["none"],
+			"description":	"clear character flag"
+		},
+		"every_core_state":	{
+			"supported_scope":	["COUNTRY"],
+			"supported_target":	["none"],
+			"description":	"Executes children effects on every core state that fulfills the \"limit\" trigger. tooltip=key can be added to override tooltip title"
+		},
+		"random_core_state":	{
+			"supported_scope":	["COUNTRY"],
+			"supported_target":	["none"],
+			"description":	"Executes children effects on random core state that fulfills the \"limit\" trigger. \nprioritize = { <stateID> <stateID> } to pick those states first if they fulfull the limit"
+		},
+		"transfer_state_to":	{
+			"supported_scope":	["STATE"],
+			"supported_target":	["THIS"],
+			"description":	"Set owner and controller of a state to a given country\nExample:\\n\"\nUSA {\n\tevery_core_state = {\n\t\ttransfer_state_to = JAM\n\t}\n}\n"
+		},
+		"set_state_owner_to":	{
+			"supported_scope":	["STATE"],
+			"supported_target":	["THIS"],
+			"description":	"Set owner of a state to a given country\nExample:\\n\"\nUSA {\n\trandom_core_state = {\n\t\tset_state_owner_to = JAM\n\t}\n}\n"
+		},
+		"set_state_controller_to":	{
+			"supported_scope":	["STATE"],
+			"supported_target":	["THIS"],
+			"description":	"Set controller of a state to a given country\nExample:\\n\"\nUSA {\n\trandom_core_state = {\n\t\tset_state_controller_to = JAM\n\t}\n}\n"
+		},
+		"remove_country_leader_role":	{
+			"supported_scope":	["COUNTRY", "CHARACTER"],
+			"supported_target":	["none"],
+			"description":	"Remove country leader role from character.\nExample:\nremove_country_leader_role = {\n\tcharacter = \"GER_Character_Token\" # optional if inside character scope\n\tideology = socialism\n}\n"
+		},
+		"party_leader":	{
+			"supported_scope":	["COUNTRY"],
+			"supported_target":	["none"],
+			"description":	"Executes children effects on random characters that fulfills the \"limit\" trigger.\nHas to use has_ideology in limit to determine the party (with ideology group)\ntooltip=key can be added to override tooltip title\n\nparty_leader = {\n\tlimit = { has_ideology = communism }\n\tset_character_flag = whatever_flag\n}"
+		},
+		"generate_character":	{
+			"supported_scope":	["COUNTRY"],
+			"supported_target":	["any"],
+			"description":	"Generates a character. Use in every_country in order to generates one copy of the character per country satisfying the limit conditions.\nevery_country = {\n\tlimit = { OR = { original_tag = KOR original_tag = SER original_tag = ICE } }\n\tgenerate_character = { #create + recruit\n\t\ttoken_base = army_chief_defensive_1 # mandatory, character token will be token_base\n\t\tname = \"Character's Name\" # optional, no name provided means random name for each generated character\n\t\t# then whatever you would put when writing character\n\t\tadvisor = {\n\t\t\tidea_token = ac # full idea token will be token_base_idea_token (to ensure unicity). optional, slot will be used if missing.\n\t\t\tslot = army_chief\n\t\t\tallowed = { original_tag = PREV }\n\t\t\ttraits = { army_chief_defensive_1 }\n\t\t}\n\t}\n}"
+		},
+		"every_possible_country":	{
+			"supported_scope":	["any"],
+			"supported_target":	["none"],
+			"description":	"Executes children effects on every country that fulfills the \"limit\" trigger.\nDifference with every_country is that it includes countries not yet present on the map.\ntooltip=key can be defined to override tooltip title."
+		},
+		"show_unit_leaders_tooltip":	{
+			"supported_scope":	["COUNTRY"],
+			"supported_target":	["none"],
+			"description":	"show unit leader's name"
+		},
+		"character_list_tooltip":	{
+			"supported_scope":	["COUNTRY"],
+			"supported_target":	["none"],
+			"description":	"Display in tooltip every character that fulfills the \"limit\" trigger."
+		},
+		"remove_unit_leader_role":	{
+			"supported_scope":	["COUNTRY", "CHARACTER"],
+			"supported_target":	["none"],
+			"description":	"Remove unit leader role to character\n\nExample:\nremove_corps_commander_role = {\n\tcharacter = GER_Character_token \n}\nremove_corps_commander_role = yes # inside a character scope\n"
+		},
+		"set_portraits":	{
+			"supported_scope":	["COUNTRY", "CHARACTER"],
+			"supported_target":	["none"],
+			"description":	"set portraits for the target character. Syntax is similar to character files.\n\nexample:\nset_portraits = {\n\t\tcharacter = my_character # optional, use if not in a character scope\t\tarmy = { small =\"MySmallCharacterGFX\"}\n\t\tcivilian = { large =\"MyLargeCharacterGFX\" }\n}\n"
+		},
+		"set_character_name":	{
+			"supported_scope":	["COUNTRY", "CHARACTER"],
+			"supported_target":	["none"],
+			"description":	"\"set name for the target character. Either localization key or direct name.\nexample:\nset_character_name = {\n\tcharacter = my_character # optional, use if not in a character scope\n\tname = my_name # either loc key or direct name\n}\nmy_character = {\n\tset_character_name = my_name # only possible in character scope\n}"
 		}
 	},
 	"triggers":	{
 		"state":	{
 			"supported_scope":	["STATE"],
-			"supported_target":	["none"],
+			"supported_target":	["THIS", "ROOT", "PREV", "FROM", "CAPITAL"],
 			"description":	"check state id"
 		},
 		"if":	{
@@ -1762,20 +2032,60 @@
 			"supported_target":	["none"],
 			"description":	"if_, CIfTrigger, A conditional trigger\nif = { limit = { <triggers> } <trigger> }"
 		},
+		"can_build_railway":	{
+			"supported_scope":	["any"],
+			"supported_target":	["any"],
+			"description":	"Checks if a railway can be built according to specifications. Example:\ncan_build_railway = {\n  build_only_on_allied = yes # No by default. If yes and the effect scope is country, it will only build on allied territories for the country\n\n  # You can specify a weight function that will be used in pathing. The scope will be the controller of the province it is trying to path to.\n  # A negative value will make it not to path to that controller.\n  # Non-negative values will be used as a path cost for that province.\n  controller_priority = {\n    base = 1\n\n    modifier = {\n      tag = MAN\n      add = 2\n    }\n  }\n\n  # The following options are used for picking a path. You can specify multiple options and it will pick in following order:\n  fallback = yes # Default no. If yes, each option will try to fallback to next one.\n  # option 1: List of provinces to draw railways. If fallback = yes uses start and end provinces of the path as fallback in option 2.\n  path = { 10 20 30 40 }\n  # option 2: Specify start & end province IDs. It will pick the shortest path. If provinces are not valid and if fallback = yes it will use states of those provs and use in option 3.\n  start_province = 42\n  target_province = 84\n  # option 3: Specify start & end state IDs. It will pick provinces with the best node (capital > nodes > naval )\n  start_state = 50\n  target_state = 100\n}\n"
+		},
+		"num_of_supply_nodes":	{
+			"supported_scope":	["COUNTRY"],
+			"supported_target":	["THIS", "ROOT", "PREV", "FROM", "OWNER", "CONTROLLER", "OCCUPIED", "CAPITAL"],
+			"description":	"check amount of supply nodes"
+		},
 		"date":	{
 			"supported_scope":	["any"],
 			"supported_target":	["none"],
 			"description":	"checks for a specific date"
 		},
 		"skill":	{
-			"supported_scope":	["UNIT_LEADER", "COMBATANT"],
+			"supported_scope":	["CHARACTER", "COMBATANT"],
 			"supported_target":	["none"],
 			"description":	"compare leader skill levels"
+		},
+		"any_subject_country":	{
+			"supported_scope":	["COUNTRY"],
+			"supported_target":	["none"],
+			"description":	"check if any subject country meets the trigger. tooltip=key can be defined to override title"
+		},
+		"all_subject_countries":	{
+			"supported_scope":	["COUNTRY"],
+			"supported_target":	["none"],
+			"description":	"check if all subject countries meet the trigger. tooltip=key can be defined to override title"
+		},
+		"has_railway_level":	{
+			"supported_scope":	["any"],
+			"supported_target":	["any"],
+			"description":	"Checks if a state contains a railway at or above the specified level. Example:\nhas_railway_level = {\n  level = 3\n  state = 1234\n}\n"
 		},
 		"phase":	{
 			"supported_scope":	["COMBATANT"],
 			"supported_target":	["none"],
 			"description":	"check if we are in this combat phase"
+		},
+		"has_railway_connection":	{
+			"supported_scope":	["any"],
+			"supported_target":	["any"],
+			"description":	"Checks for an existing rail connection. Uses same params as can_build_railway. Example:\nhas_railway_connection = {\n  build_only_on_allied = yes # No by default. If yes and the effect scope is country, it will only build on allied territories for the country\n\n  # The following options are used for picking a path. You can specify multiple options and it will pick in following order:\n  fallback = yes # Default no. If yes, each option will try to fallback to next one.\n  # option 1: List of provinces to draw railways. If fallback = yes uses start and end provinces of the path as fallback in option 2.\n  path = { 10 20 30 40 }\n  # option 2: Specify start & end province IDs. It will pick the shortest path. If provinces are not valid and if fallback = yes it will use states of those provs and use in option 3.\n  start_province = 42\n  target_province = 84\n  # option 3: Specify start & end state IDs. It will pick provinces with the best node (capital > nodes > naval )\n  start_state = 50\n  target_state = 100\n}\n\n"
+		},
+		"num_of_controlled_factories":	{
+			"supported_scope":	["COUNTRY"],
+			"supported_target":	["THIS", "ROOT", "PREV", "FROM", "OWNER", "CONTROLLER", "OCCUPIED", "CAPITAL"],
+			"description":	"check the number of factories in controlled states excluding any gained or lost through trade, relations, modifiers etc."
+		},
+		"num_of_owned_factories":	{
+			"supported_scope":	["COUNTRY"],
+			"supported_target":	["THIS", "ROOT", "PREV", "FROM", "OWNER", "CONTROLLER", "OCCUPIED", "CAPITAL"],
+			"description":	"check the number of factories in owned states excluding any gained or lost through trade, relations, modifiers etc."
 		},
 		"and":	{
 			"supported_scope":	["any"],
@@ -1824,7 +2134,7 @@
 		},
 		"tag":	{
 			"supported_scope":	["COUNTRY", "COMBATANT"],
-			"supported_target":	["any"],
+			"supported_target":	["THIS", "ROOT", "PREV", "FROM", "OWNER", "CONTROLLER", "OCCUPIED", "CAPITAL"],
 			"description":	"country tag trigger"
 		},
 		"any_country":	{
@@ -1888,12 +2198,12 @@
 			"description":	"Checks if player has a DLC.\nExample: has_dlc = \"name of the dlc\""
 		},
 		"hidden_trigger":	{
-			"supported_scope":	["STATE", "COUNTRY", "UNIT_LEADER", "COMBATANT", "ACE", "STRATEGIC_REGION", "OPERATION"],
+			"supported_scope":	["STATE", "COUNTRY", "CHARACTER", "COMBATANT", "ACE", "STRATEGIC_REGION", "OPERATION"],
 			"supported_target":	["THIS", "ROOT", "PREV", "FROM", "OWNER", "CONTROLLER", "OCCUPIED", "CAPITAL"],
 			"description":	"a hidden trigger, anything in it not shown in tooltips"
 		},
 		"is_female":	{
-			"supported_scope":	["COUNTRY", "UNIT_LEADER", "ACE"],
+			"supported_scope":	["COUNTRY", "CHARACTER", "ACE"],
 			"supported_target":	["THIS", "ROOT", "PREV", "FROM", "OWNER", "CONTROLLER", "OCCUPIED", "CAPITAL"],
 			"description":	"checks if scoped unit leader, ace or country is female"
 		},
@@ -1924,7 +2234,7 @@
 		},
 		"is_subject_of":	{
 			"supported_scope":	["COUNTRY"],
-			"supported_target":	["any"],
+			"supported_target":	["THIS", "ROOT", "PREV", "FROM", "OWNER", "CONTROLLER", "OCCUPIED", "CAPITAL"],
 			"description":	"Checks if the country is subject of specified country"
 		},
 		"all_neighbor_country":	{
@@ -1984,12 +2294,12 @@
 		},
 		"owns_state":	{
 			"supported_scope":	["COUNTRY"],
-			"supported_target":	["THIS", "ROOT", "PREV", "FROM", "OWNER", "CONTROLLER", "OCCUPIED", "CAPITAL"],
+			"supported_target":	["THIS", "ROOT", "PREV", "FROM", "CAPITAL"],
 			"description":	"check owner for state(s)"
 		},
 		"controls_state":	{
 			"supported_scope":	["COUNTRY"],
-			"supported_target":	["THIS", "ROOT", "PREV", "FROM", "OWNER", "CONTROLLER", "OCCUPIED", "CAPITAL"],
+			"supported_target":	["THIS", "ROOT", "PREV", "FROM", "CAPITAL"],
 			"description":	"check controller for state(s)"
 		},
 		"has_government":	{
@@ -2245,7 +2555,7 @@
 		"has_available_idea_with_traits":	{
 			"supported_scope":	["COUNTRY"],
 			"supported_target":	["none"],
-			"description":	"Checks if country has available ideas with specific traits more than limit. Example: \nhas_available_idea_with_traits = { \n\tidea = head_of_intelligence # trait names. can be a list of traits in { } \n\tlimit = 1 \n\tignore = generic_head_of_intelligence # if specified, these ideas will be ignored. can be a list of ideas in { }\n} \n"
+			"description":	"Checks if country has available ideas with specific traits more than limit. Example: \nhas_available_idea_with_traits = { \n\tidea = head_of_intelligence # trait names. can be a list of traits in { } \n\tlimit = 1 \n\tcharacters = yes/no - only runs this trigger on characters \n\tignore = generic_head_of_intelligence # if specified, these ideas will be ignored. can be a list of ideas in { }\n} \n"
 		},
 		"is_claimed_by":	{
 			"supported_scope":	["STATE"],
@@ -2263,7 +2573,7 @@
 			"description":	"Checks if country is AI controlled."
 		},
 		"has_trait":	{
-			"supported_scope":	["UNIT_LEADER", "COMBATANT"],
+			"supported_scope":	["CHARACTER", "COMBATANT"],
 			"supported_target":	["none"],
 			"description":	"check if sides leader has trait"
 		},
@@ -2359,7 +2669,7 @@
 		},
 		"is_puppet_of":	{
 			"supported_scope":	["COUNTRY"],
-			"supported_target":	["any"],
+			"supported_target":	["THIS", "ROOT", "PREV", "FROM", "OWNER", "CONTROLLER", "OCCUPIED", "CAPITAL"],
 			"description":	"Checks if the country is puppet of specified country"
 		},
 		"ships_in_state_ports":	{
@@ -2725,7 +3035,7 @@
 		"has_country_leader":	{
 			"supported_scope":	["COUNTRY"],
 			"supported_target":	["none"],
-			"description":	"check if country has leader with specified ID. Don't localize this. Tooltip only for debug.\nhas_country_leader = {\n\tid = <ID>\n\truling_only = yes/no (default = yes)\n\tname = <string>\n}"
+			"description":	"check if country has leader with specified ID. Don't localize this. Tooltip only for debug.\nhas_country_leader = {\n\truling_only = yes/no (default = yes)\n\tcharacter = <string> # recommended criteria\n\tname = <string> # alternative criteria\n\tid = <ID> # alternative criteria\n}"
 		},
 		"has_army_experience":	{
 			"supported_scope":	["COUNTRY"],
@@ -2744,7 +3054,7 @@
 		},
 		"has_full_control_of_state":	{
 			"supported_scope":	["COUNTRY"],
-			"supported_target":	["THIS", "ROOT", "PREV", "FROM", "OWNER", "CONTROLLER", "OCCUPIED", "CAPITAL"],
+			"supported_target":	["THIS", "ROOT", "PREV", "FROM", "CAPITAL"],
 			"description":	"check controller for state(s)"
 		},
 		"num_divisions":	{
@@ -2789,7 +3099,7 @@
 		},
 		"is_licensing_any_to":	{
 			"supported_scope":	["COUNTRY"],
-			"supported_target":	["any"],
+			"supported_target":	["THIS", "ROOT", "PREV", "FROM", "OWNER", "CONTROLLER", "OCCUPIED", "CAPITAL"],
 			"description":	"Current country is licensing something to target country\nExample: is_licensing_any_to = ENG"
 		},
 		"is_licensing_to":	{
@@ -2903,24 +3213,24 @@
 			"description":	"check if any unit leader meets the trigger. tooltip=key can be defined to override title"
 		},
 		"is_assigned":	{
-			"supported_scope":	["UNIT_LEADER"],
+			"supported_scope":	["CHARACTER"],
 			"supported_target":	["none"],
 			"description":	"is_assigned = yes/no - Checks if the current unit leader is assigned to command an army/navy"
 		},
 		"num_units":	{
-			"supported_scope":	["UNIT_LEADER"],
+			"supported_scope":	["CHARACTER"],
 			"supported_target":	["none"],
 			"description":	"Check number of units commanded by the unit leader \n num_units > 2"
 		},
 		"is_field_marshal":	{
-			"supported_scope":	["UNIT_LEADER"],
+			"supported_scope":	["CHARACTER"],
 			"supported_target":	["none"],
 			"description":	"is_field_marshal = yes/no - Checks if the current unit leader is a field marshall"
 		},
 		"has_unit_leader_flag":	{
-			"supported_scope":	["UNIT_LEADER"],
+			"supported_scope":	["CHARACTER"],
 			"supported_target":	["any"],
-			"description":	"has unit leader flag been setCheck flag val date set and days since set.\nExample: has_unit_leader_flag = test_flag\nhas_unit_leader_flag = { \n\tflag = <name> (mandatory)\n\tvalue < <int> (optional)\n\tdate > <date> (optional)\n\tdays > <int> (optional)\n}"
+			"description":	"This trigger is deprecated in favor of has_character_flag (which does the same)has a character flag been setCheck flag val date set and days since set.\nExample: has_unit_leader_flag = test_flag\nhas_unit_leader_flag = { \n\tflag = <name> (mandatory)\n\tvalue < <int> (optional)\n\tdate > <date> (optional)\n\tdays > <int> (optional)\n}"
 		},
 		"has_decision":	{
 			"supported_scope":	["COUNTRY"],
@@ -2939,11 +3249,11 @@
 		},
 		"is_fully_controlled_by":	{
 			"supported_scope":	["STATE"],
-			"supported_target":	["any"],
+			"supported_target":	["THIS", "ROOT", "PREV", "FROM", "OWNER", "CONTROLLER", "OCCUPIED", "CAPITAL"],
 			"description":	"Checks if state is fully controlled by specified tag"
 		},
 		"has_ability":	{
-			"supported_scope":	["UNIT_LEADER"],
+			"supported_scope":	["CHARACTER"],
 			"supported_target":	["any"],
 			"description":	"does unit leader have the abilityCheck if a unit leader has the ability.\nExample: has_ability = force_attack"
 		},
@@ -2953,12 +3263,12 @@
 			"description":	"Checks if a variable exists in a scope"
 		},
 		"has_id":	{
-			"supported_scope":	["UNIT_LEADER"],
+			"supported_scope":	["CHARACTER"],
 			"supported_target":	["none"],
 			"description":	"check unit leader has specified ID. Don't localize this. Tooltip only for debug."
 		},
 		"can_select_trait":	{
-			"supported_scope":	["UNIT_LEADER", "COMBATANT"],
+			"supported_scope":	["CHARACTER", "COMBATANT"],
 			"supported_target":	["none"],
 			"description":	"check if leader can select a trait"
 		},
@@ -3018,7 +3328,7 @@
 			"description":	"Checks if a there is any border wars for country/state"
 		},
 		"is_border_war":	{
-			"supported_scope":	["UNIT_LEADER", "COMBATANT"],
+			"supported_scope":	["CHARACTER", "COMBATANT"],
 			"supported_target":	["any"],
 			"description":	"Checks if a the combatant or leader has a border war"
 		},
@@ -3033,37 +3343,37 @@
 			"description":	"Checks if a there is a border against a state/country"
 		},
 		"average_stats":	{
-			"supported_scope":	["UNIT_LEADER", "COMBATANT"],
+			"supported_scope":	["CHARACTER", "COMBATANT"],
 			"supported_target":	["none"],
 			"description":	"Compares the average stats for a unit leader.\nExample: average_stats > 10"
 		},
 		"attack_skill_level":	{
-			"supported_scope":	["UNIT_LEADER", "COMBATANT"],
+			"supported_scope":	["CHARACTER", "COMBATANT"],
 			"supported_target":	["none"],
 			"description":	"Compares attack skill level of a unit leader.\nExample: attack_skill_level > 5"
 		},
 		"defense_skill_level":	{
-			"supported_scope":	["UNIT_LEADER", "COMBATANT"],
+			"supported_scope":	["CHARACTER", "COMBATANT"],
 			"supported_target":	["none"],
 			"description":	"Compares defense skill level of a unit leader.\nExample: defense_skill_level > 5"
 		},
 		"logistics_skill_level":	{
-			"supported_scope":	["UNIT_LEADER", "COMBATANT"],
+			"supported_scope":	["CHARACTER", "COMBATANT"],
 			"supported_target":	["none"],
 			"description":	"Compares logistics skill level of a unit leader.\nExample: logistics_skill_level > 5"
 		},
 		"planning_skill_level":	{
-			"supported_scope":	["UNIT_LEADER", "COMBATANT"],
+			"supported_scope":	["CHARACTER", "COMBATANT"],
 			"supported_target":	["none"],
 			"description":	"Compares planning skill level of a unit leader.\nExample: planning_skill_level > 5"
 		},
 		"is_leading_army_group":	{
-			"supported_scope":	["UNIT_LEADER"],
+			"supported_scope":	["CHARACTER"],
 			"supported_target":	["none"],
 			"description":	"is_leading_army_group = yes/no - Checks if the current unit leader is leading an army group (not single army)"
 		},
 		"is_leading_army":	{
-			"supported_scope":	["UNIT_LEADER"],
+			"supported_scope":	["CHARACTER"],
 			"supported_target":	["none"],
 			"description":	"is_leading_army = yes/no - Checks if the current unit leader is leading a single army (not army group)"
 		},
@@ -3098,22 +3408,22 @@
 			"description":	"Checks for amount manpower currently the target state with option to specify a type.\nExample:\narmy_manpower_in_state = {\n\tstate = <id> (variables supported)\n\tamount < <int> (variables supported)\n\ttype > <equipment_type> (armor, infantry, etc.)"
 		},
 		"is_exiled_leader":	{
-			"supported_scope":	["UNIT_LEADER"],
+			"supported_scope":	["CHARACTER"],
 			"supported_target":	["none"],
 			"description":	"Checks if scope leader is from an exiled government. is_exiled_leader = yes"
 		},
 		"is_exiled_in":	{
 			"supported_scope":	["COUNTRY"],
-			"supported_target":	["any"],
+			"supported_target":	["THIS", "ROOT", "PREV", "FROM", "OWNER", "CONTROLLER", "OCCUPIED", "CAPITAL"],
 			"description":	"Checks if scope country is a government in exile in target tag. is_exiled_in = ENG"
 		},
 		"is_hosting_exile":	{
 			"supported_scope":	["COUNTRY"],
-			"supported_target":	["any"],
+			"supported_target":	["THIS", "ROOT", "PREV", "FROM", "OWNER", "CONTROLLER", "OCCUPIED", "CAPITAL"],
 			"description":	"Checks if scope country is hosting target tag as an exile. is_hosting_exile = FRA"
 		},
 		"is_exiled_leader_from":	{
-			"supported_scope":	["UNIT_LEADER"],
+			"supported_scope":	["CHARACTER"],
 			"supported_target":	["THIS", "ROOT", "PREV", "FROM", "OWNER", "CONTROLLER", "OCCUPIED", "CAPITAL"],
 			"description":	"Checks if scope leader is from specified exiled government. is_exiled_leader_from = FRA"
 		},
@@ -3154,7 +3464,7 @@
 		},
 		"has_subject":	{
 			"supported_scope":	["COUNTRY"],
-			"supported_target":	["any"],
+			"supported_target":	["THIS", "ROOT", "PREV", "FROM", "OWNER", "CONTROLLER", "OCCUPIED", "CAPITAL"],
 			"description":	"Checks if the country has for subject the given country"
 		},
 		"has_game_rule":	{
@@ -3220,7 +3530,7 @@
 		"has_country_leader_with_trait":	{
 			"supported_scope":	["COUNTRY"],
 			"supported_target":	["none"],
-			"description":	"check if current country has specified trait.\nhas_country_leader_with_trait = big_fat_idiot"
+			"description":	"check if current country leader has specified trait.\nhas_country_leader_with_trait = big_fat_idiot"
 		},
 		"has_legitimacy":	{
 			"supported_scope":	["COUNTRY"],
@@ -3248,12 +3558,12 @@
 			"description":	"Check the amount of casualties in thousands a country has suffered in all of it's wars"
 		},
 		"meta_trigger":	{
-			"supported_scope":	["STATE", "COUNTRY", "UNIT_LEADER", "COMBATANT", "ACE", "STRATEGIC_REGION", "OPERATION"],
+			"supported_scope":	["STATE", "COUNTRY", "CHARACTER", "COMBATANT", "ACE", "STRATEGIC_REGION", "OPERATION"],
 			"supported_target":	["THIS", "ROOT", "PREV", "FROM", "OWNER", "CONTROLLER", "OCCUPIED", "CAPITAL"],
 			"description":	"meta triggers can be used for building triggers from strings and running them. following example will test if Germany has 42 pp:\nmeta_trigger = {\n    text = {\n        [COUNTRY] = {\n            political_power > [POW]\n        }\n    }\n    COUNTRY = \"GER\"\n    POW = 42\n    debug = no #set to yes if you want to see what game actually executes\n}\n"
 		},
 		"has_dynamic_modifier":	{
-			"supported_scope":	["STATE", "COUNTRY", "UNIT_LEADER"],
+			"supported_scope":	["STATE", "COUNTRY", "CHARACTER"],
 			"supported_target":	["THIS", "ROOT", "PREV", "FROM", "OWNER", "CONTROLLER", "OCCUPIED", "CAPITAL"],
 			"description":	"Checks if scope has a dynamic modifier.\nhas_dynamic_modifier = {\n    modifier = dynamic_modifier_name\n    scope = GER #optional, if the original modifier has been targeted\n}\n"
 		},
@@ -3344,7 +3654,7 @@
 		},
 		"occupied_country_tag":	{
 			"supported_scope":	["STATE"],
-			"supported_target":	["any"],
+			"supported_target":	["THIS", "ROOT", "PREV", "FROM", "OWNER", "CONTROLLER", "OCCUPIED", "CAPITAL"],
 			"description":	"compares occupied country that creates resistance to a tag. Example: occupied_country_tag = ITA"
 		},
 		"resistance_target":	{
@@ -3404,7 +3714,7 @@
 		},
 		"is_ally_with":	{
 			"supported_scope":	["COUNTRY"],
-			"supported_target":	["any"],
+			"supported_target":	["THIS", "ROOT", "PREV", "FROM", "OWNER", "CONTROLLER", "OCCUPIED", "CAPITAL"],
 			"description":	"checks if a country is ally with another country. will check if two countries are same/in same faction/has subject master relation\nExample: is_ally_with = ITA \n"
 		},
 		"get_highest_scored_country_temp":	{
@@ -3472,8 +3782,13 @@
 			"supported_target":	["none"],
 			"description":	"Checks the number of upgrade done in the intelligence agency. \nagency_upgrade_number > 4"
 		},
+		"is_dynamic_country":	{
+			"supported_scope":	["COUNTRY"],
+			"supported_target":	["any"],
+			"description":	"returns true if the country is a dynamic country (tag is D01-D50)"
+		},
 		"operative_leader_mission":	{
-			"supported_scope":	["UNIT_LEADER"],
+			"supported_scope":	["CHARACTER"],
 			"supported_target":	["none"],
 			"description":	"Checks whether the operative is performing the given mission:\noperative_leader_mission = build_intel_network"
 		},
@@ -3493,7 +3808,7 @@
 			"description":	"check if any operatives meets the trigger. tooltip=key can be defined to override title"
 		},
 		"is_operative_captured":	{
-			"supported_scope":	["UNIT_LEADER"],
+			"supported_scope":	["CHARACTER"],
 			"supported_target":	["none"],
 			"description":	"Checks whether the operative has the matching captured status\n"
 		},
@@ -3623,7 +3938,7 @@
 			"description":	"Number of researched technologies"
 		},
 		"operative_leader_operation":	{
-			"supported_scope":	["UNIT_LEADER"],
+			"supported_scope":	["CHARACTER"],
 			"supported_target":	["none"],
 			"description":	"Checks whether the operative is performing the given operation:\noperative_leader_operation = operation_rescue_operative"
 		},
@@ -3633,7 +3948,7 @@
 			"description":	"checks if the country could potentially declare a war on the target ( according to game rules, relationship, etc... ). Example can_declare_war_on = GER"
 		},
 		"has_nationality":	{
-			"supported_scope":	["UNIT_LEADER"],
+			"supported_scope":	["CHARACTER"],
 			"supported_target":	["THIS", "ROOT", "PREV", "FROM", "OWNER", "CONTROLLER", "OCCUPIED", "CAPITAL"],
 			"description":	"Checks whether the operative has the specified nationality.\nNOTE: this is invalid on non-operatives.\nExamples:\nhas_nationality = GER\n"
 		},
@@ -3642,10 +3957,175 @@
 			"supported_target":	["none"],
 			"description":	"checks network national coverage you have over a country. Example: \nnetwork_national_coverage = { \n target = GER\n value > 0.5\n} \n"
 		},
+		"any_character":	{
+			"supported_scope":	["COUNTRY"],
+			"supported_target":	["none"],
+			"description":	"check if any character meets the trigger. tooltip=key can be defined to override title"
+		},
+		"all_character":	{
+			"supported_scope":	["COUNTRY"],
+			"supported_target":	["none"],
+			"description":	"check if all characters meets the trigger. tooltip=key can be defined to override title"
+		},
+		"is_army_chief":	{
+			"supported_scope":	["CHARACTER"],
+			"supported_target":	["none"],
+			"description":	"is_army_chief = yes/no - Checks if the current character is an army chief"
+		},
+		"is_advisor":	{
+			"supported_scope":	["CHARACTER"],
+			"supported_target":	["none"],
+			"description":	"is_advisor = yes/no - Checks if the current character is an advisor"
+		},
+		"is_country_leader":	{
+			"supported_scope":	["CHARACTER"],
+			"supported_target":	["none"],
+			"description":	"is_country_leader = yes/no - Checks if the current character is a country leader"
+		},
+		"is_unit_leader":	{
+			"supported_scope":	["CHARACTER"],
+			"supported_target":	["none"],
+			"description":	"is_unit_leader = yes/no - Checks if the current character is a unit leader"
+		},
+		"is_army_leader":	{
+			"supported_scope":	["CHARACTER"],
+			"supported_target":	["none"],
+			"description":	"is_army_leader = yes/no - Checks if the current character is a army leader"
+		},
+		"is_corps_commander":	{
+			"supported_scope":	["CHARACTER"],
+			"supported_target":	["none"],
+			"description":	"is_corps_commander = yes/no - Checks if the current character is a corps commander"
+		},
+		"is_character":	{
+			"supported_scope":	["CHARACTER"],
+			"supported_target":	["none"],
+			"description":	"Checks whether the character matches the character ID"
+		},
+		"is_navy_leader":	{
+			"supported_scope":	["CHARACTER"],
+			"supported_target":	["none"],
+			"description":	"is_navy_leader = yes/no - Checks if the current character is a navy leader"
+		},
+		"is_operative":	{
+			"supported_scope":	["CHARACTER"],
+			"supported_target":	["none"],
+			"description":	"is_operative = yes/no - Checks if the current character is an operative"
+		},
+		"is_political_advisor":	{
+			"supported_scope":	["CHARACTER"],
+			"supported_target":	["none"],
+			"description":	"is_political_advisor = yes/no - Checks if the current character is a political advisor"
+		},
+		"is_theorist":	{
+			"supported_scope":	["CHARACTER"],
+			"supported_target":	["none"],
+			"description":	"is_theorist = yes/no - Checks if the current character is a theorist"
+		},
+		"is_navy_chief":	{
+			"supported_scope":	["CHARACTER"],
+			"supported_target":	["none"],
+			"description":	"_is_navy_chief_ = yes/no - Checks if the current character is a navy chief"
+		},
+		"is_air_chief":	{
+			"supported_scope":	["CHARACTER"],
+			"supported_target":	["none"],
+			"description":	"_is_air_chief = yes/no - Checks if the current character is an air chief"
+		},
+		"is_high_command":	{
+			"supported_scope":	["CHARACTER"],
+			"supported_target":	["none"],
+			"description":	"_is_high_command_ = yes/no - Checks if the current character is in high command"
+		},
+		"has_army_ledger":	{
+			"supported_scope":	["CHARACTER"],
+			"supported_target":	["none"],
+			"description":	"has_army_ledger = yes/no - Checks if the current character has an army ledger"
+		},
+		"has_navy_ledger":	{
+			"supported_scope":	["CHARACTER"],
+			"supported_target":	["none"],
+			"description":	"has_navy_ledger = yes/no - Checks if the current character has a navy ledger"
+		},
+		"has_air_ledger":	{
+			"supported_scope":	["CHARACTER"],
+			"supported_target":	["none"],
+			"description":	"has_air_ledger = yes/no - Checks if the current character has an air ledger"
+		},
+		"is_character_slot":	{
+			"supported_scope":	["CHARACTER"],
+			"supported_target":	["none"],
+			"description":	"is_character_slot = 'character_slot_name' - Checks if the current character is in the character slot"
+		},
+		"can_be_country_leader":	{
+			"supported_scope":	["COUNTRY", "CHARACTER"],
+			"supported_target":	["none"],
+			"description":	"Returns true if specified character can be country leader.\n\nExample:\ncan_be_country_leader = GER_erwin_rommelcan_be_country_leader = yes"
+		},
+		"has_character":	{
+			"supported_scope":	["COUNTRY"],
+			"supported_target":	["none"],
+			"description":	"Returns true if scoped country has character.\n\nExample:\nhas_character = GER_erwin_rommel"
+		},
 		"has_allowed_idea_with_traits":	{
 			"supported_scope":	["COUNTRY"],
 			"supported_target":	["none"],
-			"description":	"Checks if country has allowed ideas with specific traits more than limit. Example: \nhas_available_idea_with_traits = { \n\tidea = head_of_intelligence # trait names. can be a list of traits in { } \n\tlimit = 1 \n\tignore = generic_head_of_intelligence # if specified, these ideas will be ignored. can be a list of ideas in { }\n} \n"
+			"description":	"Checks if country has allowed ideas with specific traits more than limit. Example: \nhas_available_idea_with_traits = { \n\tidea = head_of_intelligence # trait names. can be a list of traits in { } \n\tlimit = 1 \n\tcharacters = yes/no - only runs this trigger on characters \n\tignore = generic_head_of_intelligence # if specified, these ideas will be ignored. can be a list of ideas in { }\n} \n"
+		},
+		"is_leading_volunteer_group_with_original_country":	{
+			"supported_scope":	["CHARACTER", "COMBATANT"],
+			"supported_target":	["THIS", "ROOT", "PREV", "FROM", "OWNER", "CONTROLLER", "OCCUPIED", "CAPITAL"],
+			"description":	"is_leading_volunteer_group_with_original_country = FRA"
+		},
+		"is_leading_volunteer_group":	{
+			"supported_scope":	["CHARACTER", "COMBATANT"],
+			"supported_target":	["THIS", "ROOT", "PREV", "FROM", "OWNER", "CONTROLLER", "OCCUPIED", "CAPITAL"],
+			"description":	"is_leading_volunteer_group = FRA"
+		},
+		"has_design_based_on":	{
+			"supported_scope":	["COUNTRY"],
+			"supported_target":	["none"],
+			"description":	"check if country has a buildable non-obsolete design based on an archetype"
+		},
+		"has_terrain":	{
+			"supported_scope":	["COUNTRY"],
+			"supported_target":	["none"],
+			"description":	"Checks if a country has any province of the specified terrain type.\nExample: has_terrain = mountain"
+		},
+		"has_character_flag":	{
+			"supported_scope":	["CHARACTER"],
+			"supported_target":	["any"],
+			"description":	"has a character flag been setCheck flag val date set and days since set.\nExample: has_unit_leader_flag = test_flag\nhas_character_flag = { \n\tflag = <name> (mandatory)\n\tvalue < <int> (optional)\n\tdate > <date> (optional)\n\tdays > <int> (optional)\n}"
+		},
+		"any_core_state":	{
+			"supported_scope":	["COUNTRY"],
+			"supported_target":	["none"],
+			"description":	"Check if any of the country core states for scope meets the trigger. tooltip=key can be defined to override title"
+		},
+		"all_core_state":	{
+			"supported_scope":	["COUNTRY"],
+			"supported_target":	["none"],
+			"description":	"Check if all of the country core states for the scope meets the trigger. tooltip=key can be defined to override title"
+		},
+		"has_ideology":	{
+			"supported_scope":	["CHARACTER"],
+			"supported_target":	["none"],
+			"description":	"has_ideology = stalinism - Checks if the current character has a country leader role matching the sub-ideology"
+		},
+		"not_already_hired_except_as":	{
+			"supported_scope":	["CHARACTER"],
+			"supported_target":	["none"],
+			"description":	"not_already_hired_except_as = <slot> - For characters with several advisor roles, checks if the current character is already assigned in another advisor slot.\nexample: let's say a character can be a political advisor and a theorist. But they should only be hired in one role, never both at the same time.\nthen you may set in the advisor available trigger :\n\tadvisor = {\n\t\tslot = political_advisor\n\t\tavailable = { not_already_hired_except_as = political_advisor } \n\t\t...\n\t}\n\tadvisor = {\n\t\tslot = theorist\n\t\tavailable = { not_already_hired_except_as = theorist } \n\t\t...\n\t}\n"
+		},
+		"has_country_leader_ideology":	{
+			"supported_scope":	["COUNTRY"],
+			"supported_target":	["none"],
+			"description":	"Checks the Ideology of the active country leader"
+		},
+		"has_ideology_group":	{
+			"supported_scope":	["CHARACTER"],
+			"supported_target":	["none"],
+			"description":	"has_ideology_group = communism - Checks if the current character has a country leader role matching the ideology group"
 		}
 	},
 	"modifiers":	[{
@@ -3729,6 +4209,21 @@
 			"decimal_places":	1,
 			"categories":	["air"]
 		}, {
+			"name":	"air_manpower_requirement_factor",
+			"type":	"number",
+			"decimal_places":	2,
+			"categories":	["air"]
+		}, {
+			"name":	"air_close_air_support_org_damage_factor",
+			"type":	"number",
+			"decimal_places":	0,
+			"categories":	["air"]
+		}, {
+			"name":	"air_advisor_cost_factor",
+			"type":	"number",
+			"decimal_places":	0,
+			"categories":	["air"]
+		}, {
 			"name":	"naval_strike",
 			"type":	"number",
 			"decimal_places":	0,
@@ -3769,6 +4264,11 @@
 			"decimal_places":	0,
 			"categories":	["naval", "unit_leader"]
 		}, {
+			"name":	"navy_advisor_cost_factor",
+			"type":	"number",
+			"decimal_places":	0,
+			"categories":	["naval"]
+		}, {
 			"name":	"transport_capacity",
 			"type":	"number",
 			"decimal_places":	0,
@@ -3783,6 +4283,11 @@
 			"type":	"number",
 			"decimal_places":	0,
 			"categories":	["naval", "unit_leader", "aggressive"]
+		}, {
+			"name":	"carrier_night_traffic",
+			"type":	"number",
+			"decimal_places":	2,
+			"categories":	["air"]
 		}, {
 			"name":	"sortie_efficiency",
 			"type":	"number",
@@ -3994,6 +4499,11 @@
 			"decimal_places":	1,
 			"categories":	["army", "aggressive"]
 		}, {
+			"name":	"org_loss_at_low_org_factor",
+			"type":	"number",
+			"decimal_places":	2,
+			"categories":	["army"]
+		}, {
 			"name":	"attrition",
 			"type":	"number",
 			"decimal_places":	1,
@@ -4038,6 +4548,21 @@
 			"type":	"number",
 			"decimal_places":	0,
 			"categories":	["naval", "unit_leader", "defensive"]
+		}, {
+			"name":	"naval_retreat_chance_after_initial_combat",
+			"type":	"number",
+			"decimal_places":	0,
+			"categories":	["naval", "unit_leader", "defensive"]
+		}, {
+			"name":	"naval_retreat_speed_after_initial_combat",
+			"type":	"number",
+			"decimal_places":	0,
+			"categories":	["naval", "unit_leader", "defensive"]
+		}, {
+			"name":	"naval_enemy_positioning_in_initial_attack",
+			"type":	"number",
+			"decimal_places":	0,
+			"categories":	["naval", "unit_leader", "aggressive"]
 		}, {
 			"name":	"naval_retreat_speed",
 			"type":	"number",
@@ -4096,7 +4621,7 @@
 		}, {
 			"name":	"consumer_goods_factor",
 			"type":	"number",
-			"decimal_places":	0,
+			"decimal_places":	1,
 			"categories":	["country", "war_production"]
 		}, {
 			"name":	"civilian_factory_use",
@@ -4134,6 +4659,26 @@
 			"categories":	["air"]
 		}, {
 			"name":	"air_agility_factor",
+			"type":	"number",
+			"decimal_places":	0,
+			"categories":	["air"]
+		}, {
+			"name":	"air_ace_bonuses_factor",
+			"type":	"number",
+			"decimal_places":	0,
+			"categories":	["air"]
+		}, {
+			"name":	"air_untrained_pilots_penalty_factor",
+			"type":	"number",
+			"decimal_places":	0,
+			"categories":	["air"]
+		}, {
+			"name":	"air_home_defence_factor",
+			"type":	"number",
+			"decimal_places":	0,
+			"categories":	["air"]
+		}, {
+			"name":	"air_power_projection_factor",
 			"type":	"number",
 			"decimal_places":	0,
 			"categories":	["air"]
@@ -4264,6 +4809,11 @@
 			"categories":	["army"]
 		}, {
 			"name":	"army_org_regain",
+			"type":	"number",
+			"decimal_places":	2,
+			"categories":	["army"]
+		}, {
+			"name":	"army_strength_factor",
 			"type":	"number",
 			"decimal_places":	2,
 			"categories":	["army"]
@@ -4868,6 +5418,16 @@
 			"decimal_places":	2,
 			"categories":	["air"]
 		}, {
+			"name":	"naval_night_attack",
+			"type":	"number",
+			"decimal_places":	1,
+			"categories":	["naval", "aggressive"]
+		}, {
+			"name":	"night_spotting_chance",
+			"type":	"number",
+			"decimal_places":	1,
+			"categories":	["naval"]
+		}, {
 			"name":	"pocket_penalty",
 			"type":	"number",
 			"decimal_places":	1,
@@ -4887,6 +5447,11 @@
 			"type":	"number",
 			"decimal_places":	1,
 			"categories":	["naval", "unit_leader", "aggressive"]
+		}, {
+			"name":	"air_carrier_night_penalty_reduction_factor",
+			"type":	"number",
+			"decimal_places":	2,
+			"categories":	["air"]
 		}, {
 			"name":	"convoy_escort_efficiency",
 			"type":	"number",
@@ -5216,6 +5781,11 @@
 			"decimal_places":	0,
 			"categories":	["country"]
 		}, {
+			"name":	"command_abilities_cost_factor",
+			"type":	"number",
+			"decimal_places":	2,
+			"categories":	["country"]
+		}, {
 			"name":	"acclimatization_cold_climate_gain_factor",
 			"type":	"number",
 			"decimal_places":	1,
@@ -5224,6 +5794,11 @@
 			"name":	"acclimatization_hot_climate_gain_factor",
 			"type":	"number",
 			"decimal_places":	1,
+			"categories":	["army"]
+		}, {
+			"name":	"army_advisor_cost_factor",
+			"type":	"number",
+			"decimal_places":	0,
 			"categories":	["army"]
 		}, {
 			"name":	"army_leader_start_attack_level",
@@ -5649,6 +6224,11 @@
 			"decimal_places":	1,
 			"categories":	["naval", "unit_leader"]
 		}, {
+			"name":	"screening_without_screens",
+			"type":	"number",
+			"decimal_places":	1,
+			"categories":	["naval", "country"]
+		}, {
 			"name":	"exile_manpower_factor",
 			"type":	"number",
 			"decimal_places":	2,
@@ -5833,6 +6413,11 @@
 			"type":	"number",
 			"decimal_places":	2,
 			"categories":	["state", "army"]
+		}, {
+			"name":	"army_attack_speed_factor",
+			"type":	"number",
+			"decimal_places":	2,
+			"categories":	["army"]
 		}, {
 			"name":	"disable_strategic_redeployment",
 			"type":	"bool",
@@ -6194,1939 +6779,161 @@
 			"decimal_places":	0,
 			"categories":	["country"]
 		}, {
-			"name":	"operation_outcome",
+			"name":	"supply_factor",
 			"type":	"number",
 			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
+			"categories":	["country", "state"]
 		}, {
-			"name":	"operation_cost",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_infiltrate_outcome",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"democratic_drift",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["politics"]
-		}, {
-			"name":	"democratic_acceptance",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["politics"]
-		}, {
-			"name":	"communism_drift",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["politics"]
-		}, {
-			"name":	"communism_acceptance",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["politics"]
-		}, {
-			"name":	"fascism_drift",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["politics"]
-		}, {
-			"name":	"fascism_acceptance",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["politics"]
-		}, {
-			"name":	"neutrality_drift",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["politics"]
-		}, {
-			"name":	"neutrality_acceptance",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["politics"]
-		}, {
-			"name":	"production_cost_max_convoy",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval"]
-		}, {
-			"name":	"production_cost_max_ship_hull_carrier",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval"]
-		}, {
-			"name":	"production_cost_max_ship_hull_cruiser",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval"]
-		}, {
-			"name":	"production_cost_max_ship_hull_heavy",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval"]
-		}, {
-			"name":	"production_cost_max_ship_hull_light",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval"]
-		}, {
-			"name":	"production_cost_max_ship_hull_submarine",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval"]
-		}, {
-			"name":	"experience_gain_fighter_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_fighter_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_scout_plane_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_scout_plane_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_cv_fighter_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_cv_fighter_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_heavy_fighter_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_heavy_fighter_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_jet_fighter_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_jet_fighter_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_cas_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_cas_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_cv_cas_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_cv_cas_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_nav_bomber_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_nav_bomber_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_cv_nav_bomber_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_cv_nav_bomber_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_tac_bomber_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_tac_bomber_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_jet_tac_bomber_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_jet_tac_bomber_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_strat_bomber_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_strat_bomber_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_jet_strat_bomber_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_jet_strat_bomber_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_transport_plane_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_transport_plane_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_rocket_interceptor_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_rocket_interceptor_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_guided_missile_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_guided_missile_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_suicide_craft_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_suicide_craft_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_amphibious_armor_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_amphibious_armor_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_amphibious_mechanized_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_amphibious_mechanized_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_anti_air_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_anti_air_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_anti_air_brigade_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_anti_air_brigade_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_mot_anti_air_brigade_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_mot_anti_air_brigade_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_anti_tank_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_anti_tank_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_anti_tank_brigade_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_anti_tank_brigade_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_mot_anti_tank_brigade_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_mot_anti_tank_brigade_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_armored_car_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_armored_car_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_artillery_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_artillery_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_rocket_artillery_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_rocket_artillery_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_artillery_brigade_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_artillery_brigade_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_mot_artillery_brigade_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_mot_artillery_brigade_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_rocket_artillery_brigade_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_rocket_artillery_brigade_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_mot_rocket_artillery_brigade_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_mot_rocket_artillery_brigade_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_motorized_rocket_brigade_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_motorized_rocket_brigade_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_battle_cruiser_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_battle_cruiser_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_battleship_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_battleship_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_carrier_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_carrier_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_cavalry_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_cavalry_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_destroyer_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_destroyer_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_engineer_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_engineer_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_field_hospital_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_field_hospital_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_heavy_armor_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_heavy_armor_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_heavy_cruiser_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_heavy_cruiser_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_infantry_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_infantry_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_bicycle_battalion_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_bicycle_battalion_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_marine_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_marine_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_mountaineers_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_mountaineers_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_paratrooper_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_paratrooper_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_motorized_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_motorized_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_mechanized_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_mechanized_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_fake_intel_unit_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_fake_intel_unit_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_light_armor_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_light_armor_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_light_cruiser_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_light_cruiser_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_logistics_company_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_logistics_company_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_maintenance_company_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_maintenance_company_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_medium_armor_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_medium_armor_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_military_police_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_military_police_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_modern_armor_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_modern_armor_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_recon_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_recon_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_mot_recon_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_mot_recon_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_armored_car_recon_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_armored_car_recon_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_light_tank_recon_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_light_tank_recon_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_signal_company_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_signal_company_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_light_sp_anti_air_brigade_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_light_sp_anti_air_brigade_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_medium_sp_anti_air_brigade_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_medium_sp_anti_air_brigade_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_heavy_sp_anti_air_brigade_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_heavy_sp_anti_air_brigade_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_super_heavy_sp_anti_air_brigade_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_super_heavy_sp_anti_air_brigade_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_modern_sp_anti_air_brigade_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_modern_sp_anti_air_brigade_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_light_sp_artillery_brigade_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_light_sp_artillery_brigade_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_medium_sp_artillery_brigade_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_medium_sp_artillery_brigade_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_heavy_sp_artillery_brigade_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_heavy_sp_artillery_brigade_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_super_heavy_sp_artillery_brigade_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_super_heavy_sp_artillery_brigade_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_modern_sp_artillery_brigade_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_modern_sp_artillery_brigade_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_submarine_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_submarine_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_super_heavy_armor_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_super_heavy_armor_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_light_tank_destroyer_brigade_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_light_tank_destroyer_brigade_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_medium_tank_destroyer_brigade_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_medium_tank_destroyer_brigade_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_heavy_tank_destroyer_brigade_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_heavy_tank_destroyer_brigade_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_super_heavy_tank_destroyer_brigade_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_super_heavy_tank_destroyer_brigade_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_modern_tank_destroyer_brigade_training_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"experience_gain_modern_tank_destroyer_brigade_combat_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["naval", "country"]
-		}, {
-			"name":	"state_resource_oil",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["state"]
-		}, {
-			"name":	"temporary_state_resource_oil",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["state"]
-		}, {
-			"name":	"state_resource_cost_oil",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["state"]
-		}, {
-			"name":	"country_resource_oil",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["state"]
-		}, {
-			"name":	"country_resource_cost_oil",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["state"]
-		}, {
-			"name":	"state_resource_aluminium",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["state"]
-		}, {
-			"name":	"temporary_state_resource_aluminium",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["state"]
-		}, {
-			"name":	"state_resource_cost_aluminium",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["state"]
-		}, {
-			"name":	"country_resource_aluminium",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["state"]
-		}, {
-			"name":	"country_resource_cost_aluminium",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["state"]
-		}, {
-			"name":	"state_resource_rubber",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["state"]
-		}, {
-			"name":	"temporary_state_resource_rubber",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["state"]
-		}, {
-			"name":	"state_resource_cost_rubber",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["state"]
-		}, {
-			"name":	"country_resource_rubber",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["state"]
-		}, {
-			"name":	"country_resource_cost_rubber",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["state"]
-		}, {
-			"name":	"state_resource_tungsten",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["state"]
-		}, {
-			"name":	"temporary_state_resource_tungsten",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["state"]
-		}, {
-			"name":	"state_resource_cost_tungsten",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["state"]
-		}, {
-			"name":	"country_resource_tungsten",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["state"]
-		}, {
-			"name":	"country_resource_cost_tungsten",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["state"]
-		}, {
-			"name":	"state_resource_steel",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["state"]
-		}, {
-			"name":	"temporary_state_resource_steel",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["state"]
-		}, {
-			"name":	"state_resource_cost_steel",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["state"]
-		}, {
-			"name":	"country_resource_steel",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["state"]
-		}, {
-			"name":	"country_resource_cost_steel",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["state"]
-		}, {
-			"name":	"state_resource_chromium",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["state"]
-		}, {
-			"name":	"temporary_state_resource_chromium",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["state"]
-		}, {
-			"name":	"state_resource_cost_chromium",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["state"]
-		}, {
-			"name":	"country_resource_chromium",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["state"]
-		}, {
-			"name":	"country_resource_cost_chromium",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["state"]
-		}, {
-			"name":	"production_speed_infrastructure_factor",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["country"]
-		}, {
-			"name":	"state_production_speed_infrastructure_factor",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["state"]
-		}, {
-			"name":	"repair_speed_infrastructure_factor",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["country"]
-		}, {
-			"name":	"state_repair_speed_infrastructure_factor",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["state"]
-		}, {
-			"name":	"production_speed_arms_factory_factor",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["country"]
-		}, {
-			"name":	"state_production_speed_arms_factory_factor",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["state"]
-		}, {
-			"name":	"repair_speed_arms_factory_factor",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["country"]
-		}, {
-			"name":	"state_repair_speed_arms_factory_factor",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["state"]
-		}, {
-			"name":	"production_speed_industrial_complex_factor",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["country"]
-		}, {
-			"name":	"state_production_speed_industrial_complex_factor",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["state"]
-		}, {
-			"name":	"repair_speed_industrial_complex_factor",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["country"]
-		}, {
-			"name":	"state_repair_speed_industrial_complex_factor",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["state"]
-		}, {
-			"name":	"production_speed_air_base_factor",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["country"]
-		}, {
-			"name":	"state_production_speed_air_base_factor",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["state"]
-		}, {
-			"name":	"repair_speed_air_base_factor",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["country"]
-		}, {
-			"name":	"state_repair_speed_air_base_factor",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["state"]
-		}, {
-			"name":	"production_speed_naval_base_factor",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["country"]
-		}, {
-			"name":	"state_production_speed_naval_base_factor",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["state"]
-		}, {
-			"name":	"repair_speed_naval_base_factor",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["country"]
-		}, {
-			"name":	"state_repair_speed_naval_base_factor",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["state"]
-		}, {
-			"name":	"production_speed_bunker_factor",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["country"]
-		}, {
-			"name":	"state_production_speed_bunker_factor",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["state"]
-		}, {
-			"name":	"repair_speed_bunker_factor",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["country"]
-		}, {
-			"name":	"state_repair_speed_bunker_factor",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["state"]
-		}, {
-			"name":	"production_speed_coastal_bunker_factor",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["country"]
-		}, {
-			"name":	"state_production_speed_coastal_bunker_factor",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["state"]
-		}, {
-			"name":	"repair_speed_coastal_bunker_factor",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["country"]
-		}, {
-			"name":	"state_repair_speed_coastal_bunker_factor",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["state"]
-		}, {
-			"name":	"production_speed_dockyard_factor",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["country"]
-		}, {
-			"name":	"state_production_speed_dockyard_factor",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["state"]
-		}, {
-			"name":	"repair_speed_dockyard_factor",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["country"]
-		}, {
-			"name":	"state_repair_speed_dockyard_factor",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["state"]
-		}, {
-			"name":	"production_speed_anti_air_building_factor",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["country"]
-		}, {
-			"name":	"state_production_speed_anti_air_building_factor",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["state"]
-		}, {
-			"name":	"repair_speed_anti_air_building_factor",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["country"]
-		}, {
-			"name":	"state_repair_speed_anti_air_building_factor",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["state"]
-		}, {
-			"name":	"production_speed_synthetic_refinery_factor",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["country"]
-		}, {
-			"name":	"state_production_speed_synthetic_refinery_factor",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["state"]
-		}, {
-			"name":	"repair_speed_synthetic_refinery_factor",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["country"]
-		}, {
-			"name":	"state_repair_speed_synthetic_refinery_factor",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["state"]
-		}, {
-			"name":	"production_speed_fuel_silo_factor",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["country"]
-		}, {
-			"name":	"state_production_speed_fuel_silo_factor",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["state"]
-		}, {
-			"name":	"repair_speed_fuel_silo_factor",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["country"]
-		}, {
-			"name":	"state_repair_speed_fuel_silo_factor",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["state"]
-		}, {
-			"name":	"production_speed_radar_station_factor",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["country"]
-		}, {
-			"name":	"state_production_speed_radar_station_factor",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["state"]
-		}, {
-			"name":	"repair_speed_radar_station_factor",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["country"]
-		}, {
-			"name":	"state_repair_speed_radar_station_factor",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["state"]
-		}, {
-			"name":	"production_speed_rocket_site_factor",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["country"]
-		}, {
-			"name":	"state_production_speed_rocket_site_factor",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["state"]
-		}, {
-			"name":	"repair_speed_rocket_site_factor",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["country"]
-		}, {
-			"name":	"state_repair_speed_rocket_site_factor",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["state"]
-		}, {
-			"name":	"production_speed_nuclear_reactor_factor",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["country"]
-		}, {
-			"name":	"state_production_speed_nuclear_reactor_factor",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["state"]
-		}, {
-			"name":	"repair_speed_nuclear_reactor_factor",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["country"]
-		}, {
-			"name":	"state_repair_speed_nuclear_reactor_factor",
-			"type":	"number",
-			"decimal_places":	2,
-			"categories":	["state"]
-		}, {
-			"name":	"political_advisor_cost_factor",
+			"name":	"supply_node_range",
 			"type":	"number",
 			"decimal_places":	0,
 			"categories":	["country"]
 		}, {
-			"name":	"army_chief_cost_factor",
+			"name":	"truck_attrition",
+			"type":	"number",
+			"decimal_places":	2,
+			"categories":	["country", "state"]
+		}, {
+			"name":	"truck_attrition_factor",
+			"type":	"number",
+			"decimal_places":	0,
+			"categories":	["country", "state"]
+		}, {
+			"name":	"floating_harbor_supply",
 			"type":	"number",
 			"decimal_places":	0,
 			"categories":	["country"]
 		}, {
-			"name":	"air_chief_cost_factor",
+			"name":	"floating_harbor_range",
 			"type":	"number",
 			"decimal_places":	0,
 			"categories":	["country"]
 		}, {
-			"name":	"navy_chief_cost_factor",
+			"name":	"floating_harbor_duration",
 			"type":	"number",
 			"decimal_places":	0,
 			"categories":	["country"]
 		}, {
-			"name":	"high_command_cost_factor",
+			"name":	"army_attack_against_major_factor",
+			"type":	"number",
+			"decimal_places":	1,
+			"categories":	["army", "aggressive"]
+		}, {
+			"name":	"army_breakthrough_against_major_factor",
+			"type":	"number",
+			"decimal_places":	1,
+			"categories":	["army", "defensive"]
+		}, {
+			"name":	"army_defence_against_major_factor",
+			"type":	"number",
+			"decimal_places":	1,
+			"categories":	["army", "defensive"]
+		}, {
+			"name":	"army_attack_against_minor_factor",
+			"type":	"number",
+			"decimal_places":	1,
+			"categories":	["army", "aggressive"]
+		}, {
+			"name":	"army_defence_against_minor_factor",
+			"type":	"number",
+			"decimal_places":	1,
+			"categories":	["army", "defensive"]
+		}, {
+			"name":	"army_breakthrough_against_minor_factor",
+			"type":	"number",
+			"decimal_places":	1,
+			"categories":	["army", "defensive"]
+		}, {
+			"name":	"air_doctrine_cost_factor",
+			"type":	"number",
+			"decimal_places":	2,
+			"categories":	["country"]
+		}, {
+			"name":	"land_doctrine_cost_factor",
+			"type":	"number",
+			"decimal_places":	2,
+			"categories":	["country"]
+		}, {
+			"name":	"naval_doctrine_cost_factor",
+			"type":	"number",
+			"decimal_places":	2,
+			"categories":	["country"]
+		}, {
+			"name":	"navy_weather_penalty",
+			"type":	"number",
+			"decimal_places":	2,
+			"categories":	["air"]
+		}, {
+			"name":	"assign_army_leader_cp_cost",
+			"type":	"number",
+			"decimal_places":	0,
+			"categories":	["country", "army"]
+		}, {
+			"name":	"assign_navy_leader_cp_cost",
+			"type":	"number",
+			"decimal_places":	0,
+			"categories":	["naval", "country"]
+		}, {
+			"name":	"intel_from_combat_factor",
+			"type":	"number",
+			"decimal_places":	2,
+			"categories":	["country"]
+		}, {
+			"name":	"exiled_government_weekly_manpower",
+			"type":	"number",
+			"decimal_places":	0,
+			"categories":	["country", "war_production"]
+		}, {
+			"name":	"choose_preferred_tactics_cost",
 			"type":	"number",
 			"decimal_places":	0,
 			"categories":	["country"]
 		}, {
-			"name":	"theorist_cost_factor",
+			"name":	"railway_gun_bombardment_factor",
 			"type":	"number",
 			"decimal_places":	0,
 			"categories":	["country"]
 		}, {
-			"name":	"aircraft_manufacturer_cost_factor",
+			"name":	"unit_leader_as_advisor_cp_cost_factor",
 			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["country"]
-		}, {
-			"name":	"economy_cost_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["country"]
-		}, {
-			"name":	"trade_laws_cost_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["country"]
-		}, {
-			"name":	"country_cost_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["country"]
-		}, {
-			"name":	"mobilization_laws_cost_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["country"]
-		}, {
-			"name":	"industrial_concern_cost_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["country"]
-		}, {
-			"name":	"tank_manufacturer_cost_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["country"]
-		}, {
-			"name":	"naval_manufacturer_cost_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["country"]
-		}, {
-			"name":	"materiel_manufacturer_cost_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["country"]
-		}, {
-			"name":	"hidden_ideas_cost_factor",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["country"]
-		}, {
-			"name":	"operation_rescue_operative_cost",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_rescue_operative_outcome",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_rescue_operative_risk",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_infiltrate_risk",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_risk",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_infiltrate_cost",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_infiltrate_civilian_cost",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_infiltrate_civilian_outcome",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_infiltrate_civilian_risk",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_fake_intel_cost",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_fake_intel_outcome",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_fake_intel_risk",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_capture_cipher_cost",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_capture_cipher_outcome",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_capture_cipher_risk",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_infiltrate_armed_forces_army_cost",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_infiltrate_armed_forces_army_outcome",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_infiltrate_armed_forces_army_risk",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_infiltrate_armed_forces_navy_cost",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_infiltrate_armed_forces_navy_outcome",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_infiltrate_armed_forces_navy_risk",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_infiltrate_armed_forces_airforce_cost",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_infiltrate_armed_forces_airforce_outcome",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_infiltrate_armed_forces_airforce_risk",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_coup_cost",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_coup_government_cost",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_coup_government_outcome",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_coup_government_risk",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_boost_resistance_cost",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_boost_resistance_outcome",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_boost_resistance_risk",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_make_resistance_contacts_cost",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_make_resistance_contacts_outcome",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_make_resistance_contacts_risk",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_collaboration_government_cost",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_collaboration_government_outcome",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_collaboration_government_risk",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_coordinated_strike_cost",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_coordinated_strike_outcome",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_coordinated_strike_risk",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_steal_tech_risk",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_steal_tech_outcome",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_steal_tech_civilian_cost",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_steal_tech_civilian_outcome",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_steal_tech_civilian_risk",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"target_sabotage_risk",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"target_sabotage_cost",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
+			"decimal_places":	1,
+			"categories":	["unit_leader", "country"]
 		}, {
-			"name":	"operation_targeted_sabotage_industry_cost",
+			"name":	"initiative_factor",
 			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_targeted_sabotage_industry_outcome",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_targeted_sabotage_industry_risk",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_targeted_sabotage_infrastructure_cost",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_targeted_sabotage_infrastructure_outcome",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_targeted_sabotage_infrastructure_risk",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_targeted_sabotage_resources_cost",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_targeted_sabotage_resources_outcome",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_targeted_sabotage_resources_risk",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_steal_tech_army_cost",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_steal_tech_army_outcome",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_steal_tech_army_risk",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_steal_tech_navy_cost",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_steal_tech_navy_outcome",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_steal_tech_navy_risk",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_steal_tech_airforce_cost",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_steal_tech_airforce_outcome",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"operation_steal_tech_airforce_risk",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"FRA_instigate_workers_revolution_britain_cost",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"FRA_instigate_workers_revolution_britain_outcome",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"FRA_instigate_workers_revolution_britain_risk",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"FRA_instigate_workers_revolution_italy_cost",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"FRA_instigate_workers_revolution_italy_outcome",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"FRA_instigate_workers_revolution_italy_risk",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"FRA_instigate_workers_revolution_spain_cost",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"FRA_instigate_workers_revolution_spain_outcome",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"FRA_instigate_workers_revolution_spain_risk",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"FRA_instigate_workers_revolution_germany_cost",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"FRA_instigate_workers_revolution_germany_outcome",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"FRA_instigate_workers_revolution_germany_risk",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"FRA_coup_in_north_africa_cost",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"FRA_coup_in_north_africa_outcome",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"FRA_coup_in_north_africa_risk",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"FRA_coup_in_syria_cost",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"FRA_coup_in_syria_outcome",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"FRA_coup_in_syria_risk",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"FRA_coup_in_indochina_cost",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"FRA_coup_in_indochina_outcome",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"FRA_coup_in_indochina_risk",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"FRA_coup_in_central_africa_cost",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"FRA_coup_in_central_africa_outcome",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"FRA_coup_in_central_africa_risk",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"FRA_coup_in_west_africa_cost",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"FRA_coup_in_west_africa_outcome",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"FRA_coup_in_west_africa_risk",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"FRA_coup_in_madagascar_cost",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"FRA_coup_in_madagascar_outcome",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"FRA_coup_in_madagascar_risk",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"heavy_water_raid_cost",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"heavy_water_raid_outcome",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"heavy_water_raid_risk",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"bruneval_raid_cost",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"bruneval_raid_outcome",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"bruneval_raid_risk",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"capture_tito_cost",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
+			"decimal_places":	1,
+			"categories":	["unit_leader", "country"]
 		}, {
-			"name":	"capture_tito_outcome",
+			"name":	"naval_invasion_planning_bonus_speed",
 			"type":	"number",
 			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
+			"categories":	["army", "aggressive"]
 		}, {
-			"name":	"capture_tito_risk",
+			"name":	"terrain_trait_xp_gain_factor",
 			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
-		}, {
-			"name":	"rescue_mussolini_cost",
-			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
+			"decimal_places":	2,
+			"categories":	["naval", "country", "army"]
 		}, {
-			"name":	"rescue_mussolini_outcome",
+			"name":	"supply_combat_penalties_on_core_factor",
 			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
+			"decimal_places":	1,
+			"categories":	["army", "aggressive"]
 		}, {
-			"name":	"rescue_mussolini_risk",
+			"name":	"coordination_bonus",
 			"type":	"number",
-			"decimal_places":	0,
-			"categories":	["intelligence_agency"]
+			"decimal_places":	1,
+			"categories":	["army", "aggressive"]
 		}],
 	"dynamic_variables":	{
 		"global":	{
 			"year":	{
 				"description":	"current year"
 			},
-			"operations":	{
-				"description":	"array of objects in operations database"
+			"province_controllers":	{
+				"description":	"get array of all province controllers. Example: province_controllers^4135"
 			},
 			"majors":	{
 				"description":	"get array of all majors (including non existing"
-			},
-			"technology":	{
-				"description":	"array of objects in technology database"
 			},
 			"num_days":	{
 				"description":	"current total days"
@@ -8137,16 +6944,8 @@
 			"countries":	{
 				"description":	"get array of all countries (including non existing"
 			},
-			"ideology_groups":	{
-				"description":	"array of objects in ideology_groups database"
-			},
-			"difficulty":	{
-				"description":	"check if the difficulty is above or below specified value 0-2 (difficulty enum). Example: difficulty > 0 (above easy)",
-				"is_trigger":	true
-			},
-			"threat":	{
-				"description":	"check the global threat value. 0-1 value",
-				"is_trigger":	true
+			"states":	{
+				"description":	"get array of all states"
 			}
 		},
 		"country":	{
@@ -8165,10 +6964,6 @@
 			"overlord":	{
 				"description":	"master of this subject"
 			},
-			"num_of_nukes":	{
-				"description":	"check amount of nukes",
-				"is_trigger":	true
-			},
 			"command_power":	{
 				"description":	"total command power of country"
 			},
@@ -8184,12 +6979,6 @@
 			"manpower_k":	{
 				"description":	"total manpower of country in thousands"
 			},
-			"num_battalions":	{
-				"description":	"number of battalions"
-			},
-			"max_manpower":	{
-				"description":	"DEPRECATED, MAY OVERFLOW. maximum manpower of country"
-			},
 			"faction_members":	{
 				"description":	"array of faction members"
 			},
@@ -8202,21 +6991,20 @@
 			"num_owned_controlled_states":	{
 				"description":	"number of owned and core states"
 			},
-			"agency_upgrade_number":	{
-				"description":	"Checks the number of upgrade done in the intelligence agency. \nagency_upgrade_number > 4",
-				"is_trigger":	true
-			},
 			"max_available_manpower":	{
 				"description":	"DEPRECATED, MAY OVERFLOW. total available manpower of country"
-			},
-			"ai_strategy_dont_defend_ally_borders":	{
-				"description":	"ai strategy value dont_defend_ally_borders against country. Example: GER.ai_strategy_dont_defend_ally_borders@ENG"
 			},
 			"max_available_manpower_k":	{
 				"description":	"total available manpower of country in thousands"
 			},
 			"opinion":	{
 				"description":	"opinion of a country targeted on another one. example GER.opinion@ENG"
+			},
+			"num_battalions":	{
+				"description":	"number of battalions"
+			},
+			"max_manpower":	{
+				"description":	"DEPRECATED, MAY OVERFLOW. maximum manpower of country"
 			},
 			"owned_states":	{
 				"description":	"array of owned states"
@@ -8230,25 +7018,14 @@
 			"army_experience":	{
 				"description":	"army experience of a country"
 			},
-			"conscription_ratio":	{
-				"description":	"Checks  conscription ratio of the country compared to target conscription ratio.\n",
-				"is_trigger":	true
-			},
 			"navy_experience":	{
 				"description":	"navy experience of a country"
 			},
 			"air_experience":	{
 				"description":	"air experience of a country"
 			},
-			"any_war_score":	{
-				"description":	"compares the warscore of all wars in a country to see if any fullfills the comparison condition 0-100 - Example: any_war_score > 40",
-				"is_trigger":	true
-			},
 			"num_armies":	{
 				"description":	"number of armies"
-			},
-			"ai_strategy_ignore_claim":	{
-				"description":	"ai strategy value ignore_claim against country. Example: GER.ai_strategy_ignore_claim@ENG"
 			},
 			"party_popularity":	{
 				"description":	"popularity of targeted party [0.00, 1.00]. example party_popularity@democratic. May also target ruling_party. This also supports country variables, so you can party_popularity@my_var_name for variables that store ideologies"
@@ -8256,16 +7033,8 @@
 			"num_ships":	{
 				"description":	"number of ships"
 			},
-			"enemies_naval_strength_ratio":	{
-				"description":	"Compares the estimated navy strength between the scope country and all its enemies",
-				"is_trigger":	true
-			},
 			"num_deployed_planes":	{
 				"description":	"number of deployed planes"
-			},
-			"command_power_daily":	{
-				"description":	"Checks if daily command power increase is more or less that specified value \n command_power_daily > 1.5",
-				"is_trigger":	true
 			},
 			"num_deployed_planes_with_type":	{
 				"description":	"number of deployed planes with equipment type. example num_deployed_planes_with_type@fighter"
@@ -8297,6 +7066,9 @@
 			"modifier":	{
 				"description":	"a modifier stored in country scope"
 			},
+			"party_popularity_100":	{
+				"description":	"popularity of targeted party [0.00, 100.00]. example party_popularity_100@democratic. May also target ruling_party. This also supports country variables, so you can party_popularity_100@my_var_name for variables that store ideologies"
+			},
 			"highest_party_ideology":	{
 				"description":	"ideology of the most popular party. Can exclude the ruling party by using @exclude_ruling_party. Example: highest_party_ideology OR highest_party_ideology@exclude_ruling_party"
 			},
@@ -8308,10 +7080,6 @@
 			},
 			"current_party_ideology_group":	{
 				"description":	"returns the token for current party ideology group"
-			},
-			"alliance_naval_strength_ratio":	{
-				"description":	"Compares the estimated naval strength between the scope country, his allies and his enemies.",
-				"is_trigger":	true
 			},
 			"resource":	{
 				"description":	"number of surplus resources in country, resource type is defined in target resource@steel"
@@ -8358,6 +7126,9 @@
 			"host":	{
 				"description":	"exile host of this country"
 			},
+			"days_decision_timeout":	{
+				"description":	"timeout in days for a specific timed decision, decision type token is defined in target. example: days_decision_timeout@SOV_propaganda_knowledge"
+			},
 			"exiles":	{
 				"description":	"exile host of this country"
 			},
@@ -8370,27 +7141,20 @@
 			"faction_leader":	{
 				"description":	"faction leader of this country's faction"
 			},
-			"ai_attitude_protective_weight":	{
-				"description":	"weight for an ai attitude attitude_protectiveagainst country. Example: GER.ai_attitude_protective_weight@ENG"
-			},
 			"resource_exported":	{
 				"description":	"number of resources exported by country, resource type is defined in target resource_exported@steel"
-			},
-			"num_equipment_in_armies":	{
-				"description":	"number of equipment in armies of the country, equipment type token is defined in target. example num_equipment_in_armies@infantry_equipment"
 			},
 			"resource_imported":	{
 				"description":	"number of resources imported by country, resource type is defined in target resource_imported@steel"
 			},
-			"num_target_equipment_in_armies":	{
-				"description":	"number of equipment required in armies of the country, equipment type token is defined in target. example num_target_equipment_in_armies@infantry_equipment"
-			},
 			"num_equipment":	{
 				"description":	"number of equipment in country. example num_equipment@infantry_equipment"
 			},
-			"num_of_operatives":	{
-				"description":	"Checks the number of operatives the country controls",
-				"is_trigger":	true
+			"num_equipment_in_armies":	{
+				"description":	"number of equipment in armies of the country, equipment type token is defined in target. example num_equipment_in_armies@infantry_equipment"
+			},
+			"num_target_equipment_in_armies":	{
+				"description":	"number of equipment required in armies of the country, equipment type token is defined in target. example num_target_equipment_in_armies@infantry_equipment"
 			},
 			"num_equipment_in_armies_k":	{
 				"description":	"number of equipment in armies of the country in thousands, equipment type token is defined in target. example num_equipment_in_armies_k@infantry_equipment"
@@ -8443,277 +7207,8 @@
 			"operatives":	{
 				"description":	"all operatives of a country"
 			},
-			"num_of_military_factories":	{
-				"description":	"check amount of military factories",
-				"is_trigger":	true
-			},
-			"num_of_civilian_factories":	{
-				"description":	"check amount of civilian factories",
-				"is_trigger":	true
-			},
-			"num_of_naval_factories":	{
-				"description":	"check amount of naval factories",
-				"is_trigger":	true
-			},
-			"foreign_manpower":	{
-				"description":	"check the amount of foreign garrison manpower we have",
-				"is_trigger":	true
-			},
-			"has_manpower":	{
-				"description":	"check amount of manpower",
-				"is_trigger":	true
-			},
-			"num_subjects":	{
-				"description":	"check the number of subjects of nation",
-				"is_trigger":	true
-			},
-			"has_political_power":	{
-				"description":	"check amount of political power",
-				"is_trigger":	true
-			},
-			"num_of_available_military_factories":	{
-				"description":	"check amount of available military factories",
-				"is_trigger":	true
-			},
-			"num_of_available_naval_factories":	{
-				"description":	"check amount of available naval factories",
-				"is_trigger":	true
-			},
-			"num_of_available_civilian_factories":	{
-				"description":	"check amount of available civilian factories",
-				"is_trigger":	true
-			},
-			"surrender_progress":	{
-				"description":	"check if a country is close to surrendering",
-				"is_trigger":	true
-			},
-			"political_power_daily":	{
-				"description":	"Checks if daily political power increase is more or less that specified value \n political_power_daily > 1.5",
-				"is_trigger":	true
-			},
-			"land_doctrine_level":	{
-				"description":	"checks researched land doctrine level",
-				"is_trigger":	true
-			},
-			"casualties":	{
-				"description":	"Check the amount of casualties a country has suffered in all of it's wars",
-				"is_trigger":	true
-			},
-			"num_of_factories":	{
-				"description":	"check amount of total factories",
-				"is_trigger":	true
-			},
-			"num_of_controlled_states":	{
-				"description":	"check amount of controlled stats",
-				"is_trigger":	true
-			},
-			"has_added_tension_amount":	{
-				"description":	"Compare if the country has added above or below the specified ammount of tension",
-				"is_trigger":	true
-			},
-			"ai_irrationality":	{
-				"description":	"check the ai irrationality value",
-				"is_trigger":	true
-			},
-			"ai_strategy_antagonize":	{
-				"description":	"ai strategy value antagonize against country. Example: GER.ai_strategy_antagonize@ENG"
-			},
-			"num_divisions":	{
-				"description":	"Will compare towards the amount of divisions a country has control over, if strength matters use has_army_size.",
-				"is_trigger":	true
-			},
-			"original_research_slots":	{
-				"description":	"check number of research slots at start of game",
-				"is_trigger":	true
-			},
-			"ai_wants_divisions":	{
-				"description":	"Will compare towards the amount of divisions an ai wants to have.",
-				"is_trigger":	true
-			},
-			"alliance_strength_ratio":	{
-				"description":	"Compares the estimated army strength between the scope country, his allies and his enemies.",
-				"is_trigger":	true
-			},
-			"num_faction_members":	{
-				"description":	"Compares the number of members in the faction for the current country. \n Example: num_faction_members > 10",
-				"is_trigger":	true
-			},
-			"enemies_strength_ratio":	{
-				"description":	"Compares the estimated army strength between the scope country and all its enemies",
-				"is_trigger":	true
-			},
-			"compare_autonomy_progress_ratio":	{
-				"description":	"check if autonomy progress ratio is higher than value, example:\ncompare_autonomy_progress_ratio > 0.5",
-				"is_trigger":	true
-			},
-			"num_tech_sharing_groups":	{
-				"description":	"checks how many groups a nation is a member of",
-				"is_trigger":	true
-			},
-			"ai_strategy_invade":	{
-				"description":	"ai strategy value invade against country. Example: GER.ai_strategy_invade@ENG"
-			},
-			"num_occupied_states":	{
-				"description":	"check the number of states occupied by nation",
-				"is_trigger":	true
-			},
-			"amount_research_slots":	{
-				"description":	"check number of research current research slots \n amount_research_slots > 2",
-				"is_trigger":	true
-			},
-			"manpower_per_military_factory":	{
-				"description":	"Number of available manpower per factory the country has. Excluding dockyards.\nmanpower_per_military_factory < 1000",
-				"is_trigger":	true
-			},
-			"has_stability":	{
-				"description":	"check value of stability 0-1: Example has_stability < 0.6",
-				"is_trigger":	true
-			},
-			"has_war_support":	{
-				"description":	"check value of war_support 0-1: Example has_war_support < 0.6",
-				"is_trigger":	true
-			},
-			"num_of_civilian_factories_available_for_projects":	{
-				"description":	"check amount of civilian factories available for a new project to use",
-				"is_trigger":	true
-			},
-			"political_power_growth":	{
-				"description":	"Check the value of political power daily growth.Exacmple: political_power_growth > 0",
-				"is_trigger":	true
-			},
-			"amount_manpower_in_deployment_queue":	{
-				"description":	"Checks for amount manpower currently in deploymentview. amount_manpower_in_training > 10",
-				"is_trigger":	true
-			},
-			"has_legitimacy":	{
-				"description":	"Check scope country legitimacy 0-100: Example has_legitimacy < 60",
-				"is_trigger":	true
-			},
-			"casualties_k":	{
-				"description":	"Check the amount of casualties in thousands a country has suffered in all of it's wars",
-				"is_trigger":	true
-			},
-			"fuel_ratio":	{
-				"description":	"Compares the fuel ratio to a variable.\nExample: fuel_ratio > 0.5",
-				"is_trigger":	true
-			},
-			"days_since_capitulated":	{
-				"description":	"Checks the number of days since the country last capitulated, even if it is no longer capitulated.\n\tIf it has not ever capitulated, the value is extremely large.\n\tIt is recommended to combine this with has_capitulated = yes when you specifically want to ignore non-active capitulations.\nExamples:\n\tHOL = { has_capitulated = yes days_since_capitulated > 60 } # The Netherlands has been capitulated for more than two months\n\tFRA = { has_capitulated = yes days_since_capitulated < 21 } # France has capitulated sometime within the past three weeks\n\tGER = { OR = { has_capitulated = no days_since_capitulated > 14 } } # Germany is not both actively and recently capitulated\n",
-				"is_trigger":	true
-			},
-			"mine_threat":	{
-				"description":	"A trigger to check how dangerous enemy mines are for a country. Controlled by NAVAL_MINE_DANGER defines. Returns a value between 0 and 1. Example mine_threat > 0.5 ",
-				"is_trigger":	true
-			},
-			"convoy_threat":	{
-				"description":	"A trigger to check convoy threat for a country. Controlled by NAVAL_CONVOY_DANGER defines. Returns a value between 0 and 1. Example convoy_threat > 0.5 ",
-				"is_trigger":	true
-			},
-			"decryption_progress":	{
-				"description":	"checks decryption ratio against a country. Example: \ndecryption_progress = { \n target = GER\n value > 0.5\n} \n#or decryption_progress@GER as variable\n",
-				"is_trigger":	true
-			},
-			"garrison_manpower_need":	{
-				"description":	"check the amount of manpower needed by garrisons",
-				"is_trigger":	true
-			},
-			"num_operative_slots":	{
-				"description":	"Checks the number of available operative slots a country has.\nIf this differs from the number of operative, this does not mean the country can recruit an operative, but that it will eventually be able to.",
-				"is_trigger":	true
-			},
-			"num_free_operative_slots":	{
-				"description":	"Checks the number of operative a country can recruit right now.\nNote that this is not necessarily greater than zero if num_operative_slots returned a number greater than the number of operative.",
-				"is_trigger":	true
-			},
-			"num_fake_intel_divisions":	{
-				"description":	"Will compare towards the amount of fake intel divisions a country has control over. .",
-				"is_trigger":	true
-			},
-			"has_collaboration":	{
-				"description":	"checks the collaboration in a target country with our currently scoped country. Example: \nhas_collaboration = { \n target = GER\n value > 0.5\n} \n#or has_collaboration@GER as variable\n",
-				"is_trigger":	true
-			},
-			"target_conscription_amount":	{
-				"description":	"Checks the target conscription amount of the country.\n",
-				"is_trigger":	true
-			},
-			"current_conscription_amount":	{
-				"description":	"Checks the current conscription amount of the country.\n",
-				"is_trigger":	true
-			},
-			"num_researched_technologies":	{
-				"description":	"Number of researched technologies",
-				"is_trigger":	true
-			},
-			"network_national_coverage":	{
-				"description":	"checks network national coverage you have over a country. Example: \nnetwork_national_coverage = { \n target = GER\n value > 0.5\n} \n",
-				"is_trigger":	true
-			},
-			"ai_strategy_conquer":	{
-				"description":	"ai strategy value conquer against country. Example: GER.ai_strategy_conquer@ENG"
-			},
-			"ai_strategy_befriend":	{
-				"description":	"ai strategy value befriend against country. Example: GER.ai_strategy_befriend@ENG"
-			},
-			"ai_strategy_consider_weak":	{
-				"description":	"ai strategy value consider_weak against country. Example: GER.ai_strategy_consider_weak@ENG"
-			},
-			"ai_strategy_protect":	{
-				"description":	"ai strategy value protect against country. Example: GER.ai_strategy_protect@ENG"
-			},
-			"ai_strategy_alliance":	{
-				"description":	"ai strategy value alliance against country. Example: GER.ai_strategy_alliance@ENG"
-			},
-			"ai_strategy_contain":	{
-				"description":	"ai strategy value contain against country. Example: GER.ai_strategy_contain@ENG"
-			},
-			"ai_strategy_support":	{
-				"description":	"ai strategy value support against country. Example: GER.ai_strategy_support@ENG"
-			},
-			"ai_strategy_force_defend_ally_borders":	{
-				"description":	"ai strategy value force_defend_ally_borders against country. Example: GER.ai_strategy_force_defend_ally_borders@ENG"
-			},
-			"ai_strategy_influence":	{
-				"description":	"ai strategy value influence against country. Example: GER.ai_strategy_influence@ENG"
-			},
-			"ai_strategy_ignore":	{
-				"description":	"ai strategy value ignore against country. Example: GER.ai_strategy_ignore@ENG"
-			},
-			"ai_strategy_send_volunteers_desire":	{
-				"description":	"ai strategy value send_volunteers_desire against country. Example: GER.ai_strategy_send_volunteers_desire@ENG"
-			},
-			"ai_strategy_occupation_policy":	{
-				"description":	"ai strategy value occupation_policy against country. Example: GER.ai_strategy_occupation_policy@ENG"
-			},
-			"ai_strategy_declare_war":	{
-				"description":	"ai strategy value declare_war against country. Example: GER.ai_strategy_declare_war@ENG"
-			},
-			"ai_strategy_prepare_for_war":	{
-				"description":	"ai strategy value prepare_for_war against country. Example: GER.ai_strategy_prepare_for_war@ENG"
-			},
-			"ai_strategy_decrypt_target":	{
-				"description":	"ai strategy value decrypt_target against country. Example: GER.ai_strategy_decrypt_target@ENG"
-			},
-			"ai_strategy_activate_crypto":	{
-				"description":	"ai strategy value activate_crypto against country. Example: GER.ai_strategy_activate_crypto@ENG"
-			},
-			"ai_attitude_neutral_weight":	{
-				"description":	"weight for an ai attitude attitude_neutralagainst country. Example: GER.ai_attitude_neutral_weight@ENG"
-			},
-			"ai_attitude_hostile_weight":	{
-				"description":	"weight for an ai attitude attitude_hostileagainst country. Example: GER.ai_attitude_hostile_weight@ENG"
-			},
-			"ai_attitude_friendly_weight":	{
-				"description":	"weight for an ai attitude attitude_friendlyagainst country. Example: GER.ai_attitude_friendly_weight@ENG"
-			},
-			"ai_attitude_outraged_weight":	{
-				"description":	"weight for an ai attitude attitude_outragedagainst country. Example: GER.ai_attitude_outraged_weight@ENG"
-			},
-			"ai_attitude_threatened_weight":	{
-				"description":	"weight for an ai attitude attitude_threatenedagainst country. Example: GER.ai_attitude_threatened_weight@ENG"
-			},
-			"ai_attitude_allied_weight":	{
-				"description":	"weight for an ai attitude attitude_alliedagainst country. Example: GER.ai_attitude_allied_weight@ENG"
+			"num_orders_groups":	{
+				"description":	"number of orders groups"
 			}
 		},
 		"state":	{
@@ -8729,15 +7224,8 @@
 			"industrial_complex_level":	{
 				"description":	"civilian factor level in the state"
 			},
-			"core_countries":	{
-				"description":	"countries that cores the state"
-			},
 			"infrastructure_level":	{
 				"description":	"infrastructure level in the state"
-			},
-			"days_since_last_strategic_bombing":	{
-				"description":	"Checks the days since last strategic bombing.\ndays_since_last_strategic_bombing < 10\n",
-				"is_trigger":	true
 			},
 			"distance_to":	{
 				"description":	"distance to another state, uses target as another state. example: 123.distance_to@124"
@@ -8748,6 +7236,9 @@
 			"building_level":	{
 				"description":	"building level of a building with type, uses target as building type. example building_level@arms_factory"
 			},
+			"core_countries":	{
+				"description":	"countries that cores the state"
+			},
 			"resource":	{
 				"description":	"resources produced in state. example resource@steel"
 			},
@@ -8756,42 +7247,6 @@
 			},
 			"controller":	{
 				"description":	"controller of the state"
-			},
-			"resistance":	{
-				"description":	"Compares the current resistance level of a state to a value. Example: resistance > 50 ",
-				"is_trigger":	true
-			},
-			"state_population":	{
-				"description":	"check the population in the state",
-				"is_trigger":	true
-			},
-			"state_strategic_value":	{
-				"description":	"Checks for state strategic value",
-				"is_trigger":	true
-			},
-			"state_and_terrain_strategic_value":	{
-				"description":	"Checks for state strategic value",
-				"is_trigger":	true
-			},
-			"state_population_k":	{
-				"description":	"check the population in the state in thousands (use to avoid variable overflows)",
-				"is_trigger":	true
-			},
-			"compliance":	{
-				"description":	"Compares the current compliance level of a state to a value. Example: compliance > 50 ",
-				"is_trigger":	true
-			},
-			"compliance_speed":	{
-				"description":	"Compares the current compliance speed of a state to a value. Example: compliance_speed > 50 ",
-				"is_trigger":	true
-			},
-			"resistance_speed":	{
-				"description":	"Compares the current resistance speed of a state to a value. Example: resistance_speed > 50 ",
-				"is_trigger":	true
-			},
-			"resistance_target":	{
-				"description":	"Compares the target resistance level of a state to a value. Example: resistance_target > 50 ",
-				"is_trigger":	true
 			}
 		},
 		"unit_leader":	{
@@ -8828,12 +7283,6 @@
 			"num_target_equipment":	{
 				"description":	"number of equipment required in army of a leader, equipment type token is defined in target. example num_target_equipment@infantry_equipment"
 			},
-			"logistics_level":	{
-				"description":	"logistics level of the leader"
-			},
-			"num_infantry":	{
-				"description":	"number of units with infantry dominant type"
-			},
 			"num_units_defensive_combats_on":	{
 				"description":	"number of units that are defensively fighting on a terrain, terrain type is defined as target. example: num_units_defensive_combats_on@plains"
 			},
@@ -8846,6 +7295,12 @@
 			"num_ships":	{
 				"description":	"number of ships controlled by leader"
 			},
+			"logistics_level":	{
+				"description":	"logistics level of the leader"
+			},
+			"num_infantry":	{
+				"description":	"number of units with infantry dominant type"
+			},
 			"num_armored":	{
 				"description":	"number of units with armored dominant type"
 			},
@@ -8855,20 +7310,20 @@
 			"num_special":	{
 				"description":	"number of units with special dominant type"
 			},
-			"num_mechanized":	{
-				"description":	"number of units with mechanized dominant type"
-			},
 			"attack_level":	{
 				"description":	"attack level of the leader"
 			},
 			"num_personality_traits":	{
 				"description":	"number of personality traits a leader has"
 			},
-			"num_motorized":	{
-				"description":	"number of units with motorized dominant type"
+			"num_mechanized":	{
+				"description":	"number of units with mechanized dominant type"
 			},
 			"maneuvering_level":	{
 				"description":	"maneuvering level of the leader"
+			},
+			"num_motorized":	{
+				"description":	"number of units with motorized dominant type"
 			},
 			"num_battalions_with_type":	{
 				"description":	"number of battalions with sub unit type, sub unit type is defined in target. example: num_battalions_with_type@light_armor"
@@ -8888,15 +7343,11 @@
 			"num_status_traits":	{
 				"description":	"number of status traits a leader has"
 			},
-			"defense_skill_level":	{
-				"description":	"Compares defense skill level of a unit leader.\nExample: defense_skill_level > 5",
-				"is_trigger":	true
+			"leader_modifier":	{
+				"description":	"value of a modifier stored in leader modifier, modifier token is defined in target. example leader_modifier@navy_max_range"
 			},
 			"num_assigned_traits":	{
 				"description":	"number of assigned traits the leader has"
-			},
-			"leader_modifier":	{
-				"description":	"value of a modifier stored in leader modifier, modifier token is defined in target. example leader_modifier@navy_max_range"
 			},
 			"num_terrain_traits":	{
 				"description":	"number of terrain traits a leader has"
@@ -8912,10 +7363,6 @@
 			},
 			"army_attack_level":	{
 				"description":	"attack level of the leader"
-			},
-			"attack_skill_level":	{
-				"description":	"Compares attack skill level of a unit leader.\nExample: attack_skill_level > 5",
-				"is_trigger":	true
 			},
 			"army_defense_level":	{
 				"description":	"defense level of the leader"
@@ -8938,11 +7385,11 @@
 			"average_stats":	{
 				"description":	"average stats of unit leader"
 			},
-			"avg_offensive_combat_status":	{
-				"description":	"average progress of offensive combats"
-			},
 			"operation_type":	{
 				"description":	"returns the operation token the operative is assigned"
+			},
+			"avg_offensive_combat_status":	{
+				"description":	"average progress of offensive combats"
 			},
 			"sum_unit_terrain_modifier":	{
 				"description":	"sum of terrain modifiers of each army's location, terrain type is defined in target. example: sum_unit_terrain_modifier@sickness_chance "
@@ -8965,10 +7412,6 @@
 			"num_units_offensive_combats":	{
 				"description":	"number of units in offensive combats"
 			},
-			"planning_skill_level":	{
-				"description":	"Compares planning skill level of a unit leader.\nExample: planning_skill_level > 5",
-				"is_trigger":	true
-			},
 			"unit_ratio_ready_for_plan":	{
 				"description":	"ratio of units that are ready for plan"
 			},
@@ -8981,19 +7424,11 @@
 			"own_forced_into_hiding_time_factor":	{
 				"description":	"The time factor applied to the status \"forced into hiding\". Takes into account the country it is operating for and the country it is operating against."
 			},
-			"skill":	{
-				"description":	"compare leader skill levels",
-				"is_trigger":	true
-			},
 			"intel_yield_factor_on_capture":	{
 				"description":	"Rate at which intel is extracted from this operative by an enemy country."
 			},
 			"operative_captor":	{
 				"description":	"returns the country tag that captured the operative"
-			},
-			"logistics_skill_level":	{
-				"description":	"Compares logistics skill level of a unit leader.\nExample: logistics_skill_level > 5",
-				"is_trigger":	true
 			}
 		}
 	},
@@ -9001,77 +7436,6 @@
 		"commands":	{
 			"rendertype":	{
 				"description":	"Reports what render backend is used"
-			},
-			"CrashReporter.SimulateCrash":	{
-				"description":	"Simulates a crash (resulting in the game exiting)."
-			},
-			"CrashReporter.UploadCrash":	{
-				"description":	"Upload the latest crash dump."
-			},
-			"CrashReporter.DeleteCrashData":	{
-				"description":	"Delete local crash dumps older than X days."
-			},
-			"pdxmp_netstats":	{
-				"description":	"Reports PDX MP network statistics"
-			},
-			"pdxmp_status":	{
-				"description":	"Reports whether PDX MP is online and connected."
-			},
-			"pops_account_login":	{
-				"available_in_release_build":	false,
-				"arguments":	["email", "password"],
-				"description":	"Login to a POPS Account"
-			},
-			"pops_account_logout":	{
-				"available_in_release_build":	false,
-				"description":	"Login to a POPS Account"
-			},
-			"pops_account_status":	{
-				"available_in_release_build":	false,
-				"description":	"Show whether you are currently logged into POPS or not."
-			},
-			"social_debuginfo":	{
-				"available_in_release_build":	false,
-				"description":	"Print debug info about the social layer"
-			},
-			"social_joinroom":	{
-				"available_in_release_build":	false,
-				"arguments":	["Context Index", "Room Name", "Nick Name"],
-				"description":	"Join a chat room using the given social context"
-			},
-			"social_sendmessage":	{
-				"available_in_release_build":	false,
-				"arguments":	["Context Index", "Room Name", "Message"],
-				"description":	"Send a message to a chat room."
-			},
-			"social_addfriend":	{
-				"available_in_release_build":	false,
-				"arguments":	["Context Index", "Account ID"],
-				"description":	"Add a friend to friends list"
-			},
-			"collaboration":	{
-				"description":	"Adds collaborations against selected country. Right click to select a country and use \"collaboration 0.3\""
-			},
-			"add_fake_armies":	{
-				"description":	"Creates fake intel armies for the player"
-			},
-			"tweakergui":	{
-				"description":	"Spawns a tweaker GUI"
-			},
-			"reload":	{
-				"arguments":	["file name"],
-				"description":	"Reloads assets",
-				"argument_completion_support":	true
-			},
-			"time":	{
-				"description":	"What time is it?"
-			},
-			"reloadfx":	{
-				"arguments":	["Arguments: map/mapname/postfx or *.fx filename"],
-				"description":	"Reloads the shader"
-			},
-			"particle_editor":	{
-				"description":	"Spawns a particle editor"
 			},
 			"add_mines":	{
 				"arguments":	["<Amount of naval mines>"],
@@ -9214,6 +7578,9 @@
 			"traderoutes":	{
 				"description":	"Toggle visibility of trade routes"
 			},
+			"railroads":	{
+				"description":	"Toggle rendering of railroads"
+			},
 			"debug_norender":	{
 				"description":	"Toggle rendering of map"
 			},
@@ -9240,15 +7607,15 @@
 				"description":	"Allows to execute all operations."
 			},
 			"operation_test_phase_selection":	{
-				"arguments":	[],
+				"arguments":	["Operation ID", "Target Tag"],
 				"description":	"Test an operation phase."
 			},
 			"operation_debug":	{
-				"arguments":	[],
+				"arguments":	["Operation ID", "Target Tag"],
 				"description":	"Allows to execute all operations."
 			},
 			"operation_start":	{
-				"arguments":	[],
+				"arguments":	["Operation ID", "Target Tag"],
 				"description":	"Allows to execute all operations."
 			},
 			"debug_nuking":	{
@@ -9261,10 +7628,6 @@
 				"arguments":	["<count>"],
 				"aliases":	["nuke"],
 				"description":	"add nukes"
-			},
-			"reloadsupply":	{
-				"aliases":	["relsup"],
-				"description":	"Reinitializes the supply systems."
 			},
 			"rebuildlayers":	{
 				"description":	"Reload mapmodes."
@@ -9299,11 +7662,9 @@
 				"description":	"adds temporary buff to selected units"
 			},
 			"list_temporary_buffs":	{
-				"arguments":	[],
 				"description":	"lists all temporary buffs on selected units"
 			},
 			"unit_stats":	{
-				"arguments":	[],
 				"description":	"lists stats of selected units"
 			},
 			"trigger_ability":	{
@@ -9320,8 +7681,15 @@
 			"nopausetext":	{
 				"description":	"Toggles the pausebanner for nicer screenshots."
 			},
+			"time":	{
+				"description":	"What time is it?"
+			},
 			"combatsound":	{
 				"description":	"How often does the combat view give a random sound? 0-50"
+			},
+			"Audio.PlayEffect":	{
+				"arguments":	["effect_name"],
+				"description":	"Play the specified sound effect"
 			},
 			"morehumans":	{
 				"arguments":	["num"],
@@ -9350,12 +7718,15 @@
 				"description":	"Reloads OOBs"
 			},
 			"createarmygroup":	{
-				"arguments":	[],
 				"description":	"Create field marshal group from selected groups"
 			},
 			"combat_analyzer":	{
 				"arguments":	["<TAG1>", "<TAG2>", "<OOB1>", "<OOB2>", "<num runs> OPTIONAL", "<num days> OPTIONAL"],
 				"description":	"Runs a combat between the 2 OOBs owned by the two TAGs either until done or for the specified number of days. \nUsing <num runs> the combat will be run multiple times and the averages are printed"
+			},
+			"reloadfx":	{
+				"arguments":	["Arguments: map/mapname/postfx or *.fx filename"],
+				"description":	"Reloads the shader"
 			},
 			"update_loc":	{
 				"arguments":	["localization tag"],
@@ -9380,6 +7751,14 @@
 			"annex":	{
 				"arguments":	["<Target Country Tag>"],
 				"description":	"Begin annex/annexes the specified tag"
+			},
+			"puppet":	{
+				"arguments":	["<Target Country Tag>"],
+				"description":	"Puppets the specified tag"
+			},
+			"focus_count":	{
+				"arguments":	["<Target Country Tag>"],
+				"description":	"Counts how many focuses a tag has. For science"
 			},
 			"no_wargoal":	{
 				"description":	"No need to have a wargoal for declaring war"
@@ -9499,7 +7878,6 @@
 				"description":	"Remove core"
 			},
 			"debug_zoom":	{
-				"available_in_release_build":	false,
 				"description":	"Zooms in the game"
 			},
 			"debug_types":	{
@@ -9515,6 +7893,9 @@
 			},
 			"debug_events":	{
 				"description":	"Start Counting events"
+			},
+			"dump_garrison_templates":	{
+				"description":	"Dump garrison templates to game log"
 			},
 			"debug_dumpevents":	{
 				"description":	"Dump Event data to game log"
@@ -9538,7 +7919,6 @@
 				"description":	"Toggle framesmoothing"
 			},
 			"debug_nomouse":	{
-				"available_in_release_build":	false,
 				"description":	"Toggles mouse scrollwheel on/off"
 			},
 			"debug_terrain":	{
@@ -9584,7 +7964,6 @@
 				"description":	"Toggles Bloom on/off"
 			},
 			"debug_tooltip":	{
-				"available_in_release_build":	false,
 				"description":	"Toggles Tooltips on/off"
 			},
 			"flagsoutput":	{
@@ -9603,13 +7982,7 @@
 			"debug_nogui":	{
 				"description":	"Toggles GUI on/off"
 			},
-			"debug_volume":	{
-				"available_in_release_build":	false,
-				"arguments":	["<Volume Delta>"],
-				"description":	"Modifies music volume"
-			},
 			"debug_lockcamera":	{
-				"available_in_release_build":	false,
 				"description":	"Toggles Camera locked on/off"
 			},
 			"debug_lines":	{
@@ -9658,7 +8031,6 @@
 				"description":	"Moves a unit to a province"
 			},
 			"spawnactor":	{
-				"available_in_release_build":	false,
 				"arguments":	["<Actorname>", "<Province ID>", "<Animation> OPTIONAL"],
 				"description":	"Spawns an actor with an optional animation"
 			},
@@ -9672,7 +8044,6 @@
 				"description":	"Toggles GUI bounds debug"
 			},
 			"cameraclamp":	{
-				"available_in_release_build":	false,
 				"description":	"Toggles the camera clamping"
 			},
 			"provtooltipdebug":	{
@@ -9690,6 +8061,19 @@
 				"available_in_release_build":	false,
 				"aliases":	["dbg_cas"],
 				"description":	"Toggle debug mode for air vs land combat."
+			},
+			"supply_toggle_flow_penalties":	{
+				"available_in_release_build":	false,
+				"description":	"Toggle the supply penalties due to bad supply flow"
+			},
+			"add_temp_supply_node":	{
+				"available_in_release_build":	false,
+				"description":	"Add temp supply node"
+			},
+			"debug_validate_supply":	{
+				"available_in_release_build":	false,
+				"aliases":	["dbg_sply"],
+				"description":	"Toggle debug validate supply cache."
 			},
 			"mapnames":	{
 				"description":	"Toggle map names"
@@ -9715,10 +8099,6 @@
 			"setcontroller":	{
 				"arguments":	["country tag", "province id"],
 				"description":	"Sets province controller"
-			},
-			"profilelog":	{
-				"available_in_release_build":	false,
-				"description":	"Prints out the profiling informations into time.log"
 			},
 			"gamestate_timer":	{
 				"arguments":	["on / off"],
@@ -9775,6 +8155,9 @@
 			},
 			"eval_effect":	{
 				"description":	"Runs the inlined effect on a selected scope"
+			},
+			"eval_trigger":	{
+				"description":	"Runs the inlined trigger on a selected scope"
 			},
 			"trigger":	{
 				"arguments":	["<tag> scripted_trigger_name"],
@@ -9913,7 +8296,7 @@
 			},
 			"metrics":	{
 				"available_in_release_build":	false,
-				"aliases":	[],
+				"arguments":	["log_units|log_pools|player|air_mission|global|unit_assignments <days>|decision|log|file<=file_name>|tag=<country_tag>|add_tag=<country_tag>"],
 				"description":	"Toggles collecting metrics"
 			},
 			"ai_research_log":	{
@@ -9981,17 +8364,16 @@
 				"description":	"Drops 'cosmetic tag' for a specified country"
 			},
 			"add_ideas":	{
-				"arguments":	[],
+				"arguments":	["all|<idea1> <idea2> ...>"],
 				"description":	"Adds ideas (ministers or national spirits) with <ID> to the country. Use 'all' to add them all",
 				"argument_completion_support":	true
 			},
 			"remove_ideas":	{
-				"arguments":	[],
+				"arguments":	["all|<idea1> <idea2> ..."],
 				"description":	"Removes ideas (ministers or national spirits) with <ID> to the country. Use 'all' to remove them all",
 				"argument_completion_support":	true
 			},
 			"list_ideas":	{
-				"arguments":	[],
 				"description":	"Dump all ideas to console (ministers or national spirits)"
 			},
 			"add_party_popularity":	{
@@ -10058,7 +8440,6 @@
 			"dbg_prov":	{
 				"available_in_release_build":	false,
 				"arguments":	["<int>"],
-				"aliases":	[],
 				"description":	"Sets type of debugging information on provinces."
 			},
 			"random_seed":	{
@@ -10173,6 +8554,67 @@
 				"arguments":	["<object id>", "<object type id> (optional)"],
 				"aliases":	["sel"],
 				"description":	"select object by id"
+			},
+			"reload_video_player":	{
+				"available_in_release_build":	false,
+				"description":	"Reload video data in the video player and database"
+			},
+			"reset_played_videos":	{
+				"available_in_release_build":	false,
+				"description":	"Reset played videos"
+			},
+			"railwaygun":	{
+				"available_in_release_build":	false,
+				"aliases":	["rg"],
+				"description":	"create railway gun in supply capital"
+			},
+			"railwaygun_damage":	{
+				"available_in_release_build":	false,
+				"aliases":	["rg_damage"],
+				"description":	"damage railway guns"
+			},
+			"loc_check_focuses":	{
+				"description":	"Check national focuses for missing localization"
+			},
+			"loc_check_events":	{
+				"description":	"Check events for missing localization"
+			},
+			"loc_check_modifiers":	{
+				"description":	"Check modifiers for missing localization"
+			},
+			"loc_check_decisions":	{
+				"description":	"Check decisions for missing localization"
+			},
+			"loc_check_national_spirits":	{
+				"description":	"Check national spirits for missing localization"
+			},
+			"loc_check_characters":	{
+				"description":	"Check characters for missing localization"
+			},
+			"loc_check":	{
+				"description":	"Check for missing localization"
+			},
+			"set_weather":	{
+				"arguments":	["<weather_type>"],
+				"description":	"Sets the weather for the selected province (and corresponding region)"
+			},
+			"set_mud":	{
+				"description":	"Sets mud for the selected province"
+			},
+			"add_rain":	{
+				"arguments":	["<rain_amount>"],
+				"description":	"Adds rain to the selected province"
+			},
+			"add_snow":	{
+				"arguments":	["<snow_amount>"],
+				"description":	"Adds snow to the selected province"
+			},
+			"dump_equipment_loc":	{
+				"arguments":	["desc: Dump equipment descriptions instead of the names", "<country_tag>: Multiple allowed. Only include loc strings for the given countries. Generic loc strings are included if no tags are given, or with argument 'generic'.", "<type>: Multiple allowed. Only include equipment that are all of the given types, e.g. 'armor anti_tank' will only include tank destroyers.", "path=<filepath>: File path to write the dump to. Default is 'logs/equipment_loc.csv'."],
+				"description":	"Dumps equipment loc strings to file. All arguments are optional."
+			},
+			"print_controllers":	{
+				"description":	"Prints countries controlled by human players."
 			}
 		},
 		"tweakables":	{
@@ -10180,6 +8622,9 @@
 				"type":	"bool"
 			},
 			"IntelNetwork.Instant":	{
+				"type":	"bool"
+			},
+			"Debug.OldCombat":	{
 				"type":	"bool"
 			},
 			"Focus.NoChecks":	{
@@ -10196,6 +8641,17 @@
 			},
 			"Debug.DeleteUnitEachTick":	{
 				"available_in_release_build":	false,
+				"type":	"bool"
+			},
+			"BattleSound.PlayBackground":	{
+				"available_in_release_build":	false,
+				"type":	"bool"
+			},
+			"BattleSound.Debug":	{
+				"available_in_release_build":	false,
+				"type":	"bool"
+			},
+			"Decision.NoChecks":	{
 				"type":	"bool"
 			},
 			"Draw.Objects":	{
@@ -10218,15 +8674,7 @@
 				"available_in_release_build":	false,
 				"type":	"bool"
 			},
-			"Decision.NoChecks":	{
-				"type":	"bool"
-			},
-			"BattleSound.PlayBackground":	{
-				"available_in_release_build":	false,
-				"type":	"bool"
-			},
-			"BattleSound.Debug":	{
-				"available_in_release_build":	false,
+			"ShowBorderTypes":	{
 				"type":	"bool"
 			},
 			"resistance_system":	{
@@ -10285,10 +8733,42 @@
 				"available_in_release_build":	false,
 				"type":	"bool"
 			},
+			"supply_debug.show_debug_lines_rail":	{
+				"type":	"bool"
+			},
+			"supply_debug.show_debug_lines_train":	{
+				"type":	"bool"
+			},
+			"supply_debug.show_debug_lines_supply":	{
+				"type":	"bool"
+			},
+			"supply_debug.show_debug_rivers":	{
+				"type":	"bool"
+			},
 			"ShowTechBonus":	{
 				"type":	"bool"
 			},
 			"CounterIntelligence.TestShieldColors":	{
+				"type":	"bool"
+			},
+			"ApplicationUtils.Update":	{
+				"available_in_release_build":	false,
+				"type":	"bool"
+			},
+			"Audio.DebugMin":	{
+				"available_in_release_build":	false,
+				"type":	"bool"
+			},
+			"Audio.DebugMax":	{
+				"available_in_release_build":	false,
+				"type":	"bool"
+			},
+			"Audio.Debug.LevelsSampleRate":	{
+				"available_in_release_build":	false,
+				"type":	"integer"
+			},
+			"Audio.Debug.Levels":	{
+				"available_in_release_build":	false,
 				"type":	"bool"
 			},
 			"guibounds":	{
@@ -10341,26 +8821,6 @@
 				"type":	"bool"
 			},
 			"Particle.MipLevels":	{
-				"available_in_release_build":	false,
-				"type":	"bool"
-			},
-			"ApplicationUtils.Update":	{
-				"available_in_release_build":	false,
-				"type":	"bool"
-			},
-			"Audio.DebugMin":	{
-				"available_in_release_build":	false,
-				"type":	"bool"
-			},
-			"Audio.DebugMax":	{
-				"available_in_release_build":	false,
-				"type":	"bool"
-			},
-			"Audio.Debug.LevelsSampleRate":	{
-				"available_in_release_build":	false,
-				"type":	"integer"
-			},
-			"Audio.Debug.Levels":	{
 				"available_in_release_build":	false,
 				"type":	"bool"
 			},

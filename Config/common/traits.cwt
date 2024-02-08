@@ -15,8 +15,14 @@ types = {
 		subtype[naval_commander] = {
 			type = navy
 		}
+		subtype[naval_commander] = {
+			type = { navy }
+		}
 		subtype[land_commander] = {
 			type = land
+		}
+		subtype[land_commander] = {
+			type = { land }
 		}
 		subtype[land_naval_commander] = {
 			type = { land navy }

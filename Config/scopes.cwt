@@ -88,6 +88,9 @@ scopes = {
 	"Unit Leader" = {
 		aliases = { unit_leader unitleader }
 	}
+	Operative = {
+		aliases = { operative }
+	}
 	Combat = {
 		aliases = { combat }
 	}

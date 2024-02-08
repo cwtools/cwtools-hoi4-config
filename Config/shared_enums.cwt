@@ -135,8 +135,9 @@ enums = {
 		medium_plane_scout_plane_airframe
 		large_plane_airframe
 		large_plane_maritime_patrol_plane_airframe
+	}
 
-		# Millennium Dawn Unique Airframes
+	enum[md_unique_dupe_archetypes] = {
 		# TODO: We need to create a system for validating the unique type of airframes. MD uses this in our plane designer where a sub category can be a different version i.e. small_plane_strike_airframe_1
 		small_plane_airframe_0
 		small_plane_airframe_1

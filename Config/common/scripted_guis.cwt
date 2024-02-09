@@ -25,11 +25,20 @@ types = {
 		subtype[state_context] = {
 			context_type = selected_state_context
 		}
+
+		## only_if_not = { any_context }
+		subtype[country_context] = {
+			context_type = diplomatic_action
+		}
+		## only_if_not = { any_context }
+		subtype[country_context] = {
+			context_type = decision_category
+		}
 		## only_if_not = { any_context }
 		subtype[country_context] = {
 			context_type = selected_country_context
 		}
-		## only_if_not = { any_context country_context state_context global_context }
+		## only_if_not = { any_context country_context state_context global_context country_mapicon_context state_mapicon_context }
 		subtype[player_context] = {
 		}
 	}

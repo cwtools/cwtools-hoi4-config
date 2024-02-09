@@ -823,7 +823,7 @@ alias[effect:damage_units] = {
 ## scope = { country }
 alias[effect:force_update_map_mode] = {
 	## cardinality = ~1..2
-	mapmode = enum[scripted_map_modes]
+	mapmode = <scripted_map_modes>
 }
 
 ### Create railway gun effect

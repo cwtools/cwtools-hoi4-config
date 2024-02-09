@@ -757,7 +757,7 @@ alias[trigger:is_core_of] = enum[country_tags]
 alias[trigger:is_ai] = bool
 
 ### Check if sides leader has trait.
-## scope = { character unit_leader combat }
+## scope = { character unit_leader combat operative }
 alias[trigger:has_trait] = <unit_leader_trait>
 
 ### Check if sides leader has trait.
@@ -1607,12 +1607,14 @@ alias[trigger:num_units] = int
 alias[trigger:is_field_marshal] = bool
 
 ### Has unit leader flag been setCheck flag val date set and days since set.
-## scope = { unit_leader combat character }
+## scope = { unit_leader combat character operative }
+## error_if_only_match: Is deprecated. Use has_character_flag instead
 ## severity = warning
 alias[trigger:has_unit_leader_flag] = value[leader_flag]
 
 ### Has unit leader flag been setCheck flag val date set and days since set.
-## scope = { unit_leader combat character }
+## scope = { unit_leader combat character operative }
+## error_if_only_match: Is deprecated. Use has_character_flag instead
 ## severity = warning
 alias[trigger:has_unit_leader_flag] = {
 	flag = value[leader_flag]

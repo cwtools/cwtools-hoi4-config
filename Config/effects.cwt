@@ -520,6 +520,8 @@ alias[effect:remove_opinion_modifier] = {
 }
 
 ### Creates a leader and adds it to proper party in country.
+## error_if_only_match = This is a deprecated command. Use add_country_leader_role instead when possible.
+## severity = warning
 ## scope = country
 alias[effect:create_country_leader] = {
 	name = scalar
@@ -742,6 +744,8 @@ alias[effect:set_technology] = {
 }
 
 ### Creates an admiral for country in scope.
+## error_if_only_match = This is a deprecated command. Use add_naval_commander_role instead when possible. The created admiral will not be able to have a portrait if assigned to be a minister via officer corps, causing errors.
+## severity = warning
 ## scope = country
 alias[effect:create_navy_leader] = {
 	name = scalar
@@ -779,11 +783,11 @@ alias[effect:create_navy_leader] = {
 }
 
 ### Remove trait from unit leader.
-## scope = { character unit_leader }
+## scope = { character unit_leader operative }
 alias[effect:remove_unit_leader_trait] = <unit_leader_trait>
 
 ### Add trait to unit leader.
-## scope = { character unit_leader }
+## scope = { character unit_leader operative }
 alias[effect:add_unit_leader_trait] = <unit_leader_trait>
 
 ### Adds new namespace.
@@ -791,9 +795,13 @@ alias[effect:add_unit_leader_trait] = <unit_leader_trait>
 alias[effect:add_namespace] = scalar
 
 ### Set owner for state.
+## error_if_only_match = This can fail to carry over the control, so it's recommended to instead use transfer_state unless transferring the ownership without transferring over the control.
+## severity = info
 ## scope = country
 alias[effect:set_state_owner] = scope[state]
 ### Set owner for state.
+## error_if_only_match = This can fail to carry over the control, so it's recommended to instead use transfer_state unless transferring the ownership without transferring over the control.
+## severity = info
 ## scope = country
 alias[effect:set_state_owner] = <state>
 
@@ -1533,7 +1541,9 @@ alias[effect:add_resource] = {
 	show_state_in_tooltip = bool
 }
 
-### Remove a unit leader ( remove_unit_leader=ID ).
+### Remove a unit leader by their legacy ID ( remove_unit_leader=ID ).
+## error_if_only_match = Does not work with the character ID. Instead, remove_unit_leader_role within the scope of the character is recommended when possible.
+## severity = info
 ## scope = country
 alias[effect:remove_unit_leader] = value[unit_leader_ids]
 
@@ -1604,6 +1614,8 @@ alias[effect:set_province_controller] = enum[provinces]
 alias[effect:set_major] = bool
 
 ### Creates a field marshal for country in scope.
+## error_if_only_match = This is an deprecated command. Uadd_field_marshal_role instead when possible. The created field marshal will not be able to have a portrait if assigned to be a minister via officer corps, causing errors.
+## severity = warning
 ## scope = country
 alias[effect:create_field_marshal] = {
 	name = scalar
@@ -1640,6 +1652,8 @@ alias[effect:create_field_marshal] = {
 }
 
 ### Creates a corps commander for country in scope.
+## error_if_only_match = This is an deprecated command. use add_corps_commander_role instead when possible. The created corps commander will not be able to have a portrait if assigned to be a minister via officer corps, causing errors.
+## severity = warning
 ## scope = country
 alias[effect:create_corps_commander] = {
 	## cardinality = 0..1
@@ -2318,10 +2332,14 @@ alias[effect:destroy_ships] = {
 }
 
 ### Set unit leader flag.
-## scope = { unit_leader character }
+## scope = { unit_leader character operative }
+## error_if_only_match: Is deprecated. Use set_character_flag instead
+## severity = warning
 alias[effect:set_unit_leader_flag] = value_set[leader_flag]
 ### Set unit leader flag.
-## scope = { unit_leader character }
+## scope = { unit_leader character operative }
+## error_if_only_match: Is deprecated. Use set_character_flag instead
+## severity = warning
 alias[effect:set_unit_leader_flag] = {
 	flag = value_set[leader_flag]
 	## cardinality = 0..1
@@ -2331,6 +2349,8 @@ alias[effect:set_unit_leader_flag] = {
 }
 
 ### Modify unit leader flag. Only modifies if flag already exists.
+## error_if_only_match = This is a deprecated command. Use clr_character_flag instead
+## severity = warning
 ## scope = { unit_leader character }
 alias[effect:modify_unit_leader_flag] = {
 	flag = value[leader_flag]
@@ -2342,6 +2362,7 @@ alias[effect:modify_unit_leader_flag] = {
 
 ### Clear unit leader flag.
 ## scope = { unit_leader character }
+## error_if_only_match = This is a deprecated command. Use clr_character_flag instead
 ## severity = warning
 alias[effect:clr_unit_leader_flag] = value[leader_flag]
 

@@ -76,6 +76,7 @@ types = {
 			cost = land
 		}
 	}
+	## type_key_filter <> limit
 	type[module] = {
 		skip_root_key = equipment_modules
 		path = "game/common/units/equipment/modules"
@@ -361,6 +362,15 @@ upgrade = {
 	subtype[land_upgrade] = {
 		### The experience type that is used by the designer
 		cost = land
+
+		## cardinality = 0..1
+		level_requirement = {
+			## cardinality = 0..inf
+			int = {
+				alias_name[trigger] = alias_match_left[trigger]
+			}
+		}
+
 	}
 
 	## cardinality = 0..1
@@ -377,7 +387,8 @@ upgrade = {
 	## cardinality = 0..1
 	### Resource values defined here will increase the resource cost construction
 	resource_cost_thresholds = {
-		scalar = {
+		## cardinality = 0..inf
+		int = {
 			## cardinality = ~1..10
 			<resource> = int
 		}
@@ -456,7 +467,10 @@ module = {
 		alias_name[naval_stat] = alias_match_left[naval_stat]
 		alias_name[air_stat] = alias_match_left[air_stat]
 	}
-
+	## cardinality = 0..1
+	forbid_module_categories = {
+		enum[module_categories]
+	}
 	## cardinality = 0..10
 	can_convert_from = {
 		## cardinality = 0..1

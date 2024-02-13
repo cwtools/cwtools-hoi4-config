@@ -73,11 +73,11 @@ types = {
 
 decision_category = {
 	## cardinality = 0..inf
-	icon = scalar
+	icon = <spriteType>
 	## replace_scope = { this = country root = country }
 	## cardinality = 0..inf
 	icon = {
-		key = scalar
+		key = <spriteType>
 		trigger = {
 			alias_name[trigger] = alias_match_left[trigger]
 		}
@@ -206,11 +206,11 @@ decision_category = {
 
 decision = {
 	## cardinality = 0..inf
-	icon = scalar
+	icon = <spriteType>
 	## replace_scope = { this = country root = country }
 	## cardinality = 0..inf
 	icon = {
-		key = scalar
+		key = <spriteType>
 		trigger = {
 			alias_name[trigger] = alias_match_left[trigger]
 		}

@@ -59,10 +59,10 @@ alias[effect:show_mio_tooltip] = <military_industrial_organization>
 
 ### Displays a tooltip that says that the policy is made available.
 ## scope = country
-unlock_mio_policy_tooltip = <mio_policy>
+alias[unlock_mio_policy_tooltip] = <mio_policy>
 ### Displays a tooltip that says that the policy is made available.
 ## scope = country
-unlock_mio_policy_tooltip = {
+alias[unlock_mio_policy_tooltip] = {
     policy = <mio_policy>
 	## error_if_only_match = This is the default value and can be omitted
 	## severity = info

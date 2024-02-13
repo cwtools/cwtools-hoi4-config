@@ -883,7 +883,7 @@ alias[effect:operative_leader_event] = {
 
 ###Kills an operative. This will temporarily lock the slot they occupy.
 ## scopes = { COUNTRY }
-alias[effect:kill_operative] = scope[operativwr]
+alias[effect:kill_operative] = scope[operative]
 
 ###Kills an operative. This will temporarily lock the slot they occupy.
 ## scopes = { COUNTRY }

@@ -264,7 +264,7 @@ alias[trigger:is_corps_commander] = bool
 alias[trigger:is_navy_leader] = bool
 
 ###Checks if the current character is an operative.
-## scope = character
+## scope = { character unit_leader operative }
 alias[trigger:is_operative] = bool
 
 ###Checks if the current character has an army ledger.

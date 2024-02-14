@@ -1,0 +1,135 @@
+types = {
+	## graph_related_types = { }
+	type[portrait] = {
+		path = "game/portraits"
+		## type_key_filter = default
+		subtype[default] = {
+		}
+		## type_key_filter = continent
+		subtype[contintent] = {
+			name = scalar
+		}
+		## only_if_not = { default continent }
+		subtype[country] = {
+			unique = yes
+		}
+	}
+}
+
+portrait = {
+	subtype[contintent] = {
+        ## cardinality = 0..1
+		name = enum[continents]
+	}
+    ## cardinality = 0..1
+	male = single_alias[genderportrait]
+    ## cardinality = 0..1
+	female = single_alias[genderportrait]
+
+    ## cardinality = 0..1
+	army = single_alias_right[portraits]
+
+    ## cardinality = 0..1
+	navy = single_alias_right[portraits]
+
+    ## cardinality = 0..1
+	operative = single_alias_right[portraits]
+
+    ## cardinality = 0..1
+	political = {
+        ## cardinality = 0..inf
+		enum[sub_ideology] = single_alias_right[portraits]
+        ## cardinality = 0..inf
+		<ideology> = single_alias_right[portraits]
+	}
+}
+
+single_alias[portraits] = {
+	## cardinality = 0..1
+	male = single_alias_right[genderportrait]
+	## cardinality = 0..1
+	female = single_alias_right[genderportrait]
+}
+
+single_alias[genderportrait] = {
+	## cardinality = 0..inf
+	<spriteType>
+	## cardinality = 0..inf
+	filepath
+	## cardinality = 0..inf
+	filepath[dlc/dlc001_german_historical_portraits/]
+	## cardinality = 0..inf
+	filepath[dlc/dlc002_polish_content_pack/]
+	## cardinality = 0..inf
+	filepath[dlc/dlc003_rocket_launcher_unit_pack/]
+	## cardinality = 0..inf
+	filepath[dlc/dlc004_famous_battleships_unit_pack/]
+	## cardinality = 0..inf
+	filepath[dlc/dlc005_heavy_cruisers_unit_pack/]
+	## cardinality = 0..inf
+	filepath[dlc/dlc006_soviet_tanks_unit_pack/]
+	## cardinality = 0..inf
+	filepath[dlc/dlc007_german_tanks_unit_pack/]
+	## cardinality = 0..inf
+	filepath[dlc/dlc008_french_tanks_unit_pack/]
+	## cardinality = 0..inf
+	filepath[dlc/dlc009_british_tanks_unit_pack/]
+	## cardinality = 0..inf
+	filepath[dlc/dlc010_us_tanks_unit_pack/]
+	## cardinality = 0..inf
+	filepath[dlc/dlc011_german_march_order_music_pack/]
+	## cardinality = 0..inf
+	filepath[dlc/dlc012_allied_radio_music_pack/]
+	## cardinality = 0..inf
+	filepath[dlc/dlc013_sabaton/]
+	## cardinality = 0..inf
+	filepath[dlc/dlc014_wallpaper/]
+	## cardinality = 0..inf
+	filepath[dlc/dlc016_artbook/]
+	## cardinality = 0..inf
+	filepath[dlc/dlc017_original_soundtrack/]
+	## cardinality = 0..inf
+	filepath[dlc/dlc018_together_for_victory/]
+	## cardinality = 0..inf
+	filepath[dlc/dlc019_sabaton_vol2/]
+	## cardinality = 0..inf
+	filepath[dlc/dlc020_death_or_dishonor/]
+	## cardinality = 0..inf
+	filepath[dlc/dlc021_anniversary_pack/]
+	## cardinality = 0..inf
+	filepath[dlc/dlc022_waking_the_tiger/]
+	## cardinality = 0..inf
+	filepath[dlc/dlc023_man_the_guns/]
+	## cardinality = 0..inf
+	filepath[dlc/dlc024_man_the_guns_wallpaper/]
+	## cardinality = 0..inf
+	filepath[dlc/dlc025_axis_armor_pack/]
+	## cardinality = 0..inf
+	filepath[dlc/dlc026_radio_pack/]
+	## cardinality = 0..inf
+	filepath[dlc/dlc027_la_resistance_preorder_bonus/]
+	## cardinality = 0..inf
+	filepath[dlc/dlc028_la_resistance/]
+	## cardinality = 0..inf
+	filepath[dlc/dlc029_allied_armor_pack/]
+	## cardinality = 0..inf
+	filepath[dlc/dlc030_allied_speeches_pack/]
+	## cardinality = 0..inf
+	filepath[dlc/dlc031_battle_for_the_bosporus/]
+	## cardinality = 0..inf
+	filepath[dlc/dlc032_eastern_front_planes_pack/]
+	## cardinality = 0..inf
+	filepath[dlc/dlc033_songs_of_the_eastern_front/]
+	## cardinality = 0..inf
+	filepath[dlc/dlc034_no_step_back/]
+	## cardinality = 0..inf
+	filepath[dlc/dlc035_no_step_back_preorder_bonus/]
+	## cardinality = 0..inf
+	filepath[dlc/dlc036_by_blood_alone/]
+	## cardinality = 0..inf
+	filepath[dlc/dlc037_by_blood_alone_preorder_bonus/]
+	## cardinality = 0..inf
+	filepath[dlc/dlc038_arms_against_tyranny/]
+	## cardinality = 0..inf
+	filepath[dlc/dlc039_arms_against_tyranny_preorder_bonus/]
+}

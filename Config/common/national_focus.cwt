@@ -19,6 +19,7 @@ types = {
 		path = "game/common/national_focus"
 		skip_root_key = focus_tree
 		name_field = "id"
+		unique = yes
 	}
 
 	## unique = yes
@@ -27,6 +28,7 @@ types = {
 	type[shared_focus] = {
 		path = "game/common/national_focus"
 		name_field = "id"
+		unique = yes
 
 		## only_if_not = { joint_focus }
 		## type_key_filter = shared_focus

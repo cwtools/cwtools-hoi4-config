@@ -783,7 +783,7 @@ alias[effect:add_ideas] = value[advisor_token]
 alias[effect:remove_ideas] = value[advisor_token]
 
 ### damages units for given conditions. no tooltip generated
-## scope = { country state }
+## scope = { country state unit_leader }
 alias[effect:damage_units] = {
 	### specify a location
 	## cardinality = 0..1

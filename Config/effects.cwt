@@ -2215,7 +2215,7 @@ alias[effect:set_war_support] = variable_field[0..1]
 
 ### Executes children effects on random unit leader that fulfills the "limit" trigger.
 ## scope = country
-## push_scope = { character unit_leader }
+## push_scope = unit_leader 
 alias[effect:random_unit_leader] = {
 	## cardinality = 0..1
 	limit = {
@@ -2229,7 +2229,7 @@ alias[effect:random_unit_leader] = {
 
 ### Executes children effects on unit leaders that fulfills the "limit" trigger.
 ## scope = country
-## push_scope = { character unit_leader }
+## push_scope = unit_leader 
 alias[effect:every_unit_leader] = {
 	### Apply the effect to this number of randomly selected entities
 	## cardinality = 0..1
@@ -2248,7 +2248,7 @@ alias[effect:every_unit_leader] = {
 
 ### Executes children effects on random army leader that fulfills the "limit" trigger.
 ## scope = country
-## push_scope = { character unit_leader }
+## push_scope = unit_leader
 alias[effect:random_army_leader] = {
 	## cardinality = 0..1
 	limit = {
@@ -2262,7 +2262,7 @@ alias[effect:random_army_leader] = {
 
 ### Executes children effects on army leaders that fulfills the "limit" trigger.
 ## scope = country
-## push_scope = { unit_leader character }
+## push_scope = unit_leader
 alias[effect:every_army_leader] = {
 	### Apply the effect to this number of randomly selected entities
 	## cardinality = 0..1
@@ -2281,7 +2281,7 @@ alias[effect:every_army_leader] = {
 
 ### Executes children effects on random navy leader that fulfills the "limit" trigger.
 ## scope = country
-## push_scope = any
+## push_scope = unit_leader
 alias[effect:random_navy_leader] = {
 	## cardinality = 0..1
 	limit = {
@@ -2295,7 +2295,7 @@ alias[effect:random_navy_leader] = {
 
 ### Executes children effects on navy leaders that fulfills the "limit" trigger.
 ## scope = country
-## push_scope = any
+## push_scope = unit_leader
 alias[effect:every_navy_leader] = {
 	### Apply the effect to this number of randomly selected entities
 	## cardinality = 0..1
@@ -2333,13 +2333,9 @@ alias[effect:destroy_ships] = {
 
 ### Set unit leader flag.
 ## scope = { unit_leader character operative }
-## error_if_only_match: Is deprecated. Use set_character_flag instead
-## severity = warning
 alias[effect:set_unit_leader_flag] = value_set[leader_flag]
 ### Set unit leader flag.
 ## scope = { unit_leader character operative }
-## error_if_only_match: Is deprecated. Use set_character_flag instead
-## severity = warning
 alias[effect:set_unit_leader_flag] = {
 	flag = value_set[leader_flag]
 	## cardinality = 0..1
@@ -2349,8 +2345,6 @@ alias[effect:set_unit_leader_flag] = {
 }
 
 ### Modify unit leader flag. Only modifies if flag already exists.
-## error_if_only_match = This is a deprecated command. Use clr_character_flag instead
-## severity = warning
 ## scope = { unit_leader character }
 alias[effect:modify_unit_leader_flag] = {
 	flag = value[leader_flag]
@@ -2362,8 +2356,6 @@ alias[effect:modify_unit_leader_flag] = {
 
 ### Clear unit leader flag.
 ## scope = { unit_leader character }
-## error_if_only_match = This is a deprecated command. Use clr_character_flag instead
-## severity = warning
 alias[effect:clr_unit_leader_flag] = value[leader_flag]
 
 ### Sets the country that owns current scope general.

@@ -1608,14 +1608,10 @@ alias[trigger:is_field_marshal] = bool
 
 ### Has unit leader flag been setCheck flag val date set and days since set.
 ## scope = { unit_leader combat character operative }
-## error_if_only_match: Is deprecated. Use has_character_flag instead
-## severity = warning
 alias[trigger:has_unit_leader_flag] = value[leader_flag]
 
 ### Has unit leader flag been setCheck flag val date set and days since set.
 ## scope = { unit_leader combat character operative }
-## error_if_only_match: Is deprecated. Use has_character_flag instead
-## severity = warning
 alias[trigger:has_unit_leader_flag] = {
 	flag = value[leader_flag]
 	## cardinality = 0..1

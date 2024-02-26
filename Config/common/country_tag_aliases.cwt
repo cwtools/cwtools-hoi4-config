@@ -4,15 +4,12 @@ types = {
 		subtype[variable] = {
 			variable = variable_field
 		}
-		## only_if_not = { variable }
 		subtype[global_event_target] = {
 			global_event_target = value[global_event_target]
 		}
-		## only_if_not = { variable global_event_target }
 		subtype[event_target] = {
 			event_target = value[event_target]
 		}
-		## only_if_not = { variable global_event_target event_target }
 		subtype[triggered] = {
 
 		}

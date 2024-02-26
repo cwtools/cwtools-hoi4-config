@@ -22,9 +22,9 @@ portrait = {
 		name = enum[continents]
 	}
     ## cardinality = 0..1
-	male = single_alias[genderportrait]
+	male = single_alias_right[genderportrait]
     ## cardinality = 0..1
-	female = single_alias[genderportrait]
+	female = single_alias_right[genderportrait]
 
     ## cardinality = 0..1
 	army = single_alias_right[portraits]

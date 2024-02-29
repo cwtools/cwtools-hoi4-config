@@ -8,10 +8,17 @@ types = {
 	}
 
 	## unique = yes
-	## type_key_filter = { focus_tree continuous_focus_palette }
+	## type_key_filter = focus_tree
 	type[focus_tree] = {
 		path = "game/common/national_focus"
-		path = "game/common/continuous_focuss"
+		name_field = "id"
+		unique = yes
+	}
+
+	## unique = yes
+	## type_key_filter = continuous_focus_palette
+	type[continous_focus_tree] = {
+		path = "game/common/continuous_focus"
 		name_field = "id"
 		unique = yes
 	}
@@ -20,8 +27,15 @@ types = {
 	## type_key_filter = focus
 	type[focus] = {
 		path = "game/common/national_focus"
-		path = "game/common/continuous_focus"
 		skip_root_key = focus_tree
+		name_field = "id"
+		unique = yes
+	}
+
+	## unique = yes
+	## type_key_filter = focus
+	type[continous_focus] = {
+		path = "game/common/continuous_focus"
 		skip_root_key = continuous_focus_palette
 		name_field = "id"
 		unique = yes
@@ -256,6 +270,13 @@ focus_tree = {
 		## cardinality = 0..1
 		## replace_scope = { root = country this = country }
 		select_effect = {
+			## cardinality = ~1..inf
+			alias_name[effect] = alias_match_left[effect]
+		}
+
+		## cardinality = 0..1
+		## replace_scope = { root = country this = country }
+		cancel_effect = {
 			## cardinality = ~1..inf
 			alias_name[effect] = alias_match_left[effect]
 		}
@@ -509,6 +530,107 @@ shared_focus = {
 	search_filters = {
 		## cardinality = ~1..inf
 		value_set[focus_filter]
+	}
+}
+
+## replace_scope = { root = country this = country }
+continous_focus_tree = {
+	id = localisation
+
+	country = {
+		## cardinality = 0..1
+		enum[base_factor] = float
+		alias_name[modifier_rule] = alias_match_left[modifier_rule]
+	}
+
+	## cardinality = 0..1
+	default = bool
+
+	## cardinality = 0..1
+	reset_on_civilwar = bool
+
+	## cardinality = 0..1
+	position = {
+		x = int
+		y = int
+	}
+
+	## cardinality = 0..inf
+	focus = {
+		id = localisation
+
+		## cardinality = ~1..inf
+		icon = <spriteType>
+
+		## cardinality = ~1..inf
+		icon = {
+			## cardinality = 0..1
+			## replace_scope = { root = country this = country }
+			trigger = {
+				## cardinality = ~1..inf
+				alias_name[trigger] = alias_match_left[trigger]
+			}
+
+			## cardinality = ~1..1
+			value = <spriteType>
+		}
+
+		### The cost in daily political power gain to take this focus compared to not having any focus selected
+		## severity = warning
+		daily_cost = float
+
+		## cardinality = 0..1
+		available_if_capitulated = yes
+		## error_if_only_match = This is the default value and can be ommitted
+		## severity = info
+		## cardinality = 0..1
+		available_if_capitulated = no
+
+		## cardinality = 0..1
+		## replace_scope = { root = country this = country }
+		available = {
+			## cardinality = ~1..inf
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+		## replace_scope = { root = country this = country }
+		## cardinality = 0..1
+		enable = {
+			## cardinality = ~1..inf
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+
+		## cardinality = 0..1
+		supports_ai_strategy = <ai_focus>
+
+		## cardinality = 0..1
+		modifier = {
+			## cardinality = ~1..inf
+			alias_name[modifier] = alias_match_left[modifier]
+		}
+
+		## cardinality = 0..1
+		idea = enum[idea_name]
+
+		## cardinality = 0..1
+		## replace_scope = { root = country this = country }
+		select_effect = {
+			## cardinality = ~1..inf
+			alias_name[effect] = alias_match_left[effect]
+		}
+
+		## cardinality = 0..1
+		## replace_scope = { root = country this = country }
+		cancel_effect = {
+			## cardinality = ~1..inf
+			alias_name[effect] = alias_match_left[effect]
+		}
+
+		## cardinality = 0..1
+		ai_will_do = {
+			## cardinality = 0..1
+			enum[base_factor] = float
+			alias_name[modifier_rule] = alias_match_left[modifier_rule]
+		}
 	}
 }
 

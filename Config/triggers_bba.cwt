@@ -158,3 +158,9 @@ alias[trigger:has_war_with_wargoal_against] = enum[country_tags]
 
 ## scope = character
 alias[trigger:is_hired_as_advisor] = bool
+
+## scope = country
+alias[trigger:has_completed_custom_achievement] = {
+    mod = enum[mod_achievement_id]
+    achievement = <achievement>
+}

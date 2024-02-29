@@ -17,3 +17,14 @@ achievement = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 }
+
+enums = {
+	complex_enum[mod_achievement_id] = {
+		path = "game/common/achievements"
+        unique = yes
+		start_from_root = yes		
+		name = {
+			unique_id = enum_name
+		}
+	}
+}

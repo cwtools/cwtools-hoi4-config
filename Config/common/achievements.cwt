@@ -1,0 +1,19 @@
+types = {
+	type[achievement] = {
+		path = "game/common/achievements"
+        unique = yes
+    }
+}
+
+## replace_scope = { ROOT = country THIS = country }
+achievement = {
+	possible = {
+		## cardinality = ~1..inf
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+
+	happened = {
+		## cardinality = ~1..inf
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+}

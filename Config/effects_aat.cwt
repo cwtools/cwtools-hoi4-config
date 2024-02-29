@@ -21,6 +21,14 @@ alias[effect:every_military_industrial_organization] = {
 ## scope = military_industrial_organization
 alias[effect:unlock_mio_trait_tooltip] = value[mio_token]
 
+### Unlock MIO trait tooltip
+## scope = military_industrial_organization
+alias[effect:unlock_mio_trait_tooltip] = {
+    trait = value[mio_token]
+    ## cardinality = 0..1
+    show_modifiers = bool
+}
+
 ### Increase MIO funds gain factor
 ## scope = military_industrial_organization
 alias[effect:add_mio_funds_gain_factor] = variable_field
@@ -90,3 +98,39 @@ alias[effect:set_mio_name_key] = localisation
 ### Change MIO icon
 ## scope = military_industrial_organization
 alias[effect:set_mio_icon] = <spriteType>
+
+### Set mio flag
+## scope = military_industrial_organization
+alias[effect:set_mio_flag] = value_set[mio_flag]
+
+### Set mio flag.
+## scope = military_industrial_organization
+alias[effect:set_mio_flag] = {
+	flag = value_set[mio_flag]
+	## cardinality = 0..1
+	value = int
+	## cardinality = 0..1
+	days = int
+}
+
+### Modify mio flag.
+## scope = military_industrial_organization
+alias[effect:modify_mio_flag] = {
+	flag = value[mio_flag]
+	## cardinality = 0..1
+	value = int
+	## cardinality = 0..1
+	days = int
+}
+
+### Clear mio flag
+## scope = military_industrial_organization
+alias[effect:clr_mio_flag] = value[mio_flag]
+
+### Modify mio funds gain factor
+## scope = military_industrial_organization
+alias[effect:set_mio_funds_gain_factor] = float
+
+### Modify mio research bonus
+## scope = military_industrial_organization
+alias[effect:set_mio_research_bonus] = float

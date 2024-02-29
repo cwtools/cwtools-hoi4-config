@@ -8,7 +8,7 @@ types = {
 		subtype[country_event] = {
 		}
 		## type_key_filter = state_event
-		## replace_scope = { this = state root = country }
+		## push_scope = any
 		subtype[state_event] = {
 		}
 		## type_key_filter = news_event

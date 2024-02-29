@@ -786,6 +786,9 @@ alias[effect:harm_operative_leader] = variable_field
 ###Force an operative into hiding, preventing them from performing mission. The specified values is subject to modifiers.
 ## scopes = { operative }
 alias[effect:force_operative_leader_into_hiding] = bool
+###Force an operative into hiding, preventing them from performing mission. The specified values is subject to modifiers.
+## scopes = { operative }
+alias[effect:force_operative_leader_into_hiding] = int[0..100]
 
 ###Add the specified amount of intel over a specified country.
 ## scopes = { COUNTRY }

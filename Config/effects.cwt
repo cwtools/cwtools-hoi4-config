@@ -521,7 +521,7 @@ alias[effect:remove_opinion_modifier] = {
 
 ### Creates a leader and adds it to proper party in country.
 ## error_if_only_match = This is a deprecated command. Use add_country_leader_role instead when possible.
-## severity = warning
+## severity = info
 ## scope = country
 alias[effect:create_country_leader] = {
 	name = scalar
@@ -560,6 +560,18 @@ alias[effect:create_unit] = {
 	allow_spawning_on_enemy_provs = bool
 	## cardinality = 0..1
 	count = int_variable_field
+	## cardinality = 0..1
+	officer = {
+		## cardinality = 0..1
+		name = localisation
+		## cardinality = 0..1
+		portraits = {
+			army = {
+				large = <spriteType>
+				small = <spriteType>
+			}
+		}
+	}
 	## cardinality = 0..1
 	country_score = {
 		## cardinality = 0..1
@@ -745,7 +757,7 @@ alias[effect:set_technology] = {
 
 ### Creates an admiral for country in scope.
 ## error_if_only_match = This is a deprecated command. Use add_naval_commander_role instead when possible. The created admiral will not be able to have a portrait if assigned to be a minister via officer corps, causing errors.
-## severity = warning
+## severity = info
 ## scope = country
 alias[effect:create_navy_leader] = {
 	name = scalar
@@ -1608,6 +1620,9 @@ alias[effect:add_named_threat] = {
 ### Set controller for province.
 ## scope = country
 alias[effect:set_province_controller] = enum[provinces]
+### Set controller for province.
+## scope = country
+alias[effect:set_province_controller] = value[variable]
 
 ### Sets mandatory major country flag.
 ## scope = country
@@ -1615,7 +1630,7 @@ alias[effect:set_major] = bool
 
 ### Creates a field marshal for country in scope.
 ## error_if_only_match = This is an deprecated command. Uadd_field_marshal_role instead when possible. The created field marshal will not be able to have a portrait if assigned to be a minister via officer corps, causing errors.
-## severity = warning
+## severity = info
 ## scope = country
 alias[effect:create_field_marshal] = {
 	name = scalar
@@ -3449,9 +3464,12 @@ alias[effect:while_loop_effect] = {
 ### Meta effects can be used for building effects from strings and running them. following example will give Germany 42 pp.
 ## scope = any
 alias[effect:meta_effect] = {
-	text = ignore_field
+	text = {
+		## cardinality = 1..inf
+		alias_name[effect] = alias_match_left[effect]
+	}
 	## cardinality = 1..inf
-	scalar = scalar
+	scalar = localisation
 }
 
 ### Launch nuke at a state. usage .

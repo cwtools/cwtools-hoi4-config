@@ -159,6 +159,9 @@ alias[trigger:check_variable] = {
 	## error_if_only_match = You can compare variables directly, without "var" and "value"
 	## severity = info
 	value = variable_field_32
+	## error_if_only_match = You can compare variables directly, without "var" and "value"
+	## severity = info
+	value = value[variable]
 	## cardinality = 0..1
 	### Defaults to greater_than_or_equals.
 	compare = enum[var_compares]
@@ -2163,9 +2166,12 @@ alias[trigger:casualties_k] = int
 ### Meta triggers can be used for building triggers from strings and running them. following example will test if Germany has 42 pp.
 ## scope = any
 alias[trigger:meta_trigger] = {
-	text = ignore_field
+	text = {
+		## cardinality = 1..inf
+		alias_name[trigger] = alias_match_left[trigger]
+	}
 	## cardinality = 1..inf
-	scalar = scalar
+	scalar = localisation
 }
 
 ### Checks if scope has a dynamic modifier.

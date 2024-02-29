@@ -20,54 +20,486 @@ types = {
 		skip_root_key = on_actions
 		starts_with = "on_monthly_"
 	}
-}
-
-## replace_scope = { THIS = country ROOT = country }
-on_action_daily = {
-	### Triggered daily for the specified country. Tag isn't checked for validity
-	## replace_scope = { THIS = country ROOT = country }
-	## cardinality = 0..inf
-	effect = {
-		alias_name[effect] = alias_match_left[effect]
+	## type_key_filter = on_new_term_election
+	type[on_new_term_election] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
 	}
-}
-
-## replace_scope = { THIS = country ROOT = country }
-on_action_weekly = {
-	### Triggered weekly for the specified country. Tag isn't checked for validity
-	## cardinality = 1..inf
-	## replace_scope = { THIS = country ROOT = country }
-	## cardinality = 0..inf
-	random_events = {
-		## cardinality = 0..inf
-		int = 0
-		## cardinality = 0..inf
-		int = <event.country_event>
+	## type_key_filter = on_ace_promoted
+	type[on_ace_promoted] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
 	}
-	## replace_scope = { THIS = country ROOT = country }
-	## cardinality = 0..1
-	effect = {
-		alias_name[effect] = alias_match_left[effect]
+	## type_key_filter = on_aces_killed_each_other
+	type[on_aces_killed_each_other] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
 	}
-}
-
-## replace_scope = { THIS = country ROOT = country }
-on_action_monthly = {
-	### Triggered monthly for the specified country. Tag isn't checked for validity
-	## cardinality = 1..inf
-	## replace_scope = { THIS = country ROOT = country }
-	## cardinality = 0..inf
-	random_events = {
-		## cardinality = 0..inf
-		int = 0
-		## cardinality = 0..inf
-		int = <event.country_event>
+	## type_key_filter = on_ace_killed_by_ace
+	type[on_ace_killed_by_ace] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
 	}
-	## replace_scope = { THIS = country ROOT = country }
-	## cardinality = 0..1
-	effect = {
-		alias_name[effect] = alias_match_left[effect]
+	## type_key_filter = on_ace_killed_other_ace
+	type[on_ace_killed_other_ace] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
 	}
+	## type_key_filter = on_ace_killed
+	type[on_ace_killed] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_ace_killed_on_accident
+	type[on_ace_killed_on_accident] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_non_ace_killed_other_ace
+	type[on_non_ace_killed_other_ace] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_justifying_wargoal_pulse
+	type[on_justifying_wargoal_pulse] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_wargoal_expire
+	type[on_wargoal_expire] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_nuke_drop
+	type[on_nuke_drop] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_border_war_lost
+	type[on_border_war_lost] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_leave_faction
+	type[on_leave_faction] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_create_faction
+	type[on_create_faction] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_offer_join_faction
+	type[on_offer_join_faction] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_join_faction
+	type[on_join_faction] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_declare_war
+	type[on_declare_war] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_faction_formed
+	type[on_faction_formed] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_capitulation
+	type[on_capitulation] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_capitulation_immediate
+	type[on_capitulation_immediate] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_uncapitulation
+	type[on_uncapitulation] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_government_change
+	type[on_government_change] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_naval_invasion
+	type[on_naval_invasion] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_coup_succeeded
+	type[on_coup_succeeded] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_civil_war_end
+	type[on_civil_war_end] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_puppet
+	type[on_puppet] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_release_as_puppet
+	type[on_release_as_puppet] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_annex
+	type[on_annex] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_subject_free
+	type[on_subject_free] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_subject_autonomy_level_change
+	type[on_subject_autonomy_level_change] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_subject_annexed
+	type[on_subject_annexed] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_release_as_free
+	type[on_release_as_free] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_peaceconference_ended
+	type[on_peaceconference_ended] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_generate_wargoal
+	type[on_generate_wargoal] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_guarantee
+	type[on_guarantee] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_military_access
+	type[on_military_access] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_offer_military_access
+	type[on_offer_military_access] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_call_allies
+	type[on_call_allies] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_join_allies
+	type[on_join_allies] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_lend_lease
+	type[on_lend_lease] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_incoming_lend_lease
+	type[on_incoming_lend_lease] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_incoming_lend_lease
+	type[on_incoming_lend_lease] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_send_volunteers
+	type[on_send_volunteers] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_send_expeditionary_force
+	type[on_send_expeditionary_force] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_return_expeditionary_forces
+	type[on_return_expeditionary_forces] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_request_expeditionary_forces
+	type[on_request_expeditionary_forces] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_ask_for_state_control
+	type[on_ask_for_state_control] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_give_state_control
+	type[on_give_state_control] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_war_relation_added
+	type[on_war_relation_added] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_liberate
+	type[on_liberate] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_startup
+	type[on_startup] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_daily
+	type[on_daily] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_weekly
+	type[on_weekly] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_monthly
+	type[on_monthly] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_state_control_changed
+	type[on_state_control_changed] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_unit_leader_created
+	type[on_unit_leader_created] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_unit_leader_level_up
+	type[on_unit_leader_level_up] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_army_leader_daily
+	type[on_army_leader_daily] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_army_leader_won_combat
+	type[on_army_leader_won_combat] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_army_leader_lost_combat
+	type[on_army_leader_lost_combat] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_army_leader_promoted
+	type[on_army_leader_promoted] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_host_changed_from_capitulation
+	type[on_host_changed_from_capitulation] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_exile_government_reinstated
+	type[on_exile_government_reinstated] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_civil_war_end_before_annexation
+	type[on_civil_war_end_before_annexation] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_government_exiled
+	type[on_government_exiled] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_pride_of_the_fleet_sunk
+	type[on_pride_of_the_fleet_sunk] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_assume_faction_leadership
+	type[on_assume_faction_leadership] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_war
+	type[on_war] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_peace
+	type[on_peace] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_peace_proposal
+	type[on_peace_proposal] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_operative_on_mission_spotted
+	type[on_operative_on_mission_spotted] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_operative_captured
+	type[on_operative_captured] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_operative_death
+	type[on_operative_death] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_operative_detected_during_operation
+	type[on_operative_detected_during_operation] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_operative_created
+	type[on_operative_created] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_operative_recruited
+	type[on_operative_recruited] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_operation_completed
+	type[on_operation_completed] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_fully_decrypted_cipher
+	type[on_fully_decrypted_cipher] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_activated_active_decryption_bonuses
+	type[on_activated_active_decryption_bonuses] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_units_paradropped_in_state
+	type[on_units_paradropped_in_state] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_paradrop
+	type[on_paradrop] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_ruling_party_change
+	type[on_ruling_party_change] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_peaceconference_started
+	type[on_peaceconference_started] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_unit_leader_promote_from_ranks_veteran
+	type[on_unit_leader_promote_from_ranks_veteran] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_unit_leader_promote_from_ranks_green
+	type[on_unit_leader_promote_from_ranks_green] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_add_history
+	type[on_add_history] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_send_attache
+	type[on_send_attache] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_units_paradropped_in_state
+	type[on_units_paradropped_in_state] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_mio_size_increased
+	type[on_mio_size_increased] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_mio_design_team_assigned_to_tech
+	type[on_mio_design_team_assigned_to_tech] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_mio_design_team_assigned_to_variant
+	type[on_mio_design_team_assigned_to_variant] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_mio_industrial_manufacturer_assigned
+	type[on_mio_industrial_manufacturer_assigned] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_mio_tech_research_cancelled
+	type[on_mio_tech_research_cancelled] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_mio_tech_research_completed
+	type[on_mio_tech_research_completed] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_mio_industrial_manufacturer_unassigned
+	type[on_mio_industrial_manufacturer_unassigned] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_civil_war_end_before_annexation
+	type[on_civil_war_end_before_annexation] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}	
 }
 
 on_action = {
@@ -326,15 +758,6 @@ on_action = {
 	## cardinality = 0..inf
 	## replace_scope = { THIS = country ROOT = country }
 	on_monthly = single_alias_right[country_event_effect]
-
-	## cardinality = 0..inf
-	on_yearly = single_alias_right[country_event_effect]
-
-	## cardinality = 0..inf
-	on_thri_yearly_pulse = single_alias_right[country_event_effect]
-
-	## cardinality = 0..inf
-	on_bi_yearly_pulse = single_alias_right[country_event_effect]
 
 	## cardinality = 0..inf
 	## replace_scope = { ROOT = country THIS = country FROM = country FROMFROM = state }

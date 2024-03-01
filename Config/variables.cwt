@@ -1067,5 +1067,11 @@ values = {
 		token:federalists
 		token:left_kuomintang
 		token:right_kuomintang
+
+		# ========================
+		# MIO VARIABLES
+		# ========================
+		### How faster is tech researching with mio assigned
+		research_bonus
 	}
 }

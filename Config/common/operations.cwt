@@ -2,6 +2,7 @@ types = {
 	type[operation] = {
 		path = "game/common/operations"
 		path_strict = yes
+		unique = yes
 	}
 }
 
@@ -213,7 +214,7 @@ operation = {
 	}
 
 	### For description purposes only. This is the effect that generates that text shown as a potential reward for completing the operation
-	## scope = any
+	## replace_scope = { THIS = country ROOT = country FROM = country FROMFROM = state }
 	## cardinality = 0..1
 	outcome_potential = {
 		alias_name[effect] = alias_match_left[effect]
@@ -233,14 +234,14 @@ operation = {
 	}
 
 	### Executed when the operation has completed [ once per operation ]
-	## scope = any
+	## replace_scope = { THIS = country ROOT = country FROM = country FROMFROM = state }
 	## cardinality = 0..1
 	outcome_execute = {
 		alias_name[effect] = alias_match_left[effect]
 	}
 
 	### Same as outcome_execute
-	## scope = any
+	## replace_scope = { THIS = country ROOT = country FROM = country FROMFROM = state }
 	## cardinality = 0..1
 	outcome_extra_execute = {
 		alias_name[effect] = alias_match_left[effect]

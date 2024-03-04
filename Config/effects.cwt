@@ -2400,10 +2400,12 @@ alias[effect:unlock_decision_tooltip] = <decision>
 ## scope = country
 alias[effect:unlock_decision_tooltip] = {
 	decision = <decision>
+	### default - yes
 	## cardinality = 0..1
-	show_effect_tooltip = yes # default is no
+	show_effect_tooltip = bool
+	### default - yes
 	## cardinality = 0..1
-	show_modifiers = yes # default is no
+	show_modifiers = bool
 }
 
 ### Add buffs to units that are belongs to the army group/navy of this unit leader.

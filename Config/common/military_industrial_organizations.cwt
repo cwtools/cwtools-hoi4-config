@@ -17,6 +17,9 @@ military_industrial_organization = {
 	### Else use GFX_idea_unknown
 	## cardinality = 0..1
 	icon = <spriteType>
+	### gfx key of the background image for the Details window,if not specified, one of standard backgrounds will be used based on supported equipment types
+	## cardinality = 0..1
+	background = <spriteType>
 	## cardinality = 0..1
 	include = <military_industrial_organization>
 	## replace_scope = { this = country }

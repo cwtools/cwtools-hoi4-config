@@ -488,7 +488,7 @@ alias[effect:retire_character] = value[global_event_target]
 alias[effect:retire_character] = scope[character]
 
 ### renames character
-## scope = { character }
+## scope = { character unit_leader }
 alias[effect:set_character_name] = localisation
 ### renames character
 ## scope = { country character }

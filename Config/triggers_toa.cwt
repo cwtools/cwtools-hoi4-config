@@ -1,0 +1,10 @@
+### Check number of months the country has been at war
+## scope = country
+alias[trigger:longest_war_length] = int
+
+### Check number of months the country has been at war with X for Y months.
+## scope = country
+alias[trigger:war_length_with] = {
+    tag = enum[country_tags]
+    months = int 
+}

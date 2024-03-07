@@ -11,6 +11,7 @@ enums = {
 		"No Step Back"
 		"By Blood Alone"
 		"Arms Against Tyranny"
+		"Trial of Allegiance"
 	}
 
 	enum[hours_days_months] = {

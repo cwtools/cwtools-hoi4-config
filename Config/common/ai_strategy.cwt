@@ -227,6 +227,12 @@ alias[ai_strategy_rule:ai_strategy] = {
 	value = int
 }
 alias[ai_strategy_rule:ai_strategy] = {
+	type = research_weight_factor
+	id = <technology>
+	### Factor the ai_will_do value for the specified technology with this. (50 means 50 % increase, -30 means 30 % decrease, etc)
+	value = int
+}
+alias[ai_strategy_rule:ai_strategy] = {
 	type = scorched_earth_prio
 	id = scope[country]
 	## cardinality = 0..1

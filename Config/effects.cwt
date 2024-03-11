@@ -1668,7 +1668,7 @@ alias[effect:create_field_marshal] = {
 
 ### Creates a corps commander for country in scope.
 ## error_if_only_match = This is an deprecated command. use add_corps_commander_role instead when possible. The created corps commander will not be able to have a portrait if assigned to be a minister via officer corps, causing errors.
-## severity = warning
+## severity = info
 ## scope = country
 alias[effect:create_corps_commander] = {
 	## cardinality = 0..1

@@ -1697,6 +1697,8 @@ alias[trigger:multiply_temp_variable] = {
 ## scope = any
 alias[trigger:divide_temp_variable] = {
 	value_set[variable] = variable_field_32
+	## cardinality = 0..1
+	tooltip = localisation
 }
 
 ### Divies a temporary variable by a value or another variable.
@@ -1704,6 +1706,8 @@ alias[trigger:divide_temp_variable] = {
 alias[trigger:divide_temp_variable] = {
 	var = value_set[variable]
 	value = variable_field_32
+	## cardinality = 0..1
+	tooltip = localisation
 }
 
 ### Sets a temporary variable to a value or another variable.

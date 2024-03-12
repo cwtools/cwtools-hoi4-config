@@ -109,6 +109,10 @@ equipment = {
 	## cardinality = 0..1
 	one_use_only = bool
 
+	### Default yes for modular equipment, not applicable for non-modular equipment. Frame refers to tank chassis, ship hulls, and airplane frames.
+	## cardinality = 0..1
+	is_frame = bool
+
 	## cardinality = 0..1
 	### Determines if this equipment is available without unlocking from a technology.
 	active = bool

@@ -218,6 +218,15 @@ values = {
 		### Maximum manpower of country in thousands.
 		max_manpower_k
 
+		### Deployed army manpower of country in thousands.
+		deployed_total_manpower_k
+
+		### Deployed navy manpower of country in thousands.
+		deployed_navy_manpower_k
+		
+		### Deployed air manpower of country in thousands.
+		deployed_airforce_manpower_k
+
 		### A modifier stored in country scope.
 		modifier@enum[modifier]
 

@@ -70,3 +70,15 @@ alias[trigger:has_mio_flag] = {
 	## cardinality = 0..1
 	days = int
 }
+
+### How long a nation has been at war (in months)
+## scope = country
+alias[trigger:longest_war_length] = int
+
+### How long a nation has been at war with targer
+## scope = country
+alias[trigger:war_length_with] = { 
+	tag = enum[country_tags]
+	tag = scope[country]
+	months = int 
+}

@@ -221,7 +221,7 @@ alias[ai_strategy_rule:ai_strategy] = {
 	value = int
 }
 alias[ai_strategy_rule:ai_strategy] = {
-	type = research_tech
+	type = enum[research_strats]
 	id = <technology>
 	id = int
 	value = int
@@ -502,5 +502,9 @@ enums = {
 	}
 	enum[market_seller_strats] = {
 		equipment_market_buy
+	}
+	enum[research_strats] = {
+		research_tech
+		research_weight_factor
 	}
 }

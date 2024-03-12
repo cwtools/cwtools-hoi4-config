@@ -63,6 +63,10 @@ alias[trigger:num_planes_stationed_in_regions]  = {
 
 ### Checks mio flag
 ## scope = military_industrial_organization
+alias[trigger:has_mio_flag] = value[mio_flag]
+
+### Checks mio flag
+## scope = military_industrial_organization
 alias[trigger:has_mio_flag] = {
 	flag = value[mio_flag]
 	## cardinality = 0..1

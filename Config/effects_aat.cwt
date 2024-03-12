@@ -35,11 +35,11 @@ alias[effect:add_mio_funds_gain_factor] = variable_field
 
 ### Increase MIO size (level)
 ## scope = military_industrial_organization
-alias[effect:add_mio_size] = int
+alias[effect:add_mio_size] = int_variable_field
 
 ### Increase MIO research bonus
 ## scope = military_industrial_organization
-alias[effect:add_mio_research_bonus] = float
+alias[effect:add_mio_research_bonus] = variable_field
 
 ### Complete specific MIO trait. Make sure the trait is actually available for current MIO
 ## scope = military_industrial_organization
@@ -47,11 +47,11 @@ alias[effect:complete_mio_trait] = value[mio_token]
 
 ### Change MIO political power assign cost to research tech (base - 0.1 pp daily)
 ## scope = military_industrial_organization
-alias[effect:add_mio_design_team_assign_cost] = float
+alias[effect:add_mio_design_team_assign_cost] = variable_field
 
 ### Has no effect?
 ## scope = military_industrial_organization
-alias[effect:add_mio_design_team_change_cost] = float
+alias[effect:add_mio_design_team_change_cost] = variable_field
 
 ### Add MIO funds. Level 1 -> Level 2 to costs 1k, costs increase per each level
 ## scope = military_industrial_organization
@@ -127,10 +127,22 @@ alias[effect:modify_mio_flag] = {
 ## scope = military_industrial_organization
 alias[effect:clr_mio_flag] = value[mio_flag]
 
-### Modify mio funds gain factor
+### Set mio funds gain factor
 ## scope = military_industrial_organization
-alias[effect:set_mio_funds_gain_factor] = float
+alias[effect:set_mio_funds_gain_factor] = variable_field
 
-### Modify mio research bonus
+### Set mio research bonus
 ## scope = military_industrial_organization
-alias[effect:set_mio_research_bonus] = float
+alias[effect:set_mio_research_bonus] = variable_field
+
+### Set mio design team assign cost
+## scope = military_industrial_organization
+alias[effect:set_mio_design_team_assign_cost] = variable_field
+
+### Give market access to x
+## scope = country
+alias[effect:give_market_access] = enum[country_tags]
+
+### Give market access to x
+## scope = country
+alias[effect:give_market_access] = scope[country]

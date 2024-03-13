@@ -221,15 +221,9 @@ alias[ai_strategy_rule:ai_strategy] = {
 	value = int
 }
 alias[ai_strategy_rule:ai_strategy] = {
-	type = research_tech
+	type = enum[research_strats]
 	id = <technology>
 	id = int
-	value = int
-}
-alias[ai_strategy_rule:ai_strategy] = {
-	type = research_weight_factor
-	id = <technology>
-	### Factor the ai_will_do value for the specified technology with this. (50 means 50 % increase, -30 means 30 % decrease, etc)
 	value = int
 }
 alias[ai_strategy_rule:ai_strategy] = {
@@ -513,5 +507,9 @@ enums = {
 	}
 	enum[market_seller_strats] = {
 		equipment_market_buy
+	}
+	enum[research_strats] = {
+		research_tech
+		research_weight_factor
 	}
 }

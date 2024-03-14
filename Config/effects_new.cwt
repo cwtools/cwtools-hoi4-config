@@ -1156,8 +1156,20 @@ alias[effect:start_peace_conference] = {
 	score_factor = float
 }
 
-### Sets specific occupation law where available
-## scopes = { country }
+### Sets the occupation law for an occupied country, occupied state, or the default occupation law of an occupying country.
+## scope = { country state }
+alias[effect:set_occupation_law] = default_law
+
+### Sets the occupation law for an occupied country, occupied state, or the default occupation law of an occupying country.
+## scope = { country state }
+alias[effect:set_occupation_law] = <occupation_law>
+
+### Sets the occupation law for an occupied country, occupied state, or the default occupation law of an occupying country. What differentiates this effect is that if the law is not available on the given level it will attempt to set it on a level below. I.e. if the law can't be set as the default law it will try to set it on each country, and if that fails it will try to set it on each state. Any existing law overrides below a level at which a law is successfully set will be cleared.
+## scope = { country state }
+alias[effect:set_occupation_law_where_available] = default_law
+
+### Sets the occupation law for an occupied country, occupied state, or the default occupation law of an occupying country. What differentiates this effect is that if the law is not available on the given level it will attempt to set it on a level below. I.e. if the law can't be set as the default law it will try to set it on each country, and if that fails it will try to set it on each state. Any existing law overrides below a level at which a law is successfully set will be cleared.
+## scope = { country state }
 alias[effect:set_occupation_law_where_available] = <occupation_law>
 
 ### Sets specific occupation law where available

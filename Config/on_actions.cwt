@@ -2,11 +2,26 @@ types = {
 	type[on_action] = {
 	path = "game/common/on_actions"
 	}
+	## type_key_filter = on_startup
+	type[on_startup] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_daily
+	type[on_daily] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
 	## starts_with = on_daily_
 	type[on_action_daily] = {
 		path = "game/common/on_actions"
 		skip_root_key = on_actions
 		starts_with = "on_daily_"
+	}
+	## type_key_filter = on_weekly
+	type[on_weekly] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
 	}
 	## starts_with = on_weekly_
 	type[on_action_weekly] = {
@@ -14,64 +29,58 @@ types = {
 		skip_root_key = on_actions
 		starts_with = "on_weekly_"
 	}
+	## type_key_filter = on_monthly
+	type[on_monthly] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
 	## starts_with = on_monthly_
 	type[on_action_monthly] = {
 		path = "game/common/on_actions"
 		skip_root_key = on_actions
 		starts_with = "on_monthly_"
 	}
+
+
+	## type_key_filter = on_stage_coup
+	type[on_stage_coup] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_coup_succeeded
+	type[on_coup_succeeded] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_government_change
+	type[on_government_change] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_ruling_party_change
+	type[on_ruling_party_change] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
 	## type_key_filter = on_new_term_election
 	type[on_new_term_election] = {
 		path = "game/common/on_actions"
 		skip_root_key = on_actions
 	}
-	## type_key_filter = on_ace_promoted
-	type[on_ace_promoted] = {
+	## type_key_filter = on_peaceconference_ended
+	type[on_peaceconference_ended] = {
 		path = "game/common/on_actions"
 		skip_root_key = on_actions
 	}
-	## type_key_filter = on_aces_killed_each_other
-	type[on_aces_killed_each_other] = {
+	## type_key_filter = on_peaceconference_started
+	type[on_peaceconference_started] = {
 		path = "game/common/on_actions"
 		skip_root_key = on_actions
 	}
-	## type_key_filter = on_ace_killed_by_ace
-	type[on_ace_killed_by_ace] = {
-		path = "game/common/on_actions"
-		skip_root_key = on_actions
-	}
-	## type_key_filter = on_ace_killed_other_ace
-	type[on_ace_killed_other_ace] = {
-		path = "game/common/on_actions"
-		skip_root_key = on_actions
-	}
-	## type_key_filter = on_ace_killed
-	type[on_ace_killed] = {
-		path = "game/common/on_actions"
-		skip_root_key = on_actions
-	}
-	## type_key_filter = on_ace_killed_on_accident
-	type[on_ace_killed_on_accident] = {
-		path = "game/common/on_actions"
-		skip_root_key = on_actions
-	}
-	## type_key_filter = on_non_ace_killed_other_ace
-	type[on_non_ace_killed_other_ace] = {
-		path = "game/common/on_actions"
-		skip_root_key = on_actions
-	}
-	## type_key_filter = on_justifying_wargoal_pulse
-	type[on_justifying_wargoal_pulse] = {
-		path = "game/common/on_actions"
-		skip_root_key = on_actions
-	}
-	## type_key_filter = on_wargoal_expire
-	type[on_wargoal_expire] = {
-		path = "game/common/on_actions"
-		skip_root_key = on_actions
-	}
-	## type_key_filter = on_nuke_drop
-	type[on_nuke_drop] = {
+
+
+	## type_key_filter = on_send_volunteers
+	type[on_send_volunteers] = {
 		path = "game/common/on_actions"
 		skip_root_key = on_actions
 	}
@@ -80,23 +89,8 @@ types = {
 		path = "game/common/on_actions"
 		skip_root_key = on_actions
 	}
-	## type_key_filter = on_leave_faction
-	type[on_leave_faction] = {
-		path = "game/common/on_actions"
-		skip_root_key = on_actions
-	}
-	## type_key_filter = on_create_faction
-	type[on_create_faction] = {
-		path = "game/common/on_actions"
-		skip_root_key = on_actions
-	}
-	## type_key_filter = on_offer_join_faction
-	type[on_offer_join_faction] = {
-		path = "game/common/on_actions"
-		skip_root_key = on_actions
-	}
-	## type_key_filter = on_join_faction
-	type[on_join_faction] = {
+	## type_key_filter = on_war_relation_added
+	type[on_war_relation_added] = {
 		path = "game/common/on_actions"
 		skip_root_key = on_actions
 	}
@@ -105,8 +99,13 @@ types = {
 		path = "game/common/on_actions"
 		skip_root_key = on_actions
 	}
-	## type_key_filter = on_faction_formed
-	type[on_faction_formed] = {
+	## type_key_filter = on_war
+	type[on_war] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_peace
+	type[on_peace] = {
 		path = "game/common/on_actions"
 		skip_root_key = on_actions
 	}
@@ -125,18 +124,13 @@ types = {
 		path = "game/common/on_actions"
 		skip_root_key = on_actions
 	}
-	## type_key_filter = on_government_change
-	type[on_government_change] = {
+	## type_key_filter = on_annex
+	type[on_annex] = {
 		path = "game/common/on_actions"
 		skip_root_key = on_actions
 	}
-	## type_key_filter = on_naval_invasion
-	type[on_naval_invasion] = {
-		path = "game/common/on_actions"
-		skip_root_key = on_actions
-	}
-	## type_key_filter = on_coup_succeeded
-	type[on_coup_succeeded] = {
+	## type_key_filter = on_civil_war_end_before_annexation
+	type[on_civil_war_end_before_annexation] = {
 		path = "game/common/on_actions"
 		skip_root_key = on_actions
 	}
@@ -150,28 +144,8 @@ types = {
 		path = "game/common/on_actions"
 		skip_root_key = on_actions
 	}
-	## type_key_filter = on_release_as_puppet
-	type[on_release_as_puppet] = {
-		path = "game/common/on_actions"
-		skip_root_key = on_actions
-	}
-	## type_key_filter = on_annex
-	type[on_annex] = {
-		path = "game/common/on_actions"
-		skip_root_key = on_actions
-	}
-	## type_key_filter = on_subject_free
-	type[on_subject_free] = {
-		path = "game/common/on_actions"
-		skip_root_key = on_actions
-	}
-	## type_key_filter = on_subject_autonomy_level_change
-	type[on_subject_autonomy_level_change] = {
-		path = "game/common/on_actions"
-		skip_root_key = on_actions
-	}
-	## type_key_filter = on_subject_annexed
-	type[on_subject_annexed] = {
+	## type_key_filter = on_liberate
+	type[on_liberate] = {
 		path = "game/common/on_actions"
 		skip_root_key = on_actions
 	}
@@ -180,13 +154,8 @@ types = {
 		path = "game/common/on_actions"
 		skip_root_key = on_actions
 	}
-	## type_key_filter = on_peaceconference_ended
-	type[on_peaceconference_ended] = {
-		path = "game/common/on_actions"
-		skip_root_key = on_actions
-	}
-	## type_key_filter = on_generate_wargoal
-	type[on_generate_wargoal] = {
+	## type_key_filter = on_release_as_puppet
+	type[on_release_as_puppet] = {
 		path = "game/common/on_actions"
 		skip_root_key = on_actions
 	}
@@ -225,16 +194,6 @@ types = {
 		path = "game/common/on_actions"
 		skip_root_key = on_actions
 	}
-	## type_key_filter = on_incoming_lend_lease
-	type[on_incoming_lend_lease] = {
-		path = "game/common/on_actions"
-		skip_root_key = on_actions
-	}
-	## type_key_filter = on_send_volunteers
-	type[on_send_volunteers] = {
-		path = "game/common/on_actions"
-		skip_root_key = on_actions
-	}
 	## type_key_filter = on_send_expeditionary_force
 	type[on_send_expeditionary_force] = {
 		path = "game/common/on_actions"
@@ -260,48 +219,109 @@ types = {
 		path = "game/common/on_actions"
 		skip_root_key = on_actions
 	}
-	## type_key_filter = on_war_relation_added
-	type[on_war_relation_added] = {
+	## type_key_filter = on_peace_proposal
+	type[on_peace_proposal] = {
 		path = "game/common/on_actions"
 		skip_root_key = on_actions
 	}
-	## type_key_filter = on_liberate
-	type[on_liberate] = {
+	## type_key_filter = on_send_attache
+	type[on_send_attache] = {
 		path = "game/common/on_actions"
 		skip_root_key = on_actions
 	}
-	## type_key_filter = on_startup
-	type[on_startup] = {
+
+
+	## type_key_filter = on_create_faction
+	type[on_create_faction] = {
 		path = "game/common/on_actions"
 		skip_root_key = on_actions
 	}
-	## type_key_filter = on_daily
-	type[on_daily] = {
+	## type_key_filter = on_faction_formed
+	type[on_faction_formed] = {
 		path = "game/common/on_actions"
 		skip_root_key = on_actions
 	}
-	## type_key_filter = on_weekly
-	type[on_weekly] = {
+	## type_key_filter = on_offer_join_faction
+	type[on_offer_join_faction] = {
 		path = "game/common/on_actions"
 		skip_root_key = on_actions
 	}
-	## type_key_filter = on_monthly
-	type[on_monthly] = {
+	## type_key_filter = on_join_faction
+	type[on_join_faction] = {
 		path = "game/common/on_actions"
 		skip_root_key = on_actions
 	}
+	## type_key_filter = on_assume_faction_leadership
+	type[on_assume_faction_leadership] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_leave_faction
+	type[on_leave_faction] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+
+
+	## type_key_filter = on_subject_free
+	type[on_subject_free] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_subject_autonomy_level_change
+	type[on_subject_autonomy_level_change] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_subject_annexed
+	type[on_subject_annexed] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+
+
+	## type_key_filter = on_host_changed_from_capitulation
+	type[on_host_changed_from_capitulation] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_exile_government_reinstated
+	type[on_exile_government_reinstated] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_government_exiled
+	type[on_government_exiled] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+
 	## type_key_filter = on_state_control_changed
 	type[on_state_control_changed] = {
 		path = "game/common/on_actions"
 		skip_root_key = on_actions
 	}
-	## type_key_filter = on_unit_leader_created
-	type[on_unit_leader_created] = {
+
+
+	## type_key_filter = on_generate_wargoal
+	type[on_generate_wargoal] = {
 		path = "game/common/on_actions"
 		skip_root_key = on_actions
 	}
-	## type_key_filter = on_unit_leader_level_up
-	type[on_unit_leader_level_up] = {
+	## type_key_filter = on_justifying_wargoal_pulse
+	type[on_justifying_wargoal_pulse] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_wargoal_expire
+	type[on_wargoal_expire] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+
+
+	## type_key_filter = on_unit_leader_created
+	type[on_unit_leader_created] = {
 		path = "game/common/on_actions"
 		skip_root_key = on_actions
 	}
@@ -320,118 +340,13 @@ types = {
 		path = "game/common/on_actions"
 		skip_root_key = on_actions
 	}
+	## type_key_filter = on_unit_leader_level_up
+	type[on_unit_leader_level_up] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
 	## type_key_filter = on_army_leader_promoted
 	type[on_army_leader_promoted] = {
-		path = "game/common/on_actions"
-		skip_root_key = on_actions
-	}
-	## type_key_filter = on_host_changed_from_capitulation
-	type[on_host_changed_from_capitulation] = {
-		path = "game/common/on_actions"
-		skip_root_key = on_actions
-	}
-	## type_key_filter = on_exile_government_reinstated
-	type[on_exile_government_reinstated] = {
-		path = "game/common/on_actions"
-		skip_root_key = on_actions
-	}
-	## type_key_filter = on_civil_war_end_before_annexation
-	type[on_civil_war_end_before_annexation] = {
-		path = "game/common/on_actions"
-		skip_root_key = on_actions
-	}
-	## type_key_filter = on_government_exiled
-	type[on_government_exiled] = {
-		path = "game/common/on_actions"
-		skip_root_key = on_actions
-	}
-	## type_key_filter = on_pride_of_the_fleet_sunk
-	type[on_pride_of_the_fleet_sunk] = {
-		path = "game/common/on_actions"
-		skip_root_key = on_actions
-	}
-	## type_key_filter = on_assume_faction_leadership
-	type[on_assume_faction_leadership] = {
-		path = "game/common/on_actions"
-		skip_root_key = on_actions
-	}
-	## type_key_filter = on_war
-	type[on_war] = {
-		path = "game/common/on_actions"
-		skip_root_key = on_actions
-	}
-	## type_key_filter = on_peace
-	type[on_peace] = {
-		path = "game/common/on_actions"
-		skip_root_key = on_actions
-	}
-	## type_key_filter = on_peace_proposal
-	type[on_peace_proposal] = {
-		path = "game/common/on_actions"
-		skip_root_key = on_actions
-	}
-	## type_key_filter = on_operative_on_mission_spotted
-	type[on_operative_on_mission_spotted] = {
-		path = "game/common/on_actions"
-		skip_root_key = on_actions
-	}
-	## type_key_filter = on_operative_captured
-	type[on_operative_captured] = {
-		path = "game/common/on_actions"
-		skip_root_key = on_actions
-	}
-	## type_key_filter = on_operative_death
-	type[on_operative_death] = {
-		path = "game/common/on_actions"
-		skip_root_key = on_actions
-	}
-	## type_key_filter = on_operative_detected_during_operation
-	type[on_operative_detected_during_operation] = {
-		path = "game/common/on_actions"
-		skip_root_key = on_actions
-	}
-	## type_key_filter = on_operative_created
-	type[on_operative_created] = {
-		path = "game/common/on_actions"
-		skip_root_key = on_actions
-	}
-	## type_key_filter = on_operative_recruited
-	type[on_operative_recruited] = {
-		path = "game/common/on_actions"
-		skip_root_key = on_actions
-	}
-	## type_key_filter = on_operation_completed
-	type[on_operation_completed] = {
-		path = "game/common/on_actions"
-		skip_root_key = on_actions
-	}
-	## type_key_filter = on_fully_decrypted_cipher
-	type[on_fully_decrypted_cipher] = {
-		path = "game/common/on_actions"
-		skip_root_key = on_actions
-	}
-	## type_key_filter = on_activated_active_decryption_bonuses
-	type[on_activated_active_decryption_bonuses] = {
-		path = "game/common/on_actions"
-		skip_root_key = on_actions
-	}
-	## type_key_filter = on_units_paradropped_in_state
-	type[on_units_paradropped_in_state] = {
-		path = "game/common/on_actions"
-		skip_root_key = on_actions
-	}
-	## type_key_filter = on_paradrop
-	type[on_paradrop] = {
-		path = "game/common/on_actions"
-		skip_root_key = on_actions
-	}
-	## type_key_filter = on_ruling_party_change
-	type[on_ruling_party_change] = {
-		path = "game/common/on_actions"
-		skip_root_key = on_actions
-	}
-	## type_key_filter = on_peaceconference_started
-	type[on_peaceconference_started] = {
 		path = "game/common/on_actions"
 		skip_root_key = on_actions
 	}
@@ -445,13 +360,25 @@ types = {
 		path = "game/common/on_actions"
 		skip_root_key = on_actions
 	}
-	## type_key_filter = on_add_history
-	type[on_add_history] = {
+
+
+	## type_key_filter = on_nuke_drop
+	type[on_nuke_drop] = {
 		path = "game/common/on_actions"
 		skip_root_key = on_actions
 	}
-	## type_key_filter = on_send_attache
-	type[on_send_attache] = {
+	## type_key_filter = on_pride_of_the_fleet_sunk
+	type[on_pride_of_the_fleet_sunk] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_naval_invasion
+	type[on_naval_invasion] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_paradrop
+	type[on_paradrop] = {
 		path = "game/common/on_actions"
 		skip_root_key = on_actions
 	}
@@ -460,6 +387,97 @@ types = {
 		path = "game/common/on_actions"
 		skip_root_key = on_actions
 	}
+	## type_key_filter = on_add_history
+	type[on_add_history] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+
+
+	## type_key_filter = on_ace_promoted
+	type[on_ace_promoted] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_ace_killed
+	type[on_ace_killed] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_ace_killed_on_accident
+	type[on_ace_killed_on_accident] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_non_ace_killed_other_ace
+	type[on_non_ace_killed_other_ace] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_ace_killed_by_ace
+	type[on_ace_killed_by_ace] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_ace_killed_other_ace
+	type[on_ace_killed_other_ace] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_aces_killed_each_other
+	type[on_aces_killed_each_other] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+
+
+	## type_key_filter = on_operation_completed
+	type[on_operation_completed] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_operative_detected_during_operation
+	type[on_operative_detected_during_operation] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_operative_on_mission_spotted
+	type[on_operative_on_mission_spotted] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_operative_captured
+	type[on_operative_captured] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_operative_created
+	type[on_operative_created] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_operative_death
+	type[on_operative_death] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_operative_recruited
+	type[on_operative_recruited] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_fully_decrypted_cipher
+	type[on_fully_decrypted_cipher] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_activated_active_decryption_bonuses
+	type[on_activated_active_decryption_bonuses] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+
+
 	## type_key_filter = on_mio_size_increased
 	type[on_mio_size_increased] = {
 		path = "game/common/on_actions"
@@ -495,242 +513,14 @@ types = {
 		path = "game/common/on_actions"
 		skip_root_key = on_actions
 	}
-	## type_key_filter = on_civil_war_end_before_annexation
-	type[on_civil_war_end_before_annexation] = {
-		path = "game/common/on_actions"
-		skip_root_key = on_actions
-	}	
 }
 
 on_action = {
+	# ------------ General on actions ------------
 
-	### Triggered daily for the specified country. Tag isn't checked for validity
-	## replace_scope = { THIS = country ROOT = country }
-	## cardinality = 0..inf
-	<on_action_daily> = single_alias_right[on_action_effect]
-
-	### Triggered weekly for the specified country. Tag isn't checked for validity
-	## replace_scope = { THIS = country ROOT = country }
-	## cardinality = 0..inf
-	<on_action_weekly> = single_alias_right[on_action_effect]
-
-	### Triggered monthly for the specified country. Tag isn't checked for validity
-	## replace_scope = { THIS = country ROOT = country }
-	## cardinality = 0..inf
-	<on_action_monthly> = single_alias_right[on_action_effect]
-
-	### Trigger the following commands whenever an election happens or is called by the hold_election command.
-	## cardinality = 0..inf
-	## replace_scope = { THIS = country ROOT = country }
-	on_new_term_election = single_alias_right[country_event_effect]
-
-	### Trigger the following commands whenever an ace is created. FROM = Ace
-	## cardinality = 0..inf
-	## replace_scope = { THIS = country root = country FROM = any }
-	on_ace_promoted = single_alias_right[country_event_effect]
-
-	### Trigger the following commands whenever two aces kill each other in air duel. FROM = our ace, PREV = enemy ace, has killed FROM.
-	## cardinality = 0..inf
-	## replace_scope = { THIS = country root = country FROM = any prev = any }
-	on_aces_killed_each_other = single_alias_right[country_event_effect]
-
-	### Trigger the following commands whenever an aces is killed by another ace. FROM = our ace, PREV = enemy ace, has killed FROM.
-	## cardinality = 0..inf
-	## replace_scope = { THIS = country root = country FROM = any prev = any }
-	on_ace_killed_by_ace = single_alias_right[country_event_effect]
-
-	### Trigger the following commands whenever an aces is killed by another ace (surviving ace side). FROM = our ace, PREV = enemy ace, killed by FROM.
-	## cardinality = 0..inf
-	## replace_scope = { THIS = country root = country FROM = any prev = any }
-	on_ace_killed_other_ace = single_alias_right[country_event_effect]
-
-	### Trigger the following commands whenever an aces is killed. FROM = ace
-	## cardinality = 0..inf
-	## replace_scope = { THIS = country root = country FROM = any }
-	on_ace_killed = single_alias_right[country_event_effect]
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = country root = country FROM = any }
-	on_ace_killed_on_accident = single_alias_right[country_event_effect]
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = country root = country FROM = any }
-	on_non_ace_killed_other_ace = single_alias_right[country_event_effect]
-
-	### Trigger the following commands whenever the country is targeted by a wargoal under justification. FROM = target nation. Checked every day.
-	## cardinality = 0..inf
-	## replace_scope = { THIS = country ROOT = country FROM = country }
-	on_justifying_wargoal_pulse = single_alias_right[country_event_effect]
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = country ROOT = country FROM = country }
-	on_wargoal_expire = single_alias_right[country_event_effect]
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = country ROOT = country FROM = state }
-	on_nuke_drop = single_alias_right[country_event_effect]
-
-	### Trigger the following commands whenever a country loses a border war. "Border war" refers to the state-based border wars enabled with set_border_war, represented with orange stripes over the state, rather than border wars that simulate combat between countries. The default scope is the state that lost the border war.
-	## cardinality = 0..inf
-	## replace_scope = { THIS = state ROOT = country }
-	on_border_war_lost = single_alias_right[country_event_effect]
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = country ROOT = country }
-	on_leave_faction = single_alias_right[country_event_effect]
-
-	### Trigger the following commands whenever a country create a faction. FROM is the one that joins the faction.
-	## cardinality = 0..inf
-	## replace_scope = { THIS = country ROOT = country from = country }
-	on_create_faction = single_alias_right[country_event_effect]
-
-	### Trigger the following commands whenever a country joins a faction after being invited. FROM is the country invited, THIS and ROOT are the faction leader.
-	## cardinality = 0..inf
-	## replace_scope = { THIS = country ROOT = country FROM = country }
-	on_offer_join_faction = single_alias_right[country_event_effect]
-
-	### Trigger the following commands for a faction leader whenever a country joins after they ask to do so. FROM is faction leader, ROOT and THIS are the country that joins.
-	## cardinality = 0..inf
-	## replace_scope = { THIS = country ROOT = country FROM = country }
-	on_join_faction = single_alias_right[country_event_effect]
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = country ROOT = country FROM = country }
-	on_declare_war = single_alias_right[country_event_effect]
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = country ROOT = country }
-	on_faction_formed = single_alias_right[country_event_effect]
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = country ROOT = country FROM = country }
-	on_capitulation = single_alias_right[country_event_effect]
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = country ROOT = country FROM = country }
-	on_capitulation_immediate = single_alias_right[country_event_effect]
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = country ROOT = country }
-	on_uncapitulation = single_alias_right[country_event_effect]
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = country ROOT = country }
-	on_government_change = single_alias_right[country_event_effect]
-
-	### Triggers the following commands whenever a sea invasion is made. THIS (default scope) is the invaded state, ROOT is the country that invades, FROM is the state where the invasion started
-	## cardinality = 0..inf
-	## replace_scope = { THIS = state ROOT = country FROM = state }
-	on_naval_invasion = single_alias_right[country_event_effect]
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = country ROOT = country }
-	on_coup_succeeded = single_alias_right[country_event_effect]
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = country ROOT = country FROM = country }
-	on_civil_war_end = single_alias_right[country_event_effect]
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = country ROOT = country FROM = country }
-	on_puppet = single_alias_right[country_event_effect]
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = country ROOT = country FROM = country }
-	on_release_as_puppet = single_alias_right[country_event_effect]
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = country ROOT = country FROM = country }
-	on_annex = single_alias_right[country_event_effect]
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = country ROOT = country FROM = country }
-	on_subject_free = single_alias_right[country_event_effect]
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = country ROOT = country FROM = country }
-	on_subject_autonomy_level_change = single_alias_right[country_event_effect]
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = country ROOT = country FROM = country }
-	on_subject_annexed = single_alias_right[country_event_effect]
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = country ROOT = country FROM = country }
-	on_release_as_free = single_alias_right[country_event_effect]
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = country ROOT = country FROM = country }
-	on_peaceconference_ended = single_alias_right[country_event_effect]
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = country ROOT = country FROM = country }
-	on_generate_wargoal = single_alias_right[country_event_effect]
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = country ROOT = country FROM = country }
-	on_guarantee = single_alias_right[country_event_effect]
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = country ROOT = country FROM = country }
-	on_military_access = single_alias_right[country_event_effect]
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = country ROOT = country FROM = country }
-	on_offer_military_access = single_alias_right[country_event_effect]
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = country ROOT = country FROM = country }
-	on_call_allies = single_alias_right[country_event_effect]
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = country ROOT = country FROM = country }
-	on_join_allies = single_alias_right[country_event_effect]
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = country ROOT = country FROM = country }
-	on_lend_lease = single_alias_right[country_event_effect]
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = country ROOT = country FROM = country }
-	on_incoming_lend_lease = single_alias_right[country_event_effect]
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = country ROOT = country FROM = country }
-	on_incoming_lend_lease = single_alias_right[country_event_effect]
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = country ROOT = country FROM = country }
-	on_send_volunteers = single_alias_right[country_event_effect]
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = country ROOT = country FROM = country }
-	on_send_expeditionary_force = single_alias_right[country_event_effect]
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = country ROOT = country FROM = country }
-	on_return_expeditionary_forces = single_alias_right[country_event_effect]
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = country ROOT = country FROM = country }
-	on_request_expeditionary_forces = single_alias_right[country_event_effect]
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = country ROOT = country FROM = country }
-	on_ask_for_state_control = single_alias_right[country_event_effect]
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = country ROOT = country FROM = country }
-	on_give_state_control = single_alias_right[country_event_effect]
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = country ROOT = country FROM = country }
-	on_war_relation_added = single_alias_right[country_event_effect]
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = country ROOT = country FROM = country }
-	on_liberate = single_alias_right[country_event_effect]
-
+	### Trigger the following commands at the first day of a new game, after country selection. Doesn't work with save loading.
+	### Has a default scope of none, instead of firing for each country individually as in other Paradox games such as Europa Universalis IV.
+	### Many effects that usually can be used in any scope will not work, without manual scoping into countries, states, or elsewhere.
 	## cardinality = 0..inf
 	## replace_scope = { THIS = invalid ROOT = invalid from = invalid }
 	on_startup = {
@@ -747,351 +537,547 @@ on_action = {
 		}
 	}
 
+	### Triggers each day for every country separately (performance heavy, use carefully)
+	### Useful for scripted guis and mods adding new mechanics (can increment a variable daily e.g.).
+	### Only use scoping if you're careful to avoid duplicate effects. This being executed for every country separately means that this is essentially equivalent to a single effect executed daily inside of every_country.
+	### e.g. effect = { GER = { add_political_power = 1 } } will add ~100 political power to Flag of Germany Germany daily, as there being ~100 countries on the world map means that this will get executed ~100 times per day.
 	## cardinality = 0..inf
 	## replace_scope = { THIS = country ROOT = country }
 	on_daily = single_alias_right[country_event_effect]
 
+	### Triggered daily for the specified country. Only runs the effects if the country exists. Tag isn't checked for validity
+	## replace_scope = { THIS = country ROOT = country }
+	## cardinality = 0..inf
+	<on_action_daily> = single_alias_right[on_action_effect]
+
+	### Triggers each week for every country separately. Useful for ai scripting. Runs on the beginning of the day if the num_days variable is divisible by 7.
 	## cardinality = 0..inf
 	## replace_scope = { THIS = country ROOT = country }
 	on_weekly = single_alias_right[country_event_effect]
 
+	### Triggered weekly for the specified country. Only runs the effects if the country exists. Runs on the beginning of the day if the num_days variable is divisible by 7. Tag isn't checked for validity
+	## replace_scope = { THIS = country ROOT = country }
+	## cardinality = 0..inf
+	<on_action_weekly> = single_alias_right[on_action_effect]
+
+	### Triggers each month for every country separately.
 	## cardinality = 0..inf
 	## replace_scope = { THIS = country ROOT = country }
 	on_monthly = single_alias_right[country_event_effect]
 
+	### Triggered monthly for the specified country. Only runs the effects if the country exists. Tag isn't checked for validity
+	## replace_scope = { THIS = country ROOT = country }
 	## cardinality = 0..inf
-	## replace_scope = { ROOT = country THIS = country FROM = country FROMFROM = state }
-	on_state_control_changed = single_alias_right[country_event_effect]
+	<on_action_monthly> = single_alias_right[on_action_effect]
 
+
+	# ------------ Political on actions ------------
+
+	### For the non LaR stage coup. ROOT is the country that stages the coup, FROM is the target country.
 	## cardinality = 0..inf
-	## replace_scope = { THIS = unit_leader ROOT = unit_leader from = country }
-	on_unit_leader_created = {
-		## cardinality = 0..1
-		random_events = {
-			## cardinality = 0..inf
-			int = 0
-			## cardinality = 0..inf
-			int = <event.unit_leader_event>
-		}
-		## cardinality = 0..1
-		effect = {
-			alias_name[effect] = alias_match_left[effect]
-		}
-	}
+	## replace_scope = { ROOT = state THIS = state FROM = country }
+	on_stage_coup = single_alias_right[country_event_effect]
 
-	## cardinality = 0..inf
-	## replace_scope = { THIS = unit_leader ROOT = unit_leader from = country }
-	on_unit_leader_level_up = {
-		## cardinality = 0..1
-		random_events = {
-			## cardinality = 0..inf
-			int = 0
-			## cardinality = 0..inf
-			int = <event.unit_leader_event>
-		}
-		## cardinality = 0..1
-		effect = {
-			alias_name[effect] = alias_match_left[effect]
-		}
-	}
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = unit_leader ROOT = unit_leader FROM = country }
-	on_army_leader_daily = {
-		## cardinality = 0..1
-		random_events = {
-			## cardinality = 0..inf
-			int = 0
-			## cardinality = 0..inf
-			int = <event.unit_leader_event>
-		}
-		## cardinality = 0..1
-		effect = {
-			alias_name[effect] = alias_match_left[effect]
-		}
-	}
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = unit_leader ROOT = unit_leader FROM = country }
-	on_army_leader_won_combat = {
-		## cardinality = 0..1
-		random_events = {
-			## cardinality = 0..inf
-			int = 0
-			## cardinality = 0..inf
-			int = <event.unit_leader_event>
-		}
-		## cardinality = 0..1
-		effect = {
-			alias_name[effect] = alias_match_left[effect]
-		}
-	}
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = unit_leader ROOT = unit_leader FROM = country }
-	on_army_leader_lost_combat = {
-		## cardinality = 0..1
-		random_events = {
-			## cardinality = 0..inf
-			int = 0
-			## cardinality = 0..inf
-			int = <event.unit_leader_event>
-		}
-		## cardinality = 0..1
-		effect = {
-			alias_name[effect] = alias_match_left[effect]
-		}
-	}
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = unit_leader ROOT = unit_leader from = country }
-	on_army_leader_promoted = {
-		## cardinality = 0..1
-		random_events = {
-			## cardinality = 0..inf
-			int = 0
-			## cardinality = 0..inf
-			int = <event.unit_leader_event>
-		}
-		## cardinality = 0..1
-		effect = {
-			alias_name[effect] = alias_match_left[effect]
-		}
-	}
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = country ROOT = country FROM = country FROMFROM = country }
-	on_host_changed_from_capitulation = single_alias_right[country_event_effect]
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = country ROOT = country FROM = country FROMFROM = country }
-	on_exile_government_reinstated = single_alias_right[country_event_effect]
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = country ROOT = country FROM = country }
-	on_civil_war_end_before_annexation = single_alias_right[country_event_effect]
-
+	### For the non LaR stage coup action. Trigger the following commands whenever a coup succeeds. ROOT is the country that coup succeeded in, FROM is the stager of the coup
 	## cardinality = 0..inf
 	## replace_scope = { THIS = country ROOT = country }
-	on_government_exiled = single_alias_right[country_event_effect]
+	on_coup_succeeded = single_alias_right[country_event_effect]
 
+	### Trigger the following commands whenever a country switches its government.
+	### This includes set_politics and start_civil_war (always for both sides) and excludes being puppeted. Will always also trigger on_ruling_party_change.
 	## cardinality = 0..inf
-	## replace_scope = { THIS = country ROOT = country FROM = country }
-	on_pride_of_the_fleet_sunk = single_alias_right[country_event_effect]
+	## replace_scope = { THIS = country ROOT = country }
+	on_government_change = single_alias_right[country_event_effect]
 
-	## cardinality = 0..inf
-	## replace_scope = { THIS = country ROOT = country FROM = country }
-	on_assume_faction_leadership = single_alias_right[country_event_effect]
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = country ROOT = country FROM = country }
-	on_war = single_alias_right[country_event_effect]
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = country ROOT = country FROM = country }
-	on_peace = single_alias_right[country_event_effect]
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = country ROOT = country FROM = country }
-	on_peace_proposal = single_alias_right[country_event_effect]
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = operative ROOT = country FROM = country }
-	on_operative_on_mission_spotted = {
-		## cardinality = 0..1
-		random_events = {
-			## cardinality = 0..inf
-			int = 0
-			## cardinality = 0..inf
-			int = <event.operative_leader_event>
-		}
-		## cardinality = 0..1
-		effect = {
-			alias_name[effect] = alias_match_left[effect]
-		}
-	}
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = operative ROOT = country FROM = country }
-	on_operative_captured = {
-		## cardinality = 0..1
-		random_events = {
-			## cardinality = 0..inf
-			int = 0
-			## cardinality = 0..inf
-			int = <event.operative_leader_event>
-		}
-		## cardinality = 0..1
-		effect = {
-			alias_name[effect] = alias_match_left[effect]
-		}
-	}
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = operative ROOT = country FROM = country }
-	on_operative_death = {
-		## cardinality = 0..1
-		random_events = {
-			## cardinality = 0..inf
-			int = 0
-			## cardinality = 0..inf
-			int = <event.operative_leader_event>
-		}
-		## cardinality = 0..1
-		effect = {
-			alias_name[effect] = alias_match_left[effect]
-		}
-	}
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = operative ROOT = country FROM = country FROMFROM = state }
-	on_operative_detected_during_operation = {
-		## cardinality = 0..1
-		random_events = {
-			## cardinality = 0..inf
-			int = 0
-			## cardinality = 0..inf
-			int = <event.operative_leader_event>
-		}
-		## cardinality = 0..1
-		effect = {
-			alias_name[effect] = alias_match_left[effect]
-		}
-	}
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = operative ROOT = operative FROM = country }
-	on_operative_created = {
-		## cardinality = 0..1
-		random_events = {
-			## cardinality = 0..inf
-			int = 0
-			## cardinality = 0..inf
-			int = <event.operative_leader_event>
-		}
-		## cardinality = 0..1
-		effect = {
-			alias_name[effect] = alias_match_left[effect]
-		}
-	}
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = operative ROOT = operative FROM = country }
-	on_operative_recruited = {
-		## cardinality = 0..1
-		random_events = {
-			## cardinality = 0..inf
-			int = 0
-			## cardinality = 0..inf
-			int = <event.operative_leader_event>
-		}
-		## cardinality = 0..1
-		effect = {
-			alias_name[effect] = alias_match_left[effect]
-		}
-	}
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = operative ROOT = country FROM = country }
-	on_operation_completed = {
-		## cardinality = 0..1
-		random_events = {
-			## cardinality = 0..inf
-			int = 0
-			## cardinality = 0..inf
-			int = <event.operative_leader_event>
-		}
-		## cardinality = 0..1
-		effect = {
-			alias_name[effect] = alias_match_left[effect]
-		}
-	}
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = country ROOT = country FROM = country }
-	on_fully_decrypted_cipher = single_alias_right[country_event_effect]
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = country ROOT = country FROM = country }
-	on_activated_active_decryption_bonuses = single_alias_right[country_event_effect]
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = state ROOT = country FROM = country }
-	on_units_paradropped_in_state = single_alias_right[country_event_effect]
-
-	## cardinality = 0..inf
-	## replace_scope = { THIS = state ROOT = country FROM = state }
-	on_paradrop = single_alias_right[country_event_effect]
-
+	### Trigger the following commands whenever a country switches its ideology.
+	### old_ideology_token is a temporary variable that stores the old ideology as a token. Alongside what triggers on_government_change, also includes being puppeted or changing the ideology via a console command.
 	## cardinality = 0..inf
 	## replace_scope = { THIS = country ROOT = country }
 	on_ruling_party_change = single_alias_right[country_event_effect]
-	
-	## cardinality = 0..inf
-	on_stage_coup = single_alias_right[country_event_effect]
 
+	### Trigger the following commands whenever an election happens or is called by the hold_election command.
+	## cardinality = 0..inf
+	## replace_scope = { THIS = country ROOT = country }
+	on_new_term_election = single_alias_right[country_event_effect]
+
+	### Trigger the following commands whenever a peace conference ends. ROOT is the winner, FROM is the loser.
+	## cardinality = 0..inf
+	## replace_scope = { THIS = country ROOT = country FROM = country }
+	on_peaceconference_ended = single_alias_right[country_event_effect]
+
+	### Trigger the following commands whenever a peace conference starts. ROOT is the winner, FROM is the loser.
 	## cardinality = 0..inf
 	## replace_scope = { ROOT = country FROM = country }
 	on_peaceconference_started = single_alias_right[on_action_effect]
 
-	## cardinality = 0..inf
-	## replace_scope = { ROOT = unit_leader from = unit }
-	on_unit_leader_promote_from_ranks_veteran = single_alias_right[on_action_effect]
 
-	## cardinality = 0..inf
-	## replace_scope = { ROOT = unit_leader from = unit }
-	on_unit_leader_promote_from_ranks_green = single_alias_right[on_action_effect]
+	# ------------ Diplomacy/War on actions ------------
 
+	### Trigger the following commands whenever a country send volunteers to another. ROOT is sender, FROM is receiver.
 	## cardinality = 0..inf
-	## replace_scope = { ROOT = unit }
-	on_add_history = single_alias_right[on_action_effect]
+	## replace_scope = { THIS = country ROOT = country FROM = country }
+	on_send_volunteers = single_alias_right[country_event_effect]
 
-	### Triggers actions on an attache being sent. Default scope is sender, FROM = receiver
+	### Trigger the following commands whenever a country loses a border war. "Border war" refers to the state-based border wars enabled with set_border_war, represented with orange stripes over the state, rather than border wars that simulate combat between countries. The default scope is the state that lost the border war.
+	## cardinality = 0..inf
+	## replace_scope = { THIS = state ROOT = country }
+	on_border_war_lost = single_alias_right[country_event_effect]
+
+	### fired when two countries end up at war with each other (on_war is fired when a country goes to war against anyone and is not fired again when it enters war against another country unless it went to peace first)
+	### ROOT is attacker, FROM is defender.
+	## cardinality = 0..inf
+	## replace_scope = { THIS = country ROOT = country FROM = country }
+	on_war_relation_added = single_alias_right[country_event_effect]
+
+	### Trigger the following commands whenever a country declares war. FROM is war target, ROOT is for the country who is declaring war
+	## cardinality = 0..inf
+	## replace_scope = { THIS = country ROOT = country FROM = country }
+	on_declare_war = single_alias_right[country_event_effect]
+
+	### Trigger the following commands whenever a country has just entered a state of war from initially being at peace. THIS is country that has just gotten into a war.
+	## cardinality = 0..inf
+	## replace_scope = { THIS = country ROOT = country FROM = country }
+	on_war = single_alias_right[country_event_effect]
+
+	### Trigger the following commands whenever a country is no longer at war. THIS is country that is no longer at war.
+	## cardinality = 0..inf
+	## replace_scope = { THIS = country ROOT = country FROM = country }
+	on_peace = single_alias_right[country_event_effect]
+
+	### Trigger the following commands whenever a country capitulates, in the middle of the process.
+	### ROOT is capitulated country, FROM is winner. Several processes such as the deletion of units and transfer of equipment have already been executed by this point.
+	## cardinality = 0..inf
+	## replace_scope = { THIS = country ROOT = country FROM = country }
+	on_capitulation = single_alias_right[country_event_effect]
+
+	### Trigger the following commands whenever a country capitulates, at the beginning of the process. ROOT is capitulated country, FROM is winner
+	## cardinality = 0..inf
+	## replace_scope = { THIS = country ROOT = country FROM = country }
+	on_capitulation_immediate = single_alias_right[country_event_effect]
+
+	### Trigger the following commands whenever a country that was previously capitulated changes its status to no longer having capitulated. ROOT is the country affected.
+	## cardinality = 0..inf
+	## replace_scope = { THIS = country ROOT = country }
+	on_uncapitulation = single_alias_right[country_event_effect]
+
+	### Trigger the following commands whenever a country is annexed. ROOT is winner, FROM gets annexed. For civil wars on_civil_war_end is also fired.
+	## cardinality = 0..inf
+	## replace_scope = { THIS = country ROOT = country FROM = country }
+	on_annex = single_alias_right[country_event_effect]
+
+	### Trigger the following commands just before FROM gets annexed, meaning the country and everything it owns still exists. ROOT is winner, FROM gets annexed. It will also fire on_annex and on_civil_war_end
+	## cardinality = 0..inf
+	## replace_scope = { THIS = country ROOT = country FROM = country }
+	on_civil_war_end_before_annexation = single_alias_right[country_event_effect]
+
+	### Trigger the following commands whenever a civil war ends. ROOT is civil war winner, FROM gets annexed. This will also fire on_annex.
+	## cardinality = 0..inf
+	## replace_scope = { THIS = country ROOT = country FROM = country }
+	on_civil_war_end = single_alias_right[country_event_effect]
+
+	### Trigger the following commands whenever a country is puppeted in a peace conference only. ROOT is the nation being puppeted, FROM is the overlord.
+	## cardinality = 0..inf
+	## replace_scope = { THIS = country ROOT = country FROM = country }
+	on_puppet = single_alias_right[country_event_effect]
+
+	### Trigger the following commands whenever a country is liberated in a peace conference only. ROOT is the nation being liberated, FROM is the leader of the liberators.
+	## cardinality = 0..inf
+	## replace_scope = { THIS = country ROOT = country FROM = country }
+	on_liberate = single_alias_right[country_event_effect]
+
+	### Trigger the following commands whenever a country is released. ROOT is free nation FROM is releaser.
+	## cardinality = 0..inf
+	## replace_scope = { THIS = country ROOT = country FROM = country }
+	on_release_as_free = single_alias_right[country_event_effect]
+
+	### Trigger the following commands whenever puppeting through the occupied territories menu during peace time (or when releasing from non-core but owned territory).
+	### ROOT is the nation being released, FROM is the overlord.
+	## cardinality = 0..inf
+	## replace_scope = { THIS = country ROOT = country FROM = country }
+	on_release_as_puppet = single_alias_right[country_event_effect]
+
+	### Trigger the following commands whenever a country guarantees independence of another country. ROOT is the country which guarantees, FROM is the country that is guaranteed.
+	## cardinality = 0..inf
+	## replace_scope = { THIS = country ROOT = country FROM = country }
+	on_guarantee = single_alias_right[country_event_effect]
+
+	### Trigger the following commands whenever a country accepts the request for military access. ROOT is the country which requested, FROM is the country that accepted.
+	## cardinality = 0..inf
+	## replace_scope = { THIS = country ROOT = country FROM = country }
+	on_military_access = single_alias_right[country_event_effect]
+
+	### Trigger the following commands whenever a country accepts the offer for military access. ROOT is the country which offered, FROM is the country that accepted.
+	## cardinality = 0..inf
+	## replace_scope = { THIS = country ROOT = country FROM = country }
+	on_offer_military_access = single_alias_right[country_event_effect]
+
+	### Trigger the following commands whenever a country accepts the call to war. ROOT is the country which called, FROM is the country that joined.
+	## cardinality = 0..inf
+	## replace_scope = { THIS = country ROOT = country FROM = country }
+	on_call_allies = single_alias_right[country_event_effect]
+
+	### Trigger the following commands whenever a country joins a war of an ally. ROOT is the country which joined, FROM is the country whose war was joined.
+	## cardinality = 0..inf
+	## replace_scope = { THIS = country ROOT = country FROM = country }
+	on_join_allies = single_alias_right[country_event_effect]
+
+	### Trigger the following commands whenever a country has their lend lease accepted. ROOT is the country that sent the lend lease, FROM is the country that accepted.
+	## cardinality = 0..inf
+	## replace_scope = { THIS = country ROOT = country FROM = country }
+	on_lend_lease = single_alias_right[country_event_effect]
+
+	### Trigger the following commands whenever a country accepts a requested lend lease. ROOT is the country that accepted, FROM is the country that requested.
+	## cardinality = 0..inf
+	## replace_scope = { THIS = country ROOT = country FROM = country }
+	on_incoming_lend_lease = single_alias_right[country_event_effect]
+
+	### Trigger the following commands whenever a country accepts sent expeditionary forces. ROOT is the country that sent, FROM is the country that accepted.
+	## cardinality = 0..inf
+	## replace_scope = { THIS = country ROOT = country FROM = country }
+	on_send_expeditionary_force = single_alias_right[country_event_effect]
+
+	### Trigger the following commands whenever a country returns their expeditionary forces. ROOT is the owner of the forces, FROM is the country where the forces were sent.
+	## cardinality = 0..inf
+	## replace_scope = { THIS = country ROOT = country FROM = country }
+	on_return_expeditionary_forces = single_alias_right[country_event_effect]
+
+	### Trigger the following commands whenever a country requests expeditionary forces. ROOT is the country that requests, FROM is the target of the request.
+	## cardinality = 0..inf
+	## replace_scope = { THIS = country ROOT = country FROM = country }
+	on_request_expeditionary_forces = single_alias_right[country_event_effect]
+
+	### Trigger the following commands whenever a country accepts the request for control of a state. ROOT is the requester, FROM is the country in control of the state.
+	## cardinality = 0..inf
+	## replace_scope = { THIS = country ROOT = country FROM = country }
+	on_ask_for_state_control = single_alias_right[country_event_effect]
+
+	### Trigger the following commands whenever a country accepts being given control of a state. ROOT is the giver, FROM is the receiver.
+	## cardinality = 0..inf
+	## replace_scope = { THIS = country ROOT = country FROM = country }
+	on_give_state_control = single_alias_right[country_event_effect]
+
+	### Trigger the following commands whenever a country accepts a conditional surrender. ROOT is sender of conditional surrender, FROM is the receiver.
+	## cardinality = 0..inf
+	## replace_scope = { THIS = country ROOT = country FROM = country }
+	on_peace_proposal = single_alias_right[country_event_effect]
+
+	### Triggers actions on an attache being accepted. Default scope is sender, FROM = receiver
 	## cardinality = 0..inf
 	## replace_scope = { ROOT = country THIS = country FROM = country }
 	on_send_attache = single_alias_right[country_event_effect]
 
+
+	# ------------ Faction on actions ------------
+
+	### Trigger the following commands whenever a country create a faction. FROM is the one that joins the faction.
+	## cardinality = 0..inf
+	## replace_scope = { THIS = country ROOT = country from = country }
+	on_create_faction = single_alias_right[country_event_effect]
+
+	### Trigger the following commands when a faction is formed.
+	## cardinality = 0..inf
+	## replace_scope = { THIS = country ROOT = country }
+	on_faction_formed = single_alias_right[country_event_effect]
+
+	### Trigger the following commands whenever a country joins a faction after being invited. FROM is the country invited, THIS and ROOT are the faction leader.
+	## cardinality = 0..inf
+	## replace_scope = { THIS = country ROOT = country FROM = country }
+	on_offer_join_faction = single_alias_right[country_event_effect]
+
+	### Trigger the following commands for a faction leader whenever a country joins after they ask to do so. FROM is faction leader, ROOT and THIS are the country that joins.
+	## cardinality = 0..inf
+	## replace_scope = { THIS = country ROOT = country FROM = country }
+	on_join_faction = single_alias_right[country_event_effect]
+
+	### Trigger the following commands whenever a country assumes leadership of a faction. ROOT is the new faction leader FROM is the old faction leader
+	## cardinality = 0..inf
+	## replace_scope = { THIS = country ROOT = country FROM = country }
+	on_assume_faction_leadership = single_alias_right[country_event_effect]
+
+	### Trigger the following commands whenever a country leaves a faction. FROM is the faction Leader, ROOT is the country leaving the faction
+	## cardinality = 0..inf
+	## replace_scope = { THIS = country ROOT = country }
+	on_leave_faction = single_alias_right[country_event_effect]
+
+
+	# ------------ Autonomy on actions ------------
+
+	### Trigger the following commands when a country annex a subject. ROOT is the subject, FROM is the overlord.
+	## cardinality = 0..inf
+	## replace_scope = { THIS = country ROOT = country FROM = country }
+	on_subject_annexed = single_alias_right[country_event_effect]
+
+	### Trigger the following commands when a country grants freedom to a puppet. ROOT is the subject, FROM is the previous overlord.
+	## cardinality = 0..inf
+	## replace_scope = { THIS = country ROOT = country FROM = country }
+	on_subject_free = single_alias_right[country_event_effect]
+
+	### Trigger the following commands when the autonomy level of a puppet changes. ROOT is the subject, FROM is the overlord.
+	## cardinality = 0..inf
+	## replace_scope = { THIS = country ROOT = country FROM = country }
+	on_subject_autonomy_level_change = single_alias_right[country_event_effect]
+
+
+	# ------------ Governments in Exile on actions ------------
+
+	### Trigger the following commands whenever a country becomes a government in exile. ROOT is the government in exile, FROM is the country that is hosting the government in exile.
+	## cardinality = 0..inf
+	## replace_scope = { THIS = country ROOT = country }
+	on_government_exiled = single_alias_right[country_event_effect]
+
+	### Trigger the following commands whenever a country that is hosting a government in exile has capitulated.
+	### ROOT is the government in exile, FROM is the new country hosting the government in exile, FROM.FROM is the old country that was hosting the government in exile.
+	## cardinality = 0..inf
+	## replace_scope = { THIS = country ROOT = country FROM = country FROMFROM = country }
+	on_host_changed_from_capitulation = single_alias_right[country_event_effect]
+
+	### Trigger the following commands whenever a country has returned from governing in exile. ROOT is the government in exile, FROM is the country that was hosting the government in exile.
+	## cardinality = 0..inf
+	## replace_scope = { THIS = country ROOT = country FROM = country FROMFROM = country }
+	on_exile_government_reinstated = single_alias_right[country_event_effect]
+
+
+	# ------------ States on actions ------------
+
+	### Trigger the following commands when a state's controller changes. ROOT is new controller, FROM is old controller, FROM.FROM is state ID.
+	## cardinality = 0..inf
+	## replace_scope = { ROOT = country THIS = country FROM = country FROMFROM = state }
+	on_state_control_changed = single_alias_right[country_event_effect]
+
+
+	# ------------ Wargoal on actions ------------
+
+	### Trigger the following commands whenever a country generates a wargoal. ROOT is the wargoal owner, FROM is the wargoal target
+	## cardinality = 0..inf
+	## replace_scope = { THIS = country ROOT = country FROM = country }
+	on_generate_wargoal = single_alias_right[country_event_effect]
+
+	### Trigger the following commands whenever the country is targeted by a wargoal under justification. FROM = target nation. Checked every day.
+	## cardinality = 0..inf
+	## replace_scope = { THIS = country ROOT = country FROM = country }
+	on_justifying_wargoal_pulse = single_alias_right[country_event_effect]
+
+	### Trigger the following commands whenever a wargoal expire. FROM is the wargoal owner.
+	## cardinality = 0..inf
+	## replace_scope = { THIS = country ROOT = country FROM = country }
+	on_wargoal_expire = single_alias_right[country_event_effect]
+
+
+	# ------------ Unit Leader on actions ------------
+
+	### Trigger the following commands when an army leader is created. FROM is owner country, ROOT is the unit leader.
+	## cardinality = 0..inf
+	## replace_scope = { THIS = unit_leader ROOT = unit_leader from = country }
+	on_unit_leader_created = single_alias_right[unit_leader_event_effect]
+
+	### Trigger the following commands on an army leader each day. FROM is owner country, ROOT is the unit leader.
+	## cardinality = 0..inf
+	## replace_scope = { THIS = unit_leader ROOT = unit_leader FROM = country }
+	on_army_leader_daily = single_alias_right[unit_leader_event_effect]
+
+	### Trigger the following commands whenever an army leader won a combat. FROM is owner country, ROOT is the unit leader.
+	## cardinality = 0..inf
+	## replace_scope = { THIS = unit_leader ROOT = unit_leader FROM = country }
+	on_army_leader_won_combat = single_alias_right[unit_leader_event_effect]
+
+	### Trigger the following commands whenever an army leader lost a combat. FROM is owner country, ROOT is the unit leader.
+	## cardinality = 0..inf
+	## replace_scope = { THIS = unit_leader ROOT = unit_leader FROM = country }
+	on_army_leader_lost_combat = single_alias_right[unit_leader_event_effect]
+
+	### Trigger the following commands when a leader gain a level. FROM is owner country, ROOT is the unit leader.
+	## cardinality = 0..inf
+	## replace_scope = { THIS = unit_leader ROOT = unit_leader from = country }
+	on_unit_leader_level_up = single_alias_right[unit_leader_event_effect]
+
+	### Trigger the following commands whenever a corps commander is promoted to a field marshal. FROM is owner country, ROOT is the unit leader.
+	## cardinality = 0..inf
+	## replace_scope = { THIS = unit_leader ROOT = unit_leader from = country }
+	on_army_leader_promoted = single_alias_right[unit_leader_event_effect]
+
+	### Triggers the following commands whenever an unit commander gets promoted to a general. FROM is unit, OWNER is owner country, ROOT is the unit leader.
+	## cardinality = 0..inf
+	## replace_scope = { ROOT = unit_leader THIS = unit_leader from = unit }
+	on_unit_leader_promote_from_ranks_veteran = single_alias_right[unit_leader_event_effect]
+
+	### Triggers the following commands whenever an unit commander gets promoted to a general. FROM is unit, OWNER is owner country, ROOT is the unit leader
+	## cardinality = 0..inf
+	## replace_scope = { ROOT = unit_leader THIS = unit_leader from = unit }
+	on_unit_leader_promote_from_ranks_green = single_alias_right[unit_leader_event_effect]
+
+
+	# ------------ Military on actions ------------
+
+	### Trigger the following commands whenever a country drops a nuke. ROOT is the country that launched the nuke, FROM is the nuked state.
+	## cardinality = 0..inf
+	## replace_scope = { THIS = country ROOT = country FROM = state }
+	on_nuke_drop = single_alias_right[country_event_effect]
+
+	### Triggers when a country's pride of the fleet is sunk. FROM is the killer country, ROOT is the country of that lost its pride of the fleet.
+	## cardinality = 0..inf
+	## replace_scope = { THIS = country ROOT = country FROM = country }
+	on_pride_of_the_fleet_sunk = single_alias_right[country_event_effect]
+
+	### Triggers the following commands whenever a sea invasion is made. THIS (default scope) is the invaded state, ROOT is the country that invades, FROM is the state where the invasion started
+	## cardinality = 0..inf
+	## replace_scope = { THIS = state ROOT = country FROM = state }
+	on_naval_invasion = single_alias_right[country_event_effect]
+
+	### Triggers the following commands whenever a landing occurs. THIS (default scope) is the invaded state, ROOT is the country that invades, FROM is the state where the invasion started
+	## cardinality = 0..inf
+	## replace_scope = { THIS = state ROOT = country FROM = state }
+	on_paradrop = single_alias_right[country_event_effect]
+
+	### This differs from on_paradrop in that it is run once per paradrop, not once per unit dropped. ROOT is the state that was dropped into, FROM is the dropping country.
 	## cardinality = 0..inf
 	## replace_scope = { ROOT = state THIS = state FROM = country }
 	on_units_paradropped_in_state = single_alias_right[on_action_effect]
 
-	# NB : all the following also exist at MIO level
-	# use on-action here if the purpose is to execute for any MIO
-	# use on-action at MIO level to execute just for one precise MIO
-	# i.e. don't use this here : if = { limit = { is_military_industrial_organisation = ... } } }
-
+	### Triggers the following commands whenever receiving a history entry. ROOT is the unit.
 	## cardinality = 0..inf
-	## replace_scope = { this = military_industrial_organization }
-	on_mio_size_increased = single_alias_right[on_action_effect]
+	## replace_scope = { ROOT = unit }
+	on_add_history = single_alias_right[on_action_effect]
 
+
+	# ------------ Aces on actions ------------
+
+	### Trigger the following commands whenever an ace is created. FROM = Ace
 	## cardinality = 0..inf
-	## replace_scope = { this = military_industrial_organization }
-	on_mio_design_team_assigned_to_tech = single_alias_right[on_action_effect]
+	## replace_scope = { THIS = country root = country FROM = any }
+	on_ace_promoted = single_alias_right[country_event_effect]
 
+	### Trigger the following commands whenever an aces is killed. FROM = ace
 	## cardinality = 0..inf
-	## replace_scope = { this = military_industrial_organization }
-	on_mio_design_team_assigned_to_variant = single_alias_right[on_action_effect]
+	## replace_scope = { THIS = country root = country FROM = any }
+	on_ace_killed = single_alias_right[country_event_effect]
 
+	### Trigger the following commands whenever our aces died on accident. FROM = our ace died in accident.
 	## cardinality = 0..inf
-	## replace_scope = { this = military_industrial_organization }
-	on_mio_industrial_manufacturer_assigned = single_alias_right[on_action_effect]
+	## replace_scope = { THIS = country root = country FROM = any }
+	on_ace_killed_on_accident = single_alias_right[country_event_effect]
 
+	### Trigger the following commands whenever non ace killed enemy ace. FROM = enemy ace.
 	## cardinality = 0..inf
-	## replace_scope = { this = military_industrial_organization }
-	on_mio_tech_research_cancelled = single_alias_right[on_action_effect]
+	## replace_scope = { THIS = country root = country FROM = any }
+	on_non_ace_killed_other_ace = single_alias_right[country_event_effect]
 
+	### Trigger the following commands whenever an aces is killed by another ace. FROM = our ace, PREV = enemy ace, has killed FROM.
 	## cardinality = 0..inf
-	## replace_scope = { this = military_industrial_organization }
-	on_mio_tech_research_completed = single_alias_right[on_action_effect]
+	## replace_scope = { THIS = country root = country FROM = any prev = any }
+	on_ace_killed_by_ace = single_alias_right[country_event_effect]
 
+	### Trigger the following commands whenever an aces is killed by another ace (surviving ace side). FROM = our ace, PREV = enemy ace, killed by FROM.
 	## cardinality = 0..inf
-	## replace_scope = { this = military_industrial_organization }
-	on_mio_industrial_manufacturer_unassigned = single_alias_right[on_action_effect]
+	## replace_scope = { THIS = country root = country FROM = any prev = any }
+	on_ace_killed_other_ace = single_alias_right[country_event_effect]
 
-	### ROOT is winner #FROM gets annexed - This fires just before FROM gets annexed, meaning the country and everything it owns still exists. It will also fire on_annex and on_civil_war_end
+	### Trigger the following commands whenever two aces kill each other in air duel. FROM = our ace, PREV = enemy ace, has killed FROM.
+	## cardinality = 0..inf
+	## replace_scope = { THIS = country root = country FROM = any prev = any }
+	on_aces_killed_each_other = single_alias_right[country_event_effect]
+
+
+	# ------------ La Résistance on actions ------------
+
+	### Trigger the following commands whenever an operative completed. THIS - the operative, ROOT - the initiating country, FROM - the target country.
+	## cardinality = 0..inf
+	## replace_scope = { THIS = operative ROOT = country FROM = country }
+	on_operation_completed = single_alias_right[operative_event_effect]
+
+	### Trigger the following commands whenever an operative dies.
+	### THIS - the operative, ROOT - the killer country (optional), FROM - the country the operative is operating for, FROM.FROM - operation state (will only be set if the operation has a specific selection_target).
+	## cardinality = 0..inf
+	## replace_scope = { THIS = operative ROOT = country FROM = country FROMFROM = state }
+	on_operative_detected_during_operation = single_alias_right[operative_event_effect]
+
+	### Trigger the following commands whenever an operative performing an offensive mission in a country.
+	### THIS - the operative, FROM - the country the operative was performing its mission in, ROOT - the country the operative is operating for.
+	## cardinality = 0..inf
+	## replace_scope = { THIS = operative ROOT = country FROM = country }
+	on_operative_on_mission_spotted = single_alias_right[operative_event_effect]
+
+	### Trigger the following commands whenever an operative is captured.
+	### THIS - the operative, ROOT - the country the operative was performing its mission in, FROM - the country the operative is operating for.
+	## cardinality = 0..inf
+	## replace_scope = { THIS = operative ROOT = country FROM = country }
+	on_operative_captured = single_alias_right[operative_event_effect]
+
+	### Trigger the following commands whenever an operative is created.
+	### THIS - the operative, FROM - the country the operative is created by.
+	## cardinality = 0..inf
+	## replace_scope = { THIS = operative ROOT = operative FROM = country }
+	on_operative_created = single_alias_right[operative_event_effect]
+
+	### Trigger the following commands whenever an operative dies.
+	### THIS - the operative, ROOT - the killer country (optional), FROM - the country the operative is operating for
+	## cardinality = 0..inf
+	## replace_scope = { THIS = operative ROOT = country FROM = country }
+	on_operative_death = single_alias_right[operative_event_effect]
+
+	### Trigger the following commands whenever an operative is recruited.
+	### THIS - the operative, FROM - the country the operative is created by.
+	## cardinality = 0..inf
+	## replace_scope = { THIS = operative ROOT = operative FROM = country }
+	on_operative_recruited = single_alias_right[operative_event_effect]
+
+	### Trigger the following commands whenever a country fully decrypts cipher of a target country.
+	### THIS - the target country that its cipher is decrypted, FROM - the decrypter country.
 	## cardinality = 0..inf
 	## replace_scope = { THIS = country ROOT = country FROM = country }
-	on_civil_war_end_before_annexation = single_alias_right[on_action_effect]	
+	on_fully_decrypted_cipher = single_alias_right[country_event_effect]
+
+	### Trigger the following commands whenever a country activates its active cipher bonuses against a target.
+	### THIS - the target country, FROM - the country that activates its bonuses.
+	## cardinality = 0..inf
+	## replace_scope = { THIS = country ROOT = country FROM = country }
+	on_activated_active_decryption_bonuses = single_alias_right[country_event_effect]
+
+
+	# ------------ Military Industrial Organization on actions ------------
+
+	### Trigger the following commands whenever a MIO increases in size (levels up).
+	### ROOT is the Military Industrial Organization, FROM is the owner of the MIO country
+	## cardinality = 0..inf
+	## replace_scope = { ROOT = military_industrial_organization this = military_industrial_organization FROM = COUNTRY  }
+	on_mio_size_increased = single_alias_right[on_action_effect]
+
+	### Trigger the following commands whenever a MIO is assigned to technology research.
+	### ROOT is the Military Industrial Organization, FROM is the owner of the MIO country
+	## cardinality = 0..inf
+	## replace_scope = { ROOT = military_industrial_organization this = military_industrial_organization FROM = COUNTRY }
+	on_mio_design_team_assigned_to_tech = single_alias_right[on_action_effect]
+
+	### Trigger the following commands whenever a MIO is asigned to a variant.
+	### ROOT is the Military Industrial Organization, FROM is the owner of the MIO country
+	## cardinality = 0..inf
+	## replace_scope = { ROOT = military_industrial_organization this = military_industrial_organization FROM = COUNTRY }
+	on_mio_design_team_assigned_to_variant = single_alias_right[on_action_effect]
+
+	### Trigger the following commands whenever a MIO assigned to a production line.
+	### ROOT is the Military Industrial Organization, FROM is the owner of the MIO country
+	## cardinality = 0..inf
+	## replace_scope = { ROOT = military_industrial_organization this = military_industrial_organization FROM = COUNTRY }
+	on_mio_industrial_manufacturer_assigned = single_alias_right[on_action_effect]
+
+	### Currently does not work.
+	### Trigger the following commands whenever a technology a MIO is assigned to is canceled.
+	### ROOT is the Military Industrial Organization, FROM is the owner of the MIO country
+	## cardinality = 0..inf
+	## replace_scope = { ROOT = military_industrial_organization this = military_industrial_organization }
+	on_mio_tech_research_cancelled = single_alias_right[on_action_effect]
+
+	### Currently does not work.
+	### Trigger the following commands whenever a technology a MIO is assigned to is completed.
+	### ROOT is the Military Industrial Organization, FROM is the owner of the MIO country
+	## cardinality = 0..inf
+	## replace_scope = { ROOT = military_industrial_organization this = military_industrial_organization }
+	on_mio_tech_research_completed = single_alias_right[on_action_effect]
+
+	### Trigger the following commands whenever a MIO is unnasigned from a production line.
+	### ROOT is the Military Industrial Organization, FROM is the owner of the MIO country
+	## cardinality = 0..inf
+	## replace_scope = { ROOT = military_industrial_organization this = military_industrial_organization FROM = COUNTRY }
+	on_mio_industrial_manufacturer_unassigned = single_alias_right[on_action_effect]
 }
 
 single_alias[country_event_effect] = {
@@ -1101,6 +1087,32 @@ single_alias[country_event_effect] = {
 		int = 0
 		## cardinality = 0..inf
 		int = <event.country_event>
+	}
+	## cardinality = 0..1
+	effect = {
+		alias_name[effect] = alias_match_left[effect]
+	}
+}
+single_alias[unit_leader_event_effect] = {
+	## cardinality = 0..1
+	random_events = {
+		## cardinality = 0..inf
+		int = 0
+		## cardinality = 0..inf
+		int = <event.unit_leader_event>
+	}
+	## cardinality = 0..1
+	effect = {
+		alias_name[effect] = alias_match_left[effect]
+	}
+}
+single_alias[operative_event_effect] = {
+	## cardinality = 0..1
+	random_events = {
+		## cardinality = 0..inf
+		int = 0
+		## cardinality = 0..inf
+		int = <event.operative_leader_event>
 	}
 	## cardinality = 0..1
 	effect = {

@@ -1,4 +1,46 @@
 list_merge_optimisations = {
+    all_owned_state = { all_state is_owned_by }
+    any_owned_state = { any_state is_owned_by }
+    every_owned_state = { every_state limit is_owned_by }
+    random_owned_state = { random_state limit is_owned_by }
+
+    all_controlled_state = { all_state is_controlled_by }
     any_controlled_state = { any_state is_controlled_by }
     every_controlled_state = { every_state limit is_controlled_by }
+    random_controlled_state = { random_state limit is_controlled_by }
+
+    all_core_state = { all_state is_core_of }
+    any_core_state = { any_state is_core_of }
+    every_core_state = { every_state limit is_core_of }
+    random_core_state = { random_state limit is_core_of }
+
+	all_country_with_original_tag = { all_country limit original_tag }
+	any_country_with_original_tag = { any_country limit original_tag }
+	every_country_with_original_tag = { every_country limit original_tag }
+	random_country_with_original_tag = { every_country limit original_tag }
+
+	all_subject_country = { all_country is_subject_of }
+	any_subject_country = { any_country is_subject_of }
+	every_subject_country = { every_country limit is_subject_of }
+	random_subject_country = { random_country limit is_subject_of }
+
+	all_neighbor_country = { all_country is_neighbor_of }
+	any_neighbor_country = { any_country is_neighbor_of }
+	every_neighbor_country = { every_country limit is_neighbor_of }
+	random_neighbor_country = { random_country limit is_neighbor_of }
+
+    all_unit_leader = { all_character limit is_unit_leader }
+    any_unit_leader = { any_character limit is_unit_leader }
+    every_unit_leader = { every_character limit is_unit_leader }
+    random_unit_leader = { random_character limit is_unit_leader }
+
+    all_army_leader = { all_character limit is_army_leader }
+    any_army_leader = { any_character limit is_army_leader }
+    every_army_leader = { every_character limit is_army_leader }
+    random_army_leader = { random_character limit is_army_leader }
+
+    all_navy_leader = { all_character limit is_navy_leader }
+    any_navy_leader = { any_character limit is_navy_leader }
+    every_navy_leader = { every_character limit is_navy_leader }
+    random_navy_leader = { random_character limit is_navy_leader }
 }

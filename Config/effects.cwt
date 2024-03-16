@@ -22,14 +22,14 @@ alias[effect:event_option_tooltip] = localisation
 alias[effect:set_capital] = {
 	state = scope[state]
 	## cardinality = 0..1
-	remember_old_capital = no
+	remember_old_capital = bool
 }
 ### Move capital to state.
 ## scope = country
 alias[effect:set_capital] = {
 	state = <state>
 	## cardinality = 0..1
-	remember_old_capital = no
+	remember_old_capital = bool
 }
 
 ### Add core on state.
@@ -178,6 +178,8 @@ alias[effect:every_country] = {
 	## cardinality = 0..1
 	random_select_amount = int[1..inf]
 	## cardinality = 0..1
+	display_individual_scopes = bool
+	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
@@ -209,6 +211,8 @@ alias[effect:every_neighbor_country] = {
 	## cardinality = 0..1
 	random_select_amount = int[1..inf]
 	## cardinality = 0..1
+	display_individual_scopes = bool
+	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
@@ -239,6 +243,8 @@ alias[effect:every_enemy_country] = {
 	### Apply the effect to this number of randomly selected entities
 	## cardinality = 0..1
 	random_select_amount = int[1..inf]
+	## cardinality = 0..1
+	display_individual_scopes = bool
 	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
@@ -514,6 +520,8 @@ alias[effect:remove_opinion_modifier] = {
 }
 
 ### Creates a leader and adds it to proper party in country.
+## error_if_only_match = This is a deprecated command. Use add_country_leader_role instead when possible.
+## severity = info
 ## scope = country
 alias[effect:create_country_leader] = {
 	name = scalar
@@ -552,6 +560,18 @@ alias[effect:create_unit] = {
 	allow_spawning_on_enemy_provs = bool
 	## cardinality = 0..1
 	count = int_variable_field
+	## cardinality = 0..1
+	officer = {
+		## cardinality = 0..1
+		name = localisation
+		## cardinality = 0..1
+		portraits = {
+			army = {
+				large = <spriteType>
+				small = <spriteType>
+			}
+		}
+	}
 	## cardinality = 0..1
 	country_score = {
 		## cardinality = 0..1
@@ -604,13 +624,23 @@ alias[effect:division_template] = {
 	## cardinality = 0..1
 	division_cap = int
 	regiments = {
-		## cardinality = 1..25
-		<unit> = { x = int[0..4] y = int[0..4] }
+		## cardinality = 0..25
+		<unit.infantry> = { x = int[0..4] y = int[0..4] }
+		## cardinality = 0..25
+		<unit.armor> = { x = int[0..4] y = int[0..4] }
+		## cardinality = 0..25
+		<unit.mobile> = { x = int[0..4] y = int[0..4] }
+		## cardinality = 0..25
+		<unit.combat_support> = { x = int[0..4] y = int[0..4] }
+		## cardinality = 0..25
+		<unit.armor_combat_support> = { x = int[0..4] y = int[0..4] }
+		## cardinality = 0..25
+		<unit.mobile_combat_support> = { x = int[0..4] y = int[0..4] }
 	}
 	## cardinality = 0..1
 	support = {
 		## cardinality = ~1..5
-		<unit> = { x = 0 y = int[0..4] }
+		<unit.support_unit> = { x = 0 y = int[0..4] }
 	}
 	## cardinality = 0..1
 	template_counter = int
@@ -690,7 +720,7 @@ alias[effect:add_ideas] = enum[idea_name]
 ### Add idea(s) to country.
 ## scope = country
 alias[effect:add_ideas] = {
-	## cardinality = 1..inf
+	## cardinality = 0..inf
 	enum[idea_name]
 	## cardinality = 0..inf
 	value[advisor_token]
@@ -702,7 +732,7 @@ alias[effect:remove_ideas] = enum[idea_name]
 ### Remove idea(s) from country.
 ## scope = country
 alias[effect:remove_ideas] = {
-	## cardinality = 1..inf
+	## cardinality = 0..inf
 	enum[idea_name]
 	## cardinality = 0..inf
 	value[advisor_token]
@@ -726,6 +756,8 @@ alias[effect:set_technology] = {
 }
 
 ### Creates an admiral for country in scope.
+## error_if_only_match = This is a deprecated command. Use add_naval_commander_role instead when possible. The created admiral will not be able to have a portrait if assigned to be a minister via officer corps, causing errors.
+## severity = info
 ## scope = country
 alias[effect:create_navy_leader] = {
 	name = scalar
@@ -763,11 +795,11 @@ alias[effect:create_navy_leader] = {
 }
 
 ### Remove trait from unit leader.
-## scope = { character unit_leader }
+## scope = { character unit_leader operative }
 alias[effect:remove_unit_leader_trait] = <unit_leader_trait>
 
 ### Add trait to unit leader.
-## scope = { character unit_leader }
+## scope = { character unit_leader operative }
 alias[effect:add_unit_leader_trait] = <unit_leader_trait>
 
 ### Adds new namespace.
@@ -775,9 +807,13 @@ alias[effect:add_unit_leader_trait] = <unit_leader_trait>
 alias[effect:add_namespace] = scalar
 
 ### Set owner for state.
+## error_if_only_match = This can fail to carry over the control, so it's recommended to instead use transfer_state unless transferring the ownership without transferring over the control.
+## severity = info
 ## scope = country
 alias[effect:set_state_owner] = scope[state]
 ### Set owner for state.
+## error_if_only_match = This can fail to carry over the control, so it's recommended to instead use transfer_state unless transferring the ownership without transferring over the control.
+## severity = info
 ## scope = country
 alias[effect:set_state_owner] = <state>
 
@@ -1067,6 +1103,8 @@ alias[effect:every_state] = {
 	## cardinality = 0..1
 	random_select_amount = int[1..inf]
 	## cardinality = 0..1
+	display_individual_scopes = bool
+	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
@@ -1084,6 +1122,8 @@ alias[effect:every_owned_state] = {
 	## cardinality = 0..1
 	random_select_amount = int[1..inf]
 	## cardinality = 0..1
+	display_individual_scopes = bool
+	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
@@ -1100,6 +1140,8 @@ alias[effect:every_neighbor_state] = {
 	### Apply the effect to this number of randomly selected entities
 	## cardinality = 0..1
 	random_select_amount = int[1..inf]
+	## cardinality = 0..1
+	display_individual_scopes = bool
 	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
@@ -1511,15 +1553,22 @@ alias[effect:add_resource] = {
 	show_state_in_tooltip = bool
 }
 
-### Remove a unit leader ( remove_unit_leader=ID ).
+### Remove a unit leader by their legacy ID ( remove_unit_leader=ID ).
+## error_if_only_match = Does not work with the character ID. Instead, remove_unit_leader_role within the scope of the character is recommended when possible.
+## severity = info
 ## scope = country
 alias[effect:remove_unit_leader] = value[unit_leader_ids]
 
-### Add time limited idea to country idea, add_timed_idea = { idea = id days = number_of_days }.
+### Add time limited idea to country idea, supports days/months/years.
 ## scope = country
 alias[effect:add_timed_idea] = {
 	idea = enum[idea_name]
+	## cardinality = 0..1
 	days = int_variable_field
+	## cardinality = 0..1
+	months = int_variable_field
+	## cardinality = 0..1
+	years = int_variable_field
 }
 
 ### Stops specefied country being a puppet of current country.
@@ -1571,12 +1620,17 @@ alias[effect:add_named_threat] = {
 ### Set controller for province.
 ## scope = country
 alias[effect:set_province_controller] = enum[provinces]
+### Set controller for province.
+## scope = country
+alias[effect:set_province_controller] = value[variable]
 
 ### Sets mandatory major country flag.
 ## scope = country
 alias[effect:set_major] = bool
 
 ### Creates a field marshal for country in scope.
+## error_if_only_match = This is an deprecated command. Uadd_field_marshal_role instead when possible. The created field marshal will not be able to have a portrait if assigned to be a minister via officer corps, causing errors.
+## severity = info
 ## scope = country
 alias[effect:create_field_marshal] = {
 	name = scalar
@@ -1613,6 +1667,8 @@ alias[effect:create_field_marshal] = {
 }
 
 ### Creates a corps commander for country in scope.
+## error_if_only_match = This is an deprecated command. use add_corps_commander_role instead when possible. The created corps commander will not be able to have a portrait if assigned to be a minister via officer corps, causing errors.
+## severity = info
 ## scope = country
 alias[effect:create_corps_commander] = {
 	## cardinality = 0..1
@@ -1702,6 +1758,8 @@ alias[effect:add_to_war] = {
 	enemy = enum[country_tags]
 	## cardinality = 0..1
 	hostility_reason = localisation
+	## cardinality = 0..1
+	single_target_only = bool
 }
 
 ### Show what idea does.
@@ -1714,6 +1772,8 @@ alias[effect:show_ideas_tooltip] = value[advisor_token]
 
 ## scope = country
 alias[effect:show_unit_leaders_tooltip] = <character>
+## scope = country
+alias[effect:show_unit_leaders_tooltip] = value[character_token]
 ## scope = country
 alias[effect:show_unit_leaders_tooltip] = value[variable]
 ## scope = country
@@ -1732,6 +1792,8 @@ alias[effect:create_equipment_variant] = {
 	type = value[nsb_armor_variants]
 	type = value[bba_air_variants]
 	type = enum[equipment_bonus_type]
+	type = enum[md_unique_dupe_archetypes] 	# TODO: Remove this once we have  system for creating custom duplicate archetype things
+
 	## cardinality = 0..1
 	name_group = <ship_name>
 	## cardinality = 0..1
@@ -1757,9 +1819,9 @@ alias[effect:create_equipment_variant] = {
 	## cardinality = 0..1
 	icon = filepath
 	## cardinality = 0..1
-	icon = scalar
+	icon = <spriteType>
 	## cardinality = 0..1
-	model = scalar
+	model = <entity>
 	### Who designed that equipment
 	## cardinality = 0..1
 	design_team = mio:<military_industrial_organization>
@@ -1772,6 +1834,7 @@ alias[effect:add_equipment_production] = {
 		type = <equipment>
 		type = value[nsb_armor_variants]
 		type = value[bba_air_variants]
+		type = enum[md_unique_dupe_archetypes] 	# TODO: Remove this once we have  system for creating custom duplicate archetype things
 		## cardinality = 0..1
 		creator = enum[country_tags]
 		## cardinality = 0..1
@@ -1837,6 +1900,8 @@ alias[effect:every_other_country] = {
 	## cardinality = 0..1
 	random_select_amount = int[1..inf]
 	## cardinality = 0..1
+	display_individual_scopes = bool
+	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
@@ -1865,8 +1930,9 @@ alias[effect:random_other_country] = {
 alias[effect:add_equipment_to_stockpile] = {
 	type = <equipment>
 	type = value[nsb_armor_variants]
-	type = enum[bba_air_equipment]
+	type = enum[bba_air_variants]
 	type = value[variable]
+	type = enum[md_unique_dupe_archetypes] 	# TODO: Remove this once we have  system for creating custom duplicate archetype things
 
 	amount = int_variable_field
 	## cardinality = 0..1
@@ -2164,7 +2230,7 @@ alias[effect:set_war_support] = variable_field[0..1]
 
 ### Executes children effects on random unit leader that fulfills the "limit" trigger.
 ## scope = country
-## push_scope = { character unit_leader }
+## push_scope = unit_leader 
 alias[effect:random_unit_leader] = {
 	## cardinality = 0..1
 	limit = {
@@ -2178,11 +2244,13 @@ alias[effect:random_unit_leader] = {
 
 ### Executes children effects on unit leaders that fulfills the "limit" trigger.
 ## scope = country
-## push_scope = { character unit_leader }
+## push_scope = unit_leader 
 alias[effect:every_unit_leader] = {
 	### Apply the effect to this number of randomly selected entities
 	## cardinality = 0..1
 	random_select_amount = int[1..inf]
+	## cardinality = 0..1
+	display_individual_scopes = bool
 	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
@@ -2195,7 +2263,7 @@ alias[effect:every_unit_leader] = {
 
 ### Executes children effects on random army leader that fulfills the "limit" trigger.
 ## scope = country
-## push_scope = { character unit_leader }
+## push_scope = unit_leader
 alias[effect:random_army_leader] = {
 	## cardinality = 0..1
 	limit = {
@@ -2209,11 +2277,13 @@ alias[effect:random_army_leader] = {
 
 ### Executes children effects on army leaders that fulfills the "limit" trigger.
 ## scope = country
-## push_scope = { unit_leader character }
+## push_scope = unit_leader
 alias[effect:every_army_leader] = {
 	### Apply the effect to this number of randomly selected entities
 	## cardinality = 0..1
 	random_select_amount = int[1..inf]
+	## cardinality = 0..1
+	display_individual_scopes = bool
 	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
@@ -2226,7 +2296,7 @@ alias[effect:every_army_leader] = {
 
 ### Executes children effects on random navy leader that fulfills the "limit" trigger.
 ## scope = country
-## push_scope = any
+## push_scope = unit_leader
 alias[effect:random_navy_leader] = {
 	## cardinality = 0..1
 	limit = {
@@ -2240,11 +2310,13 @@ alias[effect:random_navy_leader] = {
 
 ### Executes children effects on navy leaders that fulfills the "limit" trigger.
 ## scope = country
-## push_scope = any
+## push_scope = unit_leader
 alias[effect:every_navy_leader] = {
 	### Apply the effect to this number of randomly selected entities
 	## cardinality = 0..1
 	random_select_amount = int[1..inf]
+	## cardinality = 0..1
+	display_individual_scopes = bool
 	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
@@ -2275,10 +2347,10 @@ alias[effect:destroy_ships] = {
 }
 
 ### Set unit leader flag.
-## scope = { unit_leader character }
+## scope = { unit_leader character operative }
 alias[effect:set_unit_leader_flag] = value_set[leader_flag]
 ### Set unit leader flag.
-## scope = { unit_leader character }
+## scope = { unit_leader character operative }
 alias[effect:set_unit_leader_flag] = {
 	flag = value_set[leader_flag]
 	## cardinality = 0..1
@@ -2299,7 +2371,6 @@ alias[effect:modify_unit_leader_flag] = {
 
 ### Clear unit leader flag.
 ## scope = { unit_leader character }
-## severity = warning
 alias[effect:clr_unit_leader_flag] = value[leader_flag]
 
 ### Sets the country that owns current scope general.
@@ -2319,7 +2390,7 @@ alias[effect:retire] = bool
 
 ### Add command power to country.
 ## scope = country
-alias[effect:add_command_power] = float
+alias[effect:add_command_power] = variable_field
 
 ### Show what decision does.
 ## scope = country
@@ -2329,10 +2400,12 @@ alias[effect:unlock_decision_tooltip] = <decision>
 ## scope = country
 alias[effect:unlock_decision_tooltip] = {
 	decision = <decision>
+	### default - yes
 	## cardinality = 0..1
-	show_effect_tooltip = yes # default is no
+	show_effect_tooltip = bool
+	### default - yes
 	## cardinality = 0..1
-	show_modifiers = yes # default is no
+	show_modifiers = bool
 }
 
 ### Add buffs to units that are belongs to the army group/navy of this unit leader.
@@ -2384,6 +2457,8 @@ alias[effect:global_every_army_leader] = {
 	### Apply the effect to this number of randomly selected entities
 	## cardinality = 0..1
 	random_select_amount = int[1..inf]
+	## cardinality = 0..1
+	display_individual_scopes = bool
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
@@ -2524,10 +2599,20 @@ alias[effect:add_skill_level] = int
 ## scope = any
 alias[effect:add_to_temp_variable] = {
 	## cardinality = 1..2
+	value_set[variable] = value[variable]
+	## cardinality = 0..1
+	tooltip = localisation
+}
+
+### Adds a value or a variable to a temp variable.
+## scope = any
+alias[effect:add_to_temp_variable] = {
+	## cardinality = 1..2
 	value_set[variable] = variable_field_32
 	## cardinality = 0..1
 	tooltip = localisation
 }
+
 ### Adds a value or a variable to a temp variable.
 ## scope = any
 alias[effect:add_to_temp_variable] = {
@@ -2736,7 +2821,7 @@ alias[effect:set_division_template_lock] = {
 ## scope = country
 alias[effect:set_division_template_cap] = {
 	division_template = localisation_inline
-	division_cap = int
+	division_cap = int_variable_field
 }
 
 ### Remove cap for a division template.
@@ -2979,6 +3064,10 @@ alias[effect:give_resource_rights] = {
 ### Remove resource right to state for scope country. remove_resource_rights = ID.
 ## scope = country
 alias[effect:remove_resource_rights] = <state>
+
+### Remove resource right to state for scope country. remove_resource_rights = ID.
+## scope = country
+alias[effect:remove_resource_rights] = scope[state]
 
 ### Copies over technology state from target.
 ## scope = country
@@ -3377,9 +3466,12 @@ alias[effect:while_loop_effect] = {
 ### Meta effects can be used for building effects from strings and running them. following example will give Germany 42 pp.
 ## scope = any
 alias[effect:meta_effect] = {
-	text = ignore_field
+	text = {
+		## cardinality = 1..inf
+		alias_name[effect] = alias_match_left[effect]
+	}
 	## cardinality = 1..inf
-	scalar = scalar
+	scalar = localisation
 }
 
 ### Launch nuke at a state. usage .
@@ -3450,7 +3542,7 @@ alias[effect:end_exile] = enum[country_tags]
 alias[effect:end_exile] = scope[country]
 
 ### Give supply to units being controlled by this leader.
-## scope = unit_leader
+## scope = { unit_leader combat character }
 alias[effect:supply_units] = int
 
 ### Sets the number of convoys.

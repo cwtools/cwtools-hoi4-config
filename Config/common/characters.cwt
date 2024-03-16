@@ -39,7 +39,7 @@ types = {
 			## cardinality = ~2..inf
 			instance = {
 				corps_commander = {
-					
+
 				}
 			}
         }
@@ -98,8 +98,8 @@ character = {
 			## cardinality = ~1..2
 			enum[character_portrait_types] = {
 				### Portrait(s), large (leader) and/or small (advisor)
-				## cardinality = ~1..2
-				enum[character_portrait_sizes] = scalar
+					## cardinality = ~1..2
+					alias_name[portraitset] = alias_match_left[portraitset]
 			}
 		}
 		## cardinality = 0..1
@@ -111,6 +111,10 @@ character = {
 		name = localisation
 		## cardinality = 0..1
 		gender = female
+		## cardinality = 0..1
+		gender = male
+		## cardinality = 0..1
+		gender = undefined
 	}
 	subtype[country_leader] = {
 		## cardinality = 1..inf
@@ -321,7 +325,7 @@ character = {
 		instance = {
 			## replace_scope = { this = character root = country }
 			allowed = {
-				alias_name[trigger] = alias_match_left[trigger]				
+				alias_name[trigger] = alias_match_left[trigger]
 			}
 			name = localisation
 			### Should have at least one portrait defined
@@ -331,13 +335,17 @@ character = {
 				enum[character_portrait_types] = {
 					### Portrait(s), large and/or small
 					## cardinality = ~1..2
-					enum[character_portrait_sizes] = scalar
+					alias_name[portraitset] = alias_match_left[portraitset]
 				}
 			}
 			## cardinality = 0..1
 			name = localisation
 			## cardinality = 0..1
 			gender = female
+			## cardinality = 0..1
+			gender = male
+			## cardinality = 0..1
+			gender = undefined
 			## cardinality = 0..1
 			## replace_scope = { this = character root = country }
 			allowed_civil_war = {
@@ -562,3 +570,10 @@ enums = {
 		small
 	}
 }
+
+
+
+alias[portraitset:large] = <spriteType>
+alias[portraitset:large] = filepath
+alias[portraitset:small] = <spriteType>
+alias[portraitset:small] = filepath

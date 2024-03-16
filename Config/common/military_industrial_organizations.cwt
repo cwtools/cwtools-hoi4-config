@@ -16,7 +16,10 @@ military_industrial_organization = {
 	### If gfx key GFX_my_MIO_token exists, use it.
 	### Else use GFX_idea_unknown
 	## cardinality = 0..1
-	icon = scalar
+	icon = <spriteType>
+	### gfx key of the background image for the Details window,if not specified, one of standard backgrounds will be used based on supported equipment types
+	## cardinality = 0..1
+	background = <spriteType>
 	## cardinality = 0..1
 	include = <military_industrial_organization>
 	## replace_scope = { this = country }
@@ -41,11 +44,17 @@ military_industrial_organization = {
 		enum[equipment_bonus_type]
 		## cardinality = 0..inf
 		<equipment_group>
+		## cardinality = 0..inf
+		<equipment.archetype_equip>
 	}
 	## cardinality = 0..1
 	research_categories = {
 		## cardinality = ~1..inf
 		enum[tech_category]
+		## cardinality = 0..inf
+		<equipment_group>
+		## cardinality = 0..inf
+		<equipment.archetype_equip>
 	}
 
 	## cardinality = 0..1
@@ -86,7 +95,7 @@ military_industrial_organization = {
 	### default is define DEFAULT_INITIAL_TASK_CAPACITY
 	## cardinality = 0..1
 	task_capacity = int
-	
+
 	### Flavor texts are displayed above the trait tree. They are typically here to describe a column of traits - there is only room for 1 line!
 	### You can have several flavor texts - repeat the tree_flavor_text block.
 	### Use x to choose where to put the text on the horizontal axis. x should be the horizontal coordinate of the cell where the center of the text will be.
@@ -113,13 +122,15 @@ military_industrial_organization = {
 		## cardinality = 0..1
 		name = scalar
 		## cardinality = 0..1
-		icon = scalar
+		icon = <spriteType>
 		## cardinality = 0..1
 		limit_to_equipment_type = {
 			## cardinality = 0..inf
 			enum[equipment_bonus_type]
 			## cardinality = 0..inf
 			<equipment_group>
+			## cardinality = 0..inf
+			enum[tech_category]
 		}
 		## cardinality = 0..1
 		equipment_bonus = {
@@ -145,7 +156,7 @@ military_industrial_organization = {
 		## cardinality = 0..1
 		name = scalar
 		## cardinality = 0..1
-		icon = scalar
+		icon = <spriteType>
 		### If yes, trait background will be golden to indicate an interesting trait
 		## cardinality = 0..1
 		special_trait_background = yes
@@ -162,7 +173,7 @@ military_industrial_organization = {
 			}
 			### The number of parents that needs to be unlocked, default 1
 			## cardinality = 0..1
-			num_parents_needed = int[1..inf] 
+			num_parents_needed = int[1..inf]
 	  	}
 		### Short hand for "parent = { traits = { parent traits } num_parents_needed = 1 }"
 		## cardinality = 0..inf
@@ -206,6 +217,8 @@ military_industrial_organization = {
 			enum[equipment_bonus_type]
 			## cardinality = 0..inf
 			<equipment_group>
+			## cardinality = 0..inf
+			enum[tech_category]
 		}
 		## cardinality = 0..1
 		equipment_bonus = {
@@ -226,8 +239,8 @@ military_industrial_organization = {
 		### Defines where the trait will be positioned in the tree grid. x=0 y=0 is the top left position.
 		### Do not reuse the same position twice.
 		position = {
-			x = int
-			y = int
+			x = int[-9..9]
+			y = int[-inf..inf]
 		}
 		### By default position is the absolute coordinate in the tree grid.
 		### If relative_position_id is provided, it becomes a delta applied to the input trait position
@@ -292,7 +305,7 @@ military_industrial_organization = {
 		## cardinality = 0..1
 		name = scalar
 		## cardinality = 0..1
-		icon = scalar
+		icon = <spriteType>
 		### If yes, trait background will be golden to indicate an interesting trait
 		## cardinality = 0..1
 		special_trait_background = yes
@@ -309,7 +322,7 @@ military_industrial_organization = {
 			}
 			### The number of parents that needs to be unlocked, default 1
 			## cardinality = 0..1
-			num_parents_needed = int[1..inf] 
+			num_parents_needed = int[1..inf]
 	  	}
 		### Short hand for "parent = { traits = { parent traits } num_parents_needed = 1 }"
 		## cardinality = 0..inf
@@ -353,6 +366,8 @@ military_industrial_organization = {
 			enum[equipment_bonus_type]
 			## cardinality = 0..inf
 			<equipment_group>
+			## cardinality = 0..inf
+			enum[tech_category]
 		}
 		## cardinality = 0..1
 		equipment_bonus = {
@@ -373,8 +388,8 @@ military_industrial_organization = {
 		### Defines where the trait will be positioned in the tree grid. x=0 y=0 is the top left position.
 		### Do not reuse the same position twice.
 		position = {
-			x = int
-			y = int
+			x = int[-9..9]
+			y = int[-inf..inf]
 		}
 		### By default position is the absolute coordinate in the tree grid.
 		### If relative_position_id is provided, it becomes a delta applied to the input trait position
@@ -405,7 +420,7 @@ military_industrial_organization = {
 		## cardinality = 0..1
 		name = scalar
 		## cardinality = 0..1
-		icon = scalar
+		icon = <spriteType>
 		### If yes, trait background will be golden to indicate an interesting trait
 		## cardinality = 0..1
 		special_trait_background = yes
@@ -422,7 +437,7 @@ military_industrial_organization = {
 			}
 			### The number of parents that needs to be unlocked, default 1
 			## cardinality = 0..1
-			num_parents_needed = int[1..inf] 
+			num_parents_needed = int[1..inf]
 	  	}
 		### Short hand for "parent = { traits = { parent traits } num_parents_needed = 1 }"
 		## cardinality = 0..inf
@@ -466,6 +481,8 @@ military_industrial_organization = {
 			enum[equipment_bonus_type]
 			## cardinality = 0..inf
 			<equipment_group>
+			## cardinality = 0..inf
+			enum[tech_category]
 		}
 		## cardinality = 0..1
 		equipment_bonus = {
@@ -487,8 +504,8 @@ military_industrial_organization = {
 		### Do not reuse the same position twice.
 		## cardinality = 0..1
 		position = {
-			x = int
-			y = int
+			x = int[-9..9]
+			y = int[-inf..inf]
 		}
 		### By default position is the absolute coordinate in the tree grid.
 		### If relative_position_id is provided, it becomes a delta applied to the input trait position

@@ -89,4 +89,5 @@ localisation_commands = {
     GetActiveRangeModDesc = any
     GetActiveRangeRuleDesc = any
     GetBopTrendTexticon = any
+    <scripted_loc> = any
 }

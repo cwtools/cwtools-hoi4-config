@@ -55,6 +55,7 @@ enums = {
 
 		# MD Phase
 		main
+		city_combat
 	}
 	enum[attack_defend] = {
 		attacker

@@ -10,12 +10,33 @@ types = {
 			state_target = yes
 			days_mission_timeout = scalar
 		}
+		subtype[state_mission] = {
+			state_target = enum[continents]
+			days_mission_timeout = scalar
+		}
+		subtype[state_mission] = {
+			state_target = any_owned_state
+			days_mission_timeout = scalar
+		}
+		subtype[state_mission] = {
+			state_target = any_controlled_state
+			days_mission_timeout = scalar
+		}
 		## only_if_not = { state_mission }
 		subtype[mission] = {
 			days_mission_timeout = scalar
 		}
 		subtype[state_targeted] = {
 			state_target = yes
+		}
+		subtype[state_targeted] = {
+			state_target = enum[continents]
+		}
+		subtype[state_targeted] = {
+			state_target = any_owned_state
+		}
+		subtype[state_targeted] = {
+			state_target = any_controlled_state
 		}
 		## only_if_not = { state_targeted }
 		subtype[targeted] = {
@@ -217,6 +238,10 @@ decision = {
 	### Tell the AI how much the decision would cost if it had a normal PP cost (use when custom_cost_trigger is used)
 	## cardinality = 0..1
 	ai_hint_pp_cost = int
+	## error_if_only_match = This is the default value and can be omitted
+	## severity = info
+	## cardinality = 0..1
+	state_target = no
 
 	subtype[country] = {
 		### Check if this decision can be activated.
@@ -396,6 +421,15 @@ decision = {
 			alias_name[effect] = alias_match_left[effect]
 		}
 
+		## cardinality = 0..1
+		state_target = yes
+		## cardinality = 0..1
+		state_target = enum[continents]
+		## cardinality = 0..1
+		state_target = any_owned_state
+		## cardinality = 0..1
+		state_target = any_controlled_state
+
 		### Can select this mission like a regular decision.
 		## cardinality = 0..1
 		selectable_mission = bool
@@ -538,7 +572,14 @@ decision = {
 			alias_name[trigger] = alias_match_left[trigger]
 		}
 
+		## cardinality = 0..1
 		state_target = yes
+		## cardinality = 0..1
+		state_target = enum[continents]
+		## cardinality = 0..1
+		state_target = any_owned_state
+		## cardinality = 0..1
+		state_target = any_controlled_state
 
 		## cardinality = 0..1
 		targets = {
@@ -590,6 +631,7 @@ enums = {
 
 	enum[targeted_decisions_state_map_modes] = {
 		map_only
+		decision_view_only
 		map_and_decisions_view
 	}
 }

@@ -40,7 +40,7 @@ alias[effect:remove_power_balance_side] = {
 ## scope = country
 alias[effect:add_power_balance_value] = {
 	id = <balance_of_power>
-	value = float[-1..1]
+	value = float[-2..2]
 	## cardinality = 0..1
 	tooltip_side = localisation
 }
@@ -73,9 +73,10 @@ alias[effect:remove_all_power_balance_modifiers] = {
     id = <balance_of_power>
 }
 
-## scope = character
+## scope = unit
 alias[effect:add_random_valid_trait_from_unit] = {
     character = <character>
+    character = value_set[character_token]
 	character = value[variable]
 	character = value[event_target]
 	character = value[global_event_target]
@@ -85,6 +86,8 @@ alias[effect:add_random_valid_trait_from_unit] = {
 alias[effect:set_can_be_fired_in_advisor_role] = {
 	## cardinality = 0..1
     character = <character>
+	## cardinality = 0..1
+    character = value_set[character_token]
 	## cardinality = 0..1
 	character = value[variable]
 	## cardinality = 0..1
@@ -104,6 +107,8 @@ alias[effect:every_country_division] = {
 	### Apply the effect to this number of randomly selected entities
 	## cardinality = 0..1
 	random_select_amount = int[1..inf]
+	## cardinality = 0..1
+	display_individual_scopes = bool
     ## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
@@ -119,6 +124,8 @@ alias[effect:every_state_division] = {
 	### Apply the effect to this number of randomly selected entities
 	## cardinality = 0..1
 	random_select_amount = int[1..inf]
+	## cardinality = 0..1
+	display_individual_scopes = bool
     ## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
@@ -130,7 +137,7 @@ alias[effect:every_state_division] = {
 
 ## scope = state
 ## push_scope = unit
-alias[effect:any_state_division] = {
+alias[effect:random_state_division] = {
     ## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]

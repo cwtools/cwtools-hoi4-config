@@ -14,14 +14,31 @@ types = {
 			context_type = global_context
 		}
 		## only_if_not = { any_context }
+		subtype[state_mapicon_context] = {
+			context_type = state_mapicon
+		}
+		## only_if_not = { any_context }
+		subtype[country_mapicon_context] = {
+			context_type = country_mapicon
+		}
+		## only_if_not = { any_context }
 		subtype[state_context] = {
 			context_type = selected_state_context
+		}
+
+		## only_if_not = { any_context }
+		subtype[country_context] = {
+			context_type = diplomatic_action
+		}
+		## only_if_not = { any_context }
+		subtype[country_context] = {
+			context_type = decision_category
 		}
 		## only_if_not = { any_context }
 		subtype[country_context] = {
 			context_type = selected_country_context
 		}
-		## only_if_not = { any_context country_context state_context global_context }
+		## only_if_not = { any_context country_context state_context global_context country_mapicon_context state_mapicon_context }
 		subtype[player_context] = {
 		}
 	}
@@ -82,10 +99,10 @@ scripted_gui = {
 			country_scope_entry_container = scalar
 			## cardinality = 0..1
 			### current index and value is also stored as temp variables and can be used in effects/triggers if wanted. You can rename them to another temp variables
-			index = scalar
+			index = value_set[variable]
 			## cardinality = 0..1
 			### current index and value is also stored as temp variables and can be used in effects/triggers if wanted. You can rename them to another temp variables
-			value = scalar
+			value = value_set[variable]
 
 			## cardinality = 0..1
 			### Ai_weights of lists are stored under its list entry.
@@ -297,6 +314,100 @@ scripted_gui = {
 		}
 	}
 
+	subtype[country_mapicon_context] = {
+		## cardinality = 0..1
+		## replace_scope = { root = country this = country }
+		visible = {
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+
+		## cardinality = 0..1
+		effects = {
+			## cardinality = ~1..inf
+			## replace_scope = { root = country this = country }
+			scalar = {
+				## cardinality = ~1..inf
+				alias_name[effect] = alias_match_left[effect]
+			}
+		}
+
+		## cardinality = 0..1
+		triggers = {
+			## cardinality = ~1..inf
+			## replace_scope = { root = country this = country }
+			scalar = {
+				## cardinality = ~1..inf
+				alias_name[trigger] = alias_match_left[trigger]
+			}
+		}
+
+		## cardinality = 0..1
+		mapicon_targets = {
+			## cardinality = 0..1
+			target_array = value[array]
+			## cardinality = 0..1
+			target_array = variable_field
+		}
+		## cardinality = 0..inf
+		### Limits AI to selected scopes. When used multiple times, will use all matching scopes.
+		ai_test_scopes = enum[ai_test_scope_state]
+
+		## cardinality = 0..1
+		## replace_scope = { root = country this = state }
+		### AI makes a final check on each target scope:ai_check_scope. If this trigger is false, AI will ignore that scope.
+		ai_check_scope = {
+			## cardinality = ~1..inf
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+	}
+
+	subtype[state_mapicon_context] = {
+		## cardinality = 0..1
+		## replace_scope = { root = country this = state }
+		visible = {
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+
+		## cardinality = 0..1
+		effects = {
+			## cardinality = ~1..inf
+			## replace_scope = { root = country this = state }
+			scalar = {
+				## cardinality = ~1..inf
+				alias_name[effect] = alias_match_left[effect]
+			}
+		}
+
+		## cardinality = 0..1
+		triggers = {
+			## cardinality = ~1..inf
+			## replace_scope = { root = country this = state }
+			scalar = {
+				## cardinality = ~1..inf
+				alias_name[trigger] = alias_match_left[trigger]
+			}
+		}
+
+		## cardinality = 0..1
+		mapicon_targets = {
+			## cardinality = 0..1
+			target_array = value[array]
+			## cardinality = 0..1
+			target_array = variable_field
+		}
+		## cardinality = 0..inf
+		### Limits AI to selected scopes. When used multiple times, will use all matching scopes.
+		ai_test_scopes = enum[ai_test_scope_state]
+
+		## cardinality = 0..1
+		## replace_scope = { root = country this = state }
+		### AI makes a final check on each target scope:ai_check_scope. If this trigger is false, AI will ignore that scope.
+		ai_check_scope = {
+			## cardinality = ~1..inf
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+	}
+
 	## cardinality = 0..1
 	## replace_scope = { root = country this = country }
 	### Ai_enabled entry is the best optimization you can set. While initialization AI, it will check every scripted GUI for every country and will test ai_enabled with its country scope. If ai_enabled is false, AI will ignore that scripted GUI forever.
@@ -380,6 +491,36 @@ scripted_gui = {
 					alias_name[modifier_rule] = alias_match_left[modifier_rule]
 				}
 			}
+			subtype[country_mapicon_context] = {
+				## replace_scope = { root = country this = country }
+				ai_will_do = {
+					## cardinality = 0..1
+					enum[base_factor] = variable_field
+					alias_name[modifier_rule] = alias_match_left[modifier_rule]
+				}
+				## cardinality = 0..1
+				## replace_scope = { root = country this = country }
+				ignore_lower_weights = {
+					## cardinality = 0..1
+					enum[base_factor] = variable_field
+					alias_name[modifier_rule] = alias_match_left[modifier_rule]
+				}
+			}
+			subtype[state_mapicon_context] = {
+				## replace_scope = { root = country this = state }
+				ai_will_do = {
+					## cardinality = 0..1
+					enum[base_factor] = variable_field
+					alias_name[modifier_rule] = alias_match_left[modifier_rule]
+				}
+				## cardinality = 0..1
+				## replace_scope = { root = country this = state }
+				ignore_lower_weights = {
+					## cardinality = 0..1
+					enum[base_factor] = variable_field
+					alias_name[modifier_rule] = alias_match_left[modifier_rule]
+				}
+			}
 		}
 	}
 }
@@ -389,15 +530,17 @@ enums = {
 		global_context
 
 		player_context
-		decision_category
-
 		selected_state_context
-
 		selected_country_context
+		decision_category
+		diplomatic_action
+		country_mapicon
+		state_mapicon
 	}
 
 	enum[parent_window_token] = {
 		top_bar #(attached to top bar that contains resources and stuff)
+		topbar
 
 		# 8 tabs that shows up when you click on buttons next to your country flag
 		decision_tab

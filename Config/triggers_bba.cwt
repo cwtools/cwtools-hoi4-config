@@ -63,6 +63,13 @@ alias[trigger:any_country_division] = {
     alias_name[trigger] = alias_match_left[trigger]
 }
 
+## scope = state
+## push_scope = unit
+alias[trigger:any_state_division] = {
+    ## cardinality = 1..inf
+    alias_name[trigger] = alias_match_left[trigger]
+}
+
 ### Check if division has this battalion in template
 ## scope = unit
 alias[trigger:division_has_battalion_in_template] = <unit>
@@ -151,3 +158,9 @@ alias[trigger:has_war_with_wargoal_against] = enum[country_tags]
 
 ## scope = character
 alias[trigger:is_hired_as_advisor] = bool
+
+## scope = country
+alias[trigger:has_completed_custom_achievement] = {
+    mod = enum[mod_achievement_id]
+    achievement = <achievement>
+}

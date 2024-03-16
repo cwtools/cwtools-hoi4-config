@@ -159,6 +159,9 @@ alias[trigger:check_variable] = {
 	## error_if_only_match = You can compare variables directly, without "var" and "value"
 	## severity = info
 	value = variable_field_32
+	## error_if_only_match = You can compare variables directly, without "var" and "value"
+	## severity = info
+	value = value[variable]
 	## cardinality = 0..1
 	### Defaults to greater_than_or_equals.
 	compare = enum[var_compares]
@@ -192,10 +195,6 @@ alias[trigger:area] = <supply_area>
 ### Check the global threat value. 0-1 value.
 ## scope = any
 alias[trigger:threat] = float[0..1]
-
-### Check the global threat value. 0-100 value.
-## scope = any
-alias[trigger:threat] = float[0..100]
 
 ### Always returns specified value.
 ## scope = any
@@ -367,7 +366,15 @@ alias[trigger:has_government] = <ideology>
 
 ### Does country government (ruling party) belong to ideology group.
 ## scope = country
+alias[trigger:has_government] = enum[sub_ideology]
+
+### Does country government (ruling party) belong to ideology group.
+## scope = country
 alias[trigger:has_country_leader_ideology] = <ideology>
+
+### Does country government (ruling party) belong to ideology group.
+## scope = country
+alias[trigger:has_country_leader_ideology] = enum[sub_ideology]
 
 ### Does country government (ruling party) belong to ideology group.
 ## scope = country
@@ -424,6 +431,8 @@ alias[trigger:country_exists] = enum[country_tags]
 alias[trigger:ships_in_area] = {
 	## cardinality = 0..1
 	type = <unit.ship_unit>
+	## cardinality = 0..1
+	type = enum[ship_units]
 	area = <strategic_region>
 	size = int
 }
@@ -751,7 +760,7 @@ alias[trigger:is_core_of] = enum[country_tags]
 alias[trigger:is_ai] = bool
 
 ### Check if sides leader has trait.
-## scope = { character unit_leader combat }
+## scope = { character unit_leader combat operative }
 alias[trigger:has_trait] = <unit_leader_trait>
 
 ### Check if sides leader has trait.
@@ -1243,7 +1252,7 @@ alias[trigger:has_cavalry_ratio] = float
 
 ### Check the number of states occupied by nation.
 ## scope = country
-alias[trigger:num_occupied_states] = int
+alias[trigger:num_occupied_states] = int_variable_field
 
 ### Check for damaged buildings of nation.
 ## scope = country
@@ -1601,13 +1610,11 @@ alias[trigger:num_units] = int
 alias[trigger:is_field_marshal] = bool
 
 ### Has unit leader flag been setCheck flag val date set and days since set.
-## scope = { unit_leader combat character }
-## severity = warning
+## scope = { unit_leader combat character operative }
 alias[trigger:has_unit_leader_flag] = value[leader_flag]
 
 ### Has unit leader flag been setCheck flag val date set and days since set.
-## scope = { unit_leader combat character }
-## severity = warning
+## scope = { unit_leader combat character operative }
 alias[trigger:has_unit_leader_flag] = {
 	flag = value[leader_flag]
 	## cardinality = 0..1
@@ -1701,6 +1708,8 @@ alias[trigger:multiply_temp_variable] = {
 ## scope = any
 alias[trigger:divide_temp_variable] = {
 	value_set[variable] = variable_field_32
+	## cardinality = 0..1
+	tooltip = localisation
 }
 
 ### Divies a temporary variable by a value or another variable.
@@ -1708,6 +1717,8 @@ alias[trigger:divide_temp_variable] = {
 alias[trigger:divide_temp_variable] = {
 	var = value_set[variable]
 	value = variable_field_32
+	## cardinality = 0..1
+	tooltip = localisation
 }
 
 ### Sets a temporary variable to a value or another variable.
@@ -1919,6 +1930,18 @@ alias[trigger:stockpile_ratio] = {
 	archetype = <duplicate_archetypes>
 	ratio = float
 }
+
+###  	Checks the deal completion with the target value
+alias[trigger:contract_contains_equipment] = <equipment.archetype_equip>
+
+### Checks if the buyer is <tag>
+alias[trigger:buyer] = scope[country]
+
+### Checks if the seller is <tag>
+alias[trigger:seller] = scope[country]
+
+###  	Checks the deal completion with the target value
+alias[trigger:deal_completion] = float[0..1]
 
 ### Checks for state strategic value.
 ## scope = state
@@ -2147,9 +2170,12 @@ alias[trigger:casualties_k] = int
 ### Meta triggers can be used for building triggers from strings and running them. following example will test if Germany has 42 pp.
 ## scope = any
 alias[trigger:meta_trigger] = {
-	text = ignore_field
+	text = {
+		## cardinality = 1..inf
+		alias_name[trigger] = alias_match_left[trigger]
+	}
 	## cardinality = 1..inf
-	scalar = scalar
+	scalar = localisation
 }
 
 ### Checks if scope has a dynamic modifier.
@@ -2236,11 +2262,11 @@ alias[trigger:days_since_last_strategic_bombing] = int
 
 ### A trigger to check how dangerous enemy mines are for a country. Controlled by NAVAL_MINE_DANGER defines. Returns a value between 0 and 1. Example: mine_threat > 0.5.
 ## scope = country
-alias[trigger:mine_threat] = float
+alias[trigger:mine_threat] = float[0..1]
 
 ### A trigger to check convoy threat for a country. Controlled by NAVAL_CONVOY_DANGER defines. Returns a value between 0 and 1. Example: convoy_threat > 0.5.
 ## scope = country
-alias[trigger:convoy_threat] = float
+alias[trigger:convoy_threat] = float[0..1]
 
 ### Checks the casualties infliced by the speficied country to the scopped country.
 ## scope = country

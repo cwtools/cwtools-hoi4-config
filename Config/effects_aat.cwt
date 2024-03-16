@@ -2,12 +2,17 @@
 ## scope = country
 ## push_scope = military_industrial_organization
 alias[effect:every_military_industrial_organization] = {
-    ## cardinality = 0..1
-    tooltip = localisation
-    ## cardinality = 0..1
+	### Apply the effect to this number of randomly selected entities
+	## cardinality = 0..1
+	random_select_amount = int[1..inf]
+	## cardinality = 0..1
+	display_individual_scopes = bool
+	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
+    ## cardinality = 0..1
+    tooltip = localisation
     ## cardinality = 1..inf
     alias_name[effect] = alias_match_left[effect]
 }
@@ -16,17 +21,25 @@ alias[effect:every_military_industrial_organization] = {
 ## scope = military_industrial_organization
 alias[effect:unlock_mio_trait_tooltip] = value[mio_token]
 
+### Unlock MIO trait tooltip
+## scope = military_industrial_organization
+alias[effect:unlock_mio_trait_tooltip] = {
+    trait = value[mio_token]
+    ## cardinality = 0..1
+    show_modifiers = bool
+}
+
 ### Increase MIO funds gain factor
 ## scope = military_industrial_organization
 alias[effect:add_mio_funds_gain_factor] = variable_field
 
 ### Increase MIO size (level)
 ## scope = military_industrial_organization
-alias[effect:add_mio_size] = int
+alias[effect:add_mio_size] = int_variable_field
 
 ### Increase MIO research bonus
 ## scope = military_industrial_organization
-alias[effect:add_mio_research_bonus] = float
+alias[effect:add_mio_research_bonus] = variable_field
 
 ### Complete specific MIO trait. Make sure the trait is actually available for current MIO
 ## scope = military_industrial_organization
@@ -34,11 +47,11 @@ alias[effect:complete_mio_trait] = value[mio_token]
 
 ### Change MIO political power assign cost to research tech (base - 0.1 pp daily)
 ## scope = military_industrial_organization
-alias[effect:add_mio_design_team_assign_cost] = float
+alias[effect:add_mio_design_team_assign_cost] = variable_field
 
 ### Has no effect?
 ## scope = military_industrial_organization
-alias[effect:add_mio_design_team_change_cost] = float
+alias[effect:add_mio_design_team_change_cost] = variable_field
 
 ### Add MIO funds. Level 1 -> Level 2 to costs 1k, costs increase per each level
 ## scope = military_industrial_organization
@@ -51,6 +64,21 @@ alias[effect:unlock_military_industrial_organization_tooltip] = mio:<military_in
 ### Display a tooltip of provided MIO
 ## scope = country
 alias[effect:show_mio_tooltip] = <military_industrial_organization>
+
+### Displays a tooltip that says that the policy is made available.
+## scope = country
+alias[unlock_mio_policy_tooltip] = <mio_policy>
+### Displays a tooltip that says that the policy is made available.
+## scope = country
+alias[unlock_mio_policy_tooltip] = {
+    policy = <mio_policy>
+	## error_if_only_match = This is the default value and can be omitted
+	## severity = info
+	## cardinality = 0..1
+    show_modifiers = yes
+	## cardinality = 0..1
+    show_modifiers = no
+}
 
 ### Add CIC funds to the tag
 ## scope = country
@@ -75,5 +103,61 @@ alias[effect:add_equipment_subsidy] = {
         enum[country_tags]
         ## cardinality = 0..inf
         scope[country]
-    } 
+    }
 }
+
+### Change MIO name
+## scope = military_industrial_organization
+alias[effect:set_mio_name_key] = localisation
+
+### Change MIO icon
+## scope = military_industrial_organization
+alias[effect:set_mio_icon] = <spriteType>
+
+### Set mio flag
+## scope = military_industrial_organization
+alias[effect:set_mio_flag] = value_set[mio_flag]
+
+### Set mio flag.
+## scope = military_industrial_organization
+alias[effect:set_mio_flag] = {
+	flag = value_set[mio_flag]
+	## cardinality = 0..1
+	value = int
+	## cardinality = 0..1
+	days = int
+}
+
+### Modify mio flag.
+## scope = military_industrial_organization
+alias[effect:modify_mio_flag] = {
+	flag = value[mio_flag]
+	## cardinality = 0..1
+	value = int
+	## cardinality = 0..1
+	days = int
+}
+
+### Clear mio flag
+## scope = military_industrial_organization
+alias[effect:clr_mio_flag] = value[mio_flag]
+
+### Set mio funds gain factor
+## scope = military_industrial_organization
+alias[effect:set_mio_funds_gain_factor] = variable_field
+
+### Set mio research bonus
+## scope = military_industrial_organization
+alias[effect:set_mio_research_bonus] = variable_field
+
+### Set mio design team assign cost
+## scope = military_industrial_organization
+alias[effect:set_mio_design_team_assign_cost] = variable_field
+
+### Give market access to x
+## scope = country
+alias[effect:give_market_access] = enum[country_tags]
+
+### Give market access to x
+## scope = country
+alias[effect:give_market_access] = scope[country]

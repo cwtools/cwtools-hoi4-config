@@ -33,13 +33,23 @@ oob = {
 		## cardinality = 0..1
 		division_cap = int
 		regiments = {
-			## cardinality = 1..25
-			<unit> = { x = int[0..4] y = int[0..4] }
+			## cardinality = 0..25
+			<unit.infantry> = { x = int[0..4] y = int[0..4] }
+			## cardinality = 0..25
+			<unit.armor> = { x = int[0..4] y = int[0..4] }
+			## cardinality = 0..25
+			<unit.mobile> = { x = int[0..4] y = int[0..4] }
+			## cardinality = 0..25
+			<unit.combat_support> = { x = int[0..4] y = int[0..4] }
+			## cardinality = 0..25
+			<unit.armor_combat_support> = { x = int[0..4] y = int[0..4] }
+			## cardinality = 0..25
+			<unit.mobile_combat_support> = { x = int[0..4] y = int[0..4] }
 		}
 		## cardinality = 0..1
 		support = {
 			## cardinality = ~1..5
-			<unit> = { x = 0 y = int[0..5] }
+			<unit.support_unit> = { x = 0 y = int[0..4] }
 		}
 		## cardinality = 0..1
 		template_counter = int
@@ -72,17 +82,6 @@ oob = {
 				## cardinality = ~1..inf
 				scalar
 			}
-			### Defines a unique portraits for this unit'ss division commander
-			## cardinality = 0..1
-			portraits = {
-				### Portrait(s), army and/or civilian
-				## cardinality = ~1..2
-				army = {
-					### Portrait(s), large (leader) and/or small (advisor)
-					## cardinality = ~1..2
-					enum[character_portrait_sizes] = scalar
-				}
-			}
 			## cardinality = 0..1
 			start_experience_factor = float[0..1]
 			## cardinality = 0..1
@@ -101,8 +100,20 @@ oob = {
 				}
 			}
 			## cardinality = 0..inf
+			### Defines a unique name for the division's commander
 			officer = {
 				name = scalar
+				### Defines a unique portraits for this unit'ss division commander
+				## cardinality = 0..1
+				portraits = {
+					### Portrait(s), army and/or civilian
+					## cardinality = ~1..2
+					army = {
+						### Portrait(s), large (leader) and/or small (advisor)
+						## cardinality = ~1..2
+						enum[character_portrait_sizes] = scalar
+					}
+				}
 			}
 		}
 

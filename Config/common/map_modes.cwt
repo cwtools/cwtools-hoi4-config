@@ -1,17 +1,27 @@
 types = {
-	## unique = yes
-	## type_key_filter = map_mode
 	type[scripted_map_modes] = {
 		path = "game/common/map_modes"
-		path_strict = yes
-		skip_root_key = yes
+		skip_root_key = scripted_map_modes
+		unique = yes
 
-		subtype[map_mode] = {
-			## cardinality = 1..2
+		subtype[map_mode_top_none] = {
+			top = {
+				type = none
+			}
+		}
+		## only_if_not = map_mode_top_none
+		subtype[map_mode_top] = {
 			top = {
 
 			}
-			## cardinality = 1..2
+		}
+		subtype[map_mode_bot_non] = {
+			bottom = {
+				type = none
+			}
+		}
+		## only_if_not = map_mode_bot_none
+		subtype[map_mode_bot] = {
 			bottom = {
 
 			}
@@ -20,60 +30,90 @@ types = {
 }
 
 scripted_map_modes = {
-	subtype[map_mode] = {
+	subtype[map_mode_top_none] = {
+		### There are two layers for a map mode. Bottom & top they are essentially the same except they will be rendered in that order. For each layer the game will figure out what borders to render and will ask the script to pick a color for those
 		top = {
-			type = <map_mode_type>
+			type = none
+		}
+	}
+	subtype[map_mode_top] = {
+		### There are two layers for a map mode. Bottom & top they are essentially the same except they will be rendered in that order. For each layer the game will figure out what borders to render and will ask the script to pick a color for those
+		top = {
 
 			### type represents which borders will be used for rendering for this layer or it can be represented with one of the harded coder map mode layers
-			## cardinality = 1..2
-			type = <map_mode_type>
-
+			## cardinality = 1..1
+			type = enum[map_mode_type]
+		
 			### This section will be used for setting the color of as specific border. If trigger returns trigger then it will render that border.
-			## cardinality = 1..2
+			## cardinality = 0..1
 			color = {
+				## cardinality = 0..inf
+				alias_name[trigger] = alias_match_left[trigger]
+				## cardinality = 0..inf
 				alias_name[trigger] = alias_match_left[trigger]
 			}
-
+		
 			### A target list that can be used to limit which scopes will be rendered on map similar to a targeted decisions. It is highly recommended for performance purposes, otherwise it will try to render for every scope
+			## cardinality = 0..1
 			targets = {
 				alias_name[trigger] = alias_match_left[trigger]
 			}
-
-
+		
+		
 			### If the border has thickness then set this to yes
+			## cardinality = 0..1
 			thickness = bool
+			### if we want to show text on the map set this to one of the types available
+			## cardinality = 0..1
 		}
-
+	}
+	subtype[map_mode_bot_none] = {
+		### There are two layers for a map mode. Bottom & top they are essentially the same except they will be rendered in that order. For each layer the game will figure out what borders to render and will ask the script to pick a color for those
+		bottom = {
+			type = none
+		}
+	}
+	subtype[map_mode_bot] = {
 		### There are two layers for a map mode. Bottom & top they are essentially the same except they will be rendered in that order. For each layer the game will figure out what borders to render and will ask the script to pick a color for those
 		bottom = {
 
 			### type represents which borders will be used for rendering for this layer or it can be represented with one of the harded coder map mode layers
-			## cardinality = 1..2
-			type = <map_mode_type>
-
+			## cardinality = 1..1
+			type = enum[map_mode_type]
+		
 			### This section will be used for setting the color of as specific border. If trigger returns trigger then it will render that border.
-			## cardinality = 1..2
+			## cardinality = 0..1
 			color = {
+				## cardinality = 0..inf
+				alias_name[trigger] = alias_match_left[trigger]
+				## cardinality = 0..inf
 				alias_name[trigger] = alias_match_left[trigger]
 			}
-
+		
 			### A target list that can be used to limit which scopes will be rendered on map similar to a targeted decisions. It is highly recommended for performance purposes, otherwise it will try to render for every scope
+			## cardinality = 0..1
 			targets = {
 				alias_name[trigger] = alias_match_left[trigger]
 			}
-
-
+		
+		
 			### If the border has thickness then set this to yes
+			## cardinality = 0..1
 			thickness = bool
+			### if we want to show text on the map set this to one of the types available
+			## cardinality = 0..1
 		}
-
-		### if we want to show text on the map set this to one of the types available
-		far_text = <far_text_type>
-
-		### If yes, the game wil update the map mode daily_update, otherwise force_update_map_mode effect can be used
-		update_daily = bool
 	}
+	far_text = enum[far_text_type]
+	### if we want to show text on the map set this to one of the types available
+	## cardinality = 0..1
+	near_text = enum[far_text_type]
+
+	### If yes, the game wil update the map mode daily_update, otherwise force_update_map_mode effect can be used
+	## cardinality = 0..1
+	update_daily = bool
 }
+
 
 enums = {
 	enum[map_modes] = {
@@ -102,4 +142,3 @@ enums = {
 		game_map_mode_ideology
 	}
 }
-

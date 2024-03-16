@@ -22,6 +22,16 @@ country_scorer = {
 			value[variable]
 			## cardinality = 0..inf
 			variable_field
+			## cardinality = 0..inf
+			scope[country]
+			## cardinality = 0..inf
+			enum[country_tags],
+			## cardinality = 0..inf
+			value[variable],
+			## cardinality = 0..inf
+			variable_field,
+			## cardinality = 0..inf
+			scope[country],
 		}
 
 		## cardinality = 0..1

@@ -150,6 +150,7 @@ ai_peace = {
 }
 
 ai_template = {
+	### The role token that this role-level template entry targets. These tokens are defined by script and are targeted by the 'role_ratio' AI strategy. (This is technically a list but AI is bad at handling AI templates that target multiple roles, so sticking to just one is recommended.)
 	roles = {
 		## cardinality = ~1..inf
 		value_set[ai_roles]
@@ -168,8 +169,11 @@ ai_template = {
 		enum[country_tags]
 	}
 
+	### Deprecated but currently necessary. This parameter has no significant effect, but hasn't been removed yet.
 	match_to_count = float
-
+	
+	### The role-level upgrade prio is used for weighted-random selection when the AI chooses which role to upgrade templates for. Set it to zero to prevent the AI from spending XP on upgrading templates for this role.
+	### Example: If three role-level templates [A, B, C] have upgrade prio [1, 2, 1] respectively, then the probabilities for upgrading each template is [25%, 50%, 25%] respectively.
 	upgrade_prio = {
 		enum[base_factor] = float
 		alias_name[modifier_rule] = alias_match_left[modifier_rule]
@@ -342,6 +346,7 @@ ai_equipment_design_group = {
 			type = <equipment>
 			type = value[nsb_armor_variants]
 			type = value[bba_air_variants]
+			type = enum[md_unique_dupe_archetypes] 	# TODO: Remove this once we have  system for creating custom duplicate archetype things
 
 			### The matching requirements on individual module slots.
 			## cardinality = 0..1
@@ -447,7 +452,20 @@ values = {
 		modern_armor
 
 		# planes
+		fighter
 		cas
+		naval_bomber
+		tactical_bomber
+		heavy_fighter
+		interceptor
+		scout_plane
+		suicide
+		strategic_bomber
+		cv_fighter
+		cv_cas
+		cv_naval_bomber
+		cv_suicide
+		cv_interceptor
 
 		# ships
 		naval_capital

@@ -9,6 +9,8 @@ types = {
 			## cardinality = 0..1
 			only_duplicate_archetype = yes
 			## cardinality = 0..1
+			is_chassis = bool
+			## cardinality = 0..1
 			variant_name = {
 				## cardinality = 1..inf
 				value_set[equipment_variant] = <equipment>
@@ -74,6 +76,7 @@ types = {
 			cost = land
 		}
 	}
+	## type_key_filter <> limit
 	type[module] = {
 		skip_root_key = equipment_modules
 		path = "game/common/units/equipment/modules"
@@ -103,6 +106,9 @@ equipment = {
 
 	## cardinality = 0..1
 	is_convertable = bool
+
+	## cardinality = 0..1
+	one_use_only = bool
 
 	## cardinality = 0..1
 	### Determines if this equipment is available without unlocking from a technology.
@@ -250,6 +256,8 @@ equipment = {
 
 	subtype[designable_equip] = {
 		## cardinality = 0..1
+		is_frame = bool
+		## cardinality = 0..1
 		### List of module slots and their details.
 		module_slots = {
 			## cardinality = 0..inf
@@ -356,6 +364,15 @@ upgrade = {
 	subtype[land_upgrade] = {
 		### The experience type that is used by the designer
 		cost = land
+
+		## cardinality = 0..1
+		level_requirement = {
+			## cardinality = 0..inf
+			int = {
+				alias_name[trigger] = alias_match_left[trigger]
+			}
+		}
+
 	}
 
 	## cardinality = 0..1
@@ -370,8 +387,28 @@ upgrade = {
 	}
 
 	## cardinality = 0..1
+	### Resource values defined here will increase the resource cost construction
+	resource_cost_thresholds = {
+		## cardinality = 0..inf
+		int = {
+			## cardinality = ~1..10
+			<resource> = int
+		}
+	}
+
+	## cardinality = 0..1
 	### Adds the provided stats to the given equipment type
 	add_stats = {
+		alias_name[unit_stat] = alias_match_left[naval_stat]
+		alias_name[naval_stat] = alias_match_left[naval_stat]
+		alias_name[air_stat] = alias_match_left[air_stat]
+		## cardinality = 0..1
+		build_cost_ic = float
+	}
+
+	## cardinality = 0..1
+	### Multiples the provided stats to the given equipment type
+	multiply_stats = {
 		alias_name[unit_stat] = alias_match_left[naval_stat]
 		alias_name[naval_stat] = alias_match_left[naval_stat]
 		alias_name[air_stat] = alias_match_left[air_stat]
@@ -395,6 +432,11 @@ module = {
 	sfx = scalar
 	## cardinality = 0..1
 	add_equipment_type = enum[unit_types]
+	## cardinality = 0..1
+	add_equipment_type = {
+		## cardinality = 0..inf
+		enum[unit_types]
+	}
 	## cardinality = 0..1
 	### Adds the provided stats to the given module
 	add_stats = {
@@ -427,7 +469,10 @@ module = {
 		alias_name[naval_stat] = alias_match_left[naval_stat]
 		alias_name[air_stat] = alias_match_left[air_stat]
 	}
-
+	## cardinality = 0..1
+	forbid_module_categories = {
+		enum[module_categories]
+	}
 	## cardinality = 0..10
 	can_convert_from = {
 		## cardinality = 0..1
@@ -468,6 +513,48 @@ module = {
 	allow_mission_type = {
 		## cardinality = 1..inf
 		enum[allowed_air_unit_missions]
+	}
+
+	## cardinality = 0..inf
+	mission_type_stats = {
+		## cardinality = 1..1
+		limit = {
+			## cardinality = 1..inf
+			enum[allowed_air_unit_missions]
+		}
+
+		## cardinality = 0..1
+		### Adds the provided stats to the given module
+		add_stats = {
+			alias_name[unit_stat] = alias_match_left[naval_stat]
+			alias_name[naval_stat] = alias_match_left[naval_stat]
+			alias_name[air_stat] = alias_match_left[air_stat]
+			## cardinality = 0..1
+			build_cost_ic = float
+		}
+
+		## cardinality = 0..1
+		### Adds the average value of the stats to the given module
+		add_average_stats = {
+			alias_name[unit_stat] = alias_match_left[naval_stat]
+			alias_name[naval_stat] = alias_match_left[naval_stat]
+			alias_name[air_stat] = alias_match_left[air_stat]
+		}
+
+		## cardinality = 0..1
+		### Multiples the stats of a given airframe
+		multiply_stats = {
+			alias_name[unit_stat] = alias_match_left[naval_stat]
+			alias_name[naval_stat] = alias_match_left[naval_stat]
+			alias_name[air_stat] = alias_match_left[air_stat]
+		}
+	}
+
+	## cardinality = 0..1
+	### Prevents equipment module from being added to a specific plane airframe type
+	forbid_equipment_type_exact_match_for_category = {
+		## cardinality = 0..inf
+		enum[module_categories] = enum[unit_types]
 	}
 
 	## cardinality = 0..1
@@ -517,6 +604,9 @@ enums = {
 		interface_category_screen_ships
 		interface_category_other_ships
 		interface_category_air
+
+		# Missile
+		missile
 	}
 	enum[allowed_ai_type_planes] = {
 		cv_fighter
@@ -525,6 +615,7 @@ enums = {
 		cv_naval_bomber
 		cv_suicide
 		heavy_fighter
+		interceptor
 	}
 	complex_enum[module_slots] = {
 		path = "game/common/units/equipment"

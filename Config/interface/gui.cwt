@@ -389,10 +389,10 @@ alias[gui:positionType] = {
     ## cardinality = ~1..1
     name = scalar
     position = {
-        x = int
-		x = float
-        y = int
-		y = float
+        x = int[-3840..3840]
+		x = float[-3840..3840]
+        y = int[-2160..2160]
+		y = float[-2160..2160]
     }
     ## cardinality = 0..1
     scale = float
@@ -566,10 +566,10 @@ alias[gui:extendedScrollbarType] = {
         name = scalar
         alias_name[gui_image] = alias_match_left[gui_image]
         position = {
-			x = int
-			x = float
-			y = int
-			y = float
+            x = int[-3840..3840]
+            x = float[-3840..3840]
+            y = int[-2160..2160]
+            y = float[-2160..2160]
         }
         alias_name[gui_localization] = alias_match_left[gui_localization]
     }
@@ -579,10 +579,10 @@ alias[gui:extendedScrollbarType] = {
         name = scalar
         alias_name[gui_image] = alias_match_left[gui_image]
         position = {
-			x = int
-			x = float
-			y = int
-			y = float
+            x = int[-3840..3840]
+            x = float[-3840..3840]
+            y = int[-2160..2160]
+            y = float[-2160..2160]
         }
 		alias_name[gui_localization] = alias_match_left[gui_localization]
     }
@@ -593,10 +593,10 @@ alias[gui:extendedScrollbarType] = {
         alias_name[gui_image] = alias_match_left[gui_image]
         alias_name[gui_sound] = alias_match_left[gui_sound]
         position = {
-			x = int
-			x = float
-			y = int
-			y = float
+            x = int[-3840..3840]
+            x = float[-3840..3840]
+            y = int[-2160..2160]
+            y = float[-2160..2160]
         }
         alias_name[gui_localization] = alias_match_left[gui_localization]
     }
@@ -607,10 +607,10 @@ alias[gui:extendedScrollbarType] = {
         alias_name[gui_image] = alias_match_left[gui_image]
         alias_name[gui_sound] = alias_match_left[gui_sound]
         position = {
-			x = int
-			x = float
-			y = int
-			y = float
+            x = int[-3840..3840]
+            x = float[-3840..3840]
+            y = int[-2160..2160]
+            y = float[-2160..2160]
         }
         alias_name[gui_localization] = alias_match_left[gui_localization]
     }
@@ -620,10 +620,10 @@ alias[gui:extendedScrollbarType] = {
         name = scalar
         alias_name[gui_image] = alias_match_left[gui_image]
         position = {
-			x = int
-			x = float
-			y = int
-			y = float
+            x = int[-3840..3840]
+            x = float[-3840..3840]
+            y = int[-2160..2160]
+            y = float[-2160..2160]
         }
         alias_name[gui_localization] = alias_match_left[gui_localization]
     }

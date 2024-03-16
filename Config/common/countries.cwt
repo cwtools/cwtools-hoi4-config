@@ -18,6 +18,17 @@ types = {
 		subtype[cosmetic] = {
 		}
 	}
+	type[country_tag_file] = {
+		path = "game/common/country_tags"
+		type_per_file = yes
+	}
+}
+
+country_tag_file = {
+	## cardinality = 0..1
+	dynamic_tags = yes
+	## cardinality = ~1..inf
+	scalar = filepath[common/]
 }
 
 country_file = {

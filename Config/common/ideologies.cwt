@@ -22,6 +22,17 @@ ideology = {
 				### won't be assigned to randomly generated country leaders
 				## cardinality = 0..1
 				can_be_randomly_selected = bool
+				
+				## cardinality = 0..1
+				color = {
+					## cardinality = 3..3
+					int
+				}
+				## cardinality = 0..1
+				color = {
+					## cardinality = 3..3
+					float
+				}
 			}
 		}
 

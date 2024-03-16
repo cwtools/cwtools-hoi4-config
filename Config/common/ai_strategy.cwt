@@ -221,7 +221,7 @@ alias[ai_strategy_rule:ai_strategy] = {
 	value = int
 }
 alias[ai_strategy_rule:ai_strategy] = {
-	type = research_tech
+	type = enum[research_strats]
 	id = <technology>
 	id = int
 	value = int
@@ -358,13 +358,20 @@ enums = {
 	enum[ai_diplo_strats] = {
 		alliance
 		antagonize
+		avoid_starting_wars
+		asking_foreign_garrison
 		befriend
 		conquer
 		consider_weak
 		contain
 		declare_war
+		diplo_action_acceptance
+		diplo_action_desire
 		dont_defend_ally_borders
+		dont_join_wars_with
+		equipment_market_trade_desire
 		force_defend_ally_borders
+		front_armor_score
 		ignore
 		ignore_claim
 		influence
@@ -375,9 +382,6 @@ enums = {
 		send_lend_lease_desire
 		send_volunteers_desire
 		support
-		front_armor_score
-		equipment_market_trade_desire
-		avoid_starting_wars
 	}
 	enum[equipment_strats] = {
 		equipment_variant_production_factor
@@ -387,7 +391,8 @@ enums = {
 		equipment_market_buying_threshold
 		equipment_market_for_sale_threshold
 		equipment_market_for_sale_factor
-		equipment_market_min_for_sale	
+		equipment_market_min_for_sale
+		equipment_market_max_for_sale
 	}
 	enum[no_id_strats] = {
 		added_military_to_civilian_factory_ratio
@@ -441,6 +446,7 @@ enums = {
 		naval_convoy_raid_region
 		naval_avoid_region
 		strategic_air_importance
+		strike_force_home_base
 	}
 	enum[strat_region_strats_without_value] = {
 		strike_force_home_base
@@ -458,6 +464,7 @@ enums = {
 	enum[ai_role_strats] = {
 		role_ratio
 		build_army
+		build_airplane
 	}
 	enum[building_strats] = {
 		building_target
@@ -500,5 +507,9 @@ enums = {
 	}
 	enum[market_seller_strats] = {
 		equipment_market_buy
+	}
+	enum[research_strats] = {
+		research_tech
+		research_weight_factor
 	}
 }

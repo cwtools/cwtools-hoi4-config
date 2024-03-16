@@ -27,6 +27,50 @@ alias[trigger:has_mio_equipment_type] = <equipment_group>
 ## scope = country
 alias[trigger:has_military_industrial_organization] = <military_industrial_organization>
 
-### Checks if MIO is available
+### Checks if MIO is available AND visible
 ## scope = military_industrial_organization
 alias[trigger:is_mio_available] = bool
+
+### Checks if MIO is visible
+## scope = military_industrial_organization
+alias[trigger:is_mio_visible] = bool
+
+### Checks if MIO is assigned to tast
+## scope = military_industrial_organization
+alias[trigger:is_mio_assigned_to_task] = bool
+
+### Checks if MIO has specific trait
+## scope = military_industrial_organization
+alias[trigger:has_mio_trait] = value[mio_token]
+
+### Checks if MIO has specific trait unlocked
+## scope = military_industrial_organization
+alias[trigger:is_mio_trait_completed] = value[mio_token]
+
+### Checks if MIO has this number of traits unlocked
+## scope = military_industrial_organization
+alias[trigger:has_mio_number_of_completed_traits] = int
+
+### Checks num of planes stationed in a region
+## scope = country
+alias[trigger:num_planes_stationed_in_regions]  = {
+    value = int
+    regions = { 
+        ## cardinality = 1..inf
+	    <strategic_region>
+    }
+}
+
+### Checks mio flag
+## scope = military_industrial_organization
+alias[trigger:has_mio_flag] = value[mio_flag]
+
+### Checks mio flag
+## scope = military_industrial_organization
+alias[trigger:has_mio_flag] = {
+	flag = value[mio_flag]
+	## cardinality = 0..1
+	value = int
+	## cardinality = 0..1
+	days = int
+}

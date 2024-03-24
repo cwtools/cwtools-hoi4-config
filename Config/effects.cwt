@@ -2244,7 +2244,7 @@ alias[effect:random_unit_leader] = {
 
 ### Executes children effects on unit leaders that fulfills the "limit" trigger.
 ## scope = country
-## push_scope = unit_leader 
+## push_scope = { unit_leader character }
 alias[effect:every_unit_leader] = {
 	### Apply the effect to this number of randomly selected entities
 	## cardinality = 0..1

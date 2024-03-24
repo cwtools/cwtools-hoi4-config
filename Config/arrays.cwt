@@ -4,6 +4,9 @@ values = {
 		### Array of major powers.
 		majors
 
+		### Array of players.
+		players
+
 		# Country dynamic variables
 		### Array of allies (faction members).
 		allies

@@ -4,7 +4,6 @@ types = {
 	type[focus_style] = {
 		path = "game/common/national_focus"
 		name_field = "name"
-		unique = yes
 	}
 
 	## unique = yes
@@ -12,7 +11,6 @@ types = {
 	type[focus_tree] = {
 		path = "game/common/national_focus"
 		name_field = "id"
-		unique = yes
 	}
 
 	## unique = yes
@@ -20,7 +18,6 @@ types = {
 	type[continous_focus_tree] = {
 		path = "game/common/continuous_focus"
 		name_field = "id"
-		unique = yes
 	}
 
 	## unique = yes
@@ -29,7 +26,6 @@ types = {
 		path = "game/common/national_focus"
 		skip_root_key = focus_tree
 		name_field = "id"
-		unique = yes
 	}
 
 	## unique = yes
@@ -38,7 +34,6 @@ types = {
 		path = "game/common/continuous_focus"
 		skip_root_key = continuous_focus_palette
 		name_field = "id"
-		unique = yes
 	}
 
 	## unique = yes
@@ -46,7 +41,6 @@ types = {
 	type[shared_focus] = {
 		path = "game/common/national_focus"
 		name_field = "id"
-		unique = yes
 
 		## only_if_not = { joint_focus }
 		## type_key_filter = shared_focus

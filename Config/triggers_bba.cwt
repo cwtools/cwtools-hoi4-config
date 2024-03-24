@@ -156,7 +156,7 @@ alias[trigger:has_war_with_wargoal_against] = scope[country]
 ## scope = country
 alias[trigger:has_war_with_wargoal_against] = enum[country_tags]
 
-## scope = character
+## scope = { character unit_leader }
 alias[trigger:is_hired_as_advisor] = bool
 
 ## scope = country

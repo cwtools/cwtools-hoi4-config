@@ -3356,6 +3356,7 @@ alias[effect:for_each_scope_loop] = {
 
 ### Runs the effect for a random element in array.
 ## scope = any
+## push_scope = any
 alias[effect:random_scope_in_array] = {
 	array = value[array]
 	array = variable_field_32

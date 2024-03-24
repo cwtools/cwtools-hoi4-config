@@ -387,6 +387,15 @@ upgrade = {
 	}
 
 	## cardinality = 0..1
+	level_requirements = {
+		## cardinality = ~1..inf
+		int = {
+			## cardinality = ~1..inf
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+	}
+
+	## cardinality = 0..1
 	### Resource values defined here will increase the resource cost construction
 	resource_cost_thresholds = {
 		## cardinality = 0..inf

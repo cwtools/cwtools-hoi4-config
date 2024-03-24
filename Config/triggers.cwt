@@ -663,7 +663,10 @@ alias[trigger:has_idea_with_trait] = <country_leader_trait>
 ### Checks for amount of aircrafts, additionally of a specified type.
 ## scope = country
 alias[trigger:has_deployed_air_force_size] = {
+	## cardinality = 0..1
 	size = float
+	## cardinality = 0..1
+	size = int_variable_field
 	## cardinality = 0..1
 	type = enum[air_units]
 }

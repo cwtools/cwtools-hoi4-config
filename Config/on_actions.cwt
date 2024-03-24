@@ -828,12 +828,12 @@ on_action = {
 	### Trigger the following commands whenever a country that is hosting a government in exile has capitulated.
 	### ROOT is the government in exile, FROM is the new country hosting the government in exile, FROM.FROM is the old country that was hosting the government in exile.
 	## cardinality = 0..inf
-	## replace_scope = { THIS = country ROOT = country FROM = country FROMFROM = country }
+	## replace_scope = { THIS = country ROOT = country FROM = any }
 	on_host_changed_from_capitulation = single_alias_right[country_event_effect]
 
 	### Trigger the following commands whenever a country has returned from governing in exile. ROOT is the government in exile, FROM is the country that was hosting the government in exile.
 	## cardinality = 0..inf
-	## replace_scope = { THIS = country ROOT = country FROM = country FROMFROM = country }
+	## replace_scope = { THIS = country ROOT = country FROM = any }
 	on_exile_government_reinstated = single_alias_right[country_event_effect]
 
 
@@ -841,7 +841,7 @@ on_action = {
 
 	### Trigger the following commands when a state's controller changes. ROOT is new controller, FROM is old controller, FROM.FROM is state ID.
 	## cardinality = 0..inf
-	## replace_scope = { ROOT = country THIS = country FROM = country FROMFROM = state }
+	## replace_scope = { ROOT = country THIS = country FROM = any }
 	on_state_control_changed = single_alias_right[country_event_effect]
 
 

@@ -724,6 +724,8 @@ alias[effect:add_ideas] = {
 	enum[idea_name]
 	## cardinality = 0..inf
 	value[advisor_token]
+	## cardinality = 0..inf
+	value[variable]
 }
 
 ### Remove idea(s) from country.
@@ -736,6 +738,8 @@ alias[effect:remove_ideas] = {
 	enum[idea_name]
 	## cardinality = 0..inf
 	value[advisor_token]
+	## cardinality = 0..inf	
+	value[variable]
 }
 
 ### Add political power to country.
@@ -1563,6 +1567,7 @@ alias[effect:remove_unit_leader] = value[unit_leader_ids]
 ## scope = country
 alias[effect:add_timed_idea] = {
 	idea = enum[idea_name]
+	idea = value[variable]
 	## cardinality = 0..1
 	days = int_variable_field
 	## cardinality = 0..1

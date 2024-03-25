@@ -84,6 +84,11 @@ types = {
 		path = "game/common/on_actions"
 		skip_root_key = on_actions
 	}
+	## type_key_filter = on_recall_volunteers
+	type[on_recall_volunteers] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
 	## type_key_filter = on_border_war_lost
 	type[on_border_war_lost] = {
 		path = "game/common/on_actions"
@@ -617,6 +622,11 @@ on_action = {
 	## cardinality = 0..inf
 	## replace_scope = { THIS = country ROOT = country FROM = country }
 	on_send_volunteers = single_alias_right[country_event_effect]
+
+	### Trigger the following commands whenever a country recalls volunteers. FROM is country losing volunteers, ROOT is country recalling volunteers
+	## cardinality = 0..inf
+	## replace_scope = { THIS = country ROOT = country FROM = country }
+	on_recall_volunteers = single_alias_right[country_event_effect]
 
 	### Trigger the following commands whenever a country loses a border war. "Border war" refers to the state-based border wars enabled with set_border_war, represented with orange stripes over the state, rather than border wars that simulate combat between countries. The default scope is the state that lost the border war.
 	## cardinality = 0..inf

@@ -982,6 +982,9 @@ values = {
 		### (Trigger) Compare leader skill levels.
 		skill
 
+		### Power balance value.
+		power_balance_value
+
 		# ========================
 		# DATABASE DYNAMIC VARIABLES
 		# ========================

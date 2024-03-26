@@ -58,7 +58,7 @@ unit = {
 		need = {
 			## cardinality = ~1..inf
 			<equipment> = int
-			## cardinality = 0..1
+			## cardinality = 0..inf
 			value[nsb_armor_variants] = int
 		}
 
@@ -98,7 +98,7 @@ unit = {
 		need = {
 			## cardinality = ~1..inf
 			<equipment> = int
-			## cardinality = 0..1
+			## cardinality = 0..inf
 			value[nsb_armor_variants] = int
 		}
 
@@ -138,7 +138,7 @@ unit = {
 		need = {
 			## cardinality = ~1..inf
 			<equipment> = int
-			## cardinality = 0..1
+			## cardinality = 0..inf
 			value[nsb_armor_variants] = int
 		}
 
@@ -178,7 +178,7 @@ unit = {
 		need = {
 			## cardinality = ~1..inf
 			<equipment> = int
-			## cardinality = 0..1
+			## cardinality = 0..inf
 			value[nsb_armor_variants] = int
 		}
 
@@ -218,7 +218,7 @@ unit = {
 		need = {
 			## cardinality = ~1..inf
 			<equipment> = int
-			## cardinality = 0..1
+			## cardinality = 0..inf
 			value[nsb_armor_variants] = int
 		}
 
@@ -258,7 +258,7 @@ unit = {
 		need = {
 			## cardinality = ~1..inf
 			<equipment> = int
-			## cardinality = 0..1
+			## cardinality = 0..inf
 			value[nsb_armor_variants] = int
 		}
 

@@ -536,7 +536,7 @@ on_action = {
 			## cardinality = 0..inf
 			int = <event>
 		}
-		## cardinality = 0..1
+		## cardinality = 0..inf
 		effect = {
 			alias_name[effect] = alias_match_left[effect]
 		}
@@ -1098,7 +1098,7 @@ single_alias[country_event_effect] = {
 		## cardinality = 0..inf
 		int = <event.country_event>
 	}
-	## cardinality = 0..1
+	## cardinality = 0..inf
 	effect = {
 		alias_name[effect] = alias_match_left[effect]
 	}
@@ -1111,7 +1111,7 @@ single_alias[unit_leader_event_effect] = {
 		## cardinality = 0..inf
 		int = <event.unit_leader_event>
 	}
-	## cardinality = 0..1
+	## cardinality = 0..inf
 	effect = {
 		alias_name[effect] = alias_match_left[effect]
 	}
@@ -1124,13 +1124,13 @@ single_alias[operative_event_effect] = {
 		## cardinality = 0..inf
 		int = <event.operative_leader_event>
 	}
-	## cardinality = 0..1
+	## cardinality = 0..inf
 	effect = {
 		alias_name[effect] = alias_match_left[effect]
 	}
 }
 single_alias[on_action_effect] = {
-	## cardinality = 0..1
+	## cardinality = 0..inf
 	effect = {
 		alias_name[effect] = alias_match_left[effect]
 	}

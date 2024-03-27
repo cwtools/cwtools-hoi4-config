@@ -943,10 +943,10 @@ alias[effect:create_entity] = {
     id = value_set[entity_id]
 	## cardinality 0..1
     var = value_set[variable]
-    x = int
-    y = int
+    x = float
+    y = float
 	## cardinality 0..1
-    z = int
+    z = float
     province = enum[provinces]
     state = <state>
     rotation = float
@@ -967,10 +967,10 @@ alias[effect:set_entity_movement] = value[entity_id]
 alias[effect:set_entity_movement] = {
     id = value[entity_id]
     start = {
-        x = int
-        y = int
+        x = float
+        y = float
 		## cardinality 0..1
-        z = int
+        z = float
     }
     target = {
         province = enum[provinces]
@@ -984,10 +984,10 @@ alias[effect:set_entity_movement] = {
 ## scope = any
 alias[effect:set_entity_position ] = {
 	id = value[entity_id]
-	x = int
-	y = int
+	x = float
+	y = float
 	## cardinality 0..1
-	z = int
+	z = float
 	province = enum
 	state = <state>
 }

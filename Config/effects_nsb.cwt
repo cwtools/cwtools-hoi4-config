@@ -932,3 +932,87 @@ alias[effect:generate_character] = {
 		}
 	}
 }
+
+### Creates an enitity
+### Uses the the same coordinate system that the map uses. A positive change in rotation results in counter-clockwise rotation, a full 360 degrees rotation is approximately 6.28 radians. 
+### For comparison, default minimum zoom level (closest to the map) is 50 units, while default maximum zoom level is 3000 units. 
+## scope = any
+alias[effect:create_entity] = {
+    entity = <entity>
+	## cardinality 0..1
+    id = value_set[entity_id]
+	## cardinality 0..1
+    var = value_set[variable]
+    x = int
+    y = int
+	## cardinality 0..1
+    z = int
+    province = enum[provinces]
+    state = <state>
+    rotation = float
+    scale = float
+    min_zoom = float
+    visible = <scripted_trigger>
+}
+
+### Deletes an entity
+### IDs are set by the create_entity effect. 
+## scope = any
+alias[effect:set_entity_movement] = value[entity_id]
+
+### Sets the position and rotation of an entity using two coordinates. 
+### IDs are set by the create_entity effect. Uses the the same coordinate system that the map uses. 
+### A positive change in rotation results in counter-clockwise rotation, a full 360 degrees rotation is approximately 6.28 radians. 
+## scope = any
+alias[effect:set_entity_movement] = {
+    id = value[entity_id]
+    start = {
+        x = int
+        y = int
+		## cardinality 0..1
+        z = int
+    }
+    target = {
+        province = enum[provinces]
+    }
+    ratio = float
+    rotation = float
+}
+
+### Sets the position of an existing entity.
+### IDs are set by the create_entity effect. Uses the the same coordinate system that the map uses.
+## scope = any
+alias[effect:set_entity_position ] = {
+	id = value[entity_id]
+	x = int
+	y = int
+	## cardinality 0..1
+	z = int
+	province = enum
+	state = <state>
+}
+
+### Sets the currently-facing angle of an existing entity.
+### IDs are set by the create_entity effect.
+### A positive change results in counter-clockwise rotation, a full 360 degrees rotation is approximately 6.28 radians.
+## scope = any
+alias[effect:set_entity_rotation] = {
+    id = value[entity_id]
+    rotation = float
+}
+
+### Sets the size of an existing entity.
+### IDs are set by the create_entity effect.
+## scope = any
+alias[effect:set_entity_scale] = {
+	id = value[entity_id]
+	scale = float
+}
+
+### Sets the animation of a specified entity
+### IDs are set by the create_entity effect. Animations are defined within the /Hearts of Iron IV/gfx/models/**/*.asset files. 
+## scope = any
+alias[effect:set_entity_animation] = {
+    id = value[entity_id]
+    animation = <model_animation>
+}

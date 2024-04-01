@@ -217,10 +217,7 @@ alias[trigger:pc_is_forced_government_by] = scope[country]
 
 ### Checks if the current scope has had an enforced government change to the specified ideology group.
 ## scope = country
-alias[trigger:pc_is_forced_government_to] = enum[country_tags]
-### Checks if the current scope has had an enforced government change to the specified ideology group.
-## scope = country
-alias[trigger:pc_is_forced_government_to] = scope[country]
+alias[trigger:pc_is_forced_government_to] = <ideology>
 
 ### Checks if the current scope has the specified amount in total score within the peace conference. 	Can only be used for the winning countries. 	1.12
 ## scope = country

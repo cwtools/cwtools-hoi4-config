@@ -1,0 +1,76 @@
+types = {
+    type[peace_action_categories] = {
+		path = "game/common/peace_conference/categories"
+		skip_root_key = peace_action_categories
+    }
+    type[peace_ai_desires] = {
+		path = "game/common/peace_conference/ai_peace"
+		skip_root_key = peace_ai_desires
+    }
+    type[peace_action_modifiers] = {
+		path = "game/common/peace_conference/cost_modifiers"
+		skip_root_key = peace_action_modifiers
+    }
+}
+
+peace_action_categories = {
+    ## cardinality 0..1
+    default = bool
+    name = localisation
+}
+
+peace_ai_desires = {
+    peace_action_type = enum[peace_action]
+    peace_action_type = {
+        ## cardinality 1..4
+        enum[peace_action]
+    }
+    ### ROOT - Negotiator country (who is doing the negotiation)
+    ### FROM - Taker country (who will be the owner after the conference)
+    ### FROM.FROM - Giver country (who was the owner before the conference)
+    ### FROM.FROM.FROM - State (iff peace action refers to a state)
+    ### You might have to use e.g. ROOT.FROM to access the variable from inside another scope
+    # ROOT.FROM.FROM.FROM = state 
+    # ROOT.FROM = country
+    # ROOT.FROM.FROM = country
+    # FROM = country FROMFROM = country FROMFROMFROM = country
+    ## replace_scope = { ROOT = country THIS = country FROM = any }
+    enable = {
+        ## cardinality ~1..inf
+        alias_name[trigger] = alias_match_left[trigger]
+    }
+    ai_desire = int
+}
+
+peace_action_modifiers = {
+    category = <peace_action_category>
+    peace_action_type = enum[peace_action]
+    peace_action_type = {
+        ## cardinality 1..4
+        enum[peace_action]
+    }
+    ### ROOT - Negotiator country (who is doing the negotiation)
+    ### FROM - Taker country (who will be the owner after the conference)
+    ### FROM.FROM - Giver country (who was the owner before the conference)
+    ### FROM.FROM.FROM - State (iff peace action refers to a state)
+    ### You might have to use e.g. ROOT.FROM to access the variable from inside another scope
+    # ROOT.FROM.FROM.FROM = state 
+    # ROOT.FROM = country
+    # ROOT.FROM.FROM = country
+    # FROM = country FROMFROM = country FROMFROMFROM = country
+    ## replace_scope = { ROOT = country THIS = country FROM = any }
+    enable = {
+        ## cardinality ~1..inf
+        alias_name[trigger] = alias_match_left[trigger]
+    }
+    cost_multiplier = float[0..inf]
+}
+
+enums = {
+    enum[peace_action] = {
+        take_states
+        puppet
+        force_government
+        liberate
+    }
+}

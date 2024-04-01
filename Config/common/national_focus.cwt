@@ -53,6 +53,11 @@ types = {
 		}
 
 	}
+
+	## type_key_filter = search_filter_prios
+	type[search_filter_prios] = {
+		path = "game/common/national_focus"
+	}
 }
 
 focus_tree = {
@@ -132,6 +137,7 @@ focus_tree = {
 			value = <spriteType>
 		}
 
+		### A cost of 1 represents a week by default. Decimals within cost are supported, and it will get rounded down to a whole day in the game. 
 		## severity = warning
 		cost = float
 
@@ -333,6 +339,7 @@ shared_focus = {
 	## cardinality = 0..1
 	text_icon = <focus_style>
 
+	### A cost of 1 represents a week by default. Decimals within cost are supported, and it will get rounded down to a whole day in the game. 
 	cost = float
 	x = int
 	y = int
@@ -647,4 +654,9 @@ style = {
 	available = <spriteType>
 	## cardinality = 1..1
 	current = <spriteType>
+}
+
+search_filter_prios = {
+	## cardinality = 0..inf
+	value[focus_filter] = int
 }

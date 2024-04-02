@@ -43,7 +43,7 @@ peace_ai_desires = {
 }
 
 peace_action_modifiers = {
-    category = <peace_action_category>
+    category = <peace_action_categories>
     peace_action_type = enum[peace_action]
     peace_action_type = {
         ## cardinality 1..4

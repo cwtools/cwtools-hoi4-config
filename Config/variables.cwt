@@ -1090,6 +1090,12 @@ values = {
 		subject_states@scope[country]
 		subject_states@enum[country_tags]
 
+		### Array with country list scores
+		country_list_scores
+		
+		### Sorted country array
+		sorted_country_list
+
 		#State dynamic variables
 		### Array of countries with cores on the scope state.
 		core_countries

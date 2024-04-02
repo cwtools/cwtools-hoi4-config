@@ -1,0 +1,17 @@
+### Adds an override rule to the country's relation to other countries. If there are multiple applicable overrides for a rule, then they are combined using AND logic for positive rules (e.g. can_access_market) and OR logic for negative rules (e.g. can_not_declare_war).\n
+### The description of the effect is based on the trigger or the target country.The description when using the rule override is based: on the target country; the trigger at the time of effect evaluation; or the provided usage_desc.\n
+### The following rules are currently supported: can_send_volunteers, can_access_market
+### Alternative 1:\nadd_relation_rule_override = { \n target = GER # [Required] Target country usage_desc = REASON_DESCRIPTION # [Optional] usage description can_not_declare_war = yes # [Required] \n}\n
+### Alternative 2:\nadd_relation_rule_override = { \n trigger = is_democratic_country # [Required] Named trigger usage_desc = DEMOCRATIC_COUNTRY # [Optional] usage description can_not_declare_war = yes # [Required] \n}\n"
+## scope = country
+alias[effect:add_relation_rule_override] = {
+    enum[game_rules] = bool
+    ## cardinality = 0..1
+    target = scope[country]
+    ## cardinality = 0..1
+    target = enum[country_tags]
+    ## cardinality = 0..1
+    trigger = scalar
+    ## cardinality = 0..1
+    usage_desc = localisation
+}

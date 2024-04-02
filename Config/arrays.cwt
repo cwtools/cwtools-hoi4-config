@@ -7,6 +7,12 @@ values = {
 		### Array of players.
 		players
 
+		### Array with country list scores
+		country_list_scores
+		
+		### Sorted country array
+		sorted_country_list
+
 		# Country dynamic variables
 		### Array of allies (faction members).
 		allies
@@ -42,11 +48,5 @@ values = {
 		
 		### Array of current high command advisors
 		high_command
-
-		### Array with country list scores
-		country_list_scores
-		
-		### Sorted country array
-		sorted_country_list
 	}
 }

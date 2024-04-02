@@ -42,5 +42,11 @@ values = {
 		
 		### Array of current high command advisors
 		high_command
+
+		### Array with country list scores
+		country_list_scores
+		
+		### Sorted country array
+		sorted_country_list
 	}
 }

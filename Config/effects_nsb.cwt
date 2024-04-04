@@ -952,6 +952,7 @@ alias[effect:create_entity] = {
     rotation = float
     scale = float
     min_zoom = float
+	## cardinality 0..1
     visible = <scripted_trigger>
 }
 

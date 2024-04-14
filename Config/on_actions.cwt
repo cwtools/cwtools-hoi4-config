@@ -62,6 +62,11 @@ types = {
 		path = "game/common/on_actions"
 		skip_root_key = on_actions
 	}
+	## type_key_filter = on_ruling_party_change_immediate
+	type[on_ruling_party_change_immediate] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
 	## type_key_filter = on_new_term_election
 	type[on_new_term_election] = {
 		path = "game/common/on_actions"
@@ -595,10 +600,18 @@ on_action = {
 	on_government_change = single_alias_right[country_event_effect]
 
 	### Trigger the following commands whenever a country switches its ideology.
+	### Happens only after all effects in the block that triggered it have been processed.
 	### old_ideology_token is a temporary variable that stores the old ideology as a token. Alongside what triggers on_government_change, also includes being puppeted or changing the ideology via a console command.
 	## cardinality = 0..inf
 	## replace_scope = { THIS = country ROOT = country }
 	on_ruling_party_change = single_alias_right[country_event_effect]
+
+	### Trigger the following commands whenever a country switches its ideology.
+	### Happens immediately after the effect that has triggered it.
+	### old_ideology_token is a temporary variable that stores the old ideology as a token. Alongside what triggers on_government_change, also includes being puppeted or changing the ideology via a console command.
+	## cardinality = 0..inf
+	## replace_scope = { THIS = country ROOT = country }
+	on_ruling_party_change_immediate = single_alias_right[country_event_effect]
 
 	### Trigger the following commands whenever an election happens or is called by the hold_election command.
 	## cardinality = 0..inf

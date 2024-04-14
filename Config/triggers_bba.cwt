@@ -258,5 +258,5 @@ alias[trigger:pc_is_state_outside_influence_for_winner] = scope[country]
 alias[trigger:pc_is_state_outside_influence_for_winner] = enum[country_tags]
 
 ### Compares the amount of turns that have passed during the peace conference with a number.
-## scope = state
+## scope = any
 alias[trigger:pc_turn] = int

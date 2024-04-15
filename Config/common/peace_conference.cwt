@@ -2,6 +2,9 @@ types = {
     type[peace_action_categories] = {
 		path = "game/common/peace_conference/categories"
 		skip_root_key = peace_action_categories
+        subtype[default] = {
+            default = yes
+        }
     }
     type[peace_ai_desires] = {
 		path = "game/common/peace_conference/ai_peace"
@@ -14,8 +17,9 @@ types = {
 }
 
 peace_action_categories = {
-    ## cardinality 0..1
-    default = bool
+    subtype[default] = {
+		default = yes
+	}
     name = localisation
 }
 

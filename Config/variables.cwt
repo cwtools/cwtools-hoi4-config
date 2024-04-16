@@ -1121,12 +1121,8 @@ values = {
 
 		### KR-specifc variables
 		is_in_coalition_with_@token:<ideology>
-		token:zhili
-		token:manchu_qing
-		token:fengtian
-		token:federalists
-		token:left_kuomintang
-		token:right_kuomintang
+		preparing_for_war_with_scope[country]
+		preparing_for_war_with_enum[country_tags]
 
 		# ========================
 		# MIO VARIABLES

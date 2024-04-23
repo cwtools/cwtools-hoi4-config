@@ -1,16 +1,16 @@
 
 types = {
+	## unique = yes
 	type[scripted_trigger] = {
 		path = "game/common/scripted_triggers"
-		unique = yes
 	}
+	## unique = yes
 	type[scripted_effect] = {
 		path = "game/common/scripted_effects"
-		unique = yes
 	}
+	## unique = yes
 	type[scripted_loc] = {
 		name_field = "name"
-		unique = yes
 		path = "game/common/scripted_loc"
 	}
 }

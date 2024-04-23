@@ -138,7 +138,7 @@ types = {
 
 pdxmesh = {
 	name = scalar
-	alias_name[dlc_path_file] = alias_match_left[dlc_path_file]
+	file = filepath
 
 	## cardinality = 0..1
 	scale = float

@@ -132,14 +132,6 @@ alias[trigger:has_railway_connection] = {
 	target_province = enum[provinces]
 }
 
-### Checks if country is a loser in peace conference
-## scope = country
-alias[trigger:pc_is_loser] = bool
-
-### Checks if country is a winner in peace conference
-## scope = country
-alias[trigger:pc_is_winner] = bool
-
 ### Checks if country has war with wargoal against target
 ## scope = country
 alias[trigger:has_war_with_wargoal_against] = {
@@ -156,7 +148,7 @@ alias[trigger:has_war_with_wargoal_against] = scope[country]
 ## scope = country
 alias[trigger:has_war_with_wargoal_against] = enum[country_tags]
 
-## scope = character
+## scope = { character unit_leader }
 alias[trigger:is_hired_as_advisor] = bool
 
 ## scope = country
@@ -164,3 +156,37 @@ alias[trigger:has_completed_custom_achievement] = {
     mod = enum[mod_achievement_id]
     achievement = <achievement>
 }
+
+#post or during peace conference triggers state
+
+### Checks if the current scope was demilitarised during a current or previously-ended peace conference.
+## scope = state
+alias[trigger:pc_does_state_stack_demilitarized] = bool
+
+### Checks if the current scope was dismantled during a current or previously-ended peace conference.
+## scope = state
+alias[trigger:pc_does_state_stack_dismantled] = bool
+
+#during peace conference triggers state
+
+### Checks if the current scope was claimed by any country during the peace conference.
+## scope = state
+alias[trigger:pc_is_state_claimed] = bool
+
+### Checks if the current scope was claimed by the specified country during the peace conference.
+## scope = state
+alias[trigger:pc_is_state_claimed_by] = scope[country]
+### Checks if the current scope was claimed by the specified country during the peace conference.
+## scope = state
+alias[trigger:pc_is_state_outside_influence_for_winner] = enum[country_tags]
+
+### Checks if the current state is outside of the influence of the specified winner country.
+## scope = state
+alias[trigger:pc_is_state_outside_influence_for_winner] = scope[country]
+### Checks if the current state is outside of the influence of the specified winner country.
+## scope = state
+alias[trigger:pc_is_state_outside_influence_for_winner] = enum[country_tags]
+
+### Compares the amount of turns that have passed during the peace conference with a number.
+## scope = any
+alias[trigger:pc_turn] = int

@@ -663,7 +663,10 @@ alias[trigger:has_idea_with_trait] = <country_leader_trait>
 ### Checks for amount of aircrafts, additionally of a specified type.
 ## scope = country
 alias[trigger:has_deployed_air_force_size] = {
+	## cardinality = 0..1
 	size = float
+	## cardinality = 0..1
+	size = int_variable_field
 	## cardinality = 0..1
 	type = enum[air_units]
 }
@@ -764,7 +767,7 @@ alias[trigger:is_ai] = bool
 alias[trigger:has_trait] = <unit_leader_trait>
 
 ### Check if sides leader has trait.
-## scope = { character }
+## scope = { character unit_leader }
 alias[trigger:has_trait] = <country_leader_trait>
 
 ### Check if side has reserves waiting.

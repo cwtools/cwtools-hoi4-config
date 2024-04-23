@@ -8,10 +8,12 @@ types = {
 ## replace_scope = { this = country root = country }
 autonomy = {
 	id = localisation
-
+	
+	### If true, the game will attempt to make the 'puppet' option in peace deals as well as the 'puppet' effect use this autonomy state among other default autonomy states. By default, set to no
 	## cardinality = 0..1
 	default = bool
 
+	### Decides whether the subject is a puppet or not, making is_puppet and is_puppet_of triggers true in that case. By default, set to no.
 	## cardinality = 0..1
 	is_puppet = bool
 
@@ -23,8 +25,10 @@ autonomy = {
 	## cardinality = 0..1
 	peace_conference_initial_freedom = float[0..1]
 
+	### Decides how large of a portion of the subject's manpower the overlord can use in colonial divisions.
 	manpower_influence = float[0..1]
 
+	### Sets the game rules for the subject to either yes or no.
 	rule = {
 		## cardinality = 0..1
 		desc = localisation
@@ -32,35 +36,42 @@ autonomy = {
 		enum[game_rules] = bool
 	}
 
+	### Sets the modifier for the subject. All country modifiers can apply.
 	modifier = {
 		## cardinality = ~1..inf
 		alias_name[modifier] = alias_match_left[modifier]
 	}
 
+	### Decides whether or not the AI subject focuses on gaining a higher autonomy. If set to 0, AI will never gain an autonomy level through the autonomy system.
 	ai_subject_wants_higher = {
 		factor = float
 	}
 
+	### Decides whether or not the AI overlord focuses on gaining a lower autonomy for the subject. If set to 0, AI will never decrease the autonomy level through the autonomy system.
 	ai_overlord_wants_lower = {
 		factor = float
 	}
 
+	### Decides the triggers when the AI overlord garrisons the subject's territory as if it was their own land.
 	## cardinality = 0..1
 	ai_overlord_wants_garrison = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 
+	### The necessary triggers the subject must meet for the autonomy state to apply. The OVERLORD scope can be used to scope into the overlord.
 	## cardinality = 0..1
 	allowed = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 
+	### Decides which autonomy levels a country with this autonomous state can change to, alongside autonomy_free. If not specified, all levels will be allowed.
 	## cardinality = 0..1
 	allowed_levels_filter = {
 		## cardinality = 1..inf
 		<autonomy>
 	}
 
+	### Decides the chance for a potential overlord to puppet the country in the peace deal, where ROOT is the subject and FROM is the overlord.
 	## replace_scope = { ROOT = country FROM = country}
 	## cardinality = 0..1
 	use_for_peace_conference_weight = {
@@ -69,11 +80,13 @@ autonomy = {
 		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	}
 
+	### Sets the necessary triggers the subject must meet to be able to gain a level through the autonomy system.
 	## cardinality = 0..1
 	can_take_level = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 
+	### Sets the necessary triggers the subject must meet for the overlord to be able to decrease the autonomy level through the autonomy system.
 	## cardinality = 0..1
 	can_lose_level = {
 		alias_name[trigger] = alias_match_left[trigger]

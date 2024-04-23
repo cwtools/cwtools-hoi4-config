@@ -95,7 +95,7 @@ character = {
 		### Should have at least one portrait defined
 		portraits = {
 			### Portrait(s), army and/or civilian
-			## cardinality = ~1..2
+			## cardinality = ~1..3
 			enum[character_portrait_types] = {
 				### Portrait(s), large (leader) and/or small (advisor)
 					## cardinality = ~1..2
@@ -331,7 +331,7 @@ character = {
 			### Should have at least one portrait defined
 			portraits = {
 				### Portrait(s), army and/or civilian
-				## cardinality = ~1..2
+				## cardinality = ~1..3
 				enum[character_portrait_types] = {
 					### Portrait(s), large and/or small
 					## cardinality = ~1..2

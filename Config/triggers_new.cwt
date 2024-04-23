@@ -469,6 +469,7 @@ alias[trigger:has_allowed_idea_with_traits] = {
 		## cardinality = 1..inf
 		<country_leader_trait>
 	}
+	## cardinality = 0..1
 	limit = int
 	## cardinality = 0..1
 	### # if specified, these ideas will be ignored.

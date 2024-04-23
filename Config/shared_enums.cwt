@@ -30,7 +30,9 @@ enums = {
 		guarantee
 		puppet
 		military_access
+		offer_military_access
 		docking_rights
+		offer_docking_rights
 		declare_war
 		join_allies
 		call_allies
@@ -38,6 +40,10 @@ enums = {
 		befriend
 		market_access_rights
 		embargo
+		create_faction
+		offer_join_faction
+		join_faction
+		request_access_to_licence_production
 	}
 
 	enum[add_factor] = {

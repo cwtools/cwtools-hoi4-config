@@ -34,7 +34,7 @@ links = {
 
     capital = {
         output_scope = state
-        input_scopes = country
+        input_scopes = { country state }
     }
 
     global = {

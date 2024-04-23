@@ -514,10 +514,11 @@ alias[effect:random_country_with_original_tag] = {
 	alias_name[effect] = alias_match_left[effect]
 }
 
-random_country_division - Executes children effects on a random division that fulfill the "limit" trigger. tooltip=key can be added to override tooltip title
-Supported scopes: country
-###Executes children effects on a random division that full the "limit" trigger. tooltip=key can be added to override to override tooltip title
+### random_country_division - Executes children effects on a random division that fulfill the "limit" trigger. tooltip=key can be added to override tooltip title
+### Supported scopes: country
+### Executes children effects on a random division that full the "limit" trigger. tooltip=key can be added to override to override tooltip title
 ## scopes = { COUNTRY }
+## push_scope = unit
 alias[effect:random_country_division] = {
 	## cardinality = 0..1
 	limit = {

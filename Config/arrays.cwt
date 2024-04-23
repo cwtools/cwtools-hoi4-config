@@ -4,6 +4,15 @@ values = {
 		### Array of major powers.
 		majors
 
+		### Array of players.
+		players
+
+		### Array with country list scores
+		country_list_scores
+		
+		### Sorted country array
+		sorted_country_list
+
 		# Country dynamic variables
 		### Array of allies (faction members).
 		allies

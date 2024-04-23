@@ -62,6 +62,11 @@ types = {
 		path = "game/common/on_actions"
 		skip_root_key = on_actions
 	}
+	## type_key_filter = on_ruling_party_change_immediate
+	type[on_ruling_party_change_immediate] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
 	## type_key_filter = on_new_term_election
 	type[on_new_term_election] = {
 		path = "game/common/on_actions"
@@ -81,6 +86,11 @@ types = {
 
 	## type_key_filter = on_send_volunteers
 	type[on_send_volunteers] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+	## type_key_filter = on_recall_volunteers
+	type[on_recall_volunteers] = {
 		path = "game/common/on_actions"
 		skip_root_key = on_actions
 	}
@@ -531,7 +541,7 @@ on_action = {
 			## cardinality = 0..inf
 			int = <event>
 		}
-		## cardinality = 0..1
+		## cardinality = 0..inf
 		effect = {
 			alias_name[effect] = alias_match_left[effect]
 		}
@@ -590,10 +600,18 @@ on_action = {
 	on_government_change = single_alias_right[country_event_effect]
 
 	### Trigger the following commands whenever a country switches its ideology.
+	### Happens only after all effects in the block that triggered it have been processed.
 	### old_ideology_token is a temporary variable that stores the old ideology as a token. Alongside what triggers on_government_change, also includes being puppeted or changing the ideology via a console command.
 	## cardinality = 0..inf
 	## replace_scope = { THIS = country ROOT = country }
 	on_ruling_party_change = single_alias_right[country_event_effect]
+
+	### Trigger the following commands whenever a country switches its ideology.
+	### Happens immediately after the effect that has triggered it.
+	### old_ideology_token is a temporary variable that stores the old ideology as a token. Alongside what triggers on_government_change, also includes being puppeted or changing the ideology via a console command.
+	## cardinality = 0..inf
+	## replace_scope = { THIS = country ROOT = country }
+	on_ruling_party_change_immediate = single_alias_right[country_event_effect]
 
 	### Trigger the following commands whenever an election happens or is called by the hold_election command.
 	## cardinality = 0..inf
@@ -617,6 +635,11 @@ on_action = {
 	## cardinality = 0..inf
 	## replace_scope = { THIS = country ROOT = country FROM = country }
 	on_send_volunteers = single_alias_right[country_event_effect]
+
+	### Trigger the following commands whenever a country recalls volunteers. FROM is country losing volunteers, ROOT is country recalling volunteers
+	## cardinality = 0..inf
+	## replace_scope = { THIS = country ROOT = country FROM = country }
+	on_recall_volunteers = single_alias_right[country_event_effect]
 
 	### Trigger the following commands whenever a country loses a border war. "Border war" refers to the state-based border wars enabled with set_border_war, represented with orange stripes over the state, rather than border wars that simulate combat between countries. The default scope is the state that lost the border war.
 	## cardinality = 0..inf
@@ -828,12 +851,12 @@ on_action = {
 	### Trigger the following commands whenever a country that is hosting a government in exile has capitulated.
 	### ROOT is the government in exile, FROM is the new country hosting the government in exile, FROM.FROM is the old country that was hosting the government in exile.
 	## cardinality = 0..inf
-	## replace_scope = { THIS = country ROOT = country FROM = country FROMFROM = country }
+	## replace_scope = { THIS = country ROOT = country FROM = any }
 	on_host_changed_from_capitulation = single_alias_right[country_event_effect]
 
 	### Trigger the following commands whenever a country has returned from governing in exile. ROOT is the government in exile, FROM is the country that was hosting the government in exile.
 	## cardinality = 0..inf
-	## replace_scope = { THIS = country ROOT = country FROM = country FROMFROM = country }
+	## replace_scope = { THIS = country ROOT = country FROM = any }
 	on_exile_government_reinstated = single_alias_right[country_event_effect]
 
 
@@ -841,7 +864,7 @@ on_action = {
 
 	### Trigger the following commands when a state's controller changes. ROOT is new controller, FROM is old controller, FROM.FROM is state ID.
 	## cardinality = 0..inf
-	## replace_scope = { ROOT = country THIS = country FROM = country FROMFROM = state }
+	## replace_scope = { ROOT = country THIS = country FROM = any }
 	on_state_control_changed = single_alias_right[country_event_effect]
 
 
@@ -1088,7 +1111,7 @@ single_alias[country_event_effect] = {
 		## cardinality = 0..inf
 		int = <event.country_event>
 	}
-	## cardinality = 0..1
+	## cardinality = 0..inf
 	effect = {
 		alias_name[effect] = alias_match_left[effect]
 	}
@@ -1101,7 +1124,7 @@ single_alias[unit_leader_event_effect] = {
 		## cardinality = 0..inf
 		int = <event.unit_leader_event>
 	}
-	## cardinality = 0..1
+	## cardinality = 0..inf
 	effect = {
 		alias_name[effect] = alias_match_left[effect]
 	}
@@ -1114,13 +1137,13 @@ single_alias[operative_event_effect] = {
 		## cardinality = 0..inf
 		int = <event.operative_leader_event>
 	}
-	## cardinality = 0..1
+	## cardinality = 0..inf
 	effect = {
 		alias_name[effect] = alias_match_left[effect]
 	}
 }
 single_alias[on_action_effect] = {
-	## cardinality = 0..1
+	## cardinality = 0..inf
 	effect = {
 		alias_name[effect] = alias_match_left[effect]
 	}

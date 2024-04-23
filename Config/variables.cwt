@@ -982,6 +982,9 @@ values = {
 		### (Trigger) Compare leader skill levels.
 		skill
 
+		### Power balance value.
+		power_balance_value
+
 		# ========================
 		# DATABASE DYNAMIC VARIABLES
 		# ========================
@@ -1087,6 +1090,12 @@ values = {
 		subject_states@scope[country]
 		subject_states@enum[country_tags]
 
+		### Array with country list scores
+		country_list_scores
+		
+		### Sorted country array
+		sorted_country_list
+
 		#State dynamic variables
 		### Array of countries with cores on the scope state.
 		core_countries
@@ -1112,12 +1121,8 @@ values = {
 
 		### KR-specifc variables
 		is_in_coalition_with_@token:<ideology>
-		token:zhili
-		token:manchu_qing
-		token:fengtian
-		token:federalists
-		token:left_kuomintang
-		token:right_kuomintang
+		preparing_for_war_with_scope[country]
+		preparing_for_war_with_enum[country_tags]
 
 		# ========================
 		# MIO VARIABLES

@@ -108,7 +108,7 @@ alias[effect:random_character] = {
 	alias_name[effect] = alias_match_left[effect]
 }
 
-## scope = { character country }
+## scope = { character country unit_leader }
 alias[effect:add_corps_commander_role] = {
 	### required in country scope, optional in character scope
 	## cardinality = 0..1
@@ -196,7 +196,7 @@ alias[effect:remove_unit_leader_role] = {
 	character = scope[character]
 }
 
-## scope = { character country }
+## scope = { character country unit_leader }
 alias[effect:add_field_marshal_role] = {
 	### required in country scope, optional in character scope
 	## cardinality = 0..1
@@ -237,7 +237,7 @@ alias[effect:add_field_marshal_role] = {
 	}
 }
 
-## scope = { character country }
+## scope = { character country unit_leader }
 alias[effect:add_naval_commander_role] = {
 	### required in country scope, optional in character scope
 	## cardinality = 0..1
@@ -316,7 +316,7 @@ alias[effect:add_country_leader_role] = {
 	}
 }
 
-## scope = { character country }
+## scope = { character country unit_leader }
 alias[effect:remove_country_leader_role] = {
 	### required in country scope, optional in character scope
 	## cardinality = 0..1
@@ -341,7 +341,7 @@ alias[effect:remove_country_leader_role] = {
 	ideology = enum[sub_ideology]
 }
 
-## scope = { character country }
+## scope = { character country unit_leader }
 alias[effect:add_advisor_role] = {
 	### required in country scope, optional in character scope
 	## cardinality = 0..1
@@ -441,7 +441,7 @@ alias[effect:add_advisor_role] = {
 	}
 }
 
-## scope = { character country }
+## scope = { character country unit_leader }
 alias[effect:remove_advisor_role] = {
 	### required in country scope, optional in character scope
 	## cardinality = 0..1
@@ -491,7 +491,7 @@ alias[effect:retire_character] = scope[character]
 ## scope = { character unit_leader }
 alias[effect:set_character_name] = localisation
 ### renames character
-## scope = { country character }
+## scope = { country character unit_leader }
 alias[effect:set_character_name] = {
 	## cardinality = 0..1
 	character = <character>
@@ -528,19 +528,19 @@ alias[effect:promote_character] = {
 ## scope = { character unit_leader }
 alias[effect:promote_character] = bool
 ### makes character head of their ideology party
-## scope = { character }
+## scope = { character unit_leader }
 alias[effect:promote_character] = enum[sub_ideology]
 ### makes character head of their ideology party
-## scope = { character }
+## scope = { character unit_leader }
 alias[effect:promote_character] = <ideology>
 ### makes character head of their ideology party
-## scope = { character }
+## scope = { character unit_leader }
 alias[effect:promote_character] = {
 	ideology = enum[sub_ideology]
 	ideology = <ideology>
 }
 
-## scope = { character }
+## scope = { character unit_leader }
 alias[effect:swap_country_leader_traits] = {
 	remove = <country_leader_trait>
 	add = <country_leader_trait>
@@ -566,7 +566,7 @@ alias[effect:modify_character_flag] = {
 	flag = value[character_flag]
 	value = int_variable_field
 }
-## scope = { character }
+## scope = { character unit_leader }
 alias[effect:clr_character_flag] = value[character_flag]
 
 ### Hires advisor (adds advisor idea)
@@ -619,7 +619,7 @@ alias[effect:add_trait] = {
 	## cardinality = 0..1
 	slot = value[character_advisor_slot]
 }
-## scope = { country character }
+## scope = { country character unit_leader }
 alias[effect:remove_trait] = {
 	## cardinality = 0..1
 	character = <character>
@@ -657,18 +657,18 @@ alias[effect:set_nationality] = {
 }
 
 ### Transfers scoped character from PREV country to target
-## scope = { character }
+## scope = { character unit_leader operative }
 alias[effect:set_nationality] = scope[country]
 
 ### Transfers scoped character from PREV country to target
-## scope = { character }
+## scope = { character unit_leader operative }
 alias[effect:set_nationality] = {
 	target_country = scope[country]
 	target_country = enum[country_tags]
 }
 
 ### Transfers scoped character from PREV country to target
-## scope = { character }
+## scope = { character unit_leader operative }
 alias[effect:set_nationality] = enum[country_tags]
 
 ### Executes children effects on every subject country that fulfills the "limit" trigger. tooltip=key can be defined to override tooltip title
@@ -730,7 +730,7 @@ alias[effect:character_list_tooltip] = {
 }
 
 ### set portraits for the target character. Syntax is similar to character files.
-## scope = { character country }
+## scope = { character country unit_leader }
 alias[effect:set_portraits] = {
 	## cardinality = 0..1
 	character = <character>
@@ -745,11 +745,11 @@ alias[effect:set_portraits] = {
 	## cardinality = 0..1
 	character = scope[character]
 	### Portrait(s), army and/or civilian
-	## cardinality = ~1..2
+	## cardinality = ~1..3
 	enum[character_portrait_types] = {
 		### Portrait(s), large and/or small
 		## cardinality = ~1..2
-		enum[character_portrait_sizes] = scalar
+		alias_name[portraitset] = alias_match_left[portraitset]
 	}
 }
 
@@ -924,11 +924,96 @@ alias[effect:generate_character] = {
 	### Should have at least one portrait defined
 	portraits = {
 		### Portrait(s), army and/or civilian
-		## cardinality = ~1..2
+		## cardinality = ~1..3
 		enum[character_portrait_types] = {
 			### Portrait(s), large (leader) and/or small (advisor)
 			## cardinality = ~1..2
 			enum[character_portrait_sizes] = scalar
 		}
 	}
+}
+
+### Creates an enitity
+### Uses the the same coordinate system that the map uses. A positive change in rotation results in counter-clockwise rotation, a full 360 degrees rotation is approximately 6.28 radians. 
+### For comparison, default minimum zoom level (closest to the map) is 50 units, while default maximum zoom level is 3000 units. 
+## scope = any
+alias[effect:create_entity] = {
+    entity = <entity>
+	## cardinality 0..1
+    id = value_set[entity_id]
+	## cardinality 0..1
+    var = value_set[variable]
+    x = float
+    y = float
+	## cardinality 0..1
+    z = float
+    province = enum[provinces]
+    state = <state>
+    rotation = float
+    scale = float
+    min_zoom = float
+	## cardinality 0..1
+    visible = <scripted_trigger>
+}
+
+### Deletes an entity
+### IDs are set by the create_entity effect. 
+## scope = any
+alias[effect:set_entity_movement] = value[entity_id]
+
+### Sets the position and rotation of an entity using two coordinates. 
+### IDs are set by the create_entity effect. Uses the the same coordinate system that the map uses. 
+### A positive change in rotation results in counter-clockwise rotation, a full 360 degrees rotation is approximately 6.28 radians. 
+## scope = any
+alias[effect:set_entity_movement] = {
+    id = value[entity_id]
+    start = {
+        x = float
+        y = float
+		## cardinality 0..1
+        z = float
+    }
+    target = {
+        province = enum[provinces]
+    }
+    ratio = float
+    rotation = float
+}
+
+### Sets the position of an existing entity.
+### IDs are set by the create_entity effect. Uses the the same coordinate system that the map uses.
+## scope = any
+alias[effect:set_entity_position ] = {
+	id = value[entity_id]
+	x = float
+	y = float
+	## cardinality 0..1
+	z = float
+	province = enum
+	state = <state>
+}
+
+### Sets the currently-facing angle of an existing entity.
+### IDs are set by the create_entity effect.
+### A positive change results in counter-clockwise rotation, a full 360 degrees rotation is approximately 6.28 radians.
+## scope = any
+alias[effect:set_entity_rotation] = {
+    id = value[entity_id]
+    rotation = float
+}
+
+### Sets the size of an existing entity.
+### IDs are set by the create_entity effect.
+## scope = any
+alias[effect:set_entity_scale] = {
+	id = value[entity_id]
+	scale = float
+}
+
+### Sets the animation of a specified entity
+### IDs are set by the create_entity effect. Animations are defined within the /Hearts of Iron IV/gfx/models/**/*.asset files. 
+## scope = any
+alias[effect:set_entity_animation] = {
+    id = value[entity_id]
+    animation = <model_animation>
 }

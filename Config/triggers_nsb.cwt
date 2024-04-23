@@ -212,43 +212,43 @@ alias[trigger:can_be_country_leader] = value[global_event_target]
 alias[trigger:can_be_country_leader] = scope[character]
 
 ###Can the character be a country leader.
-## scope = character
+## scope = { character unit_leader }
 alias[trigger:can_be_country_leader] = bool
 
 ###Checks if the current character is an army chief.
-## scope = character
+## scope = { character unit_leader }
 alias[trigger:is_army_chief] = bool
 
 ###Checks if the current character is an advisor.
-## scope = character
+## scope = { character unit_leader }
 alias[trigger:is_advisor] = bool
 
 ###Checks if the current character is a political advisor.
-## scope = character
+## scope = { character unit_leader }
 alias[trigger:is_political_advisor] = bool
 
 ###Checks if the current character is a theorist.
-## scope = character
+## scope = { character unit_leader }
 alias[trigger:is_theorist] = bool
 
 ###Checks if the current character is a navy chief.
-## scope = character
+## scope = { character unit_leader }
 alias[trigger:is_navy_chief] = bool
 
 ###Checks if the current character is an air chief.
-## scope = character
+## scope = { character unit_leader }
 alias[trigger:is_air_chief] = bool
 
 ###Checks if the current character is in high command.
-## scope = character
+## scope = { character unit_leader }
 alias[trigger:is_high_command] = bool
 
 ###Checks if the current character is a country leader.
-## scope = character
+## scope = { character unit_leader }
 alias[trigger:is_country_leader] = bool
 
 ###Checks if the current character is a unit leader.
-## scope = character
+## scope = { character unit_leader }
 alias[trigger:is_unit_leader] = bool
 
 ###Checks if the current character is an army leader.
@@ -268,27 +268,27 @@ alias[trigger:is_navy_leader] = bool
 alias[trigger:is_operative] = bool
 
 ###Checks if the current character has an army ledger.
-## scope = character
+## scope = { character unit_leader }
 alias[trigger:has_army_ledger] = bool
 
 ###Checks if the current character has a navy ledger.
-## scope = character
+## scope = { character unit_leader }
 alias[trigger:has_navy_ledger] = bool
 
 ###Checks if the current character has an air ledger.
-## scope = character
+## scope = { character unit_leader }
 alias[trigger:has_air_ledger] = bool
 
 ###Checks if the current character is in the character slot.
-## scope = character
+## scope = { character unit_leader }
 alias[trigger:is_character_slot] = value[character_advisor_slot]
 
 ###Checks if the current character is not hired, with the exception of the specified slot.
-## scope = character
+## scope = { character unit_leader }
 alias[trigger:not_already_hired_except_as] = value[character_advisor_slot]
 
 ###Has character flag been set. Check flag val date set and days since set.
-## scope = character
+## scope = { character unit_leader }
 ## severity = warning
 alias[trigger:character_flag] = {
 	flag = value[country_flag]
@@ -305,11 +305,11 @@ alias[trigger:character_flag] = {
 alias[trigger:has_idea] = value[advisor_token]
 
 ###Checks if the current character has a country leader role matching the sub-ideology.
-## scope = character
+## scope = { character unit_leader }
 alias[trigger:has_ideology] = enum[sub_ideology]
 
 ###Checks if the current character has a country leader role matching the ideology group.
-## scope = character
+## scope = { character unit_leader }
 alias[trigger:has_ideology_group] = <ideology>
 
 ###Check the number of factories in controlled states excluding any gained or lost through trade, relations, modifiers etc.
@@ -387,5 +387,5 @@ alias[trigger:any_country_with_core] = {
 }
 
 ### Check if character has specific advisor role
-## scope = character
+## scope = { character unit_leader }
 alias[trigger:has_advisor_role] = enum[allowed_advisor_role]

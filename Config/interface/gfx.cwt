@@ -116,13 +116,13 @@ spriteType = {
 	## cardinality = 0..1
 	generate_mip_maps = bool
 	subtype[spriteType] = {
-		alias_name[dlc_path_textureFile] = alias_match_left[dlc_path_textureFile]
+		textureFile = filepath
 	}
 	subtype[frameAnimatedSpriteType] = {
-		alias_name[dlc_path_textureFile] = alias_match_left[dlc_path_textureFile]
+		textureFile = filepath
 	}
 	subtype[corneredTileSpriteType] = {
-		alias_name[dlc_path_textureFile] = alias_match_left[dlc_path_textureFile]
+		textureFile = filepath
 		borderSize = { x = int y = int }
 		## cardinality = 0..1
 		tilingCenter = bool
@@ -135,7 +135,7 @@ spriteType = {
 		textureFile2 = scalar
 	}
 	subtype[textSpriteType] = {
-		alias_name[dlc_path_textureFile] = alias_match_left[dlc_path_textureFile]
+		textureFile = filepath
 		## cardinality = 0..1
 		clicksound = click
 	}

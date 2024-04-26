@@ -347,6 +347,7 @@ ai_equipment_design_group = {
 			type = value[nsb_armor_variants]
 			type = value[bba_air_variants]
 			type = enum[md_unique_dupe_archetypes] 	# TODO: Remove this once we have  system for creating custom duplicate archetype things
+			type = enum[equipment_bonus_type]
 
 			### The matching requirements on individual module slots.
 			## cardinality = 0..1

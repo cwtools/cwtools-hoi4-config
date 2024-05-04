@@ -829,7 +829,7 @@ alias[effect:force_update_map_mode] = {
 ### Create railway gun effect
 ## scope = { any }
 alias[effect:create_railway_gun] = {
-	equipment = railway_gun_equipment_1
+	equipment = <equipment.railway_gun>
 	## cardinality = 0..1
 	name = localisation_inline
 	### optional, created in capital otherwise

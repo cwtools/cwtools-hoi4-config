@@ -2835,10 +2835,11 @@ alias[effect:clear_division_template_cap] = {
 	division_template = localisation_inline
 }
 
-### Set division template to allow force recruiting.
+### Set division template to allow force recruiting. force_allow_recruiting defaults to true if unset
 ## scope = country
 alias[effect:set_division_force_allow_recruiting] = {
 	division_template = localisation_inline
+	## cardinality = 0..1
 	force_allow_recruiting = bool
 }
 

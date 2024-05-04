@@ -939,20 +939,20 @@ alias[effect:generate_character] = {
 ## scope = any
 alias[effect:create_entity] = {
     entity = <entity>
-	## cardinality 0..1
+	## cardinality = 0..1
     id = value_set[entity_id]
-	## cardinality 0..1
+	## cardinality = 0..1
     var = value_set[variable]
     x = float
     y = float
-	## cardinality 0..1
+	## cardinality = 0..1
     z = float
     province = enum[provinces]
     state = <state>
     rotation = float
     scale = float
     min_zoom = float
-	## cardinality 0..1
+	## cardinality = 0..1
     visible = <scripted_trigger>
 }
 
@@ -970,7 +970,7 @@ alias[effect:set_entity_movement] = {
     start = {
         x = float
         y = float
-		## cardinality 0..1
+		## cardinality = 0..1
         z = float
     }
     target = {
@@ -987,7 +987,7 @@ alias[effect:set_entity_position ] = {
 	id = value[entity_id]
 	x = float
 	y = float
-	## cardinality 0..1
+	## cardinality = 0..1
 	z = float
 	province = enum
 	state = <state>

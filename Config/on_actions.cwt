@@ -154,6 +154,11 @@ types = {
 		path = "game/common/on_actions"
 		skip_root_key = on_actions
 	}
+	## type_key_filter = on_force_government
+	type[on_force_government] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
 	## type_key_filter = on_liberate
 	type[on_liberate] = {
 		path = "game/common/on_actions"
@@ -702,6 +707,11 @@ on_action = {
 	## cardinality = 0..inf
 	## replace_scope = { THIS = country ROOT = country FROM = country }
 	on_puppet = single_alias_right[country_event_effect]
+
+	### Trigger the following commands whenever a country is forcing government change in a peace conference only. ROOT is the nation having the government changed, FROM is the overlord.
+	## cardinality = 0..inf
+	## replace_scope = { THIS = country ROOT = country FROM = country }
+	on_force_government = single_alias_right[country_event_effect]
 
 	### Trigger the following commands whenever a country is liberated in a peace conference only. ROOT is the nation being liberated, FROM is the leader of the liberators.
 	## cardinality = 0..inf

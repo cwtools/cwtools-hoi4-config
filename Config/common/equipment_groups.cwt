@@ -14,5 +14,15 @@ equipment_group = {
         enum[equipment_bonus_type]
         ## cardinality = 0..inf
         <equipment_group>
+        ## cardinality = 0..inf
+        enum[equipment_group_exceptions]
     }
+}
+
+enums = {
+	enum[equipment_group_exceptions] = {
+		modern_tank_amphibious_chassis
+		super_heavy_tank_flame_chassis
+		modern_tank_flame_chassis
+	}
 }

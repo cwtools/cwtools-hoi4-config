@@ -491,6 +491,9 @@ alias[effect:retire_character] = scope[character]
 ## scope = { character unit_leader }
 alias[effect:set_character_name] = localisation
 ### renames character
+## scope = { character unit_leader }
+alias[effect:set_character_name] = <spriteType>
+### renames character
 ## scope = { country character unit_leader }
 alias[effect:set_character_name] = {
 	## cardinality = 0..1

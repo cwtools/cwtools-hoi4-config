@@ -59,7 +59,7 @@ containerWindowType = {
 }
 ###Container Window
 alias[gui:containerWindowType] = {
-    name = scalar
+    name = value_set[containerWindowTypeChild]
     ## cardinality = 0..1
     ### Mouse Draggable
     moveable = bool

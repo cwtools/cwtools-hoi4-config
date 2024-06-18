@@ -77,19 +77,19 @@ graphic_db = {
                 filepath[dlc/dlc017_original_soundtrack/]
                 ## cardinality = 0..inf
                 ## severity = hint
-                filepath[dlc/dlc018_together_for_victory/]
+                filepath[integrated_dlc/dlc018_together_for_victory/]
                 ## cardinality = 0..inf
                 ## severity = hint
                 filepath[dlc/dlc019_sabaton_vol2/]
                 ## cardinality = 0..inf
                 ## severity = hint
-                filepath[dlc/dlc020_death_or_dishonor/]
+                filepath[integrated_dlc/dlc020_death_or_dishonor/]
                 ## cardinality = 0..inf
                 ## severity = hint
                 filepath[dlc/dlc021_anniversary_pack/]
                 ## cardinality = 0..inf
                 ## severity = hint
-                filepath[dlc/dlc022_waking_the_tiger/]
+                filepath[integrated_dlc/dlc022_waking_the_tiger/]
                 ## cardinality = 0..inf
                 ## severity = hint
                 filepath[dlc/dlc023_man_the_guns/]

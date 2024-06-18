@@ -491,6 +491,9 @@ alias[effect:retire_character] = scope[character]
 ## scope = { character unit_leader }
 alias[effect:set_character_name] = localisation
 ### renames character
+## scope = { character unit_leader }
+alias[effect:set_character_name] = <spriteType>
+### renames character
 ## scope = { country character unit_leader }
 alias[effect:set_character_name] = {
 	## cardinality = 0..1
@@ -829,7 +832,7 @@ alias[effect:force_update_map_mode] = {
 ### Create railway gun effect
 ## scope = { any }
 alias[effect:create_railway_gun] = {
-	equipment = railway_gun_equipment_1
+	equipment = <equipment.railway_gun>
 	## cardinality = 0..1
 	name = localisation_inline
 	### optional, created in capital otherwise
@@ -939,20 +942,20 @@ alias[effect:generate_character] = {
 ## scope = any
 alias[effect:create_entity] = {
     entity = <entity>
-	## cardinality 0..1
+	## cardinality = 0..1
     id = value_set[entity_id]
-	## cardinality 0..1
+	## cardinality = 0..1
     var = value_set[variable]
     x = float
     y = float
-	## cardinality 0..1
+	## cardinality = 0..1
     z = float
     province = enum[provinces]
     state = <state>
     rotation = float
     scale = float
     min_zoom = float
-	## cardinality 0..1
+	## cardinality = 0..1
     visible = <scripted_trigger>
 }
 
@@ -970,7 +973,7 @@ alias[effect:set_entity_movement] = {
     start = {
         x = float
         y = float
-		## cardinality 0..1
+		## cardinality = 0..1
         z = float
     }
     target = {
@@ -987,7 +990,7 @@ alias[effect:set_entity_position ] = {
 	id = value[entity_id]
 	x = float
 	y = float
-	## cardinality 0..1
+	## cardinality = 0..1
 	z = float
 	province = enum
 	state = <state>

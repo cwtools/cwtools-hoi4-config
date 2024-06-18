@@ -62,6 +62,9 @@ types = {
 			### All parent module slots will directly inherited with no modifications.
 			module_slots = inherit
 		}
+		subtype[railway_gun] = {
+			archetype = railway_gun_equipment
+		}
 	}
 	type[upgrade] = {
 		skip_root_key = upgrades

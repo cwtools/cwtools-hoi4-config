@@ -1808,6 +1808,8 @@ alias[effect:create_equipment_variant] = {
 	## cardinality = 0..1
 	allow_without_tech = bool
 	## cardinality = 0..1
+	show_position = bool
+	## cardinality = 0..1
 	upgrades = {
 		## cardinality = 0..inf
 		<upgrade> = int
@@ -2835,10 +2837,11 @@ alias[effect:clear_division_template_cap] = {
 	division_template = localisation_inline
 }
 
-### Set division template to allow force recruiting.
+### Set division template to allow force recruiting. force_allow_recruiting defaults to true if unset
 ## scope = country
 alias[effect:set_division_force_allow_recruiting] = {
 	division_template = localisation_inline
+	## cardinality = 0..1
 	force_allow_recruiting = bool
 }
 
@@ -3472,10 +3475,7 @@ alias[effect:while_loop_effect] = {
 ### Meta effects can be used for building effects from strings and running them. following example will give Germany 42 pp.
 ## scope = any
 alias[effect:meta_effect] = {
-	text = {
-		## cardinality = 1..inf
-		alias_name[effect] = alias_match_left[effect]
-	}
+	text = ignore_field
 	## cardinality = 1..inf
 	scalar = localisation
 }

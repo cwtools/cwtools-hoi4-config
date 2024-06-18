@@ -54,19 +54,25 @@ mio_policy = {
 	equipment_bonus = {
 		## cardinality = 0..inf
 		enum[equipment_bonus_type] = {
-			## cardinality = ~1..inf
+			## cardinality = 0..inf
 			enum[equipment_stat] = variable_field
+			## cardinality = 0..inf
+			enum[production_stat] = variable_field
 		}
 		## cardinality = 0..inf
 		<equipment_group> = {
-			## cardinality = ~1..inf
+			## cardinality = 0..inf
 			enum[equipment_stat] = variable_field
+			## cardinality = 0..inf
+			enum[production_stat] = variable_field
 		}
 		### can use this keyword to apply to all equipments in departments of the attached MIO
 		## cardinality = 0..inf
 		same_as_mio = {
-			## cardinality = ~1..inf
+			## cardinality = 0..inf
 			enum[equipment_stat] = variable_field
+			## cardinality = 0..inf
+			enum[production_stat] = variable_field
 		}
 	}
 

@@ -9,7 +9,7 @@ alias[trigger:is_military_industrial_organization] = <military_industrial_organi
 
 ### Checks the size of the MIO
 ## scope = military_industrial_organization
-alias[trigger:has_mio_size] = int[1..inf]
+alias[trigger:has_mio_size] = int[0..inf]
 
 ### Checks if MIO is affecting specific equipment
 ## scope = military_industrial_organization

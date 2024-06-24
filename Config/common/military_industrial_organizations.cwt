@@ -118,7 +118,7 @@ military_industrial_organization = {
 	## cardinality = 0..1
 	initial_trait = {
 		## cardinality = 0..1
-		token = value_set[mio_token]
+		token = value_set[mio_trait_token]
 		## cardinality = 0..1
 		name = scalar
 		## cardinality = 0..1
@@ -151,7 +151,7 @@ military_industrial_organization = {
 
 	## cardinality = 0..inf
 	trait = {
-		token = value_set[mio_token]
+		token = value_set[mio_trait_token]
 		### Same naming rules as with MIO itself
 		## cardinality = 0..1
 		name = scalar
@@ -169,7 +169,7 @@ military_industrial_organization = {
 		parent = {
 			traits = {
 				## cardinality = 1..inf
-				value[mio_token]
+				value[mio_trait_token]
 			}
 			### The number of parents that needs to be unlocked, default 1
 			## cardinality = 0..1
@@ -179,13 +179,13 @@ military_industrial_organization = {
 		## cardinality = 0..inf
 		any_parent = {
 			## cardinality = 1..inf
-			value[mio_token]
+			value[mio_trait_token]
 		}
 		### Short hand for "parent = { traits = { parent traits } num_parents_needed = N }" where N is the number of parent traits
 		## cardinality = 0..inf
 		all_parents = {
 			## cardinality = 1..inf
-			value[mio_token]
+			value[mio_trait_token]
 		}
 
 		### The trait can be mutually exclusive with another (or more)
@@ -193,7 +193,7 @@ military_industrial_organization = {
 		## cardinality = 0..1
 		mutually_exclusive = {
 			## cardinality = 1..inf
-			value[mio_token]
+			value[mio_trait_token]
 		}
 
 		## cardinality = 0..1
@@ -245,7 +245,7 @@ military_industrial_organization = {
 		### By default position is the absolute coordinate in the tree grid.
 		### If relative_position_id is provided, it becomes a delta applied to the input trait position
 		## cardinality = 0..1
-		relative_position_id = value[mio_token]
+		relative_position_id = value[mio_trait_token]
 
 		### AI weight modifier for this trait.
 		### Warning : if the trait is part of a central tree, the trait's ai_will_do will override the central tree's!
@@ -300,7 +300,7 @@ military_industrial_organization = {
 	### Use this parameter to add traits when inheriting another MIO's tree
 	## cardinality = 0..inf
 	add_trait = {
-		token = value_set[mio_token]
+		token = value_set[mio_trait_token]
 		### Same naming rules as with MIO itself
 		## cardinality = 0..1
 		name = scalar
@@ -318,7 +318,7 @@ military_industrial_organization = {
 		parent = {
 			traits = {
 				## cardinality = 1..inf
-				value[mio_token]
+				value[mio_trait_token]
 			}
 			### The number of parents that needs to be unlocked, default 1
 			## cardinality = 0..1
@@ -328,13 +328,13 @@ military_industrial_organization = {
 		## cardinality = 0..inf
 		any_parent = {
 			## cardinality = 1..inf
-			value[mio_token]
+			value[mio_trait_token]
 		}
 		### Short hand for "parent = { traits = { parent traits } num_parents_needed = N }" where N is the number of parent traits
 		## cardinality = 0..inf
 		all_parents = {
 			## cardinality = 1..inf
-			value[mio_token]
+			value[mio_trait_token]
 		}
 
 		### The trait can be mutually exclusive with another (or more)
@@ -342,7 +342,7 @@ military_industrial_organization = {
 		## cardinality = 0..1
 		mutually_exclusive = {
 			## cardinality = 1..inf
-			value[mio_token]
+			value[mio_trait_token]
 		}
 
 		## cardinality = 0..1
@@ -394,7 +394,7 @@ military_industrial_organization = {
 		### By default position is the absolute coordinate in the tree grid.
 		### If relative_position_id is provided, it becomes a delta applied to the input trait position
 		## cardinality = 0..1
-		relative_position_id = value[mio_token]
+		relative_position_id = value[mio_trait_token]
 
 		### AI weight modifier for this trait.
 		### Warning : if the trait is part of a central tree, the trait's ai_will_do will override the central tree's!
@@ -410,12 +410,12 @@ military_industrial_organization = {
 	## cardinality = 0..inf
 	remove_trait = {
 		## cardinality = ~1..inf
-		value[mio_token]
+		value[mio_trait_token]
 	}
 	### Override specific trait when inheriting another MIO's tree
 	## cardinality = 0..inf
 	override_trait = {
-		token = value[mio_token]
+		token = value[mio_trait_token]
 		### Same naming rules as with MIO itself
 		## cardinality = 0..1
 		name = scalar
@@ -433,7 +433,7 @@ military_industrial_organization = {
 		parent = {
 			traits = {
 				## cardinality = 1..inf
-				value[mio_token]
+				value[mio_trait_token]
 			}
 			### The number of parents that needs to be unlocked, default 1
 			## cardinality = 0..1
@@ -443,13 +443,13 @@ military_industrial_organization = {
 		## cardinality = 0..inf
 		any_parent = {
 			## cardinality = 1..inf
-			value[mio_token]
+			value[mio_trait_token]
 		}
 		### Short hand for "parent = { traits = { parent traits } num_parents_needed = N }" where N is the number of parent traits
 		## cardinality = 0..inf
 		all_parents = {
 			## cardinality = 1..inf
-			value[mio_token]
+			value[mio_trait_token]
 		}
 
 		### The trait can be mutually exclusive with another (or more)
@@ -457,7 +457,7 @@ military_industrial_organization = {
 		## cardinality = 0..1
 		mutually_exclusive = {
 			## cardinality = 1..inf
-			value[mio_token]
+			value[mio_trait_token]
 		}
 
 		## cardinality = 0..1
@@ -510,7 +510,7 @@ military_industrial_organization = {
 		### By default position is the absolute coordinate in the tree grid.
 		### If relative_position_id is provided, it becomes a delta applied to the input trait position
 		## cardinality = 0..1
-		relative_position_id = value[mio_token]
+		relative_position_id = value[mio_trait_token]
 
 		### AI weight modifier for this trait.
 		### Warning : if the trait is part of a central tree, the trait's ai_will_do will override the central tree's!

@@ -1129,5 +1129,8 @@ values = {
 		# ========================
 		### How faster is tech researching with mio assigned
 		research_bonus
+
+		### Current number of funds MIO has access to
+		funds
 	}
 }

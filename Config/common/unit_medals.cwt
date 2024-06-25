@@ -1,0 +1,32 @@
+types = {
+	type[unit_medal] = {
+		skip_root_key = unit_medals
+		path = "game/common/unit_medals"
+		path_strict = yes
+	}
+}
+
+## replace_scope = { root = country this = country }
+unit_medal = {
+	## cardinality = 0..1
+	available = {
+		## cardinality = ~1..inf
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	
+	frame = int
+	icon = <spriteType>
+
+	cost = @cost
+	cost = int
+
+	## cardinality = 0..1
+	unit_modifiers = {
+		alias_name[modifier] = alias_match_left[modifier]
+	}
+
+	## cardinality = 0..1
+	one_time_effect = {
+		alias_name[effect] = alias_match_left[effect]
+	}
+}

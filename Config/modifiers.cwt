@@ -1012,4 +1012,6 @@ modifiers = {
 	military_industrial_organization_task_capacity = military_industrial_organization
 	military_industrial_organization_size_up_requirement = military_industrial_organization
 	military_industrial_organization_funds_gain = military_industrial_organization
+	military_industrial_organization_policy_cost = military_industrial_organization
+	military_industrial_organization_policy_cooldown = military_industrial_organization
 }

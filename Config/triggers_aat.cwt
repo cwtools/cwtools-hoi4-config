@@ -3,7 +3,7 @@
 ## scope = state
 alias[trigger:is_one_state_island] = bool
 
-### Checks if current MIO is the provided one
+### Checks if the Military Industrial Organisation in scope matches the input token
 ## scope = military_industrial_organization
 alias[trigger:is_military_industrial_organization] = <military_industrial_organization>
 
@@ -23,9 +23,13 @@ alias[trigger:has_mio_equipment_type] = <equipment>
 ## scope = military_industrial_organization
 alias[trigger:has_mio_equipment_type] = <equipment_group>
 
-### Checks if tag has specific MIO
+### Checks if the Country in scope has a  Military Industrial Organisation matching the input token. Can use variable as input
 ## scope = country
 alias[trigger:has_military_industrial_organization] = <military_industrial_organization>
+
+### Checks if the Country in scope has a  Military Industrial Organisation matching the input token. Can use variable as input
+## scope = country
+alias[trigger:has_military_industrial_organization] = value[variable]
 
 ### Checks if MIO is available AND visible
 ## scope = military_industrial_organization
@@ -120,3 +124,33 @@ alias[trigger:has_mio_research_category] = <equipment.archetype_equip>
 ### Checks if the Military Industrial Organisation in scope has an allowed matching the input token, which is currently attached to the MIO
 ## scope = military_industrial_organization
 alias[trigger:has_mio_policy_active] = <mio_policy>
+
+### Checks if all Military Industrial Organisations of the Country in scope match the triggers. tooltip=key can be defined to override title
+## scope = country
+## push_scope = military_industrial_organization
+alias[trigger:all_military_industrial_organization] = {
+    ## cardinality = 0..1
+    tooltip = localisation
+	## error_if_only_match = This is the default value and can be omitted
+	## severity = info
+	## cardinality = 0..1
+    include_invisible = no
+	## cardinality = 0..1
+    include_invisible = yes
+    alias_name[trigger] = alias_match_left[trigger]
+}
+
+### Checks if at least one Military Industrial Organisation of the Country in scope matches the triggers. tooltip=key can be defined to override title
+## scope = country
+## push_scope = military_industrial_organization
+alias[trigger:any_military_industrial_organization] = {
+    ## cardinality = 0..1
+    tooltip = localisation
+	## error_if_only_match = This is the default value and can be omitted
+	## severity = info
+	## cardinality = 0..1
+    include_invisible = no
+	## cardinality = 0..1
+    include_invisible = yes
+    alias_name[trigger] = alias_match_left[trigger]
+}

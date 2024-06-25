@@ -239,7 +239,7 @@ military_industrial_organization = {
 		### Defines where the trait will be positioned in the tree grid. x=0 y=0 is the top left position.
 		### Do not reuse the same position twice.
 		position = {
-			x = float[-9..9]
+			x = float
 			y = float
 		}
 		### By default position is the absolute coordinate in the tree grid.

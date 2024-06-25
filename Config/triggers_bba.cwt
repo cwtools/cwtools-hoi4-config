@@ -190,3 +190,11 @@ alias[trigger:pc_is_state_outside_influence_for_winner] = enum[country_tags]
 ### Compares the amount of turns that have passed during the peace conference with a number.
 ## scope = any
 alias[trigger:pc_turn] = int
+
+### Check scope unit strength status 0-1: Example unit_strength < 1
+## scope = unit
+alias[trigger:unit_strength] = variable_field[0..1]
+
+### Check scope unit organization status 0-1: Example unit_organization < 1
+## scope = unit
+alias[trigger:unit_organization] = variable_field[0..1]

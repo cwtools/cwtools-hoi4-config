@@ -293,8 +293,6 @@ alias[effect:every_military_industrial_organization] = {
     alias_name[effect] = alias_match_left[effect]
 }
 
-
-
 ### Give market access to x
 ## scope = country
 alias[effect:give_market_access] = enum[country_tags]

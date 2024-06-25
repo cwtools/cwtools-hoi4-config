@@ -166,3 +166,18 @@ alias[effect:remove_civil_war_target] = enum[country_tags]
 ### Destroys the currently-scoped division. 
 ## scope = unit
 alias[effect:destroy_unit] = bool
+
+### Add history entry to a unit in scope
+## scope = unit
+alias[effect:add_history_entry] = {
+    key = localisation
+    subject = localisation
+    ### Allow medal award
+    allow = bool
+}
+
+### Add a medal to latest history entry of a unit in scope. Check 'add_history_entry' to create a new entry
+## scope = unit
+alias[effect:add_unit_medal_to_latest_entry] = {
+    unit_medals = <unit_medal>
+}

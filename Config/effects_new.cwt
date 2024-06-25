@@ -951,7 +951,7 @@ alias[effect:modulo_temp_variable] = {
 
 ###mMdulos a temp variable with another.
 ## scopes = { any }
-alias[trigger:modulo_temp_variable] = {
+alias[effect:modulo_temp_variable] = {
 	var = value_set[variable]
 	value = variable_field_32
 }
@@ -964,7 +964,7 @@ alias[effect:modulo_variable] = {
 
 ###Modulos a variable with another.
 ## scopes = { any }
-alias[trigger:modulo_variable] = {
+alias[effect:modulo_variable] = {
 	var = value_set[variable]
 	value = variable_field_32
 }

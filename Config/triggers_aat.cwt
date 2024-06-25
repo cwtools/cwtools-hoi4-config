@@ -7,19 +7,19 @@ alias[trigger:is_one_state_island] = bool
 ## scope = military_industrial_organization
 alias[trigger:is_military_industrial_organization] = <military_industrial_organization>
 
-### Checks the size of the MIO
+### Make comparaison on the size of the military industrial organization in the scope. Can use < or > to compare the value with either a fixed value or with a variable
 ## scope = military_industrial_organization
-alias[trigger:has_mio_size] = int[1..inf]
+alias[trigger:has_mio_size] = variable_field
 
-### Checks if MIO is affecting specific equipment
+### Checks if the Military Industrial Organisation in scope has the input equipment type (possible values can be found in script_enum_equipment_bonus_type and in common/equipment_groups)
 ## scope = military_industrial_organization
 alias[trigger:has_mio_equipment_type] = enum[equipment_bonus_type]
 
-### Checks if MIO is affecting specific equipment
+### Checks if the Military Industrial Organisation in scope has the input equipment type (possible values can be found in script_enum_equipment_bonus_type and in common/equipment_groups)
 ## scope = military_industrial_organization
 alias[trigger:has_mio_equipment_type] = <equipment>
 
-### Checks if MIO is affecting specific equipment
+### Checks if the Military Industrial Organisation in scope has the input equipment type (possible values can be found in script_enum_equipment_bonus_type and in common/equipment_groups)
 ## scope = military_industrial_organization
 alias[trigger:has_mio_equipment_type] = <equipment_group>
 
@@ -31,25 +31,51 @@ alias[trigger:has_military_industrial_organization] = <military_industrial_organ
 ## scope = military_industrial_organization
 alias[trigger:is_mio_available] = bool
 
-### Checks if MIO is visible
+### Checks if the visible trigger in the Military Industrial Organisation in scope returns true
 ## scope = military_industrial_organization
 alias[trigger:is_mio_visible] = bool
 
-### Checks if MIO is assigned to tast
+### Checks if the available AND visible triggers in the Military Industrial Organisation in scope return true
+## scope = military_industrial_organization
+alias[trigger:is_mio_available] = bool
+
+### Checks if the Military Industrial Organisation in scope is assigned to at least 1 task
 ## scope = military_industrial_organization
 alias[trigger:is_mio_assigned_to_task] = bool
 
-### Checks if MIO has specific trait
+### Checks if the Military Industrial Organisation in scope has a trait matching the input token
 ## scope = military_industrial_organization
-alias[trigger:has_mio_trait] = value[mio_token]
+alias[trigger:has_mio_trait] = value[mio_trait_token]
 
-### Checks if MIO has specific trait unlocked
+### Checks if the Military Industrial Organisation in scope has a trait matching the input token
 ## scope = military_industrial_organization
-alias[trigger:is_mio_trait_completed] = value[mio_token]
+alias[trigger:has_mio_trait] = {
+	trait = value[mio_trait_token]
+}
 
-### Checks if MIO has this number of traits unlocked
+### Checks if the Military Industrial Organisation in scope has a trait matching the input token, which is also completed
 ## scope = military_industrial_organization
-alias[trigger:has_mio_number_of_completed_traits] = int
+alias[trigger:is_mio_trait_completed] = value[mio_trait_token]
+
+### Checks if the Military Industrial Organisation in scope has a trait matching the input token, which is also completed
+## scope = military_industrial_organization
+alias[trigger:is_mio_trait_completed] = {
+	trait = value[mio_trait_token]
+}
+
+### Checks if the Military Industrial Organisation in scope has a trait matching the input token, which is also available
+## scope = military_industrial_organization
+alias[trigger:is_mio_trait_available] = value[mio_trait_token]
+
+### Checks if the Military Industrial Organisation in scope has a trait matching the input token, which is also available
+## scope = military_industrial_organization
+alias[trigger:is_mio_trait_available] = {
+	trait = value[mio_trait_token]
+}
+
+### Make comparaison on the number of unlocked traits of the military industrial organization in the scope. Can use < or > to compare the value with either a fixed value or from a variable
+## scope = military_industrial_organization
+alias[trigger:has_mio_number_of_completed_traits] = variable_field
 
 ### Checks num of planes stationed in a region
 ## scope = country
@@ -61,11 +87,11 @@ alias[trigger:num_planes_stationed_in_regions]  = {
     }
 }
 
-### Checks mio flag
+### Check if flag has been set within the military industrial organization in scope. May checks on the value or date/days since last modified date
 ## scope = military_industrial_organization
 alias[trigger:has_mio_flag] = value[mio_flag]
 
-### Checks mio flag
+### Check if flag has been set within the military industrial organization in scope. May checks on the value or date/days since last modified date
 ## scope = military_industrial_organization
 alias[trigger:has_mio_flag] = {
 	flag = value[mio_flag]
@@ -74,3 +100,23 @@ alias[trigger:has_mio_flag] = {
 	## cardinality = 0..1
 	days = int
 }
+
+### Checks if the Military Industrial Organisation in scope has an allowed policy matching the input token
+## scope = military_industrial_organization
+alias[trigger:has_mio_policy] = <mio_policy>
+
+### Checks if the Military Industrial Organisation in scope has the input research category
+## scope = military_industrial_organization
+alias[trigger:has_mio_research_category] = enum[tech_category]
+
+### Checks if the Military Industrial Organisation in scope has the input research category
+## scope = military_industrial_organization
+alias[trigger:has_mio_research_category] = <equipment_group>
+
+### Checks if the Military Industrial Organisation in scope has the input research category
+## scope = military_industrial_organization
+alias[trigger:has_mio_research_category] = <equipment.archetype_equip>
+
+### Checks if the Military Industrial Organisation in scope has an allowed matching the input token, which is currently attached to the MIO
+## scope = military_industrial_organization
+alias[trigger:has_mio_policy_active] = <mio_policy>

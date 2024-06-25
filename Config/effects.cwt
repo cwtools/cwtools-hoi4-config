@@ -2770,19 +2770,51 @@ alias[effect:clamp_temp_variable] = {
 ### Start a border war between two states.
 ## scope = { state country }
 alias[effect:start_border_war] = {
+	### Overrides the transfer of state at the end of war
 	change_state_after_war = bool
+	### Combat width for border war
+	## cardinality = 0..1
+	combat_width = int
+	### Minimum duration for combat
+	## cardinality = 0..1
+	minimum_duration_in_days = int
 	attacker = {
+		### State to start border war
 		state = scope[state]
 		state = <state>
+		### Number of provinces we want border war to be
 		num_provinces = int[1..100]
 		on_win = <event>
 		on_lose = <event>
 		## cardinality = ~0..1
 		on_cancel = <event>
+		### Score for selecting a leader
+		## cardinality = 0..1
+		leader_score = {
+			## cardinality = 0..1
+			base = variable_field
+			## cardinality = 0..inf
+			enum[add_factor] = float
+			## cardinality = 0..inf
+			modifier = {
+				## cardinality = ~1..inf
+				alias_name[trigger] = alias_match_left[trigger]
+				## cardinality = ~1..1
+				enum[add_factor] = float
+			}
+		}
+		### Dig in modifier factor (default value: 1.0)
+		## cardinality = 0..1
+		dig_in_factor = float
+		### Terrain modifier factor (default value: 1.0)
+		## cardinality = 0..1
+		terrain_factor = float
 	}
 	defender = {
+		### State to start border war
 		state = scope[state]
 		state = <state>
+		### Number of provinces we want border war to be
 		num_provinces = int[1..100]
 		on_win = <event>
 		on_lose = <event>

@@ -1190,7 +1190,7 @@ alias[trigger:has_non_aggression_pact_with] = enum[country_tags]
 
 ### Compares the number of members in the faction for the current country.
 ## scope = country
-alias[trigger:num_faction_members] = int
+alias[trigger:num_faction_members] = variable_field
 
 ### Compares the estimated army strength between the scope country and all its enemies.
 ## scope = country

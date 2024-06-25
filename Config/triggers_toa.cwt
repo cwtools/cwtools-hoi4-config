@@ -6,5 +6,6 @@ alias[trigger:longest_war_length] = int
 ## scope = country
 alias[trigger:war_length_with] = {
     tag = enum[country_tags]
+    tag = scope[country]
     months = int 
 }

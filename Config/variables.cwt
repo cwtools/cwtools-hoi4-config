@@ -24,34 +24,34 @@ values = {
 		# =========================
 
 		### Weight for an AI attitude attitude_allied against country. Example: GER.ai_attitude_allied_weight@ENG.
-		ai_attitude_allied_weight@scope[country]
+		ai_attitude_allied_weight@enum[country_scope_enum]
 		ai_attitude_allied_weight@enum[country_tags]
 
 		### Weight for an AI attitude attitude_friendly against country. Example: GER.ai_attitude_friendly_weight@ENG.
-		ai_attitude_friendly_weight@scope[country]
+		ai_attitude_friendly_weight@enum[country_scope_enum]
 		ai_attitude_friendly_weight@enum[country_tags]
 
 		### Weight for an AI attitude attitude_hostile against country. Example: GER.ai_attitude_hostile_weight@ENG.
-		ai_attitude_hostile_weight@scope[country]
+		ai_attitude_hostile_weight@enum[country_scope_enum]
 		ai_attitude_hostile_weight@enum[country_tags]
 
 		### Returns 1 if AI is threatened.
 		ai_attitude_is_threatened
 
 		### Weight for an AI attitude attitude_neutral against country. Example: GER.ai_attitude_neutral_weight@ENG.
-		ai_attitude_neutral_weight@scope[country]
+		ai_attitude_neutral_weight@enum[country_scope_enum]
 		ai_attitude_neutral_weight@enum[country_tags]
 
 		### Weight for an AI attitude attitude_outraged against country. Example: GER.ai_attitude_outraged_weight@ENG.
-		ai_attitude_outraged_weight@scope[country]
+		ai_attitude_outraged_weight@enum[country_scope_enum]
 		ai_attitude_outraged_weight@enum[country_tags]
 
 		### Weight for an AI attitude attitude_protective against country. Example: GER.ai_attitude_protective_weight@ENG.
-		ai_attitude_protective_weight@scope[country]
+		ai_attitude_protective_weight@enum[country_scope_enum]
 		ai_attitude_protective_weight@enum[country_tags]
 
 		### Weight for an AI attitude attitude_threatened against country. Example: GER.ai_attitude_threatened_weight@ENG.
-		ai_attitude_threatened_weight@scope[country]
+		ai_attitude_threatened_weight@enum[country_scope_enum]
 		ai_attitude_threatened_weight@enum[country_tags]
 
 		### Returns 1 if AI wants ally.
@@ -73,87 +73,87 @@ values = {
 		ai_desire_<resource>
 
 		### AI strategy value activate_crypto against country. Example: GER.ai_strategy_activate_crypto@ENG.
-		ai_strategy_activate_crypto@scope[country]
+		ai_strategy_activate_crypto@enum[country_scope_enum]
 		ai_strategy_activate_crypto@enum[country_tags]
 
 		### AI strategy value alliance against country. Example: GER.ai_strategy_alliance@ENG.
-		ai_strategy_alliance@scope[country]
+		ai_strategy_alliance@enum[country_scope_enum]
 		ai_strategy_alliance@enum[country_tags]
 
 		### AI strategy value antagonize against country. Example: GER.ai_strategy_antagonize@ENG.
-		ai_strategy_antagonize@scope[country]
+		ai_strategy_antagonize@enum[country_scope_enum]
 		ai_strategy_antagonize@enum[country_tags]
 
 		### AI strategy value befriend against country. Example: GER.ai_strategy_befriend@ENG.
-		ai_strategy_befriend@scope[country]
+		ai_strategy_befriend@enum[country_scope_enum]
 		ai_strategy_befriend@enum[country_tags]
 
 		### AI strategy value conquer against country. Example: GER.ai_strategy_conquer@ENG.
-		ai_strategy_conquer@scope[country]
+		ai_strategy_conquer@enum[country_scope_enum]
 		ai_strategy_conquer@enum[country_tags]
 
 		### AI strategy value consider_weak against country. Example: GER.ai_strategy_consider_weak@ENG.
-		ai_strategy_consider_weak@scope[country]
+		ai_strategy_consider_weak@enum[country_scope_enum]
 		ai_strategy_consider_weak@enum[country_tags]
 
 		### AI strategy value contain against country. Example: GER.ai_strategy_contain@ENG.
-		ai_strategy_contain@scope[country]
+		ai_strategy_contain@enum[country_scope_enum]
 		ai_strategy_contain@enum[country_tags]
 
 		### AI strategy value declare_war against country. Example: GER.ai_strategy_declare_war@ENG.
-		ai_strategy_declare_war@scope[country]
+		ai_strategy_declare_war@enum[country_scope_enum]
 		ai_strategy_declare_war@enum[country_tags]
 
 		### AI strategy value decrypt_target against country. Example: GER.ai_strategy_decrypt_target@ENG.
-		ai_strategy_decrypt_target@scope[country]
+		ai_strategy_decrypt_target@enum[country_scope_enum]
 		ai_strategy_decrypt_target@enum[country_tags]
 
 		### AI strategy value dont_defend_ally_borders against country. Example: GER.ai_strategy_dont_defend_ally_borders@ENG.
-		ai_strategy_dont_defend_ally_borders@scope[country]
+		ai_strategy_dont_defend_ally_borders@enum[country_scope_enum]
 		ai_strategy_dont_defend_ally_borders@enum[country_tags]
 
 		### AI strategy value force_defend_ally_borders against country. Example: GER.ai_strategy_force_defend_ally_borders@ENG.
-		ai_strategy_force_defend_ally_borders@scope[country]
+		ai_strategy_force_defend_ally_borders@enum[country_scope_enum]
 		ai_strategy_force_defend_ally_borders@enum[country_tags]
 
 		### AI strategy value ignore against country. Example: GER.ai_strategy_ignore@ENG.
-		ai_strategy_ignore@scope[country]
+		ai_strategy_ignore@enum[country_scope_enum]
 		ai_strategy_ignore@enum[country_tags]
 
 		### AI strategy value ignore_claim against country. Example: GER.ai_strategy_ignore_claim@ENG.
-		ai_strategy_ignore_claim@scope[country]
+		ai_strategy_ignore_claim@enum[country_scope_enum]
 		ai_strategy_ignore_claim@enum[country_tags]
 
 		### AI strategy value influence against country. Example: GER.ai_strategy_influence@ENG.
-		ai_strategy_influence@scope[country]
+		ai_strategy_influence@enum[country_scope_enum]
 		ai_strategy_influence@enum[country_tags]
 
 		### AI strategy value invade against country. Example: GER.ai_strategy_invade@ENG.
-		ai_strategy_invade@scope[country]
+		ai_strategy_invade@enum[country_scope_enum]
 		ai_strategy_invade@enum[country_tags]
 
 		### AI strategy value occupation_policy against country. Example: GER.ai_strategy_occupation_policy@ENG.
-		ai_strategy_occupation_policy@scope[country]
+		ai_strategy_occupation_policy@enum[country_scope_enum]
 		ai_strategy_occupation_policy@enum[country_tags]
 
 		### AI strategy value prepare_for_war against country. Example: GER.ai_strategy_prepare_for_war@ENG.
-		ai_strategy_prepare_for_war@scope[country]
+		ai_strategy_prepare_for_war@enum[country_scope_enum]
 		ai_strategy_prepare_for_war@enum[country_tags]
 
 		### AI strategy value protect against country. Example: GER.ai_strategy_protect@ENG.
-		ai_strategy_protect@scope[country]
+		ai_strategy_protect@enum[country_scope_enum]
 		ai_strategy_protect@enum[country_tags]
 
 		### AI strategy value send_volunteers_desire against country. Example: GER.ai_strategy_send_volunteers_desire@ENG.
-		ai_strategy_send_volunteers_desire@scope[country]
+		ai_strategy_send_volunteers_desire@enum[country_scope_enum]
 		ai_strategy_send_volunteers_desire@enum[country_tags]
 
 		### AI strategy value support against country. Example: GER.ai_strategy_support@ENG.
-		ai_strategy_support@scope[country]
+		ai_strategy_support@enum[country_scope_enum]
 		ai_strategy_support@enum[country_tags]
 
 		### Air intel against a target country. example GER.air_intel@ENG.
-		air_intel@scope[country]
+		air_intel@enum[country_scope_enum]
 		air_intel@enum[country_tags]
 
 		### KR-specific variable to manage tag ambition areas
@@ -163,7 +163,7 @@ values = {
 		army_experience
 
 		### Army intel against a target country. example GER.army_intel@ENG.
-		army_intel@scope[country]
+		army_intel@enum[country_scope_enum]
 		army_intel@enum[country_tags]
 
 		# Country-scope
@@ -175,7 +175,7 @@ values = {
 		historical_capital_for_country
 
 		### Civilian intel against a target country. example GER.civilian_intel@ENG.
-		civilian_intel@scope[country]
+		civilian_intel@enum[country_scope_enum]
 		civilian_intel@enum[country_tags]
 
 		### Total command power of country.
@@ -270,7 +270,7 @@ values = {
 		navy_experience
 
 		### Navy intel against a target country. example GER.navy_intel@ENG.
-		navy_intel@scope[country]
+		navy_intel@enum[country_scope_enum]
 		navy_intel@enum[country_tags]
 
 		### Number of armies.
@@ -417,7 +417,7 @@ values = {
 		days_since_capitulated
 
 		### (Trigger) Checks decryption ratio against a country. Example:  decryption_progress@GER.
-		decryption_progress@scope[country]
+		decryption_progress@enum[country_scope_enum]
 		decryption_progress@enum[country_tags]
 
 		### (Trigger) Compares the estimated navy strength between the scope country and all its enemies.
@@ -439,7 +439,7 @@ values = {
 		has_added_tension_amount
 
 		### (Trigger) Checks the collaboration in a target country with our currently scoped country. Example has_collaboration@GER.
-		has_collaboration@scope[country]
+		has_collaboration@enum[country_scope_enum]
 		has_collaboration@enum[country_tags]
 
 		### (Trigger) Check scope country legitimacy 0-100: Example has_legitimacy < 60.
@@ -467,7 +467,7 @@ values = {
 		mine_threat
 
 		### (Trigger) Will compare towards the amount of divisions a country has control over, if strength matters use has_army_size.
-		network_national_coverage@scope[country]
+		network_national_coverage@enum[country_scope_enum]
 		network_national_coverage@enum[country_tags]
 
 		### (Trigger) Will compare towards the amount of divisions a country has control over, if strength matters use has_army_size.
@@ -1083,11 +1083,11 @@ values = {
 		subjects
 
 		### Array of subjects of a tag.
-		subject_countries@scope[country]
+		subject_countries@enum[country_scope_enum]
 		subject_countries@enum[country_tags]
 
 		### Array of states onwned by subjects of a tag.
-		subject_states@scope[country]
+		subject_states@enum[country_scope_enum]
 		subject_states@enum[country_tags]
 
 		### Array with country list scores
@@ -1127,10 +1127,28 @@ values = {
 		# ========================
 		# MIO VARIABLES
 		# ========================
-		### How faster is tech researching with mio assigned
+		### Value of the modifier stored in the military industrial organization. ex: modifier@military_industrial_organization_research_bonus
+		modifier
+		
+		### Research bonus of the military industrial organization when assigned to a research slot
 		research_bonus
 
-		### Current number of funds MIO has access to
+		### Size of the military industrial organization
+		size
+
+		### Number of tasks the military industrial organization is currently assigned to
+		number_of_currently_assigned_tasks
+
+		### Funds of the military industrial organization
 		funds
+
+		### Maximum task capacity of the military industrial organization
+		max_task_capacity
+
+		### Number of unlocked traits of the military industrial organization
+		number_of_unlocked_traits
+
+		### Number of unused trait points of the military industrial organization
+		number_of_unused_trait_points
 	}
 }

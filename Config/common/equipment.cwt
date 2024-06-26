@@ -445,6 +445,22 @@ module = {
 	## cardinality = 0..1
 	sfx = scalar
 	## cardinality = 0..1
+	allow_equipment_type = enum[unit_types]
+	## cardinality = 0..1
+	forbid_equipment_type_exact_match = enum[unit_types]
+	## cardinality = 0..1
+	forbid_equipment_type = enum[unit_types]
+	## cardinality = 0..1
+	forbid_equipment_type = {
+		## cardinality = ~1..inf
+		enum[unit_types]
+	}
+	## cardinality = 0..1
+	forbid_equipment_type_exact_match_for_category = {
+		## cardinality = ~1..inf
+		enum[module_categories] = enum[unit_types]
+	}
+	## cardinality = 0..1
 	add_equipment_type = enum[unit_types]
 	## cardinality = 0..1
 	add_equipment_type = {
@@ -454,11 +470,8 @@ module = {
 	## cardinality = 0..1
 	### Adds the provided stats to the given module
 	add_stats = {
-		alias_name[unit_stat] = alias_match_left[naval_stat]
-		alias_name[naval_stat] = alias_match_left[naval_stat]
-		alias_name[air_stat] = alias_match_left[air_stat]
-		## cardinality = 0..1
-		build_cost_ic = float
+		## cardinality = ~1..inf
+		enum[equipment_stat] = float
 	}
 
 	## cardinality = 0..1
@@ -473,18 +486,17 @@ module = {
 	}
 	## cardinality = 0..1
 	add_average_stats = {
-		alias_name[unit_stat] = alias_match_left[naval_stat]
-		alias_name[naval_stat] = alias_match_left[naval_stat]
-		alias_name[air_stat] = alias_match_left[air_stat]
+		## cardinality = ~1..inf
+		enum[equipment_stat] = float
 	}
-	## cardinality = 0..10
+	## cardinality = 0..inf
 	multiply_stats = {
-		alias_name[unit_stat] = alias_match_left[naval_stat]
-		alias_name[naval_stat] = alias_match_left[naval_stat]
-		alias_name[air_stat] = alias_match_left[air_stat]
+		## cardinality = ~1..inf
+		enum[equipment_stat] = float
 	}
 	## cardinality = 0..1
 	forbid_module_categories = {
+		## cardinality = ~1..inf
 		enum[module_categories]
 	}
 	## cardinality = 0..10
@@ -562,13 +574,6 @@ module = {
 			alias_name[naval_stat] = alias_match_left[naval_stat]
 			alias_name[air_stat] = alias_match_left[air_stat]
 		}
-	}
-
-	## cardinality = 0..1
-	### Prevents equipment module from being added to a specific plane airframe type
-	forbid_equipment_type_exact_match_for_category = {
-		## cardinality = 0..inf
-		enum[module_categories] = enum[unit_types]
 	}
 
 	## cardinality = 0..1

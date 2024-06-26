@@ -153,7 +153,7 @@ ai_template = {
 	### The role token that this role-level template entry targets. These tokens are defined by script and are targeted by the 'role_ratio' AI strategy. (This is technically a list but AI is bad at handling AI templates that target multiple roles, so sticking to just one is recommended.)
 	roles = {
 		## cardinality = ~1..inf
-		value_set[ai_roles]
+		value_set[ai_template_roles]
 	}
 	# Restricts the template to only the specified tags. Optional.
 	## cardinality = 0..1
@@ -299,7 +299,7 @@ ai_equipment_design_group = {
 
 	### List of roles that this design group can be used for. AI will attempt to design and produce equipment to satisfy all roles that it can. So it will try to actively use one design per role for new production and upgrading/refitting. Roles here are dynamically generated and should work with role_ratio.
 	roles = {
-		value_set[ai_roles]
+		value_set[ai_equipment_roles]
 	}
 
 	### Base priority for creating a design in this group or for creating or upgrading equipment to use one of these designs. A higher number means higher priority.
@@ -427,7 +427,7 @@ ai_equipment_design_group = {
 }
 
 values = {
-    value[ai_roles] = {
+    value[ai_template_roles] = {
 		# infantry
 		infantry
 		anti_tank
@@ -451,7 +451,8 @@ values = {
 		medium_armor
 		heavy_armor
 		modern_armor
-
+	}
+	value[ai_equipment_roles] = {
 		# planes
 		fighter
 		cas

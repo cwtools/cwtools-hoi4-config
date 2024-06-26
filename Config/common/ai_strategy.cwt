@@ -111,7 +111,8 @@ ai_strategy_plan = {
 
 alias[ai_strategy_rule:ai_strategy] = {
 	type = enum[ai_role_strats]
-	id = value[ai_roles]
+	id = value[ai_template_roles]
+	id = value[ai_equipment_roles]
 	value = int
 }
 
@@ -119,7 +120,8 @@ alias[ai_strategy_rule:ai_strategy] = {
 	type = enum[unit_strats]
 	id = <unit>
 	id = enum[unit_types]
-	id = value[ai_roles]
+	id = value[ai_template_roles]
+	id = value[ai_equipment_roles]
 	value = int
 }
 alias[ai_strategy_rule:ai_strategy] = {

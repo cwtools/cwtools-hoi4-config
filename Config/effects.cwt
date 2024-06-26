@@ -1540,7 +1540,12 @@ alias[effect:diplomatic_relation] = {
 
 ### Shows just tooltip of effects.
 ## scope = any
-alias[effect:effect_tooltip] = { alias_name[effect] = alias_match_left[effect] }
+alias[effect:effect_tooltip] = {
+	### You can show unit leader event names in effect_tooltip via 'country_event'
+	## cardinality = 0..1
+	country_event = <event.unit_leader_event>
+	alias_name[effect] = alias_match_left[effect]
+}
 
 ### Adds resource production to state.
 ## scope = country

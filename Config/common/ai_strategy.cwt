@@ -420,6 +420,7 @@ enums = {
 		wanted_supply_trucks
 		min_wanted_supply_trains
 		wanted_supply_trains
+		ai_wanted_divisions_factor
 		equipment_market_spend_factories
 	}
 	enum[pp_strats] = {

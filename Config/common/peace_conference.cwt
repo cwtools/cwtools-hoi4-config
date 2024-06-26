@@ -25,10 +25,19 @@ peace_action_categories = {
 
 peace_ai_desires = {
     peace_action_type = enum[peace_action]
-    peace_action_type = {
-        ## cardinality 1..4
-        enum[peace_action]
-    }
+    # Cardinality magically stops working here, had to improvise. cardinality 1..4
+    peace_action_type = { enum[peace_action] }
+    peace_action_type = { take_states puppet }
+    peace_action_type = { take_states force_government }
+    peace_action_type = { take_states liberate }
+    peace_action_type = { puppet force_government }
+    peace_action_type = { puppet liberate }
+    peace_action_type = { force_government liberate }
+    peace_action_type = { take_states puppet force_government }
+    peace_action_type = { take_states puppet liberate }
+    peace_action_type = { take_states force_government liberate }
+    peace_action_type = { puppet force_government liberate }
+    peace_action_type = { take_states puppet force_government liberate }
     ### ROOT - Negotiator country (who is doing the negotiation)
     ### FROM - Taker country (who will be the owner after the conference)
     ### FROM.FROM - Giver country (who was the owner before the conference)
@@ -49,10 +58,19 @@ peace_ai_desires = {
 peace_action_modifiers = {
     category = <peace_action_categories>
     peace_action_type = enum[peace_action]
-    peace_action_type = {
-        ## cardinality 1..4
-        enum[peace_action]
-    }
+    # Cardinality magically stops working here, had to improvise. cardinality 1..4
+    peace_action_type = { enum[peace_action] }
+    peace_action_type = { take_states puppet }
+    peace_action_type = { take_states force_government }
+    peace_action_type = { take_states liberate }
+    peace_action_type = { puppet force_government }
+    peace_action_type = { puppet liberate }
+    peace_action_type = { force_government liberate }
+    peace_action_type = { take_states puppet force_government }
+    peace_action_type = { take_states puppet liberate }
+    peace_action_type = { take_states force_government liberate }
+    peace_action_type = { puppet force_government liberate }
+    peace_action_type = { take_states puppet force_government liberate }
     ### ROOT - Negotiator country (who is doing the negotiation)
     ### FROM - Taker country (who will be the owner after the conference)
     ### FROM.FROM - Giver country (who was the owner before the conference)

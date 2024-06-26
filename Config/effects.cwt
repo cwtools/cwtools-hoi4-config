@@ -1220,6 +1220,8 @@ alias[effect:declare_war_on] = {
 		## cardinality = 0..inf
 		<state>
 	}
+	## cardinality = 0..1
+	generator = value[array]
 }
 
 # not used in vanilla or documented in wiki

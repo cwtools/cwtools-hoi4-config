@@ -97,6 +97,8 @@ oob = {
 					creator = enum[country_tags]
 					## cardinality = 0..1
 					version_name = scalar
+					## cardinality = 0..1
+					amount = int
 				}
 			}
 			## cardinality = 0..inf

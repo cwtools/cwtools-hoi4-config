@@ -351,10 +351,8 @@ unit = {
 		battalion_mult = {
 			## cardinality = 1..inf
 			category = enum[unit_category]
-			## cardinality = 0..inf
+			## cardinality = 1..inf
 			alias_name[unit_stat] = alias_match_left[unit_stat]
-			alias_name[naval_stat] = alias_match_left[naval_stat]
-			alias_name[air_stat] = alias_match_left[air_stat]
 			## cardinality = 0..1
 			add = bool
 		}

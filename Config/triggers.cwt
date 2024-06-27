@@ -1432,11 +1432,11 @@ alias[trigger:is_licensing_any_to] = enum[country_tags]
 
 ### Check if the ai controlled country has any template for a specific role.
 ## scope = country
-alias[trigger:ai_has_role_template] = value[ai_roles]
+alias[trigger:ai_has_role_template] = value[ai_template_roles]
 
 ### Check if the ai controlled country has any fielded divisions for a specific role.
 ## scope = country
-alias[trigger:ai_has_role_division] = value[ai_roles]
+alias[trigger:ai_has_role_division] = value[ai_template_roles]
 
 ### Country has specified relation modifier when dealing with _target_ county.
 ## scope = country

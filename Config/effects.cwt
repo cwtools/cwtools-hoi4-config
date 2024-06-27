@@ -1220,6 +1220,8 @@ alias[effect:declare_war_on] = {
 		## cardinality = 0..inf
 		<state>
 	}
+	## cardinality = 0..1
+	generator = value[array]
 }
 
 # not used in vanilla or documented in wiki
@@ -1538,7 +1540,12 @@ alias[effect:diplomatic_relation] = {
 
 ### Shows just tooltip of effects.
 ## scope = any
-alias[effect:effect_tooltip] = { alias_name[effect] = alias_match_left[effect] }
+alias[effect:effect_tooltip] = {
+	### You can show unit leader event names in effect_tooltip via 'country_event'
+	## cardinality = 0..1
+	country_event = <event.unit_leader_event>
+	alias_name[effect] = alias_match_left[effect]
+}
 
 ### Adds resource production to state.
 ## scope = country
@@ -3591,7 +3598,8 @@ alias[effect:set_convoys] = int
 ## scope = country
 alias[effect:add_ai_strategy] = {
 	type = enum[ai_role_strats]
-	id = value[ai_roles]
+	id = value[ai_template_roles]
+	id = value[ai_equipment_roles]
 	value = int
 }
 
@@ -3601,7 +3609,8 @@ alias[effect:add_ai_strategy] = {
 	type = enum[unit_strats]
 	id = <unit>
 	id = enum[unit_types]
-	id = value[ai_roles]
+	id = value[ai_template_roles]
+	id = value[ai_equipment_roles]
 	value = int
 }
 

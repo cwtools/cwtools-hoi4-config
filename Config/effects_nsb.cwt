@@ -371,24 +371,6 @@ alias[effect:add_advisor_role] = {
 		name = localisation
 		## cardinality = 0..1
 		desc = localisation
-		## replace_scope = { this = character root = country }
-		## cardinality = 0..1
-		allowed = {
-			## cardinality = ~1..inf
-			alias_name[trigger] = alias_match_left[trigger]
-		}
-		## replace_scope = { this = character root = country }
-		## cardinality = 0..1
-		visible = {
-			## cardinality = ~1..inf
-			alias_name[trigger] = alias_match_left[trigger]
-		}
-		## replace_scope = { this = character root = country }
-		## cardinality = 0..1
-		available = {
-			## cardinality = ~1..inf
-			alias_name[trigger] = alias_match_left[trigger]
-		}
 		### Sets advsior effects.
 		## cardinality = ~1..1
 		traits = {
@@ -413,22 +395,6 @@ alias[effect:add_advisor_role] = {
 		ai_will_do = {
 			enum[base_factor] = variable_field
 			alias_name[modifier_rule] = alias_match_left[modifier_rule]
-		}
-		## replace_scope = { this = character root = country }
-		## cardinality = 0..inf
-		on_add = {
-			alias_name[effect] = alias_match_left[effect]
-		}
-		## replace_scope = { this = character root = country }
-		## cardinality = 0..inf
-		on_remove = {
-			alias_name[effect] = alias_match_left[effect]
-		}
-		### While it is used in vanilla and doesn't throw errors, I can't get it to work reliably so I suspect there is some hard-coded strangeness going on here.
-		## replace_scope = { this = character root = country }
-		## cardinality = 0..1
-		do_effect = {
-			alias_name[trigger] = alias_match_left[trigger]
 		}
 		### Modifiers that are applied to tag while the advisor is active.
 		## replace_scope = { this = character root = country }

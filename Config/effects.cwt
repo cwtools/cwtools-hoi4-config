@@ -1222,6 +1222,8 @@ alias[effect:declare_war_on] = {
 	}
 	## cardinality = 0..1
 	generator = value[array]
+	## cardinality = 0..1
+	generator = scope[state]
 }
 
 # not used in vanilla or documented in wiki
@@ -1353,6 +1355,8 @@ alias[effect:create_wargoal] = {
 	generator = owned_states
 	## cardinality = 0..1
 	generator = value[array]
+	## cardinality = 0..1
+	generator = scope[state]
 	## cardinality = 0..1
 	expire = date_field
 	## cardinality = 0..1

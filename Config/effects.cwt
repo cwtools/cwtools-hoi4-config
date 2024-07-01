@@ -672,9 +672,25 @@ alias[effect:set_country_leader_ideology] = enum[sub_ideology]
 ## scope = country
 alias[effect:add_country_leader_trait] = <country_leader_trait>
 
+### Add trait to active country leader.
+## scope = country
+alias[effect:add_country_leader_trait] = {
+	trait = <country_leader_trait>
+	## cardinality = 0..1
+	ideology = <ideology>
+}
+
 ### Remove trait from active country leader.
 ## scope = country
 alias[effect:remove_country_leader_trait] = <country_leader_trait>
+
+### Remove trait from active country leader.
+## scope = country
+alias[effect:remove_country_leader_trait] = {
+	trait = <country_leader_trait>
+	## cardinality = 0..1
+	ideology = <ideology>
+}
 
 ### Set properties of a political party.
 ## scope = country
@@ -828,11 +844,12 @@ alias[effect:puppet] = scope[country]
 ## scope = country
 alias[effect:puppet] = enum[country_tags]
 
-### Puppets specified country.
+### Puppets specified country. By default, cancels the puppets existing war relations
 ## scope = country
 alias[effect:puppet] = {
 	target = scope[country]
 	target = enum[country_tags]
+	## cardinality = 0..1
 	end_wars = bool
 	## cardinality = 0..1
 	end_civil_wars = bool

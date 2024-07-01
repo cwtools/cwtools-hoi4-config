@@ -612,8 +612,8 @@ alias[effect:remove_trait] = {
 	slot = value[character_advisor_slot]
 }
 
-### Transfers character from scope country to target_country
-## scope = { country }
+### Transfer from one country to another for the character in scope. Note that this is not related to operative nationalities added via add_nationality. Note that for operative, this will temporarily lock their slot on the country of origin
+## scope = { country character unit_leader operative }
 alias[effect:set_nationality] = {
 	target_country = scope[country]
 	target_country = enum[country_tags]
@@ -625,18 +625,18 @@ alias[effect:set_nationality] = {
 	character = scope[character]
 }
 
-### Transfers scoped character from PREV country to target
+### Transfer from one country to another for the character in scope. Note that this is not related to operative nationalities added via add_nationality. Note that for operative, this will temporarily lock their slot on the country of origin
 ## scope = { character unit_leader operative }
 alias[effect:set_nationality] = scope[country]
 
-### Transfers scoped character from PREV country to target
+### Transfer from one country to another for the character in scope. Note that this is not related to operative nationalities added via add_nationality. Note that for operative, this will temporarily lock their slot on the country of origin
 ## scope = { character unit_leader operative }
 alias[effect:set_nationality] = {
 	target_country = scope[country]
 	target_country = enum[country_tags]
 }
 
-### Transfers scoped character from PREV country to target
+### Transfer from one country to another for the character in scope. Note that this is not related to operative nationalities added via add_nationality. Note that for operative, this will temporarily lock their slot on the country of origin
 ## scope = { character unit_leader operative }
 alias[effect:set_nationality] = enum[country_tags]
 

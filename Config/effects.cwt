@@ -2410,13 +2410,6 @@ alias[effect:modify_unit_leader_flag] = {
 ## scope = { unit_leader character }
 alias[effect:clr_unit_leader_flag] = value[leader_flag]
 
-### Sets the country that owns current scope general.
-## scope = { character unit_leader }
-alias[effect:set_nationality] = scope[country]
-### Sets the country that owns current scope general.
-## scope = { character unit_leader }
-alias[effect:set_nationality] = enum[country_tags]
-
 ### Demotes field marshal to general.
 ## scope = { character unit_leader }
 alias[effect:demote_leader] = yes

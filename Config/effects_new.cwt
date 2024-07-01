@@ -102,6 +102,10 @@ alias[effect:create_operative_leader] = {
 	female = bool
 	## cardinality = 0..1
 	skill = int
+	## cardinality = 0..1
+	gender = male
+	## cardinality = 0..1
+	gender = female
 }
 
 ###Capture an operative. Can be used from a scope and a target that is either a country or a unit leader.

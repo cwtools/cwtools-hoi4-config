@@ -1202,22 +1202,6 @@ alias[effect:randomize_temp_variable] = {
 	lambda = variable_field_32
 }
 
-###Sets a temp variable to a random value.
-## scopes = { any }
-alias[effect:set_temp_variable_to_random] = value_set[variable]
-
-###Sets a temp variable to a random value.
-## scopes = { any }
-alias[effect:set_temp_variable_to_random] = {
-	var = value_set[variable]
-	## cardinality = 0..1
-	min = variable_field_32
-	## cardinality = 0..1
-	max = variable_field_32
-	## cardinality = 0..1
-	integer = bool
-}
-
 ###Add divisional commander xp to unit
 ## scopes = { any }
 alias[effect:add_divisional_commander_xp] = int

@@ -499,3 +499,19 @@ alias[trigger:is_leading_volunteer_group_with_original_country] = scope[country]
 ###Is leading volunteers in a country with the original tag.
 ## scopes = { UNIT_LEADER character }
 alias[trigger:is_leading_volunteer_group_with_original_country] = enum[country_tags]
+
+###Sets a temp variable to a random value.
+## scopes = { any }
+alias[trigger:set_temp_variable_to_random] = value_set[variable]
+
+###Sets a temp variable to a random value.
+## scopes = { any }
+alias[trigger:set_temp_variable_to_random] = {
+	var = value_set[variable]
+	## cardinality = 0..1
+	min = variable_field_32
+	## cardinality = 0..1
+	max = variable_field_32
+	## cardinality = 0..1
+	integer = bool
+}

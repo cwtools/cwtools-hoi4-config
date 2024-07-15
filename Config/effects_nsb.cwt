@@ -925,10 +925,10 @@ alias[effect:create_entity] = {
     visible = <scripted_trigger>
 }
 
-### Deletes an entity
+### Destroys an existing entity
 ### IDs are set by the create_entity effect. 
 ## scope = any
-alias[effect:set_entity_movement] = value[entity_id]
+alias[effect:destroy_entity] = value[entity_id]
 
 ### Sets the position and rotation of an entity using two coordinates. 
 ### IDs are set by the create_entity effect. Uses the the same coordinate system that the map uses. 
@@ -952,7 +952,7 @@ alias[effect:set_entity_movement] = {
 ### Sets the position of an existing entity.
 ### IDs are set by the create_entity effect. Uses the the same coordinate system that the map uses.
 ## scope = any
-alias[effect:set_entity_position ] = {
+alias[effect:set_entity_position] = {
 	id = value[entity_id]
 	x = float
 	y = float
@@ -986,3 +986,51 @@ alias[effect:set_entity_animation] = {
     id = value[entity_id]
     animation = <model_animation>
 }
+
+### Sets a variable to the number of supply vehicles in stockpile or that are needed
+## scope = country
+alias[effect:get_supply_vehicles] = {
+	var = value_set[variable]
+	type = truck
+	type = train
+	### default no. If yes, gets the number of needed vehicles
+	## cardinality = 0..1
+	need = yes
+	## error_if_only_match = This is the default value and can be omitted
+	## severity = info
+	## cardinality = 0..1
+    need = no
+}
+
+### Sets a temp variable to the number of supply vehicles in stockpile or that are needed
+## scope = country
+alias[effect:get_supply_vehicles_temp] = {
+	var = value_set[variable]
+	type = truck
+	type = train
+	### default no. If yes, gets the number of needed vehicles
+	## cardinality = 0..1
+	need = yes
+	## error_if_only_match = This is the default value and can be omitted
+	## severity = info
+	## cardinality = 0..1
+    need = no
+}
+
+### Executes children effects on random characters that fulfills the "limit" trigger.Has to use has_ideology in limit to determine the party (with ideology group). tooltip=key can be added to override tooltip title
+## scope = country
+## push_scope = character
+alias[effect:party_leader] = {
+	## cardinality = 0..1
+	tooltip = localisation
+	### Documentation suggests to use has_ideology trigger here
+	## cardinality = 0..1
+	limit = {
+		has_ideology = enum[sub_ideology]
+	}
+	alias_name[effect] = alias_match_left[effect]
+}
+
+### Teleport the target country's railway guns to the province to which railway guns are deployed
+## scope = country
+alias[effect:teleport_railway_guns_to_deploy_province] = scope[country]

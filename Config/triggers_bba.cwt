@@ -198,3 +198,7 @@ alias[trigger:unit_strength] = variable_field[0..1]
 ### Check scope unit organization status 0-1: Example unit_organization < 1
 ## scope = unit
 alias[trigger:unit_organization] = variable_field[0..1]
+
+### Returns true if this unit's template has the reserves priority
+## scope = unit
+alias[trigger:is_unit_template_reserves] = bool

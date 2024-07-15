@@ -1934,18 +1934,6 @@ alias[trigger:stockpile_ratio] = {
 	ratio = float
 }
 
-###  	Checks the deal completion with the target value
-alias[trigger:contract_contains_equipment] = <equipment.archetype_equip>
-
-### Checks if the buyer is <tag>
-alias[trigger:buyer] = scope[country]
-
-### Checks if the seller is <tag>
-alias[trigger:seller] = scope[country]
-
-###  	Checks the deal completion with the target value
-alias[trigger:deal_completion] = float[0..1]
-
 ### Checks for state strategic value.
 ## scope = state
 alias[trigger:state_strategic_value] = int

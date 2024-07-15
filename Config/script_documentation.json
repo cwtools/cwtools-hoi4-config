@@ -8839,62 +8839,6 @@
 			"IsDynamic":	true,
 			"categories":	["army"]
 		}, {
-			"groupname":	"trait_<Trait>_xp_gain_factor",
-			"desc":	"Xp gain factor (used if the trait has not prefix 'trait_').",
-			"type":	"number",
-			"decimal_places":	2,
-			"IsDynamic":	true,
-			"categories":	["naval", "country", "army"],
-			"modifiers":	["BALTIC_anti_bolshevik", "BALTIC_ex_russian", "ETH_hero_of_ethiopia", "JAP_communist_sympathizer", "JAP_samurai_lineage", "POL_sanation_left_leader", "POL_sanation_right_leader", "SWE_disillusioned_with_the_government", "SWE_promoted_away_from_power", "SWE_wounded_in_protests", "adaptable", "aggressive_assaulter", "air_controller", "ambusher", "arctic_water_expert", "armor_officer", "ascari_officer", "aviation_enthusiast", "battleship_adherent", "bearer_of_artillery", "big_guns_expert", "blockade_runner", "blue_water_expert", "bold", "brilliant_strategist", "camouflage_expert", "career_officer", "caustic_personality", "cavalry_expert", "cavalry_leader", "cavalry_officer", "chief_engineer", "combined_arms_expert", "commando", "concealment_expert", "craven", "crisis_magician", "cruiser_captain", "cuts_corners", "defensive_doctrine", "demoted", "desert_fox", "destroyer_leader", "disgruntled", "dive_bomber", "engineer_officer", "exiled_leader", "expert_delegator", "expert_improviser", "fast_planner", "fighter_director", "fleet_protector", "flight_deck_manager", "fly_swatter", "fortress_buster", "gentlemanly", "green_water_expert", "ground_pounder", "guerilla_fighter", "gunnery_expert", "harsh_leader", "hidden_sympathies", "hill_fighter", "hunter_killer", "infantry_expert", "infantry_leader", "infantry_officer", "inflexible_strategist", "inshore_fighter", "inspirational_leader", "invader_ii", "ironside", "irregulars_officer", "jaeger", "jungle_rat", "lancer", "loading_drill_master", "logistics_wizard", "lone_wolf", "marksman", "media_personality", "militias_officer", "mine_craft", "naval_invader", "naval_liason", "naval_lineage", "navy_career_officer", "navy_media_personality", "offensive_doctrine", "old_guard", "old_guard_navy", "operative_commando", "operative_demolition_expert", "operative_double_agent", "operative_escape_artist", "operative_infiltrator", "operative_linguist", "operative_master_interrogator", "operative_natural_orator", "operative_safe_cracker", "operative_seducer", "operative_tough", "operative_well_groomed", "organisational_leader", "organizer", "panzer_expert", "panzer_leader", "paratrooper", "peasant_sympathiser", "politically_connected", "promoted_from_the_ranks", "ranger", "reassigned", "recently_promoted", "safety_first", "scavenger", "search_pattern_expert", "seawolf", "sick", "silent_hunter", "skilled_staffer", "skirmisher", "smoke_screen_expert", "spotter", "substance_abuser", "substance_addict", "superior_tactician", "swamp_fox", "thorough_planner", "torpedo_bomber", "torpedo_expert", "trickster", "unyielding_defender", "urban_assault_specialist", "war_hero", "winter_expert", "winter_specialist", "wounded"]
-		}, {
-			"groupname":	"<Ideology>_acceptance",
-			"desc":	"Ideology acceptance.",
-			"type":	"number",
-			"decimal_places":	0,
-			"IsDynamic":	true,
-			"categories":	["politics"],
-			"modifiers":	["communism", "democratic", "fascism", "neutrality"]
-		}, {
-			"groupname":	"production_speed_<Building>_factor",
-			"desc":	"Country building construction speed factor.",
-			"type":	"number",
-			"decimal_places":	2,
-			"IsDynamic":	true,
-			"categories":	["country"],
-			"modifiers":	["air_base", "anti_air_building", "arms_factory", "bunker", "coastal_bunker", "dockyard", "fuel_silo", "industrial_complex", "infrastructure", "naval_base", "nuclear_reactor", "radar_station", "rail_way", "rocket_site", "supply_node", "synthetic_refinery"]
-		}, {
-			"groupname":	"<Operation>_outcome",
-			"desc":	"Operation outcome modifier.",
-			"type":	"number",
-			"decimal_places":	0,
-			"IsDynamic":	true,
-			"categories":	["intelligence_agency"],
-			"modifiers":	["FRA_coup_in_central_africa", "FRA_coup_in_indochina", "FRA_coup_in_madagascar", "FRA_coup_in_north_africa", "FRA_coup_in_syria", "FRA_coup_in_west_africa", "FRA_instigate_workers_revolution_britain", "FRA_instigate_workers_revolution_germany", "FRA_instigate_workers_revolution_italy", "FRA_instigate_workers_revolution_spain", "bruneval_raid", "capture_tito", "heavy_water_raid", "murder_trotsky", "nuclear_espionage", "operation_boost_resistance", "operation_capture_cipher", "operation_collaboration_government", "operation_coordinated_strike", "operation_coup_government", "operation_fake_intel", "operation_infiltrate_armed_forces_airforce", "operation_infiltrate_armed_forces_army", "operation_infiltrate_armed_forces_navy", "operation_infiltrate_civilian", "operation_make_resistance_contacts", "operation_rescue_operative", "operation_steal_tech", "operation_steal_tech_airforce", "operation_steal_tech_army", "operation_steal_tech_civilian", "operation_steal_tech_navy", "operation_targeted_sabotage_industry", "operation_targeted_sabotage_infrastructure", "operation_targeted_sabotage_resources", "operation_warsaw_uprising", "raid_trotskys_villa", "rescue_mussolini"]
-		}, {
-			"groupname":	"<CombatTactic>_preferred_weight_factor",
-			"desc":	"Naval preferred weight factor.",
-			"type":	"number",
-			"decimal_places":	2,
-			"IsDynamic":	true,
-			"categories":	["country"],
-			"modifiers":	["nullCombatTactic", "tactic_ambush", "tactic_assault", "tactic_attacker_hb_attack", "tactic_attacker_hb_rush", "tactic_attacker_hb_storm", "tactic_attacker_sb_hold", "tactic_attacker_sb_skillful_defence", "tactic_backhand_blow", "tactic_banzai_charge", "tactic_barrage", "tactic_basic_attack", "tactic_basic_defend", "tactic_blitz", "tactic_breakthrough", "tactic_cc_attack", "tactic_cc_defend", "tactic_cc_local_strong_point", "tactic_cc_storm", "tactic_cc_withdraw", "tactic_counterattack", "tactic_defender_hb_hold", "tactic_defender_hb_skillful_defence", "tactic_defender_sb_assault", "tactic_defender_sb_reckless_assault", "tactic_defender_sb_retake_bridge", "tactic_delay", "tactic_elastic_defense", "tactic_encirclement", "tactic_guerrilla_tactics", "tactic_hold_bridge", "tactic_human_wave_tactics", "tactic_infantry_charge", "tactic_masterful_blitz", "tactic_overwhelming_fire", "tactic_planned_attack", "tactic_relentless_assault", "tactic_seize_bridge", "tactic_shock", "tactic_tactical_withdrawal", "tactic_tw_attack", "tactic_tw_chase", "tactic_tw_defend", "tactic_tw_evade", "tactic_tw_intercept", "tactic_unexpected_thrust"]
-		}, {
-			"groupname":	"module_<EquipmentModule>_design_cost_factor",
-			"desc":	"Module design cost factor.",
-			"type":	"number",
-			"decimal_places":	2,
-			"IsDynamic":	true,
-			"categories":	["naval", "country", "army"],
-			"modifiers":	["NOR_rikstanken_turret", "NOR_tank_rikstanken_armor", "additional_machine_guns", "air_air_radar_1", "air_air_radar_2", "air_ground_radar_1", "air_ground_radar_2", "aircraft_cannon_1_1x", "aircraft_cannon_1_2x", "aircraft_cannon_2_1x", "aircraft_cannon_2_2x", "airdropped_mines", "amphibious_drive", "armor_piercing_bomb_locks", "armor_plate_large", "armor_plate_medium", "armor_plate_small", "armor_skirts", "auto_loader", "bomb_locks", "bomb_sights_1", "bomb_sights_2", "cannon_defense_turret", "cannon_defense_turret_2x", "carrier_ship_engine_1", "carrier_ship_engine_2", "carrier_ship_engine_3", "carrier_ship_engine_4", "cruiser_ship_engine_1", "cruiser_ship_engine_2", "cruiser_ship_engine_3", "cruiser_ship_engine_4", "demining_coil", "dive_brakes_small", "dozer_blade", "dp_light_battery_1", "dp_light_battery_2", "dp_light_battery_3", "dp_light_battery_4", "dp_ship_medium_1", "dp_ship_secondaries_1", "dp_ship_secondaries_2", "dp_ship_secondaries_3", "dp_ship_secondaries_4", "drop_tanks", "easy_maintenance", "engine_1_1x", "engine_1_2x", "engine_1_3x", "engine_1_4x", "engine_1_6x", "engine_2_1x", "engine_2_2x", "engine_2_3x", "engine_2_4x", "engine_2_6x", "engine_3_1x", "engine_3_2x", "engine_3_3x", "engine_3_4x", "engine_3_6x", "engine_4_1x", "engine_4_2x", "engine_4_3x", "engine_4_4x", "engine_4_6x", "expanded_fuel_tank", "extra_ammo_storage", "fixed_explosive_charge", "flamethrower", "floats", "flying_boat_large", "flying_boat_medium", "fuel_tanks_large", "fuel_tanks_medium", "fuel_tanks_small", "guided_anti_ship_missile", "heavy_bomb_locks", "heavy_mg_2x", "heavy_mg_4x", "heavy_ship_engine_1", "heavy_ship_engine_2", "heavy_ship_engine_3", "heavy_ship_engine_4", "hmg_defense_turret", "hmg_defense_turret_2x", "jet_engine_1x", "jet_engine_2x", "jet_engine_3x", "jet_engine_4x", "jet_engine_6x", "large_aircraft_cannon_1x", "large_aircraft_cannon_2x", "large_bomb_bay", "light_mg_2x", "light_mg_4x", "light_ship_engine_1", "light_ship_engine_2", "light_ship_engine_3", "light_ship_engine_4", "lmg_defense_turret", "lmg_defense_turret_2x", "medium_bomb_bay", "non_strategic_materials_large", "non_strategic_materials_medium", "non_strategic_materials_small", "radio_navigation_1", "radio_navigation_2", "recon_camera", "rocket_engine_1", "rocket_engine_2", "rocket_engine_3", "rocket_rails", "secondary_turret_hmg", "secondary_turret_small_cannon", "self_sealing_fuel_tanks_large", "self_sealing_fuel_tanks_medium", "self_sealing_fuel_tanks_small", "ship_airplane_launcher_1", "ship_airplane_launcher_2", "ship_anti_air_1", "ship_anti_air_2", "ship_anti_air_3", "ship_anti_air_4", "ship_armor_bb_1", "ship_armor_bb_2", "ship_armor_bb_3", "ship_armor_bc_1", "ship_armor_bc_2", "ship_armor_bc_3", "ship_armor_carrier_deck", "ship_armor_cruiser_1", "ship_armor_cruiser_2", "ship_armor_cruiser_3", "ship_armor_cruiser_4", "ship_armor_shbb", "ship_deck_space", "ship_depth_charge_1", "ship_depth_charge_2", "ship_depth_charge_3", "ship_depth_charge_4", "ship_extra_fuel_tank", "ship_fire_control_system_0", "ship_fire_control_system_1", "ship_fire_control_system_2", "ship_fire_control_system_3", "ship_heavy_battery_1", "ship_heavy_battery_2", "ship_heavy_battery_3", "ship_heavy_battery_4", "ship_light_battery_1", "ship_light_battery_2", "ship_light_battery_3", "ship_light_battery_4", "ship_light_medium_battery_1", "ship_light_medium_battery_2", "ship_light_medium_battery_3", "ship_light_medium_battery_4", "ship_medium_battery_1", "ship_medium_battery_2", "ship_medium_battery_3", "ship_medium_battery_4", "ship_mine_layer_1", "ship_mine_layer_sub", "ship_mine_sweeper_1", "ship_radar_1", "ship_radar_2", "ship_radar_3", "ship_radar_4", "ship_secondaries_1", "ship_secondaries_2", "ship_sonar_1", "ship_sonar_2", "ship_sub_snorkel_1", "ship_sub_snorkel_2", "ship_super_heavy_battery_1", "ship_torpedo_1", "ship_torpedo_2", "ship_torpedo_3", "ship_torpedo_4", "ship_torpedo_sub_1", "ship_torpedo_sub_2", "ship_torpedo_sub_3", "ship_torpedo_sub_4", "sloped_armor", "small_bomb_bay", "smoke_launchers", "squeezebore_adaptor", "stabilizer", "sub_ship_engine_1", "sub_ship_engine_2", "sub_ship_engine_3", "sub_ship_engine_4", "tank_anti_air_cannon", "tank_anti_air_cannon_2", "tank_anti_air_cannon_3", "tank_auto_cannon", "tank_auto_cannon_2", "tank_bogie_suspension", "tank_buster_1", "tank_buster_2", "tank_cast_armor", "tank_christie_suspension", "tank_close_support_gun", "tank_diesel_engine", "tank_gas_turbine_engine", "tank_gasoline_engine", "tank_half_track_suspension", "tank_heavy_cannon", "tank_heavy_cannon_2", "tank_heavy_cannon_3", "tank_heavy_fixed_superstructure_turret", "tank_heavy_howitzer", "tank_heavy_machine_gun", "tank_heavy_three_man_tank_turret", "tank_heavy_two_man_tank_turret", "tank_high_velocity_cannon", "tank_high_velocity_cannon_2", "tank_high_velocity_cannon_3", "tank_interleaved_suspension", "tank_light_fixed_superstructure_turret", "tank_light_one_man_tank_turret", "tank_light_three_man_tank_turret", "tank_light_two_man_tank_turret", "tank_medium_cannon", "tank_medium_cannon_2", "tank_medium_fixed_superstructure_turret", "tank_medium_howitzer", "tank_medium_howitzer_2", "tank_medium_one_man_tank_turret", "tank_medium_three_man_tank_turret", "tank_medium_two_man_tank_turret", "tank_modern_tank_turret", "tank_petrol_electric_engine", "tank_radio_1", "tank_radio_2", "tank_radio_3", "tank_riveted_armor", "tank_rocket_launcher", "tank_rocket_launcher_2", "tank_small_cannon", "tank_small_cannon_2", "tank_super_heavy_cannon", "tank_super_heavy_four_man_tank_turret", "tank_super_heavy_three_man_tank_turret", "tank_torsion_bar_suspension", "tank_welded_armor", "tank_wheeled_suspension", "torpedo_mounting", "torpedo_mounting_2", "torpedo_mounting_3", "wet_ammo_storage"]
-		}, {
-			"groupname":	"country_resource_cost_<Resource>",
-			"desc":	"Country resource cost.",
-			"type":	"number",
-			"decimal_places":	0,
-			"IsDynamic":	true,
-			"categories":	["state"],
-			"modifiers":	["aluminium", "chromium", "oil", "rubber", "steel", "tungsten"]
-		}, {
 			"groupname":	"<Trait>_xp_gain_factor",
 			"desc":	"Xp gain factor (used if the trait has prefix 'trait_').",
 			"type":	"number",
@@ -8902,30 +8846,6 @@
 			"IsDynamic":	true,
 			"categories":	["naval", "country", "army"],
 			"modifiers":	["trait_BUL_ff_sympathizer", "trait_BUL_tsar_loyalist", "trait_BUL_zveno_member", "trait_GRE_fascist_sympathizer", "trait_GRE_marxist_acolyte", "trait_GRE_stauch_monarchist", "trait_GRE_venezelist_loyalist", "trait_SOV_bukharinist", "trait_SOV_cowed_by_stalin_army", "trait_SOV_cowed_by_stalin_navy", "trait_SOV_determined", "trait_SOV_foreign_military_advisor", "trait_SOV_monarchist_sympathizer", "trait_SOV_stalinist", "trait_SOV_trotskyist", "trait_SPA_carlist_loyalties", "trait_SPA_falangist_loyalties", "trait_SPA_nationalist_sympathies", "trait_SPR_anti_stalinist_loyalties", "trait_SPR_republican_loyalties", "trait_SPR_stalinist_loyalties", "trait_TUR_kemalist_champion", "trait_cautious", "trait_engineer", "trait_mountaineer", "trait_reckless"]
-		}, {
-			"groupname":	"experience_gain_<Unit>_training_factor",
-			"desc":	"Unit experience gain factor on training.",
-			"type":	"number",
-			"decimal_places":	0,
-			"IsDynamic":	true,
-			"categories":	["naval", "country"],
-			"modifiers":	["airborne_light_armor", "amphibious_armor", "amphibious_heavy_armor", "amphibious_light_armor", "amphibious_mechanized", "amphibious_medium_armor", "anti_air", "anti_air_brigade", "anti_tank", "anti_tank_brigade", "armored_car", "armored_car_recon", "artillery", "artillery_brigade", "battle_cruiser", "battleship", "bicycle_battalion", "blackshirt_assault_battalion", "bus", "camelry", "carrier", "cas", "cavalry", "cv_cas", "cv_fighter", "cv_nav_bomber", "cv_suicide_craft", "destroyer", "engineer", "fake_intel_unit", "field_hospital", "fighter", "guided_missile", "heavy_armor", "heavy_cruiser", "heavy_fighter", "heavy_flame_tank", "heavy_sp_anti_air_brigade", "heavy_sp_artillery_brigade", "heavy_tank_destroyer_brigade", "infantry", "irregular_infantry", "jet_fighter", "jet_strat_bomber", "jet_tac_bomber", "jungle_pioneers_support", "light_armor", "light_cruiser", "light_flame_tank", "light_sp_anti_air_brigade", "light_sp_artillery_brigade", "light_tank_destroyer_brigade", "light_tank_recon", "logistics_company", "long_range_patrol_support", "maintenance_company", "marine", "marine_commando", "maritime_patrol_plane", "mechanized", "medium_armor", "medium_flame_tank", "medium_sp_anti_air_brigade", "medium_sp_artillery_brigade", "medium_tank_destroyer_brigade", "military_police", "militia", "modern_armor", "modern_sp_anti_air_brigade", "modern_sp_artillery_brigade", "modern_tank_destroyer_brigade", "mot_anti_air_brigade", "mot_anti_tank_brigade", "mot_artillery_brigade", "mot_recon", "mot_rocket_artillery_brigade", "motorized", "motorized_rocket_brigade", "mountaineers", "nav_bomber", "paratrooper", "penal_battalion", "pioneer_support", "railway_gun", "rangers_support", "recon", "rocket_artillery", "rocket_artillery_brigade", "rocket_interceptor", "scout_plane", "signal_company", "strat_bomber", "submarine", "suicide_craft", "super_heavy_armor", "super_heavy_sp_anti_air_brigade", "super_heavy_sp_artillery_brigade", "super_heavy_tank_destroyer_brigade", "tac_bomber", "transport_plane", "winter_logistics_support"]
-		}, {
-			"groupname":	"production_cost_max_<NavalEquipment>",
-			"desc":	"Max naval equipment production cost.",
-			"type":	"number",
-			"decimal_places":	0,
-			"IsDynamic":	true,
-			"categories":	["naval"],
-			"modifiers":	["convoy", "floating_harbor_equipment", "ship_hull_carrier", "ship_hull_cruiser", "ship_hull_heavy", "ship_hull_light", "ship_hull_submarine"]
-		}, {
-			"groupname":	"<Equipment>_design_cost_factor",
-			"desc":	"Equipment cost factor.",
-			"type":	"number",
-			"decimal_places":	0,
-			"IsDynamic":	true,
-			"categories":	["country"],
-			"modifiers":	["amphibious_mechanized_equipment", "amphibious_tank_chassis", "anti_air_equipment", "anti_tank_equipment", "armored_car_equipment", "artillery_equipment", "convoy", "cv_small_plane_airframe", "cv_small_plane_cas_airframe", "cv_small_plane_cas_airframe_0", "cv_small_plane_cas_airframe_1", "cv_small_plane_cas_airframe_2", "cv_small_plane_cas_airframe_3", "cv_small_plane_cas_airframe_4", "cv_small_plane_naval_bomber_airframe", "cv_small_plane_naval_bomber_airframe_0", "cv_small_plane_naval_bomber_airframe_1", "cv_small_plane_naval_bomber_airframe_2", "cv_small_plane_naval_bomber_airframe_3", "cv_small_plane_naval_bomber_airframe_4", "cv_small_plane_suicide_airframe", "cv_small_plane_suicide_airframe_0", "cv_small_plane_suicide_airframe_1", "cv_small_plane_suicide_airframe_2", "cv_small_plane_suicide_airframe_3", "cv_small_plane_suicide_airframe_4", "floating_harbor_equipment", "guided_missile_equipment", "heavy_tank_aa_chassis", "heavy_tank_aa_chassis_0", "heavy_tank_aa_chassis_1", "heavy_tank_aa_chassis_2", "heavy_tank_aa_chassis_3", "heavy_tank_amphibious_chassis", "heavy_tank_amphibious_chassis_0", "heavy_tank_amphibious_chassis_1", "heavy_tank_amphibious_chassis_2", "heavy_tank_amphibious_chassis_3", "heavy_tank_artillery_chassis", "heavy_tank_artillery_chassis_0", "heavy_tank_artillery_chassis_1", "heavy_tank_artillery_chassis_2", "heavy_tank_artillery_chassis_3", "heavy_tank_chassis", "heavy_tank_destroyer_chassis", "heavy_tank_destroyer_chassis_0", "heavy_tank_destroyer_chassis_1", "heavy_tank_destroyer_chassis_2", "heavy_tank_destroyer_chassis_3", "heavy_tank_flame_chassis", "heavy_tank_flame_chassis_0", "heavy_tank_flame_chassis_1", "heavy_tank_flame_chassis_2", "heavy_tank_flame_chassis_3", "infantry_equipment", "jet_fighter_equipment", "jet_strat_bomber_equipment", "jet_tac_bomber_equipment", "large_plane_airframe", "large_plane_maritime_patrol_plane_airframe", "large_plane_maritime_patrol_plane_airframe_0", "large_plane_maritime_patrol_plane_airframe_1", "large_plane_maritime_patrol_plane_airframe_2", "large_plane_maritime_patrol_plane_airframe_3", "large_plane_maritime_patrol_plane_airframe_4", "light_tank_aa_chassis", "light_tank_aa_chassis_0", "light_tank_aa_chassis_1", "light_tank_aa_chassis_2", "light_tank_aa_chassis_3", "light_tank_amphibious_chassis", "light_tank_amphibious_chassis_0", "light_tank_amphibious_chassis_1", "light_tank_amphibious_chassis_2", "light_tank_amphibious_chassis_3", "light_tank_artillery_chassis", "light_tank_artillery_chassis_0", "light_tank_artillery_chassis_1", "light_tank_artillery_chassis_2", "light_tank_artillery_chassis_3", "light_tank_chassis", "light_tank_destroyer_chassis", "light_tank_destroyer_chassis_0", "light_tank_destroyer_chassis_1", "light_tank_destroyer_chassis_2", "light_tank_destroyer_chassis_3", "light_tank_flame_chassis", "light_tank_flame_chassis_0", "light_tank_flame_chassis_1", "light_tank_flame_chassis_2", "light_tank_flame_chassis_3", "mechanized_equipment", "medium_plane_airframe", "medium_plane_fighter_airframe", "medium_plane_fighter_airframe_0", "medium_plane_fighter_airframe_1", "medium_plane_fighter_airframe_2", "medium_plane_fighter_airframe_3", "medium_plane_fighter_airframe_4", "medium_plane_scout_plane_airframe", "medium_plane_scout_plane_airframe_0", "medium_plane_scout_plane_airframe_1", "medium_plane_scout_plane_airframe_2", "medium_plane_scout_plane_airframe_3", "medium_plane_scout_plane_airframe_4", "medium_tank_aa_chassis", "medium_tank_aa_chassis_0", "medium_tank_aa_chassis_1", "medium_tank_aa_chassis_2", "medium_tank_aa_chassis_3", "medium_tank_amphibious_chassis", "medium_tank_amphibious_chassis_0", "medium_tank_amphibious_chassis_1", "medium_tank_amphibious_chassis_2", "medium_tank_amphibious_chassis_3", "medium_tank_artillery_chassis", "medium_tank_artillery_chassis_0", "medium_tank_artillery_chassis_1", "medium_tank_artillery_chassis_2", "medium_tank_artillery_chassis_3", "medium_tank_chassis", "medium_tank_destroyer_chassis", "medium_tank_destroyer_chassis_0", "medium_tank_destroyer_chassis_1", "medium_tank_destroyer_chassis_2", "medium_tank_destroyer_chassis_3", "medium_tank_flame_chassis", "medium_tank_flame_chassis_0", "medium_tank_flame_chassis_1", "medium_tank_flame_chassis_2", "medium_tank_flame_chassis_3", "modern_tank_aa_chassis", "modern_tank_aa_chassis_1", "modern_tank_artillery_chassis", "modern_tank_artillery_chassis_1", "modern_tank_chassis", "modern_tank_destroyer_chassis", "modern_tank_destroyer_chassis_1", "motorized_equipment", "motorized_rocket_equipment", "railway_gun_equipment", "rocket_artillery_equipment", "rocket_interceptor_equipment", "ship_hull_carrier", "ship_hull_cruiser", "ship_hull_heavy", "ship_hull_light", "ship_hull_submarine", "small_plane_airframe", "small_plane_cas_airframe", "small_plane_cas_airframe_0", "small_plane_cas_airframe_1", "small_plane_cas_airframe_2", "small_plane_cas_airframe_3", "small_plane_cas_airframe_4", "small_plane_naval_bomber_airframe", "small_plane_naval_bomber_airframe_0", "small_plane_naval_bomber_airframe_1", "small_plane_naval_bomber_airframe_2", "small_plane_naval_bomber_airframe_3", "small_plane_naval_bomber_airframe_4", "small_plane_suicide_airframe", "small_plane_suicide_airframe_0", "small_plane_suicide_airframe_1", "small_plane_suicide_airframe_2", "small_plane_suicide_airframe_3", "small_plane_suicide_airframe_4", "super_heavy_tank_aa_chassis", "super_heavy_tank_aa_chassis_1", "super_heavy_tank_artillery_chassis", "super_heavy_tank_artillery_chassis_1", "super_heavy_tank_chassis", "super_heavy_tank_destroyer_chassis", "super_heavy_tank_destroyer_chassis_1", "support_equipment", "train_equipment", "transport_plane_equipment"]
 		}, {
 			"groupname":	"<IdeaGroup>_cost_factor",
 			"desc":	"Idea group cost factor.",
@@ -8935,56 +8855,8 @@
 			"categories":	["country"],
 			"modifiers":	["academy_spirit", "air_chief", "air_force_academy_spirit", "air_force_command_spirit", "air_force_spirit", "aircraft_manufacturer", "army_chief", "army_spirit", "country", "division_command_spirit", "economy", "hidden_ideas", "high_command", "industrial_concern", "materiel_manufacturer", "mobilization_laws", "naval_academy_spirit", "naval_command_spirit", "naval_manufacturer", "navy_chief", "navy_spirit", "political_advisor", "tank_manufacturer", "theorist", "trade_laws"]
 		}, {
-			"groupname":	"<IdeaCategory>_category_type_cost_factor",
-			"desc":	"Idea category type cost factor.",
-			"type":	"number",
-			"decimal_places":	0,
-			"IsDynamic":	true,
-			"categories":	["country"],
-			"modifiers":	["air_spirit", "army_spirit", "navy_spirit"]
-		}, {
-			"groupname":	"<Technology>_cost_factor",
-			"desc":	"Technology cost factor.",
-			"type":	"number",
-			"decimal_places":	0,
-			"IsDynamic":	true,
-			"categories":	["country"],
-			"modifiers":	["cat_air_bombs", "cat_air_engine", "cat_air_guns", "cat_anti_air", "cat_anti_tank", "cat_armored_cars", "cat_base_strike", "cat_battlefield_support", "cat_fleet_in_being", "cat_grand_battle_plan", "cat_heavy_armor", "cat_heavy_fighter", "cat_light_armor", "cat_marines_doctrine", "cat_maritime_patrol", "cat_mass_assault", "cat_mechanized_equipment", "cat_medium_armor", "cat_mobile_warfare", "cat_mountaineers_doctrine", "cat_operational_integrity", "cat_paratroopers_doctrine", "cat_production", "cat_scout_plane", "cat_ship_heavy_battery", "cat_ship_light_battery", "cat_ship_medium_battery", "cat_special_forces_generic", "cat_strategic_bomber", "cat_strategic_destruction", "cat_superior_firepower", "cat_synth_oil", "cat_synth_rubber", "cat_torpedoes", "cat_trade_interdiction"]
-		}, {
-			"groupname":	"state_resource_cost_<Resource>",
-			"desc":	"State resource cost.",
-			"type":	"number",
-			"decimal_places":	0,
-			"IsDynamic":	true,
-			"categories":	["state"],
-			"modifiers":	["aluminium", "chromium", "oil", "rubber", "steel", "tungsten"]
-		}, {
-			"groupname":	"<Operation>_risk",
-			"desc":	"Operation risk modifier.",
-			"type":	"number",
-			"decimal_places":	0,
-			"IsDynamic":	true,
-			"categories":	["intelligence_agency"],
-			"modifiers":	["FRA_coup_in_central_africa", "FRA_coup_in_indochina", "FRA_coup_in_madagascar", "FRA_coup_in_north_africa", "FRA_coup_in_syria", "FRA_coup_in_west_africa", "FRA_instigate_workers_revolution_britain", "FRA_instigate_workers_revolution_germany", "FRA_instigate_workers_revolution_italy", "FRA_instigate_workers_revolution_spain", "bruneval_raid", "capture_tito", "heavy_water_raid", "murder_trotsky", "nuclear_espionage", "operation", "operation_boost_resistance", "operation_capture_cipher", "operation_collaboration_government", "operation_coordinated_strike", "operation_coup_government", "operation_fake_intel", "operation_infiltrate", "operation_infiltrate_armed_forces_airforce", "operation_infiltrate_armed_forces_army", "operation_infiltrate_armed_forces_navy", "operation_infiltrate_civilian", "operation_make_resistance_contacts", "operation_rescue_operative", "operation_steal_tech", "operation_steal_tech_airforce", "operation_steal_tech_army", "operation_steal_tech_civilian", "operation_steal_tech_navy", "operation_targeted_sabotage_industry", "operation_targeted_sabotage_infrastructure", "operation_targeted_sabotage_resources", "operation_warsaw_uprising", "raid_trotskys_villa", "rescue_mussolini", "target_sabotage"]
-		}, {
-			"groupname":	"temporary_state_resource_<Resource>",
-			"desc":	"Temporary state resource.",
-			"type":	"number",
-			"decimal_places":	0,
-			"IsDynamic":	true,
-			"categories":	["state"],
-			"modifiers":	["aluminium", "chromium", "oil", "rubber", "steel", "tungsten"]
-		}, {
-			"groupname":	"<Operation>_cost",
-			"desc":	"Operation cost modifier.",
-			"type":	"number",
-			"decimal_places":	0,
-			"IsDynamic":	true,
-			"categories":	["intelligence_agency"],
-			"modifiers":	["FRA_coup_in_central_africa", "FRA_coup_in_indochina", "FRA_coup_in_madagascar", "FRA_coup_in_north_africa", "FRA_coup_in_syria", "FRA_coup_in_west_africa", "FRA_instigate_workers_revolution_britain", "FRA_instigate_workers_revolution_germany", "FRA_instigate_workers_revolution_italy", "FRA_instigate_workers_revolution_spain", "bruneval_raid", "capture_tito", "heavy_water_raid", "murder_trotsky", "nuclear_espionage", "operation_boost_resistance", "operation_capture_cipher", "operation_collaboration_government", "operation_coordinated_strike", "operation_coup", "operation_coup_government", "operation_fake_intel", "operation_infiltrate", "operation_infiltrate_armed_forces_airforce", "operation_infiltrate_armed_forces_army", "operation_infiltrate_armed_forces_navy", "operation_infiltrate_civilian", "operation_make_resistance_contacts", "operation_rescue_operative", "operation_steal_tech_airforce", "operation_steal_tech_army", "operation_steal_tech_civilian", "operation_steal_tech_navy", "operation_targeted_sabotage_industry", "operation_targeted_sabotage_infrastructure", "operation_targeted_sabotage_resources", "operation_warsaw_uprising", "raid_trotskys_villa", "rescue_mussolini", "target_sabotage"]
-		}, {
-			"groupname":	"state_repair_speed_<Building>_factor",
-			"desc":	"State building repair speed factor.",
+			"groupname":	"state_production_speed_<Building>_factor",
+			"desc":	"State building construction speed factor.",
 			"type":	"number",
 			"decimal_places":	2,
 			"IsDynamic":	true,
@@ -8998,6 +8870,142 @@
 			"IsDynamic":	true,
 			"categories":	["naval", "country"],
 			"modifiers":	["airborne_light_armor", "amphibious_armor", "amphibious_heavy_armor", "amphibious_light_armor", "amphibious_mechanized", "amphibious_medium_armor", "anti_air", "anti_air_brigade", "anti_tank", "anti_tank_brigade", "armored_car", "armored_car_recon", "artillery", "artillery_brigade", "battle_cruiser", "battleship", "bicycle_battalion", "blackshirt_assault_battalion", "bus", "camelry", "carrier", "cas", "cavalry", "cv_cas", "cv_fighter", "cv_nav_bomber", "cv_suicide_craft", "destroyer", "engineer", "fake_intel_unit", "field_hospital", "fighter", "guided_missile", "heavy_armor", "heavy_cruiser", "heavy_fighter", "heavy_flame_tank", "heavy_sp_anti_air_brigade", "heavy_sp_artillery_brigade", "heavy_tank_destroyer_brigade", "infantry", "irregular_infantry", "jet_fighter", "jet_strat_bomber", "jet_tac_bomber", "jungle_pioneers_support", "light_armor", "light_cruiser", "light_flame_tank", "light_sp_anti_air_brigade", "light_sp_artillery_brigade", "light_tank_destroyer_brigade", "light_tank_recon", "logistics_company", "long_range_patrol_support", "maintenance_company", "marine", "marine_commando", "maritime_patrol_plane", "mechanized", "medium_armor", "medium_flame_tank", "medium_sp_anti_air_brigade", "medium_sp_artillery_brigade", "medium_tank_destroyer_brigade", "military_police", "militia", "modern_armor", "modern_sp_anti_air_brigade", "modern_sp_artillery_brigade", "modern_tank_destroyer_brigade", "mot_anti_air_brigade", "mot_anti_tank_brigade", "mot_artillery_brigade", "mot_recon", "mot_rocket_artillery_brigade", "motorized", "motorized_rocket_brigade", "mountaineers", "nav_bomber", "paratrooper", "penal_battalion", "pioneer_support", "railway_gun", "rangers_support", "recon", "rocket_artillery", "rocket_artillery_brigade", "rocket_interceptor", "scout_plane", "signal_company", "strat_bomber", "submarine", "suicide_craft", "super_heavy_armor", "super_heavy_sp_anti_air_brigade", "super_heavy_sp_artillery_brigade", "super_heavy_tank_destroyer_brigade", "tac_bomber", "transport_plane", "winter_logistics_support"]
+		}, {
+			"groupname":	"<Ideology>_acceptance",
+			"desc":	"Ideology acceptance.",
+			"type":	"number",
+			"decimal_places":	0,
+			"IsDynamic":	true,
+			"categories":	["politics"],
+			"modifiers":	["communism", "democratic", "fascism", "neutrality"]
+		}, {
+			"groupname":	"trait_<Trait>_xp_gain_factor",
+			"desc":	"Xp gain factor (used if the trait has not prefix 'trait_').",
+			"type":	"number",
+			"decimal_places":	2,
+			"IsDynamic":	true,
+			"categories":	["naval", "country", "army"],
+			"modifiers":	["BALTIC_anti_bolshevik", "BALTIC_ex_russian", "ETH_hero_of_ethiopia", "JAP_communist_sympathizer", "JAP_samurai_lineage", "POL_sanation_left_leader", "POL_sanation_right_leader", "SWE_disillusioned_with_the_government", "SWE_promoted_away_from_power", "SWE_wounded_in_protests", "adaptable", "aggressive_assaulter", "air_controller", "ambusher", "arctic_water_expert", "armor_officer", "ascari_officer", "aviation_enthusiast", "battleship_adherent", "bearer_of_artillery", "big_guns_expert", "blockade_runner", "blue_water_expert", "bold", "brilliant_strategist", "camouflage_expert", "career_officer", "caustic_personality", "cavalry_expert", "cavalry_leader", "cavalry_officer", "chief_engineer", "combined_arms_expert", "commando", "concealment_expert", "craven", "crisis_magician", "cruiser_captain", "cuts_corners", "defensive_doctrine", "demoted", "desert_fox", "destroyer_leader", "disgruntled", "dive_bomber", "engineer_officer", "exiled_leader", "expert_delegator", "expert_improviser", "fast_planner", "fighter_director", "fleet_protector", "flight_deck_manager", "fly_swatter", "fortress_buster", "gentlemanly", "green_water_expert", "ground_pounder", "guerilla_fighter", "gunnery_expert", "harsh_leader", "hidden_sympathies", "hill_fighter", "hunter_killer", "infantry_expert", "infantry_leader", "infantry_officer", "inflexible_strategist", "inshore_fighter", "inspirational_leader", "invader_ii", "ironside", "irregulars_officer", "jaeger", "jungle_rat", "lancer", "loading_drill_master", "logistics_wizard", "lone_wolf", "marksman", "media_personality", "militias_officer", "mine_craft", "naval_invader", "naval_liason", "naval_lineage", "navy_career_officer", "navy_media_personality", "offensive_doctrine", "old_guard", "old_guard_navy", "operative_commando", "operative_demolition_expert", "operative_double_agent", "operative_escape_artist", "operative_infiltrator", "operative_linguist", "operative_master_interrogator", "operative_natural_orator", "operative_safe_cracker", "operative_seducer", "operative_tough", "operative_well_groomed", "organisational_leader", "organizer", "panzer_expert", "panzer_leader", "paratrooper", "peasant_sympathiser", "politically_connected", "promoted_from_the_ranks", "ranger", "reassigned", "recently_promoted", "safety_first", "scavenger", "search_pattern_expert", "seawolf", "sick", "silent_hunter", "skilled_staffer", "skirmisher", "smoke_screen_expert", "spotter", "substance_abuser", "substance_addict", "superior_tactician", "swamp_fox", "thorough_planner", "torpedo_bomber", "torpedo_expert", "trickster", "unyielding_defender", "urban_assault_specialist", "war_hero", "winter_expert", "winter_specialist", "wounded"]
+		}, {
+			"groupname":	"country_resource_<Resource>",
+			"desc":	"Country resource.",
+			"type":	"number",
+			"decimal_places":	0,
+			"IsDynamic":	true,
+			"categories":	["state"],
+			"modifiers":	["aluminium", "chromium", "oil", "rubber", "steel", "tungsten"]
+		}, {
+			"groupname":	"state_repair_speed_<Building>_factor",
+			"desc":	"State building repair speed factor.",
+			"type":	"number",
+			"decimal_places":	2,
+			"IsDynamic":	true,
+			"categories":	["state"],
+			"modifiers":	["air_base", "anti_air_building", "arms_factory", "bunker", "coastal_bunker", "dockyard", "fuel_silo", "industrial_complex", "infrastructure", "naval_base", "nuclear_reactor", "radar_station", "rail_way", "rocket_site", "supply_node", "synthetic_refinery"]
+		}, {
+			"groupname":	"experience_gain_<Unit>_training_factor",
+			"desc":	"Unit experience gain factor on training.",
+			"type":	"number",
+			"decimal_places":	0,
+			"IsDynamic":	true,
+			"categories":	["naval", "country"],
+			"modifiers":	["airborne_light_armor", "amphibious_armor", "amphibious_heavy_armor", "amphibious_light_armor", "amphibious_mechanized", "amphibious_medium_armor", "anti_air", "anti_air_brigade", "anti_tank", "anti_tank_brigade", "armored_car", "armored_car_recon", "artillery", "artillery_brigade", "battle_cruiser", "battleship", "bicycle_battalion", "blackshirt_assault_battalion", "bus", "camelry", "carrier", "cas", "cavalry", "cv_cas", "cv_fighter", "cv_nav_bomber", "cv_suicide_craft", "destroyer", "engineer", "fake_intel_unit", "field_hospital", "fighter", "guided_missile", "heavy_armor", "heavy_cruiser", "heavy_fighter", "heavy_flame_tank", "heavy_sp_anti_air_brigade", "heavy_sp_artillery_brigade", "heavy_tank_destroyer_brigade", "infantry", "irregular_infantry", "jet_fighter", "jet_strat_bomber", "jet_tac_bomber", "jungle_pioneers_support", "light_armor", "light_cruiser", "light_flame_tank", "light_sp_anti_air_brigade", "light_sp_artillery_brigade", "light_tank_destroyer_brigade", "light_tank_recon", "logistics_company", "long_range_patrol_support", "maintenance_company", "marine", "marine_commando", "maritime_patrol_plane", "mechanized", "medium_armor", "medium_flame_tank", "medium_sp_anti_air_brigade", "medium_sp_artillery_brigade", "medium_tank_destroyer_brigade", "military_police", "militia", "modern_armor", "modern_sp_anti_air_brigade", "modern_sp_artillery_brigade", "modern_tank_destroyer_brigade", "mot_anti_air_brigade", "mot_anti_tank_brigade", "mot_artillery_brigade", "mot_recon", "mot_rocket_artillery_brigade", "motorized", "motorized_rocket_brigade", "mountaineers", "nav_bomber", "paratrooper", "penal_battalion", "pioneer_support", "railway_gun", "rangers_support", "recon", "rocket_artillery", "rocket_artillery_brigade", "rocket_interceptor", "scout_plane", "signal_company", "strat_bomber", "submarine", "suicide_craft", "super_heavy_armor", "super_heavy_sp_anti_air_brigade", "super_heavy_sp_artillery_brigade", "super_heavy_tank_destroyer_brigade", "tac_bomber", "transport_plane", "winter_logistics_support"]
+		}, {
+			"groupname":	"<IdeaCategory>_category_type_cost_factor",
+			"desc":	"Idea category type cost factor.",
+			"type":	"number",
+			"decimal_places":	0,
+			"IsDynamic":	true,
+			"categories":	["country"],
+			"modifiers":	["air_spirit", "army_spirit", "navy_spirit"]
+		}, {
+			"groupname":	"<Operation>_outcome",
+			"desc":	"Operation outcome modifier.",
+			"type":	"number",
+			"decimal_places":	0,
+			"IsDynamic":	true,
+			"categories":	["intelligence_agency"],
+			"modifiers":	["FRA_coup_in_central_africa", "FRA_coup_in_indochina", "FRA_coup_in_madagascar", "FRA_coup_in_north_africa", "FRA_coup_in_syria", "FRA_coup_in_west_africa", "FRA_instigate_workers_revolution_britain", "FRA_instigate_workers_revolution_germany", "FRA_instigate_workers_revolution_italy", "FRA_instigate_workers_revolution_spain", "bruneval_raid", "capture_tito", "heavy_water_raid", "murder_trotsky", "nuclear_espionage", "operation_boost_resistance", "operation_capture_cipher", "operation_collaboration_government", "operation_coordinated_strike", "operation_coup_government", "operation_fake_intel", "operation_infiltrate_armed_forces_airforce", "operation_infiltrate_armed_forces_army", "operation_infiltrate_armed_forces_navy", "operation_infiltrate_civilian", "operation_make_resistance_contacts", "operation_rescue_operative", "operation_steal_tech", "operation_steal_tech_airforce", "operation_steal_tech_army", "operation_steal_tech_civilian", "operation_steal_tech_navy", "operation_targeted_sabotage_industry", "operation_targeted_sabotage_infrastructure", "operation_targeted_sabotage_resources", "operation_warsaw_uprising", "raid_trotskys_villa", "rescue_mussolini"]
+		}, {
+			"groupname":	"<Operation>_risk",
+			"desc":	"Operation risk modifier.",
+			"type":	"number",
+			"decimal_places":	0,
+			"IsDynamic":	true,
+			"categories":	["intelligence_agency"],
+			"modifiers":	["FRA_coup_in_central_africa", "FRA_coup_in_indochina", "FRA_coup_in_madagascar", "FRA_coup_in_north_africa", "FRA_coup_in_syria", "FRA_coup_in_west_africa", "FRA_instigate_workers_revolution_britain", "FRA_instigate_workers_revolution_germany", "FRA_instigate_workers_revolution_italy", "FRA_instigate_workers_revolution_spain", "bruneval_raid", "capture_tito", "heavy_water_raid", "murder_trotsky", "nuclear_espionage", "operation", "operation_boost_resistance", "operation_capture_cipher", "operation_collaboration_government", "operation_coordinated_strike", "operation_coup_government", "operation_fake_intel", "operation_infiltrate", "operation_infiltrate_armed_forces_airforce", "operation_infiltrate_armed_forces_army", "operation_infiltrate_armed_forces_navy", "operation_infiltrate_civilian", "operation_make_resistance_contacts", "operation_rescue_operative", "operation_steal_tech", "operation_steal_tech_airforce", "operation_steal_tech_army", "operation_steal_tech_civilian", "operation_steal_tech_navy", "operation_targeted_sabotage_industry", "operation_targeted_sabotage_infrastructure", "operation_targeted_sabotage_resources", "operation_warsaw_uprising", "raid_trotskys_villa", "rescue_mussolini", "target_sabotage"]
+		}, {
+			"groupname":	"production_speed_<Building>_factor",
+			"desc":	"Country building construction speed factor.",
+			"type":	"number",
+			"decimal_places":	2,
+			"IsDynamic":	true,
+			"categories":	["country"],
+			"modifiers":	["air_base", "anti_air_building", "arms_factory", "bunker", "coastal_bunker", "dockyard", "fuel_silo", "industrial_complex", "infrastructure", "naval_base", "nuclear_reactor", "radar_station", "rail_way", "rocket_site", "supply_node", "synthetic_refinery"]
+		}, {
+			"groupname":	"state_resource_<Resource>",
+			"desc":	"State resource.",
+			"type":	"number",
+			"decimal_places":	0,
+			"IsDynamic":	true,
+			"categories":	["state"],
+			"modifiers":	["aluminium", "chromium", "oil", "rubber", "steel", "tungsten"]
+		}, {
+			"groupname":	"module_<EquipmentModule>_design_cost_factor",
+			"desc":	"Module design cost factor.",
+			"type":	"number",
+			"decimal_places":	2,
+			"IsDynamic":	true,
+			"categories":	["naval", "country", "army"],
+			"modifiers":	["NOR_rikstanken_turret", "NOR_tank_rikstanken_armor", "additional_machine_guns", "air_air_radar_1", "air_air_radar_2", "air_ground_radar_1", "air_ground_radar_2", "aircraft_cannon_1_1x", "aircraft_cannon_1_2x", "aircraft_cannon_2_1x", "aircraft_cannon_2_2x", "airdropped_mines", "amphibious_drive", "armor_piercing_bomb_locks", "armor_plate_large", "armor_plate_medium", "armor_plate_small", "armor_skirts", "auto_loader", "bomb_locks", "bomb_sights_1", "bomb_sights_2", "cannon_defense_turret", "cannon_defense_turret_2x", "carrier_ship_engine_1", "carrier_ship_engine_2", "carrier_ship_engine_3", "carrier_ship_engine_4", "cruiser_ship_engine_1", "cruiser_ship_engine_2", "cruiser_ship_engine_3", "cruiser_ship_engine_4", "demining_coil", "dive_brakes_small", "dozer_blade", "dp_light_battery_1", "dp_light_battery_2", "dp_light_battery_3", "dp_light_battery_4", "dp_ship_medium_1", "dp_ship_secondaries_1", "dp_ship_secondaries_2", "dp_ship_secondaries_3", "dp_ship_secondaries_4", "drop_tanks", "easy_maintenance", "engine_1_1x", "engine_1_2x", "engine_1_3x", "engine_1_4x", "engine_1_6x", "engine_2_1x", "engine_2_2x", "engine_2_3x", "engine_2_4x", "engine_2_6x", "engine_3_1x", "engine_3_2x", "engine_3_3x", "engine_3_4x", "engine_3_6x", "engine_4_1x", "engine_4_2x", "engine_4_3x", "engine_4_4x", "engine_4_6x", "expanded_fuel_tank", "extra_ammo_storage", "fixed_explosive_charge", "flamethrower", "floats", "flying_boat_large", "flying_boat_medium", "fuel_tanks_large", "fuel_tanks_medium", "fuel_tanks_small", "guided_anti_ship_missile", "heavy_bomb_locks", "heavy_mg_2x", "heavy_mg_4x", "heavy_ship_engine_1", "heavy_ship_engine_2", "heavy_ship_engine_3", "heavy_ship_engine_4", "hmg_defense_turret", "hmg_defense_turret_2x", "jet_engine_1x", "jet_engine_2x", "jet_engine_3x", "jet_engine_4x", "jet_engine_6x", "large_aircraft_cannon_1x", "large_aircraft_cannon_2x", "large_bomb_bay", "light_mg_2x", "light_mg_4x", "light_ship_engine_1", "light_ship_engine_2", "light_ship_engine_3", "light_ship_engine_4", "lmg_defense_turret", "lmg_defense_turret_2x", "medium_bomb_bay", "non_strategic_materials_large", "non_strategic_materials_medium", "non_strategic_materials_small", "radio_navigation_1", "radio_navigation_2", "recon_camera", "rocket_engine_1", "rocket_engine_2", "rocket_engine_3", "rocket_rails", "secondary_turret_hmg", "secondary_turret_small_cannon", "self_sealing_fuel_tanks_large", "self_sealing_fuel_tanks_medium", "self_sealing_fuel_tanks_small", "ship_airplane_launcher_1", "ship_airplane_launcher_2", "ship_anti_air_1", "ship_anti_air_2", "ship_anti_air_3", "ship_anti_air_4", "ship_armor_bb_1", "ship_armor_bb_2", "ship_armor_bb_3", "ship_armor_bc_1", "ship_armor_bc_2", "ship_armor_bc_3", "ship_armor_carrier_deck", "ship_armor_cruiser_1", "ship_armor_cruiser_2", "ship_armor_cruiser_3", "ship_armor_cruiser_4", "ship_armor_shbb", "ship_deck_space", "ship_depth_charge_1", "ship_depth_charge_2", "ship_depth_charge_3", "ship_depth_charge_4", "ship_extra_fuel_tank", "ship_fire_control_system_0", "ship_fire_control_system_1", "ship_fire_control_system_2", "ship_fire_control_system_3", "ship_heavy_battery_1", "ship_heavy_battery_2", "ship_heavy_battery_3", "ship_heavy_battery_4", "ship_light_battery_1", "ship_light_battery_2", "ship_light_battery_3", "ship_light_battery_4", "ship_light_medium_battery_1", "ship_light_medium_battery_2", "ship_light_medium_battery_3", "ship_light_medium_battery_4", "ship_medium_battery_1", "ship_medium_battery_2", "ship_medium_battery_3", "ship_medium_battery_4", "ship_mine_layer_1", "ship_mine_layer_sub", "ship_mine_sweeper_1", "ship_radar_1", "ship_radar_2", "ship_radar_3", "ship_radar_4", "ship_secondaries_1", "ship_secondaries_2", "ship_sonar_1", "ship_sonar_2", "ship_sub_snorkel_1", "ship_sub_snorkel_2", "ship_super_heavy_battery_1", "ship_torpedo_1", "ship_torpedo_2", "ship_torpedo_3", "ship_torpedo_4", "ship_torpedo_sub_1", "ship_torpedo_sub_2", "ship_torpedo_sub_3", "ship_torpedo_sub_4", "sloped_armor", "small_bomb_bay", "smoke_launchers", "squeezebore_adaptor", "stabilizer", "sub_ship_engine_1", "sub_ship_engine_2", "sub_ship_engine_3", "sub_ship_engine_4", "tank_anti_air_cannon", "tank_anti_air_cannon_2", "tank_anti_air_cannon_3", "tank_auto_cannon", "tank_auto_cannon_2", "tank_bogie_suspension", "tank_buster_1", "tank_buster_2", "tank_cast_armor", "tank_christie_suspension", "tank_close_support_gun", "tank_diesel_engine", "tank_gas_turbine_engine", "tank_gasoline_engine", "tank_half_track_suspension", "tank_heavy_cannon", "tank_heavy_cannon_2", "tank_heavy_cannon_3", "tank_heavy_fixed_superstructure_turret", "tank_heavy_howitzer", "tank_heavy_machine_gun", "tank_heavy_three_man_tank_turret", "tank_heavy_two_man_tank_turret", "tank_high_velocity_cannon", "tank_high_velocity_cannon_2", "tank_high_velocity_cannon_3", "tank_interleaved_suspension", "tank_light_fixed_superstructure_turret", "tank_light_one_man_tank_turret", "tank_light_three_man_tank_turret", "tank_light_two_man_tank_turret", "tank_medium_cannon", "tank_medium_cannon_2", "tank_medium_fixed_superstructure_turret", "tank_medium_howitzer", "tank_medium_howitzer_2", "tank_medium_one_man_tank_turret", "tank_medium_three_man_tank_turret", "tank_medium_two_man_tank_turret", "tank_modern_tank_turret", "tank_petrol_electric_engine", "tank_radio_1", "tank_radio_2", "tank_radio_3", "tank_riveted_armor", "tank_rocket_launcher", "tank_rocket_launcher_2", "tank_small_cannon", "tank_small_cannon_2", "tank_super_heavy_cannon", "tank_super_heavy_four_man_tank_turret", "tank_super_heavy_three_man_tank_turret", "tank_torsion_bar_suspension", "tank_welded_armor", "tank_wheeled_suspension", "torpedo_mounting", "torpedo_mounting_2", "torpedo_mounting_3", "wet_ammo_storage"]
+		}, {
+			"groupname":	"repair_speed_<Building>_factor",
+			"desc":	"Country building repair speed factor.",
+			"type":	"number",
+			"decimal_places":	2,
+			"IsDynamic":	true,
+			"categories":	["country"],
+			"modifiers":	["air_base", "anti_air_building", "arms_factory", "bunker", "coastal_bunker", "dockyard", "fuel_silo", "industrial_complex", "infrastructure", "naval_base", "nuclear_reactor", "radar_station", "rail_way", "rocket_site", "supply_node", "synthetic_refinery"]
+		}, {
+			"groupname":	"country_resource_cost_<Resource>",
+			"desc":	"Country resource cost.",
+			"type":	"number",
+			"decimal_places":	0,
+			"IsDynamic":	true,
+			"categories":	["state"],
+			"modifiers":	["aluminium", "chromium", "oil", "rubber", "steel", "tungsten"]
+		}, {
+			"groupname":	"temporary_state_resource_<Resource>",
+			"desc":	"Temporary state resource.",
+			"type":	"number",
+			"decimal_places":	0,
+			"IsDynamic":	true,
+			"categories":	["state"],
+			"modifiers":	["aluminium", "chromium", "oil", "rubber", "steel", "tungsten"]
+		}, {
+			"groupname":	"<Equipment>_design_cost_factor",
+			"desc":	"Equipment cost factor.",
+			"type":	"number",
+			"decimal_places":	0,
+			"IsDynamic":	true,
+			"categories":	["country"],
+			"modifiers":	["amphibious_mechanized_equipment", "amphibious_tank_chassis", "anti_air_equipment", "anti_tank_equipment", "armored_car_equipment", "artillery_equipment", "convoy", "cv_small_plane_airframe", "cv_small_plane_cas_airframe", "cv_small_plane_cas_airframe_0", "cv_small_plane_cas_airframe_1", "cv_small_plane_cas_airframe_2", "cv_small_plane_cas_airframe_3", "cv_small_plane_cas_airframe_4", "cv_small_plane_naval_bomber_airframe", "cv_small_plane_naval_bomber_airframe_0", "cv_small_plane_naval_bomber_airframe_1", "cv_small_plane_naval_bomber_airframe_2", "cv_small_plane_naval_bomber_airframe_3", "cv_small_plane_naval_bomber_airframe_4", "cv_small_plane_suicide_airframe", "cv_small_plane_suicide_airframe_0", "cv_small_plane_suicide_airframe_1", "cv_small_plane_suicide_airframe_2", "cv_small_plane_suicide_airframe_3", "cv_small_plane_suicide_airframe_4", "floating_harbor_equipment", "guided_missile_equipment", "heavy_tank_aa_chassis", "heavy_tank_aa_chassis_0", "heavy_tank_aa_chassis_1", "heavy_tank_aa_chassis_2", "heavy_tank_aa_chassis_3", "heavy_tank_amphibious_chassis", "heavy_tank_amphibious_chassis_0", "heavy_tank_amphibious_chassis_1", "heavy_tank_amphibious_chassis_2", "heavy_tank_amphibious_chassis_3", "heavy_tank_artillery_chassis", "heavy_tank_artillery_chassis_0", "heavy_tank_artillery_chassis_1", "heavy_tank_artillery_chassis_2", "heavy_tank_artillery_chassis_3", "heavy_tank_chassis", "heavy_tank_destroyer_chassis", "heavy_tank_destroyer_chassis_0", "heavy_tank_destroyer_chassis_1", "heavy_tank_destroyer_chassis_2", "heavy_tank_destroyer_chassis_3", "heavy_tank_flame_chassis", "heavy_tank_flame_chassis_0", "heavy_tank_flame_chassis_1", "heavy_tank_flame_chassis_2", "heavy_tank_flame_chassis_3", "infantry_equipment", "jet_fighter_equipment", "jet_strat_bomber_equipment", "jet_tac_bomber_equipment", "large_plane_airframe", "large_plane_maritime_patrol_plane_airframe", "large_plane_maritime_patrol_plane_airframe_0", "large_plane_maritime_patrol_plane_airframe_1", "large_plane_maritime_patrol_plane_airframe_2", "large_plane_maritime_patrol_plane_airframe_3", "large_plane_maritime_patrol_plane_airframe_4", "light_tank_aa_chassis", "light_tank_aa_chassis_0", "light_tank_aa_chassis_1", "light_tank_aa_chassis_2", "light_tank_aa_chassis_3", "light_tank_amphibious_chassis", "light_tank_amphibious_chassis_0", "light_tank_amphibious_chassis_1", "light_tank_amphibious_chassis_2", "light_tank_amphibious_chassis_3", "light_tank_artillery_chassis", "light_tank_artillery_chassis_0", "light_tank_artillery_chassis_1", "light_tank_artillery_chassis_2", "light_tank_artillery_chassis_3", "light_tank_chassis", "light_tank_destroyer_chassis", "light_tank_destroyer_chassis_0", "light_tank_destroyer_chassis_1", "light_tank_destroyer_chassis_2", "light_tank_destroyer_chassis_3", "light_tank_flame_chassis", "light_tank_flame_chassis_0", "light_tank_flame_chassis_1", "light_tank_flame_chassis_2", "light_tank_flame_chassis_3", "mechanized_equipment", "medium_plane_airframe", "medium_plane_fighter_airframe", "medium_plane_fighter_airframe_0", "medium_plane_fighter_airframe_1", "medium_plane_fighter_airframe_2", "medium_plane_fighter_airframe_3", "medium_plane_fighter_airframe_4", "medium_plane_scout_plane_airframe", "medium_plane_scout_plane_airframe_0", "medium_plane_scout_plane_airframe_1", "medium_plane_scout_plane_airframe_2", "medium_plane_scout_plane_airframe_3", "medium_plane_scout_plane_airframe_4", "medium_tank_aa_chassis", "medium_tank_aa_chassis_0", "medium_tank_aa_chassis_1", "medium_tank_aa_chassis_2", "medium_tank_aa_chassis_3", "medium_tank_amphibious_chassis", "medium_tank_amphibious_chassis_0", "medium_tank_amphibious_chassis_1", "medium_tank_amphibious_chassis_2", "medium_tank_amphibious_chassis_3", "medium_tank_artillery_chassis", "medium_tank_artillery_chassis_0", "medium_tank_artillery_chassis_1", "medium_tank_artillery_chassis_2", "medium_tank_artillery_chassis_3", "medium_tank_chassis", "medium_tank_destroyer_chassis", "medium_tank_destroyer_chassis_0", "medium_tank_destroyer_chassis_1", "medium_tank_destroyer_chassis_2", "medium_tank_destroyer_chassis_3", "medium_tank_flame_chassis", "medium_tank_flame_chassis_0", "medium_tank_flame_chassis_1", "medium_tank_flame_chassis_2", "medium_tank_flame_chassis_3", "modern_tank_aa_chassis", "modern_tank_aa_chassis_1", "modern_tank_artillery_chassis", "modern_tank_artillery_chassis_1", "modern_tank_chassis", "modern_tank_destroyer_chassis", "modern_tank_destroyer_chassis_1", "motorized_equipment", "motorized_rocket_equipment", "railway_gun_equipment", "rocket_artillery_equipment", "rocket_interceptor_equipment", "ship_hull_carrier", "ship_hull_cruiser", "ship_hull_heavy", "ship_hull_light", "ship_hull_submarine", "small_plane_airframe", "small_plane_cas_airframe", "small_plane_cas_airframe_0", "small_plane_cas_airframe_1", "small_plane_cas_airframe_2", "small_plane_cas_airframe_3", "small_plane_cas_airframe_4", "small_plane_naval_bomber_airframe", "small_plane_naval_bomber_airframe_0", "small_plane_naval_bomber_airframe_1", "small_plane_naval_bomber_airframe_2", "small_plane_naval_bomber_airframe_3", "small_plane_naval_bomber_airframe_4", "small_plane_suicide_airframe", "small_plane_suicide_airframe_0", "small_plane_suicide_airframe_1", "small_plane_suicide_airframe_2", "small_plane_suicide_airframe_3", "small_plane_suicide_airframe_4", "super_heavy_tank_aa_chassis", "super_heavy_tank_aa_chassis_1", "super_heavy_tank_artillery_chassis", "super_heavy_tank_artillery_chassis_1", "super_heavy_tank_chassis", "super_heavy_tank_destroyer_chassis", "super_heavy_tank_destroyer_chassis_1", "support_equipment", "train_equipment", "transport_plane_equipment"]
+		}, {
+			"groupname":	"production_cost_max_<NavalEquipment>",
+			"desc":	"Max naval equipment production cost.",
+			"type":	"number",
+			"decimal_places":	0,
+			"IsDynamic":	true,
+			"categories":	["naval"],
+			"modifiers":	["convoy", "floating_harbor_equipment", "ship_hull_carrier", "ship_hull_cruiser", "ship_hull_heavy", "ship_hull_light", "ship_hull_submarine"]
+		}, {
+			"groupname":	"state_resource_cost_<Resource>",
+			"desc":	"State resource cost.",
+			"type":	"number",
+			"decimal_places":	0,
+			"IsDynamic":	true,
+			"categories":	["state"],
+			"modifiers":	["aluminium", "chromium", "oil", "rubber", "steel", "tungsten"]
 		}, {
 			"groupname":	"production_cost_<Building>_factor",
 			"desc":	"Building construction cost factor.",
@@ -9015,6 +9023,14 @@
 			"categories":	["naval", "country", "army"],
 			"modifiers":	["airborne_light_armor", "amphibious_armor", "amphibious_heavy_armor", "amphibious_light_armor", "amphibious_mechanized", "amphibious_medium_armor", "anti_air", "anti_air_brigade", "anti_tank", "anti_tank_brigade", "armored_car", "armored_car_recon", "artillery", "artillery_brigade", "battle_cruiser", "battleship", "bicycle_battalion", "blackshirt_assault_battalion", "bus", "camelry", "carrier", "cas", "cavalry", "cv_cas", "cv_fighter", "cv_nav_bomber", "cv_suicide_craft", "destroyer", "engineer", "fake_intel_unit", "field_hospital", "fighter", "guided_missile", "heavy_armor", "heavy_cruiser", "heavy_fighter", "heavy_flame_tank", "heavy_sp_anti_air_brigade", "heavy_sp_artillery_brigade", "heavy_tank_destroyer_brigade", "infantry", "irregular_infantry", "jet_fighter", "jet_strat_bomber", "jet_tac_bomber", "jungle_pioneers_support", "light_armor", "light_cruiser", "light_flame_tank", "light_sp_anti_air_brigade", "light_sp_artillery_brigade", "light_tank_destroyer_brigade", "light_tank_recon", "logistics_company", "long_range_patrol_support", "maintenance_company", "marine", "marine_commando", "maritime_patrol_plane", "mechanized", "medium_armor", "medium_flame_tank", "medium_sp_anti_air_brigade", "medium_sp_artillery_brigade", "medium_tank_destroyer_brigade", "military_police", "militia", "modern_armor", "modern_sp_anti_air_brigade", "modern_sp_artillery_brigade", "modern_tank_destroyer_brigade", "mot_anti_air_brigade", "mot_anti_tank_brigade", "mot_artillery_brigade", "mot_recon", "mot_rocket_artillery_brigade", "motorized", "motorized_rocket_brigade", "mountaineers", "nav_bomber", "paratrooper", "penal_battalion", "pioneer_support", "railway_gun", "rangers_support", "recon", "rocket_artillery", "rocket_artillery_brigade", "rocket_interceptor", "scout_plane", "signal_company", "strat_bomber", "submarine", "suicide_craft", "super_heavy_armor", "super_heavy_sp_anti_air_brigade", "super_heavy_sp_artillery_brigade", "super_heavy_tank_destroyer_brigade", "tac_bomber", "transport_plane", "winter_logistics_support"]
 		}, {
+			"groupname":	"<Operation>_cost",
+			"desc":	"Operation cost modifier.",
+			"type":	"number",
+			"decimal_places":	0,
+			"IsDynamic":	true,
+			"categories":	["intelligence_agency"],
+			"modifiers":	["FRA_coup_in_central_africa", "FRA_coup_in_indochina", "FRA_coup_in_madagascar", "FRA_coup_in_north_africa", "FRA_coup_in_syria", "FRA_coup_in_west_africa", "FRA_instigate_workers_revolution_britain", "FRA_instigate_workers_revolution_germany", "FRA_instigate_workers_revolution_italy", "FRA_instigate_workers_revolution_spain", "bruneval_raid", "capture_tito", "heavy_water_raid", "murder_trotsky", "nuclear_espionage", "operation_boost_resistance", "operation_capture_cipher", "operation_collaboration_government", "operation_coordinated_strike", "operation_coup", "operation_coup_government", "operation_fake_intel", "operation_infiltrate", "operation_infiltrate_armed_forces_airforce", "operation_infiltrate_armed_forces_army", "operation_infiltrate_armed_forces_navy", "operation_infiltrate_civilian", "operation_make_resistance_contacts", "operation_rescue_operative", "operation_steal_tech_airforce", "operation_steal_tech_army", "operation_steal_tech_civilian", "operation_steal_tech_navy", "operation_targeted_sabotage_industry", "operation_targeted_sabotage_infrastructure", "operation_targeted_sabotage_resources", "operation_warsaw_uprising", "raid_trotskys_villa", "rescue_mussolini", "target_sabotage"]
+		}, {
 			"groupname":	"<Ideology>_drift",
 			"desc":	"Ideology drift.",
 			"type":	"number",
@@ -9023,37 +9039,21 @@
 			"categories":	["politics"],
 			"modifiers":	["communism", "democratic", "fascism", "neutrality"]
 		}, {
-			"groupname":	"country_resource_<Resource>",
-			"desc":	"Country resource.",
-			"type":	"number",
-			"decimal_places":	0,
-			"IsDynamic":	true,
-			"categories":	["state"],
-			"modifiers":	["aluminium", "chromium", "oil", "rubber", "steel", "tungsten"]
-		}, {
-			"groupname":	"state_production_speed_<Building>_factor",
-			"desc":	"State building construction speed factor.",
-			"type":	"number",
-			"decimal_places":	2,
-			"IsDynamic":	true,
-			"categories":	["state"],
-			"modifiers":	["air_base", "anti_air_building", "arms_factory", "bunker", "coastal_bunker", "dockyard", "fuel_silo", "industrial_complex", "infrastructure", "naval_base", "nuclear_reactor", "radar_station", "rail_way", "rocket_site", "supply_node", "synthetic_refinery"]
-		}, {
-			"groupname":	"repair_speed_<Building>_factor",
-			"desc":	"Country building repair speed factor.",
+			"groupname":	"<CombatTactic>_preferred_weight_factor",
+			"desc":	"Naval preferred weight factor.",
 			"type":	"number",
 			"decimal_places":	2,
 			"IsDynamic":	true,
 			"categories":	["country"],
-			"modifiers":	["air_base", "anti_air_building", "arms_factory", "bunker", "coastal_bunker", "dockyard", "fuel_silo", "industrial_complex", "infrastructure", "naval_base", "nuclear_reactor", "radar_station", "rail_way", "rocket_site", "supply_node", "synthetic_refinery"]
+			"modifiers":	["nullCombatTactic", "tactic_ambush", "tactic_assault", "tactic_attacker_hb_attack", "tactic_attacker_hb_rush", "tactic_attacker_hb_storm", "tactic_attacker_sb_hold", "tactic_attacker_sb_skillful_defence", "tactic_backhand_blow", "tactic_banzai_charge", "tactic_barrage", "tactic_basic_attack", "tactic_basic_defend", "tactic_blitz", "tactic_breakthrough", "tactic_cc_attack", "tactic_cc_defend", "tactic_cc_local_strong_point", "tactic_cc_storm", "tactic_cc_withdraw", "tactic_counterattack", "tactic_defender_hb_hold", "tactic_defender_hb_skillful_defence", "tactic_defender_sb_assault", "tactic_defender_sb_reckless_assault", "tactic_defender_sb_retake_bridge", "tactic_delay", "tactic_elastic_defense", "tactic_encirclement", "tactic_guerrilla_tactics", "tactic_hold_bridge", "tactic_human_wave_tactics", "tactic_infantry_charge", "tactic_masterful_blitz", "tactic_overwhelming_fire", "tactic_planned_attack", "tactic_relentless_assault", "tactic_seize_bridge", "tactic_shock", "tactic_tactical_withdrawal", "tactic_tw_attack", "tactic_tw_chase", "tactic_tw_defend", "tactic_tw_evade", "tactic_tw_intercept", "tactic_unexpected_thrust"]
 		}, {
-			"groupname":	"state_resource_<Resource>",
-			"desc":	"State resource.",
+			"groupname":	"<Technology>_cost_factor",
+			"desc":	"Technology cost factor.",
 			"type":	"number",
 			"decimal_places":	0,
 			"IsDynamic":	true,
-			"categories":	["state"],
-			"modifiers":	["aluminium", "chromium", "oil", "rubber", "steel", "tungsten"]
+			"categories":	["country"],
+			"modifiers":	["cat_air_bombs", "cat_air_engine", "cat_air_guns", "cat_anti_air", "cat_anti_tank", "cat_armored_cars", "cat_base_strike", "cat_battlefield_support", "cat_fleet_in_being", "cat_grand_battle_plan", "cat_heavy_armor", "cat_heavy_fighter", "cat_light_armor", "cat_marines_doctrine", "cat_maritime_patrol", "cat_mass_assault", "cat_mechanized_equipment", "cat_medium_armor", "cat_mobile_warfare", "cat_mountaineers_doctrine", "cat_operational_integrity", "cat_paratroopers_doctrine", "cat_production", "cat_scout_plane", "cat_ship_heavy_battery", "cat_ship_light_battery", "cat_ship_medium_battery", "cat_special_forces_generic", "cat_strategic_bomber", "cat_strategic_destruction", "cat_superior_firepower", "cat_synth_oil", "cat_synth_rubber", "cat_torpedoes", "cat_trade_interdiction"]
 		}],
 	"dynamic_variables":	{
 		"global":	{
@@ -11550,18 +11550,7 @@
 			"add_subsidies":	{
 		},
 			"add_subsidies_second":	{
-		},
-			"tweakergui":	{
-				"description":	"Spawns a tweaker GUI"
-			},
-			"reload":	{
-				"arguments":	["file name"],
-				"description":	"Reloads assets",
-				"argument_completion_support":	true
-			},
-			"particle_editor":	{
-				"description":	"Spawns a particle editor"
-			}
+		}
 		},
 		"tweakables":	{
 			"Operation.Instant":	{

@@ -154,3 +154,37 @@ alias[trigger:any_military_industrial_organization] = {
     include_invisible = yes
     alias_name[trigger] = alias_match_left[trigger]
 }
+
+### Checks if at least one Purchase contract of the Country in scope matches the triggers. tooltip=key can be defined to override title
+## scope = country
+## push_scope = purchase_contract
+alias[trigger:any_purchase_contract] = {
+    ## cardinality = 0..1
+    tooltip = localisation
+    alias_name[trigger] = alias_match_left[trigger]
+}
+
+### Checks if all purchase contracts of the Country in scope matches the triggers.\ntooltip=key can be defined to override title
+## scope = country
+## push_scope = purchase_contract
+alias[trigger:all_purchase_contracts] = {
+    ## cardinality = 0..1
+    tooltip = localisation
+    alias_name[trigger] = alias_match_left[trigger]
+}
+
+### Check if contract contains equipment category, equipment archetype or equipment
+## scope = purchase_contract
+alias[trigger:contract_contains_equipment] = enum[equipment_bonus_type]
+
+### Check value of purchase contract completion. Example: deal_completition < 0.6"
+## scope = purchase_contract
+alias[trigger:deal_completion] = float[0..1]
+
+### Check the buyer country. Example: buyer = GER
+## scope = purchase_contract
+alias[trigger:buyer] = scope[country]
+
+### Check the seller country. Example: seller = GER
+## scope = purchase_contract
+alias[trigger:seller] = scope[country]

@@ -672,9 +672,25 @@ alias[effect:set_country_leader_ideology] = enum[sub_ideology]
 ## scope = country
 alias[effect:add_country_leader_trait] = <country_leader_trait>
 
+### Add trait to active country leader.
+## scope = country
+alias[effect:add_country_leader_trait] = {
+	trait = <country_leader_trait>
+	## cardinality = 0..1
+	ideology = <ideology>
+}
+
 ### Remove trait from active country leader.
 ## scope = country
 alias[effect:remove_country_leader_trait] = <country_leader_trait>
+
+### Remove trait from active country leader.
+## scope = country
+alias[effect:remove_country_leader_trait] = {
+	trait = <country_leader_trait>
+	## cardinality = 0..1
+	ideology = <ideology>
+}
 
 ### Set properties of a political party.
 ## scope = country
@@ -828,11 +844,12 @@ alias[effect:puppet] = scope[country]
 ## scope = country
 alias[effect:puppet] = enum[country_tags]
 
-### Puppets specified country.
+### Puppets specified country. By default, cancels the puppets existing war relations
 ## scope = country
 alias[effect:puppet] = {
 	target = scope[country]
 	target = enum[country_tags]
+	## cardinality = 0..1
 	end_wars = bool
 	## cardinality = 0..1
 	end_civil_wars = bool
@@ -1222,6 +1239,8 @@ alias[effect:declare_war_on] = {
 	}
 	## cardinality = 0..1
 	generator = value[array]
+	## cardinality = 0..1
+	generator = scope[state]
 }
 
 # not used in vanilla or documented in wiki
@@ -1351,6 +1370,10 @@ alias[effect:create_wargoal] = {
 	generator = core_states
 	## cardinality = 0..1
 	generator = owned_states
+	## cardinality = 0..1
+	generator = value[array]
+	## cardinality = 0..1
+	generator = scope[state]
 	## cardinality = 0..1
 	expire = date_field
 	## cardinality = 0..1
@@ -1504,6 +1527,13 @@ alias[effect:set_rule] = {
 
 	## cardinality = 0..1
 	desc = localisation
+}
+
+### Clears rule added by set_rule. In the example it will clear can_not_declare_war = yes set by set_rule: clear_rule = { can_not_declare_war = yes }
+## scope = country
+alias[effect:clear_rule] = {
+	## cardinality = 1..inf
+	enum[game_rules] = bool
 }
 
 ### Adds rule to country's party.
@@ -2386,13 +2416,6 @@ alias[effect:modify_unit_leader_flag] = {
 ### Clear unit leader flag.
 ## scope = { unit_leader character }
 alias[effect:clr_unit_leader_flag] = value[leader_flag]
-
-### Sets the country that owns current scope general.
-## scope = { character unit_leader }
-alias[effect:set_nationality] = scope[country]
-### Sets the country that owns current scope general.
-## scope = { character unit_leader }
-alias[effect:set_nationality] = enum[country_tags]
 
 ### Demotes field marshal to general.
 ## scope = { character unit_leader }

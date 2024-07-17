@@ -48,7 +48,7 @@ types = {
 
 unit = {
 	## cardinality = 0..1
-	abbreviation = localisation_inline
+	abbreviation = scalar
 	### 3D map asset.
 	sprite = scalar
 	#enum[unit_sprites]

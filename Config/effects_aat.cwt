@@ -300,3 +300,53 @@ alias[effect:give_market_access] = enum[country_tags]
 ### Give market access to x
 ## scope = country
 alias[effect:give_market_access] = scope[country]
+
+### Creates a purchase contract between the countries
+## scope = any
+alias[effect:create_purchase_contract] = {
+    seller = scope[country]
+    buyer = scope[country]
+    civilian_factories = int
+    ## cardinality = 1..inf
+    equipment = {
+        type = enum[equipment_bonus_type]
+        amount = int
+    }
+}
+
+### Cancels the scoped purchase contract
+## scope = purchase_contract
+alias[effect:cancel_purchase_contract] = yes
+
+### Executes children effects on a random purchase contract of the country in scope, that fulfills the "limit" trigger. tooltip = key need to be added to override the tooltip title
+## scope = country
+## push_scope = purchase_contract
+alias[effect:random_purchase_contract] = {
+    ### Override the tooltip title
+    ## cardinality = 0..1
+    tooltip = localisation
+    ## cardinality = 0..1
+    limit = {
+        alias_name[trigger] = alias_match_left[trigger]
+    }
+    alias_name[effect] = alias_match_left[effect]
+}
+
+### Executes children effects on every purchase contract (or "random_select_amount" of random purchase contracts if specified) of the country in scope, that fulfills the "limit" trigger. tooltip = key need to be added to override the tooltip title
+## scope = country
+## push_scope = purchase_contract
+alias[effect:every_purchase_contract] = {
+    ### Override the tooltip title
+    ## cardinality = 0..1
+    tooltip = localisation
+	### Apply the effect to this number of randomly selected entities
+	## cardinality = 0..1
+	random_select_amount = int[1..inf]
+	## cardinality = 0..1
+	display_individual_scopes = bool
+    ## cardinality = 0..1
+    limit = {
+        alias_name[trigger] = alias_match_left[trigger]
+    }
+    alias_name[effect] = alias_match_left[effect]
+}

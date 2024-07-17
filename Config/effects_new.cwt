@@ -9,37 +9,12 @@ alias[effect:gain_xp] = variable_field
 ###Delete units of a country. No tooltip is generated.
 ## scopes = { COUNTRY }
 alias[effect:delete_unit] = {
+	## error_if_only_match = "template" is replaced with "division_template" in docs, proceed with caution
+	## severity = warning
 	## cardinality = 0..1
 	template = scalar
 	## cardinality = 0..1
-	id = variable_field
-	## cardinality = 0..1
-	state = <state>
-	## cardinality = 0..1
-	state = scope[state]
-	## cardinality = 0..1
-	disband = bool
-}
-
-###Delete units of a country. No tooltip is generated.
-## scopes = { COUNTRY }
-alias[effect:delete_unit] = {
-	## cardinality = 0..1
-	template = scalar
-	## cardinality = 0..1
-	id = variable_field
-	state = <state>
-	state = scope[state]
-	## cardinality = 0..1
-	disband = bool
-}
-
-
-###Delete units of a country. No tooltip is generated.
-## scopes = { COUNTRY }
-alias[effect:delete_unit] = {
-	## cardinality = 0..1
-	template = scalar
+	division_template = scalar
 	## cardinality = 0..1
 	id = variable_field
 	## cardinality = 0..1
@@ -127,6 +102,10 @@ alias[effect:create_operative_leader] = {
 	female = bool
 	## cardinality = 0..1
 	skill = int
+	## cardinality = 0..1
+	gender = male
+	## cardinality = 0..1
+	gender = female
 }
 
 ###Capture an operative. Can be used from a scope and a target that is either a country or a unit leader.
@@ -1221,22 +1200,6 @@ alias[effect:randomize_temp_variable] = {
 	## cardinality = 0..1
 	min = variable_field_32
 	lambda = variable_field_32
-}
-
-###Sets a temp variable to a random value.
-## scopes = { any }
-alias[effect:set_temp_variable_to_random] = value_set[variable]
-
-###Sets a temp variable to a random value.
-## scopes = { any }
-alias[effect:set_temp_variable_to_random] = {
-	var = value_set[variable]
-	## cardinality = 0..1
-	min = variable_field_32
-	## cardinality = 0..1
-	max = variable_field_32
-	## cardinality = 0..1
-	integer = bool
 }
 
 ###Add divisional commander xp to unit

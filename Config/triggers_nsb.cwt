@@ -390,6 +390,31 @@ alias[trigger:any_country_with_core] = {
 ## scope = { character unit_leader }
 alias[trigger:has_advisor_role] = enum[allowed_advisor_role]
 
+### Return true if the character has an advisor role and they can be fired. Warning: will return false if the character has no advisor role or it does not match the input slot. You should use has_advisor_role trigger first to really test the can_be_fired flag
+## scope = { character unit_leader }
+alias[trigger:advisor_can_be_fired] = bool
+
+### Return true if the character has an advisor role and they can be fired. Warning: will return false if the character has no advisor role or it does not match the input slot. You should use has_advisor_role trigger first to really test the can_be_fired flag
+## scope = { character unit_leader }
+alias[trigger:advisor_can_be_fired] = {
+	slot = value[character_advisor_slot]
+}
+
 ### Check amount of supply nodes
 ## scope = country
 alias[trigger:num_of_supply_nodes] = int_variable_field
+
+### Sets a temp variable to the number of supply vehicles in stockpile or that are needed
+## scope = country
+alias[trigger:get_supply_vehicles_temp] = {
+	var = value_set[variable]
+	type = truck
+	type = train
+	### default no. If yes, gets the number of needed vehicles
+	## cardinality = 0..1
+	need = yes
+	## error_if_only_match = This is the default value and can be omitted
+	## severity = info
+	## cardinality = 0..1
+    need = no
+}

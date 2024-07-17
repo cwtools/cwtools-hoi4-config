@@ -1021,6 +1021,10 @@ alias[trigger:is_in_home_area] = bool
 ## scope = state
 alias[trigger:state_population] = float
 
+### Check the population in the state.
+## scope = state
+alias[trigger:state_population] = value[variable]
+
 ### Check the ai irrationality value.
 ## scope = country
 alias[trigger:ai_irrationality] = int
@@ -1934,18 +1938,6 @@ alias[trigger:stockpile_ratio] = {
 	ratio = float
 }
 
-###  	Checks the deal completion with the target value
-alias[trigger:contract_contains_equipment] = <equipment.archetype_equip>
-
-### Checks if the buyer is <tag>
-alias[trigger:buyer] = scope[country]
-
-### Checks if the seller is <tag>
-alias[trigger:seller] = scope[country]
-
-###  	Checks the deal completion with the target value
-alias[trigger:deal_completion] = float[0..1]
-
 ### Checks for state strategic value.
 ## scope = state
 alias[trigger:state_strategic_value] = int
@@ -2165,6 +2157,10 @@ alias[trigger:has_rule] = enum[game_rules]
 ### Check the population in the state in thousands (use to avoid variable overflows).
 ## scope = { state }
 alias[trigger:state_population_k] = int
+
+### Check the population in the state in thousands (use to avoid variable overflows).
+## scope = { state }
+alias[trigger:state_population_k] = value[variable]
 
 ### Check the amount of casualties in thousands a country has suffered in all of it's wars.
 ## scope = country

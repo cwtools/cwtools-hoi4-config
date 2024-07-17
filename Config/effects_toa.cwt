@@ -15,3 +15,21 @@ alias[effect:add_relation_rule_override] = {
     ## cardinality = 0..1
     usage_desc = localisation
 }
+
+### Removes an override rule to the country's relation to other countries.The desc key can be used to supply a custom description for the effect when a named trigger is used as key
+## scope = country
+alias[effect:remove_relation_rule_override] = {
+    enum[game_rules] = bool
+    ## cardinality = 0..1
+    target = scope[country]
+    ## cardinality = 0..1
+    target = enum[country_tags]
+    ## cardinality = 0..1
+    trigger = scalar
+    ## cardinality = 0..1
+    usage_desc = localisation
+}
+
+### Removes decision on cooldown to reactivate or remove
+## scope = country
+alias[effect:remove_decision_on_cooldown] = <decision>

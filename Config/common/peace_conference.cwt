@@ -166,3 +166,7 @@ alias[trigger:pc_total_score] = int
 ### Checks if the current scope has the specified amount in current score within the peace conference. 
 ## scope = country
 alias[trigger:pc_current_score] = int
+
+### Check if state is claimed with a take_states action in conference for TAG. Example: pc_is_state_claimed_and_taken_by = SOV/ROOT/ROOT.FROM"
+## scope = state
+alias[trigger:pc_is_state_claimed_and_taken_by] = scope[country]

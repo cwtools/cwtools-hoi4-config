@@ -96,11 +96,11 @@ links = {
         from_data = yes
         type = both
         prefix = token:
-        data = <ideology>
-        data = <equipment>
-        data = <operation>
-        data = <technology>
-        data = <idea>
+        data_source = <ideology>
+        data_source = <equipment>
+        data_source = <operation>
+        data_source = <technology>
+        data_source = <idea>
     }
 
     mio = {

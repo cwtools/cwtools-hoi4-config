@@ -2367,4 +2367,5 @@ alias[trigger:has_bombing_war_support] = variable_field_32
 alias[trigger:has_resources_in_country] = {
 	resource = <resource>
 	amount = int_variable_field
+	extracted = bool
 }

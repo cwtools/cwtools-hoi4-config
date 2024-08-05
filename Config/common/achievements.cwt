@@ -17,6 +17,7 @@ achievement = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 
+	## cardinality = 0..1
 	ribbon = {
 		frames = { int }
 		colors = {

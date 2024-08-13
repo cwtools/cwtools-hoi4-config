@@ -161,11 +161,11 @@ alias[trigger:pc_is_forced_government_to] = <ideology>
 
 ### Checks if the current scope has the specified amount in total score within the peace conference. 	Can only be used for the winning countries. 	1.12
 ## scope = country
-alias[trigger:pc_total_score] = int
+alias[trigger:pc_total_score] = int_variable_field
 
 ### Checks if the current scope has the specified amount in current score within the peace conference. 
 ## scope = country
-alias[trigger:pc_current_score] = int
+alias[trigger:pc_current_score] = int_variable_field
 
 ### Check if state is claimed with a take_states action in conference for TAG. Example: pc_is_state_claimed_and_taken_by = SOV/ROOT/ROOT.FROM"
 ## scope = state

@@ -53,6 +53,9 @@ scripted_gui = {
 	context_type = enum[context_type]
 
 	## cardinality = 0..1
+	mapmode = <scripted_map_modes>
+
+	## cardinality = 0..1
 	parent_window_token = enum[parent_window_token]
 
 	## cardinality = 0..1
@@ -350,6 +353,11 @@ scripted_gui = {
 			target_array = value[array]
 			## cardinality = 0..1
 			target_array = variable_field
+			## cardinality = 0..1
+			target_trigger = {
+				## cardinality = ~1..inf
+				alias_name[trigger] = alias_match_left[trigger]
+			}
 		}
 		## cardinality = 0..inf
 		### Limits AI to selected scopes. When used multiple times, will use all matching scopes.
@@ -397,6 +405,11 @@ scripted_gui = {
 			target_array = value[array]
 			## cardinality = 0..1
 			target_array = variable_field
+			## cardinality = 0..1
+			target_trigger = {
+				## cardinality = ~1..inf
+				alias_name[trigger] = alias_match_left[trigger]
+			}
 		}
 		## cardinality = 0..inf
 		### Limits AI to selected scopes. When used multiple times, will use all matching scopes.

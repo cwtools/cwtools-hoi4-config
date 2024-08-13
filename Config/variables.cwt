@@ -648,6 +648,12 @@ values = {
 		### (Trigger) Total produced equipment of typetrain
 		total_equipment_produced_train
 
+		### (Trigger) Checks country's total peace conference score. Only usable if the country is on the winning side. Example: CZE = { pc_current_score > 400 }
+		pc_current_score
+
+		### (Trigger) Checks country's total peace conference score. Only usable if the country is on the winning side. Example: CZE = { pc_total_score > 400 }
+		pc_total_score
+
 		# =======================
 		# STATE DYNAMIC VARIABLES
 		# =======================

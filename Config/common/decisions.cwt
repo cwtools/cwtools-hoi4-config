@@ -160,6 +160,9 @@ decision_category = {
 		}
 
 		## cardinality = 0..1
+		highlight_only_provinces = bool
+
+		## cardinality = 0..1
 		highlight_color_before_active = int
 		## cardinality = 0..1
 		highlight_color_while_active = int
@@ -340,6 +343,9 @@ decision = {
 		}
 
 		## cardinality = 0..1
+		highlight_only_provinces = bool
+
+		## cardinality = 0..1
 		highlight_color_before_active = int
 		## cardinality = 0..1
 		highlight_color_while_active = int
@@ -485,6 +491,9 @@ decision = {
 				## cardinality = ~1..inf
 				state = variable_field
 			}
+
+			## cardinality = 0..1
+			highlight_only_provinces = bool
 
 			## cardinality = 0..1
 			highlight_provinces = {

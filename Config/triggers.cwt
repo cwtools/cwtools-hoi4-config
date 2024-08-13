@@ -2362,9 +2362,15 @@ alias[trigger:has_bombing_war_support] = float
 ## scope = country
 alias[trigger:has_bombing_war_support] = variable_field_32
 
-### Has a certain amount of resources
+### Checks for amount of resources in country
 ## scope = country
 alias[trigger:has_resources_in_country] = {
 	resource = <resource>
 	amount = int_variable_field
+	### Checks extracted amount instead of country balance. Default - no
+	## cardinality = 0..1
+	extracted = bool
+	### Checks only amount from local buildings instead of country balance. Default - no
+	## cardinality = 0..1
+	buildings = bool
 }

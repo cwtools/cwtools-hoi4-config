@@ -913,6 +913,21 @@ alias[effect:build_railway] = {
 	}
 	## cardinality = 0..1
 	build_only_on_allied = bool
+	### You can specify a weight function that will be used in pathing. The scope will be the controller of the province it is trying to path to.
+  	### A negative value will make it not to path to that controller.
+  	### Non-negative values will be used as a path cost for that province.
+	## cardinality = 0..1
+	controller_priority ={
+		## cardinality = 0..1
+		base = variable_field
+		## cardinality = 0..inf
+		modifier = {
+			## cardinality = ~1..inf
+			tag = enum[country_tags]
+			## cardinality = ~1..1
+			add = float
+		}
+	}
 	## cardinality = 0..1
 	level = int[1..5]
 	### Option 3: Specify start & end state IDs. It will pick provinces with the best node (capital > nodes > naval ) start_state = 50 target_state = 100
@@ -928,6 +943,21 @@ alias[effect:build_railway] = {
 alias[effect:build_railway] = {
 	## cardinality = 0..1
 	build_only_on_allied = bool
+	### You can specify a weight function that will be used in pathing. The scope will be the controller of the province it is trying to path to.
+  	### A negative value will make it not to path to that controller.
+  	### Non-negative values will be used as a path cost for that province.
+	## cardinality = 0..1
+	controller_priority ={
+		## cardinality = 0..1
+		base = variable_field
+		## cardinality = 0..inf
+		modifier = {
+			## cardinality = ~1..inf
+			tag = enum[country_tags]
+			## cardinality = ~1..1
+			add = float
+		}
+	}
 	## cardinality = 0..1
 	level = int[1..5]
 	start_province = enum[provinces]
@@ -950,6 +980,21 @@ alias[effect:build_railway] = {
 alias[effect:build_railway] = {
 	## cardinality = 0..1
 	build_only_on_allied = bool
+	### You can specify a weight function that will be used in pathing. The scope will be the controller of the province it is trying to path to.
+  	### A negative value will make it not to path to that controller.
+  	### Non-negative values will be used as a path cost for that province.
+	## cardinality = 0..1
+	controller_priority ={
+		## cardinality = 0..1
+		base = variable_field
+		## cardinality = 0..inf
+		modifier = {
+			## cardinality = ~1..inf
+			tag = enum[country_tags]
+			## cardinality = ~1..1
+			add = float
+		}
+	}
 	## cardinality = 0..1
 	level = int[1..5]
 	start_state = <state>

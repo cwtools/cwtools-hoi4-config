@@ -3032,7 +3032,13 @@ alias[effect:remove_targeted_decision] = {
 ## scope = country
 alias[effect:modify_timed_idea] = {
 	idea = enum[idea_name]
-	days = int
+	idea = value[variable]
+	## cardinality = 0..1
+	days = int_variable_field
+	## cardinality = 0..1
+	months = int_variable_field
+	## cardinality = 0..1
+	years = int_variable_field
 }
 
 ### Activates specified decision for scope country.

@@ -373,6 +373,43 @@ alias[trigger:can_build_railway] = {
 	fallback = bool
 }
 
+### Checks for an existing rail connection. Uses same params as can_build_railway
+## scope = country
+alias[trigger:has_railway_connection] = {
+	path = {
+		## cardinality = 1..inf
+		enum[provinces]
+	}
+	## cardinality = 0..1
+	build_only_on_allied = bool
+	## cardinality = 0..1
+	fallback = bool
+}
+
+### Checks for an existing rail connection. Uses same params as can_build_railway
+## scope = country
+alias[trigger:has_railway_connection] = {
+	## cardinality = 0..1
+	build_only_on_allied = bool
+	start_province = enum[provinces]
+	target_province = enum[provinces]
+	## cardinality = 0..1
+	fallback = bool
+}
+
+### Checks for an existing rail connection. Uses same params as can_build_railway
+## scope = country
+alias[trigger:has_railway_connection] = {
+	## cardinality = 0..1
+	build_only_on_allied = bool
+	start_state = <state>
+	start_state = scope[state]
+	target_state = <state>
+	target_state = scope[state]
+	## cardinality = 0..1
+	fallback = bool
+}
+
 ### Checks if country has idea.
 ## scope = country
 alias[trigger:has_idea] = value[variable]

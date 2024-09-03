@@ -258,7 +258,7 @@ ai_template = {
 
 			regiments = {
 				## cardinality = 1..25
-				<unit> = int[0..24]
+				<unit> = int[0..25]
 			}
 			## cardinality = 0..1
 			support = {

@@ -260,12 +260,6 @@ values = {
 		### Total deployed manpower of country in thousands.
 		deployed_total_manpower_k
 
-		### A modifier stored in country scope.
-		modifier@enum[modifier]
-
-		### Custom modifier accessed via variable
-		modifier@<modifier_definition>
-
 		### Navy experience of a country.
 		navy_experience
 
@@ -680,10 +674,6 @@ values = {
 		### Infrastructure level in the state.
 		infrastructure_level
 
-		### Value of modifier stored in this state, uses target as modifier token. Example 123.modifier@local_manpower.
-		# TODO
-		modifier
-
 		### Non damaged building level of a building with type, uses target as building type. example non_damaged_building_level@arms_factory.
 		non_damaged_building_level@<building>
 
@@ -725,52 +715,6 @@ values = {
 
 		### (Trigger) Uncapped_resistance_target temp variable can be used for getting resistance that that is not capped to 0-100
 		uncapped_resistance_target
-
-		### State modifier variable
-		modifier@army_speed_factor_for_controller
-		modifier@compliance_gain
-		modifier@compliance_growth
-		modifier@compliance_growth_on_our_occupied_states
-		modifier@enemy_army_speed_factor
-		modifier@enemy_attrition
-		modifier@enemy_intel_network_gain_factor_over_occupied_tag
-		modifier@enemy_local_supplies
-		modifier@enemy_spy_negative_status_factor
-		modifier@enemy_truck_attrition_factor
-		modifier@equipment_capture_for_controller
-		modifier@intel_network_gain
-		modifier@intel_network_gain_factor
-		modifier@local_building_slots
-		modifier@local_building_slots_factor
-		modifier@local_factories
-		modifier@local_factory_sabotage
-		modifier@local_intel_to_enemies
-		modifier@local_manpower
-		modifier@local_non_core_manpower
-		modifier@local_non_core_supply_impact_factor
-		modifier@local_resources
-		modifier@local_resources_factor
-		modifier@local_supplies
-		modifier@local_supplies_for_controller
-		modifier@local_supply_impact_factor
-		modifier@mobilization_speed
-		modifier@non_core_manpower
-		modifier@recruitable_population
-		modifier@recruitable_population_factor
-		modifier@required_garrison_factor
-		modifier@resistance_activity
-		modifier@resistance_damage_to_garrison
-		modifier@resistance_decay
-		modifier@resistance_garrison_penetration_chance
-		modifier@resistance_growth
-		modifier@resistance_target
-		modifier@starting_compliance
-		modifier@state_production_speed_buildings_factor
-		modifier@state_repair_speed_infrastructure_factor
-		modifier@state_resources_factor
-		modifier@supply_factor
-		modifier@truck_attrition
-		modifier@truck_attrition_factor
 
 		### Occupier tag
 		occupier
@@ -820,11 +764,6 @@ values = {
 
 		### Rate at which intel is extracted from this operative by an enemy country.
 		intel_yield_factor_on_capture
-
-		# TODO:
-		### Value of a modifier stored in leader modifier, modifier token is defined in target. Example leader_modifier@navy_max_range.
-		leader_modifier
-		leader_modifier@wounded_chance_factor
 
 		### Logistics level of the leader.
 		logistics_level
@@ -962,13 +901,8 @@ values = {
 		### Skill level of the leader.
 		skill_level
 
-		# TODO:
 		### Sum of terrain modifiers of each army's location, terrain type is defined in target. Example sum_unit_terrain_modifier@sickness_chance.
 		sum_unit_terrain_modifier@enum[terrain_modifiers]
-
-		# TODO:
-		### Value of a modifier stored in unit modifier, modifier token is defined in target. Example unit_modifier@army_attack_factor.
-		unit_modifier
 
 		### Ratio of units that are ready for plan.
 		unit_ratio_ready_for_plan
@@ -1133,9 +1067,6 @@ values = {
 		# ========================
 		# MIO VARIABLES
 		# ========================
-		### Value of the modifier stored in the military industrial organization. ex: modifier@military_industrial_organization_research_bonus
-		modifier
-		
 		### Research bonus of the military industrial organization when assigned to a research slot
 		research_bonus
 
@@ -1156,5 +1087,21 @@ values = {
 
 		### Number of unused trait points of the military industrial organization
 		number_of_unused_trait_points
+
+		# ========================
+		# MODIFIER VARIABLES
+		# ========================
+
+		### Value of a modifier stored in country/state/mio modifier, modifier token is defined in target. Example modifier@weekly_manpower.
+		modifier@enum[general_modifiers_enum]
+
+		### Value of a modifier stored in unit modifier, modifier token is defined in target. Example unit_modifier@army_attack_factor.
+		unit_modifier@enum[unit_modifiers_enum]
+
+		### Value of a modifier stored in leader modifier, modifier token is defined in target. Example leader_modifier@navy_max_range.
+		leader_modifier@enum[leader_modifiers_enum]
+
+		### Custom modifier accessed via variable
+		modifier@<modifier_definition>
 	}
 }

@@ -1152,12 +1152,14 @@ enums = {
 		breakthrough_factor
 		carrier_capacity_penalty_reduction
 		carrier_traffic
+		carrier_sortie_hours_delay
 		cavalry_attack_factor
 		combat_width_factor
 		convoy_raiding_efficiency_factor
 		coordination_bonus
 		decryption
 		decryption_factor
+		enemy_attrition
 		enemy_declare_war_tension
 		enemy_justify_war_goal_time
 		fighter_sortie_efficiency
@@ -1179,8 +1181,10 @@ enums = {
 		naval_enemy_positioning_in_initial_attack
 		naval_has_potf_in_combat_attack
 		naval_has_potf_in_combat_defense
+		naval_heavy_gun_hit_chance_factor
 		naval_hit_chance
 		naval_invasion_planning_bonus_speed
+		naval_light_gun_hit_chance_factor
 		naval_night_attack
 		naval_strike
 		naval_torpedo_cooldown_factor
@@ -1299,6 +1303,7 @@ enums = {
 		mic_to_overlord_factor
 		overlord_trade_cost_factor
 		subjects_autonomy_gain
+		additional_brigade_column_size
 		agency_upgrade_time
 		air_doctrine_cost_factor
 		air_equipment_upgrade_xp_cost
@@ -1314,6 +1319,7 @@ enums = {
 		civil_war_involvement_tension
 		civilian_factory_use
 		civilian_intel_to_others
+		coastal_bunker_effectiveness_factor
 		command_abilities_cost_factor
 		command_power_gain
 		command_power_gain_mult
@@ -1346,6 +1352,7 @@ enums = {
 		enemy_operative_harmed_time_factor
 		enemy_operative_intel_extraction_rate
 		enemy_spy_negative_status_factor
+		embargo_cost_factor
 		embargo_threshold_factor
 		equipment_capture
 		equipment_capture_factor
@@ -1355,10 +1362,12 @@ enums = {
 		experience_loss_factor
 		extra_trade_to_target_factor
 		faction_trade_opinion_factor
+		female_divisional_commander_chance
 		female_random_admiral_chance
 		female_random_army_leader_chance
 		female_random_country_leader_chance
 		female_random_operative_chance
+		field_officer_promotion_penalty
 		floating_harbor_duration
 		floating_harbor_range
 		floating_harbor_supply
@@ -1373,6 +1382,7 @@ enums = {
 		generate_wargoal_tension_against
 		global_building_slots
 		global_building_slots_factor
+		grant_medal_cost_factor
 		guarantee_cost
 		guarantee_tension
 		improve_relations_maintain_cost_factor
@@ -1388,10 +1398,12 @@ enums = {
 		join_faction_tension
 		justify_war_goal_time
 		justify_war_goal_when_in_major_war_time
+		land_bunker_effectiveness_factor
 		land_doctrine_cost_factor
 		land_equipment_upgrade_xp_cost
 		land_reinforce_rate
 		lend_lease_tension
+		lend_lease_tension_with_overlord
 		license_air_purchase_cost
 		license_anti_tank_eq_cost_factor
 		license_anti_tank_eq_production_speed_factor
@@ -1443,10 +1455,15 @@ enums = {
 		own_operative_forced_into_hiding_time_factor
 		own_operative_harmed_time_factor
 		own_operative_intel_extraction_rate
+		paradrop_organization_factor
+		paratrooper_aa_defense
+		paratrooper_weight_factor
 		party_popularity_stability_factor
 		political_power_cost
 		political_power_factor
 		political_power_gain
+		power_balance_daily
+		power_balance_weekly
 		production_factory_efficiency_gain_factor
 		production_factory_max_efficiency_factor
 		production_factory_start_efficiency_factor
@@ -1529,6 +1546,7 @@ enums = {
 		dont_lose_dig_in_on_attack
 		encryption
 		encryption_factor
+		enemy_attrition
 		guarantee_tension
 		local_intel_to_enemies
 		max_dig_in
@@ -1539,6 +1557,8 @@ enums = {
 		naval_retreat_chance_after_initial_combat
 		naval_retreat_speed
 		naval_retreat_speed_after_initial_combat
+		naval_torpedo_damage_reduction_factor
+		naval_torpedo_enemy_critical_chance_factor
 		navy_capital_ship_defence_factor
 		navy_screen_defence_factor
 		navy_submarine_defence_factor
@@ -1605,6 +1625,7 @@ enums = {
 		amphibious_invasion_defence
 		assign_navy_leader_cp_cost
 		carrier_capacity_penalty_reduction
+		carrier_sortie_hours_delay
 		carrier_traffic
 		convoy_escort_efficiency
 		convoy_raiding_efficiency_factor
@@ -1632,9 +1653,11 @@ enums = {
 		naval_enemy_retreat_chance
 		naval_has_potf_in_combat_attack
 		naval_has_potf_in_combat_defense
+		naval_heavy_gun_hit_chance_factor
 		naval_hit_chance
 		naval_invasion_capacity
 		naval_invasion_penalty
+		naval_light_gun_hit_chance_factor
 		naval_mine_hit_chance
 		naval_mines_damage_factor
 		naval_mines_effect_reduction
@@ -1648,6 +1671,8 @@ enums = {
 		naval_speed_factor
 		naval_strike
 		naval_torpedo_cooldown_factor
+		naval_torpedo_damage_reduction_factor
+		naval_torpedo_enemy_critical_chance_factor
 		naval_torpedo_hit_chance_factor
 		naval_torpedo_reveal_chance_factor
 		naval_torpedo_screen_penetration_factor
@@ -1687,12 +1712,17 @@ enums = {
 		terrain_trait_xp_gain_factor
 		transport_capacity
 		annex_cost_factor
+		peace_score_ratio_transferred_to_overlord
+		peace_score_ratio_transferred_to_players
 		puppet_cost_factor
 		drift_defence_factor
+		embargo_cost_factor
+		embargo_threshold_factor
 		guarantee_cost
 		master_ideology_drift
 		power_balance_weekly
 		army_speed_factor_for_controller
+		coastal_bunker_effectiveness_factor
 		compliance_gain
 		compliance_growth
 		compliance_growth_on_our_occupied_states
@@ -1704,9 +1734,11 @@ enums = {
 		enemy_local_supplies
 		enemy_spy_negative_status_factor
 		enemy_truck_attrition_factor
+		equipment_capture_factor_for_controller
 		equipment_capture_for_controller
 		intel_network_gain
 		intel_network_gain_factor
+		land_bunker_effectiveness_factor
 		local_building_slots
 		local_building_slots_factor
 		local_factories
@@ -1746,12 +1778,16 @@ enums = {
 		supply_factor
 		truck_attrition
 		truck_attrition_factor
+		cic_construction_boost
+		cic_construction_boost_factor
 		civilian_factory_use
 		conscription
 		conscription_factor
+		consumer_goods_expected_value
 		consumer_goods_factor
 		conversion_cost_civ_to_mil_factor
 		conversion_cost_mil_to_civ_factor
+		enemy_local_supplies
 		equipment_conversion_speed
 		exiled_government_weekly_manpower
 		faction_trade_opinion_factor
@@ -1774,6 +1810,15 @@ enums = {
 		local_supplies
 		local_supplies_for_controller
 		min_export
+		military_industrial_organization_design_team_assign_cost
+		military_industrial_organization_design_team_change_cost
+		military_industrial_organization_funds_gain
+		military_industrial_organization_industrial_manufacturer_assign_cost
+		military_industrial_organization_policy_cooldown
+		military_industrial_organization_policy_cost
+		military_industrial_organization_research_bonus
+		military_industrial_organization_size_up_requirement
+		military_industrial_organization_task_capacity
 		minimum_training_level
 		mobilization_speed
 		monthly_population
@@ -1905,6 +1950,7 @@ enums = {
 		army_leader_start_planning_level
 		cannot_use_abilities
 		carrier_capacity_penalty_reduction
+		carrier_sortie_hours_delay
 		carrier_traffic
 		convoy_escort_efficiency
 		convoy_raiding_efficiency_factor
@@ -1945,9 +1991,11 @@ enums = {
 		naval_enemy_retreat_chance
 		naval_has_potf_in_combat_attack
 		naval_has_potf_in_combat_defense
+		naval_heavy_gun_hit_chance_factor
 		naval_hit_chance
 		naval_invasion_penalty
 		naval_invasion_prep_speed
+		naval_light_gun_hit_chance_factor
 		naval_morale
 		naval_morale_factor
 		naval_retreat_chance
@@ -1957,6 +2005,8 @@ enums = {
 		naval_speed_factor
 		naval_strike
 		naval_torpedo_cooldown_factor
+		naval_torpedo_damage_reduction_factor
+		naval_torpedo_enemy_critical_chance_factor
 		naval_torpedo_hit_chance_factor
 		naval_torpedo_reveal_chance_factor
 		naval_torpedo_screen_penetration_factor
@@ -1993,6 +2043,7 @@ enums = {
 		paradrop_organization_factor
 		paratrooper_aa_defense
 		paratrooper_count_per_plane
+		paratrooper_weight_factor
 		port_strike
 		positioning
 		promote_cost_factor
@@ -2056,6 +2107,9 @@ enums = {
 		cavalry_defence_factor
 		combat_width_factor
 		coastal_bunker_effectiveness_factor
+		command_abilities_cost_factor
+		command_power_gain
+		command_power_gain_mult
 		coordination_bonus
 		defence
 		defense_bonus_against
@@ -2064,6 +2118,8 @@ enums = {
 		disable_strategic_redeployment
 		disable_strategic_redeployment_for_controller
 		dont_lose_dig_in_on_attack
+		enemy_army_speed_factor
+		enemy_attrition
 		experience_gain_army
 		experience_gain_army_factor
 		experience_gain_army_unit
@@ -2076,6 +2132,9 @@ enums = {
 		land_bunker_effectiveness_factor
 		land_night_attack
 		local_org_regain
+		marines_special_forces_contribution_factor
+		max_command_power
+		max_command_power_mult
 		max_commander_army_size
 		max_dig_in
 		max_dig_in_factor
@@ -2084,14 +2143,69 @@ enums = {
 		max_training
 		mechanized_attack_factor
 		mechanized_defence_factor
+		modifier_army_sub_unit_armored_car_attack_factor
+		modifier_army_sub_unit_armored_car_defence_factor
+		modifier_army_sub_unit_armored_car_max_org_factor
+		modifier_army_sub_unit_armored_car_recon_attack_factor
+		modifier_army_sub_unit_armored_car_recon_defence_factor
+		modifier_army_sub_unit_armored_car_recon_max_org_factor
+		modifier_army_sub_unit_armored_car_recon_speed_factor
+		modifier_army_sub_unit_armored_car_speed_factor
+		modifier_army_sub_unit_blackshirt_assault_battalion_attack_factor
+		modifier_army_sub_unit_blackshirt_assault_battalion_defence_factor
+		modifier_army_sub_unit_blackshirt_assault_battalion_max_org_factor
+		modifier_army_sub_unit_blackshirt_assault_battalion_speed_factor
+		modifier_army_sub_unit_camelry_attack_factor
+		modifier_army_sub_unit_camelry_defence_factor
+		modifier_army_sub_unit_camelry_speed_factor
+		modifier_army_sub_unit_category_special_forces_max_org_factor
+		modifier_army_sub_unit_cavalry_attack_factor
+		modifier_army_sub_unit_cavalry_defence_factor
+		modifier_army_sub_unit_cavalry_speed_factor
+		modifier_army_sub_unit_infantry_attack_factor
+		modifier_army_sub_unit_infantry_defence_factor
+		modifier_army_sub_unit_infantry_speed_factor
+		modifier_army_sub_unit_irregular_infantry_attack_factor
+		modifier_army_sub_unit_irregular_infantry_defence_factor
+		modifier_army_sub_unit_irregular_infantry_max_org_factor
+		modifier_army_sub_unit_irregular_infantry_speed_factor
+		modifier_army_sub_unit_light_tank_recon_attack_factor
+		modifier_army_sub_unit_light_tank_recon_defence_factor
+		modifier_army_sub_unit_light_tank_recon_max_org_factor
+		modifier_army_sub_unit_light_tank_recon_speed_factor
+		modifier_army_sub_unit_long_range_patrol_support_attack_factor
+		modifier_army_sub_unit_long_range_patrol_support_defence_factor
+		modifier_army_sub_unit_marines_attack_factor
+		modifier_army_sub_unit_marines_defence_factor
+		modifier_army_sub_unit_marines_max_org_factor
+		modifier_army_sub_unit_marines_speed_factor
+		modifier_army_sub_unit_military_police_attack_factor
+		modifier_army_sub_unit_military_police_defence_factor
+		modifier_army_sub_unit_military_police_max_org_factor
+		modifier_army_sub_unit_military_police_speed_factor
+		modifier_army_sub_unit_militia_attack_factor
+		modifier_army_sub_unit_militia_defence_factor
+		modifier_army_sub_unit_militia_max_org_factor
+		modifier_army_sub_unit_militia_org_recovery_cap_factor
+		modifier_army_sub_unit_militia_speed_factor
+		modifier_army_sub_unit_mountaineers_attack_factor
+		modifier_army_sub_unit_mountaineers_defence_factor
+		modifier_army_sub_unit_mountaineers_max_org_factor
+		modifier_army_sub_unit_mountaineers_speed_factor
+		modifier_army_sub_unit_paratrooper_attack_factor
+		modifier_army_sub_unit_paratrooper_defence_factor
+		modifier_army_sub_unit_paratrooper_max_org_factor
+		modifier_army_sub_unit_paratrooper_speed_factor
 		motorized_attack_factor
 		motorized_defence_factor
+		mountaineers_special_forces_contribution_factor
 		naval_invasion_planning_bonus_speed
 		no_supply_grace
 		offence
 		org_loss_at_low_org_factor
 		org_loss_when_moving
 		out_of_supply_factor
+		paratroopers_special_forces_contribution_factor
 		planning_speed
 		pocket_penalty
 		recon_factor
@@ -2100,6 +2214,7 @@ enums = {
 		shore_bombardment_bonus
 		special_forces_attack_factor
 		special_forces_cap
+		special_forces_cap_flat
 		special_forces_defence_factor
 		special_forces_min
 		special_forces_no_supply_grace

@@ -399,15 +399,19 @@ alias[effect:set_variable] = {
 	tooltip = localisation
 }
 
-### A random effect.
+### A possible random effect that can occur.
 ## scope = any
 alias[effect:random] = {
+	## cardinality = 1..2
 	chance = variable_field
+	## cardinality = 1..2
+	chance = int
+
 	alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	alias_name[effect] = alias_match_left[effect]
 }
 
-### A random effect.
+### A list of possible random effects to trigger in this effect.
 ## scope = any
 alias[effect:random_list] = {
 	## cardinality = 0..1
@@ -754,7 +758,7 @@ alias[effect:remove_ideas] = {
 	enum[idea_name]
 	## cardinality = 0..inf
 	value[advisor_token]
-	## cardinality = 0..inf	
+	## cardinality = 0..inf
 	value[variable]
 }
 
@@ -2319,7 +2323,7 @@ alias[effect:set_war_support] = variable_field[0..1]
 
 ### Executes children effects on random unit leader that fulfills the "limit" trigger.
 ## scope = country
-## push_scope = unit_leader 
+## push_scope = unit_leader
 alias[effect:random_unit_leader] = {
 	## cardinality = 0..1
 	limit = {

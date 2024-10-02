@@ -59,6 +59,10 @@ scripted_gui = {
 	parent_window_token = enum[parent_window_token]
 
 	## cardinality = 0..1
+	### Define any scripted gui as the parent gui. This is more performant than using something like parent_window_token/parent_window_name for nested GUIs.
+	parent_scripted_gui = <scripted_gui>
+
+	## cardinality = 0..1
 	### Any GUI container name. Use only if parent_window_token doesn't have a corresponding token.
 	parent_window_name = <containerWindowType>
 	## cardinality = 0..1

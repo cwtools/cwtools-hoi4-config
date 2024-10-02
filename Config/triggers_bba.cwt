@@ -118,20 +118,6 @@ alias[trigger:num_battalions_in_states] = {
 ## scope = country
 alias[trigger:has_war_with_major] = bool
 
-### Checks if there is a railway connection between provinces/states
-## scope = country
-alias[trigger:has_railway_connection] = {
-	start_state = <state>
-	target_state = <state>
-}
-
-### Checks if there is a railway connection between provinces/states
-## scope = country
-alias[trigger:has_railway_connection] = {
-	start_province = enum[provinces]
-	target_province = enum[provinces]
-}
-
 ### Checks if country has war with wargoal against target
 ## scope = country
 alias[trigger:has_war_with_wargoal_against] = {

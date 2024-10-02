@@ -1,5 +1,5 @@
 modifiers = {
-	# aggressive
+  # aggressive
 	annex_cost_factor = aggressive
 	army_armor_attack_factor = aggressive
 	army_armor_speed_factor = aggressive
@@ -18,12 +18,14 @@ modifiers = {
 	breakthrough_factor = aggressive
 	carrier_capacity_penalty_reduction = aggressive
 	carrier_traffic = aggressive
+	carrier_sortie_hours_delay = aggressive
 	cavalry_attack_factor = aggressive
 	combat_width_factor = aggressive
 	convoy_raiding_efficiency_factor = aggressive
 	coordination_bonus = aggressive
 	decryption = aggressive
 	decryption_factor = aggressive
+	enemy_attrition = aggressive
 	enemy_declare_war_tension = aggressive
 	enemy_justify_war_goal_time = aggressive
 	fighter_sortie_efficiency = aggressive
@@ -45,8 +47,10 @@ modifiers = {
 	naval_enemy_positioning_in_initial_attack = aggressive
 	naval_has_potf_in_combat_attack = aggressive
 	naval_has_potf_in_combat_defense = aggressive
+	naval_heavy_gun_hit_chance_factor = aggressive
 	naval_hit_chance = aggressive
 	naval_invasion_planning_bonus_speed = aggressive
+	naval_light_gun_hit_chance_factor = aggressive
 	naval_night_attack = aggressive
 	naval_strike = aggressive
 	naval_torpedo_cooldown_factor = aggressive
@@ -78,7 +82,7 @@ modifiers = {
 	winter_attrition = aggressive
 	winter_attrition_factor = aggressive
 
-	# ai
+  # ai
 	ai_badass_factor = ai
 	ai_call_ally_desire_factor = ai
 	ai_desired_divisions_factor = ai
@@ -95,7 +99,7 @@ modifiers = {
 	ai_join_ally_desire_factor = ai
 	ai_license_acceptance = ai
 
-	# air
+  # air
 	ace_effectiveness_factor = air
 	air_accidents = air
 	air_accidents_factor = air
@@ -151,7 +155,7 @@ modifiers = {
 	ground_attack_factor = air
 	paratrooper_aa_defense = air
 
-	# army
+  # army
 	acclimatization_cold_climate_gain_factor = army
 	acclimatization_hot_climate_gain_factor = army
 	air_superiority_bonus_in_combat = army
@@ -197,6 +201,9 @@ modifiers = {
 	cavalry_defence_factor = army
 	combat_width_factor = army
 	coastal_bunker_effectiveness_factor = army
+	command_abilities_cost_factor = army
+	command_power_gain = army
+	command_power_gain_mult = army
 	coordination_bonus = army
 	defence = army
 	defense_bonus_against = army
@@ -205,6 +212,8 @@ modifiers = {
 	disable_strategic_redeployment = army
 	disable_strategic_redeployment_for_controller = army
 	dont_lose_dig_in_on_attack = army
+	enemy_army_speed_factor = army
+	enemy_attrition = army
 	experience_gain_army = army
 	experience_gain_army_factor = army
 	experience_gain_army_unit = army
@@ -217,6 +226,9 @@ modifiers = {
 	land_bunker_effectiveness_factor = army
 	land_night_attack = army
 	local_org_regain = army
+	marines_special_forces_contribution_factor = army
+	max_command_power = army
+	max_command_power_mult = army
 	max_commander_army_size = army
 	max_dig_in = army
 	max_dig_in_factor = army
@@ -225,14 +237,70 @@ modifiers = {
 	max_training = army
 	mechanized_attack_factor = army
 	mechanized_defence_factor = army
+	modifier_army_sub_unit_armored_car_attack_factor = army
+	modifier_army_sub_unit_armored_car_defence_factor = army
+	modifier_army_sub_unit_armored_car_max_org_factor = army
+	modifier_army_sub_unit_armored_car_recon_attack_factor = army
+	modifier_army_sub_unit_armored_car_recon_defence_factor = army
+	modifier_army_sub_unit_armored_car_recon_max_org_factor = army
+	modifier_army_sub_unit_armored_car_recon_speed_factor = army
+	modifier_army_sub_unit_armored_car_speed_factor = army
+	modifier_army_sub_unit_blackshirt_assault_battalion_attack_factor = army
+	modifier_army_sub_unit_blackshirt_assault_battalion_defence_factor = army
+	modifier_army_sub_unit_blackshirt_assault_battalion_max_org_factor = army
+	modifier_army_sub_unit_blackshirt_assault_battalion_speed_factor = army
+	modifier_army_sub_unit_camelry_attack_factor = army
+	modifier_army_sub_unit_camelry_defence_factor = army
+	modifier_army_sub_unit_camelry_speed_factor = army
+	modifier_army_sub_unit_category_special_forces_max_org_factor = army
+	modifier_army_sub_unit_cavalry_attack_factor = army
+	modifier_army_sub_unit_cavalry_defence_factor = army
+	modifier_army_sub_unit_cavalry_speed_factor = army
+	modifier_army_sub_unit_infantry_attack_factor = army
+	modifier_army_sub_unit_infantry_defence_factor = army
+	modifier_army_sub_unit_infantry_speed_factor = army
+	modifier_army_sub_unit_irregular_infantry_attack_factor = army
+	modifier_army_sub_unit_irregular_infantry_defence_factor = army
+	modifier_army_sub_unit_irregular_infantry_max_org_factor = army
+	modifier_army_sub_unit_irregular_infantry_speed_factor = army
+	modifier_army_sub_unit_light_tank_recon_attack_factor = army
+	modifier_army_sub_unit_light_tank_recon_defence_factor = army
+	modifier_army_sub_unit_light_tank_recon_max_org_factor = army
+	modifier_army_sub_unit_light_tank_recon_speed_factor = army
+	modifier_army_sub_unit_long_range_patrol_support_attack_factor = army
+	modifier_army_sub_unit_long_range_patrol_support_defence_factor = army
+	modifier_army_sub_unit_marines_attack_factor = army
+	modifier_army_sub_unit_marines_defence_factor = army
+	modifier_army_sub_unit_marines_max_org_factor = army
+	modifier_army_sub_unit_marines_speed_factor = army
+	modifier_army_sub_unit_military_police_attack_factor = army
+	modifier_army_sub_unit_military_police_defence_factor = army
+	modifier_army_sub_unit_military_police_max_org_factor = army
+	modifier_army_sub_unit_military_police_speed_factor = army
+	modifier_army_sub_unit_militia_attack_factor = army
+	modifier_army_sub_unit_militia_defence_factor = army
+	modifier_army_sub_unit_militia_max_org_factor = army
+	modifier_army_sub_unit_militia_org_recovery_cap_factor = army
+	modifier_army_sub_unit_militia_speed_factor = army
+	modifier_army_sub_unit_mountaineers_attack_factor = army
+	modifier_army_sub_unit_mountaineers_defence_factor = army
+	modifier_army_sub_unit_mountaineers_max_org_factor = army
+	modifier_army_sub_unit_mountaineers_speed_factor = army
+	modifier_army_sub_unit_paratrooper_attack_factor = army
+	modifier_army_sub_unit_paratrooper_defence_factor = army
+	modifier_army_sub_unit_paratrooper_max_org_factor = army
+	modifier_army_sub_unit_paratrooper_speed_factor = army
+	module_<module>_design_cost_factor = army
 	motorized_attack_factor = army
 	motorized_defence_factor = army
+	mountaineers_special_forces_contribution_factor = army
 	naval_invasion_planning_bonus_speed = army
 	no_supply_grace = army
 	offence = army
 	org_loss_at_low_org_factor = army
 	org_loss_when_moving = army
 	out_of_supply_factor = army
+	paratroopers_special_forces_contribution_factor = army
 	planning_speed = army
 	pocket_penalty = army
 	recon_factor = army
@@ -241,6 +309,7 @@ modifiers = {
 	shore_bombardment_bonus = army
 	special_forces_attack_factor = army
 	special_forces_cap = army
+	special_forces_cap_flat = army
 	special_forces_defence_factor = army
 	special_forces_min = army
 	special_forces_no_supply_grace = army
@@ -257,7 +326,7 @@ modifiers = {
 	winter_attrition = army
 	winter_attrition_factor = army
 
-	# autonomy
+  # autonomy
 	autonomy_gain = autonomy
 	autonomy_gain_global_factor = autonomy
 	autonomy_gain_ll_to_overlord = autonomy
@@ -278,7 +347,9 @@ modifiers = {
 	overlord_trade_cost_factor = autonomy
 	subjects_autonomy_gain = autonomy
 
-	# country
+  # country
+  	enum[equipment_bonus_type]_design_cost_factor = country
+	additional_brigade_column_size = country
 	agency_upgrade_time = country
 	air_doctrine_cost_factor = country
 	air_equipment_upgrade_xp_cost = country
@@ -294,6 +365,7 @@ modifiers = {
 	civil_war_involvement_tension = country
 	civilian_factory_use = country
 	civilian_intel_to_others = country
+	coastal_bunker_effectiveness_factor = country
 	command_abilities_cost_factor = country
 	command_power_gain = country
 	command_power_gain_mult = country
@@ -304,8 +376,8 @@ modifiers = {
 	conscription_factor = country
 	cic_construction_boost = country
 	cic_construction_boost_factor = country
-	consumer_goods_factor = country # Consumer Goods Factor/Modifier to Base Value
-	consumer_goods_expected_value = country # Consumer Goods Base Value
+	consumer_goods_factor = country
+	consumer_goods_expected_value = country
 	conversion_cost_civ_to_mil_factor = country
 	conversion_cost_mil_to_civ_factor = country
 	critical_receive_chance = country
@@ -326,6 +398,7 @@ modifiers = {
 	enemy_operative_harmed_time_factor = country
 	enemy_operative_intel_extraction_rate = country
 	enemy_spy_negative_status_factor = country
+	embargo_cost_factor = country
 	embargo_threshold_factor = country
 	equipment_capture = country
 	equipment_capture_factor = country
@@ -335,10 +408,12 @@ modifiers = {
 	experience_loss_factor = country
 	extra_trade_to_target_factor = country
 	faction_trade_opinion_factor = country
+	female_divisional_commander_chance = country
 	female_random_admiral_chance = country
 	female_random_army_leader_chance = country
 	female_random_country_leader_chance = country
 	female_random_operative_chance = country
+	field_officer_promotion_penalty = country
 	floating_harbor_duration = country
 	floating_harbor_range = country
 	floating_harbor_supply = country
@@ -353,6 +428,7 @@ modifiers = {
 	generate_wargoal_tension_against = country
 	global_building_slots = country
 	global_building_slots_factor = country
+	grant_medal_cost_factor = country
 	guarantee_cost = country
 	guarantee_tension = country
 	improve_relations_maintain_cost_factor = country
@@ -368,10 +444,12 @@ modifiers = {
 	join_faction_tension = country
 	justify_war_goal_time = country
 	justify_war_goal_when_in_major_war_time = country
+	land_bunker_effectiveness_factor = country
 	land_doctrine_cost_factor = country
 	land_equipment_upgrade_xp_cost = country
 	land_reinforce_rate = country
 	lend_lease_tension = country
+	lend_lease_tension_with_overlord = country
 	license_air_purchase_cost = country
 	license_anti_tank_eq_cost_factor = country
 	license_anti_tank_eq_production_speed_factor = country
@@ -402,6 +480,7 @@ modifiers = {
 	min_export = country
 	minimum_training_level = country
 	modifier_enemy_port_superiority_limit = country
+	module_<module>_design_cost_factor = army
 	monthly_population = country
 	naval_doctrine_cost_factor = country
 	naval_equipment_upgrade_xp_cost = country
@@ -423,16 +502,22 @@ modifiers = {
 	own_operative_forced_into_hiding_time_factor = country
 	own_operative_harmed_time_factor = country
 	own_operative_intel_extraction_rate = country
+	paradrop_organization_factor = country
+	paratrooper_aa_defense = country
+	paratrooper_weight_factor = country
 	party_popularity_stability_factor = country
 	political_power_cost = country
 	political_power_factor = country
 	political_power_gain = country
+	power_balance_daily = country
+	power_balance_weekly = country
 	production_factory_efficiency_gain_factor = country
 	production_factory_max_efficiency_factor = country
 	production_factory_start_efficiency_factor = country
 	production_lack_of_resource_penalty_factor = country
 	production_oil_factor = country
 	production_speed_buildings_factor = country
+	production_speed_<building>_factor = country
 	railway_gun_bombardment_factor = country
 	refit_ic_cost = country
 	refit_speed = country
@@ -485,7 +570,7 @@ modifiers = {
 	army_spirit_category_type_cost_factor = country
 	navy_spirit_category_type_cost_factor = country
 
-	# defensive
+  # defensive
 	armor_factor = defensive
 	army_armor_defence_factor = defensive
 	army_artillery_defence_factor = defensive
@@ -511,6 +596,7 @@ modifiers = {
 	dont_lose_dig_in_on_attack = defensive
 	encryption = defensive
 	encryption_factor = defensive
+	enemy_attrition = defensive
 	guarantee_tension = defensive
 	local_intel_to_enemies = defensive
 	max_dig_in = defensive
@@ -521,6 +607,8 @@ modifiers = {
 	naval_retreat_chance_after_initial_combat = defensive
 	naval_retreat_speed = defensive
 	naval_retreat_speed_after_initial_combat = defensive
+	naval_torpedo_damage_reduction_factor = defensive
+	naval_torpedo_enemy_critical_chance_factor = defensive
 	navy_capital_ship_defence_factor = defensive
 	navy_screen_defence_factor = defensive
 	navy_submarine_defence_factor = defensive
@@ -536,7 +624,7 @@ modifiers = {
 	supply_consumption_factor = defensive
 	terrain_penalty_reduction = defensive
 
-	# government_in_exile
+  # government_in_exile
 	dockyard_donations = government_in_exile
 	exile_manpower_factor = government_in_exile
 	industrial_factory_donations = government_in_exile
@@ -545,7 +633,7 @@ modifiers = {
 	military_factory_donations = government_in_exile
 	targeted_legitimacy_daily = government_in_exile
 
-	# intelligence_agency
+  # intelligence_agency
 	airforce_intel_decryption_bonus = intelligence_agency
 	airforce_intel_factor = intelligence_agency
 	army_intel_decryption_bonus = intelligence_agency
@@ -578,7 +666,7 @@ modifiers = {
 	root_out_resistance_effectiveness_factor = intelligence_agency
 	target_sabotage_factor = intelligence_agency
 
-	# military_advancements
+  # military_advancements
 	experience_gain_army = military_advancements
 	experience_gain_army_factor = military_advancements
 	experience_gain_army_unit = military_advancements
@@ -590,11 +678,12 @@ modifiers = {
 	experience_gain_navy_unit_factor = military_advancements
 	research_speed_factor = military_advancements
 
-	# naval
+  # naval
 	amphibious_invasion = naval
 	amphibious_invasion_defence = naval
 	assign_navy_leader_cp_cost = naval
 	carrier_capacity_penalty_reduction = naval
+	carrier_sortie_hours_delay = naval
 	carrier_traffic = naval
 	convoy_escort_efficiency = naval
 	convoy_raiding_efficiency_factor = naval
@@ -609,6 +698,7 @@ modifiers = {
 	invasion_preparation = naval
 	mines_planting_by_fleets_factor = naval
 	mines_sweeping_by_fleets_factor = naval
+	module_<module>_design_cost_factor = army
 	naval_accidents_chance = naval
 	naval_attrition = naval
 	naval_coordination = naval
@@ -622,9 +712,11 @@ modifiers = {
 	naval_enemy_retreat_chance = naval
 	naval_has_potf_in_combat_attack = naval
 	naval_has_potf_in_combat_defense = naval
+	naval_heavy_gun_hit_chance_factor = naval
 	naval_hit_chance = naval
 	naval_invasion_capacity = naval
 	naval_invasion_penalty = naval
+	naval_light_gun_hit_chance_factor = naval
 	naval_mine_hit_chance = naval
 	naval_mines_damage_factor = naval
 	naval_mines_effect_reduction = naval
@@ -638,6 +730,8 @@ modifiers = {
 	naval_speed_factor = naval
 	naval_strike = naval
 	naval_torpedo_cooldown_factor = naval
+	naval_torpedo_damage_reduction_factor = naval
+	naval_torpedo_enemy_critical_chance_factor = naval
 	naval_torpedo_hit_chance_factor = naval
 	naval_torpedo_reveal_chance_factor = naval
 	naval_torpedo_screen_penetration_factor = naval
@@ -677,18 +771,24 @@ modifiers = {
 	terrain_trait_xp_gain_factor = naval
 	transport_capacity = naval
 
-	# peace
+  # peace
 	annex_cost_factor = peace
+	peace_score_ratio_transferred_to_overlord = peace
+	peace_score_ratio_transferred_to_players = peace
 	puppet_cost_factor = peace
 
-	# politics
+  # politics
+  	<ideology>_drift = politics
 	drift_defence_factor = politics
+	embargo_cost_factor = politics
+	embargo_threshold_factor = politics
 	guarantee_cost = politics
 	master_ideology_drift = politics
 	power_balance_weekly = politics
 
-	# state
+  # state
 	army_speed_factor_for_controller = state
+	coastal_bunker_effectiveness_factor = state
 	compliance_gain = state
 	compliance_growth = state
 	compliance_growth_on_our_occupied_states = state
@@ -700,9 +800,11 @@ modifiers = {
 	enemy_local_supplies = state
 	enemy_spy_negative_status_factor = state
 	enemy_truck_attrition_factor = state
+	equipment_capture_factor_for_controller = state
 	equipment_capture_for_controller = state
 	intel_network_gain = state
 	intel_network_gain_factor = state
+	land_bunker_effectiveness_factor = state
 	local_building_slots = state
 	local_building_slots_factor = state
 	local_factories = state
@@ -743,7 +845,7 @@ modifiers = {
 	truck_attrition = state
 	truck_attrition_factor = state
 
-	# unit_leader
+  # unit_leader
 	amphibious_invasion = unit_leader
 	amphibious_invasion_defence = unit_leader
 	army_leader_cost_factor = unit_leader
@@ -754,6 +856,7 @@ modifiers = {
 	army_leader_start_planning_level = unit_leader
 	cannot_use_abilities = unit_leader
 	carrier_capacity_penalty_reduction = unit_leader
+	carrier_sortie_hours_delay = unit_leader
 	carrier_traffic = unit_leader
 	convoy_escort_efficiency = unit_leader
 	convoy_raiding_efficiency_factor = unit_leader
@@ -794,9 +897,11 @@ modifiers = {
 	naval_enemy_retreat_chance = unit_leader
 	naval_has_potf_in_combat_attack = unit_leader
 	naval_has_potf_in_combat_defense = unit_leader
+	naval_heavy_gun_hit_chance_factor = unit_leader
 	naval_hit_chance = unit_leader
 	naval_invasion_penalty = unit_leader
 	naval_invasion_prep_speed = unit_leader
+	naval_light_gun_hit_chance_factor = unit_leader
 	naval_morale = unit_leader
 	naval_morale_factor = unit_leader
 	naval_retreat_chance = unit_leader
@@ -806,6 +911,8 @@ modifiers = {
 	naval_speed_factor = unit_leader
 	naval_strike = unit_leader
 	naval_torpedo_cooldown_factor = unit_leader
+	naval_torpedo_damage_reduction_factor = unit_leader
+	naval_torpedo_enemy_critical_chance_factor = unit_leader
 	naval_torpedo_hit_chance_factor = unit_leader
 	naval_torpedo_reveal_chance_factor = unit_leader
 	naval_torpedo_screen_penetration_factor = unit_leader
@@ -842,6 +949,7 @@ modifiers = {
 	paradrop_organization_factor = unit_leader
 	paratrooper_aa_defense = unit_leader
 	paratrooper_count_per_plane = unit_leader
+	paratrooper_weight_factor = unit_leader
 	port_strike = unit_leader
 	positioning = unit_leader
 	promote_cost_factor = unit_leader
@@ -859,13 +967,17 @@ modifiers = {
 	unit_leader_as_advisor_cp_cost_factor = unit_leader
 	wounded_chance_factor = unit_leader
 
-	# war_production
+  # war_production
+	cic_construction_boost = war_production
+	cic_construction_boost_factor = war_production
 	civilian_factory_use = war_production
 	conscription = war_production
 	conscription_factor = war_production
+	consumer_goods_expected_value = war_production
 	consumer_goods_factor = war_production
 	conversion_cost_civ_to_mil_factor = war_production
 	conversion_cost_mil_to_civ_factor = war_production
+	enemy_local_supplies = war_production
 	equipment_conversion_speed = war_production
 	exiled_government_weekly_manpower = war_production
 	faction_trade_opinion_factor = war_production
@@ -888,6 +1000,15 @@ modifiers = {
 	local_supplies = war_production
 	local_supplies_for_controller = war_production
 	min_export = war_production
+	military_industrial_organization_design_team_assign_cost = war_production
+	military_industrial_organization_design_team_change_cost = war_production
+	military_industrial_organization_funds_gain = war_production
+	military_industrial_organization_industrial_manufacturer_assign_cost = war_production
+	military_industrial_organization_policy_cooldown = war_production
+	military_industrial_organization_policy_cost = war_production
+	military_industrial_organization_research_bonus = war_production
+	military_industrial_organization_size_up_requirement = war_production
+	military_industrial_organization_task_capacity = war_production
 	minimum_training_level = war_production
 	mobilization_speed = war_production
 	monthly_population = war_production
@@ -908,7 +1029,7 @@ modifiers = {
 	weekly_manpower = war_production
 
 
-	### THE FOLLOWING MODIFERS DO NOT PRESENT IN MD DOC (NSB patch)
+  ### THE FOLLOWING MODIFERS DO NOT PRESENT IN MD DOC (NSB patch)
 
 	air_advisor_cost_factor = country
 	air_advisor_cost_factor = country
@@ -1014,4 +1135,1106 @@ modifiers = {
 	military_industrial_organization_funds_gain = military_industrial_organization
 	military_industrial_organization_policy_cost = military_industrial_organization
 	military_industrial_organization_policy_cooldown = military_industrial_organization
+}
+
+### These arrays are used in variables (modifier@modifier, unit_modifier@modifier and leader_modifier@modifier), they are autogenerated by .py file in tests. Don't edit manualy
+enums = {
+	enum[general_modifiers_enum] = {
+		annex_cost_factor
+		army_armor_attack_factor
+		army_armor_speed_factor
+		army_artillery_attack_factor
+		army_attack_against_major_factor
+		army_attack_against_minor_factor
+		army_attack_factor
+		army_core_attack_factor
+		army_infantry_attack_factor
+		army_morale
+		army_morale_factor
+		army_org
+		army_org_factor
+		attrition
+		attrition_for_controller
+		breakthrough_factor
+		carrier_capacity_penalty_reduction
+		carrier_traffic
+		carrier_sortie_hours_delay
+		cavalry_attack_factor
+		combat_width_factor
+		convoy_raiding_efficiency_factor
+		coordination_bonus
+		decryption
+		decryption_factor
+		enemy_attrition
+		enemy_declare_war_tension
+		enemy_justify_war_goal_time
+		fighter_sortie_efficiency
+		ground_attack
+		ground_attack_factor
+		heat_attrition
+		heat_attrition_factor
+		justify_war_goal_time
+		justify_war_goal_when_in_major_war_time
+		land_night_attack
+		max_planning
+		max_planning_factor
+		max_training
+		mechanized_attack_factor
+		motorized_attack_factor
+		naval_critical_score_chance_factor
+		naval_damage_factor
+		naval_enemy_fleet_size_ratio_penalty_factor
+		naval_enemy_positioning_in_initial_attack
+		naval_has_potf_in_combat_attack
+		naval_has_potf_in_combat_defense
+		naval_heavy_gun_hit_chance_factor
+		naval_hit_chance
+		naval_invasion_planning_bonus_speed
+		naval_light_gun_hit_chance_factor
+		naval_night_attack
+		naval_strike
+		naval_torpedo_cooldown_factor
+		naval_torpedo_hit_chance_factor
+		naval_torpedo_screen_penetration_factor
+		navy_capital_ship_attack_factor
+		navy_carrier_air_agility_factor
+		navy_carrier_air_attack_factor
+		navy_carrier_air_targetting_factor
+		navy_screen_attack_factor
+		navy_submarine_attack_factor
+		no_supply_grace
+		offence
+		org_loss_when_moving
+		out_of_supply_factor
+		planning_speed
+		pocket_penalty
+		port_strike
+		rocket_attack_factor
+		sortie_efficiency
+		special_forces_attack_factor
+		special_forces_no_supply_grace
+		special_forces_out_of_supply_factor
+		strike_force_movement_org_loss
+		submarine_attack
+		supply_combat_penalties_on_core_factor
+		supply_consumption_factor
+		training_time_factor
+		winter_attrition
+		winter_attrition_factor
+		ai_badass_factor
+		ai_call_ally_desire_factor
+		ai_desired_divisions_factor
+		ai_focus_aggressive_factor
+		ai_focus_aviation_factor
+		ai_focus_defense_factor
+		ai_focus_military_advancements_factor
+		ai_focus_military_equipment_factor
+		ai_focus_naval_air_factor
+		ai_focus_naval_factor
+		ai_focus_peaceful_factor
+		ai_focus_war_production_factor
+		ai_get_ally_desire_factor
+		ai_join_ally_desire_factor
+		ai_license_acceptance
+		ace_effectiveness_factor
+		air_accidents
+		air_accidents_factor
+		air_ace_bonuses_factor
+		air_ace_generation_chance_factor
+		air_advisor_cost_factor
+		air_agility_factor
+		air_attack_factor
+		air_bombing_targetting
+		air_carrier_night_penalty_reduction_factor
+		air_cas_efficiency
+		air_cas_present_factor
+		air_close_air_support_org_damage_factor
+		air_defence_factor
+		air_detection
+		air_escort_efficiency
+		air_fuel_consumption_factor
+		air_home_defence_factor
+		air_intercept_efficiency
+		air_interception_detect_factor
+		air_manpower_requirement_factor
+		air_maximum_speed_factor
+		air_mission_efficiency
+		air_mission_xp_gain_factor
+		air_nav_efficiency
+		air_night_penalty
+		air_power_projection_factor
+		air_range_factor
+		air_strategic_bomber_bombing_factor
+		air_strategic_bomber_defence_factor
+		air_strategic_bomber_night_penalty
+		air_superiority_detect_factor
+		air_superiority_efficiency
+		air_training_xp_gain_factor
+		air_untrained_pilots_penalty_factor
+		air_weather_penalty
+		air_wing_xp_loss_when_killed_factor
+		army_bonus_air_superiority_factor
+		carrier_night_traffic
+		enemy_army_bonus_air_superiority_factor
+		experience_gain_air
+		experience_gain_air_factor
+		ground_attack
+		ground_attack_factor
+		mines_planting_by_air_factor
+		mines_sweeping_by_air_factor
+		modifier_enemy_port_superiority_limit
+		naval_strike_agility_factor
+		naval_strike_attack_factor
+		naval_strike_targetting_factor
+		navy_weather_penalty
+		strategic_bomb_visibility
+		ground_attack_factor
+		paratrooper_aa_defense
+		autonomy_gain
+		autonomy_gain_global_factor
+		autonomy_gain_ll_to_overlord
+		autonomy_gain_ll_to_overlord_factor
+		autonomy_gain_ll_to_subject
+		autonomy_gain_ll_to_subject_factor
+		autonomy_gain_trade
+		autonomy_gain_trade_factor
+		autonomy_gain_warscore
+		autonomy_gain_warscore_factor
+		autonomy_manpower_share
+		can_master_build_for_us
+		cic_to_overlord_factor
+		extra_trade_to_overlord_factor
+		license_subject_master_purchase_cost
+		master_build_autonomy_factor
+		mic_to_overlord_factor
+		overlord_trade_cost_factor
+		subjects_autonomy_gain
+		additional_brigade_column_size
+		agency_upgrade_time
+		air_doctrine_cost_factor
+		air_equipment_upgrade_xp_cost
+		air_volunteer_cap
+		airforce_intel_to_others
+		army_intel_to_others
+		assign_army_leader_cp_cost
+		assign_navy_leader_cp_cost
+		base_fuel_gain
+		base_fuel_gain_factor
+		choose_preferred_tactics_cost
+		cic_to_target_factor
+		civil_war_involvement_tension
+		civilian_factory_use
+		civilian_intel_to_others
+		coastal_bunker_effectiveness_factor
+		command_abilities_cost_factor
+		command_power_gain
+		command_power_gain_mult
+		compliance_gain
+		compliance_growth
+		compliance_growth_on_our_occupied_states
+		conscription
+		conscription_factor
+		cic_construction_boost
+		cic_construction_boost_factor
+		consumer_goods_factor
+		consumer_goods_expected_value
+		conversion_cost_civ_to_mil_factor
+		conversion_cost_mil_to_civ_factor
+		critical_receive_chance
+		decryption
+		decryption_factor
+		defensive_war_stability_factor
+		disabled_ideas
+		encryption
+		encryption_factor
+		enemy_declare_war_tension
+		enemy_justify_war_goal_time
+		enemy_operative_capture_chance_factor
+		enemy_operative_detection_chance
+		enemy_operative_detection_chance_factor
+		enemy_operative_detection_chance_factor_over_occupied_tag
+		enemy_operative_detection_chance_over_occupied_tag
+		enemy_operative_forced_into_hiding_time_factor
+		enemy_operative_harmed_time_factor
+		enemy_operative_intel_extraction_rate
+		enemy_spy_negative_status_factor
+		embargo_cost_factor
+		embargo_threshold_factor
+		equipment_capture
+		equipment_capture_factor
+		equipment_conversion_speed
+		equipment_upgrade_xp_cost
+		exiled_government_weekly_manpower
+		experience_loss_factor
+		extra_trade_to_target_factor
+		faction_trade_opinion_factor
+		female_divisional_commander_chance
+		female_random_admiral_chance
+		female_random_army_leader_chance
+		female_random_country_leader_chance
+		female_random_operative_chance
+		field_officer_promotion_penalty
+		floating_harbor_duration
+		floating_harbor_range
+		floating_harbor_supply
+		forced_surrender_limit
+		foreign_subversive_activites
+		fuel_cost
+		fuel_gain
+		fuel_gain_factor
+		fuel_gain_factor_from_states
+		fuel_gain_from_states
+		generate_wargoal_tension
+		generate_wargoal_tension_against
+		global_building_slots
+		global_building_slots_factor
+		grant_medal_cost_factor
+		guarantee_cost
+		guarantee_tension
+		improve_relations_maintain_cost_factor
+		industrial_capacity_dockyard
+		industrial_capacity_factory
+		industry_air_damage_factor
+		industry_free_repair_factor
+		industry_repair_factor
+		initiative_factor
+		intel_from_combat_factor
+		intel_network_gain
+		intel_network_gain_factor
+		join_faction_tension
+		justify_war_goal_time
+		justify_war_goal_when_in_major_war_time
+		land_bunker_effectiveness_factor
+		land_doctrine_cost_factor
+		land_equipment_upgrade_xp_cost
+		land_reinforce_rate
+		lend_lease_tension
+		lend_lease_tension_with_overlord
+		license_air_purchase_cost
+		license_anti_tank_eq_cost_factor
+		license_anti_tank_eq_production_speed_factor
+		license_anti_tank_eq_tech_difference_speed_factor
+		license_armor_purchase_cost
+		license_artillery_eq_cost_factor
+		license_artillery_eq_production_speed_factor
+		license_artillery_eq_tech_difference_speed_factor
+		license_infantry_eq_cost_factor
+		license_infantry_eq_production_speed_factor
+		license_infantry_eq_tech_difference_speed_factor
+		license_infantry_purchase_cost
+		license_light_tank_eq_cost_factor
+		license_light_tank_eq_production_speed_factor
+		license_light_tank_eq_tech_difference_speed_factor
+		license_naval_purchase_cost
+		license_production_speed
+		license_purchase_cost
+		license_tech_difference_speed
+		line_change_production_efficiency_factor
+		max_command_power
+		max_command_power_mult
+		max_fuel
+		max_fuel_building
+		max_fuel_factor
+		max_surrender_limit_offset
+		mic_to_target_factor
+		min_export
+		minimum_training_level
+		modifier_enemy_port_superiority_limit
+		monthly_population
+		naval_doctrine_cost_factor
+		naval_equipment_upgrade_xp_cost
+		navy_intel_to_others
+		navy_refit_ic_cost
+		navy_refit_speed
+		no_compliance_gain
+		nuclear_production
+		nuclear_production_factor
+		occupation_cost
+		offensive_war_stability_factor
+		opinion_gain_monthly
+		opinion_gain_monthly_factor
+		opinion_gain_monthly_same_ideology
+		opinion_gain_monthly_same_ideology_factor
+		own_operative_capture_chance_factor
+		own_operative_detection_chance
+		own_operative_detection_chance_factor
+		own_operative_forced_into_hiding_time_factor
+		own_operative_harmed_time_factor
+		own_operative_intel_extraction_rate
+		paradrop_organization_factor
+		paratrooper_aa_defense
+		paratrooper_weight_factor
+		party_popularity_stability_factor
+		political_power_cost
+		political_power_factor
+		political_power_gain
+		power_balance_daily
+		power_balance_weekly
+		production_factory_efficiency_gain_factor
+		production_factory_max_efficiency_factor
+		production_factory_start_efficiency_factor
+		production_lack_of_resource_penalty_factor
+		production_oil_factor
+		production_speed_buildings_factor
+		railway_gun_bombardment_factor
+		refit_ic_cost
+		refit_speed
+		repair_speed_factor
+		request_lease_tension
+		required_garrison_factor
+		research_sharing_per_country_bonus
+		research_sharing_per_country_bonus_factor
+		research_speed_factor
+		resistance_activity
+		resistance_damage_to_garrison
+		resistance_damage_to_garrison_on_our_occupied_states
+		resistance_decay
+		resistance_decay_on_our_occupied_states
+		resistance_garrison_penetration_chance
+		resistance_growth
+		resistance_growth_on_our_occupied_states
+		resistance_target
+		resistance_target_on_our_occupied_states
+		screening_without_screens
+		send_volunteer_divisions_required
+		send_volunteer_factor
+		send_volunteer_size
+		send_volunteers_tension
+		stability_factor
+		stability_weekly
+		stability_weekly_factor
+		starting_compliance
+		subversive_activites_upkeep
+		supply_factor
+		supply_node_range
+		surrender_limit
+		tech_air_damage_factor
+		terrain_trait_xp_gain_factor
+		trade_cost_for_target_factor
+		trade_opinion_factor
+		truck_attrition
+		truck_attrition_factor
+		unit_leader_as_advisor_cp_cost_factor
+		war_stability_factor
+		war_support_factor
+		war_support_weekly
+		war_support_weekly_factor
+		weekly_manpower
+		weekly_casualties_war_support
+		weekly_convoys_war_support
+		weekly_bombing_war_support
+		air_spirit_category_type_cost_factor
+		land_spirit_category_type_cost_factor
+		army_spirit_category_type_cost_factor
+		navy_spirit_category_type_cost_factor
+		armor_factor
+		army_armor_defence_factor
+		army_artillery_defence_factor
+		army_breakthrough_against_major_factor
+		army_breakthrough_against_minor_factor
+		army_core_defence_factor
+		army_defence_against_major_factor
+		army_defence_against_minor_factor
+		army_defence_factor
+		army_infantry_defence_factor
+		army_morale
+		army_morale_factor
+		army_org
+		army_org_factor
+		attrition
+		attrition_for_controller
+		cavalry_defence_factor
+		convoy_escort_efficiency
+		convoy_retreat_speed
+		defence
+		dig_in_speed
+		dig_in_speed_factor
+		dont_lose_dig_in_on_attack
+		encryption
+		encryption_factor
+		enemy_attrition
+		guarantee_tension
+		local_intel_to_enemies
+		max_dig_in
+		max_dig_in_factor
+		mechanized_defence_factor
+		motorized_defence_factor
+		naval_retreat_chance
+		naval_retreat_chance_after_initial_combat
+		naval_retreat_speed
+		naval_retreat_speed_after_initial_combat
+		naval_torpedo_damage_reduction_factor
+		naval_torpedo_enemy_critical_chance_factor
+		navy_capital_ship_defence_factor
+		navy_screen_defence_factor
+		navy_submarine_defence_factor
+		navy_submarine_detection_factor
+		puppet_cost_factor
+		recon_factor
+		recon_factor_while_entrenched
+		send_volunteers_tension
+		special_forces_defence_factor
+		static_anti_air_damage_factor
+		static_anti_air_hit_chance_factor
+		sub_retreat_speed
+		supply_consumption_factor
+		terrain_penalty_reduction
+		dockyard_donations
+		exile_manpower_factor
+		industrial_factory_donations
+		legitimacy_daily
+		legitimacy_gain_factor
+		military_factory_donations
+		targeted_legitimacy_daily
+		airforce_intel_decryption_bonus
+		airforce_intel_factor
+		army_intel_decryption_bonus
+		army_intel_factor
+		boost_ideology_mission_factor
+		boost_resistance_factor
+		civilian_intel_decryption_bonus
+		civilian_intel_factor
+		commando_trait_chance_factor
+		control_trade_mission_factor
+		crypto_department_enabled
+		crypto_strength
+		decryption_power
+		decryption_power_factor
+		defense_impact_on_blueprint_stealing
+		diplomatic_pressure_mission_factor
+		enemy_operative_recruitment_chance
+		female_random_operative_chance
+		intel_from_operatives_factor
+		intel_network_gain
+		intel_network_gain_factor
+		intelligence_agency_defense
+		navy_intel_decryption_bonus
+		navy_intel_factor
+		new_operative_slot_bonus
+		occupied_operative_recruitment_chance
+		operative_death_on_capture_chance
+		operative_slot
+		propaganda_mission_factor
+		root_out_resistance_effectiveness_factor
+		target_sabotage_factor
+		experience_gain_army
+		experience_gain_army_factor
+		experience_gain_army_unit
+		experience_gain_army_unit_factor
+		experience_gain_factor
+		experience_gain_navy
+		experience_gain_navy_factor
+		experience_gain_navy_unit
+		experience_gain_navy_unit_factor
+		research_speed_factor
+		amphibious_invasion
+		amphibious_invasion_defence
+		assign_navy_leader_cp_cost
+		carrier_capacity_penalty_reduction
+		carrier_sortie_hours_delay
+		carrier_traffic
+		convoy_escort_efficiency
+		convoy_raiding_efficiency_factor
+		convoy_retreat_speed
+		critical_receive_chance
+		experience_gain_navy
+		experience_gain_navy_factor
+		experience_gain_navy_unit
+		experience_gain_navy_unit_factor
+		female_random_admiral_chance
+		fighter_sortie_efficiency
+		invasion_preparation
+		mines_planting_by_fleets_factor
+		mines_sweeping_by_fleets_factor
+		naval_accidents_chance
+		naval_attrition
+		naval_coordination
+		naval_critical_effect_factor
+		naval_critical_score_chance_factor
+		naval_damage_factor
+		naval_defense_factor
+		naval_detection
+		naval_enemy_fleet_size_ratio_penalty_factor
+		naval_enemy_positioning_in_initial_attack
+		naval_enemy_retreat_chance
+		naval_has_potf_in_combat_attack
+		naval_has_potf_in_combat_defense
+		naval_heavy_gun_hit_chance_factor
+		naval_hit_chance
+		naval_invasion_capacity
+		naval_invasion_penalty
+		naval_light_gun_hit_chance_factor
+		naval_mine_hit_chance
+		naval_mines_damage_factor
+		naval_mines_effect_reduction
+		naval_morale
+		naval_morale_factor
+		naval_night_attack
+		naval_retreat_chance
+		naval_retreat_chance_after_initial_combat
+		naval_retreat_speed
+		naval_retreat_speed_after_initial_combat
+		naval_speed_factor
+		naval_strike
+		naval_torpedo_cooldown_factor
+		naval_torpedo_damage_reduction_factor
+		naval_torpedo_enemy_critical_chance_factor
+		naval_torpedo_hit_chance_factor
+		naval_torpedo_reveal_chance_factor
+		naval_torpedo_screen_penetration_factor
+		navy_advisor_cost_factor
+		navy_anti_air_attack
+		navy_anti_air_attack_factor
+		navy_capital_ship_attack_factor
+		navy_capital_ship_defence_factor
+		navy_carrier_air_agility_factor
+		navy_carrier_air_attack_factor
+		navy_carrier_air_targetting_factor
+		navy_casualty_on_hit
+		navy_casualty_on_sink
+		navy_fuel_consumption_factor
+		navy_max_range
+		navy_max_range_factor
+		navy_org
+		navy_org_factor
+		navy_screen_attack_factor
+		navy_screen_defence_factor
+		navy_submarine_attack_factor
+		navy_submarine_defence_factor
+		navy_submarine_detection_factor
+		navy_visibility
+		night_spotting_chance
+		port_strike
+		positioning
+		repair_speed_factor
+		screening_efficiency
+		screening_without_screens
+		ships_at_battle_start
+		sortie_efficiency
+		spotting_chance
+		strike_force_movement_org_loss
+		sub_retreat_speed
+		submarine_attack
+		terrain_trait_xp_gain_factor
+		transport_capacity
+		annex_cost_factor
+		peace_score_ratio_transferred_to_overlord
+		peace_score_ratio_transferred_to_players
+		puppet_cost_factor
+		drift_defence_factor
+		embargo_cost_factor
+		embargo_threshold_factor
+		guarantee_cost
+		master_ideology_drift
+		power_balance_weekly
+		army_speed_factor_for_controller
+		coastal_bunker_effectiveness_factor
+		compliance_gain
+		compliance_growth
+		compliance_growth_on_our_occupied_states
+		disable_strategic_redeployment
+		disable_strategic_redeployment_for_controller
+		enemy_army_speed_factor
+		enemy_attrition
+		enemy_intel_network_gain_factor_over_occupied_tag
+		enemy_local_supplies
+		enemy_spy_negative_status_factor
+		enemy_truck_attrition_factor
+		equipment_capture_factor_for_controller
+		equipment_capture_for_controller
+		intel_network_gain
+		intel_network_gain_factor
+		land_bunker_effectiveness_factor
+		local_building_slots
+		local_building_slots_factor
+		local_factories
+		local_factory_sabotage
+		local_intel_to_enemies
+		local_manpower
+		local_non_core_manpower
+		local_non_core_supply_impact_factor
+		local_resources
+		local_resources_factor
+		local_supplies
+		local_supplies_for_controller
+		local_supply_impact_factor
+		mobilization_speed
+		no_compliance_gain
+		non_core_manpower
+		recruitable_population
+		recruitable_population_factor
+		required_garrison_factor
+		resistance_activity
+		resistance_damage_to_garrison
+		resistance_damage_to_garrison_on_our_occupied_states
+		resistance_decay
+		resistance_decay_on_our_occupied_states
+		resistance_garrison_penetration_chance
+		resistance_growth
+		resistance_growth_on_our_occupied_states
+		resistance_target
+		resistance_target_on_our_occupied_states
+		starting_compliance
+		state_production_speed_buildings_factor
+		state_repair_speed_air_base_factor
+		state_repair_speed_arms_factory_factor
+		state_repair_speed_industrial_complex_factor
+		state_repair_speed_infrastructure_factor
+		state_resources_factor
+		supply_factor
+		truck_attrition
+		truck_attrition_factor
+		cic_construction_boost
+		cic_construction_boost_factor
+		civilian_factory_use
+		conscription
+		conscription_factor
+		consumer_goods_expected_value
+		consumer_goods_factor
+		conversion_cost_civ_to_mil_factor
+		conversion_cost_mil_to_civ_factor
+		enemy_local_supplies
+		equipment_conversion_speed
+		exiled_government_weekly_manpower
+		faction_trade_opinion_factor
+		global_building_slots
+		global_building_slots_factor
+		industrial_capacity_dockyard
+		industrial_capacity_factory
+		industry_air_damage_factor
+		industry_free_repair_factor
+		industry_repair_factor
+		land_reinforce_rate
+		line_change_production_efficiency_factor
+		local_building_slots
+		local_building_slots_factor
+		local_factories
+		local_manpower
+		local_non_core_manpower
+		local_resources
+		local_resources_factor
+		local_supplies
+		local_supplies_for_controller
+		min_export
+		military_industrial_organization_design_team_assign_cost
+		military_industrial_organization_design_team_change_cost
+		military_industrial_organization_funds_gain
+		military_industrial_organization_industrial_manufacturer_assign_cost
+		military_industrial_organization_policy_cooldown
+		military_industrial_organization_policy_cost
+		military_industrial_organization_research_bonus
+		military_industrial_organization_size_up_requirement
+		military_industrial_organization_task_capacity
+		minimum_training_level
+		mobilization_speed
+		monthly_population
+		non_core_manpower
+		production_factory_efficiency_gain_factor
+		production_factory_max_efficiency_factor
+		production_factory_start_efficiency_factor
+		production_lack_of_resource_penalty_factor
+		production_oil_factor
+		production_speed_buildings_factor
+		special_forces_training_time_factor
+		state_production_speed_buildings_factor
+		state_resources_factor
+		tech_air_damage_factor
+		trade_opinion_factor
+		training_time_army
+		training_time_army_factor
+		weekly_manpower
+		air_advisor_cost_factor
+		air_advisor_cost_factor
+		air_carrier_night_penalty_reduction_factor
+		air_chief_cost_factor
+		air_doctrine_cost_factor
+		air_home_defence_factor
+		air_power_projection_factor
+		air_untrained_pilots_penalty_factor
+		air_wing_xp_loss_when_killed_factor
+		aircraft_manufacturer_cost_factor
+		army_attack_against_major_factor
+		army_attack_speed_factor
+		army_chief_cost_factor
+		army_strength_factor
+		army_strength_factor
+		choose_preferred_tactics_cost
+		command_abilities_cost_factor
+		command_cap
+		coordination_bonus
+		economy_cost_factor
+		exiled_government_weekly_manpower
+		high_command_cost_factor
+		industrial_concern_cost_factor
+		intel_from_combat_factor
+		land_doctrine_cost_factor
+		materiel_manufacturer_cost_factor
+		materiel_manufacturer_cost_factor
+		mobilization_laws_cost_factor
+		naval_doctrine_cost_factor
+		naval_invasion_planning_bonus_speed
+		naval_manufacturer_cost_factor
+		naval_night_attack
+		naval_retreat_chance_after_initial_combat
+		naval_retreat_speed_after_initial_combat
+		navy_chief_cost_factor
+		navy_weather_penalty
+		night_spotting_chance
+		org_loss_at_low_org_factor
+		party_popularity_stability_factor
+		political_advisor_cost_factor
+		railway_gun_bombardment_factor
+		screening_without_screens
+		supply_combat_penalties_on_core_factor
+		tank_manufacturer_cost_factor
+		terrain_trait_xp_gain_factor
+		theorist_cost_factor
+		trade_laws_cost_factor
+		unit_leader_as_advisor_cp_cost_factor
+		cat_mobile_warfare_cost_factor
+		cat_superior_firepower_cost_factor
+		cat_grand_battle_plan_cost_factor
+		cat_mass_assault_cost_factor
+		cat_strategic_destruction_cost_factor
+		cat_battlefield_support_cost_factor
+		cat_operational_integrity_cost_factor
+		cat_base_strike_cost_factor
+		cat_fleet_in_being_cost_factor
+		cat_trade_interdiction_cost_factor
+		army_leader_start_level
+		navy_leader_start_level
+		army_leader_cost_factor
+		navy_leader_cost_factor
+		military_leader_cost_factor
+		army_leader_start_attack_level
+		army_leader_start_defense_level
+		army_leader_start_logistics_level
+		army_leader_start_planning_level
+		navy_leader_start_attack_level
+		navy_leader_start_coordination_level
+		navy_leader_start_defense_level
+		navy_leader_start_maneuvering_level
+		army_attack_speed_factor
+		supply_factor
+		truck_attrition_factor
+		attrition_for_controller
+		enemy_operative_detection_chance
+		enemy_operative_detection_chance_over_occupied_tag
+		operation_risk
+		operation_cost
+		operation_outcome
+		<operation>_risk
+		<operation>_cost
+		<operation>_outcome
+		operation_infiltrate_risk
+		operation_infiltrate_cost
+		operation_infiltrate_outcome
+		operation_steal_tech_risk
+		operation_steal_tech_cost
+		operation_steal_tech_outcome
+		target_sabotage_risk
+		target_sabotage_cost
+		target_sabotage_outcome
+		military_industrial_organization_research_bonus
+		military_industrial_organization_design_team_assign_cost
+		military_industrial_organization_design_team_change_cost
+		military_industrial_organization_industrial_manufacturer_assign_cost
+		military_industrial_organization_task_capacity
+		military_industrial_organization_size_up_requirement
+		military_industrial_organization_funds_gain
+		military_industrial_organization_policy_cost
+		military_industrial_organization_policy_cooldown
+	}
+	enum[leader_modifiers_enum] = {
+		amphibious_invasion
+		amphibious_invasion_defence
+		army_leader_cost_factor
+		army_leader_start_attack_level
+		army_leader_start_defense_level
+		army_leader_start_level
+		army_leader_start_logistics_level
+		army_leader_start_planning_level
+		cannot_use_abilities
+		carrier_capacity_penalty_reduction
+		carrier_sortie_hours_delay
+		carrier_traffic
+		convoy_escort_efficiency
+		convoy_raiding_efficiency_factor
+		convoy_retreat_speed
+		critical_receive_chance
+		enemy_operative_capture_chance_factor
+		enemy_operative_detection_chance
+		enemy_operative_detection_chance_factor
+		enemy_operative_detection_chance_factor_over_occupied_tag
+		enemy_operative_detection_chance_over_occupied_tag
+		enemy_operative_forced_into_hiding_time_factor
+		enemy_operative_harmed_time_factor
+		enemy_operative_intel_extraction_rate
+		exiled_divisions_attack_factor
+		exiled_divisions_defense_factor
+		experience_gain_factor
+		experience_gain_navy
+		experience_gain_navy_factor
+		experience_gain_navy_unit
+		experience_gain_navy_unit_factor
+		fighter_sortie_efficiency
+		fortification_collateral_chance
+		fortification_damage
+		initiative_factor
+		intel_network_gain
+		intel_network_gain_factor
+		invasion_preparation
+		max_army_group_size
+		military_leader_cost_factor
+		naval_coordination
+		naval_critical_effect_factor
+		naval_critical_score_chance_factor
+		naval_damage_factor
+		naval_defense_factor
+		naval_detection
+		naval_enemy_fleet_size_ratio_penalty_factor
+		naval_enemy_positioning_in_initial_attack
+		naval_enemy_retreat_chance
+		naval_has_potf_in_combat_attack
+		naval_has_potf_in_combat_defense
+		naval_heavy_gun_hit_chance_factor
+		naval_hit_chance
+		naval_invasion_penalty
+		naval_invasion_prep_speed
+		naval_light_gun_hit_chance_factor
+		naval_morale
+		naval_morale_factor
+		naval_retreat_chance
+		naval_retreat_chance_after_initial_combat
+		naval_retreat_speed
+		naval_retreat_speed_after_initial_combat
+		naval_speed_factor
+		naval_strike
+		naval_torpedo_cooldown_factor
+		naval_torpedo_damage_reduction_factor
+		naval_torpedo_enemy_critical_chance_factor
+		naval_torpedo_hit_chance_factor
+		naval_torpedo_reveal_chance_factor
+		naval_torpedo_screen_penetration_factor
+		navy_anti_air_attack
+		navy_anti_air_attack_factor
+		navy_capital_ship_attack_factor
+		navy_capital_ship_defence_factor
+		navy_carrier_air_agility_factor
+		navy_carrier_air_attack_factor
+		navy_carrier_air_targetting_factor
+		navy_leader_cost_factor
+		navy_leader_start_attack_level
+		navy_leader_start_coordination_level
+		navy_leader_start_defense_level
+		navy_leader_start_level
+		navy_leader_start_maneuvering_level
+		navy_max_range
+		navy_max_range_factor
+		navy_org
+		navy_org_factor
+		navy_screen_attack_factor
+		navy_screen_defence_factor
+		navy_submarine_attack_factor
+		navy_submarine_defence_factor
+		navy_submarine_detection_factor
+		own_exiled_divisions_attack_factor
+		own_exiled_divisions_defense_factor
+		own_operative_capture_chance_factor
+		own_operative_detection_chance
+		own_operative_detection_chance_factor
+		own_operative_forced_into_hiding_time_factor
+		own_operative_harmed_time_factor
+		own_operative_intel_extraction_rate
+		paradrop_organization_factor
+		paratrooper_aa_defense
+		paratrooper_count_per_plane
+		paratrooper_weight_factor
+		port_strike
+		positioning
+		promote_cost_factor
+		reassignment_duration_factor
+		river_crossing_factor
+		screening_efficiency
+		ships_at_battle_start
+		sickness_chance
+		skill_bonus_factor
+		sortie_efficiency
+		spotting_chance
+		strike_force_movement_org_loss
+		sub_retreat_speed
+		submarine_attack
+		unit_leader_as_advisor_cp_cost_factor
+		wounded_chance_factor
+	}
+	enum[unit_modifiers_enum] = {
+		acclimatization_cold_climate_gain_factor
+		acclimatization_hot_climate_gain_factor
+		air_superiority_bonus_in_combat
+		armor_factor
+		army_advisor_cost_factor
+		army_armor_attack_factor
+		army_armor_defence_factor
+		army_armor_speed_factor
+		army_artillery_attack_factor
+		army_artillery_defence_factor
+		army_attack_against_major_factor
+		army_attack_against_minor_factor
+		army_attack_factor
+		army_attack_speed_factor
+		army_breakthrough_against_major_factor
+		army_breakthrough_against_minor_factor
+		army_core_attack_factor
+		army_core_defence_factor
+		army_defence_against_major_factor
+		army_defence_against_minor_factor
+		army_defence_factor
+		army_fuel_capacity_factor
+		army_fuel_consumption_factor
+		army_infantry_attack_factor
+		army_infantry_defence_factor
+		army_morale
+		army_morale_factor
+		army_org
+		army_org_factor
+		army_org_regain
+		army_speed_factor
+		army_speed_factor_for_controller
+		army_strength_factor
+		assign_army_leader_cp_cost
+		attack_bonus_against
+		attack_bonus_against_cores
+		attrition
+		attrition_for_controller
+		breakthrough_bonus_against
+		breakthrough_factor
+		cas_damage_reduction
+		cavalry_attack_factor
+		cavalry_defence_factor
+		combat_width_factor
+		coastal_bunker_effectiveness_factor
+		command_abilities_cost_factor
+		command_power_gain
+		command_power_gain_mult
+		coordination_bonus
+		defence
+		defense_bonus_against
+		dig_in_speed
+		dig_in_speed_factor
+		disable_strategic_redeployment
+		disable_strategic_redeployment_for_controller
+		dont_lose_dig_in_on_attack
+		enemy_army_speed_factor
+		enemy_attrition
+		experience_gain_army
+		experience_gain_army_factor
+		experience_gain_army_unit
+		experience_gain_army_unit_factor
+		extra_marine_supply_grace
+		extra_paratrooper_supply_grace
+		female_random_army_leader_chance
+		heat_attrition
+		heat_attrition_factor
+		land_bunker_effectiveness_factor
+		land_night_attack
+		local_org_regain
+		marines_special_forces_contribution_factor
+		max_command_power
+		max_command_power_mult
+		max_commander_army_size
+		max_dig_in
+		max_dig_in_factor
+		max_planning
+		max_planning_factor
+		max_training
+		mechanized_attack_factor
+		mechanized_defence_factor
+		modifier_army_sub_unit_armored_car_attack_factor
+		modifier_army_sub_unit_armored_car_defence_factor
+		modifier_army_sub_unit_armored_car_max_org_factor
+		modifier_army_sub_unit_armored_car_recon_attack_factor
+		modifier_army_sub_unit_armored_car_recon_defence_factor
+		modifier_army_sub_unit_armored_car_recon_max_org_factor
+		modifier_army_sub_unit_armored_car_recon_speed_factor
+		modifier_army_sub_unit_armored_car_speed_factor
+		modifier_army_sub_unit_blackshirt_assault_battalion_attack_factor
+		modifier_army_sub_unit_blackshirt_assault_battalion_defence_factor
+		modifier_army_sub_unit_blackshirt_assault_battalion_max_org_factor
+		modifier_army_sub_unit_blackshirt_assault_battalion_speed_factor
+		modifier_army_sub_unit_camelry_attack_factor
+		modifier_army_sub_unit_camelry_defence_factor
+		modifier_army_sub_unit_camelry_speed_factor
+		modifier_army_sub_unit_category_special_forces_max_org_factor
+		modifier_army_sub_unit_cavalry_attack_factor
+		modifier_army_sub_unit_cavalry_defence_factor
+		modifier_army_sub_unit_cavalry_speed_factor
+		modifier_army_sub_unit_infantry_attack_factor
+		modifier_army_sub_unit_infantry_defence_factor
+		modifier_army_sub_unit_infantry_speed_factor
+		modifier_army_sub_unit_irregular_infantry_attack_factor
+		modifier_army_sub_unit_irregular_infantry_defence_factor
+		modifier_army_sub_unit_irregular_infantry_max_org_factor
+		modifier_army_sub_unit_irregular_infantry_speed_factor
+		modifier_army_sub_unit_light_tank_recon_attack_factor
+		modifier_army_sub_unit_light_tank_recon_defence_factor
+		modifier_army_sub_unit_light_tank_recon_max_org_factor
+		modifier_army_sub_unit_light_tank_recon_speed_factor
+		modifier_army_sub_unit_long_range_patrol_support_attack_factor
+		modifier_army_sub_unit_long_range_patrol_support_defence_factor
+		modifier_army_sub_unit_marines_attack_factor
+		modifier_army_sub_unit_marines_defence_factor
+		modifier_army_sub_unit_marines_max_org_factor
+		modifier_army_sub_unit_marines_speed_factor
+		modifier_army_sub_unit_military_police_attack_factor
+		modifier_army_sub_unit_military_police_defence_factor
+		modifier_army_sub_unit_military_police_max_org_factor
+		modifier_army_sub_unit_military_police_speed_factor
+		modifier_army_sub_unit_militia_attack_factor
+		modifier_army_sub_unit_militia_defence_factor
+		modifier_army_sub_unit_militia_max_org_factor
+		modifier_army_sub_unit_militia_org_recovery_cap_factor
+		modifier_army_sub_unit_militia_speed_factor
+		modifier_army_sub_unit_mountaineers_attack_factor
+		modifier_army_sub_unit_mountaineers_defence_factor
+		modifier_army_sub_unit_mountaineers_max_org_factor
+		modifier_army_sub_unit_mountaineers_speed_factor
+		modifier_army_sub_unit_paratrooper_attack_factor
+		modifier_army_sub_unit_paratrooper_defence_factor
+		modifier_army_sub_unit_paratrooper_max_org_factor
+		modifier_army_sub_unit_paratrooper_speed_factor
+		motorized_attack_factor
+		motorized_defence_factor
+		mountaineers_special_forces_contribution_factor
+		naval_invasion_planning_bonus_speed
+		no_supply_grace
+		offence
+		org_loss_at_low_org_factor
+		org_loss_when_moving
+		out_of_supply_factor
+		paratroopers_special_forces_contribution_factor
+		planning_speed
+		pocket_penalty
+		recon_factor
+		recon_factor_while_entrenched
+		rocket_attack_factor
+		shore_bombardment_bonus
+		special_forces_attack_factor
+		special_forces_cap
+		special_forces_cap_flat
+		special_forces_defence_factor
+		special_forces_min
+		special_forces_no_supply_grace
+		special_forces_out_of_supply_factor
+		special_forces_training_time_factor
+		supply_combat_penalties_on_core_factor
+		supply_consumption_factor
+		terrain_penalty_reduction
+		terrain_trait_xp_gain_factor
+		training_time_army
+		training_time_army_factor
+		training_time_factor
+		unit_upkeep_attrition_factor
+		winter_attrition
+		winter_attrition_factor
+	}
 }

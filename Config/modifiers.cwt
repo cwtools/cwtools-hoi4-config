@@ -290,6 +290,7 @@ modifiers = {
 	modifier_army_sub_unit_paratrooper_defence_factor = army
 	modifier_army_sub_unit_paratrooper_max_org_factor = army
 	modifier_army_sub_unit_paratrooper_speed_factor = army
+	module_<module>_design_cost_factor = army
 	motorized_attack_factor = army
 	motorized_defence_factor = army
 	mountaineers_special_forces_contribution_factor = army
@@ -347,6 +348,7 @@ modifiers = {
 	subjects_autonomy_gain = autonomy
 
   # country
+  	enum[equipment_bonus_type]_design_cost_factor = country
 	additional_brigade_column_size = country
 	agency_upgrade_time = country
 	air_doctrine_cost_factor = country
@@ -478,6 +480,7 @@ modifiers = {
 	min_export = country
 	minimum_training_level = country
 	modifier_enemy_port_superiority_limit = country
+	module_<module>_design_cost_factor = army
 	monthly_population = country
 	naval_doctrine_cost_factor = country
 	naval_equipment_upgrade_xp_cost = country
@@ -514,6 +517,7 @@ modifiers = {
 	production_lack_of_resource_penalty_factor = country
 	production_oil_factor = country
 	production_speed_buildings_factor = country
+	production_speed_<building>_factor = country
 	railway_gun_bombardment_factor = country
 	refit_ic_cost = country
 	refit_speed = country
@@ -694,6 +698,7 @@ modifiers = {
 	invasion_preparation = naval
 	mines_planting_by_fleets_factor = naval
 	mines_sweeping_by_fleets_factor = naval
+	module_<module>_design_cost_factor = army
 	naval_accidents_chance = naval
 	naval_attrition = naval
 	naval_coordination = naval
@@ -773,6 +778,7 @@ modifiers = {
 	puppet_cost_factor = peace
 
   # politics
+  	<ideology>_drift = politics
 	drift_defence_factor = politics
 	embargo_cost_factor = politics
 	embargo_threshold_factor = politics

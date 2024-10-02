@@ -1,4 +1,5 @@
 import json
+import re
 
 path_to_config = "Config\\modifiers.cwt"
 path_to_documentation = "Config\\script_documentation.json"
@@ -22,7 +23,7 @@ def check_missing_modifiers():
             modifiers_dict[modifier['name']] = modifier['categories']
         # Dynamic modifier
         elif "groupname" in modifier.keys():
-            pass
+            modifiers_dict[modifier['groupname']] = modifier['categories']
 
     # 2 Extract modifiers from config files
     with open(path_to_config, 'r') as text_file:
@@ -31,7 +32,30 @@ def check_missing_modifiers():
         # 3 Compare documentation and config
         for key, values in modifiers_dict.items():
             for value in values:
-                if f'{key} = {value}\n' not in config_file:
+                # Dynamic modifier
+                if "<" in key:
+                    # Modifier starts with the token
+                    if key[0] == '<':
+                        stripped_key = key[key.index('>')+1:]
+                        if f'{stripped_key} = {value}\n' not in config_file:
+                            results.append(f'{key} = {value}')
+                    # Modifier ends with the token
+                    elif key[-1] == '>':
+                        stripped_key = key[:key.index('<')]
+                        pattern = stripped_key + r'.*? = ' + value
+                        pattern_matches = re.findall(pattern, config_file)
+                        if pattern_matches == []:
+                            results.append(f'{key} = {value}')
+                    # Token is somewhere in the middle of the modifier
+                    else:
+                        splitted_key = key.split('<')
+                        key1 = splitted_key[0]
+                        key2 = splitted_key[1][splitted_key[1].index('>')+1:]
+                        pattern = key1 + r'.*?' + key2 + r' = ' + value
+                        pattern_matches = re.findall(pattern, config_file)
+                        if pattern_matches == []:
+                            results.append(f'{key} = {value}')
+                elif f'{key} = {value}\n' not in config_file:
                     results.append(f'{key} = {value}')
 
     # 4 Format the results

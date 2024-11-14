@@ -58,6 +58,8 @@ def check_missing_variables():
             print(f'- [] - {i}')
         raise Exception("There are variables in documentation file that are not present in .cwt files")
 
+    print("No missing variables found. Good job!")
+
 
 if __name__ == '__main__':
     check_missing_variables()

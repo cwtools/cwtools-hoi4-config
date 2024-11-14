@@ -179,9 +179,8 @@ alias[effect:add_equipment_subsidy] = {
         ## cardinality = ~1..inf
         alias_name[trigger] = alias_match_left[trigger]
     }
-    ### CWTools doesn't support verification of this trigger, be careful
     ## cardinality = 0..1
-    seller_trigger = scalar
+    seller_trigger = <scripted_trigger>
     ## cardinality = 0..1
     seller_tags = {
         ## cardinality = 0..inf

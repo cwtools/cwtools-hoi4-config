@@ -62,8 +62,14 @@ types = {
 			### All parent module slots will directly inherited with no modifications.
 			module_slots = inherit
 		}
+		subtype[railway_gun_archetype] = {
+			type = railway_gun
+		}
 		subtype[railway_gun] = {
-			archetype = railway_gun_equipment
+			type = railway_gun
+		}
+		subtype[railway_gun] = {
+			archetype = <equipment.railway_gun_archetype>
 		}
 	}
 	type[upgrade] = {
@@ -77,6 +83,9 @@ types = {
 		}
 		subtype[land_upgrade] = {
 			cost = land
+		}
+		subtype[railway_gun] = {
+			type = railway_gun
 		}
 	}
 	## type_key_filter <> limit
@@ -150,6 +159,8 @@ equipment = {
 	}
 	## cardinality = 0..1
 	supply_truck = bool
+	## cardinality = 0..1
+	max_military_factories = float
 
 	subtype[archetype_equip] = {
 		### GFX reference used to define equipment picture in land-lease.
@@ -252,7 +263,7 @@ equipment = {
 		family = <equipment.regular_equip>
 		## cardinality = 0..1
 		can_convert_from = {
-			## cardinality = 1..inf
+			## cardinality = ~1..inf
 			<equipment.regular_equip>
 		}
 	}
@@ -315,15 +326,24 @@ equipment = {
 		derived_variant_name = localisation
 	}
 
+	subtype[railway_gun] = {
+		## cardinality = 0..1
+		railway_gun_attack_range_index_in_define = int
+		## cardinality = 0..1
+		railway_gun_annex_ratio = float
+		## cardinality = 0..1
+		railway_gun_hours_between_redistribution = int
+	}
+
 	## cardinality = 0..1
 	### Internal type: what kind of unit can use this equipment.
-	type = enum[unit_types]
+	type = enum[equipment_category]
 
 	## cardinality = 0..1
 	### Internal type: what kind of unit can use this equipment.
 	type = {
 		## cardinality = 1..inf
-		enum[unit_types]
+		enum[equipment_category]
 	}
 
 	alias_name[unit_stat] = alias_match_left[unit_stat]
@@ -445,27 +465,32 @@ module = {
 	## cardinality = 0..1
 	sfx = scalar
 	## cardinality = 0..1
-	allow_equipment_type = enum[unit_types]
+	allow_equipment_type = enum[equipment_category]
 	## cardinality = 0..1
-	forbid_equipment_type_exact_match = enum[unit_types]
+	allow_equipment_type = { 
+		## cardinality = 0..inf
+		enum[equipment_category]
+	}
 	## cardinality = 0..1
-	forbid_equipment_type = enum[unit_types]
+	forbid_equipment_type_exact_match = enum[equipment_category]
+	## cardinality = 0..1
+	forbid_equipment_type = enum[equipment_category]
 	## cardinality = 0..1
 	forbid_equipment_type = {
 		## cardinality = ~1..inf
-		enum[unit_types]
+		enum[equipment_category]
 	}
 	## cardinality = 0..1
 	forbid_equipment_type_exact_match_for_category = {
 		## cardinality = ~1..inf
-		enum[module_categories] = enum[unit_types]
+		enum[module_categories] = enum[equipment_category]
 	}
 	## cardinality = 0..1
-	add_equipment_type = enum[unit_types]
+	add_equipment_type = enum[equipment_category]
 	## cardinality = 0..1
 	add_equipment_type = {
 		## cardinality = 0..inf
-		enum[unit_types]
+		enum[equipment_category]
 	}
 	## cardinality = 0..1
 	### Adds the provided stats to the given module
@@ -473,6 +498,9 @@ module = {
 		## cardinality = ~1..inf
 		enum[equipment_stat] = float
 	}
+
+	## cardinality = 0..1
+	mega_carrier = bool
 
 	## cardinality = 0..1
 	### Manpower required to produce one unit of the equipment (naval only).
@@ -505,6 +533,7 @@ module = {
 		module_category = enum[module_categories]
 		## cardinality = 0..1
 		module = <module>
+		## cardinality = ~1..1
 		convert_cost_ic = float
 		## cardinality = 0..1
 		convert_cost_resources = {
@@ -634,7 +663,6 @@ enums = {
 		cv_naval_bomber
 		cv_suicide
 		heavy_fighter
-		interceptor
 	}
 	complex_enum[module_slots] = {
 		path = "game/common/units/equipment"

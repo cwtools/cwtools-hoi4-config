@@ -79,6 +79,11 @@ terrain = {
 		units = {
 			alias_name[unit_stat] = alias_match_left[unit_stat]
 		}
+		## cardinality = 0..1
+		buildings_max_level = {
+			## cardinality = 0..inf
+			<building> = int
+		}
 	}
 }
 

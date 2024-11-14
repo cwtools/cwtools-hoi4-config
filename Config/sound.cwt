@@ -1,0 +1,79 @@
+types = {
+    ## type_key_filter = soundeffect
+    type[soundeffect] = {
+		path = "sound"
+        name_field = "name"
+		path_extension = .asset
+    }
+    ## type_key_filter = sound
+    type[sound] = {
+		path = "sound"
+        name_field = "name"
+		path_extension = .asset
+    }
+}
+
+sound = {
+    name = scalar
+    file = filepath[sound/]
+    ## cardinality = 0..1
+    always_load = bool
+    ## cardinality = 0..1
+    volume = float
+}
+
+soundeffect = {
+    name = scalar
+    ## cardinality = 0..1
+    falloff = scalar #falloff type
+    sounds = {
+        ## cardinality = 0..inf
+        sound = scalar #<sound> does not properly check for voices and other misc sounds and soundefects in mods since those are dlc files
+        ## cardinality = 0..inf
+		weighted_sound = { sound = <sound>  weight = int }
+    }
+    
+    ## cardinality = 0..1
+    loop = bool
+    ## cardinality = 0..1
+    is3d = bool
+    ## cardinality = 0..1
+    random_sound_when_looping = bool
+    
+    ## cardinality = 0..1
+    max_audible = int
+    # what other types possible here?
+    ## cardinality = 0..1
+    max_audible_behaviour = fail
+    
+    ## cardinality = 0..1
+    volume = float
+    ## cardinality = 0..1
+    fade_in = float
+    ## cardinality = 0..1
+    fade_out = float
+    ## cardinality = 0..1
+	polyphony = int
+    
+    ## cardinality = 0..1
+    delay_random_offset = {
+        ## cardinality = 2..2
+        float
+    }
+    ## cardinality = 0..1
+	looping_delay_random_offset = bool
+    ## cardinality = 0..1
+    playbackrate_random_offset = {
+        ## cardinality = 2..2
+        float
+    }
+    ## cardinality = 0..1
+	looping_playbackrate_random_offset = bool
+    ## cardinality = 0..1
+    volume_random_offset = {
+        ## cardinality = 2..2
+        float
+    }
+    ## cardinality = 0..1
+	prevent_random_repetition = bool
+}

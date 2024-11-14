@@ -41,8 +41,61 @@ types = {
 		path = "dlc/dlc037_by_blood_alone_preorder_bonus/gfx"
 		path = "dlc/dlc038_arms_against_tyranny/gfx"
 		path = "dlc/dlc039_arms_against_tyranny_preorder_bonus/gfx"
+		path = "dlc/dlc040_trial_of_allegiance/gfx"
+		path = "dlc/dlc041_trial_of_allegiance_preorder_bonus/gfx"
+		path = "dlc/dlc042_content_creator_pack_soviet_union_2d_art/gfx"
+		path = "dlc/dlc043_gotterdammerung/gfx"
 		path_extension = .gfx
 		name_field = "name"
+	}
+	## type_key_filter = animation
+	type[animation_id] = {
+		skip_root_key = { objectTypes any }
+		path = "gfx"
+		path = "dlc/dlc001_german_historical_portraits/gfx"
+		path = "dlc/dlc002_polish_content_pack/gfx"
+		path = "dlc/dlc003_rocket_launcher_unit_pack/gfx"
+		path = "dlc/dlc004_famous_battleships_unit_pack/gfx"
+		path = "dlc/dlc005_heavy_cruisers_unit_pack/gfx"
+		path = "dlc/dlc006_soviet_tanks_unit_pack/gfx"
+		path = "dlc/dlc007_german_tanks_unit_pack/gfx"
+		path = "dlc/dlc008_french_tanks_unit_pack/gfx"
+		path = "dlc/dlc009_british_tanks_unit_pack/gfx"
+		path = "dlc/dlc010_us_tanks_unit_pack/gfx"
+		path = "dlc/dlc011_german_march_order_music_pack/gfx"
+		path = "dlc/dlc012_allied_radio_music_pack/gfx"
+		path = "dlc/dlc013_sabaton/gfx"
+		path = "dlc/dlc014_wallpaper/gfx"
+		path = "dlc/dlc016_artbook/gfx"
+		path = "dlc/dlc017_original_soundtrack/gfx"
+		path = "integrated_dlc/dlc018_together_for_victory/gfx"
+		path = "dlc/dlc019_sabaton_vol2/gfx"
+		path = "integrated_dlc/dlc020_death_or_dishonor/gfx"
+		path = "dlc/dlc021_anniversary_pack/gfx"
+		path = "integrated_dlc/dlc022_waking_the_tiger/gfx"
+		path = "dlc/dlc023_man_the_guns/gfx"
+		path = "dlc/dlc024_man_the_guns_wallpaper/gfx"
+		path = "dlc/dlc025_axis_armor_pack/gfx"
+		path = "dlc/dlc026_radio_pack/gfx"
+		path = "dlc/dlc027_la_resistance_preorder_bonus/gfx"
+		path = "dlc/dlc028_la_resistance/gfx"
+		path = "dlc/dlc029_allied_armor_pack/gfx"
+		path = "dlc/dlc030_allied_speeches_pack/gfx"
+		path = "dlc/dlc031_battle_for_the_bosporus/gfx"
+		path = "dlc/dlc032_eastern_front_planes_pack/gfx"
+		path = "dlc/dlc033_songs_of_the_eastern_front/gfx"
+		path = "dlc/dlc034_no_step_back/gfx"
+		path = "dlc/dlc035_no_step_back_preorder_bonus/gfx"
+		path = "dlc/dlc036_by_blood_alone/gfx"
+		path = "dlc/dlc037_by_blood_alone_preorder_bonus/gfx"
+		path = "dlc/dlc038_arms_against_tyranny/gfx"
+		path = "dlc/dlc039_arms_against_tyranny_preorder_bonus/gfx"
+		path = "dlc/dlc040_trial_of_allegiance/gfx"
+		path = "dlc/dlc041_trial_of_allegiance_preorder_bonus/gfx"
+		path = "dlc/dlc042_content_creator_pack_soviet_union_2d_art/gfx"
+		path = "dlc/dlc043_gotterdammerung/gfx"
+		path_extension = .gfx
+		name_field = "id"
 	}
 
 	## type_key_filter = entity
@@ -86,6 +139,10 @@ types = {
 		path = "dlc/dlc037_by_blood_alone_preorder_bonus/gfx"
 		path = "dlc/dlc038_arms_against_tyranny/gfx"
 		path = "dlc/dlc039_arms_against_tyranny_preorder_bonus/gfx"
+		path = "dlc/dlc040_trial_of_allegiance/gfx"
+		path = "dlc/dlc041_trial_of_allegiance_preorder_bonus/gfx"
+		path = "dlc/dlc042_content_creator_pack_soviet_union_2d_art/gfx"
+		path = "dlc/dlc043_gotterdammerung/gfx"
 		path_extension = .asset
 		name_field = "name"
 	}
@@ -131,6 +188,10 @@ types = {
 		path = "dlc/dlc037_by_blood_alone_preorder_bonus/gfx"
 		path = "dlc/dlc038_arms_against_tyranny/gfx"
 		path = "dlc/dlc039_arms_against_tyranny_preorder_bonus/gfx"
+		path = "dlc/dlc040_trial_of_allegiance/gfx"
+		path = "dlc/dlc041_trial_of_allegiance_preorder_bonus/gfx"
+		path = "dlc/dlc042_content_creator_pack_soviet_union_2d_art/gfx"
+		path = "dlc/dlc043_gotterdammerung/gfx"
 		path_extension = .asset
 		name_field = "name"
 	}
@@ -169,6 +230,12 @@ pdxmesh = {
 
 		## cardinality = 0..1
 		shader = scalar
+	}
+	
+	## cardinality = 0..inf
+	variant = {
+		weight = float
+		pdxmesh = <pdxmesh>
 	}
 
 	## cardinality = 0..1
@@ -295,7 +362,7 @@ entity = {
 
 			## cardinality = 0..1
 			sound = {
-				soundeffect = scalar
+				soundeffect = scalar #<soundeffect> does not properly check for voices and other misc sounds and soundefects in mods since those are dlc files
 			}
 
 			## cardinality = 0..1

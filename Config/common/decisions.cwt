@@ -38,6 +38,9 @@ types = {
 		subtype[state_targeted] = {
 			state_target = any_controlled_state
 		}
+		subtype[state_targeted] = {
+			state_target = any
+		}
 		## only_if_not = { state_targeted }
 		subtype[targeted] = {
 			target_trigger = {

@@ -52,6 +52,7 @@ enums = {
 		tactical_withdrawal
 		seize_bridge
 		hold_bridge
+		street_fighting
 
 		# MD Phase
 		main

@@ -12,6 +12,15 @@ alias[effect:add_manpower] = int_variable_field
 ### Shows just a custom tooltip.
 ## scope = any
 alias[effect:custom_effect_tooltip] = localisation
+### Shows just a custom tooltip.
+## scope = any
+alias[effect:custom_effect_tooltip] = single_alias_right[bindable_loc]
+### Shows just a custom tooltip.
+## scope = any
+alias[effect:custom_effect_tooltip] = character_name|<character>
+### Shows just a custom tooltip.
+## scope = any
+alias[effect:custom_effect_tooltip] = tech_effect|<technology
 
 ### Shows event option tooltip
 ## scope = any
@@ -77,6 +86,8 @@ alias[effect:add_province_modifier] = {
 		## cardinality = ~1..inf
 		id = enum[provinces]
 	}
+	## cardinality = 0..1
+	days = int_variable_field
 }
 
 ### Removes static modifiers from specified province.
@@ -109,6 +120,7 @@ alias[effect:remove_province_modifier] = {
 ## scope = { state }
 alias[effect:add_province_modifier] = {
 	enum[provinces] = <static_modifier>
+	days = int_variable_field
 }
 
 ### Removes static modifiers fom specified province.
@@ -593,11 +605,13 @@ alias[effect:create_unit] = {
 	}
 	## cardinality = 0..1
 	id = variable_field
+	## cardinality = 0..1
+	divisional_commander_xp = int
 }
 
 ### Plays sound effect.
 ## scope = any
-alias[effect:sound_effect] = scalar
+alias[effect:sound_effect] = scalar # <soundeffect> does not properly check for voices and other misc sounds and soundefects in mods since those are dlc files
 
 ### Promotes general to field marshal.
 ## scope = { character unit_leader }
@@ -682,6 +696,8 @@ alias[effect:add_country_leader_trait] = {
 	trait = <country_leader_trait>
 	## cardinality = 0..1
 	ideology = <ideology>
+	## cardinality = 0..1
+	ideology = enum[sub_ideology]
 }
 
 ### Remove trait from active country leader.
@@ -758,7 +774,7 @@ alias[effect:remove_ideas] = {
 	enum[idea_name]
 	## cardinality = 0..inf
 	value[advisor_token]
-	## cardinality = 0..inf
+	## cardinality = 0..inf	
 	value[variable]
 }
 
@@ -1909,6 +1925,9 @@ alias[effect:create_equipment_variant] = {
 	}
 	## cardinality = 0..1
 	obsolete = yes
+	### Default no. Marks all older (non-chassis) equipment variants as obsolete as long as the following matches: Archetype, niche, mission set (for planes).
+	## cardinality = 0..1
+	mark_older_equipment_obsolete = bool
 	## cardinality = 0..1
 	icon = filepath
 	## cardinality = 0..1
@@ -2062,6 +2081,22 @@ alias[effect:damage_building] = {
 	damage = variable_field
 	## cardinality = 0..1
 	province = enum[provinces]
+	## cardinality = 0..1
+	province = value[variable]
+	## cardinality = 0..1
+	repair_speed_modifier = float
+}
+### Damages buildings in the current state.
+## scope = state
+alias[effect:damage_building] = {
+	tags = value[building_tag]
+	damage = variable_field
+	## cardinality = 0..1
+	province = enum[provinces]
+	## cardinality = 0..1
+	province = value[variable]
+	## cardinality = 0..1
+	repair_speed_modifier = float
 }
 
 ### Releases specified country with specified level of autonomy.
@@ -2323,7 +2358,7 @@ alias[effect:set_war_support] = variable_field[0..1]
 
 ### Executes children effects on random unit leader that fulfills the "limit" trigger.
 ## scope = country
-## push_scope = unit_leader
+## push_scope = unit_leader 
 alias[effect:random_unit_leader] = {
 	## cardinality = 0..1
 	limit = {
@@ -3499,11 +3534,11 @@ alias[effect:random_scope_in_array] = {
 }
 
 ### Updates the modifiers in current scope (use if you don't want to wait for daily update to update them).
-## scope = { state country }
+## scope = { state country character project }
 alias[effect:force_update_dynamic_modifier] = yes
 
 ### Removes a dynamic modifier from country/state/unit leader.
-## scope = { state country }
+## scope = { state country character project }
 alias[effect:remove_dynamic_modifier] = {
 	modifier = <dynamic_modifier>
 
@@ -3525,7 +3560,7 @@ alias[effect:remove_dynamic_modifier] = {
 }
 
 ### Adds a dynamic modifier to country/state/unit leader.
-## scope = { state country }
+## scope = { state country character project }
 alias[effect:add_dynamic_modifier] = {
 	modifier = <dynamic_modifier>
 
@@ -3603,6 +3638,8 @@ alias[effect:launch_nuke] = {
 	## cardinality = 0..1
 	province = enum[provinces]
 	## cardinality = 0..1
+	province = value[variable]
+	## cardinality = 0..1
 	state = scope[state]
 	## cardinality = 0..1
 	state = <state>
@@ -3612,11 +3649,13 @@ alias[effect:launch_nuke] = {
 	controller = enum[country_tags]
 	## cardinality = 0..1
     use_nuke = bool
+	## cardinality = 0..1
+	nuke_type = enum[nuke_type]
 }
 
 ### Plays sound effect only on in current scope's player.
 ## scope = country
-alias[effect:scoped_sound_effect] = scalar
+alias[effect:scoped_sound_effect] = scalar #<soundeffect> does not properly check for voices and other misc sounds and soundefects in mods since those are dlc files
 
 ### Runs a loop on for each element of an array, finds the lowest value and stores result in temp variables.
 ## scope = any
@@ -3686,7 +3725,7 @@ alias[effect:add_ai_strategy] = {
 alias[effect:add_ai_strategy] = {
 	type = enum[unit_strats]
 	id = <unit>
-	id = enum[unit_types]
+	id = enum[equipment_category]
 	id = value[ai_template_roles]
 	id = value[ai_equipment_roles]
 	value = int
@@ -3697,7 +3736,7 @@ alias[effect:add_ai_strategy] = {
 alias[effect:add_ai_strategy] = {
 	type = enum[equipment_strats]
 	id = <equipment>
-	id = enum[unit_types]
+	id = enum[equipment_category]
 	value = int
 }
 

@@ -15,7 +15,7 @@ types = {
 
 sound = {
     name = scalar
-    file = filepath[sound/]
+    file = scalar
     ## cardinality = 0..1
     always_load = bool
     ## cardinality = 0..1

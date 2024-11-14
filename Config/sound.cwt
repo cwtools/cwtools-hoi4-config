@@ -1,4 +1,10 @@
 types = {
+    ## type_key_filter = category
+    type[soundcategory] = {
+		path = "sound"
+        name_field = "name"
+		path_extension = .asset
+    }
     ## type_key_filter = soundeffect
     type[soundeffect] = {
 		path = "sound"
@@ -76,4 +82,29 @@ soundeffect = {
     }
     ## cardinality = 0..1
 	prevent_random_repetition = bool
+}
+
+soundcategory = {
+    name = scalar
+    soundeffects = {
+        ## cardinality = ~1..inf
+        scalar
+    }
+    ## cardinality = 0..1
+    compressor = {
+        ## cardinality = 0..1
+        enabled = bool
+        ## cardinality = 0..1
+        pregain = float
+        ## cardinality = 0..1
+        postgain = float
+        ## cardinality = 0..1
+        ratio = float
+        ## cardinality = 0..1
+        threshold = float
+        ## cardinality = 0..1
+        attacktime = float
+        ## cardinality = 0..1
+        releasetime = float
+    }
 }

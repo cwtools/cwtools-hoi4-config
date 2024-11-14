@@ -770,6 +770,10 @@ alias[trigger:has_trait] = <unit_leader_trait>
 ## scope = { character unit_leader }
 alias[trigger:has_trait] = <country_leader_trait>
 
+### Check if sides leader has trait.
+## scope = { character unit_leader }
+alias[trigger:has_trait] = <scientist_trait>
+
 ### Check if side has reserves waiting.
 ## scope = combat
 alias[trigger:has_reserves] = bool
@@ -846,6 +850,8 @@ alias[trigger:is_coastal] = bool
 alias[trigger:casualties] = int
 
 ### Works as an and-trigger with a custom tooltip.
+## error_if_only_match = Alias for custom_override_tooltip trigger (see that trigger for more info). Kept for backward compatibility.Prefer custom_override_tooltip instead.
+## severity = info
 ## scope = any
 alias[trigger:custom_trigger_tooltip] = {
 	tooltip = localisation
@@ -1882,7 +1888,7 @@ alias[trigger:army_manpower_in_state] = {
 	state = int_variable_field
 	amount = int_variable_field
 	## cardinality = 0..1
-	type = enum[unit_types]
+	type = enum[equipment_category]
 }
 
 ### Checks if scope leader is from an exiled government. is_exiled_leader = yes.
@@ -2310,7 +2316,7 @@ alias[trigger:opponent] = { alias_name[trigger] = alias_match_left[trigger] }
 
 ### Check ratio of this type of unit for commander.
 ## scope = { unit_leader combat }
-alias[trigger:enum[unit_types]] = variable_field
+alias[trigger:enum[equipment_category]] = variable_field
 
 ### Trigger not shown in tooltips.
 ## scope = any

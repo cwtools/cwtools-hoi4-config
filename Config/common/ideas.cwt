@@ -83,6 +83,14 @@ idea = {
 					alias_name[naval_stat] = alias_match_left[naval_stat]
 					alias_name[air_stat] = alias_match_left[air_stat]
 				}
+				## cardinality = 0..inf
+				<equipment_group> = {
+					## cardinality = 0..1
+					instant = bool
+					alias_name[unit_stat] = alias_match_left[unit_stat]
+					alias_name[naval_stat] = alias_match_left[naval_stat]
+					alias_name[air_stat] = alias_match_left[air_stat]
+				}
 			}
 			## cardinality = 0..1
 			traits = {
@@ -191,6 +199,14 @@ idea = {
 			equipment_bonus = {
 				## cardinality = 0..inf
 				enum[equipment_bonus_type] = {
+					## cardinality = 0..1
+					instant = bool
+					alias_name[unit_stat] = alias_match_left[unit_stat]
+					alias_name[naval_stat] = alias_match_left[naval_stat]
+					alias_name[air_stat] = alias_match_left[air_stat]
+				}
+				## cardinality = 0..inf
+				<equipment_group> = {
 					## cardinality = 0..1
 					instant = bool
 					alias_name[unit_stat] = alias_match_left[unit_stat]
@@ -313,6 +329,14 @@ idea = {
 			equipment_bonus = {
 				## cardinality = 0..inf
 				enum[equipment_bonus_type] = {
+					## cardinality = 0..1
+					instant = bool
+					alias_name[unit_stat] = alias_match_left[unit_stat]
+					alias_name[naval_stat] = alias_match_left[naval_stat]
+					alias_name[air_stat] = alias_match_left[air_stat]
+				}
+				## cardinality = 0..inf
+				<equipment_group> = {
 					## cardinality = 0..1
 					instant = bool
 					alias_name[unit_stat] = alias_match_left[unit_stat]

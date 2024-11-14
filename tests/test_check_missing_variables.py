@@ -23,7 +23,7 @@ def check_missing_variables():
 
     # 2 Extract variables from config files
     variables_list_config = []
-    variable_block_pattern = r'value\[variable\] = \{.*?\}'
+    variable_block_pattern = r'^\tvalue\[variable\] = \{.*?^\t\}'
     variable_pattern = r'\t\t([^#\n\t]+)'
     for filename in glob.iglob(path_to_config + "**/*.cwt", recursive=True):
         with open(filename, 'r') as text_file:
@@ -57,6 +57,8 @@ def check_missing_variables():
         for i in results_missing_variables:
             print(f'- [] - {i}')
         raise Exception("There are variables in documentation file that are not present in .cwt files")
+
+    print("No missing variables found. Good job!")
 
 
 if __name__ == '__main__':

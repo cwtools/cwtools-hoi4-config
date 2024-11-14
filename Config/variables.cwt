@@ -280,7 +280,7 @@ values = {
 		### Number of battalions.
 		num_battalions
 
-		### Number of battalions with sub unit type, sub unit type is defined in target. Example: num_of_battalions_with_type@light_armor.
+		### Number of battalions with sub unit type, sub unit type is defined in target. Example: num_battalions_with_type@light_armor.
 		num_battalions_with_type@<unit>
 
 		### Number of controlled states.
@@ -309,12 +309,6 @@ values = {
 
 		### Number of owned states.
 		num_owned_states
-
-		### Number of ships.
-		num_ships
-
-		### Number of ships controlled in country, ship type is defined in target. Example num_ships_with_type@carrier.
-		num_ships_with_type@<unit>
 
 		### Number of equipment required in armies of the country, equipment type token is defined in target. Example num_target_equipment_in_armies@infantry_equipment.
 		num_target_equipment_in_armies@<equipment>
@@ -783,20 +777,11 @@ values = {
 		### Number of basic traits a leader has.
 		num_basic_traits
 
-		### Number of battalions.
-		num_battalions
-
-		### Number of battalions with sub unit type, sub unit type is defined in target. Example: num_battalions_with_type@light_armor.
-		num_battalions_with_type@<unit>
-
 		### Number of battle plans of unit leader.
 		num_battle_plans
 
 		### Number of units with cavalry dominant type.
 		num_cavalry
-
-		### Number of equipment in army of a leader, equipment type token is defined in target. example num_equipment@infantry_equipment.
-		num_equipment@<equipment>
 
 		### Number of units with infantry dominant type.
 		num_infantry
@@ -1088,6 +1073,125 @@ values = {
 		### Number of unused trait points of the military industrial organization
 		number_of_unused_trait_points
 
+
+		#### wuw patch variables
+
+		### total produced equipment of typecrossing_support_vehicle
+		total_equipment_produced_crossing_support_vehicle
+
+		###  Total produced equipment of typearmored_recovery_vehicle
+		total_equipment_produced_armored_recovery_vehicle
+
+		### calculates the number of civilian factories on core states of current country scope, on those states that are under control of @Tag <Tag | ROOT | my_var> example num_of_civilian_factories_in_cores@GER
+		num_of_civilian_factories_in_cores@scope[country]
+		num_of_civilian_factories_in_cores@enum[country_tags]
+
+		### calculates the number of civilian factories on core states of current country scope, on those states that are under control of @Tag  <Tag | ROOT | my_var> example num_of_military_factories_in_cores@GER
+		num_of_military_factories_in_cores@scope[country]
+		num_of_military_factories_in_cores@enum[country_tags]
+		
+		### calculates the number of civilian factories on core states of current country scope, on those states that are under control of @Tag  <Tag | ROOT | my_var> example num_of_naval_factories_in_cores@my_var
+		num_of_naval_factories_in_cores@scope[country]
+		num_of_naval_factories_in_cores@enum[country_tags]
+		
+		### Total produced equipment of typesam_missile
+		total_equipment_produced_sam_missile
+		
+		### Total constructions of gun_emplacement
+		total_constructed_gun_emplacement
+		
+		### Total produced equipment of typeclearance_vehicle
+		total_equipment_produced_clearance_vehicle
+		
+		### Total produced equipment of typeballistic_missile
+		total_equipment_produced_ballistic_missile
+		
+		### Total produced equipment of typeland_cruiser
+		total_equipment_produced_land_cruiser
+		
+		### Total produced equipment of typeemplacement_gun_ammo
+		total_equipment_produced_emplacement_gun_ammo
+		
+		### Total produced equipment of typemissile_launcher
+		total_equipment_produced_missile_launcher
+		
+		### Total produced equipment of typenuclear_missile
+		total_equipment_produced_nuclear_missile
+
+		### total number of nukes that are currently ready to be dropped
+		num_nukes_being_dropped
+		
+		### number of nukes left to drop during this game tick (only useful in-between nuke drops, like in on_nuke_drop on-action, for example)
+		num_nukes_left_to_drop
+		
+		#Special project scoped variables:
+		### State that the project is researched in
+		facility_state
+		### The province that the project is researched in
+		facility_province_id
+		### The scientist that researches the project
+		scientist
+		
+		# ========================
+		# RAID VARIABLES
+		# ========================
+		actor_country
+		victim_country
+		target_state
+		target_province
+		
+		# end of wuw
+
+		###  TO be sorted
+		### global
+		### An array of controller countries for each province. In this case, the province ID serves as the index: the controller of province 1234 is province_controllers^1234. 
+		province_controllers
+		### Every state that exists in the game. Array
+		states
+		### Checks turn number in PC.\nExample:\npc_turn > 20
+		pc_turn
+		### The current daily change in the value of the balance of power. Can be targeted @ITA_power_balance
+		power_balance_daily_change
+		power_balance_daily_change@<balance_of_power>
+		### The current weekly change in the value of the balance of power. 
+		power_balance_weekly_change
+		power_balance_weekly_change@<balance_of_power>
+		### check amount of gained career points
+		num_of_career_profile_points
+		### Maximum fuel of country in thousands. 
+
+		### country scoped
+		max_fuel_k
+		### The number of upgrade done in the intelligence agency. 
+		agency_upgrade_number
+		### The current weekly change in power balance. 
+		power_balance_weekly
+		### Air experience that the country has. 
+		air_experience
+		### The remaining amount of days for a completed decision before it gets removed. 
+		days_decision_timeout@<decision.timed>
+		### The malus from bombing towards war support on the scale from 0 to 1. 
+		has_bombing_war_support
+		##The current daily change in power balance. 
+		power_balance_daily
+		### Amount of supply nodes. 
+		num_of_supply_nodes
+		### The malus from casualties towards war support on the scale from 0 to 1. 
+		has_casualties_war_support
+		### The malus from sunk convoys towards war support on the scale from 0 to 1. 
+		has_convoys_war_support
+		### returns an array with the currently hired high command of the country
+		high_command
+		### returns an array with the currently hired political advisors of the country
+		political_advisor
+		### Check number of months the country has been at war
+		longest_war_length
+
+		### unit_leader_scoped
+		### Number of order groups assigned to the unit leader. 
+		num_orders_groups
+
+
 		# ========================
 		# MODIFIER VARIABLES
 		# ========================
@@ -1103,5 +1207,8 @@ values = {
 
 		### Custom modifier accessed via variable
 		modifier@<modifier_definition>
+
+		## constant hacky
+		constant:<script_constant>
 	}
 }

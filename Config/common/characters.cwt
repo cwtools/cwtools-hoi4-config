@@ -77,6 +77,12 @@ types = {
 
 			}
 		}
+		subtype[scientist] = {
+			## cardinality = 1..inf
+			scientist = {
+
+			}
+		}
 		subtype[advisor] = {
 			## cardinality = ~2..inf
 			instance = {
@@ -319,6 +325,28 @@ character = {
 			can_be_fired = bool
 		}
 	}
+	subtype[scientist] = {
+		## cardinality = 1..inf
+		scientist = {
+			## cardinality = 0..1
+			desc = localisation
+			## replace_scope = { this = character root = country }
+			## cardinality = 0..1
+			visible = {
+				alias_name[trigger] = alias_match_left[trigger]
+			}
+			## cardinality = 0..1
+			traits = {
+				## cardinality = ~1..inf
+				<scientist_trait>
+			}
+			## cardinality = 1..1
+			skills = {
+				## cardinality = 1..1
+				<specialization> = int
+			}
+		}
+	}
 	subtype[instanced] = {
 		### Character instance, for use on startup checks (i.e. has_dlc, and similar) to create alternate versions of a character, usually two
 		## cardinality = ~2..inf
@@ -550,6 +578,27 @@ character = {
 				}
 				## cardinality = 0..1
 				can_be_fired = bool
+			}
+			### Scientist subtype
+			## cardinality = 0..inf
+			scientist = {
+				## cardinality = 0..1
+				desc = localisation
+				## replace_scope = { this = character root = country }
+				## cardinality = 0..1
+				visible = {
+					alias_name[trigger] = alias_match_left[trigger]
+				}
+				## cardinality = 0..1
+				traits = {
+					## cardinality = ~1..inf
+					<scientist_trait>
+				}
+				## cardinality = 1..1
+				skills = {
+					## cardinality = 1..1
+					<specialization> = int
+				}
 			}
 		}
 	}

@@ -12,6 +12,7 @@ enums = {
 		"By Blood Alone"
 		"Arms Against Tyranny"
 		"Trial of Allegiance"
+		"Gotterdammerung"
 	}
 
 	enum[hours_days_months] = {
@@ -23,6 +24,11 @@ enums = {
 	enum[tech_bonus] = {
 		bonus
 		ahead_reduction
+	}
+
+	enum[gender] = {
+		male
+		female
 	}
 
 	enum[diplomatic_relations] = {

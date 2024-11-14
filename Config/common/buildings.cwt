@@ -9,25 +9,32 @@ types = {
 			desc = "$_desc"
 		}
 		subtype[provincial] = {
-			provincial = yes
+			level_cap = {
+				## cardinality = 1..inf
+				province_max = scalar
+			}
 		}
 		subtype[state] = {
-			provincial = no
 		}
-		subtype[state] = {
-		}
+	}
+	type[spawn_point] = {
+		path = "game/common/buildings"
+		skip_root_key = spawn_points
 	}
 }
 
 building = {
 	base_cost = int
 	## cardinality = 0..1
+	per_controlled_building_extra_cost = int
+	## cardinality = 0..1
 	base_cost_conversion = int
 	## cardinality = 0..1
 	per_level_extra_cost = int
 
 	## cardinality = 0..1
-	max_level = int
+	missing_tech_loc = single_alias_right[bindable_loc]
+
 	## cardinality = 0..1
 	value = int
 
@@ -40,7 +47,12 @@ building = {
 	always_shown = bool
 	## cardinality = 0..1
 	has_destroyed_mesh = bool
-	
+	## cardinality = 0..1
+	dlc_allowed = {
+		## cardinality = 0..1
+		has_dlc = enum[dlc]
+	}
+
 	## cardinality = 0..1
 	allied_build = bool
 	## cardinality = 0..1
@@ -49,11 +61,7 @@ building = {
 	supply_node = bool
 
 	## cardinality = 0..1
-	shares_slots = bool
-	## cardinality = 0..1
 	infrastructure_construction_effect = bool
-	## cardinality = 0..1
-	provincial = bool
 	## cardinality = 0..1
 	damage_factor = float
 
@@ -95,17 +103,128 @@ building = {
 	rocket_launch_capacity = int
 	## cardinality = 0..1
 	air_defence = int
+	## cardinality = 0..1
+	gun_emplacement = yes
 
-	subtype[state] = {
-		alias_name[modifier] = alias_match_left[modifier]
-	}
+	# Yes is default
+	## cardinality = 0..1
+	is_buildable = bool
+
+	# no is default
+	## cardinality = 0..1
+	only_display_if_exists = bool
+	# no is default
+	## cardinality = 0..1
+	need_supply = bool
+	# no is default
+	## cardinality = 0..1
+	need_detection = bool
+
+	## cardinality = 0..1
+	detecting_intel_type =  enum[intel_types]
 
 	## cardinality = 0..1
 	show_modifier = yes
 	## cardinality = 0..1
-	max_fuel_building = float
-	## cardinality = 0..1
 	fuel_silo = yes
+
+	level_cap = {
+		## cardinality = 0..1
+		state_max = int
+		## cardinality = 0..1
+		province_max = int
+		## cardinality = 0..1
+		shares_slots = bool
+		## cardinality = 0..1
+		group_by = enum[building_group]
+		## cardinality = 0..1
+		exclusive_with = <building>
+	}
 	## cardinality = 0..1
-	fuel_gain_from_states = float
+	country_modifiers = {
+		## cardinality = 0..1
+		enable_for_controllers = {
+			## cardinality = ~1..inf
+			enum[country_tags]
+		}
+		modifiers = {
+			## cardinality = ~1..inf
+			alias_name[modifier] = alias_match_left[modifier]
+		}
+	}
+
+	## cardinality = 0..inf
+	local_resources_<resource> = int
+
+	## cardinality = 0..1
+	state_modifiers = {
+		## cardinality = ~1..inf
+		alias_name[modifier] = alias_match_left[modifier]
+	}
+	## cardinality = 0..1
+	state_damage_modifier = {
+		## cardinality = ~1..inf
+		<dynamic_modifier> 
+	}
+	## cardinality = 0..1
+	province_damage_modifiers = {
+		## cardinality = ~1..inf
+		<static_modifier>
+	}
+	# no is default
+	## cardinality = 0..1
+	hide_if_missing_tech = bool
+
+	## cardinality = 0..1
+	spawn_point = <spawn_point>
+	
+	## cardinality = 0..1
+	special_icon = <spriteType>
+
+	## cardinality = 0..1
+	tags = {
+		## cardinality = ~1..inf
+		value_set[building_tag]
+	}
+
+	## cardinality = 0..1
+	specialization = {
+		<specialization>
+	}
+	## cardinality = 0..1
+	repair_speed_factor = variable_field
+
+	## cardinality = 0..1
+	construction_speed_factor = {
+		trigger = {
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+		factor = float
+	}
+
+	# No is default
+	## cardinality = 0..1
+	disable_grow_animation = bool
+}
+
+spawn_point = {
+	type = enum[state_prov]
+	max = int
+	# No is default
+	## cardinality = 0..1
+	only_costal = bool
+	# No is default
+	## cardinality = 0..1
+	disable_auto_nudging = bool
+}
+
+enums = {
+	enum[building_group] = {
+		reactors
+		special_project_facility
+	}
+	enum[state_prov] = {
+		state
+		province
+	}
 }

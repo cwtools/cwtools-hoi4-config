@@ -115,7 +115,7 @@ alias[effect:add_corps_commander_role] = {
 	character = <character>
 	### required in country scope, optional in character scope
 	## cardinality = 0..1
-    character = value_set[character_token]
+    character = value[character_token]
 	### required in country scope, optional in character scope
 	## cardinality = 0..1
 	character = value[variable]
@@ -189,7 +189,7 @@ alias[effect:remove_unit_leader_role] = scope[character]
 ## scope = { country }
 alias[effect:remove_unit_leader_role] = {
 	character = <character>
-    character = value_set[character_token]
+    character = value[character_token]
 	character = value[variable]
 	character = value[event_target]
 	character = value[global_event_target]
@@ -203,7 +203,7 @@ alias[effect:add_field_marshal_role] = {
 	character = <character>
 	### required in country scope, optional in character scope
 	## cardinality = 0..1
-    character = value_set[character_token]
+    character = value[character_token]
 	### required in country scope, optional in character scope
 	## cardinality = 0..1
 	character = value[variable]
@@ -244,7 +244,7 @@ alias[effect:add_naval_commander_role] = {
 	character = <character>
 	### required in country scope, optional in character scope
 	## cardinality = 0..1
-    character = value_set[character_token]
+    character = value[character_token]
 	### required in country scope, optional in character scope
 	## cardinality = 0..1
 	character = value[variable]
@@ -284,7 +284,7 @@ alias[effect:add_country_leader_role] = {
 	character = <character>
 	### required in country scope, optional in character scope
 	## cardinality = 0..1
-    character = value_set[character_token]
+    character = value[character_token]
 	### required in country scope, optional in character scope
 	## cardinality = 0..1
 	character = value[variable]
@@ -323,7 +323,7 @@ alias[effect:remove_country_leader_role] = {
 	character = <character>
 	### required in country scope, optional in character scope
 	## cardinality = 0..1
-    character = value_set[character_token]
+    character = value[character_token]
 	### required in country scope, optional in character scope
 	## cardinality = 0..1
 	character = value[variable]
@@ -348,7 +348,7 @@ alias[effect:add_advisor_role] = {
 	character = <character>
 	### required in country scope, optional in character scope
 	## cardinality = 0..1
-    character = value_set[character_token]
+    character = value[character_token]
 	### required in country scope, optional in character scope
 	## cardinality = 0..1
 	character = value[variable]
@@ -414,7 +414,7 @@ alias[effect:remove_advisor_role] = {
 	character = <character>
 	### required in country scope, optional in character scope
 	## cardinality = 0..1
-    character = value_set[character_token]
+    character = value[character_token]
 	### required in country scope, optional in character scope
 	## cardinality = 0..1
 	character = value[variable]

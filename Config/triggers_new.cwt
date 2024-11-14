@@ -242,6 +242,8 @@ alias[trigger:compare_intel_with] = {
 	army_intel = variable_field
 	## cardinality = 0..1
     navy_intel = variable_field
+	## cardinality = 0..1
+	airforce_intel = variable_field
 }
 
 ###Check if all operatives meets the trigger. tooltip=key can be defined to override title.

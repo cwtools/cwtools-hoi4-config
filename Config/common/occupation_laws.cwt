@@ -20,7 +20,7 @@ occupation_law = {
 	
     ### plays when the law is selected
     ## cardinality = 0..1
-	sound_effect = scalar 
+	sound_effect = scalar #<soundeffect> does not properly check for voices and other misc sounds and soundefects in mods since those are dlc files
 	
 	### if a law is not visible, it won't show up in gui at all. scope is occupier country, occupied country is not set (this is only check at country level, not target level)
     ## replace_scope = { this = country root = country }

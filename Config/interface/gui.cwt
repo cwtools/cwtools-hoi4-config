@@ -360,6 +360,8 @@ alias[gui:listBoxType] = {
     borderSize = { x = int y = int }
     ## cardinality = 0..1
     offset = { x = int y = int }
+    ## cardinality = 0..1
+    backGround = <spriteType>
 }
 
 ### Dynamic List
@@ -380,6 +382,11 @@ alias[gui:smoothListBoxType] = {
     borderSize = { x = int y = int }
     ## cardinality = 0..1
     offset = { x = int y = int }
+    ### Will remove elements outside of size bounding box
+    ## cardinality = 0..1
+    clipping = bool
+    ## cardinality = 0..1
+    priority = int
 }
 
 ###Non-clickable icon
@@ -420,9 +427,6 @@ alias[gui:instantTextBoxType] = {
     ### Name referenced by scripted gui
     name = scalar
     ## cardinality = 0..1
-    text = localisation
-    ## cardinality = 0..1
-    text = localisation_inline
     ## cardinality = 0..1
     font = scalar
     ## cardinality = 0..1
@@ -497,6 +501,8 @@ alias[gui:editBoxType] = {
     ### Missing Descriptiion, need testing
     textureFile = <spriteType>
     ## cardinality = 0..1
+    textureFile = filepath
+    ## cardinality = 0..1
     #DEBUG
     ### Vertical alignement in text box
     vertical_alignment = enum[guiTextFormatsVertical]
@@ -510,6 +516,14 @@ alias[gui:editBoxType] = {
     text_color_code = scalar
     ## cardinality = 0..1
     truncate = bool
+    ## cardinality = 0..1
+    instantTextBoxType = bool
+    ## cardinality = 0..1
+	use_special_chars = bool
+    ## cardinality = 0..1
+	cursor = { x = int y = int }
+    ## cardinality = 0..1
+    is_multiline = bool
 }
 ### Checkbox
 alias[gui:checkboxType] = {
@@ -524,6 +538,30 @@ alias[gui:checkboxType] = {
     alias_name[gui_image] = alias_match_left[gui_image]
     alias_name[gui_sound] = alias_match_left[gui_sound]
     alias_name[gui_localization] = alias_match_left[gui_localization]
+}
+alias[gui:scrollbarType] = {
+    name = scalar	
+    slider = scalar
+    track = scalar
+    leftbutton = scalar
+    rightbutton = scalar
+    size = {x=int y=int}
+    position = {x=int y=int}
+    priority = int			
+    borderSize = {x=int y=int}	
+    maxValue = int
+    minValue = int
+    stepSize = int
+    startValue = int
+    horizontal = int
+    ## cardinality = 4..4
+    guiButtonType = {
+        name = scalar
+        quadTextureSprite = <spriteType>
+        position = {x=int y=int}
+        ## cardinality = 0..1
+        clicksound = click_default				
+    }
 }
 alias[gui:extendedScrollbarType] = {
     name = scalar
@@ -748,11 +786,16 @@ alias[gui_localization:tooltip] = localisation
 #alias[gui_localization:tooltip] = localisation_inline
 ### Text ontop of elements
 alias[gui_localization:text] = localisation
-#alias[gui_localization:text] = localisation_inline
+alias[gui_localization:text] = localisation_inline
 alias[gui_localization:pdx_disabled_tooltip] = localisation
-#alias[gui_localization:text] = localisation_inline
 alias[gui_localization:pdx_disabled_tooltip_delayed] = localisation
-#alias[gui_localization:text] = localisation_inline
+alias[gui_localization:bound_tooltip] = single_alias_right[bindable_loc]
+alias[gui_localization:context_aware_tooltip] = localisation
+alias[gui_localization:context_aware_tooltip] = single_alias_right[bindable_loc]
+alias[gui_localization:tooltipText] = localisation
+alias[gui_localization:delayedTooltipText] = localisation
+alias[gui_localization:context_aware_text] = localisation
+alias[gui_localization:context_aware_text] = single_alias_right[bindable_loc]
 
 #GUI Animation
 ### Position before animation in pixels
@@ -824,14 +867,15 @@ alias[gui_animation:animation_type] = enum[animationTypes]
 alias[gui_animation:animation_time] = float
 alias[gui_animation:fade_time] = float
 alias[gui_animation:fade_type] = linear
+alias[gui_animation:fade_type] = accelerated
 
 # GUI Sound
-alias[gui_sound:upsound] = scalar
-alias[gui_sound:downsound] = scalar
-alias[gui_sound:show_sound] = scalar
-alias[gui_sound:hide_sound] = scalar
-alias[gui_sound:clicksound] = scalar
-alias[gui_sound:oversound] = scalar
+alias[gui_sound:upsound] = scalar #<soundeffect> does not properly check for voices and other misc sounds and soundefects in mods since those are dlc files
+alias[gui_sound:downsound] = scalar #<soundeffect> does not properly check for voices and other misc sounds and soundefects in mods since those are dlc files
+alias[gui_sound:show_sound] = scalar #<soundeffect> does not properly check for voices and other misc sounds and soundefects in mods since those are dlc files
+alias[gui_sound:hide_sound] = scalar #<soundeffect> does not properly check for voices and other misc sounds and soundefects in mods since those are dlc files
+alias[gui_sound:clicksound] = scalar #<soundeffect> does not properly check for voices and other misc sounds and soundefects in mods since those are dlc files
+alias[gui_sound:oversound] = scalar #<soundeffect> does not properly check for voices and other misc sounds and soundefects in mods since those are dlc files
 
 enums = {
     enum[animationTypes] = {
@@ -878,6 +922,7 @@ enums = {
         center
         centre
         right
+        down
     }
     enum[guiTextFormatsVertical] = {
         top

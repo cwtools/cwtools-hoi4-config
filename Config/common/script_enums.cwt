@@ -9,6 +9,16 @@ enums = {
 			}
 		}
 	}
+	complex_enum[equipment_category] = {
+		path = "game/common"
+		path_file = "script_enums.txt"
+		start_from_root = yes
+		name = {
+			script_enum_equipment_category = {
+				enum_name
+			}
+		}
+	}
 	complex_enum[equipment_bonus_type] = {
 		path = "game/common"
 		path_file = "script_enums.txt"

@@ -60,6 +60,8 @@ types = {
 		subtype[pieChartType] = { }
 		## type_key_filter = circularProgressBarType
 		subtype[circularProgressBarType] = { }
+		## type_key_filter = LineChartType
+		subtype[LineChartType] = { }
 	}
 }
 
@@ -117,6 +119,7 @@ spriteType = {
 	generate_mip_maps = bool
 	subtype[spriteType] = {
 		textureFile = filepath
+		clicksound = scalar #<soundeffect> does not properly check for voices and other misc sounds and soundefects in mods since those are dlc files
 	}
 	subtype[frameAnimatedSpriteType] = {
 		textureFile = filepath
@@ -129,6 +132,8 @@ spriteType = {
 		size = { x = int y = int }
 		## cardinality = 0..1
 		animation_rate_spf = int
+		## cardinality = 0..1
+		allwaystransparent = bool
 	}
 	subtype[maskedShieldType] = {
 		textureFile1 = scalar
@@ -163,5 +168,9 @@ spriteType = {
 		size = int
 		rotation = int
 		amount = int
+	}
+	subtype[LineChartType] = {
+		size = { x = int y = int }
+		linewidth = float
 	}
 }

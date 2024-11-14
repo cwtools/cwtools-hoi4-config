@@ -61,7 +61,7 @@ scripted_gui = {
 	## cardinality = 0..1
 	### Define any scripted gui as the parent gui. This is more performant than using something like parent_window_token/parent_window_name for nested GUIs.
 	parent_scripted_gui = <scripted_gui>
-
+	
 	## cardinality = 0..1
 	### Any GUI container name. Use only if parent_window_token doesn't have a corresponding token.
 	parent_window_name = <containerWindowType>
@@ -554,13 +554,13 @@ enums = {
 		selected_country_context
 		decision_category
 		diplomatic_action
+		national_focus_context # gui will be attached to a national focus view for the targeted country, the country which owns the national focus view
 		country_mapicon
 		state_mapicon
 	}
 
 	enum[parent_window_token] = {
 		top_bar #(attached to top bar that contains resources and stuff)
-		topbar
 
 		# 8 tabs that shows up when you click on buttons next to your country flag
 		decision_tab
@@ -573,6 +573,11 @@ enums = {
 		diplomacy_tab #(this one is a bit special, it only shows when no country is selected and country list is visible)
 
 		politics_tab #(window that pops up when you click on your flag)
+		
+		army_ledger
+		navy_ledger
+		civilian_ledger
+		air_ledger
 
 		# default research trees
 

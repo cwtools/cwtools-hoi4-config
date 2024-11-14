@@ -59,6 +59,8 @@ technology = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 	## cardinality = 0..1
+	is_special_project_tech = bool
+	## cardinality = 0..1
 	### Make technology exclusive with techs named.
 	xor = {
 		## cardinality = ~1..inf
@@ -120,7 +122,11 @@ technology = {
 	path = {
 		## cardinality = 0..1
 		leads_to_tech = <technology>
+		## cardinality = 0..1
 		research_cost_coeff = float
+		### Ignores path for layout. Useful for techs with multiple parents belonging to different tech grids or folders.
+		## cardinality = 0..1
+		ignore_for_layout = bool
 	}
 	## cardinality = 0..1
 	dependencies = {
@@ -161,7 +167,7 @@ technology = {
 		## cardinality = 0..inf
 		enum[tech_category] = float
 		## cardinality = 0..inf
-		enum[unit_types] = float
+		enum[equipment_category] = float
 		## cardinality = 0..inf
 		<resource> = float
 	}
@@ -171,12 +177,26 @@ technology = {
 		## cardinality = ~1..inf
 		enum[tech_category]
 	}
+	## cardinality = 0..1
+	special_project_specialization = { 
+		## cardinality = 0..inf
+		<specialization> 
+	}
 	## cardinality = 0..inf
 	enum[unit_category] = {
 		## cardinality = 0..inf
 		alias_name[unit_stat] = alias_match_left[unit_stat]
 		alias_name[naval_stat] = alias_match_left[naval_stat]
 		alias_name[air_stat] = alias_match_left[air_stat]
+		## cardinality = 0..1
+		need = {
+			## cardinality = ~1..inf
+			<equipment> = int
+			## cardinality = 0..1
+			value[bba_air_variants] = int
+			## cardinality = 0..inf
+			value[nsb_armor_variants] = int
+		}
 	}
 	## cardinality = 0..inf
 	<unit> = {
@@ -184,6 +204,10 @@ technology = {
 		need = {
 			## cardinality = 1..inf
 			<equipment> = int
+			## cardinality = 0..1
+			value[bba_air_variants] = int
+			## cardinality = 0..inf
+			value[nsb_armor_variants] = int
 		}
 		## cardinality = 0..inf
 		alias_name[unit_stat] = alias_match_left[unit_stat]
@@ -197,6 +221,8 @@ technology = {
 			alias_name[unit_stat] = alias_match_left[unit_stat]
 			## cardinality = 0..1
 			add = bool
+			## cardinality = 0..1
+			display_as_percentage = bool
 		}
 		## cardinality = 0..inf
 		enum[region_weather] = {
@@ -205,6 +231,10 @@ technology = {
 			alias_name[naval_stat] = alias_match_left[naval_stat]
 			alias_name[air_stat] = alias_match_left[air_stat]
 		}
+		
+		## cardinality = 0..1
+		### use this equipment for speed
+		transport = <equipment>
 	}
 	## cardinality = 0..1
 	modifier = {

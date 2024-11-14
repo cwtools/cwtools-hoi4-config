@@ -117,6 +117,7 @@ enums = {
 		can_generate_female_unit_leaders
 		can_generate_female_country_leaders
 		can_access_market
+		can_use_underway_replenishment
 	}
 
 	enum[ai_ideology] = {

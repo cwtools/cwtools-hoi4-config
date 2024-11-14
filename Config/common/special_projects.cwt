@@ -1,0 +1,589 @@
+types = {
+    type[special_project] = {
+		path = "game/common/special_projects/projects"
+    }
+    type[sp_prototype_reward] = {
+		path = "game/common/special_projects/prototype_rewards"
+    }
+
+    type[specialization] = {
+		path = "game/common/special_projects/specialization"
+    }
+}
+
+special_project = {
+	# Mandatory
+	# Category of Special Projects containing this project
+	specialization = <specialization>
+
+	# Optional
+	# Trigger evaluated at startup for every countries to fill the pool of potential projects
+	# if triggers returns true, an instance of this Project is created for this country
+	# scope: country. only tag, original_tag and has_dlc allowed.
+    ## replace_scope = { root = country this = country }
+    ## cardinality = 0..1
+	allowed = {
+        ## cardinality = 0..1
+        always = bool
+        ## cardinality = 0..inf
+        tag = scope[country]
+        ## cardinality = 0..inf
+        original_tag = scope[country]
+        ## cardinality = 0..inf
+        has_dlc = enum[dlc]
+        ## cardinality = 0..inf
+        NOT = {
+            ## cardinality = 0..inf
+            tag = scope[country]
+            ## cardinality = 0..inf
+            original_tag = scope[country]
+            ## cardinality = 0..inf
+            has_dlc = enum[dlc]
+        }
+        ## cardinality = 0..inf
+        AND = {
+            ## cardinality = 0..inf
+            tag = scope[country]
+            ## cardinality = 0..inf
+            original_tag = scope[country]
+            ## cardinality = 0..inf
+            has_dlc = enum[dlc]
+        }
+    }
+
+	# Optional
+	# Trigger evaluated when displaying the Project
+	# if trigger returns false, the project is disabled and greyed-out
+	# scope: project. FROM: country
+    ## replace_scope = { ROOT = project this = project from = country}
+    ## cardinality = 0..1
+	available = {
+        ## cardinality = ~1..inf
+        alias_name[trigger] = alias_match_left[trigger]
+    }
+
+	# Optional
+	# Trigger evaluated when displaying the Project
+	# if trigger returns false, the project is hidden
+	# scope: project. FROM: country
+    ## replace_scope = { ROOT = project this = project from = country}
+    ## cardinality = 0..1
+	visible = {
+        ## cardinality = ~1..inf
+        alias_name[trigger] = alias_match_left[trigger]
+    }
+
+	# Optional
+	# Cost of breakthrough points to start project.
+	# Can consist of several breakthrough points from different specializations.
+	# If omitted it will default to 0 for the project specialization.
+	# Can also add script to modify the value (Country Scope).
+    ## cardinality = 0..1
+	breakthrough_cost = {
+        ## cardinality = 0..inf
+        <specialization> = int
+        ## cardinality = 0..inf
+        specialization = {
+            base = int
+            ## replace_scope = { ROOT = country this = project from = country}
+            ## cardinality = ~1..inf
+            modifier = {
+                add = int
+                ## cardinality = ~1..inf
+                alias_name[trigger] = alias_match_left[trigger]
+            }
+        }
+	}
+
+	# for AI and script, a Project is considered enabled if it is both visible and available
+
+	# Optional
+    ## cardinality = 0..1
+	narrative = {
+		# Optional
+		# Localization key used for the name of the Project
+		# The localization key is localized with the following localization scope objects:
+		#    * Country: The country that owns the project.
+        ## cardinality = 0..1
+		name = localisation
+    	# if name provided, use TAG_name_loc_key if it exists. if not use name_loc_key (where TAG is the tag of the project owner)
+    	# if localization key TAG_my_project_token exists, use it
+    	# else use loc key my_project_token
+
+		# Optional
+		# Localization key used for the long description of the Project
+		# The localization key is localized with the following localization scope objects:
+		#    * SpecialProjet: The project.
+		#    * Country: The country that owns the project
+        ## cardinality = 0..1
+		desc = localisation
+    	# if name provided, use TAG_desc_loc_key if it exists. if not use desc_loc_key (where TAG is the tag of the project owner)
+    	# if localization key TAG_my_project_token_desc exists, use it (!! Note the _desc suffix)
+    	# else use loc key my_project_token_desc
+	}
+
+	# Optional
+	# GFX key of the icon used to illustrate the Project
+    ## cardinality = 0..1
+	icon = <spriteType>
+    # if icon provided, use GFX_icon
+    # if gfx key GFX_TAG_my_project_token exists, use it
+    # if gfx key GFX_my_project_token exists, use it
+    # else use GFX_PLACEHOLDER_sp_project_icon
+
+    ## cardinality = 0..1
+    project_tags = enum[project_tag]
+    ## cardinality = 0..1
+    project_tags = {
+        ## cardinality = 0..inf
+        enum[project_tag]
+    }
+
+	# Optional
+	# GFX key of the background texture of the project when it is being researched
+	# overrides the one set at Specialization level
+    ## cardinality = 0..1
+	blueprint_image = <spriteType>
+
+	# At least 1 is Mandatory (and not 0)
+	# Number of days needed to complete each phase
+	# default is 0
+    ## cardinality = 0..1
+	prototype_time = int[1..inf]
+    prototype_time = scalar # can take script_constant get support at some point?
+
+	# Optional
+	# Resources drained during basic research & prototyping phases
+	# If not enough resources, research speed will be slowed down
+	# special project cost is always evaluated AFTER production lines resource cost
+	# Oil is not allowed here.
+    ## cardinality = 0..1
+	resource_cost = {
+		resources = {
+            ## cardinality = 0..inf
+            <resource> = int
+        }
+	}
+
+	# Optional: Defaults to defined default, if set to 0 a log error is produced and complexity is set to default.
+	# Amount of progress gained each prototype iteration.
+    ## cardinality = 0..1
+	complexity = int
+    complexity = scalar # can take script_constant get support at some point?
+
+	# Optional
+	# The weight for the probability of the reward being empty
+	# default is set by define NProject::DEFAULT_EMPTY_REWARD_WEIGHT
+	# scriptable weight similar to ai_will_do
+	# ROOT is the project
+	# FROM is the Country
+	# var:facility_state is the State where the facility is (ensured to be set in this case)
+	# var:facility_province_id is the province ID where the facility is (ensured to be set in this case)
+	# var:scientist is the Scientist (ensured to be set in this case)
+    ## replace_scope = { ROOT = project this = project from = country}
+    ## cardinality = 0..1
+	empty_reward_weight = {
+		base = float
+        ## cardinality = 0..inf
+		modifier = {
+            ## cardinality = 0..1
+			factor = float
+            ## cardinality = 0..1
+			add = float
+            ## cardinality = ~1..inf
+            alias_name[trigger] = alias_match_left[trigger]
+		}
+	}
+
+	# Optional
+	# AI weight modifier for this project
+	# Default value is 1
+	# current Project scope - FROM = country
+    # For documentation, see examples of ai_will_do throughout the content
+    ## replace_scope = { ROOT = country THIS = project FROM = country}
+    ## cardinality = 0..1
+	ai_will_do = {
+		base = float
+        ## cardinality = 0..inf
+		modifier = {
+            ## cardinality = 0..1
+			factor = float
+            ## cardinality = 0..1
+			add = float
+            ## cardinality = ~1..inf
+            alias_name[trigger] = alias_match_left[trigger]
+		}
+	}
+
+	# Optional
+	# Project will appear only if all parents are completed
+	# use other Projects' token
+    ## cardinality = 0..1
+	special_project_parent = {
+        ## cardinality = 0..inf
+		<special_project>
+	}
+
+	# Optional
+	# Bonus given when the Project is fully researched (i.e. at the end of the last Prototyping phase)
+    ## cardinality = 0..1
+	project_output = single_alias_right[sp_iteration_output]
+
+	# Optional array
+	# Rewards for when one iteration in the prototype phase is completed
+	# "Unique rewards" are only reachable by the containing project.
+	# Specification for content for a prototype reward can be found in documentation
+	# for generic prototype rewards.
+    ## cardinality = 0..1
+	unique_prototype_rewards = {
+		# Optional - Repeatable
+		# Dynamic token that identifies the reward
+		# Same specification as for prototype rewards.
+        ## cardinality = ~1..inf
+		scalar = single_alias_right[sp_proto_reward]
+		# Optional - Repeatable
+		# Anonymous prototype reward (not accessible except from effects)
+		# Same specification inside definition as for all other prototype rewards.
+		# { ... }
+	}
+
+	# Optional array
+	# "Generic rewards" are coming from the prototype reward DB and can be used in several projects
+	# (cf. game/common/special_projects/prototype_rewards)
+    ## cardinality = 0..1
+	generic_prototype_rewards = {
+		# Repeatable - Any number of generic prototype reward tokens
+        ## cardinality = 0..inf
+		<sp_prototype_reward>
+	}
+}
+
+sp_prototype_reward = single_alias_right[sp_proto_reward]
+
+single_alias[sp_proto_reward] = { # Dynamic token for the reward (i.e. identifier for the reward)
+    # Optional
+    ## cardinality = 0..1
+    narrative = {
+        # Optional
+        # Localization key used for the name of the Project
+        # The localization key is localized with the following localization scope objects:
+        #    * Country: The country that owns the project.
+        ## cardinality = 0..1
+        name = localisation
+        # if name provided, use TAG_name_loc_key if it exists. if not use name_loc_key (where TAG is the tag of the project owner)
+        # if localization key TAG_my_reward_token exists, use it
+        # else use loc key my_reward_token
+
+        # Optional
+        # Localization key used for the long description of the Project
+        # The localization key is localized with the following localization scope objects:
+        #    * SpecialProjet: The project.
+        #    * Character: The scientist assigned to the project.
+        #    * State: The state that the facility belongs to.
+        #    * Country: The country that owns the project
+        ## cardinality = 0..1
+        desc = localisation
+        # if desc provided, use TAG_desc_loc_key if it exists. if not use desc_loc_key (where TAG is the tag of the project owner)
+        # if localization key TAG_my_reward_token_desc exists, use it (!! Note the _desc suffix)
+        # else use loc key my_reward_token_desc
+    }
+
+    # Optional
+    # GFX key of the icon used to illustrate the Project
+    ## cardinality = 0..1
+    icon = <spriteType>
+    # if icon provided, use GFX_icon
+    # if gfx key GFX_TAG_my_reward_token exists, use it
+    # if gfx key GFX_my_reward_token exists, use it
+    # else use GFX_PLACEHOLDER_sp_project_picture
+
+    # Optional
+    # Determine if the reward can only be obtained once - or several times
+    # Default is no
+    ## cardinality = 0..1
+    fire_only_once = bool
+		
+	# OPTIONAL - When this reward becomes available it will have priority. If several available rewards have this set to true, the reward will be randomly chosen based on weight.
+    ## cardinality = 0..1
+	force_reward_if_available = bool
+
+    # Optional
+    # (Min, Max]. Meaning Min value is considered inside the threshold but max is not.
+    # In the example below this reward would be triggered when the prototype progress is a value from 0 to and not including 60
+    # default is "always eligible"
+    ## cardinality = 0..1
+    threshold = {
+        min = int
+        max = int
+    }
+
+    # Optional
+    # The weight for the probability of the reward being choosen
+    # default is set by define NProject::ITERATION_REWARD_DEFAULT_WEIGHT
+    # scriptable weight similar to ai_will_do
+    # ROOT is the project
+    # FROM is the Country
+    # var:facility_state is the State where the facility is (ensured to be set in this case)
+    # var:facility_province_id is the province ID where the facility is (ensured to be set in this case)
+    # var:scientist is the Scientist (ensured to be set in this case)
+    ## cardinality = 0..1
+    ## replace_scope = { root = project this = project from = country }
+    weight = {
+        ## cardinality = ~1..1
+		base = float
+        ## cardinality = 0..inf
+		modifier = {
+            ## cardinality = 0..1
+			factor = float
+            ## cardinality = 0..1
+			add = float
+            ## cardinality = ~1..inf
+            alias_name[trigger] = alias_match_left[trigger]
+		}
+    }
+
+    # Optional
+    # Set an allowed trigger for the reward - Defaults to true
+    ## cardinality = 0..1
+    ## replace_scope = { root = country this = country}
+    allowed = {
+        ## cardinality = ~1..inf
+        alias_name[trigger] = alias_match_left[trigger]
+    }
+
+    # Repeatable - at least 1 mandatory
+    ## cardinality = 1..inf
+    option = {
+        # Mandatory - must be unique within the same Reward
+        ## cardinality = 1..1
+        token = value_set[proto_reward]
+
+        # Optional
+        # Whether or not this option is the default one when timing out
+        # Only 1 option should have default = yes
+        # If none has it, the first one is the default one
+        ## cardinality = 0..1
+        default = yes
+
+        # Optional
+        ## cardinality = 0..1
+        narrative = {
+            # Optional
+            # Localization key used for the name of the Project
+            # The localization key is localized with the following localization scope objects:
+            #    * Country: The country that owns the project.
+             ## cardinality = 0..1
+            name = localisation
+            # if name provided, use TAG_name_loc_key if it exists. if not use name_loc_key (where TAG is the tag of the project owner)
+            # if localization key TAG_my_option_token exists, use it
+            # else use loc key my_option_token
+        }
+
+        # Optional
+        # Bonus given when a prototype phase ends up with this reward and this option is chosen
+        ## cardinality = 0..1
+        iteration_output = single_alias_right[sp_iteration_output]
+    }
+}
+
+specialization = {
+    ## cardinality = 0..1
+    blueprint_image = <spriteType>
+    color = {
+        ## cardinality = 3..3
+        int
+    }
+    ## cardinality = 0..1
+    program_background = <spriteType>
+}
+
+single_alias[sp_iteration_output] = {
+    # Country effect block
+    # scope: country. FROM: project
+    ## replace_scope = { ROOT = country this = country from = project }
+    ## cardinality = 0..1
+    country_effects = {
+        ## cardinality = ~1..inf
+        alias_name[effect] = alias_match_left[effect]
+    }
+
+    # Facility State effect block
+    # !Warning: if the project is completed via script, there may be no facility and this will be skipped
+    # scope: state. FROM: project
+    # var:facility_province_id : temporary variable with the province ID of the facility
+    ## replace_scope = { ROOT = state this = state from = project}
+    ## cardinality = 0..1
+    facility_state_effects = {
+        ## cardinality = ~1..inf
+        alias_name[effect] = alias_match_left[effect]
+    }
+
+    # Scientist effect block
+    # !Warning: if the project is completed via script, there may be no scientist and this will be skipped
+    # scope: character. FROM: project
+    ## replace_scope = { ROOT = character this = character from = project}
+    ## cardinality = 0..1
+    scientist_effects = {
+        ## cardinality = ~1..inf
+        alias_name[effect] = alias_match_left[effect]
+    }
+
+    # Optional array
+    # Enable equipment variants - cf. game/common/units/equipment
+	## cardinality = 0..inf
+    enable_equipments = {
+        # Optional trigger - only accepts has_dlc
+        ## cardinality = 0..1
+        # Only enabled if limit is empty or returns true
+        limit = {
+            ## cardinality = 0..inf
+            has_dlc = enum[dlc]
+            ## cardinality = 0..inf
+            NOT = {
+                ## cardinality = 0..inf
+                has_dlc = enum[dlc]
+            }
+            ## cardinality = 0..inf
+            AND = {
+                ## cardinality = 0..inf
+                has_dlc = enum[dlc]
+            }
+        }
+
+        ## cardinality = 0..inf
+        <equipment>
+        ## cardinality = 0..inf
+        <duplicate_archetypes>
+        ## cardinality = 0..inf
+        subtype[nsb_armor_tech] = {
+            ## cardinality = ~1..inf
+            value_set[nsb_armor_variants]
+        }
+        ## cardinality = 0..inf
+        subtype[bba_air_tech] = {
+            ## cardinality = ~1..inf
+            value_set[bba_air_variants]
+        }
+    }
+
+    # Optional array
+    # Enable equipment modules - cf. game/common/units/equipment/modules
+    ## cardinality = 0..inf
+    enable_equipment_modules = {
+        # Only enabled if limit is empty or returns true
+        ## cardinality = 0..1
+        limit = {
+            ## cardinality = 0..inf
+            has_dlc = enum[dlc]
+            ## cardinality = 0..inf
+            NOT = {
+                ## cardinality = 0..inf
+                has_dlc = enum[dlc]
+            }
+            ## cardinality = 0..inf
+            AND = {
+                ## cardinality = 0..inf
+                has_dlc = enum[dlc]
+            }
+        }
+        ## cardinality = 0..inf
+        <module>
+
+    }
+
+    # Optional array
+    # Enable sub units (aka battalion) - cf. game/common/units
+    ## cardinality = 0..1
+    enable_subunits = {
+        # Only enabled if limit is empty or returns true
+        ## cardinality = 0..1
+        limit = {
+            ## cardinality = 0..inf
+            has_dlc = enum[dlc]
+            ## cardinality = 0..inf
+            NOT = {
+                ## cardinality = 0..inf
+                has_dlc = enum[dlc]
+            }
+            ## cardinality = 0..inf
+            AND = {
+                ## cardinality = 0..inf
+                has_dlc = enum[dlc]
+            }
+        }
+        ## cardinality = ~1..inf
+        <unit>
+    }
+
+    # Optional
+    # Sub-unit stat bonus
+    ## cardinality = 0..1
+    sub_unit_bonus = {
+        ## cardinality = 0..inf
+        <unit> = {
+            ## cardinality = 0..inf
+            need = {
+                ## cardinality = 1..inf
+                <equipment> = int
+                ## cardinality = 0..1
+                value[bba_air_variants] = int
+                ## cardinality = 0..inf
+                value[nsb_armor_variants] = int
+            }
+            ## cardinality = 0..inf
+            alias_name[unit_stat] = alias_match_left[unit_stat]
+            alias_name[naval_stat] = alias_match_left[naval_stat]
+            alias_name[air_stat] = alias_match_left[air_stat]
+            ## cardinality = 0..inf
+            battalion_mult = {
+                ## cardinality = 1..inf
+                category = enum[unit_category]
+                ## cardinality = 1..inf
+                alias_name[unit_stat] = alias_match_left[unit_stat]
+                ## cardinality = 0..1
+                add = bool
+                ## cardinality = 0..1
+				display_as_percentage = bool
+            }
+            ## cardinality = 0..inf
+            enum[region_weather] = {
+                ## cardinality = 0..inf
+                alias_name[unit_stat] = alias_match_left[unit_stat]
+                alias_name[naval_stat] = alias_match_left[naval_stat]
+                alias_name[air_stat] = alias_match_left[air_stat]
+            }
+        }
+    }
+
+    # Optional
+    # Equipment bonus
+    ## cardinality = 0..1
+    equipment_bonus = {
+        # same format as equipment_bonus in ideas
+        ## cardinality = 0..inf
+        enum[equipment_bonus_type] = {
+            ## cardinality = 0..1
+            instant = bool
+            alias_name[unit_stat] = alias_match_left[unit_stat]
+            alias_name[naval_stat] = alias_match_left[naval_stat]
+            alias_name[air_stat] = alias_match_left[air_stat]
+        }
+        ## cardinality = 0..inf
+        <equipment_group> = {
+            ## cardinality = 0..1
+            instant = bool
+            alias_name[unit_stat] = alias_match_left[unit_stat]
+            alias_name[naval_stat] = alias_match_left[naval_stat]
+            alias_name[air_stat] = alias_match_left[air_stat]
+        }
+    }
+}
+
+enums = {
+	complex_enum[project_tag] = {
+		path = "game/common/special_projects"
+		name = {
+			enum_name
+		}
+	}
+}

@@ -1,0 +1,81 @@
+
+types = {
+    type[script_constant] = {
+		path = "game/common/script_constants"
+    }
+    ## type_key_filter <> schema
+    type[constant_one] = {
+		path = "game/common/script_constants"
+        skip_root_key = yes
+    }
+    ## type_key_filter <> { any_key key data }
+    type[constant_two] = {
+		path = "game/common/script_constants"
+        skip_root_key = { any any }
+    }
+}
+
+#script_constant = {   
+#     # Mandatory to be the first entr
+#    schema = {
+#        # specific name of the key mutually exclusive with any_key
+#		## cardinality = 0..1
+#        key = scalar
+#        # Accept any key of alphabetic characters (no dots), mutually exclusive with key
+#		## cardinality = 0..1
+#        any_key = yes
+#        
+#        # The data sepecification
+#        data = int # integer
+#        data = float # floating point
+#        data = {
+#        } # complex schema entry
+#    }
+#
+#    # All the data entries that matches the specified schema.
+#	## cardinality = 0..inf
+#    scalar = scalar
+#	## cardinality = 0..inf
+#    scalar = { 
+#        ## cardinality = 0..inf
+#        scalar = scalar
+#    }
+#}
+
+enums = {
+    complex_enum[constant_one] = {
+        start_from_root  = yes
+		path = "game/common/script_constants"
+        name = {
+            scalar = {
+                schema = {
+
+                }
+                enum_name = scalar
+                enum_name = {
+
+                }
+            }
+        }
+    }
+    complex_enum[constant_two] = {
+        start_from_root  = yes
+		path = "game/common/script_constants"
+        name = {
+            scalar = {
+                schema = {
+
+                }
+                scalar = scalar
+                scalar = {
+                    enum_name = scalar
+                }
+            }
+        }
+    }
+    enum[constant_hack] = {
+        <script_constant>
+        <constant_one>
+        <constant_two>
+    }
+}

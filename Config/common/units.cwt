@@ -37,6 +37,9 @@ types = {
 		subtype[ship_unit] = {
 			map_icon_category = enum[ship_map_icons]
 		}
+		subtype[other] = {
+			map_icon_category = other
+		}
 	}
 	type[division_name] = {
 		path = "game/common/units/names_divisions"
@@ -355,6 +358,8 @@ unit = {
 			alias_name[unit_stat] = alias_match_left[unit_stat]
 			## cardinality = 0..1
 			add = bool
+			## cardinality = 0..1
+			display_as_percentage = bool
 		}
 	}
 
@@ -411,6 +416,26 @@ unit = {
 		### Determines the default size of the carrier air wing for this unit
 		## cardinality = 0..1
 		carrier_air_wing_size = int
+		## cardinality = 0..1
+		mega_carrier_air_wing_size = int
+	}
+	subtype[other] = {
+
+		need = {
+			## cardinality = ~1..inf
+			<equipment> = int
+			## cardinality = 0..inf
+			value[nsb_armor_variants] = int
+		}
+
+		### map icon
+		map_icon_category = other
+
+		### unit type
+		type = {
+			## cardinality = ~1..inf
+			enum[land_units]
+		}
 	}
 
 	subtype[catch] = {
@@ -498,6 +523,7 @@ division_name = {
 		enum[country_tags]
 	}
 	## cardinality = 0..1
+	## replace_scope = { root = country this = country }
 	can_use = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
@@ -547,44 +573,44 @@ enums = {
 		mobile
 		armor
 	}
-	enum[unit_types] = {
-		infantry
-		support
-		artillery
-		rocket
-		anti_tank
-		anti_air
-		motorized
-		cavalry
-		mechanized
-		armor
-		fighter
-		cas
-		naval_bomber
-		interceptor
-		suicide
-		tactical_bomber
-		strategic_bomber
-		air_transport
-		missile
-		submarine
-		screen_ship
-		capital_ship
-		carrier
+	enum[unit_types] = { # use enum[equipment_category] so updated automatically? and update here for  for seperating in other land/air/naval groups?
 		convoy
-		paratroopers
-		scout_plane
+		train
 		floating_harbor
 		railway_gun
-		train
-		flame
-		maritime_patrol_plane
-		cv_naval_bomber
-		cv_cas
-		cv_fighter
-		cv_interceptor
+		armor
+		motorized
+		mechanized
+		infantry
+		capital_ship
+		submarine
+		screen_ship
+		fighter
 		heavy_fighter
+		interceptor
+		tactical_bomber
+		strategic_bomber
+		cas
+		naval_bomber
+		missile
+		emplacement_gun_ammo
+		ballistic_missile
+		nuclear_missile
+		sam_missile
+		suicide
+		scout_plane
+		maritime_patrol_plane
+		air_transport
+		carrier
+		missile_launcher
+		support
 		amphibious
+		anti_air
+		artillery
+		anti_tank
+		rocket
+		flame
+		land_cruiser
 	}
 	enum[land_units] = {
 		infantry
@@ -599,6 +625,7 @@ enums = {
 		amphibious
 		flame
 		railway_gun
+		land_cruiser
 	}
 	enum[air_units] = {
 		air_transport
@@ -613,6 +640,10 @@ enums = {
 		tactical_bomber
 		maritime_patrol_plane
 		heavy_fighter
+		ballistic_missile
+		emplacement_gun_ammo
+		nuclear_missile
+		sam_missile
 	}
 	enum[ship_units] = {
 		battle_cruiser
@@ -637,21 +668,24 @@ enums = {
 		artillery
 	}
 	enum[allowed_air_unit_missions] = {
-		paradrop
-		air_supply
 		air_superiority
-		interception
-		naval_bomber
-		port_strike
-		naval_patrol
-		strategic_bomber
 		cas
-		attack_logistics
+		interception
+		strategic_bomber
+		naval_bomber
+		drop_nuke
+		paradrop
 		naval_kamikaze
+		port_strike
+		attack_logistics
+		air_supply
+		training
 		naval_mines_planting
 		naval_mines_sweeping
 		recon
-		training
+		naval_patrol
+		barrage_mission
+		sam_mission
 	}
 	complex_enum[unit_category] = {
 		path = "game/common/unit_tags"

@@ -56,6 +56,7 @@ peace_ai_desires = {
 }
 
 peace_action_modifiers = {
+    ## cardinality 0..1
     category = <peace_action_categories>
     peace_action_type = enum[peace_action]
     # Cardinality magically stops working here, had to improvise. cardinality 1..4

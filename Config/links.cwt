@@ -19,7 +19,7 @@ links = {
     # Custom data links ####
     owner = {
         output_scope = country
-        input_scopes = { unit_leader operative character combat state country unit military_industrial_organization }
+        input_scopes = { unit_leader operative character combat state country unit military_industrial_organization project }
     }
 
     controller = {
@@ -110,4 +110,13 @@ links = {
         from_data = yes
         data_source = <military_industrial_organization>
     }
+
+    sp = {
+        prefix = sp:
+        output_scope = special_project
+        input_scopes = country
+        from_data = yes
+        data_source = <special_project>
+    }
+
 }

@@ -32,6 +32,7 @@ soundeffect = {
     name = scalar
     ## cardinality = 0..1
     falloff = scalar #falloff type
+    ## cardinality = 0..inf
     sounds = {
         ## cardinality = 0..inf
         sound = scalar #<sound> does not properly check for voices and other misc sounds and soundefects in mods since those are dlc files

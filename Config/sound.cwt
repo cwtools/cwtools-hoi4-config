@@ -108,4 +108,6 @@ soundcategory = {
         ## cardinality = 0..1
         releasetime = float
     }
+    ## cardinality = 0..1
+    compressor = scalar
 }

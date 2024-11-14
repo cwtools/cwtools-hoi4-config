@@ -1,0 +1,431 @@
+types = {
+    type[raid_category] = {
+        path = "game/common/raids/categories"
+        skip_root_key = categories
+    }
+    type[raid] = {
+        path = "game/common/raids"
+        skip_root_key = types
+    }
+
+}
+
+raid_category = {
+    ## cardinality = 0..1
+    ## replace_scope = { this = country root = country }
+    available = {
+        ## cardinality = ~1..inf
+        alias_name[trigger] = alias_match_left[trigger]
+    }
+    ## cardinality = 0..1
+    ## replace_scope = { this = country root = country }
+    visible = {
+        ## cardinality = ~1..inf
+        alias_name[trigger] = alias_match_left[trigger]
+    }
+    ## cardinality = 1..1
+    intel_source = enum[intel_types]
+    # default is no
+    ## cardinality = 0..1
+    free_targeting = bool
+}
+
+raid = {
+    category = <raid_category>
+
+    ## cardinality = 0..1
+    custom_map_icon = <spriteType>
+
+    ## cardinality = 0..1
+    unit_icon = <spriteType>
+    ## cardinality = 0..1
+    target_icon = <spriteType>
+    ## cardinality = 0..1
+    target_loc_key = localisation
+    ## cardinality = 0..1
+    equipment_icon = <spriteType>
+    ## cardinality = 0..1
+    launch_sound = scalar #<soundeffect> does not properly check for voices and other misc sounds and soundefects in mods since those are dlc files
+
+    command_power = int # command power allocation cost
+
+    arrow = {
+        type = enum[arrow_type] # arrow type: line, ballistic, air or naval
+    }
+
+    unit_model = {
+        # equipment, transport or convoy
+        type = enum[raid_unit_model] # (will use the majority equipment type of the airwing)
+        ## cardinality = 0..1
+        scale = 0.5 # scale of the entity, is also multiplied by the global RAID_UNIT_ENTITY_BASE_SCALE define
+    }
+
+    ## replace_scope = { this = country root = country FROM = country }
+    ## cardinality = 0..1
+    ai_will_do = {
+        # AI only wants to do raids if resulting AI weight is > 0
+        # FROM refers to the target country
+        # var:target_state and var:target_province can also be used when applicable
+
+        base = float
+        ## cardinality = 0..inf
+        modifier = {
+            factor = float
+            ## cardinality = ~1..inf
+            alias_name[trigger] = alias_match_left[trigger]
+        }
+    }
+
+	## cardinality = 0..1
+    fire_only_once = bool # if the raid can only be executed once
+    ## cardinality = 0..1
+    days_re_enable = int # How many days before the raid can be created again against the same target.
+                        # There is RAID_DEFAULT_TARGET_COOLDOWN_DAYS define which is used if no value is specified in script.
+                        # Set to 0 if you don't want any cooldown.
+
+    days_to_prepare = int
+    ## cardinality = 0..1
+    speed_multiplier = float # optional unit speed multiplier, default = 1 (see also: RAID_UNIT_SPEED_MULTIPLIER in defines.lua)
+
+    ## replace_scope = { this = country root = country FROM = country }
+    allowed = {
+        ## cardinality = ~1..inf
+        alias_name[trigger] = alias_match_left[trigger]
+        # Mainly for Country Specific Raids and for dlc locks
+    }
+
+    # Whether the raid type should be visible or not, before considering potential targets
+    ## replace_scope = { this = country root = country FROM = country }
+    visible = {
+        ## cardinality = ~1..inf
+        alias_name[trigger] = alias_match_left[trigger]
+        # Keep these triggers simple for performance reasons
+    }
+
+    # Whether the raid type should be visible for a specific target
+    ## replace_scope = { this = country root = country FROM = country }
+    show_target = {
+        ## cardinality = ~1..inf
+        alias_name[trigger] = alias_match_left[trigger]
+        # Keep these triggers simple for performance reasons
+        # Use FROM to refer to the target country, e.g. to prevent targeting allies
+        # var:target_state and var:target_province can also be used when applicable
+    }
+
+    # Available represents being able to prepare a raid
+    ## replace_scope = { this = country root = country FROM = country }
+    available = {
+        ## cardinality = ~1..inf
+        alias_name[trigger] = alias_match_left[trigger]
+        # Keep these triggers simple for performance reasons
+        # Use FROM to refer to the target country, e.g. to prevent targeting allies
+        # var:target_state and var:target_province can also be used when applicable
+    }
+
+    # Available represents being able to start a raid
+    ## replace_scope = { this = country root = country FROM = country }
+    ## cardinality = 0..1
+    launchable = {
+        ## cardinality = ~1..inf
+        alias_name[trigger] = alias_match_left[trigger]
+        # Use FROM to refer to the target country, e.g. to require being at war
+        # var:target_state and var:target_province can also be used when applicable
+    }
+
+    target_type = {
+        #	target type tokens:
+        ## cardinality = 0..1
+        province = enum[provinces]
+        ## cardinality = 0..1
+        province = value[variable]
+        ## cardinality = 0..1
+        building = {
+            ## cardinality = 0..1
+            type = <building>
+            ## cardinality = 0..1
+            tags = value[building_tag]
+            ## cardinality = 0..1
+            level = {
+                ## cardinality = 0..1
+                min = int
+                ## cardinality = 0..1
+                max = int
+            }	# Optional. Max can also be omitted
+            ## cardinality = 0..1
+            is_coastal = bool # Optional
+        }
+        ## cardinality = 0..1
+        ## replace_scope = { this = state root = state }
+        state = {
+            ## cardinality = ~1..inf
+            alias_name[trigger] = alias_match_left[trigger]
+
+        }
+    }
+
+    # Conditions on the starting point:
+    starting_point = {
+        types = {
+            ## cardinality = ~1..inf
+            enum[raid_starting_point]
+        }
+    }
+
+    ## replace_scope = { this = country root = country }
+    show_target = {
+        ## cardinality = ~1..inf
+        alias_name[trigger] = alias_match_left[trigger]
+    }
+
+    ## cardinality = 0..1
+    preparation_time = int # number of days
+    ## cardinality = 0..1
+    cost = int # Command Power Allocation
+
+    ## cardinality = 0..1
+    target_requirements = {
+        ## cardinality = 0..1
+        air_superiority = float
+        ## cardinality = 0..1
+        naval_supremacy = float
+    } # air_superiority = percentage / naval_supremacy = percentage (in air region over target / adjacent sea zone) Defaults to NONE
+
+    ## cardinality = 0..1
+    target_requirement_time = int # Number of days
+
+    ## cardinality = 0..inf
+    unit_requirements = {
+        # Battalions...
+        ## cardinality = 0..inf
+        battalion_types = {  # Optional
+            ## cardinality = ~1..inf
+            <unit> = {
+                ## cardinality = 0..1
+                min = int
+                ## cardinality = 0..1
+                max = int
+            }
+        }
+
+        # ... or equipment...
+        ## cardinality = 0..inf
+        equipment = {  # Optional
+            type = {
+                ## cardinality = 0..inf
+                <equipment>
+                ## cardinality = 0..inf
+                enum[equipment_category]
+            }
+            ## cardinality = 0..1
+            modules = { <module> }  # Optional
+            ## cardinality = 0..1
+            amount = {
+                ## cardinality = 0..1
+                min = int
+                ## cardinality = 0..1
+                max = int
+            }  # Optional
+        }
+        ## cardinality = 0..1
+        experience = {
+            ## cardinality = 0..1
+            min = int
+            ## cardinality = 0..1
+            max = int
+        }  # Optional
+    }
+
+    # NOTE : unit_requirements can occur multiple times in a script
+    # any unit matching at least one of the unit_requirements blocks will be allowed to participate in the raid
+
+    ## cardinality = 0..1
+    essential_equipment = {
+        # list of equipment archetypes and numbers
+        # Having this equipment (in stockpile) is a precondition for *creating* the raid, and
+        # will be collected after a raid is created
+        ## cardinality = 0..1
+        <equipment> = int
+
+        ## cardinality = 0..1
+        nukes = int					# number of nukes (if using nukes)
+    }
+
+    ## cardinality = 0..1
+    additional_equipment = {
+        # list of equipment archetypes and numbers
+        # This equipment is collected after a raid is created (not needed for creating the raid)
+        # Note: essential_equipment and additional_equipment are not additive, instead the max of both is used
+        # Note: ships (ship hulls) can also be used, and will be primarily be collected from existing fleets
+        ## cardinality = 0..1
+        <equipment> = int
+
+        ## cardinality = 0..1
+        nukes = int					# number of nukes (if using nukes)
+    }
+
+    ## cardinality = 0..1
+    nuke_type = enum[nuke_type]		# type of nuke to use: nuclear_bomb or thermonuclear_bomb
+
+    # Intel requirements
+    ## cardinality = 0..1
+    intel_levels = {
+        ## cardinality = ~1..1
+        launch = int # minimum intel level to launch the raid
+    }
+
+    # What happens depending on which level of access is achieved
+    success_levels = {
+        failure = single_alias_right[raid_outcome]
+        limited_success = single_alias_right[raid_outcome]
+        success = single_alias_right[raid_outcome]
+        critical_success = single_alias_right[raid_outcome]
+    }
+
+    # What determines the probability of different outcomes
+    success_factors = {
+        success = single_alias_right[raid_factors]
+
+        ## cardinality = 0..1
+        critical = single_alias_right[raid_factors]
+
+        ## cardinality = 0..1
+        disaster = single_alias_right[raid_factors]
+    }
+
+}
+
+single_alias[raid_outcome] = {
+    ## cardinality = 0..1
+    custom_sound = scalar #<soundeffect> does not properly check for voices and other misc sounds and soundefects in mods since those are dlc files
+    
+    ## cardinality = 0..1
+    visual_effect = {
+        entity = <entity>
+        animation = <animation_id>
+    }
+
+    # Effects that should be listed as affecting the raiding country
+    # Raid instance scope
+    ## replace_scope = { this = raid root = raid }
+    ## cardinality = 0..1
+    actor_effects = {
+        # Can run raid instance scope effects
+        ## cardinality = ~1..inf
+        alias_name[effect] = alias_match_left[effect]
+
+        # And also use the dynamic variables to change scope (see the variable list below)
+        ## push_scope = { country }
+        ## cardinality = 0..1
+		var:actor_country = {
+            ## cardinality = ~1..inf
+            alias_name[effect] = alias_match_left[effect]
+		}
+    }
+
+    # Effects that should be listed as affecting the raided country
+    # Raid instance scope
+    ## replace_scope = { this = raid root = raid }
+    ## cardinality = 0..1
+    victim_effects = {
+        ## cardinality = ~1..inf
+        alias_name[effect] = alias_match_left[effect]
+
+        ## push_scope = { country }
+        ## cardinality = 0..1
+        var:victim_country = {
+            ## cardinality = ~1..inf
+            alias_name[effect] = alias_match_left[effect]
+        }
+
+        ## push_scope = { state }
+        ## cardinality = 0..1
+        var:target_state = {
+            ## cardinality = ~1..inf
+            alias_name[effect] = alias_match_left[effect]
+        }
+    }
+
+    # Division (unit) scope
+    ## cardinality = 0..1
+    ## replace_scope = { this = unit root = unit }
+    division_effects = {
+        ## cardinality = ~1..inf
+        alias_name[effect] = alias_match_left[effect]
+    }
+
+	# The percentage of additional equipment that gets destroyed
+	# Default is 100%
+    ## cardinality = 0..1
+	destroy_additional_equipment = float
+
+    ## cardinality = 0..1
+    outcome_description = localisation #[Optional] Custom description of the outcome
+    ## cardinality = 0..1
+    outcome_description_attacker = localisation #[Optional] Custom description for attacker
+    ## cardinality = 0..1
+    outcome_description_defender = localisation #[Optional] Custom description for defender
+}
+single_alias[raid_factors] = {
+    ## cardinality = 0..1
+    base = float # [Optional] A base chance of the outcome (default is 0.0)
+
+    # Optional modifiers
+    ## cardinality = 0..inf
+    enum[raid_chance_modifier] = {
+        weight = float # [Required] The maximum probability change applied by the modifier (positive or negative, additive)
+        ## cardinality = 0..1
+        reference = float # [Optional] The value of the backing property at which the modifier will have full weight. Default is 1.0
+        ## cardinality = 0..1
+        start_weight = float # [Optional] The weight of the modifier when the backing property is at 0.0 (or, instead, at start_reference if defined). Default is 0.0
+        ## cardinality = 0..1
+        start_reference = float # [Optional] The value of the backing property at which the modifier will have 0 weight (or, instead, start_weight if defined).
+    }
+}
+
+enums = {
+    enum[raid_unit_model] = {
+        equipment
+        transport
+        convoy
+    }
+    enum[raid_starting_point] = {
+        air_base
+        naval_base
+        rocket_site
+        carrier
+        submarine
+    }
+    enum[arrow_type] = {
+        line
+        ballistic
+        air
+        naval
+    }
+    enum[nuke_type] = {
+        nuclear_bomb
+        thermonuclear_bomb
+    }
+    enum[raid_chance_modifier] = {
+        prep_time #The preparation progress. Reference values from 0.0 (no preparation) to 1.0 (full preparation).
+        experience #The experience of the unit assigned to the raid. Reference values from 0.0-1.0 if land unit, or 0-1000 if air wing.
+        anti_air #The anti-air defense value of the target state. Reference values e.g. from 0 to 5 (meaning 5 basic AA buildings)
+        resistance #The amount of resistance in the target state. Reference values from 0 to 100
+        enemy_units #The number of enemy divisions in the target province. For province-target missions ONLY.
+        air_superiority #The air superiority score (fraction) of the actor country in the target region. Reference values from 0.0 to 1.0
+        naval_supremacy #The naval supremacy score (fraction) of the actor country in the target sea zone. Reference values from 0.0 to 1.0
+        interception #The number of enemy planes executing interception missions in the target region.
+        radar
+        intel #The amount of intel the actor country has on the target. Reference values depend on defines.
+
+        #### Air Units Only:
+        air_defence #The air defense value of the air unit assigned to the raid. Typical reference values from 0 to 50
+        air_agility #The air agility value of the air unit assigned to the raid. Typical reference values from 0 to 50
+        strategic_bomber #The strategic bombing value of the air unit assigned to the raid. Reference values from 0 to 1
+        reliability #The reliability (fraction) of the air unit assigned to the raid. Reference values from 0 to 1
+
+        #### Land Units Only:
+        recon #The recon level of the land unit assigned to the raid, if there is one. Typical reference values from 0 to 10
+        organisation #The organisation (absolute) of the land unit assigned to the raid, if there is one. Reference values from 0 to 100+
+        strength #The strength (factor) of the land unit assigned to the raid, if there is one. Reference values from 0.0 to 1.0
+    }
+}

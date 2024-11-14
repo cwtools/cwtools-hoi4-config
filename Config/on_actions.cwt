@@ -528,6 +528,13 @@ types = {
 		path = "game/common/on_actions"
 		skip_root_key = on_actions
 	}
+	
+	## type_key_filter = on_project_completion
+	type[on_project_completion] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+		
 }
 
 on_action = {
@@ -1111,6 +1118,12 @@ on_action = {
 	## cardinality = 0..inf
 	## replace_scope = { ROOT = military_industrial_organization this = military_industrial_organization FROM = COUNTRY }
 	on_mio_industrial_manufacturer_unassigned = single_alias_right[on_action_effect]
+
+	### Triggered when a project is completed
+	### ROOT is the Military Industrial Organization, FROM is the owner of the MIO country
+	## cardinality = 0..inf
+	## replace_scope = { ROOT = COUNTRY this = COUNTRY FROM = special_project }
+	on_project_completion = single_alias_right[on_action_effect]
 }
 
 single_alias[country_event_effect] = {

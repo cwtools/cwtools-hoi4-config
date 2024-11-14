@@ -1,0 +1,473 @@
+### Add breakthrough points to one specialization or all for a country scope.
+## scope = country
+alias[effect:add_breakthrough_points] = {
+    specialization = <specialization>
+    specialization = all
+    value = int
+
+}
+
+### Requires raid as ROOT scope. Reduce progress to the special project in state. Root scope is raid instance scope. The input value is a ratio of the total needed progress to complete the special project, i.e. a decimal number between 0 and 1.
+## scope = state
+alias[effect:raid_reduce_project_progress_ratio] = float[0.0..1.0]
+
+### Executes children effects on random scientists that fulfills the "limit" trigger.
+## scope = country
+## push_scope = character
+alias[effect:random_scientist] = {
+	## cardinality = 0..1
+	limit = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	## cardinality = 0..1
+	tooltip = localisation
+	alias_name[effect] = alias_match_left[effect]
+}
+### Executes children effects on every scientist (or "random_select_amount" of random character if specified) of the country in scope, that fulfills the \\\"limit\\\" trigger.
+## scope = country
+## push_scope = character
+alias[effect:every_scientist] = {
+	### Apply the effect to this number of randomly selected entities
+	## cardinality = 0..1
+	random_select_amount = int[1..inf]
+	## cardinality = 0..1
+	display_individual_scopes = bool
+	## cardinality = 0..1
+	limit = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	## cardinality = 0..1
+	tooltip = localisation
+	alias_name[effect] = alias_match_left[effect]
+}
+
+### Create a colonial division template for overlord/owner. Available parameters are subject and division_template, where the subject parameter is the country tag for an overlords subject. And the division_template is the regular effect to create a division template.
+## scope = country
+alias[effect:create_colonial_division_template] = {
+    subject = scope[country] # Country tag
+	division_template = {
+		name = scalar
+		## cardinality = 0..1
+		division_names_group = <division_name>
+		## cardinality = 0..1
+		override_model = <entity>
+		## cardinality = 0..1
+		template_counter = int
+		## cardinality = 0..1
+		is_locked = bool
+		## cardinality = 0..1
+		force_allow_recruiting = bool
+		## cardinality = 0..1
+		obsolete = bool
+		## cardinality = 0..1
+		division_cap = int
+		regiments = {
+			## cardinality = 0..25
+			<unit.infantry> = { x = int[0..4] y = int[0..4] }
+			## cardinality = 0..25
+			<unit.armor> = { x = int[0..4] y = int[0..4] }
+			## cardinality = 0..25
+			<unit.mobile> = { x = int[0..4] y = int[0..4] }
+			## cardinality = 0..25
+			<unit.combat_support> = { x = int[0..4] y = int[0..4] }
+			## cardinality = 0..25
+			<unit.armor_combat_support> = { x = int[0..4] y = int[0..4] }
+			## cardinality = 0..25
+			<unit.mobile_combat_support> = { x = int[0..4] y = int[0..4] }
+		}
+		## cardinality = 0..1
+		support = {
+			## cardinality = ~1..5
+			<unit.support_unit> = { x = 0 y = int[0..4] }
+		}
+		## cardinality = 0..1
+		template_counter = int
+		## cardinality = 0..1
+		priority = int
+	}
+}
+
+### Add levels to a special project specialization for a scientist character in scope.
+## scope = character
+alias[effect:add_scientist_level] = {
+    level = int_variable_field # accepts variables
+    specialization = <specialization>
+}
+
+### Add experience to a special project specialization for a scientist character in scope.
+## scope = character
+alias[effect:add_scientist_xp] = {
+    experience = int_variable_field # accepts variables
+    experience = value[variable] # accepts variables
+    specialization = <specialization>
+}
+
+### Add a trait to a scientist character in scope.
+## scope = character
+alias[effect:add_scientist_trait] = <scientist_trait>
+
+### set project flag.
+## scope = project
+alias[effect:set_project_flag] =  value_set[project_flag]
+### set project flag.
+## scope = project
+alias[effect:set_project_flag] = {
+	flag = value_set[project_flag]
+	## cardinality = 0..1
+	value = int
+	## cardinality = 0..1
+	days = int
+}
+### modify project flag. Only modifies if flag already exists.
+## scope = project
+alias[effect:modify_project_flag] = {
+	flag = value[project_flag]
+	## cardinality = 0..1
+	value = int
+	## cardinality = 0..1
+	days = int
+}
+### clear project flag
+## scope = project
+alias[effect:clr_project_flag] = value[project_flag]
+
+### Executes children effects on every active scientist (or "random_select_amount" of random character if specified) of the country in scope, that fulfills the "limit" trigger.
+## scope = country
+## push_scope = character
+alias[effect:every_active_scientist] = {
+	### Apply the effect to this number of randomly selected entities
+	## cardinality = 0..1
+	random_select_amount = int[1..inf]
+	## cardinality = 0..1
+	display_individual_scopes = bool
+	## cardinality = 0..1
+	limit = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	## cardinality = 0..1
+	tooltip = localisation
+	alias_name[effect] = alias_match_left[effect]
+}
+
+### Executes children effects on random scientists that fulfills the "limit" trigger.
+## scope = country
+## push_scope = character
+alias[effect:random_active_scientist] = {
+	## cardinality = 0..1
+	limit = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	## cardinality = 0..1
+	tooltip = localisation
+	alias_name[effect] = alias_match_left[effect]
+}
+
+### Injure a scientist for x amount of days to a scientist character in scope.
+## scope = character
+alias[effect:injure_scientist_for_days] = int
+
+### Add breakthrough progress to one specialization or all for a country scope.The value can either be an absolute value or a script constant.
+## scope = country
+alias[effect:add_breakthrough_progress] = {
+    value = float
+    value = scalar # can take script_constant get support at some point?
+    specialization = <specialization>
+    specialization = all
+}
+
+### Forces the refresh of the hidden technologies for the scoped country
+## scope = country
+alias[effect:mark_technology_tree_layout_dirty] = bool
+
+### Add free bonus design discount to given types with a set of uses.The value for uses and cost_factor can either be an absolute value or a script constant.
+## scope = country
+alias[effect:add_design_template_bonus] = {
+	## cardinality = 0..1
+    name = localisation
+    uses = int
+    uses = scalar # can take script_constant get support at some point?
+    cost_factor = float
+    cost_factor = scalar # can take script_constant get support at some point?
+	## cardinality = 1..inf
+    equipment = <equipment>
+}
+
+### Add history entry to a raid.
+## scope = raid
+alias[effect:add_raid_history_entry] = bool
+
+### Adds the specified equipment bonuses to the country. As description the given loc key or the name of given special project will be used. Same usage as in Ideas/National spirits
+##
+alias[effect:add_equipment_bonus] = {
+	## cardinality = 0..1
+    name = localisation
+	## cardinality = 0..1
+    project = scope[project] # Optional special project scope for using special project name. If not set, the name will be used.
+    bonus = {
+        ## cardinality = 0..inf
+        enum[equipment_bonus_type] = {
+            ## cardinality = 0..1
+            instant = bool
+            alias_name[unit_stat] = alias_match_left[unit_stat]
+            alias_name[naval_stat] = alias_match_left[naval_stat]
+            alias_name[air_stat] = alias_match_left[air_stat]
+        }
+    }
+
+}
+
+### Adds a contested owner to a state. The effect can be used either from a country or a state scope and accepts the other as parameter.
+## scope = state
+alias[effect:add_contested_owner] = scope[country]
+### Adds a contested owner to a state. The effect can be used either from a country or a state scope and accepts the other as parameter.
+## scope = country
+alias[effect:add_contested_owner] = scope[state]
+
+### Activates the shine effect on the focus with the given id. Focuses that are completed cannot have an activated shine effect. Note that tooltips for this effect are only shown in debug mode.
+## scope = country
+alias[effect:activate_shine_on_focus] = <focus>
+### Activates the shine effect on the focus with the given id. Focuses that are completed cannot have an activated shine effect. Note that tooltips for this effect are only shown in debug mode.
+## scope = country
+alias[effect:activate_shine_on_focus] = <shared_focus>
+### Deactivate the shine effect on the focus with the given id. The current focus cannot have it's shine effect removed. Note that tooltips for this effect are only shown in debug mode.
+## scope = country
+alias[effect:deactivate_shine_on_focus] = <focus>
+### Deactivate the shine effect on the focus with the given id. The current focus cannot have it's shine effect removed. Note that tooltips for this effect are only shown in debug mode.
+## scope = country
+alias[effect:deactivate_shine_on_focus] = <shared_focus>
+
+### Complete a special project for the country in scope. This effect will not take into account the current state of the project tree and will allow you to unlock a project even if the one before is not unlocked. Since the project is not completed within a facility, the facility state and scientist effects are NOT applied.
+## scope = country
+alias[effect:complete_special_project] = scope[project]
+### Complete a special project for the country in scope. This effect will not take into account the current state of the project tree and will allow you to unlock a project even if the one before is not unlocked. Since the project is not completed within a facility, the facility state and scientist effects are NOT applied.
+## scope = country
+alias[effect:complete_special_project] = value[variable]
+### Complete a special project for the country in scope. This effect will not take into account the current state of the project tree and will allow you to unlock a project even if the one before is not unlocked. Since the project is not completed within a facility, the facility state and scientist effects are NOT applied.
+## scope = country
+alias[effect:complete_special_project] = {
+    # project, scientist, state accepts variables and keywords.
+    project =  scope[project].
+    project =  value[variable]
+	## cardinality = 0..1
+    scientist = <character> # Optional if no iteration_output, default to current scientists on the project if active otherwise to none
+
+	## cardinality = 0..1
+    state = scope[state] # Optional if no iteration_output, default to current state of the project if active otherwise to none
+	## cardinality = 0..1
+    iteration_output = { # Can be a single reward or reward = option, if it contains a multiple option choice but no option specified the default will be used. The reward must be available to the project
+	    ## cardinality = 0..inf
+        <sp_prototype_reward>
+    } # Optional amount of iteration rewards
+	## cardinality = 0..1
+    show_modifiers = bool # Optional, default = yes
+}
+
+### Generate a new character with a scientist role and recruit it in the country in scope.
+## scope = country
+alias[effect:generate_scientist_character] = {
+	## cardinality = 0..1
+    portrait = GFX_portrait # optional - random portrait by default
+	## cardinality = 0..1
+    portrait_tag_override = scope[country] # optional - accepts variable and keyword - only relevant if using random portrait - by default use country in scope
+	## cardinality = 0..1
+    gender = enum[gender] # optional - by default random gender
+	## cardinality = 0..1
+    skills = {
+        # optional array
+        # same format as in scientist role in character DB
+        # by default all skills are at 1
+	    ## cardinality = ~1..inf
+        <specialization> = 2
+    }
+	## cardinality = 0..1
+    traits = { <scientist_trait> } # optional array
+}
+
+
+alias[effect:add_scientist_role] = {
+	## cardinality = 0..1
+    portrait = GFX_portrait # optional - random portrait by default
+	## cardinality = 0..1
+    portrait_tag_override = scope[country] # optional - accepts variable and keyword - only relevant if using random portrait - by default use country in scope
+	## cardinality = 0..1
+    gender = enum[gender] # optional - by default random gender
+	## cardinality = 0..1
+    skills = {
+        # optional array
+        # same format as in scientist role in character DB
+        # by default all skills are at 1
+	    ## cardinality = ~1..inf
+        <specialization> = 2
+    }
+	## cardinality = 0..1
+    traits = {
+        <scientist_trait>
+    } # optional array
+
+}
+### Add scientist role to a character. The character can come from the scope or from an input parameter. The scientist role format is the same as in the character DB. Except the visible trigger - a scientist role created via effect cannot have triggers.
+## scope = character
+alias[effect:add_scientist_role] = {
+    ## cardinality = 0..1
+    desc = localisation
+    ## cardinality = 0..1
+    traits = {
+        ## cardinality = ~1..inf
+        <scientist_trait>
+    }
+    ## cardinality = 1..1
+    skills = {
+        ## cardinality = 1..inf
+        <specialization> = int
+    }
+}
+
+### Remove the scientist role from a character.The character can come from the scope or from an input parameter. The scientist role format is the same as in the character DB. Except the visible trigger - a scientist role created via effect cannot have triggers.
+## scope = country
+alias[effect:remove_scientist_role] = bool
+### Remove the scientist role from a character.The character can come from the scope or from an input parameter. The scientist role format is the same as in the character DB. Except the visible trigger - a scientist role created via effect cannot have triggers.
+## scope = country
+alias[effect:remove_scientist_role] = {
+    character = <character>
+    character = value[character_token]
+	character = value[variable]
+	character = value[event_target]
+	character = value[global_event_target]
+	character = scope[character]
+}
+
+### Executes children effects on a random Allied Country different from the one in scope that fulfills the `limit` trigger.
+## scope = country
+## push_scope = country
+alias[effect:random_allied_country] = {
+	## cardinality = 0..1
+	limit = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	## cardinality = 0..1
+	tooltip = localisation
+	alias_name[effect] = alias_match_left[effect]
+}
+
+### Executes children effects on every Allied Country different from the one in scope (or `random_select_amount` of random country if specified) that fulfills the `limit` trigger.
+## scope = country
+## push_scope = country
+alias[effect:every_allied_country] = {
+	### Apply the effect to this number of randomly selected entities
+	## cardinality = 0..1
+	random_select_amount = int[1..inf]
+	## cardinality = 0..1
+	display_individual_scopes = bool
+	## cardinality = 0..1
+	limit = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	## cardinality = 0..1
+	tooltip = localisation
+	alias_name[effect] = alias_match_left[effect]
+
+}
+
+### Damage the units performing the raid in scope (the attackers inflict losses).  Damage is applied to ground units while damage to plane is defined as the amount of planes lost.\nIf 'ratio = yes', then all damage / losses are applied as a fraction of the current amount. For units, damage can be defined through one value 'damage' or separately through 'org_damage' and 'str_damage'
+## scope = raid
+alias[effect:raid_damage_units] = {
+	## cardinality = 0..1
+    org_damage = float
+	## cardinality = 0..1
+    str_damage = float
+	## cardinality = 0..1
+    damage = float
+	## cardinality = 0..1
+    plane_loss = float
+    ratio = yes
+}
+### Damage the units performing the raid in scope (the attackers inflict losses).  Damage is applied to ground units while damage to plane is defined as the amount of planes lost.\nIf 'ratio = yes', then all damage / losses are applied as a fraction of the current amount. For units, damage can be defined through one value 'damage' or separately through 'org_damage' and 'str_damage'
+## scope = raid
+alias[effect:raid_damage_units] = {
+	## cardinality = 0..1
+    plane_loss = int
+	## cardinality = 0..1
+    org_damage = int
+	## cardinality = 0..1
+    str_damage = int
+	## cardinality = 0..1
+    ratio = no
+}
+
+### Give experience to the units performing the raid (raid instance scope). Will give experience to any type of unit assigned to the raid, e.g. divisions or air wings. The value defines the progress towards the max level, e.g. 0.2 = gain 20% of the experience needed to reach max level. Can use either an explicit value or a variable
+## scope = raid
+alias[effect:raid_add_unit_experience] = variable_field
+
+### Promote the officer of the division to a general
+### scope = unit
+alias[effect:promote_officer_to_general] = bool
+
+# debug/test command?
+alias[effect:store_ref] = scalar
+
+### Removes a contested owner to a state. The effect can be used either from a country or a state scope and accepts the other as parameter.
+## scope = state
+alias[effect:remove_contested_owner] = scope[country]
+### Removes a contested owner to a state. The effect can be used either from a country or a state scope and accepts the other as parameter.
+## scope = country
+alias[effect:remove_contested_owner] = scope[state]
+
+### Add progress to the project's prototype phase. nThe input value is a ratio of the total needed progress to complete the special project, i.e. a decimal number between -1 and 1.
+## scope = project
+alias[effect:add_project_progress_ratio] = float[-1.0..1.0]
+### Add progress to the project's prototype phase. nThe input value is a ratio of the total needed progress to complete the special project, i.e. a decimal number between -1 and 1.
+## scope = project
+alias[effect:add_project_progress_ratio] = value[variable]
+
+
+
+### Executes the provided effects but with a custom tooltip surpressing all tooltips from all other effects inside this block. The custom tooltip is a [bindable localization]
+## scope = any
+alias[effect:custom_override_tooltip] = {
+    tooltip = localisation
+    tooltip = single_alias_right[bindable_loc]
+    ## cardinality = 1..inf
+    alias_name[effect] = alias_match_left[effect]
+}
+single_alias[bindable_loc] = {
+    localization_key = localisation
+	## cardinality = 0..inf
+    scalar = single_alias_right[bindable_loc] 
+	## cardinality = 0..inf
+    scalar = scalar
+}
+
+### Complete a prototype reward option for the project in scope \nThe effect will respect the fire only once and allowed property of prototype rewards.
+## scope = project
+alias[effect:complete_prototype_reward_option] = {
+    prototype_reward = <sp_prototype_reward>
+	## cardinality = 0..1
+    prototype_reward_option = <sp_prototype_reward>
+	## cardinality = 0..1
+    show_modifiers = bool
+}
+
+### Adds permanent subunit and subunit category bonuses for country.
+## scope = country
+alias[effect:add_unit_bonus] = {
+	## cardinality = 0..inf
+    <unit> = {
+		## cardinality = 0..inf
+		alias_name[unit_stat] = alias_match_left[unit_stat]
+		alias_name[naval_stat] = alias_match_left[naval_stat]
+		alias_name[air_stat] = alias_match_left[air_stat]
+    }
+	## cardinality = 0..inf
+	enum[unit_category] = {
+		## cardinality = 0..inf
+		alias_name[unit_stat] = alias_match_left[unit_stat]
+		alias_name[naval_stat] = alias_match_left[naval_stat]
+		alias_name[air_stat] = alias_match_left[air_stat]
+	}
+}
+
+### Set facility level in a random province of state and country scope.
+## scope = state
+alias[effect:construct_building_in_random_province] = {
+	<building> = int
+}

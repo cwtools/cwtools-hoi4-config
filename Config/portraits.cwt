@@ -42,6 +42,8 @@ portrait = {
         ## cardinality = 0..inf
 		<ideology> = single_alias_right[portraits]
 	}
+    ## cardinality = 0..1
+	scientist = single_alias_right[portraits]
 }
 
 single_alias[portraits] = {

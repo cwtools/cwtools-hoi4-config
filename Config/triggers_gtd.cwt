@@ -1,0 +1,254 @@
+### Checks if at least one scientist of the Country in scope matches the triggers.
+## scope = country
+## push_scope = character
+alias[trigger:any_scientist] = {
+    ## cardinality = 0..1
+    tooltip = localisation
+	## error_if_only_match = This is the default value and can be omitted
+	## severity = info
+	## cardinality = 0..1
+    include_invisible = no
+	## cardinality = 0..1
+    include_invisible = yes
+    alias_name[trigger] = alias_match_left[trigger]
+}
+
+### Checks if all scientists of the Country in scope matches the triggers.
+## scope = country
+## push_scope = character
+alias[trigger:all_scientists] = {
+    ## cardinality = 0..1
+    tooltip = localisation
+	## error_if_only_match = This is the default value and can be omitted
+	## severity = info
+	## cardinality = 0..1
+    include_invisible = no
+	## cardinality = 0..1
+    include_invisible = yes
+    alias_name[trigger] = alias_match_left[trigger]
+}
+
+### Checks if the scientist of the character in scope matches the skill level condition for a specialization. Supports < > = operators.
+## scope = character
+alias[trigger:has_scientist_level] = {
+    level = int
+    specialization = <specialization>
+}
+
+### Checks if the scientist of the character in scope is assigned to a project
+## scope = character
+alias[trigger:is_active_scientist] = bool
+
+
+### Check if flag has been set within the special project in scope. May checks on the value or date/days since last modified date.
+## scope = project
+## severity = warning
+alias[trigger:has_project_flag] = value[project_flag]
+
+### Check if flag has been set within the special project in scope. May checks on the value or date/days since last modified date.
+## scope = project
+## severity = warning
+alias[trigger:has_project_flag] = {
+	flag = value[project_flag]
+	## cardinality = 0..1
+	value = int
+	## cardinality = 0..1
+	date = date_field
+	## cardinality = 0..1
+	days = int
+}
+
+### Checks if at least one active scientist of the Country in scope matches the triggers.
+## scope = country
+## push_scope = character
+alias[trigger:any_active_scientist] = {
+    ## cardinality = 0..1
+    tooltip = localisation
+	## error_if_only_match = This is the default value and can be omitted
+	## severity = info
+	## cardinality = 0..1
+    include_invisible = no
+	## cardinality = 0..1
+    include_invisible = yes
+    alias_name[trigger] = alias_match_left[trigger]
+}
+
+### Checks if all active scientists of the Country in scope matches the triggers.
+## scope = country
+## push_scope = character
+alias[trigger:all_active_scientist] = {
+    ## cardinality = 0..1
+    tooltip = localisation
+	## error_if_only_match = This is the default value and can be omitted
+	## severity = info
+	## cardinality = 0..1
+    include_invisible = no
+	## cardinality = 0..1
+    include_invisible = yes
+    alias_name[trigger] = alias_match_left[trigger]
+}
+
+### Checks if the scientist of the character in scope is injured
+## scope = character
+alias[trigger:is_scientist_injured] = bool
+
+### Checks if the country in scope has enough breakthroughs within a given specialization.
+##scope = country
+alias[trigger:has_breakthrough_points] = {
+    specialization = <specialization>
+    value = int
+}
+
+### Check if the scoped country has a naval invasion against the specified state.
+## scope = country
+alias[trigger:has_naval_invasion_against_state] = scope[state]
+
+### Check if the scoped country has a naval invasion against the specified state.
+## scope = country
+alias[trigger:has_naval_invasion_against_state] = value[variable]
+
+### Check if the scoped country has a naval invasion against the specified state.
+## scope = country
+alias[trigger:has_naval_invasion_against_state] = {
+    state = scope[state]
+    state = value[variable]
+	## cardinality = 0..1
+    preparation = float
+	## cardinality = 0..1
+    activated = bool
+}
+
+### check if any state in the given category meets the trigger.
+## scope = any
+alias[trigger:any_state_in] = {
+	## cardinality = 0..1
+    tooltip = localisation
+    array = value[variable]
+
+    alias_name[trigger] = alias_match_left[trigger]
+}
+### check if any state in the given category meets the trigger.
+## scope = any
+alias[trigger:any_state_in] = {
+	## cardinality = 0..1
+    tooltip = localisation
+    continent = enum[continents]
+
+    alias_name[trigger] = alias_match_left[trigger]
+}
+### check if any state in the given category meets the trigger.
+## scope = any
+alias[trigger:any_state_in] = {
+	## cardinality = 0..1
+    tooltip = localisation
+    ai_area = <ai_area>
+
+    alias_name[trigger] = alias_match_left[trigger]
+}
+### check if any state in the given category meets the trigger.
+## scope = any
+alias[trigger:any_state_in] = {
+	## cardinality = 0..1
+    tooltip = localisation
+    strategic_region = <strategic_region>
+
+    alias_name[trigger] = alias_match_left[trigger]
+}
+
+### Check if the current scope exist.
+## scope = any
+alias[trigger:scope_exists] = bool
+
+### check cost of equipment production line
+# debug/test command?
+alias[trigger:equipment_cost] = {
+}
+
+### Checks if the country in scope has completed the special project in input.
+## scope = country
+alias[trigger:is_special_project_completed] = scope[special_project]
+### Checks if the country in scope has completed the special project in input.
+## scope = country
+alias[trigger:is_special_project_completed] = value[variable]
+
+### Checks if the country in scope is currently researching the special project in input.
+## scope = country
+alias[trigger:is_special_project_being_researched] = scope[special_project]
+### Checks if the country in scope is currently researching the special project in input.
+## scope = country
+alias[trigger:is_special_project_being_researched] = value[variable]
+
+### Check if the country has market access with another country.
+## scope = country
+alias[trigger:has_market_access_with] = scope[country]
+
+### checks if division has an officer with the provided name key.
+## scope = unit
+alias[trigger:has_officer_name] = localisation
+
+### Check that ratio of atrillery battalions in the composition of a side of combating troops are over a certain level.
+## scope = combat
+alias[trigger:has_artillery_ratio] = float
+
+### Check if the combatant has at least one of the provided unit types.
+## scope = combat
+alias[trigger:has_unit_type] = <unit>
+
+### Check if the victory points of the combatants province is larger or less than the provinded amount.
+## scope = combat
+alias[trigger:province_vp] = int
+
+### Check if country has shine effect on focus (either manually achieved or by being worked on).
+### scope = country
+alias[trigger:has_shine_effect_on_focus] = <focus>
+### Check if country has shine effect on focus (either manually achieved or by being worked on).
+### scope = country
+alias[trigger:has_shine_effect_on_focus] = <shared_focus>
+
+alias[trigger:custom_override_tooltip] = {
+    tooltip = localisation
+    tooltip = single_alias_right[bindable_loc]
+	## cardinality = 0..1
+	alias_name[effect] = alias_match_left[effect]
+}
+
+### Checks if a state has the specified country as a contested owner. The trigger can be used either from a country or a state scope and accepts the other as parameter.
+## scope = country
+alias[trigger:has_contested_owner] = scope[state]
+### Checks if a state has the specified country as a contested owner. The trigger can be used either from a country or a state scope and accepts the other as parameter.
+## scope = state
+alias[trigger:has_contested_owner] = scope[country]
+
+### Compares the total army fighting strength between the scope country and the one set with 'tag'
+## scope = country
+alias[trigger:fighting_army_strength_ratio] = {
+    tag = scope[country]
+	## cardinality = 0..1
+	civilian_intel = variable_field
+	## cardinality = 0..1
+	army_intel = variable_field
+	## cardinality = 0..1
+	navy_intel = variable_field
+	## cardinality = 0..1
+    airforce_intel = variable_field
+}
+
+### Checks if the country in scope has a scientist with a skill level of at least 1 in specialization.
+## scope = country
+alias[trigger:has_scientist_specialization] = <specialization>
+
+### Checks if the country in scope has a facility with specialization.
+## scope = country
+alias[trigger:has_facility_specialization] = <specialization>
+
+### Checks if the country (as ROOT) and state in scope can build a building in the state.
+## scope = state
+alias[trigger:can_construct_building] = <building>
+
+### total number of nukes that are currently ready to be dropped
+## scope = country
+alias[trigger:num_nukes_being_dropped] = int
+
+### number of nukes left to drop during this game tick (only useful in-between nuke drops, like in on_nuke_drop on-action, for example)
+## scope = country
+alias[trigger:num_nukes_left_to_drop] = int

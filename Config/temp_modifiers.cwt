@@ -14,10 +14,15 @@ alias[modifier_rule:modifier] = {
 	alias_name[trigger] = alias_match_left[trigger]
 }
 
+#placed in modifiers file
 alias[modifier:<ideology>_acceptance] = int
+#placed in modifiers file
 alias[modifier:<ideology>_drift] = float
-alias[modifier:local_resources_<resource>] = int
+#does not exist
+#alias[modifier:local_resources_<resource>] = int
+#placed in modifiers file
 alias[modifier:country_resource_cost_<resource>] = int
+## scope = state
 alias[modifier:state_resource_cost_<resource>] = int
 alias[modifier:country_resource_<resource>] = int
 alias[modifier:state_resource_<resource>] = int
@@ -25,6 +30,7 @@ alias[modifier:temporary_state_resource_<resource>] = int
 alias[modifier:enum[sub_unit_modifiers]] = float
 alias[modifier:production_speed_<building>_factor] = float
 alias[modifier:state_production_speed_<building>_factor] = float
+#placed in modifiers file
 alias[modifier:repair_speed_<building>_factor] = float
 alias[modifier:<modifier_definition>] = float
 alias[modifier:value[idea_slot]_cost_factor] = float
@@ -32,6 +38,17 @@ alias[modifier:hidden_modifier] = {
 	alias_name[modifier] = alias_match_left[modifier]
 }
 alias[modifier:custom_modifier_tooltip] = localisation
+
+# WUW patch modifiers
+#placed in modifiers file
+## scope = { country state }
+alias[modifier:<special_project>_speed_factor] = float
+#placed in modifiers file
+## scope = { country state }
+alias[modifier:<specialization>_speed_factor] = float
+#placed in modifiers file
+## scope = { country state }
+alias[modifier:enum[project_tag]_speed_factor] = float
 
 #unit stats
 alias[unit_stat:acclimatization_cold_climate_gain_factor] = float
@@ -81,6 +98,8 @@ alias[unit_stat:suppression_factor] = float
 alias[unit_stat:suppression] = float
 alias[unit_stat:training_time] = float
 alias[unit_stat:weight] = float
+alias[unit_stat:additional_collateral_damage] = float
+alias[unit_stat:recovery] = float
 
 #naval stats
 alias[naval_stat:anti_air_attack] = float

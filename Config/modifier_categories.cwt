@@ -50,4 +50,10 @@ modifier_categories = {
 	military_industrial_organization = {
 		supported_scopes = { military_industrial_organization }
 	}
+	character = {
+		supported_scopes = { character }
+	}
+	scientist = {
+		supported_scopes = { character }
+	}
 }

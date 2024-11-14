@@ -150,133 +150,105 @@ ai_peace = {
 }
 
 ai_template = {
-	### The role token that this role-level template entry targets. These tokens are defined by script and are targeted by the 'role_ratio' AI strategy. (This is technically a list but AI is bad at handling AI templates that target multiple roles, so sticking to just one is recommended.)
-	roles = {
+
+	# Determines which countries will use this role-level template entry. Both 'blocked_for' and 'available_for' are possible to use. Use one or the other, if you use neither or both, the resulting behavior is undefined. (These two may be replaced by 'allowed' or something similar in the future.)
+	# Generally you want to make sure that each country has max one role-level template entry targeting a role. So if you add custom AI templates for e.g. Germany you should make sure that only Germany is allowed for it, and you should also block Germany from using the generic AI templates for the same role.
+	## cardinality = 0..1
+	blocked_for = {
 		## cardinality = ~1..inf
-		value_set[ai_template_roles]
+		enum[country_tags]
 	}
-	# Restricts the template to only the specified tags. Optional.
 	## cardinality = 0..1
 	available_for = {
 		## cardinality = ~1..inf
 		enum[country_tags]
 	}
 
-	# Blocks the template for the specified tags. Optional.
-	## cardinality = 0..1
-	blocked_for = {
-		## cardinality = ~1..inf
-		enum[country_tags]
-	}
+	# The role token that this role-level template entry targets. These tokens are defined by script and are targeted by the 'role_ratio' AI strategy.
+	role = value_set[ai_template_roles]
 
-	### Deprecated but currently necessary. This parameter has no significant effect, but hasn't been removed yet.
-	match_to_count = float
-	
-	### The role-level upgrade prio is used for weighted-random selection when the AI chooses which role to upgrade templates for. Set it to zero to prevent the AI from spending XP on upgrading templates for this role.
-	### Example: If three role-level templates [A, B, C] have upgrade prio [1, 2, 1] respectively, then the probabilities for upgrading each template is [25%, 50%, 25%] respectively.
+	# The role-level upgrade prio is used for weighted-random selection when the AI chooses which role to upgrade templates for. Set it to zero to prevent the AI from spending XP on upgrading templates for this role.
+	# Example: If three role-level templates [A, B, C] have upgrade prio [1, 2, 1] respectively, then the probabilities for upgrading each template is [25%, 50%, 25%] respectively.
 	upgrade_prio = {
 		enum[base_factor] = float
 		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	}
 
-	## cardinality = 1..10
+	## Below are the actual target templates belonging to this role ##
+	# In this example, the AI will first try to reach a 6-inf (+support) template, before upgrading it to a 9-inf 2-arty (+support) template.
+	# Since the 'upgrade_prio' is higher for the first template, that one will be targeted. And when the match score is good enough it will use the 'replace_with' to switch over to the larger template.
+	# If two target templates have the same 'upgrade_prio', the first one will be preferred (so order matters in those cases).
+
+	# Target template 1 (the smaller infantry template)
+	## cardinality = 0..inf
 	scalar = {
+
+		# Optional: Determines the reinforcement prio of the resulting template. For example, garrison templates should use 0 (low prio) while elite templates should use 2 (high prio). Default 1 (normal prio).
+		## cardinality = 0..1
+		reinforce_prio = int
+
+		# Optional: Determines whether to use a custom icon for resulting template.
+		## cardinality = 0..1
+		custom_icon = int
+
+		# Optional: Specifies the division name group to use. By default uses the name group of the template "branched off" from.
+		## cardinality = 0..1
+		division_names_group = <division_name>
+
+		# The priority of this target template. This is used to determine (deterministically, no randomness involved) which of the target templates is the "currently targeted template".
 		upgrade_prio = {
 			enum[base_factor] = float
 			alias_name[modifier_rule] = alias_match_left[modifier_rule]
 		}
-		## cardinality = 0..1
-		production_prio = {
-			enum[base_factor] = float
-			alias_name[modifier_rule] = alias_match_left[modifier_rule]
-		}
-		## cardinality = 0..1
-		can_upgrade_in_field = {
-			alias_name[trigger] = alias_match_left[trigger]
-		}
-		## cardinality = 0..1
-		custom_icon = int
-		## cardinality = 0..1
-		reinforce_prio = int
 
-		target_width = float
-		width_weight = float
-		column_swap_factor = float
-
-		### List of triggers that must all be true for the template to be usable; true by default if empty or missing.
+		# Optional: Whether to evaluate this target template at all. Trigger with country scope. If false, the AI will pretend this target template doesn't exist.
 		## cardinality = 0..1
+		## replace_scope = { this = country root = country }
 		enable = {
 			alias_name[trigger] = alias_match_left[trigger]
 		}
 
+		# Optional: Whether to allow upgrading divisions in the field. Trigger with country scope. If false, the AI will not field-upgrade divisions matching this target template. If true, the AI will consider field-upgrading divisions matching this target template to the target template defined by 'replace_with' (assuming they have enough manpower and equipment for it).
 		## cardinality = 0..1
-		stat_weights = {
-			## cardinality = 33..33
-			float
-
-			#<float> #-- default_morale
-			#<float> #-- defense
-			#<float> #-- breakthrough
-			#<float> #-- hardness
-			#<float> #-- soft_attack
-			#<float> #-- hard_attack
-			#<float> #-- recon
-			#<float> #-- entrenchment
-			#<float> #-- initiative
-			#<float> #-- casualty_trickleback
-			#<float> #-- supply_consumption_factor
-			#<float> #-- supply_consumption
-			#<float> #-- suppression
-			#<float> #-- suppression_factor
-			#<float> #-- experience_loss_factor
-			#<float> #-- equipment_capture_factor
-			#<float> #-- fuel_capacity
-
-			#-- Air Values
-			#<float> #-- air_attack
-
-			#-- Common Values
-			#<float> #-- max_organisation
-			#<float> #-- max_strength
-			#<float> #-- maximum_speed
-			#<float> #-- armor_value
-			#<float> #-- ap_attack
-			#<float> #-- reliability
-			#<float> #-- reliability_factor
-			#<float> #-- weight
-			#<float> #-- fuel_consumption
-			#<float> #-- fuel_consumption_factor
-			#<float> #-- strat_attack
-			#<float> #-- carrier_size
-			#<float> #-- acc_hot_gain
-			#<float> #-- acc_cold_gain
-			#<float> #-- build_cost_ic
+		can_upgrade_in_field = {
+			## replace_scope = { this = country root = country }
+			alias_name[trigger] = alias_match_left[trigger]
 		}
-		target_template = {
-			weight = float
-			match_value = float
 
-			regiments = {
-				## cardinality = 1..25
-				<unit> = int[0..25]
-			}
+		# The "meat" of the target template: the actual template contents.
+		target_template = {
+
+			# The desired support companies. The AI will try to add them to the template if allowed by research etc.
 			## cardinality = 0..1
 			support = {
 				## cardinality = 0..5
 				<unit> = int[0..4]
 			}
+
+			# The desired line regiments. The AI will try to add them to the template if allowed by research etc.
+			regiments = {
+				## cardinality = 1..25
+				<unit> = int[0..25]
+			}
+
 		}
-		allowed_types = {
-			## cardinality = ~1..inf
-			<unit>
-		}
+
+
+		## Optional replace-with chain: If the match score is at least 'replace_at_match', then replace the currently targeted template with 'replace_with', as long as the match score between best matching template and the next target template is at least 'target_min_match'.
+
+		# Optional: Match score of this target template.
 		## cardinality = 0..1
 		replace_at_match = float
+
+		# Optional: Other target template to replace currently targeted template with. Also affects fielded divisions when upgrading in the field.
 		## cardinality = 0..1
 		replace_with = enum[ai_templates]
+
+		# Optional: Match score between the best matching template and the target template defined by 'replace_with' has to be at least this high in order for the switch to happen. Might be deprecated/changed in the future.
 		## cardinality = 0..1
 		target_min_match = float
 	}
+
 }
 
 ai_equipment_design_group = {

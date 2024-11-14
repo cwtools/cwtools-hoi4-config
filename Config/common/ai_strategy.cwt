@@ -119,15 +119,27 @@ alias[ai_strategy_rule:ai_strategy] = {
 alias[ai_strategy_rule:ai_strategy] = {
 	type = enum[unit_strats]
 	id = <unit>
-	id = enum[unit_types]
+	id = enum[equipment_category]
 	id = value[ai_template_roles]
 	id = value[ai_equipment_roles]
+	value = int
+}
+
+alias[ai_strategy_rule:ai_strategy] = {
+	type = equipment_production_min_factories
+	id = enum[equipment_category]
+	value = int
+}
+alias[ai_strategy_rule:ai_strategy] = {
+	type = equipment_production_min_factories_archetype
+	id = <equipment.archetype_equip>
 	value = int
 }
 alias[ai_strategy_rule:ai_strategy] = {
 	type = enum[equipment_strats]
 	id = <equipment>
-	id = enum[unit_types]
+	id = enum[allowed_ai_type_planes]
+	id = enum[equipment_category]
 	value = int
 }
 alias[ai_strategy_rule:ai_strategy] = {
@@ -167,6 +179,11 @@ alias[ai_strategy_rule:ai_strategy] = {
 	value = int
 }
 alias[ai_strategy_rule:ai_strategy] = {
+	type = recruit_scientist
+	id = <specialization>
+	value = int
+}
+alias[ai_strategy_rule:ai_strategy] = {
 	type = dont_join_wars_with
 	id = enum[country_tags]
 	id = scope[country]
@@ -202,6 +219,7 @@ alias[ai_strategy_rule:ai_strategy] = {
 alias[ai_strategy_rule:ai_strategy] = {
 	type = enum[state_strats_with_id]
 	id = <building>
+	## cardinality = 0..1
 	target = int
 	value = int
 }
@@ -356,6 +374,68 @@ alias[ai_strategy_rule:ai_strategy] = {
 	value = int
 }
 
+alias[ai_strategy_rule:ai_strategy] = {
+	type = force_concentration_front_factor
+	### Target a specific country. Can specify multiple.
+	## cardinality = 0..inf
+	tag = scope[country]
+	### Target a state. Can specify multiple.
+	## cardinality = 0..inf	
+	state = <state>		
+	### Target a strategic region. Can specify multiple.
+	## cardinality = 0..inf
+	strategic_region = <strategic_region>
+	### Target a specific ai area. Can specify multiple.
+	area = <ai_area>
+	### Trigger to check against a specific country. Scope is enemy country, FROM scope is our country.
+	## replace_scope = { this = country root = country from = country }
+	country_trigger = {
+		## cardinality = ~1..inf
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	### # Trigger to check against a state. Scope is state. FROM scope is enemy country FROM.FROM scope is our country.
+	## cardinality = 0..1
+	## replace_scope = { this = state from = country fromfrom = country }
+	state_trigger = {
+		## cardinality = ~1..inf
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	### The strategy is enabled only if ratio of the front covered by this strategy's targets is greater than this ratio.
+	ratio = float
+	### Factor for the normal priority. 40 means +40 %, -60 means -60 %.
+	value = int	
+}
+
+alias[ai_strategy_rule:ai_strategy] = {
+	type = force_concentration_target_weight
+	### Target a specific country. Can specify multiple.
+	## cardinality = 0..inf
+	tag = scope[country]
+	### Target a state. Can specify multiple.
+	## cardinality = 0..inf	
+	state = <state>		
+	### Target a strategic region. Can specify multiple.
+	## cardinality = 0..inf
+	strategic_region = <strategic_region>
+	### Target a specific ai area. Can specify multiple.
+	area = <ai_area>
+	### Trigger to check against a specific country. Scope is enemy country, FROM scope is our country.
+	## replace_scope = { this = country root = country from = country }
+	country_trigger = {
+		## cardinality = ~1..inf
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	### # Trigger to check against a state. Scope is state. FROM scope is enemy country FROM.FROM scope is our country.
+	## cardinality = 0..1
+	## replace_scope = { this = state from = country fromfrom = country }
+	state_trigger = {
+		## cardinality = ~1..inf
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	### Factor for the normal priority. 40 means +40 %, -60 means -60 %.
+	value = int	
+}
+
 enums = {
 	enum[ai_diplo_strats] = {
 		alliance
@@ -373,6 +453,7 @@ enums = {
 		dont_join_wars_with
 		equipment_market_trade_desire
 		force_defend_ally_borders
+		force_concentration_factor
 		front_armor_score
 		ignore
 		ignore_claim
@@ -422,6 +503,8 @@ enums = {
 		wanted_supply_trains
 		ai_wanted_divisions_factor
 		equipment_market_spend_factories
+		force_concentration_factor
+		raid_target_country
 	}
 	enum[pp_strats] = {
 		pp_spend_amount
@@ -441,7 +524,6 @@ enums = {
 	}
 	enum[unit_strats] = {
 		equipment_production_factor
-		equipment_production_min_factories
 		template_prio
 		unit_ratio
 	}

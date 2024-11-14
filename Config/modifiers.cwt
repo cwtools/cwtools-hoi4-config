@@ -1028,6 +1028,112 @@ modifiers = {
 	training_time_army_factor = war_production
 	weekly_manpower = war_production
 
+  ### WUW patch modifiers
+	river_crossing_factor_against = army
+	scientist_breakthrough_bonus_factor = character
+	scientist_research_bonus_factor = character
+	scientist_xp_gain_factor = character
+	female_random_scientist_chance = country
+	production_speed_facility_factor = country
+	resource_trade_cost_bonus_per_factory = country
+	special_project_facility_supply_consumption_factor = country
+	special_project_speed_factor = country
+	thermonuclear_production = country
+	thermonuclear_production_factor = country
+	underway_replenishment_convoy_cost = country
+	underway_replenishment_range = country
+	naval_commando_raid_distance = naval
+	female_random_scientist_chance = scientist
+	state_production_speed_facility_factor = state
+	<special_project>_speed_factor = country
+	<specialization>_speed_factor = country
+	enum[project_tag]_speed_factor = country
+	<building>_max_level_terrain_limit = country
+	state_<building>_max_level_terrain_limit = state
+
+	### sort later
+	<ideology>_acceptance = politics
+	<ideology>_drift = politics
+	state_repair_speed_<building>_factor = state
+	enum[tech_category]_cost_factor = country
+	trait_<unit_leader_trait.gainable_trait>_xp_gain_factor = army
+	trait_<unit_leader_trait.gainable_trait>_xp_gain_factor = naval
+	trait_<unit_leader_trait.gainable_trait>_xp_gain_factor = country
+	<unit_leader_trait.gainable_trait>_xp_gain_factor = army
+	<unit_leader_trait.gainable_trait>_xp_gain_factor = naval
+	<unit_leader_trait.gainable_trait>_xp_gain_factor = country
+	unit_<unit>_design_cost_factor = country
+	unit_<unit>_design_cost_factor = army
+	unit_<unit>_design_cost_factor = naval
+	<equipment.archetype_equip>_design_cost_factor = country
+	<equipment.archetype_equip>_design_cost_factor = army
+	<equipment.archetype_equip>_design_cost_factor = naval
+	<duplicate_archetypes>_design_cost_factor = country
+	<duplicate_archetypes>_design_cost_factor = army
+	<duplicate_archetypes>_design_cost_factor = naval
+	production_cost_max_<equipment.archetype_equip> = naval
+	production_cost_max_<duplicate_archetypes> = naval
+	experience_gain_<unit>_combat_factor = country
+	experience_gain_<unit>_combat_factor = naval
+	experience_gain_<unit>_training_factor = country
+	experience_gain_<unit>_training_factor = naval
+	<combat_tactic>_preferred_weight_factor = country
+	#also country?
+	country_resource_cost_<resource> = country
+	state_resource_cost_<resource> = state
+	#also country?
+	country_resource_<resource> = country
+	state_resource_<resource> = state
+	temporary_state_resource_<resource> = state
+	enum[sub_unit_modifiers] = army
+	production_speed_<building>_factor = country
+	state_production_speed_<building>_factor = state
+	state_resources_<resource>_factor = state
+
+
+  ###  scriptrelated modifier stuff
+    <Trait>_xp_gain_factor = army
+	module_<EquipmentModule>_design_cost_factor = army
+	trait_<Trait>_xp_gain_factor = army
+	unit_<Unit>_design_cost_factor = army
+	<Building>_max_level_terrain_limit = country
+	<CombatTactic>_preferred_weight_factor = country
+	<Equipment>_design_cost_factor = country
+	<IdeaCategory>_category_type_cost_factor = country
+	<IdeaGroup>_cost_factor = country
+	<SpecialProject>_speed_factor = country
+	<Technology>_cost_factor = country
+	<Trait>_xp_gain_factor = country
+	experience_gain_<Unit>_combat_factor = country
+	experience_gain_<Unit>_training_factor = country
+	module_<EquipmentModule>_design_cost_factor = country
+	production_cost_<Building>_factor = country
+	production_speed_<Building>_factor = country
+	repair_speed_<Building>_factor = country
+	trait_<Trait>_xp_gain_factor = country
+	unit_<Unit>_design_cost_factor = country
+	<Operation>_cost = intelligence_agency
+	<Operation>_outcome = intelligence_agency
+	<Operation>_risk = intelligence_agency
+	<Trait>_xp_gain_factor = naval
+	experience_gain_<Unit>_combat_factor = naval
+	experience_gain_<Unit>_training_factor = naval
+	module_<EquipmentModule>_design_cost_factor = naval
+	production_cost_max_<NavalEquipment> = naval
+	trait_<Trait>_xp_gain_factor = naval
+	unit_<Unit>_design_cost_factor = naval
+	<Ideology>_acceptance = politics
+	<Ideology>_drift = politics
+	<SpecialProject>_speed_factor = state
+	country_resource_<Resource> = country
+	country_resource_cost_<Resource> = country
+	state_<Building>_max_level_terrain_limit = state
+	state_production_speed_<Building>_factor = state
+	state_repair_speed_<Building>_factor = state
+	state_resource_<Resource> = state
+	state_resource_cost_<Resource> = state
+	state_resources_<Resource>_factor = state
+	temporary_state_resource_<Resource> = state
 
   ### THE FOLLOWING MODIFERS DO NOT PRESENT IN MD DOC (NSB patch)
 
@@ -1309,6 +1415,7 @@ enums = {
 		mic_to_overlord_factor
 		overlord_trade_cost_factor
 		subjects_autonomy_gain
+		enum[equipment_bonus_type]_design_cost_factor
 		additional_brigade_column_size
 		agency_upgrade_time
 		air_doctrine_cost_factor
@@ -1476,6 +1583,7 @@ enums = {
 		production_lack_of_resource_penalty_factor
 		production_oil_factor
 		production_speed_buildings_factor
+		production_speed_<building>_factor
 		railway_gun_bombardment_factor
 		refit_ic_cost
 		refit_speed
@@ -1721,6 +1829,7 @@ enums = {
 		peace_score_ratio_transferred_to_overlord
 		peace_score_ratio_transferred_to_players
 		puppet_cost_factor
+		<ideology>_drift
 		drift_defence_factor
 		embargo_cost_factor
 		embargo_threshold_factor
@@ -1843,6 +1952,55 @@ enums = {
 		training_time_army
 		training_time_army_factor
 		weekly_manpower
+		scientist_breakthrough_bonus_factor
+		scientist_research_bonus_factor
+		scientist_xp_gain_factor
+		female_random_scientist_chance
+		production_speed_facility_factor
+		resource_trade_cost_bonus_per_factory
+		special_project_facility_supply_consumption_factor
+		special_project_speed_factor
+		thermonuclear_production
+		thermonuclear_production_factor
+		underway_replenishment_convoy_cost
+		underway_replenishment_range
+		naval_commando_raid_distance
+		female_random_scientist_chance
+		state_production_speed_facility_factor
+		<special_project>_speed_factor
+		<specialization>_speed_factor
+		enum[project_tag]_speed_factor
+		<building>_max_level_terrain_limit
+		state_<building>_max_level_terrain_limit
+		<ideology>_acceptance
+		<ideology>_drift
+		state_repair_speed_<building>_factor
+		enum[tech_category]_cost_factor
+		trait_<unit_leader_trait.gainable_trait>_xp_gain_factor
+		trait_<unit_leader_trait.gainable_trait>_xp_gain_factor
+		<unit_leader_trait.gainable_trait>_xp_gain_factor
+		<unit_leader_trait.gainable_trait>_xp_gain_factor
+		unit_<unit>_design_cost_factor
+		unit_<unit>_design_cost_factor
+		<equipment.archetype_equip>_design_cost_factor
+		<equipment.archetype_equip>_design_cost_factor
+		<duplicate_archetypes>_design_cost_factor
+		<duplicate_archetypes>_design_cost_factor
+		production_cost_max_<equipment.archetype_equip>
+		production_cost_max_<duplicate_archetypes>
+		experience_gain_<unit>_combat_factor
+		experience_gain_<unit>_combat_factor
+		experience_gain_<unit>_training_factor
+		experience_gain_<unit>_training_factor
+		<combat_tactic>_preferred_weight_factor
+		country_resource_cost_<resource>
+		state_resource_cost_<resource>
+		country_resource_<resource>
+		state_resource_<resource>
+		temporary_state_resource_<resource>
+		production_speed_<building>_factor
+		state_production_speed_<building>_factor
+		state_resources_<resource>_factor
 		air_advisor_cost_factor
 		air_advisor_cost_factor
 		air_carrier_night_penalty_reduction_factor
@@ -2202,6 +2360,7 @@ enums = {
 		modifier_army_sub_unit_paratrooper_defence_factor
 		modifier_army_sub_unit_paratrooper_max_org_factor
 		modifier_army_sub_unit_paratrooper_speed_factor
+		module_<module>_design_cost_factor
 		motorized_attack_factor
 		motorized_defence_factor
 		mountaineers_special_forces_contribution_factor
@@ -2236,5 +2395,14 @@ enums = {
 		unit_upkeep_attrition_factor
 		winter_attrition
 		winter_attrition_factor
+		module_<module>_design_cost_factor
+		module_<module>_design_cost_factor
+		river_crossing_factor_against
+		trait_<unit_leader_trait.gainable_trait>_xp_gain_factor
+		<unit_leader_trait.gainable_trait>_xp_gain_factor
+		unit_<unit>_design_cost_factor
+		<equipment.archetype_equip>_design_cost_factor
+		<duplicate_archetypes>_design_cost_factor
+		enum[sub_unit_modifiers]
 	}
 }

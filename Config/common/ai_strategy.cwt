@@ -386,6 +386,7 @@ alias[ai_strategy_rule:ai_strategy] = {
 	## cardinality = 0..inf
 	strategic_region = <strategic_region>
 	### Target a specific ai area. Can specify multiple.
+	## cardinality = 0..inf
 	area = <ai_area>
 	### Trigger to check against a specific country. Scope is enemy country, FROM scope is our country.
 	## replace_scope = { this = country root = country from = country }
@@ -418,6 +419,7 @@ alias[ai_strategy_rule:ai_strategy] = {
 	## cardinality = 0..inf
 	strategic_region = <strategic_region>
 	### Target a specific ai area. Can specify multiple.
+	## cardinality = 0..inf
 	area = <ai_area>
 	### Trigger to check against a specific country. Scope is enemy country, FROM scope is our country.
 	## replace_scope = { this = country root = country from = country }

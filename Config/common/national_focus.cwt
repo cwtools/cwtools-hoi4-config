@@ -85,6 +85,17 @@ focus_tree = {
 	}
 
 	## cardinality = 0..1
+	shortcut = {
+		name = localisation
+		target = <focus>
+		scroll_wheel_factor = float
+		## cardinality = 0..1
+		trigger = {
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+	}
+
+	## cardinality = 0..1
 	initial_show_position = {
 		## cardinality = 0..1
 		focus = <focus>

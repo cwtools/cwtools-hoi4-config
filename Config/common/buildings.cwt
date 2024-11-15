@@ -14,6 +14,12 @@ types = {
 				province_max = scalar
 			}
 		}
+		subtype[landmark] = {
+			spawn_point = landmark_spawn
+		}
+		subtype[canal] = {
+			spawn_point = locks_spawn
+		}
 		subtype[state] = {
 		}
 	}

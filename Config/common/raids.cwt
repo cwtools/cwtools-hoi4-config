@@ -24,7 +24,7 @@ raid_category = {
         alias_name[trigger] = alias_match_left[trigger]
     }
     ## cardinality = 1..1
-    intel_source = enum[intel_types]
+    intel_source = enum[intel_types_raid]
     # default is no
     ## cardinality = 0..1
     free_targeting = bool
@@ -383,6 +383,12 @@ single_alias[raid_factors] = {
 }
 
 enums = {
+    enum[intel_types_raid] = {
+        air
+        naval
+        army
+        civilian
+    }
     enum[raid_unit_model] = {
         equipment
         transport

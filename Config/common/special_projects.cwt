@@ -49,6 +49,13 @@ special_project = {
             ## cardinality = 0..inf
             has_dlc = enum[dlc]
         }
+        ### KR DLC triggers
+        ## cardinality = 0..inf
+        has_dlc_got = yes
+        ## cardinality = 0..inf
+        has_dlc_mtg = yes
+        ## cardinality = 0..inf
+        has_dlc_nsb = yes
     }
 
 	# Optional
@@ -329,8 +336,10 @@ single_alias[sp_proto_reward] = { # Dynamic token for the reward (i.e. identifie
     ## cardinality = 0..1
     ## replace_scope = { root = project this = project from = country }
     weight = {
-        ## cardinality = ~1..1
+        ## cardinality = 0..1
 		base = float
+        ## cardinality = 0..1
+		factor = float
         ## cardinality = 0..inf
 		modifier = {
             ## cardinality = 0..1

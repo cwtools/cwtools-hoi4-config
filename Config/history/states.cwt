@@ -36,6 +36,22 @@ state = {
 			enum[provinces] = {
 				## cardinality = 0..inf
 				<building> = int[0..20]
+				## cardinality = 0..1
+				<building.landmark> = {
+					## cardinality = 0..1
+					allowed = {
+						alias_name[trigger] = alias_match_left[trigger]
+					}
+					level = int
+				}
+				## cardinality = 0..1
+				<building.canal> = {
+					## cardinality = 0..1
+					allowed = {
+						alias_name[trigger] = alias_match_left[trigger]
+					}
+					level = int
+				}
 			}
 		}
 		alias_name[effect] = alias_match_left[effect]

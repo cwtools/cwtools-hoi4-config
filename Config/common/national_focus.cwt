@@ -84,7 +84,7 @@ focus_tree = {
 		y = int
 	}
 
-	## cardinality = 0..1
+	## cardinality = 0..inf
 	shortcut = {
 		name = localisation
 		target = <focus>

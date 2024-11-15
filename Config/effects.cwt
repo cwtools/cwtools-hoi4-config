@@ -20,7 +20,7 @@ alias[effect:custom_effect_tooltip] = single_alias_right[bindable_loc]
 alias[effect:custom_effect_tooltip] = character_name|<character>
 ### Shows just a custom tooltip.
 ## scope = any
-alias[effect:custom_effect_tooltip] = tech_effect|<technology
+alias[effect:custom_effect_tooltip] = tech_effect|<technology>
 
 ### Shows event option tooltip
 ## scope = any

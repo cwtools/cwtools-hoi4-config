@@ -3,7 +3,8 @@
 alias[effect:add_breakthrough_points] = {
     specialization = <specialization>
     specialization = all
-    value = float
+    value = int
+
 }
 
 ### Requires raid as ROOT scope. Reduce progress to the special project in state. Root scope is raid instance scope. The input value is a ratio of the total needed progress to complete the special project, i.e. a decimal number between 0 and 1.

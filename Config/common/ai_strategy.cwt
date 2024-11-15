@@ -389,6 +389,7 @@ alias[ai_strategy_rule:ai_strategy] = {
 	## cardinality = 0..inf
 	area = <ai_area>
 	### Trigger to check against a specific country. Scope is enemy country, FROM scope is our country.
+	## cardinality = 0..1
 	## replace_scope = { this = country root = country from = country }
 	country_trigger = {
 		## cardinality = ~1..inf
@@ -422,6 +423,7 @@ alias[ai_strategy_rule:ai_strategy] = {
 	## cardinality = 0..inf
 	area = <ai_area>
 	### Trigger to check against a specific country. Scope is enemy country, FROM scope is our country.
+	## cardinality = 0..1
 	## replace_scope = { this = country root = country from = country }
 	country_trigger = {
 		## cardinality = ~1..inf

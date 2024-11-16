@@ -174,6 +174,19 @@ alias[effect:remove_building] = {
 	##cardinality = 0..1
 	province = enum[provinces]
 }
+### Removes specified building in specified state or province.
+## scope = state
+alias[effect:remove_building] = {
+	tag = value[building_tag]
+	tag = {
+		##cardinality = 1..inf
+		value[building_tag]
+	}
+	level = int_variable_field
+
+	##cardinality = 0..1
+	province = enum[provinces]
+}
 
 ### Releases specified country as a free country.
 ## scope = country
@@ -2090,6 +2103,10 @@ alias[effect:damage_building] = {
 ## scope = state
 alias[effect:damage_building] = {
 	tags = value[building_tag]
+	tags = {
+		## cardinality = 1..inf
+		value[building_tag]
+	}
 	damage = variable_field
 	## cardinality = 0..1
 	province = enum[provinces]

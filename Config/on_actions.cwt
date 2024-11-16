@@ -1120,7 +1120,7 @@ on_action = {
 	on_mio_industrial_manufacturer_unassigned = single_alias_right[on_action_effect]
 
 	### Triggered when a project is completed
-	### ROOT is the Military Industrial Organization, FROM is the owner of the MIO country
+	### ROOT is the owner of the special project, FROM is the special project
 	## cardinality = 0..inf
 	## replace_scope = { ROOT = COUNTRY this = COUNTRY FROM = special_project }
 	on_project_completion = single_alias_right[on_action_effect]

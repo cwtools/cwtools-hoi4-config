@@ -199,10 +199,10 @@ alias[trigger:has_unit_type] = <unit>
 alias[trigger:province_vp] = int
 
 ### Check if country has shine effect on focus (either manually achieved or by being worked on).
-### scope = country
+## scope = country
 alias[trigger:has_shine_effect_on_focus] = <focus>
 ### Check if country has shine effect on focus (either manually achieved or by being worked on).
-### scope = country
+## scope = country
 alias[trigger:has_shine_effect_on_focus] = <shared_focus>
 
 alias[trigger:custom_override_tooltip] = {

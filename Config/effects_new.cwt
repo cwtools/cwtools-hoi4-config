@@ -3,7 +3,7 @@
 # alias[effect:hidden_effect] = replace_me
 
 ###Grant experience to the scoped in unit leader. Cannot be used to remove experience. The unit leader is promoted to the next skill level if applicable
-## scope = { UNIT_LEADER }
+## scope = { UNIT_LEADER character }
 alias[effect:gain_xp] = variable_field
 
 ###Delete units of a country. No tooltip is generated.

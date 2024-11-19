@@ -135,6 +135,10 @@ unit_leader_trait = {
 		gain_xp_leader = {
 			alias_name[trigger] = alias_match_left[trigger]
 		}
+		## replace_scope = { this = operative root = operative from = country }
+		gain_xp_leader = {
+			alias_name[trigger] = alias_match_left[trigger]
+		}
 		cost = int
 		gui_row = int
 		## cardinality = 0..1

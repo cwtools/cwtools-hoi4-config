@@ -488,6 +488,7 @@ alias[effect:promote_character] = value[character_token]
 alias[effect:promote_character] = {
 	character = <character>
 	character = value[character_token]
+	character = country_leader
 	### must match the character's country leader sub-ideology
 	ideology = enum[sub_ideology]
 	ideology = <ideology>

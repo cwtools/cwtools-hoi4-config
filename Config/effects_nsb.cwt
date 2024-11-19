@@ -671,7 +671,7 @@ alias[effect:random_subject_country] = {
 
 
 ### Executes children effects on every country that fulfils the "limit" trigger. Difference with every_country is that it includes countries not yet present on the map. tooltip=key can be defined to override tooltip title.
-## scope = { COUNTRY }
+## scope = { any }
 ## push_scope = country
 alias[effect:every_possible_country] = {
 	### Apply the effect to this number of randomly selected entities

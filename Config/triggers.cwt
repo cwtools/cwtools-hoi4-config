@@ -406,6 +406,10 @@ alias[trigger:has_war_with] = scope[country]
 ## scope = country
 alias[trigger:has_war_with] = enum[country_tags]
 
+### Is countries at war.
+## scope = country
+alias[trigger:has_war_with] = value[variable]
+
 ### Checks for amount of divisions in specified state owned by current country.
 ## scope = country
 alias[trigger:divisions_in_state] = {

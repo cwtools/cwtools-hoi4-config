@@ -284,52 +284,59 @@ alias[effect:generate_scientist_character] = {
 }
 
 
+### Add scientist role to a character. The character can come from the scope or from an input parameter. The scientist role format is the same as in the character DB. Except the visible trigger - a scientist role created via effect cannot have triggers.
+## scope = country
 alias[effect:add_scientist_role] = {
-	## cardinality = 0..1
-    portrait = GFX_portrait # optional - random portrait by default
-	## cardinality = 0..1
-    portrait_tag_override = scope[country] # optional - accepts variable and keyword - only relevant if using random portrait - by default use country in scope
-	## cardinality = 0..1
-    gender = enum[gender] # optional - by default random gender
-	## cardinality = 0..1
-    skills = {
-        # optional array
-        # same format as in scientist role in character DB
-        # by default all skills are at 1
-	    ## cardinality = ~1..inf
-        <specialization> = 2
-    }
-	## cardinality = 0..1
-    traits = {
-        <scientist_trait>
-    } # optional array
-
+	character = <character>
+	character = value[character_token]
+	character = value[variable]
+	character = value[event_target]
+	character = value[global_event_target]
+	character = scope[character]
+	scientist = {
+		## cardinality = 0..1
+		desc = localisation
+		## cardinality = 0..1
+		skills = {
+			# optional array
+			# same format as in scientist role in character DB
+			# by default all skills are at 1
+			## cardinality = ~1..inf
+			<specialization> = 2
+		}
+		## cardinality = 0..1
+		traits = {
+			<scientist_trait>
+		} # optional array
+	}
 }
 ### Add scientist role to a character. The character can come from the scope or from an input parameter. The scientist role format is the same as in the character DB. Except the visible trigger - a scientist role created via effect cannot have triggers.
 ## scope = character
 alias[effect:add_scientist_role] = {
-    ## cardinality = 0..1
-    desc = localisation
-    ## cardinality = 0..1
-    traits = {
-        ## cardinality = ~1..inf
-        <scientist_trait>
-    }
-    ## cardinality = 1..1
-    skills = {
-        ## cardinality = 1..inf
-        <specialization> = int
-    }
+	scientist = {
+		## cardinality = 0..1
+		desc = localisation
+		## cardinality = 0..1
+		traits = {
+			## cardinality = ~1..inf
+			<scientist_trait>
+		}
+		## cardinality = 1..1
+		skills = {
+			## cardinality = 1..inf
+			<specialization> = int
+		}
+	}
 }
 
 ### Remove the scientist role from a character.The character can come from the scope or from an input parameter. The scientist role format is the same as in the character DB. Except the visible trigger - a scientist role created via effect cannot have triggers.
-## scope = country
+## scope = character
 alias[effect:remove_scientist_role] = bool
 ### Remove the scientist role from a character.The character can come from the scope or from an input parameter. The scientist role format is the same as in the character DB. Except the visible trigger - a scientist role created via effect cannot have triggers.
 ## scope = country
 alias[effect:remove_scientist_role] = {
-    character = <character>
-    character = value[character_token]
+	character = <character>
+	character = value[character_token]
 	character = value[variable]
 	character = value[event_target]
 	character = value[global_event_target]

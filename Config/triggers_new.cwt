@@ -1,92 +1,92 @@
 ###All inside trigger must be true.
-## scopes = { any }
+## scope = { any }
 # alias[trigger:and] = replace_me
 
 ###At least one entry inside trigger must be true.
-## scopes = { any }
+## scope = { any }
 # alias[trigger:or] = replace_me
 
 ###Negates content of trigger.
-## scopes = { any }
+## scope = { any }
 # alias[trigger:not] = replace_me
 
 ###Print message to game.log - Can be localized.
-## scopes = { any }
+## scope = { any }
 alias[trigger:log] = localisation_inline
 
 ###Checks if scoped unit leader, ace or country is female.
-## scopes = { COUNTRY UNIT_LEADER ACE }
+## scope = { COUNTRY UNIT_LEADER CHARACTER }
 alias[trigger:is_female] = bool
 
 ###Compares the current resistance level of a state to a value.
-## scopes = { STATE }
+## scope = { STATE }
 alias[trigger:resistance] = variable_field
 
 ###Checks if a country has a captured an operative (supports scoped variables).
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[trigger:has_captured_operative] = scope[country]
 
 ###Checks if a country has a captured an operative (supports scoped variables).
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[trigger:has_captured_operative] = enum[country_tags]
 
 ###Checks if a country has a captured an operative (supports scoped variables).
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[trigger:has_captured_operative] = bool
 
 ###Check if a state has enough non damaged buildings.
-## scopes = { STATE }
+## scope = { STATE }
 alias[trigger:non_damaged_building_level] = {
 	building = <building>
 	level = variable_field
 }
 
 ###Checks the number of days since the country last capitulated, even if it is no longer capitulated. If it has not ever capitulated, the value is extremely large. It is recommended to combine this with has_capitulated = yes when you specifically want to ignore non-active capitulations.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[trigger:days_since_capitulated] = variable_field
 
 ###Compares the current compliance level of a state to a value.
-## scopes = { STATE }
+## scope = { STATE }
 alias[trigger:compliance] = variable_field
 
 ###Compares the current compliance speed of a state to a value.
-## scopes = { STATE }
+## scope = { STATE }
 alias[trigger:compliance_speed] = variable_field
 
 ###Compares the current resistance speed of a state to a value.
-## scopes = { STATE }
+## scope = { STATE }
 alias[trigger:resistance_speed] = variable_field
 
 ###Compares occupied country that creates resistance to a tag.
-## scopes = { STATE }
+## scope = { STATE }
 alias[trigger:occupied_country_tag] = enum[country_tags]
 
 ###Compares occupied country that creates resistance to a tag.
-## scopes = { STATE }
+## scope = { STATE }
 alias[trigger:occupied_country_tag] = scope[country]
 
 ###Compares the target resistance level of a state to a value.
-## scopes = { STATE }
+## scope = { STATE }
 alias[trigger:resistance_target] = variable_field
 
 ###Returns true if state has a resistance.
-## scopes = { STATE }
+## scope = { STATE }
 alias[trigger:has_resistance] = bool
 
 ###Returns true if state has an active resistance (above zero).
-## scopes = { STATE }
+## scope = { STATE }
 alias[trigger:has_active_resistance] = bool
 
 ###Compares occupied country that creates resistance to a tag.
-## scopes = { STATE }
+## scope = { STATE }
 alias[trigger:has_occupation_modifier] = <resistance_compliance_modifier>
 
 ###Returns true if game is in debug mode (launched with -debug argument).
-## scopes = { any }
+## scope = { any }
 alias[trigger:is_debug] = bool
 
 ###Compares the core (average of all occupied states) compliance value of occupied_country_tag that is occupied by the country in current scope.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[trigger:core_compliance] = {
 	occupied_country_tag = enum[country_tags]
 	occupied_country_tag = scope[country]
@@ -94,7 +94,7 @@ alias[trigger:core_compliance] = {
 }
 
 ###Compares the core (average of all occupied states) resistance value of occupied_country_tag that is occupied by the country in current scope.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[trigger:core_resistance] = {
 	occupied_country_tag = enum[country_tags]
 	occupied_country_tag = scope[country]
@@ -102,7 +102,7 @@ alias[trigger:core_resistance] = {
 }
 
 ###Checks network strength you have in a country.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[trigger:network_strength] = {
 	target = enum[country_tags]
 	target = scope[country]
@@ -114,7 +114,7 @@ alias[trigger:network_strength] = {
 }
 
 ###Checks network strength you have in a country.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[trigger:network_strength] = {
 	state = <state>
 	state = scope[state]
@@ -122,7 +122,7 @@ alias[trigger:network_strength] = {
 }
 
 ###Checks if a country has a specific token against another country.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[trigger:has_operation_token] = {
 	tag = scope[country]
 	tag = enum[country_tags]
@@ -130,19 +130,19 @@ alias[trigger:has_operation_token] = {
 }
 
 ###Checks occupation law of state.
-## scopes = { STATE }
+## scope = { STATE }
 alias[trigger:occupation_law] = <occupation_law>
 
 ###Checks if a country is ally with another country. Will check if two countries are same/in same faction/has subject master relation.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[trigger:is_ally_with] = scope[country]
 
 ###Checks if a country is ally with another country. Will check if two countries are same/in same faction/has subject master relation.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[trigger:is_ally_with] = enum[country_tags]
 
 ###Calculates the highest scored country that is defined in a country scorer and sets it to a variable.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[trigger:get_highest_scored_country_temp] = {
 	scorer = <country_scorer>
 	## cardinality = 0..1
@@ -150,7 +150,7 @@ alias[trigger:get_highest_scored_country_temp] = {
 }
 
 ###Calculates & sorts all countries in a country scorer and stores them and their scores in temp arrays.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[trigger:get_sorted_scored_countries_temp] = {
 	scorer = <country_scorer>
 	## cardinality = 0..1
@@ -160,7 +160,7 @@ alias[trigger:get_sorted_scored_countries_temp] = {
 }
 
 ###Checks decryption ratio against a country.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[trigger:decryption_progress] = {
 	target = enum[country_tags]
 	target = scope[country]
@@ -168,7 +168,7 @@ alias[trigger:decryption_progress] = {
 }
 
 ###Check if any any occupied meets the trigger. tooltip=key can be defined to override title.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 ## push_scope = country
 alias[trigger:any_occupied_country] = {
 	## cardinality = 0..1
@@ -178,7 +178,7 @@ alias[trigger:any_occupied_country] = {
 
 
 ###Check if all occupied countries meets the trigger. tooltip=key can be defined to override title.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 ## push_scope = country
 alias[trigger:all_occupied_country] = {
 	## cardinality = 0..1
@@ -187,7 +187,7 @@ alias[trigger:all_occupied_country] = {
 }
 
 ###Check if any country with current scope's original tag meets the trigger.
-## scopes = { any }
+## scope = { any }
 alias[trigger:any_country_with_original_tag] = {
 	original_tag_to_check = enum[country_tags]
 	original_tag_to_check = scope[country]
@@ -198,7 +198,7 @@ alias[trigger:any_country_with_original_tag] = {
 
 
 ###Check if all country with current scope's original tag meets the trigger.
-## scopes = { any }
+## scope = { any }
 alias[trigger:all_country_with_original_tag] = {
 	original_tag_to_check = enum[country_tags]
 	original_tag_to_check = scope[country]
@@ -208,31 +208,31 @@ alias[trigger:all_country_with_original_tag] = {
 }
 
 ###Has country done this intelligence agency upgrade (to its highest level).
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[trigger:has_done_agency_upgrade] = <intelligence_agency_upgrade>
 
 ###Check if country is Spy Master.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[trigger:is_spymaster] = bool
 
 ###Check the amount of foreign garrison manpower we have.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[trigger:foreign_manpower] = variable_field
 
 ###Check the amount of manpower needed by garrisons.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[trigger:garrison_manpower_need] = variable_field
 
 ###Checks the number of upgrade done in the intelligence agency.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[trigger:agency_upgrade_number] = variable_field
 
 ###Checks whether the operative is performing the given mission.
-## scopes = { operative }
+## scope = { operative }
 alias[trigger:operative_leader_mission] = enum[operative_missions]
 
 ###Compare the intel of the scoped country with the specified one.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[trigger:compare_intel_with] = {
 	target = enum[country_tags]
 	target = scope[country]
@@ -247,7 +247,7 @@ alias[trigger:compare_intel_with] = {
 }
 
 ###Check if all operatives meets the trigger. tooltip=key can be defined to override title.
-## scopes = { COUNTRY OPERATION }
+## scope = { COUNTRY OPERATION }
 ## push_scope = operative
 alias[trigger:all_operative_leader] = {
 	## cardinality = 0..1
@@ -256,7 +256,7 @@ alias[trigger:all_operative_leader] = {
 }
 
 ###Check if any operatives meets the trigger. tooltip=key can be defined to override title.
-## scopes = { COUNTRY OPERATION }
+## scope = { COUNTRY OPERATION }
 ## push_scope = operative
 alias[trigger:any_operative_leader] = {
 	## cardinality = 0..1
@@ -265,11 +265,11 @@ alias[trigger:any_operative_leader] = {
 }
 
 ###Checks whether the operative has the matching captured status.
-## scopes = { operative }
+## scope = { operative }
 alias[trigger:is_operative_captured] = bool
 
 ###Compare the absolute, percentage based, intel level the scoped country has over the specified one.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[trigger:intel_level_over] = {
 	target = enum[country_tags]
 	target = scope[country]
@@ -282,7 +282,7 @@ alias[trigger:intel_level_over] = {
 }
 
 ###Check if any of the states controlled by the scope country meets the trigger. tooltip=key can be defined to override title.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 ## push_scope = state
 alias[trigger:any_controlled_state] = {
 	## cardinality = 0..1
@@ -291,7 +291,7 @@ alias[trigger:any_controlled_state] = {
 }
 
 ###Check if all of the states controlled by the scope country meets the trigger. tooltip=key can be defined to override title.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 ## push_scope = state
 alias[trigger:all_controlled_state] = {
 	## cardinality = 0..1
@@ -300,64 +300,64 @@ alias[trigger:all_controlled_state] = {
 }
 
 ###Checks the number of operatives the country controls.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[trigger:num_of_operatives] = variable_field
 
 ###Checks the number of available operative slots a country has. If this differs from the number of operative, this does not mean the country can recruit an operative, but that it will eventually be able to.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[trigger:num_operative_slots] = variable_field
 
 ###Checks the number of operative a country can recruit right now. Note that this is not necessarily greater than zero if num_operative_slots returned a number greater than the number of operative.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[trigger:num_free_operative_slots] = variable_field
 
 ###Has country an active cryptology department.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[trigger:is_cryptology_department_active] = bool
 
 ###Checks if is currently decrypting a cipher.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[trigger:is_decrypting] = scope[country]
 
 ###Checks if is currently decrypting a cipher.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[trigger:is_decrypting] = enum[country_tags]
 
 ###Checks if fully decrypted a cipher.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[trigger:is_fully_decrypted] = scope[country]
 
 ###Checks if fully decrypted a cipher.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[trigger:is_fully_decrypted] = enum[country_tags]
 
 ###Checks if the country activated their active cipher decryption bonuses.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[trigger:is_active_decryption_bonuses_enabled] = scope[country]
 
 ###Checks if the country activated their active cipher decryption bonuses.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[trigger:is_active_decryption_bonuses_enabled] = enum[country_tags]
 
 ###Will compare towards the amount of fake intel divisions a country has control over.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[trigger:num_fake_intel_divisions] = variable_field
 
 ###Modulos a temp variable with another.
-## scopes = { any }
+## scope = { any }
 alias[trigger:modulo_temp_variable] = {
 	value_set[variable] = variable_field_32
 }
 
 ###Modulos a temp variable with another.
-## scopes = { any }
+## scope = { any }
 alias[trigger:modulo_temp_variable] = {
 	var = value_set[variable]
 	value = variable_field_32
 }
 
 ###Check if any country with current scoped country guarantees.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 ## push_scope = country
 alias[trigger:any_guaranteed_country] = {
 	alias_name[trigger] = alias_match_left[trigger]
@@ -365,14 +365,14 @@ alias[trigger:any_guaranteed_country] = {
 
 
 ###Check if every country with current scoped country guarantees.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 ## push_scope = country
 alias[trigger:all_guaranteed_country] = {
 	alias_name[trigger] = alias_match_left[trigger]
 }
 
 ###Compares number of completed operations.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[trigger:num_finished_operations] = {
 	operation = <operation>
 	operation = value_set[token]
@@ -382,7 +382,7 @@ alias[trigger:num_finished_operations] = {
 }
 
 ###Checks the collaboration in a target country with our currently scoped country.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[trigger:has_collaboration] = {
 	target = scope[country]
 	target = enum[country_tags]
@@ -390,37 +390,37 @@ alias[trigger:has_collaboration] = {
 }
 
 ###Checks if running a specific operation. Operation can be omitted to check for any operation.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[trigger:is_running_operation] = {
 	target = scope[country]
 	operation = <operation>
 }
 
 ###Checks if finished collecting of resources for an operation.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[trigger:has_finished_collecting_for_operation] = {
 	target = scope[country]
 	operation = <operation>
 }
 
 ###Checks conscription ratio of the country compared to target conscription ratio.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[trigger:conscription_ratio] = variable_field
 
 ###Checks the target conscription amount of the country.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[trigger:target_conscription_amount] = variable_field
 
 ###Checks the current conscription amount of the country.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[trigger:current_conscription_amount] = variable_field
 
 ###Checks the type of operation.
-## scopes = { OPERATION }
+## scope = { OPERATION }
 alias[trigger:is_operation_type] = <operation>
 
 ###Checks if preparing a specific operation.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[trigger:is_preparing_operation] = {
 	operation = <operation>
 	operation = variable_field
@@ -428,27 +428,27 @@ alias[trigger:is_preparing_operation] = {
 }
 
 ###Checks whether the operative is performing the given operation.
-## scopes = { operative }
+## scope = { operative }
 alias[trigger:operative_leader_operation] = <operation>
 
 ###Checks if the country could potentially declare a war on the target (according to game rules, relationship, etc... ).
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[trigger:can_declare_war_on] = scope[country]
 
 ###Checks if the country could potentially declare a war on the target (according to game rules, relationship, etc... ).
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[trigger:can_declare_war_on] = enum[country_tags]
 
 ###Checks whether the operative has the specified nationality. NOTE: this is invalid on non-operatives.
-## scopes = { operative }
+## scope = { operative }
 alias[trigger:has_nationality] = scope[country]
 
 ###Checks whether the operative has the specified nationality. NOTE: this is invalid on non-operatives.
-## scopes = { operative }
+## scope = { operative }
 alias[trigger:has_nationality] = enum[country_tags]
 
 ###Checks network national coverage you have over a country.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[trigger:network_national_coverage] = {
 	target = enum[country_tags]
 	target = scope[country]
@@ -456,15 +456,15 @@ alias[trigger:network_national_coverage] = {
 }
 
 ###Checks whether a state is impassable.
-## scopes = { state }
+## scope = { state }
 alias[trigger:impassable] = bool
 
 ###Number of researched technologies.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[trigger:num_researched_technologies] = int_variable_field
 
 ###Checks if country has allowed ideas with specific traits more than limit.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[trigger:has_allowed_idea_with_traits] = {
 	idea = <country_leader_trait>
 	idea = {
@@ -487,27 +487,27 @@ alias[trigger:has_allowed_idea_with_traits] = {
 }
 
 ###Is leading volunteers in the target.
-## scopes = { UNIT_LEADER character }
+## scope = { UNIT_LEADER character }
 alias[trigger:is_leading_volunteer_group] = scope[country]
 
 ###Is leading volunteers in the target.
-## scopes = { UNIT_LEADER character }
+## scope = { UNIT_LEADER character }
 alias[trigger:is_leading_volunteer_group] = enum[country_tags]
 
 ###Is leading volunteers in a country with the original tag.
-## scopes = { UNIT_LEADER character }
+## scope = { UNIT_LEADER character }
 alias[trigger:is_leading_volunteer_group_with_original_country] = scope[country]
 
 ###Is leading volunteers in a country with the original tag.
-## scopes = { UNIT_LEADER character }
+## scope = { UNIT_LEADER character }
 alias[trigger:is_leading_volunteer_group_with_original_country] = enum[country_tags]
 
 ###Sets a temp variable to a random value.
-## scopes = { any }
+## scope = { any }
 alias[trigger:set_temp_variable_to_random] = value_set[variable]
 
 ###Sets a temp variable to a random value.
-## scopes = { any }
+## scope = { any }
 alias[trigger:set_temp_variable_to_random] = {
 	var = value_set[variable]
 	## cardinality = 0..1

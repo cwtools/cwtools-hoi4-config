@@ -3,7 +3,8 @@
 alias[effect:add_breakthrough_points] = {
     specialization = <specialization>
     specialization = all
-    value = float
+    value = int
+
 }
 
 ### Requires raid as ROOT scope. Reduce progress to the special project in state. Root scope is raid instance scope. The input value is a ratio of the total needed progress to complete the special project, i.e. a decimal number between 0 and 1.
@@ -378,17 +379,18 @@ alias[effect:raid_damage_units] = {
     damage = float
 	## cardinality = 0..1
     plane_loss = float
+	### Ratio = yes will convert losses to % (so use floats, 1 = 100%), ratio = no instead inflicts flat dmg
     ratio = yes
 }
 ### Damage the units performing the raid in scope (the attackers inflict losses).  Damage is applied to ground units while damage to plane is defined as the amount of planes lost.\nIf 'ratio = yes', then all damage / losses are applied as a fraction of the current amount. For units, damage can be defined through one value 'damage' or separately through 'org_damage' and 'str_damage'
 ## scope = raid
 alias[effect:raid_damage_units] = {
 	## cardinality = 0..1
-    plane_loss = int
+    plane_loss = float
 	## cardinality = 0..1
-    org_damage = int
+    org_damage = float
 	## cardinality = 0..1
-    str_damage = int
+    str_damage = float
 	## cardinality = 0..1
     ratio = no
 }

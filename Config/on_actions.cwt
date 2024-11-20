@@ -1021,7 +1021,7 @@ on_action = {
 
 	### Trigger the following commands whenever an operative completed. THIS - the operative, ROOT - the initiating country, FROM - the target country.
 	## cardinality = 0..inf
-	## replace_scope = { THIS = operative ROOT = country FROM = country }
+	## replace_scope = { THIS = operation ROOT = country FROM = country }
 	on_operation_completed = single_alias_right[operative_event_effect]
 
 	### Trigger the following commands whenever an operative dies.
@@ -1120,7 +1120,7 @@ on_action = {
 	on_mio_industrial_manufacturer_unassigned = single_alias_right[on_action_effect]
 
 	### Triggered when a project is completed
-	### ROOT is the Military Industrial Organization, FROM is the owner of the MIO country
+	### ROOT is the owner of the special project, FROM is the special project
 	## cardinality = 0..inf
 	## replace_scope = { ROOT = COUNTRY this = COUNTRY FROM = special_project }
 	on_project_completion = single_alias_right[on_action_effect]

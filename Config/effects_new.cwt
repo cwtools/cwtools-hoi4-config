@@ -1,13 +1,13 @@
 ###Effect not shown in tooltips
-## scopes = { STATE COUNTRY }
+## scope = { STATE COUNTRY }
 # alias[effect:hidden_effect] = replace_me
 
 ###Grant experience to the scoped in unit leader. Cannot be used to remove experience. The unit leader is promoted to the next skill level if applicable
-## scopes = { UNIT_LEADER }
+## scope = { UNIT_LEADER character }
 alias[effect:gain_xp] = variable_field
 
 ###Delete units of a country. No tooltip is generated.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[effect:delete_unit] = {
 	## error_if_only_match = "template" is replaced with "division_template" in docs, proceed with caution
 	## severity = warning
@@ -26,34 +26,34 @@ alias[effect:delete_unit] = {
 }
 
 ###Free an operative. Can be used from a scope and a target that is either a country or a unit leader.
-## scopes = { operative }
+## scope = { operative }
 alias[effect:free_operative] = enum[country_tags]
 
 ###Free an operative. Can be used from a scope and a target that is either a country or a unit leader.
-## scopes = { operative }
+## scope = { operative }
 alias[effect:free_operative] = scope[country]
 
 ###Free an operative. Can be used from a scope and a target that is either a country or a unit leader.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[effect:free_operative] = value[unit_leader_ids]
 
 ###Free an operative. Can be used from a scope and a target that is either a country or a unit leader.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[effect:free_operative] = scope[unit_leader]
 
 ###Free an operative. Can be used from a scope and a target that is either a country or a unit leader.
-## scopes = { operative }
+## scope = { operative }
 alias[effect:free_operative] = {
 	captured_by = enum[country_tags]
 }
 ###Free an operative. Can be used from a scope and a target that is either a country or a unit leader.
-## scopes = { operative }
+## scope = { operative }
 alias[effect:free_operative] = {
 	captured_by = scope[country]
 }
 
 ###Free a random captured operative of a certain tag by a certain tag. Can be used from a country scope of the operative in question.`all` is optional, default value is no - if set to yes it will free all operatives captured by the target country.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[effect:free_random_operative] = {
 	captured_by = enum[country_tags]
 	captured_by = scope[country]
@@ -62,7 +62,7 @@ alias[effect:free_random_operative] = {
 }
 
 ###Create operative for country.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[effect:create_operative_leader] = {
 	## cardinality = 0..1
 	name = scalar
@@ -109,11 +109,11 @@ alias[effect:create_operative_leader] = {
 }
 
 ###Capture an operative. Can be used from a scope and a target that is either a country or a unit leader.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[effect:capture_operative] = scope[operative]
 
 ###Capture an operative. Can be used from a scope and a target that is either a country or a unit leader.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[effect:capture_operative] = {
 	operative = scope[operative]
 	## cardinality = 0..1
@@ -121,7 +121,7 @@ alias[effect:capture_operative] = {
 }
 
 ###Capture an operative. Can be used from a scope and a target that is either a country or a unit leader.
-## scopes = { operative }
+## scope = { operative }
 alias[effect:capture_operative] = {
 	captured_by = scope[country]
 	captured_by = enum[country_tags]
@@ -130,7 +130,7 @@ alias[effect:capture_operative] = {
 }
 
 ###Executes children effects on a random operatives that fulfils the "limit" trigger.
-## scopes = { COUNTRY OPERATION }
+## scope = { COUNTRY OPERATION }
 ## push_scope = operative
 alias[effect:random_operative] = {
     ## cardinality = 0..1
@@ -142,7 +142,7 @@ alias[effect:random_operative] = {
 
 
 ###Executes children effects on operatives that fulfils the "limit" trigger. tooltip=key can be added to override tooltip title
-## scopes = { COUNTRY OPERATION }
+## scope = { COUNTRY OPERATION }
 ## push_scope = operative
 alias[effect:every_operative] = {
 	### Apply the effect to this number of randomly selected entities
@@ -159,7 +159,7 @@ alias[effect:every_operative] = {
 
 
 ###Sends to target scope specified fraction of equipment.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[effect:send_equipment_fraction] = {
 	target = enum[country_tags]
 	target = scope[country]
@@ -167,7 +167,7 @@ alias[effect:send_equipment_fraction] = {
 }
 
 ###Transfer units (air, army, navy) to another country. Also transfer the stockpiled equipment (you can set it to zero if it is undesired) as well as unit leaders.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[effect:transfer_units_fraction] = {
 	target = enum[country_tags]
 	target = scope[country]
@@ -198,61 +198,61 @@ alias[effect:transfer_units_fraction] = {
 }
 
 ###Removes a ideology leader as leader of his party, making the next in line the new party leader.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[effect:kill_ideology_leader] = <ideology>
 
 ###Removes a ideology leader as leader of his party, making the next in line the new party leader.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[effect:kill_ideology_leader] = variable_field
 
 ###Adds/removes days to 'days_remove' value of a decision.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[effect:add_days_remove] = {
 	decision = <decision.timed>
 	days = int_variable_field
 }
 
 ###Add days to 'mission_timeout' value of a mission.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[effect:add_days_mission_timeout] = {
 	mission = <decision.mission>
 	days = int_variable_field
 }
 
 ###Add resistance to a state.
-## scopes = { STATE }
+## scope = { STATE }
 alias[effect:add_resistance] = variable_field
 
 ###Add compliance to a state.
-## scopes = { STATE }
+## scope = { STATE }
 alias[effect:add_compliance] = variable_field
 
 ###Starts resistance activity for a core country. Use along with force_enable_resistance if you are enabling resistance in a state that is not possible (ie core).
-## scopes = { STATE }
+## scope = { STATE }
 alias[effect:start_resistance] = enum[country_tags]
 
 ###Starts resistance activity for a core country. Use along with force_enable_resistance if you are enabling resistance in a state that is not possible (ie core).
-## scopes = { STATE }
+## scope = { STATE }
 alias[effect:start_resistance] = scope[country]
 
 ###Starts resistance activity for a core country. Use along with force_enable_resistance if you are enabling resistance in a state that is not possible (ie core).
-## scopes = { STATE }
+## scope = { STATE }
 alias[effect:start_resistance] = bool
 
 ###Cancels resistance activity for a core country. Use along with force_disable_resistance to disable resistance forever.
-## scopes = { STATE }
+## scope = { STATE }
 alias[effect:cancel_resistance] = bool
 
 ###Set resistance of a state.
-## scopes = { STATE }
+## scope = { STATE }
 alias[effect:set_resistance] = variable_field
 
 ###Set compliance of a state.
-## scopes = { STATE }
+## scope = { STATE }
 alias[effect:set_compliance] = variable_field
 
 ###Adds a specific token against against another country.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[effect:add_operation_token] = {
 	tag = scope[country]
 	tag = enum[country_tags]
@@ -260,7 +260,7 @@ alias[effect:add_operation_token] = {
 }
 
 ###Remove a specific token against against another country.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[effect:remove_operation_token] = {
 	tag = scope[country]
 	tag = enum[country_tags]
@@ -268,7 +268,7 @@ alias[effect:remove_operation_token] = {
 }
 
 ###Adds a random limited use tech bonus from country of categories that is it ahead in compared to you. It must have at least one category or folder. But it can contain any number of them in any combination. Note: if a country does not have a tech to be stolen a random tech bonus will be applied based on base_bonus.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[effect:steal_random_tech_bonus] = {
 	## cardinality = 0..inf
 	folder = enum[tech_folder]
@@ -293,7 +293,7 @@ alias[effect:steal_random_tech_bonus] = {
 }
 
 ###Teleport armies in state to another state or province.
-## scopes = { STATE }
+## scope = { STATE }
 alias[effect:teleport_armies] = {
 	## cardinality = 0..1
 	## replace_scope = { this = country }
@@ -305,7 +305,7 @@ alias[effect:teleport_armies] = {
 }
 
 ###Teleport armies in state to another state or province.
-## scopes = { STATE }
+## scope = { STATE }
 alias[effect:teleport_armies] = {
 	## cardinality = 0..1
 	## replace_scope = { this = country }
@@ -317,7 +317,7 @@ alias[effect:teleport_armies] = {
 }
 
 ###Teleport armies in state to another state or province.
-## scopes = { STATE }
+## scope = { STATE }
 alias[effect:teleport_armies] = {
 	## cardinality = 0..1
 	## replace_scope = { this = country }
@@ -329,7 +329,7 @@ alias[effect:teleport_armies] = {
 }
 
 ###Teleport armies in state to another state or province.
-## scopes = { STATE }
+## scope = { STATE }
 alias[effect:teleport_armies] = {
 	## cardinality = 0..1
 	## replace_scope = { this = country }
@@ -339,7 +339,7 @@ alias[effect:teleport_armies] = {
 }
 
 ###Executes children effects on every controlled state that fulfils the "limit" trigger. tooltip=key can be added to override tooltip title.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 ## push_scope = state
 alias[effect:every_controlled_state] = {
 	### Apply the effect to this number of randomly selected entities
@@ -358,7 +358,7 @@ alias[effect:every_controlled_state] = {
 
 
 ###Sets the controller of provinces belong to a state and fulfils a condition. No tooltip is built.
-## scopes = { STATE }
+## scope = { STATE }
 alias[effect:set_state_province_controller] = {
 	controller = enum[country_tags]
 	controller = scope[country]
@@ -370,11 +370,11 @@ alias[effect:set_state_province_controller] = {
 }
 
 ###Reserves a dynamic country so it won't be recycled for civil wars. A dynamic country with no owned states must be reserved after it is created and unreserved once it is no longer going to be used.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[effect:reserve_dynamic_country] = bool
 
 ###Calculates the highest scored country that is defined in a country scorer and sets it to a variable.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[effect:get_highest_scored_country_temp] = {
 	scorer = <country_scorer>
 	## cardinality = 0..1
@@ -382,7 +382,7 @@ alias[effect:get_highest_scored_country_temp] = {
 }
 
 ###Creates a dynamic country and runs child effects on it.
-## scopes = { any }
+## scope = { any }
 ## push_scope = country
 alias[effect:create_dynamic_country] = {
 	original_tag = enum[country_tags]
@@ -395,7 +395,7 @@ alias[effect:create_dynamic_country] = {
 }
 
 ###Calculates & sorts all countries in a country scorer and stores them and their scores in temp arrays.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[effect:get_sorted_scored_countries_temp] = {
 	scorer = <country_scorer>
 	## cardinality = 0..1
@@ -405,7 +405,7 @@ alias[effect:get_sorted_scored_countries_temp] = {
 }
 
 ###Executes children effects on random occupied country that fulfils the "limit" trigger.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 ## push_scope = country
 alias[effect:random_occupied_country] = {
     ## cardinality = 0..1
@@ -417,7 +417,7 @@ alias[effect:random_occupied_country] = {
 
 
 ###Executes children effects on every occupied country that fulfils the "limit" trigger. tooltip=key can be defined to override tooltip title.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 ## push_scope = country
 alias[effect:every_occupied_country] = {
 	### Apply the effect to this number of randomly selected entities
@@ -436,10 +436,10 @@ alias[effect:every_occupied_country] = {
 
 
 ###Adds resistance target to the scoped state.
-## scopes = { STATE }
+## scope = { STATE }
 alias[effect:add_resistance_target] = variable_field
 ###Adds resistance target to the scoped state.
-## scopes = { STATE }
+## scope = { STATE }
 alias[effect:add_resistance_target] = {
 	amount = variable_field
 	## cardinality = ~0..1
@@ -459,11 +459,11 @@ alias[effect:add_resistance_target] = {
 }
 
 ###Removes a previously added resistance target using its id. No tooltips are generated.
-## scopes = { STATE }
+## scope = { STATE }
 alias[effect:remove_resistance_target] = value[resistance_target]
 
 ###Calculates the highest scored country that is defined in a country scorer and sets it to a temp variable.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[effect:get_highest_scored_country] = {
 	scorer = <country_scorer>
 	## cardinality = 0..1
@@ -471,7 +471,7 @@ alias[effect:get_highest_scored_country] = {
 }
 
 ###Calculates & sorts all countries in a country scorer and stores them and their scores in arrays.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[effect:get_sorted_scored_countries] = {
 	scorer = <country_scorer>
 	## cardinality = 0..1
@@ -481,7 +481,7 @@ alias[effect:get_sorted_scored_countries] = {
 }
 
 ###Executes children effects on a random country with original tag.
-## scopes = { any }
+## scope = { any }
 ## push_scope = country
 alias[effect:random_country_with_original_tag] = {
 	original_tag_to_check = enum[country_tags]
@@ -496,7 +496,7 @@ alias[effect:random_country_with_original_tag] = {
 ### random_country_division - Executes children effects on a random division that fulfill the "limit" trigger. tooltip=key can be added to override tooltip title
 ### Supported scopes: country
 ### Executes children effects on a random division that full the "limit" trigger. tooltip=key can be added to override to override tooltip title
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 ## push_scope = unit
 alias[effect:random_country_division] = {
 	## cardinality = 0..1
@@ -508,7 +508,7 @@ alias[effect:random_country_division] = {
 
 
 ###Executes children effects on a all countries with original tag. tooltip=key can be defined to override tooltip title.
-## scopes = { any }
+## scope = { any }
 ## push_scope = country
 alias[effect:every_country_with_original_tag] = {
 	### Apply the effect to this number of randomly selected entities
@@ -527,7 +527,7 @@ alias[effect:every_country_with_original_tag] = {
 
 
 ###Add decryption against a target country.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[effect:add_decryption] = {
 	target = enum[country_tags]
 	target = scope[country]
@@ -536,7 +536,7 @@ alias[effect:add_decryption] = {
 }
 
 ###Add decryption against a target country.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[effect:add_decryption] = {
 	target = enum[country_tags]
 	target = scope[country]
@@ -546,7 +546,7 @@ alias[effect:add_decryption] = {
 
 
 ###Deletes units that uses a specific template.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[effect:delete_units] = {
 	division_template = scalar
 	## cardinality = 0..1
@@ -554,15 +554,15 @@ alias[effect:delete_units] = {
 }
 
 ###Force enables resistance for scoped state. The resistance will be active even if other conditions doesn't satisfy (even if it is core or resistance check trigger is false).
-## scopes = { STATE }
+## scope = { STATE }
 alias[effect:force_enable_resistance] = scope[country]
 
 ###Force enables resistance for scoped state. The resistance will be active even if other conditions doesn't satisfy (even if it is core or resistance check trigger is false).
-## scopes = { STATE }
+## scope = { STATE }
 alias[effect:force_enable_resistance] = enum[country_tags]
 
 ###Force enables resistance for scoped state. The resistance will be active even if other conditions doesn't satisfy (even if it is core or resistance check trigger is false).
-## scopes = { STATE }
+## scope = { STATE }
 alias[effect:force_enable_resistance] = {
 	## cardinality = 0..1
 	clear = bool
@@ -575,7 +575,7 @@ alias[effect:force_enable_resistance] = {
 }
 
 ###Force enables resistance for scoped state. The resistance will be active even if other conditions doesn't satisfy (even if it is core or resistance check trigger is false).
-## scopes = { STATE }
+## scope = { STATE }
 alias[effect:force_enable_resistance] = {
 	## cardinality = 0..1
 	clear = bool
@@ -588,19 +588,19 @@ alias[effect:force_enable_resistance] = {
 }
 
 ###Force disables resistance for scoped state
-## scopes = { STATE }
+## scope = { STATE }
 alias[effect:force_disable_resistance] = bool
 
 ###Force disables resistance for scoped state. The resistance will be active even if other conditions doesn't satisfy (even if it is core or resistance check trigger is false).
-## scopes = { STATE }
+## scope = { STATE }
 alias[effect:force_disable_resistance] = scope[country]
 
 ###Force disables resistance for scoped state. The resistance will be active even if other conditions doesn't satisfy (even if it is core or resistance check trigger is false).
-## scopes = { STATE }
+## scope = { STATE }
 alias[effect:force_disable_resistance] = enum[country_tags]
 
 ###Force disables resistance for scoped state. The resistance will be active even if other conditions doesn't satisfy (even if it is core or resistance check trigger is false).
-## scopes = { STATE }
+## scope = { STATE }
 alias[effect:force_disable_resistance] = {
 	## cardinality = 0..1
 	clear = bool
@@ -613,7 +613,7 @@ alias[effect:force_disable_resistance] = {
 }
 
 ###Force disables resistance for scoped state. The resistance will be active even if other conditions doesn't satisfy (even if it is core or resistance check trigger is false).
-## scopes = { STATE }
+## scope = { STATE }
 alias[effect:force_disable_resistance] = {
 	## cardinality = 0..1
 	clear = bool
@@ -626,7 +626,7 @@ alias[effect:force_disable_resistance] = {
 }
 
 ###Force disables resistance for scoped state. The resistance will be active even if other conditions doesn't satisfy (even if it is core or resistance check trigger is false).
-## scopes = { STATE }
+## scope = { STATE }
 alias[effect:force_disable_resistance] = {
 	clear = yes
 	## error_if_only_match = This has no effect
@@ -644,22 +644,22 @@ alias[effect:force_disable_resistance] = {
 }
 
 ###Create an Intelligence Agency for the country, if it is not already done.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[effect:create_intelligence_agency] = yes
 
 ###Create an Intelligence Agency for the country, if it is not already done.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[effect:create_intelligence_agency] = {
   name = localisation
   icon = <spriteType>
 }
 
 ###Add an upgrade to the Intelligence Agency (must be created).
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[effect:upgrade_intelligence_agency] = <intelligence_agency_upgrade>
 
 ###Create a ship from another country and assign it to the reserve fleet. 'creator' is optional. If not set, it will be the scoped country. 'name' is optional.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[effect:create_ship] = {
 	type = <equipment.naval_equip>
 	equipment_variant = scalar
@@ -672,33 +672,33 @@ alias[effect:create_ship] = {
 }
 
 ###Set current country as spy master of its faction.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[effect:set_faction_spymaster] = bool
 
 ###Lock all the division template at the country level. Note that you need to unlock them in the same way (You can't use 'set_division_template_lock' individually, because the lock at the country level will not be removed).
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[effect:country_lock_all_division_template] = bool
 
 ###Randomize a temporary variable.
-## scopes = { any }
+## scope = { any }
 alias[effect:randomize_temp_variable] = value_set[variable]
 
 ###Randomize a temporary variable.
-## scopes = { any }
+## scope = { any }
 alias[effect:randomize_temp_variable] = {
 	var = value_set[variable]
 	distribution = uniform
 }
 
 ###Randomize a temporary variable.
-## scopes = { any }
+## scope = { any }
 alias[effect:randomize_temp_variable] = {
 	var = value_set[variable]
 	distribution = binomial
 }
 
 ###Randomize a temporary variable.
-## scopes = { any }
+## scope = { any }
 alias[effect:randomize_temp_variable] = {
 	var = value_set[variable]
 	distribution = uniform
@@ -707,7 +707,7 @@ alias[effect:randomize_temp_variable] = {
 }
 
 ###Randomize a temporary variable.
-## scopes = { any }
+## scope = { any }
 alias[effect:randomize_temp_variable] = {
 	var = value_set[variable]
 	distribution = binomial
@@ -716,7 +716,7 @@ alias[effect:randomize_temp_variable] = {
 }
 
 ###Randomize a temporary variable.
-## scopes = { any }
+## scope = { any }
 alias[effect:randomize_temp_variable] = {
 	var = value_set[variable]
 	distribution = binomial
@@ -726,25 +726,25 @@ alias[effect:randomize_temp_variable] = {
 }
 
 ###Randomize a variable.
-## scopes = { any }
+## scope = { any }
 alias[effect:randomize_variable] = variable_field_32
 
 ###Randomize a variable.
-## scopes = { any }
+## scope = { any }
 alias[effect:randomize_variable] = {
 	var = variable_field_32
 	distribution = uniform
 }
 
 ###Randomize a variable.
-## scopes = { any }
+## scope = { any }
 alias[effect:randomize_variable] = {
 	var = variable_field_32
 	distribution = binomial
 }
 
 ###Randomize a variable.
-## scopes = { any }
+## scope = { any }
 alias[effect:randomize_variable] = {
 	var = variable_field_32
 	distribution = uniform
@@ -753,7 +753,7 @@ alias[effect:randomize_variable] = {
 }
 
 ###Randomize a variable.
-## scopes = { any }
+## scope = { any }
 alias[effect:randomize_variable] = {
 	var = variable_field_32
 	distribution = binomial
@@ -762,7 +762,7 @@ alias[effect:randomize_variable] = {
 }
 
 ###Randomize a variable.
-## scopes = { any }
+## scope = { any }
 alias[effect:randomize_variable] = {
 	var = variable_field_32
 	distribution = binomial
@@ -772,18 +772,18 @@ alias[effect:randomize_variable] = {
 }
 
 ###Harm an operative. The specified value is subject to modifiers.
-## scopes = { operative }
+## scope = { operative }
 alias[effect:harm_operative_leader] = variable_field
 
 ###Force an operative into hiding, preventing them from performing mission. The specified values is subject to modifiers.
-## scopes = { operative }
+## scope = { operative }
 alias[effect:force_operative_leader_into_hiding] = bool
 ###Force an operative into hiding, preventing them from performing mission. The specified values is subject to modifiers.
-## scopes = { operative }
+## scope = { operative }
 alias[effect:force_operative_leader_into_hiding] = int[0..100]
 
 ###Add the specified amount of intel over a specified country.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[effect:add_intel] = {
 	target = enum[country_tags]
 	target = scope[country]
@@ -798,7 +798,7 @@ alias[effect:add_intel] = {
   }
 
 ###Fires a operative leader event for owner country.
-## scopes = { operative }
+## scope = { operative }
 alias[effect:operative_leader_event] = {
 	### The event to fire.
 	id = <event.operative_leader_event>
@@ -877,24 +877,24 @@ alias[effect:operative_leader_event] = {
 }
 
 ###Kills an operative. This will temporarily lock the slot they occupy.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[effect:kill_operative] = scope[operative]
 
 ###Kills an operative. This will temporarily lock the slot they occupy.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[effect:kill_operative] = {
 	operative = scope[operative]
 }
 
 ###Kills an operative. This will temporarily lock the slot they occupy.
-## scopes = { operative }
+## scope = { operative }
 alias[effect:kill_operative] = {
 	killed_by = scope[country]
 	killed_by = enum[country_tags]
 }
 
 ###Executes children effects on random controlled state that fulfils the "limit" trigger. prioritize = { <stateID> <stateID> } to pick those states first if they fulfil the limit.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 ## push_scope = state
 alias[effect:random_controlled_state] = {
 	## cardinality = 0..1
@@ -911,45 +911,45 @@ alias[effect:random_controlled_state] = {
 
 
 ###Forces the refresh of the tree layout for the scoped country.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[effect:mark_focus_tree_layout_dirty] = yes
 
 ###Adds a civil war target to a specific country.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[effect:add_civil_war_target] = scope[country]
 
 ###Adds a civil war target to a specific country.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[effect:add_civil_war_target] = enum[country_tags]
 
 ###Modulos a temp variable with another.
-## scopes = { any }
+## scope = { any }
 alias[effect:modulo_temp_variable] = {
 	value_set[variable] = variable_field_32
 }
 
 ###mMdulos a temp variable with another.
-## scopes = { any }
+## scope = { any }
 alias[effect:modulo_temp_variable] = {
 	var = value_set[variable]
 	value = variable_field_32
 }
 
 ###Modulos a variable with another.
-## scopes = { any }
+## scope = { any }
 alias[effect:modulo_variable] = {
 	value_set[variable] = variable_field_32
 }
 
 ###Modulos a variable with another.
-## scopes = { any }
+## scope = { any }
 alias[effect:modulo_variable] = {
 	var = value_set[variable]
 	value = variable_field_32
 }
 
 ###Adds the collaboration in a target country with our currently scoped country.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[effect:add_collaboration] = {
 	target = scope[country]
 	target = enum[country_tags]
@@ -957,7 +957,7 @@ alias[effect:add_collaboration] = {
 }
 
 ###Sets the collaboration in a target country with our currently scoped country.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[effect:set_collaboration] = {
 	target = scope[country]
 	target = enum[country_tags]
@@ -965,46 +965,46 @@ alias[effect:set_collaboration] = {
 }
 
 ###Special effect for executing the Coordinated Strike Operation. Amount determines how often the simulation is run.
-## scopes = { OPERATION }
+## scope = { OPERATION }
 alias[effect:execute_operation_coordinated_strike] = {
 	amount = int
 }
 
 ###Add the specified nationality to the scoped-in operative.
-## scopes = { operative }
+## scope = { operative }
 alias[effect:add_nationality] = scope[country]
 
 ###Add the specified nationality to the scoped-in operative.
-## scopes = { operative }
+## scope = { operative }
 alias[effect:add_nationality] = enum[country_tags]
 
 ###The scoped in country recall the volunteers sent to the target country.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[effect:recall_volunteers_from] = scope[country]
 
 ###The scoped in country recall the volunteers sent to the target country.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[effect:recall_volunteers_from] = enum[country_tags]
 
 ###An operative is turned by the specified country. This transfers the operative to the target country and make it appear as killed to the country of origin (increases the death counter and lock the slot). This fires the on_action on_operative_death with as killer the target country. If the target country is the owner of the operative, this has no effect and an error is logged. WARN: the on_action might execute immediately, before any effect listed after the occurrence of turn_operative.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[effect:turn_operative] = scope[operative]
 
 ###An operative is turned by the specified country. This transfers the operative to the target country and make it appear as killed to the country of origin (increases the death counter and lock the slot). This fires the on_action on_operative_death with as killer the target country. If the target country is the owner of the operative, this has no effect and an error is logged. WARN: the on_action might execute immediately, before any effect listed after the occurrence of turn_operative.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 alias[effect:turn_operative] = {
 	operative = scope[operative]
 }
 
 ###An operative is turned by the specified country. This transfers the operative to the target country and make it appear as killed to the country of origin (increases the death counter and lock the slot). This fires the on_action on_operative_death with as killer the target country. If the target country is the owner of the operative, this has no effect and an error is logged. WARN: the on_action might execute immediately, before any effect listed after the occurrence of turn_operative.
-## scopes = { operative }
+## scope = { operative }
 alias[effect:turn_operative] = {
 	turned_by = scope[country]
 	turned_by = enum[country_tags]
 }
 
 ###Set initial garrison strength.
-## scopes = { STATE }
+## scope = { STATE }
 alias[effect:set_garrison_strength] = variable_field
 
 ###Releases specified country as a puppet using your owned or controlled states.
@@ -1074,11 +1074,11 @@ alias[effect:set_leader_portrait] = <spriteType>
 alias[effect:set_leader_description] = localisation
 
 ###Sets a variable to a random value.
-## scopes = { any }
+## scope = { any }
 alias[effect:set_variable_to_random] = value_set[variable]
 
 ###Sets a variable to a random value.
-## scopes = { any }
+## scope = { any }
 alias[effect:set_variable_to_random] = {
 	var = value_set[variable]
 	## cardinality = 0..1
@@ -1090,11 +1090,11 @@ alias[effect:set_variable_to_random] = {
 }
 
 ###Sets a temp variable to a random value.
-## scopes = { any }
+## scope = { any }
 alias[effect:set_temp_variable_to_random] = value_set[variable]
 
 ###Sets a temp variable to a random value.
-## scopes = { any }
+## scope = { any }
 alias[effect:set_temp_variable_to_random] = {
 	var = value_set[variable]
 	## cardinality = 0..1
@@ -1106,21 +1106,21 @@ alias[effect:set_temp_variable_to_random] = {
 }
 
 ###Adds victory point to province.
-## scopes = { any }
+## scope = { any }
 alias[effect:add_victory_points] = {
 	province = enum[provinces]
 	value = variable_field_32
 }
 
 ###Sets victory point to province.
-## scopes = { any }
+## scope = { any }
 alias[effect:set_victory_points] = {
 	province = enum[provinces]
 	value = variable_field_32
 }
 
 ###Removes wargoals of specified type for country in scope.
-## scopes = { country }
+## scope = { country }
 alias[effect:remove_wargoal] = {
 	target = scope[country]
 	target = enum[country_tags]
@@ -1129,7 +1129,7 @@ alias[effect:remove_wargoal] = {
 }
 
 ### Start peace conference
-## scopes = { country }
+## scope = { country }
 alias[effect:start_peace_conference] = {
 	tag = scope[country]
 	tag = enum[country_tags]
@@ -1153,29 +1153,29 @@ alias[effect:set_occupation_law_where_available] = default_law
 alias[effect:set_occupation_law_where_available] = <occupation_law>
 
 ### Sets specific occupation law where available
-## scopes = { state }
+## scope = { state }
 alias[effect:set_occupation_law] = <occupation_law>
 
 ###Randomize a temporary variable.
-## scopes = { any }
+## scope = { any }
 alias[effect:randomize_temp_variable] = variable_field
 
 ###Randomize a temporary variable.
-## scopes = { any }
+## scope = { any }
 alias[effect:randomize_temp_variable] = {
 	var = variable_field_32
 	distribution = uniform
 }
 
 ###Randomize a temporary variable.
-## scopes = { any }
+## scope = { any }
 alias[effect:randomize_temp_variable] = {
 	var = variable_field_32
 	distribution = binomial
 }
 
 ###Randomize a temporary variable.
-## scopes = { any }
+## scope = { any }
 alias[effect:randomize_temp_variable] = {
 	var = variable_field_32
 	distribution = uniform
@@ -1184,7 +1184,7 @@ alias[effect:randomize_temp_variable] = {
 }
 
 ###Randomize a temporary variable.
-## scopes = { any }
+## scope = { any }
 alias[effect:randomize_temp_variable] = {
 	var = variable_field_32
 	distribution = binomial
@@ -1193,7 +1193,7 @@ alias[effect:randomize_temp_variable] = {
 }
 
 ###Randomize a temporary variable.
-## scopes = { any }
+## scope = { any }
 alias[effect:randomize_temp_variable] = {
 	var = variable_field_32
 	distribution = binomial
@@ -1203,5 +1203,5 @@ alias[effect:randomize_temp_variable] = {
 }
 
 ###Add divisional commander xp to unit
-## scopes = { any }
+## scope = { any }
 alias[effect:add_divisional_commander_xp] = int

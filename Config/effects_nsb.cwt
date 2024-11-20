@@ -488,6 +488,7 @@ alias[effect:promote_character] = value[character_token]
 alias[effect:promote_character] = {
 	character = <character>
 	character = value[character_token]
+	character = country_leader
 	### must match the character's country leader sub-ideology
 	ideology = enum[sub_ideology]
 	ideology = <ideology>
@@ -641,7 +642,7 @@ alias[effect:set_nationality] = {
 alias[effect:set_nationality] = enum[country_tags]
 
 ### Executes children effects on every subject country that fulfills the "limit" trigger. tooltip=key can be defined to override tooltip title
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 ## push_scope = country
 alias[effect:every_subject_country] = {
 	### Apply the effect to this number of randomly selected entities
@@ -659,7 +660,7 @@ alias[effect:every_subject_country] = {
 }
 
 ### Executes child effects on random subject country that fulfills the limit.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 ## push_scope = country
 alias[effect:random_subject_country] = {
     ## cardinality = 0..1
@@ -671,7 +672,7 @@ alias[effect:random_subject_country] = {
 
 
 ### Executes children effects on every country that fulfils the "limit" trigger. Difference with every_country is that it includes countries not yet present on the map. tooltip=key can be defined to override tooltip title.
-## scopes = { COUNTRY }
+## scope = { any }
 ## push_scope = country
 alias[effect:every_possible_country] = {
 	### Apply the effect to this number of randomly selected entities
@@ -689,7 +690,7 @@ alias[effect:every_possible_country] = {
 }
 
 ### Display in tooltip every character that fulfils the "limit" trigger.
-## scopes = { COUNTRY }
+## scope = { COUNTRY }
 ## push_scope = character
 alias[effect:character_list_tooltip] = {
     ## cardinality = 0..1
@@ -807,7 +808,7 @@ alias[effect:create_railway_gun] = {
 }
 
 ### Generate character
-## scopes = { country }
+## scope = { country }
 alias[effect:generate_character] = {
 	token_base = value_set[character_token]
 	## cardinality = 0..1

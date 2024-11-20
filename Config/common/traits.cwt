@@ -131,7 +131,11 @@ unit_leader_trait = {
 		gain_xp = {
 			alias_name[trigger] = alias_match_left[trigger]
 		}
-		## replace_scope = { this = unit_leader root = unit_leader from = country }
+		## replace_scope = { this = unit_leader root = country from = country }
+		gain_xp_leader = {
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+		## replace_scope = { this = operative root = country from = country }
 		gain_xp_leader = {
 			alias_name[trigger] = alias_match_left[trigger]
 		}

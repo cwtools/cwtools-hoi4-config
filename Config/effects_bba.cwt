@@ -81,6 +81,7 @@ alias[effect:add_random_valid_trait_from_unit] = {
 	character = value[event_target]
 	character = value[global_event_target]
 	character = scope[character]
+	character = scope[unit_leader]
 }
 ## scope = { country character unit_leader }
 alias[effect:set_can_be_fired_in_advisor_role] = {

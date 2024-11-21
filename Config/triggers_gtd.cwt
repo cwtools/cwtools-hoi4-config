@@ -209,7 +209,7 @@ alias[trigger:custom_override_tooltip] = {
     tooltip = localisation
     tooltip = single_alias_right[bindable_loc]
 	## cardinality = 0..1
-	alias_name[effect] = alias_match_left[effect]
+	alias_name[trigger] = alias_match_left[trigger]
 }
 
 ### Checks if a state has the specified country as a contested owner. The trigger can be used either from a country or a state scope and accepts the other as parameter.

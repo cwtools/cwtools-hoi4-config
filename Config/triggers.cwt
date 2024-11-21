@@ -869,6 +869,9 @@ alias[trigger:has_equipment] = { <equipment> = int_variable_field }
 ### Checks for amount of equipment stored.
 ## scope = country
 alias[trigger:has_equipment] = { value[equipment_variant] = int_variable_field }
+### Checks for amount of equipment stored.
+## scope = country
+alias[trigger:has_equipment] = { value[variable] = int_variable_field }
 
 ### Check amount of total factories.
 ## scope = country

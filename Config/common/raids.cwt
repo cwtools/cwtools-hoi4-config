@@ -298,7 +298,7 @@ single_alias[raid_outcome] = {
     ## cardinality = 0..1
     custom_sound = scalar #<soundeffect> does not properly check for voices and other misc sounds and soundefects in mods since those are dlc files
     
-    ## cardinality = 0..1
+    ## cardinality = 0..inf
     visual_effect = {
         entity = <entity>
         animation = <animation_id>

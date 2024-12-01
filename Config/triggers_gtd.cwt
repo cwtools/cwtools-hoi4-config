@@ -209,7 +209,7 @@ alias[trigger:custom_override_tooltip] = {
     tooltip = localisation
     tooltip = single_alias_right[bindable_loc]
 	## cardinality = 0..1
-	alias_name[effect] = alias_match_left[effect]
+	alias_name[trigger] = alias_match_left[trigger]
 }
 
 ### Checks if a state has the specified country as a contested owner. The trigger can be used either from a country or a state scope and accepts the other as parameter.
@@ -252,3 +252,15 @@ alias[trigger:num_nukes_being_dropped] = int
 ### number of nukes left to drop during this game tick (only useful in-between nuke drops, like in on_nuke_drop on-action, for example)
 ## scope = country
 alias[trigger:num_nukes_left_to_drop] = int
+
+### Are countries at peace.
+## scope = country
+alias[trigger:has_truce_with] = scope[country]
+
+### Are countries at peace.
+## scope = country
+alias[trigger:has_truce_with] = enum[country_tags]
+
+### Are countries at peace.
+## scope = country
+alias[trigger:has_truce_with] = value[variable]

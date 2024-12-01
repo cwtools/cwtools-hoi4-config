@@ -406,6 +406,10 @@ alias[trigger:has_war_with] = scope[country]
 ## scope = country
 alias[trigger:has_war_with] = enum[country_tags]
 
+### Is countries at war.
+## scope = country
+alias[trigger:has_war_with] = value[variable]
+
 ### Checks for amount of divisions in specified state owned by current country.
 ## scope = country
 alias[trigger:divisions_in_state] = {
@@ -865,6 +869,9 @@ alias[trigger:has_equipment] = { <equipment> = int_variable_field }
 ### Checks for amount of equipment stored.
 ## scope = country
 alias[trigger:has_equipment] = { value[equipment_variant] = int_variable_field }
+### Checks for amount of equipment stored.
+## scope = country
+alias[trigger:has_equipment] = { value[variable] = int_variable_field }
 
 ### Check amount of total factories.
 ## scope = country

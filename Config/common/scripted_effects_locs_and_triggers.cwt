@@ -34,12 +34,18 @@ scripted_loc = {
 		## cardinality = 0..1
 		localization_key = <spriteType>
 		## cardinality = 0..1
+		localization_key = character_name|<character>
+		## cardinality = 0..1
+		localization_key = tech_effect|<technology>
+		## cardinality = 0..1
 		random_list = {
 			## cardinality = 1..inf
 			int = {
 				alias_name[modifier_rule] = alias_match_left[modifier_rule]
 				localization_key = localisation_inline
 				localization_key = <spriteType>
+				localization_key = character_name|<character>
+				localization_key = tech_effect|<technology>
 			}
 		}
 	}

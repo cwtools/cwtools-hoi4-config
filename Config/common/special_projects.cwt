@@ -51,7 +51,7 @@ special_project = {
         }
         ### KR DLC triggers
         ## cardinality = 0..inf
-        has_dlc_got = yes
+        has_dlc_gtd = yes
         ## cardinality = 0..inf
         has_dlc_mtg = yes
         ## cardinality = 0..inf

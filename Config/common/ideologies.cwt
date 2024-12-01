@@ -37,6 +37,9 @@ ideology = {
 		}
 
 		ai_ideology_wanted_units_factor = float
+		### Extra threshold value added to DIPLOMATIC_ACTION_PROPOSE_SCORE for this ideology to give back core state control to other country
+		## cardinality = 0..1
+		ai_give_core_state_control_threshold = float
 
 		dynamic_faction_names = {
 			## cardinality = 0..inf

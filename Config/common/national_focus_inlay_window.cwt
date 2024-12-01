@@ -1,0 +1,38 @@
+types = {
+	type[focus_inlay_window] = {
+		path = "game/common/focus_inlay_windows"
+	}
+}
+
+
+focus_inlay_window = {
+    window_name = <containerWindowType>
+	### If true, then the inlay window is only visible to the country itself (defaults no)
+	## cardinality = 0..1
+    internal = bool
+	### When not visible, no evaluations will be done
+	## replace_scope = { this = country root = country }
+	## cardinality = 0..1
+	visible = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	### List of images that should have dynamic sprites
+    scripted_images = {
+		### Name of the icon (must be a subcomponent of "gui_component_name")
+		## cardinality = 1..inf
+        value[iconType_name] = {
+            ### List of possible gfx:es for the icon, first that evaluates to true is selected (each update)
+            ### Each entry consists of a gfx_name (the gfx that will be used if the trigger is true); and a trigger or "yes"
+            ### If a trigger is provided, then it will be evaluated with the country scope of the focus tree.
+			## replace_scope = { this = country root = country }
+			## cardinality = 0..inf
+            <spriteType> = {
+				## cardinality = 1..inf
+				alias_name[trigger] = alias_match_left[trigger]
+			}
+			### If "yes" is set, then it will always be used. Note: "yes" is commonly the last entry in the list that acts as a default case.
+			## cardinality = 0..1
+			<spriteType> = yes
+        }
+    }
+}

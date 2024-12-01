@@ -392,7 +392,7 @@ alias[gui:smoothListBoxType] = {
 ###Non-clickable icon
 alias[gui:iconType] = {
     ### Name referenced by scripted gui
-    name = scalar
+    name = value_set[iconType_name]
     ##cardinality = ~1..1
     alias_name[any_image_type] = alias_match_left[any_image_type]
     alias_name[gui_image] = alias_match_left[gui_image]

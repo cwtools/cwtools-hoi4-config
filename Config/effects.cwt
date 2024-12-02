@@ -1490,13 +1490,25 @@ alias[effect:remove_core_of] = enum[country_tags]
 ## scope = country
 alias[effect:army_experience] = variable_field
 
+### Add army experience for country.
+## scope = country
+alias[effect:army_experience] = value[variable]
+
 ### Add naval experience for country.
 ## scope = country
 alias[effect:navy_experience] = variable_field
 
 ### Add air experience for country.
 ## scope = country
+alias[effect:navy_experience] = value[variable]
+
+### Add air experience for country.
+## scope = country
 alias[effect:air_experience] = variable_field
+
+### Add air experience for country.
+## scope = country
+alias[effect:air_experience] = value[variable]
 
 ### Save an event target.
 ## scope = any

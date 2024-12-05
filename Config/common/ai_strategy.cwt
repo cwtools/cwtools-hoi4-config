@@ -509,6 +509,7 @@ enums = {
 		equipment_market_spend_factories
 		force_concentration_factor
 		raid_target_country
+		become_spymaster
 	}
 	enum[pp_strats] = {
 		pp_spend_amount

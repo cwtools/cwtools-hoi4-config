@@ -528,9 +528,17 @@ types = {
 		path = "game/common/on_actions"
 		skip_root_key = on_actions
 	}
+
+	# GTD
 	
 	## type_key_filter = on_project_completion
 	type[on_project_completion] = {
+		path = "game/common/on_actions"
+		skip_root_key = on_actions
+	}
+
+	## type_key_filter = on_before_peace_conference_start
+	type[on_before_peace_conference_start] = {
 		path = "game/common/on_actions"
 		skip_root_key = on_actions
 	}
@@ -1119,11 +1127,17 @@ on_action = {
 	## replace_scope = { ROOT = military_industrial_organization this = military_industrial_organization FROM = COUNTRY }
 	on_mio_industrial_manufacturer_unassigned = single_alias_right[on_action_effect]
 
+	# GTD --------------------
+
 	### Triggered when a project is completed
 	### ROOT is the owner of the special project, FROM is the special project
 	## cardinality = 0..inf
 	## replace_scope = { ROOT = COUNTRY this = COUNTRY FROM = special_project }
 	on_project_completion = single_alias_right[on_action_effect]
+
+	### ROOT is winner, FROM is loser (called for all winners against all losers)
+	## replace_scope = { ROOT = COUNTRY this = COUNTRY FROM = COUNTRY }
+	on_before_peace_conference_start = single_alias_right[on_action_effect]
 }
 
 single_alias[country_event_effect] = {

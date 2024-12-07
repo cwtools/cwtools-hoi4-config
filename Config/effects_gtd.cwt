@@ -46,7 +46,7 @@ alias[effect:every_scientist] = {
 alias[effect:create_colonial_division_template] = {
     subject = scope[country] # Country tag
 	division_template = {
-		name = scalar
+		name = value_set[division_template_name]
 		## cardinality = 0..1
 		division_names_group = <division_name>
 		## cardinality = 0..1
@@ -434,6 +434,8 @@ alias[effect:add_project_progress_ratio] = value[variable]
 alias[effect:custom_override_tooltip] = {
     tooltip = localisation
     tooltip = single_alias_right[bindable_loc]
+    tooltip = character_name|<character>
+    tooltip = tech_effect|<technology>
     ## cardinality = 1..inf
     alias_name[effect] = alias_match_left[effect]
 }

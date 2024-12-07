@@ -1260,7 +1260,7 @@ alias[trigger:num_tech_sharing_groups] = int
 
 ### Check if country has a division template of specific name.
 ## scope = country
-alias[trigger:has_template] = scalar
+alias[trigger:has_template] = value[division_template_name]
 
 ### Check if state has a specific state category.
 ## scope = state
@@ -2199,6 +2199,21 @@ alias[trigger:has_dynamic_modifier] = {
 	## cardinality = 0..1
 	### Optional, state or country tag or a variable contains that. if specified the dynamic variable will target that scope.
 	scope = scope[country]
+	
+	## cardinality = 0..1
+	### Optional, state or country tag or a variable contains that. if specified the dynamic variable will target that scope.
+	scope = <state>
+	## cardinality = 0..1
+	### Optional, state or country tag or a variable contains that. if specified the dynamic variable will target that scope.
+	scope = scope[state]
+
+	## cardinality = 0..1
+	### Optional, state or country tag or a variable contains that. if specified the dynamic variable will target that scope.
+	scope = <character>
+
+	## cardinality = 0..1
+	### Optional, state or country tag or a variable contains that. if specified the dynamic variable will target that scope.
+	scope = scope[special_project]
 }
 
 ### Runs a loop on for each element of an array, finds the lowest value and stores result in temp variables.

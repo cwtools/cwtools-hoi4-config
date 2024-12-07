@@ -1260,7 +1260,7 @@ alias[trigger:num_tech_sharing_groups] = int
 
 ### Check if country has a division template of specific name.
 ## scope = country
-alias[trigger:has_template] = scalar
+alias[trigger:has_template] = value[division_template_name]
 
 ### Check if state has a specific state category.
 ## scope = state

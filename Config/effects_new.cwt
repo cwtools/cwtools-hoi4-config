@@ -14,7 +14,7 @@ alias[effect:delete_unit] = {
 	## cardinality = 0..1
 	template = scalar
 	## cardinality = 0..1
-	division_template = scalar
+	division_template = value[division_template_name]
 	## cardinality = 0..1
 	id = variable_field
 	## cardinality = 0..1
@@ -548,7 +548,7 @@ alias[effect:add_decryption] = {
 ###Deletes units that uses a specific template.
 ## scope = { COUNTRY }
 alias[effect:delete_units] = {
-	division_template = scalar
+	division_template = value[division_template_name]
 	## cardinality = 0..1
 	disband = bool
 }

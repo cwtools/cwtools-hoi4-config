@@ -18,7 +18,7 @@ oob = {
 
 	## cardinality = 0..inf
 	division_template = {
-		name = scalar
+		name = value_set[division_template_name]
 		## cardinality = 0..1
 		division_names_group = <division_name>
 		## cardinality = 0..1
@@ -76,7 +76,7 @@ oob = {
 				name_order = int
 			}
 			location = enum[provinces]
-			division_template = scalar
+			division_template = value[division_template_name]
 			### Defines a unique name for this unit's division commander
 			## cardinality = 0..1
 			unique = {

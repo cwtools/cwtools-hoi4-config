@@ -151,7 +151,7 @@ alias[effect:random_state_division] = {
 ### Change divisions in scope to selected template
 ## scope = unit
 alias[effect:change_division_template] = {
-	division_template = localisation_inline
+	division_template = value[division_template_name]
 }
 
 ### Set unit org to a specific value

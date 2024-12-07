@@ -13,6 +13,11 @@ unit_medal = {
 		## cardinality = ~1..inf
 		alias_name[trigger] = alias_match_left[trigger]
 	}
+	## cardinality = 0..1
+	visible = {
+		## cardinality = ~1..inf
+		alias_name[trigger] = alias_match_left[trigger]
+	}
 	
 	frame = int
 	icon = <spriteType>

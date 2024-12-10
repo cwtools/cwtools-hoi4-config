@@ -25,7 +25,7 @@ containerWindowType = {
     ### Background texture
     background = {
         ## cardinality = 0..1
-        name = scalar
+        name = value_set[gui_element_name]
         alias_name[gui_standard] = alias_match_left[gui_standard]
         alias_name[gui_image] = alias_match_left[gui_image]
         ## cardinality = 0..1
@@ -75,7 +75,7 @@ alias[gui:containerWindowType] = {
     ### Background texture
     background = {
         ## cardinality = 0..1
-        name = scalar
+        name = value_set[gui_element_name]
         alias_name[gui_standard] = alias_match_left[gui_standard]
         alias_name[gui_image] = alias_match_left[gui_image]
         ## cardinality = 0..1
@@ -108,7 +108,7 @@ alias[gui:containerWindowType] = {
 }
 ###Drop Down Box, seems to be hardcoded
 alias[gui:dropDownBoxType] = {
-    name = scalar
+    name = value_set[gui_element_name]
     ## cardinality = 0..1
     ### Mouse Draggable
     moveable = bool
@@ -128,7 +128,7 @@ alias[gui:dropDownBoxType] = {
     ### Background texture
     background = {
         ## cardinality = 0..1
-        name = scalar
+        name = value_set[gui_element_name]
         alias_name[gui_standard] = alias_match_left[gui_standard]
         alias_name[gui_image] = alias_match_left[gui_image]
         ## cardinality = 0..1
@@ -160,7 +160,7 @@ alias[gui:dropDownBoxType] = {
     scroll_wheel_factor = float
     ##cardinality = 0..1
     expandButton = {
-        name = scalar
+        name = value_set[gui_element_name]
         ## cardinality = 0..1
         ### Special size version for buttons
         size = {
@@ -193,7 +193,7 @@ alias[gui:dropDownBoxType] = {
     }
     ## cardinality = 0..1
     expandedWindow = {
-        name = scalar
+        name = value_set[gui_element_name]
         ## cardinality = 0..1
         ### Mouse Draggable
         moveable = bool
@@ -209,7 +209,7 @@ alias[gui:dropDownBoxType] = {
         ### Background texture
         background = {
             ## cardinality = 0..1
-            name = scalar
+            name = value_set[gui_element_name]
 			alias_name[gui_standard] = alias_match_left[gui_standard]
 			alias_name[gui_image] = alias_match_left[gui_image]
 			## cardinality = 0..1
@@ -243,7 +243,7 @@ alias[gui:dropDownBoxType] = {
 }
 ###Button Element
 alias[gui:buttonType] = {
-    name = scalar
+    name = value_set[gui_element_name]
     ## cardinality = 0..1
     ### Special size version for buttons
     size = {
@@ -280,7 +280,7 @@ alias[gui:buttonType] = {
 ### Hardcoded
 alias[gui:OverlappingElementsBoxType] = {
     ### Name referenced by scripted gui
-    name = scalar
+    name = value_set[gui_element_name]
     alias_name[gui_standard] = alias_match_left[gui_standard]
     ## cardinality = 0..1
     spacing = float
@@ -292,7 +292,8 @@ alias[gui:OverlappingElementsBoxType] = {
 ### Dynamic List
 alias[gui:gridBoxType] = {
     ### Name referenced by scripted gui
-    name = scalar
+    name = value_set[gui_element_name]
+    name = value_set[gridBoxType_element_name]
     alias_name[gui_standard] = alias_match_left[gui_standard]
 
 	## cardinality = 0..1
@@ -332,7 +333,7 @@ alias[gui:gridBoxType] = {
     ## cardinality = 0..1
     background = {
         ## cardinality = 0..1
-        name = scalar
+        name = value_set[gui_element_name]
         alias_name[gui_standard] = alias_match_left[gui_standard]
         alias_name[gui_image] = alias_match_left[gui_image]
         ## cardinality = 0..1
@@ -345,7 +346,7 @@ alias[gui:gridBoxType] = {
 ### Dynamic List
 alias[gui:listBoxType] = {
     ### Name referenced by scripted gui
-    name = scalar
+    name = value_set[gui_element_name]
     alias_name[gui_standard] = alias_match_left[gui_standard]
 
     ## cardinality = 0..1
@@ -367,7 +368,7 @@ alias[gui:listBoxType] = {
 ### Dynamic List
 alias[gui:smoothListBoxType] = {
     ### Name referenced by scripted gui
-    name = scalar
+    name = value_set[gui_element_name]
     alias_name[gui_standard] = alias_match_left[gui_standard]
 
     ## cardinality = 0..1
@@ -393,6 +394,7 @@ alias[gui:smoothListBoxType] = {
 alias[gui:iconType] = {
     ### Name referenced by scripted gui
     name = value_set[iconType_name]
+    name = value_set[gui_element_name]
     ##cardinality = ~1..1
     alias_name[any_image_type] = alias_match_left[any_image_type]
     alias_name[gui_image] = alias_match_left[gui_image]
@@ -402,7 +404,7 @@ alias[gui:iconType] = {
 ###Unknown, seems to be only used with hardcoded things
 alias[gui:positionType] = {
     ## cardinality = ~1..1
-    name = scalar
+    name = value_set[gui_element_name]
     position = {
         x = int[-3840..3840]
 		x = float[-3840..3840]
@@ -415,7 +417,7 @@ alias[gui:positionType] = {
 ###Browser, hardcoded
 alias[gui:browserType] = {
     ### Name referenced by scripted gui
-    name = scalar
+    name = value_set[gui_element_name]
     ##cardinality = ~1..1
     alias_name[any_image_type] = alias_match_left[any_image_type]
     alias_name[gui_image] = alias_match_left[gui_image]
@@ -425,7 +427,7 @@ alias[gui:browserType] = {
 ###Text box
 alias[gui:instantTextBoxType] = {
     ### Name referenced by scripted gui
-    name = scalar
+    name = value_set[gui_element_name]
     ## cardinality = 0..1
     ## cardinality = 0..1
     font = scalar
@@ -471,7 +473,7 @@ alias[gui:instantTextBoxType] = {
 ###Editable text box - only works with hardcoded HoI4 elements
 alias[gui:editBoxType] = {
     ### Name referenced by scripted gui
-    name = scalar
+    name = value_set[gui_element_name]
     ## cardinality = 0..1
     text = localisation
     ## cardinality = 0..1
@@ -527,7 +529,7 @@ alias[gui:editBoxType] = {
 }
 ### Checkbox
 alias[gui:checkboxType] = {
-    name = scalar
+    name = value_set[gui_element_name]
     ## cardinality = 0..1
     buttonText = localisation
     ## cardinality = 0..1
@@ -540,7 +542,7 @@ alias[gui:checkboxType] = {
     alias_name[gui_localization] = alias_match_left[gui_localization]
 }
 alias[gui:scrollbarType] = {
-    name = scalar	
+    name = value_set[gui_element_name]
     slider = scalar
     track = scalar
     leftbutton = scalar
@@ -556,7 +558,7 @@ alias[gui:scrollbarType] = {
     horizontal = int
     ## cardinality = 4..4
     guiButtonType = {
-        name = scalar
+        name = value_set[gui_element_name]
         quadTextureSprite = <spriteType>
         position = {x=int y=int}
         ## cardinality = 0..1
@@ -564,13 +566,13 @@ alias[gui:scrollbarType] = {
     }
 }
 alias[gui:extendedScrollbarType] = {
-    name = scalar
+    name = value_set[gui_element_name]
     alias_name[gui_standard] = alias_match_left[gui_standard]
 
 	## cardinality = 0..1
     background = {
         ## cardinality = 0..1
-        name = scalar
+        name = value_set[gui_element_name]
         alias_name[gui_standard] = alias_match_left[gui_standard]
         alias_name[gui_image] = alias_match_left[gui_image]
         ## cardinality = 0..1
@@ -609,7 +611,7 @@ alias[gui:extendedScrollbarType] = {
     ##cardinality  = 1..1
     ###Slider for scroll bar
     slider = {
-        name = scalar
+        name = value_set[gui_element_name]
         alias_name[gui_image] = alias_match_left[gui_image]
         position = {
             x = int[-3840..3840]
@@ -622,7 +624,7 @@ alias[gui:extendedScrollbarType] = {
     ##cardinality  = 1..1
     ###Slider for scroll bar
     track = {
-        name = scalar
+        name = value_set[gui_element_name]
         alias_name[gui_image] = alias_match_left[gui_image]
         position = {
             x = int[-3840..3840]
@@ -635,7 +637,7 @@ alias[gui:extendedScrollbarType] = {
     ##cardinality  = 0..1
     ###Increase button
     increaseButton = {
-        name = scalar
+        name = value_set[gui_element_name]
         alias_name[gui_image] = alias_match_left[gui_image]
         alias_name[gui_sound] = alias_match_left[gui_sound]
         position = {
@@ -649,7 +651,7 @@ alias[gui:extendedScrollbarType] = {
     ##cardinality  = 0..1
     ###Decrease button
     decreaseButton = {
-        name = scalar
+        name = value_set[gui_element_name]
         alias_name[gui_image] = alias_match_left[gui_image]
         alias_name[gui_sound] = alias_match_left[gui_sound]
         position = {
@@ -663,7 +665,7 @@ alias[gui:extendedScrollbarType] = {
     ##cardinality  = 0..1
     ###Decrease button
     slider = {
-        name = scalar
+        name = value_set[gui_element_name]
         alias_name[gui_image] = alias_match_left[gui_image]
         position = {
             x = int[-3840..3840]

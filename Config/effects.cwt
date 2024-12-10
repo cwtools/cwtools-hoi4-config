@@ -177,8 +177,8 @@ alias[effect:remove_building] = {
 ### Removes specified building in specified state or province.
 ## scope = state
 alias[effect:remove_building] = {
-	tag = value[building_tag]
-	tag = {
+	tags = value[building_tag]
+	tags = {
 		##cardinality = 1..inf
 		value[building_tag]
 	}

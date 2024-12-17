@@ -177,8 +177,8 @@ alias[effect:remove_building] = {
 ### Removes specified building in specified state or province.
 ## scope = state
 alias[effect:remove_building] = {
-	tag = value[building_tag]
-	tag = {
+	tags = value[building_tag]
+	tags = {
 		##cardinality = 1..inf
 		value[building_tag]
 	}
@@ -640,6 +640,8 @@ alias[effect:division_template] = {
 	name = value_set[division_template_name]
 	## cardinality = 0..1
 	division_names_group = <division_name>
+	## cardinality = 0..1
+	role = value[ai_template_roles]
 	## cardinality = 0..1
 	override_model = <entity>
 	## cardinality = 0..1

@@ -120,6 +120,7 @@ alias[trigger:has_naval_invasion_against_state] = {
 
 ### check if any state in the given category meets the trigger.
 ## scope = any
+## push_scope = state
 alias[trigger:any_state_in] = {
 	## cardinality = 0..1
     tooltip = localisation
@@ -129,6 +130,7 @@ alias[trigger:any_state_in] = {
 }
 ### check if any state in the given category meets the trigger.
 ## scope = any
+## push_scope = state
 alias[trigger:any_state_in] = {
 	## cardinality = 0..1
     tooltip = localisation
@@ -138,6 +140,7 @@ alias[trigger:any_state_in] = {
 }
 ### check if any state in the given category meets the trigger.
 ## scope = any
+## push_scope = state
 alias[trigger:any_state_in] = {
 	## cardinality = 0..1
     tooltip = localisation
@@ -147,6 +150,7 @@ alias[trigger:any_state_in] = {
 }
 ### check if any state in the given category meets the trigger.
 ## scope = any
+## push_scope = state
 alias[trigger:any_state_in] = {
 	## cardinality = 0..1
     tooltip = localisation

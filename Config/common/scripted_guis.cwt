@@ -78,7 +78,7 @@ scripted_gui = {
 	## cardinality = 0..1
 	properties = {
 		## cardinality = ~1..inf
-		scalar = {
+		value[gui_element_name] = {
 			## cardinality = 0..1
 			### Should return name of the texture in gfx file.
 			image = localisation_inline
@@ -94,7 +94,7 @@ scripted_gui = {
 	## cardinality = 0..1
 	dynamic_lists = {
 		## cardinality = ~1..inf
-		scalar = {
+		value[gridBoxType_element_name] = {
 			### The array that will be used for populating the grid.
 			array = variable_field
 			## cardinality = 0..1
@@ -627,5 +627,73 @@ enums = {
 		test_our_neighbouring_states_against_enemies #(AIs edge states to enemies)
 		test_contesded_states #(states that shares provinces between enemy countries)
 		test_if_only_coastal
+	}
+
+	enum[click_modifiers] = {
+		_click
+		_right_click
+		_alt_click
+		_control_click
+		_shift_click
+		_right_alt_click
+		_right_control_click
+		_right_shift_click
+		_alt_right_click
+		_alt_control_click
+		_alt_shift_click
+		_control_right_click
+		_control_alt_click
+		_control_shift_click
+		_shift_right_click
+		_shift_alt_click
+		_shift_control_click
+		_right_alt_control_click
+		_right_alt_shift_click
+		_right_control_alt_click
+		_right_control_shift_click
+		_right_shift_alt_click
+		_right_shift_control_click
+		_alt_right_shift_click
+		_alt_right_control_click
+		_alt_control_shift_click
+		_alt_control_right_click
+		_alt_shift_control_click
+		_alt_shift_right_click
+		_control_right_alt_click
+		_control_right_shift_click
+		_control_alt_right_click
+		_control_alt_shift_click
+		_control_shift_right_click
+		_control_shift_alt_click
+		_shift_right_control_click
+		_shift_right_alt_click
+		_shift_alt_control_click
+		_shift_alt_right_click
+		_shift_control_alt_click
+		_shift_control_right_click
+		_right_alt_control_shift_click
+		_right_alt_shift_control_click
+		_right_control_alt_shift_click
+		_right_control_shift_alt_click
+		_right_shift_alt_control_click
+		_right_shift_control_alt_click
+		_alt_right_control_shift_click
+		_alt_right_shift_control_click
+		_alt_control_right_shift_click
+		_alt_control_shift_right_click
+		_alt_shift_right_control_click
+		_alt_shift_control_right_click
+		_control_right_shift_alt_click
+		_control_right_alt_shift_click
+		_control_alt_shift_right_click
+		_control_alt_right_shift_click
+		_control_shift_alt_right_click
+		_control_shift_right_alt_click
+		_shift_right_alt_control_click
+		_shift_right_control_alt_click
+		_shift_alt_right_control_click
+		_shift_alt_control_right_click
+		_shift_control_right_alt_click
+		_shift_control_alt_right_click		
 	}
 }

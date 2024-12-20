@@ -2738,7 +2738,7 @@ alias[effect:add_offsite_building] = {
 
 #wiki doesn't know
 ### Add trait to unit leader.
-## scope = unit_leader
+## scope = { character unit_leader }
 alias[effect:replace_unit_leader_trait] = replace_me
 
 ### Adds a max assignable trait slot for a general.

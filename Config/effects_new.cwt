@@ -1062,11 +1062,11 @@ alias[effect:set_country_leader_description] = {
 }
 
 ###Changes the name of unit leader. No tooltip is generated.
-## scope = { unit_leader }
+## scope = { unit_leader character }
 alias[effect:set_leader_name] = localisation_inline
 
 ###Changes the portrait of unit leader. No tooltip is generated.
-## scope = { unit_leader }
+## scope = { unit_leader character }
 alias[effect:set_leader_portrait] = <spriteType>
 
 ###Changes the description of unit leader. No tooltip is generated.

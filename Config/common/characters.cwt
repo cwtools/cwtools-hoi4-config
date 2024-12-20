@@ -256,6 +256,8 @@ character = {
 			name = localisation
 			## cardinality = 0..1
 			desc = localisation
+			### Optional, defaults to <character>_advisor_role
+			## cardinality = 0..1
 			idea_token = value_set[advisor_token]
 			## replace_scope = { this = character root = country }
 			## cardinality = 0..1
@@ -509,6 +511,8 @@ character = {
 			## cardinality = 0..inf
 			advisor = {
 				slot = value[character_advisor_slot]
+				### Optional, defaults to <character>_advisor_role
+				## cardinality = 0..1
 				idea_token = value_set[advisor_token]
 				## cardinality = 0..1
 				name = localisation

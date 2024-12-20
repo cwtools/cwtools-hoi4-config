@@ -2391,7 +2391,7 @@ alias[effect:set_war_support] = variable_field[0..1]
 
 ### Executes children effects on random unit leader that fulfills the "limit" trigger.
 ## scope = country
-## push_scope = unit_leader 
+## push_scope = { unit_leader character } 
 alias[effect:random_unit_leader] = {
 	## cardinality = 0..1
 	limit = {
@@ -2405,7 +2405,7 @@ alias[effect:random_unit_leader] = {
 
 ### Executes children effects on unit leaders that fulfills the "limit" trigger.
 ## scope = country
-## push_scope = unit_leader
+## push_scope = { unit_leader character }
 alias[effect:every_unit_leader] = {
 	### Apply the effect to this number of randomly selected entities
 	## cardinality = 0..1
@@ -2424,7 +2424,7 @@ alias[effect:every_unit_leader] = {
 
 ### Executes children effects on random army leader that fulfills the "limit" trigger.
 ## scope = country
-## push_scope = unit_leader
+## push_scope = { unit_leader character }
 alias[effect:random_army_leader] = {
 	## cardinality = 0..1
 	limit = {
@@ -2438,7 +2438,7 @@ alias[effect:random_army_leader] = {
 
 ### Executes children effects on army leaders that fulfills the "limit" trigger.
 ## scope = country
-## push_scope = unit_leader
+## push_scope = { unit_leader character }
 alias[effect:every_army_leader] = {
 	### Apply the effect to this number of randomly selected entities
 	## cardinality = 0..1
@@ -2457,7 +2457,7 @@ alias[effect:every_army_leader] = {
 
 ### Executes children effects on random navy leader that fulfills the "limit" trigger.
 ## scope = country
-## push_scope = unit_leader
+## push_scope = { unit_leader character }
 alias[effect:random_navy_leader] = {
 	## cardinality = 0..1
 	limit = {
@@ -2471,7 +2471,7 @@ alias[effect:random_navy_leader] = {
 
 ### Executes children effects on navy leaders that fulfills the "limit" trigger.
 ## scope = country
-## push_scope = unit_leader
+## push_scope = { unit_leader character }
 alias[effect:every_navy_leader] = {
 	### Apply the effect to this number of randomly selected entities
 	## cardinality = 0..1

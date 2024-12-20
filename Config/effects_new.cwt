@@ -1133,7 +1133,17 @@ alias[effect:remove_wargoal] = {
 alias[effect:start_peace_conference] = {
 	tag = scope[country]
 	tag = enum[country_tags]
-	score_factor = float
+	score_factor = variable_field
+	## cardinality = 0..1
+	message = localisation
+	### default is LIMITED_FACTION
+	### ALL (all relevant countries), FACTION (members of main country's faction and overlordship), LIMITED_FACTION (faction members if main country is faction leader, and subjects if main country is overlord), LIMITED (main country and their subjects)
+	## cardinality = 0..1
+	winner_scope = enum[start_pc_scope_enum]
+### default is LIMITED_FACTION
+	### ALL (all relevant countries), FACTION (members of main country's faction and overlordship), LIMITED_FACTION (faction members if main country is faction leader, and subjects if main country is overlord), LIMITED (main country and their subjects)
+	## cardinality = 0..1
+	loser_scope = enum[start_pc_scope_enum]
 }
 
 ### Sets the occupation law for an occupied country, occupied state, or the default occupation law of an occupying country.
@@ -1205,3 +1215,12 @@ alias[effect:randomize_temp_variable] = {
 ###Add divisional commander xp to unit
 ## scope = { any }
 alias[effect:add_divisional_commander_xp] = int
+
+enums = {
+    enum[start_pc_scope_enum] = {
+        ALL
+        FACTION
+        LIMITED_FACTION
+		LIMITED
+    }
+}

@@ -86,7 +86,7 @@ country_leader_trait = {
 	command_cap = enum[command_cap]
 }
 
-## push_scope = unit_leader
+## push_scope = { unit_leader character }
 unit_leader_trait = {
 	type = enum[unit_leader_types]
 	type = {

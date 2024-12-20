@@ -1565,7 +1565,7 @@ alias[trigger:has_war_support] = variable_field_32
 
 ### Check if all unit leaders meets the trigger.
 ## scope = country
-## push_scope = unit_leader
+## push_scope = { unit_leader character }
 alias[trigger:all_unit_leader] = {
 	## cardinality = 0..1
 	tooltip = localisation
@@ -1574,7 +1574,7 @@ alias[trigger:all_unit_leader] = {
 
 ### Check if any unit leader meets the trigger.
 ## scope = country
-## push_scope = unit_leader
+## push_scope = { unit_leader character }
 alias[trigger:any_unit_leader] = {
 	## cardinality = 0..1
 	tooltip = localisation

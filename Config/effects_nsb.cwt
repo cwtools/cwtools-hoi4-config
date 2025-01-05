@@ -487,10 +487,14 @@ alias[effect:promote_character] = <character>
 alias[effect:promote_character] = value[character_token]
 ### makes character head of their ideology party
 ## scope = { country }
+alias[effect:promote_character] = value[variable]
+### makes character head of their ideology party
+## scope = { country }
 alias[effect:promote_character] = {
 	character = <character>
 	character = value[character_token]
 	character = country_leader
+	character = value[variable]
 	### must match the character's country leader sub-ideology
 	ideology = enum[sub_ideology]
 	ideology = <ideology>

@@ -10,7 +10,7 @@ military_industrial_organization = {
 	### If localization key TAG_my_MIO_token exists - use it else use loc key my_MIO_token.
 	### Loc key may use scripted loc, scope will be set with this MIO.
 	## cardinality = 0..1
-	name = scalar
+	name = localisation
 	### If icon provided, use GFX_key.
 	### If gfx key GFX_TAG_my_MIO_token exists, use it (where TAG is the tag of the MIO owner).
 	### If gfx key GFX_my_MIO_token exists, use it.
@@ -102,7 +102,7 @@ military_industrial_organization = {
 	### For the text to be aligned with a point between 2 cells, use a decimal number. (e.g. x = 1.2).
 	## cardinality = 0..inf
 	tree_header_text = {
-		text = scalar
+		text = localisation
 		x = float
 	}
 
@@ -120,7 +120,7 @@ military_industrial_organization = {
 		## cardinality = 0..1
 		token = value_set[mio_trait_token]
 		## cardinality = 0..1
-		name = scalar
+		name = localisation
 		## cardinality = 0..1
 		icon = <spriteType>
 		## cardinality = 0..1
@@ -154,7 +154,7 @@ military_industrial_organization = {
 		token = value_set[mio_trait_token]
 		### Same naming rules as with MIO itself
 		## cardinality = 0..1
-		name = scalar
+		name = localisation
 		## cardinality = 0..1
 		icon = <spriteType>
 		### If yes, trait background will be golden to indicate an interesting trait
@@ -304,7 +304,7 @@ military_industrial_organization = {
 		token = value_set[mio_trait_token]
 		### Same naming rules as with MIO itself
 		## cardinality = 0..1
-		name = scalar
+		name = localisation
 		## cardinality = 0..1
 		icon = <spriteType>
 		### If yes, trait background will be golden to indicate an interesting trait
@@ -419,7 +419,7 @@ military_industrial_organization = {
 		token = value[mio_trait_token]
 		### Same naming rules as with MIO itself
 		## cardinality = 0..1
-		name = scalar
+		name = localisation
 		## cardinality = 0..1
 		icon = <spriteType>
 		### If yes, trait background will be golden to indicate an interesting trait

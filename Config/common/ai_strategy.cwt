@@ -403,6 +403,7 @@ alias[ai_strategy_rule:ai_strategy] = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 	### The strategy is enabled only if ratio of the front covered by this strategy's targets is greater than this ratio.
+	## cardinality = 0..1
 	ratio = float
 	### Factor for the normal priority. 40 means +40 %, -60 means -60 %.
 	value = int	

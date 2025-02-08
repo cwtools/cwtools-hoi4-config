@@ -50,6 +50,7 @@ enums = {
 		offer_join_faction
 		join_faction
 		request_access_to_licence_production
+		send_volunteers
 	}
 
 	enum[add_factor] = {

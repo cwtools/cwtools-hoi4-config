@@ -137,6 +137,14 @@ equipment = {
 	## cardinality = 0..1
 	interface_category = enum[interface_category]
 
+	### Limit the amount of dockyards assignable to the equipment.
+	## cardinality = 0..1
+	max_dockyard_factories = int
+
+	### Limit the amount of military factories assignable to the equipment.
+	## cardinality = 0..1
+	max_military_factories = int
+
 	### Priority for usage over other equipment.
 	## cardinality = 0..1
 	priority = int

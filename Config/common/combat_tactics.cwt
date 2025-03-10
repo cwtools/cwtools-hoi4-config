@@ -42,6 +42,10 @@ combat_tactic = {
 	enum[attack_defend] = float
 	## cardinality = 0..1
 	attacker_movement_speed = float
+	## cardinality = 0..1
+	defender_org_damage_modifier = float
+	## cardinality = 0..1
+	attacker_org_damage_modifier = float
 	alias_name[unit_stat] = alias_match_left[unit_stat]
 }
 

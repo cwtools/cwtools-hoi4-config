@@ -365,6 +365,13 @@ equipment = {
 		## cardinality = ~1..inf
 		<upgrade>
 	}
+	## cardinality = 0..inf
+	upgrade_window_override = {
+		## cardinality = ~1..1
+		upgrade = <upgrade>
+		## cardinality = ~1..1
+		override = <upgrade>
+	}
 }
 
 upgrade = {

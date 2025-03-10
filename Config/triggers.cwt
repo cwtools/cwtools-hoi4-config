@@ -370,6 +370,10 @@ alias[trigger:has_government] = enum[sub_ideology]
 
 ### Does country government (ruling party) belong to ideology group.
 ## scope = country
+alias[trigger:has_government] = value[variable]
+
+### Does country government (ruling party) belong to ideology group.
+## scope = country
 alias[trigger:has_country_leader_ideology] = <ideology>
 
 ### Does country government (ruling party) belong to ideology group.
@@ -859,6 +863,10 @@ alias[trigger:casualties] = int
 ## scope = any
 alias[trigger:custom_trigger_tooltip] = {
 	tooltip = localisation
+	tooltip = {
+		localization_key = localisation
+		INDEX = int
+	}
 	alias_name[trigger] = alias_match_left[trigger]
 }
 

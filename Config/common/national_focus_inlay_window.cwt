@@ -17,6 +17,7 @@ focus_inlay_window = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 	### List of images that should have dynamic sprites
+	## cardinality = 0..1
     scripted_images = {
 		### Name of the icon (must be a subcomponent of "gui_component_name")
 		## cardinality = 1..inf

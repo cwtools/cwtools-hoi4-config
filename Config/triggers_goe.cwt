@@ -1,0 +1,6 @@
+### Check if the country owns any of the states in the list
+## scope = country
+alias[trigger:owns_any_state_of] = {
+    ## cardinality = ~1..inf
+	<state>
+}

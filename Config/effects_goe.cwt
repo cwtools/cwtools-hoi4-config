@@ -1,0 +1,8 @@
+### Changes current version number for a given equipment type to N.
+### The next equipment variant created from that type will have version number N+1.
+### Example - set_equipment_version_number = { type = small_plane_airframe_1 version = 4 }
+## scope = country
+alias[effect:set_equipment_version_number] = {
+    type = <equipment>
+    version = int
+}

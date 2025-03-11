@@ -257,14 +257,18 @@ alias[trigger:num_nukes_being_dropped] = int
 ## scope = country
 alias[trigger:num_nukes_left_to_drop] = int
 
-### Are countries at peace.
+### Checks if the country has truce with the specified country
+## scope = country
+alias[trigger:has_truce_with] = bool
+
+### Checks if the country has truce with the specified country
 ## scope = country
 alias[trigger:has_truce_with] = scope[country]
 
-### Are countries at peace.
+### Checks if the country has truce with the specified country
 ## scope = country
 alias[trigger:has_truce_with] = enum[country_tags]
 
-### Are countries at peace.
+### Checks if the country has truce with the specified country
 ## scope = country
 alias[trigger:has_truce_with] = value[variable]

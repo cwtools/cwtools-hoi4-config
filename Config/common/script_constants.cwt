@@ -44,7 +44,7 @@ types = {
 
 enums = {
     complex_enum[constant_one] = {
-        start_from_root  = yes
+        start_from_root = yes
 		path = "game/common/script_constants"
         name = {
             scalar = {
@@ -59,7 +59,7 @@ enums = {
         }
     }
     complex_enum[constant_two] = {
-        start_from_root  = yes
+        start_from_root = yes
 		path = "game/common/script_constants"
         name = {
             scalar = {

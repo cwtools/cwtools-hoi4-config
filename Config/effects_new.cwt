@@ -675,9 +675,20 @@ alias[effect:create_ship] = {
 ## scope = { COUNTRY }
 alias[effect:set_faction_spymaster] = bool
 
-###Lock all the division template at the country level. Note that you need to unlock them in the same way (You can't use 'set_division_template_lock' individually, because the lock at the country level will not be removed).
+###Lock all the division template at the country level. Note that you need to unlock them in the same way
+###Can also supply the reason it is locked with localization key(You can't use 'set_division_template_lock' individually, because the lock at the country level will not be removed)
+###Ex:country_lock_all_division_template = yes country_lock_all_division_template = {  is_locked = yes  desc = LOC_KEY}
 ## scope = { COUNTRY }
 alias[effect:country_lock_all_division_template] = bool
+
+###Lock all the division template at the country level. Note that you need to unlock them in the same way
+###Can also supply the reason it is locked with localization key(You can't use 'set_division_template_lock' individually, because the lock at the country level will not be removed)
+###Ex:country_lock_all_division_template = yes country_lock_all_division_template = {  is_locked = yes  desc = LOC_KEY}
+## scope = { COUNTRY }
+alias[effect:country_lock_all_division_template] = {
+	is_locked = bool
+	desc = localisation
+}
 
 ###Randomize a temporary variable.
 ## scope = { any }

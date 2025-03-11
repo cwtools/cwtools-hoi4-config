@@ -2637,6 +2637,14 @@ alias[effect:add_to_variable] = {
 	## cardinality = 0..1
 	tooltip = localisation
 }
+### Adds a value or a variable to another one.
+## scope = any
+alias[effect:add_to_variable] = {
+	## cardinality = 1..2
+	value_set[variable] = value[variable]
+	## cardinality = 0..1
+	tooltip = localisation
+}
 
 ### Subtracts a value or a variable to another one.
 ## scope = any
@@ -2651,6 +2659,14 @@ alias[effect:subtract_from_variable] = {
 alias[effect:subtract_from_variable] = {
 	var = value_set[variable]
 	value = variable_field_32
+	## cardinality = 0..1
+	tooltip = localisation
+}
+### Subtracts a value or a variable to another one.
+## scope = any
+alias[effect:subtract_from_variable] = {
+	## cardinality = 1..2
+	value_set[variable] = value[variable]
 	## cardinality = 0..1
 	tooltip = localisation
 }
@@ -2671,6 +2687,14 @@ alias[effect:multiply_variable] = {
 	## cardinality = 0..1
 	tooltip = localisation
 }
+### Multiplies a variable to a value or another variable.
+## scope = any
+alias[effect:multiply_variable] = {
+	## cardinality = 1..2
+	value_set[variable] = value[variable]
+	## cardinality = 0..1
+	tooltip = localisation
+}
 
 ### Divides a variable to a value or another variable.
 ## scope = any
@@ -2685,6 +2709,14 @@ alias[effect:divide_variable] = {
 alias[effect:divide_variable] = {
 	var = value_set[variable]
 	value = variable_field_32
+	## cardinality = 0..1
+	tooltip = localisation
+}
+### Divides a variable to a value or another variable.
+## scope = any
+alias[effect:divide_variable] = {
+	## cardinality = 1..2
+	value_set[variable] = value[variable]
 	## cardinality = 0..1
 	tooltip = localisation
 }
@@ -2692,6 +2724,10 @@ alias[effect:divide_variable] = {
 ### Clears a variable.
 ## scope = any
 alias[effect:clear_variable] = variable_field_32
+
+### Clears a variable.
+## scope = any
+alias[effect:clear_variable] = value[variable]
 
 ### Adds attack skill to a unit leader.
 ## scope = { character unit_leader }
@@ -2891,6 +2927,21 @@ alias[effect:clamp_temp_variable] = {
 alias[effect:clamp_variable] = {
 	var = value_set[variable]
 	max = variable_field_32
+}
+
+### Clamps a temp variable between two a values or another variables.
+## scope = any
+alias[effect:clamp_temp_variable] = {
+	var = value[variable]
+	min = value[variable]
+	max = value[variable]
+}
+
+### Clamps a variable between two a values or another variables.
+## scope = any
+alias[effect:clamp_variable] = {
+	var = value[variable]
+	max = value[variable]
 }
 
 ### Clamps a temp variable between two a values or another variables.

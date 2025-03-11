@@ -10,7 +10,7 @@ def generate_variables_enums():
     These enums are needed to add their support to modifier@modifier, leader_modifier@modifier and unit_modifier@modifier syntax\n
     '''
     with open(path_to_modifiers, 'r') as text_file:
-        config_file = text_file.read()
+        config_file = text_file.read().lower()
         modifiers = re.findall(r'\t([^ #]+) = (\w.*)', config_file)
 
         general_modifiers = []

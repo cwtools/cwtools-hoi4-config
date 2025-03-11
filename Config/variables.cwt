@@ -1210,5 +1210,9 @@ values = {
 
 		## constant hacky
 		constant:<script_constant>
+
+		## bandaid constants for variables
+		constant:<script_constant>.enum[constant_one]
+		constant:<script_constant>.enum[constant_two]
 	}
 }

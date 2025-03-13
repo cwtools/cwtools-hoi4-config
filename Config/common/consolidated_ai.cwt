@@ -222,13 +222,13 @@ ai_template = {
 			## cardinality = 0..1
 			support = {
 				## cardinality = 0..5
-				<unit> = int[0..4]
+				<unit.support_unit> = int[0..4]
 			}
 
 			# The desired line regiments. The AI will try to add them to the template if allowed by research etc.
 			regiments = {
 				## cardinality = 1..25
-				<unit> = int[0..25]
+				<unit.line_unit> = int[0..25]
 			}
 
 		}

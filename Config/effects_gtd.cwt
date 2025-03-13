@@ -65,17 +65,7 @@ alias[effect:create_colonial_division_template] = {
 		division_cap = int
 		regiments = {
 			## cardinality = 0..25
-			<unit.infantry> = { x = int[0..4] y = int[0..4] }
-			## cardinality = 0..25
-			<unit.armor> = { x = int[0..4] y = int[0..4] }
-			## cardinality = 0..25
-			<unit.mobile> = { x = int[0..4] y = int[0..4] }
-			## cardinality = 0..25
-			<unit.combat_support> = { x = int[0..4] y = int[0..4] }
-			## cardinality = 0..25
-			<unit.armor_combat_support> = { x = int[0..4] y = int[0..4] }
-			## cardinality = 0..25
-			<unit.mobile_combat_support> = { x = int[0..4] y = int[0..4] }
+			<unit.line_unit> = { x = int[0..4] y = int[0..4] }
 		}
 		## cardinality = 0..1
 		support = {

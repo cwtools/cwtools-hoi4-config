@@ -656,24 +656,14 @@ alias[effect:division_template] = {
 	force_allow_recruiting = bool
 	## cardinality = 0..1
 	division_cap = int
-	regiments = {
-		## cardinality = 0..25
-		<unit.infantry> = { x = int[0..4] y = int[0..4] }
-		## cardinality = 0..25
-		<unit.armor> = { x = int[0..4] y = int[0..4] }
-		## cardinality = 0..25
-		<unit.mobile> = { x = int[0..4] y = int[0..4] }
-		## cardinality = 0..25
-		<unit.combat_support> = { x = int[0..4] y = int[0..4] }
-		## cardinality = 0..25
-		<unit.armor_combat_support> = { x = int[0..4] y = int[0..4] }
-		## cardinality = 0..25
-		<unit.mobile_combat_support> = { x = int[0..4] y = int[0..4] }
-	}
+		regiments = {
+			## cardinality = 0..25
+			<unit.line_unit> = { x = int[0..4] y = int[0..4] }
+		}
 	## cardinality = 0..1
 	support = {
 		## cardinality = ~1..5
-		<unit.support_unit> = { x = 0 y = int[0..4] }
+		<unit.support_unit> = { x = [0..1] y = int[0..4] }
 	}
 	## cardinality = 0..1
 	template_counter = int
@@ -688,12 +678,12 @@ alias[effect:add_units_to_division_template] = {
 	## cardinality = 0..1
 	regiments = {
 		## cardinality = 1..25
-		<unit> = int[0..25]
+		<unit.line_unit> = int[0..25]
 	}
 	## cardinality = 0..1
 	support = {
 		## cardinality = ~1..5
-		<unit> = int[0..4]
+		<unit.support_unit> = int[0..4]
 	}
 }
 

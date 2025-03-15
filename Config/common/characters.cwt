@@ -97,7 +97,6 @@ types = {
 character = {
 
 	subtype[uninstanced] = {
-		name = localisation
 		### Should have at least one portrait defined
 		portraits = {
 			### Portrait(s), army and/or civilian
@@ -114,7 +113,7 @@ character = {
 			alias_name[trigger] = alias_match_left[trigger]
 		}
 		## cardinality = 0..1
-		name = localisation
+		name = localisation_inline
 		## cardinality = 0..1
 		gender = female
 		## cardinality = 0..1
@@ -357,8 +356,6 @@ character = {
 			allowed = {
 				alias_name[trigger] = alias_match_left[trigger]
 			}
-			## cardinality = 0..1
-			name = localisation
 			### Should have at least one portrait defined
 			portraits = {
 				### Portrait(s), army and/or civilian
@@ -370,7 +367,7 @@ character = {
 				}
 			}
 			## cardinality = 0..1
-			name = localisation
+			name = localisation_inline
 			## cardinality = 0..1
 			gender = female
 			## cardinality = 0..1

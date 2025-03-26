@@ -1726,8 +1726,21 @@ alias[trigger:add_to_temp_variable] = {
 ### Adds a value or a variable to a temporary variable.
 ## scope = any
 alias[trigger:add_to_temp_variable] = {
+	value_set[variable] = value[variable]
+}
+
+### Adds a value or a variable to a temporary variable.
+## scope = any
+alias[trigger:add_to_temp_variable] = {
 	var = value_set[variable]
 	value = variable_field_32
+}
+
+### Adds a value or a variable to a temporary variable.
+## scope = any
+alias[trigger:add_to_temp_variable] = {
+	var = value_set[variable]
+	value = value[variable]
 }
 
 ### Subtracts a value or a variable to a temporary variable.
@@ -1739,8 +1752,21 @@ alias[trigger:subtract_from_temp_variable] = {
 ### Subtracts a value or a variable to a temporary variable.
 ## scope = any
 alias[trigger:subtract_from_temp_variable] = {
+	value_set[variable] = value[variable]
+}
+
+### Subtracts a value or a variable to a temporary variable.
+## scope = any
+alias[trigger:subtract_from_temp_variable] = {
 	var = value_set[variable]
 	value = variable_field_32
+}
+
+### Subtracts a value or a variable to a temporary variable.
+## scope = any
+alias[trigger:subtract_from_temp_variable] = {
+	var = value_set[variable]
+	value = value[variable]
 }
 
 ### Multiplies a temporary variable by a value or another variable.
@@ -1752,8 +1778,21 @@ alias[trigger:multiply_temp_variable] = {
 ### Multiplies a temporary variable by a value or another variable.
 ## scope = any
 alias[trigger:multiply_temp_variable] = {
+	value_set[variable] = value[variable]
+}
+
+### Multiplies a temporary variable by a value or another variable.
+## scope = any
+alias[trigger:multiply_temp_variable] = {
 	var = value_set[variable]
 	value = variable_field_32
+}
+
+### Multiplies a temporary variable by a value or another variable.
+## scope = any
+alias[trigger:multiply_temp_variable] = {
+	var = value_set[variable]
+	value = value[variable]
 }
 
 ### Divies a temporary variable by a value or another variable.
@@ -1767,8 +1806,25 @@ alias[trigger:divide_temp_variable] = {
 ### Divies a temporary variable by a value or another variable.
 ## scope = any
 alias[trigger:divide_temp_variable] = {
+	value_set[variable] = value[variable]
+	## cardinality = 0..1
+	tooltip = localisation
+}
+
+### Divies a temporary variable by a value or another variable.
+## scope = any
+alias[trigger:divide_temp_variable] = {
 	var = value_set[variable]
 	value = variable_field_32
+	## cardinality = 0..1
+	tooltip = localisation
+}
+
+### Divies a temporary variable by a value or another variable.
+## scope = any
+alias[trigger:divide_temp_variable] = {
+	var = value_set[variable]
+	value = value[variable]
 	## cardinality = 0..1
 	tooltip = localisation
 }
@@ -1780,6 +1836,7 @@ alias[trigger:set_temp_variable] = {
 	value_set[variable] = scope_field
 	value_set[variable] = enum[country_tags]
 	value_set[variable] = value_set[token]
+	value_set[variable] = value[variable]
 }
 
 ### Sets a temporary variable to a value or another variable.
@@ -1790,6 +1847,67 @@ alias[trigger:set_temp_variable] = {
 	value = scope_field
 	value = enum[country_tags]
 	value = value_set[token]
+	value = value[variable]
+}
+
+### Clamps a variable between two a values or another variables.
+## scope = any
+alias[trigger:clamp_variable] = {
+	var = value_set[variable]
+	min = variable_field_32
+	max = variable_field_32
+}
+
+### Clamps a variable between two a values or another variables.
+## scope = any
+alias[trigger:clamp_variable] = {
+	var = value_set[variable]
+	min = value[variable]
+	max = variable_field_32
+}
+
+### Clamps a variable between two a values or another variables.
+## scope = any
+alias[trigger:clamp_variable] = {
+	var = value_set[variable]
+	min = variable_field_32
+	max = value[variable]
+}
+
+### Clamps a variable between two a values or another variables.
+## scope = any
+alias[trigger:clamp_variable] = {
+	var = value_set[variable]
+	min = value[variable]
+	max = value[variable]
+}
+
+### Clamps a variable between two a values or another variables.
+## scope = any
+alias[trigger:clamp_variable] = {
+	var = value_set[variable]
+	max = variable_field_32
+}
+
+### Clamps a variable between two a values or another variables.
+## scope = any
+alias[trigger:clamp_variable] = {
+	var = value_set[variable]
+	max = value[variable]
+}
+
+### Clamps a variable between two a values or another variables.
+## scope = any
+alias[trigger:clamp_variable] = {
+	var = value_set[variable]
+	min = value[variable]
+}
+
+### Clamps a variable between two a values or another variables.
+## scope = any
+alias[trigger:clamp_variable] = {
+	var = value_set[variable]
+	min = variable_field_32
 }
 
 ### Clamps a temp variable between two a values or another variables.
@@ -1804,7 +1922,45 @@ alias[trigger:clamp_temp_variable] = {
 ## scope = any
 alias[trigger:clamp_temp_variable] = {
 	var = value_set[variable]
+	min = value[variable]
 	max = variable_field_32
+}
+
+### Clamps a temp variable between two a values or another variables.
+## scope = any
+alias[trigger:clamp_temp_variable] = {
+	var = value_set[variable]
+	min = variable_field_32
+	max = value[variable]
+}
+
+### Clamps a temp variable between two a values or another variables.
+## scope = any
+alias[trigger:clamp_temp_variable] = {
+	var = value_set[variable]
+	min = value[variable]
+	max = value[variable]
+}
+
+### Clamps a variable between two a values or another variables.
+## scope = any
+alias[trigger:clamp_temp_variable] = {
+	var = value_set[variable]
+	max = value[variable]
+}
+
+### Clamps a temp variable between two a values or another variables.
+## scope = any
+alias[trigger:clamp_temp_variable] = {
+	var = value_set[variable]
+	max = variable_field_32
+}
+
+### Clamps a variable between two a values or another variables.
+## scope = any
+alias[trigger:clamp_temp_variable] = {
+	var = value_set[variable]
+	min = value[variable]
 }
 
 ### Clamps a temp variable between two a values or another variables.

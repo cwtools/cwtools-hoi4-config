@@ -939,11 +939,24 @@ alias[effect:modulo_temp_variable] = {
 	value_set[variable] = variable_field_32
 }
 
-###mMdulos a temp variable with another.
+###Modulos a temp variable with another.
+## scope = { any }
+alias[effect:modulo_temp_variable] = {
+	value_set[variable] = value[variable]
+}
+
+###Mdulos a temp variable with another.
 ## scope = { any }
 alias[effect:modulo_temp_variable] = {
 	var = value_set[variable]
 	value = variable_field_32
+}
+
+###Mdulos a temp variable with another.
+## scope = { any }
+alias[effect:modulo_temp_variable] = {
+	var = value_set[variable]
+	value = value[variable]
 }
 
 ###Modulos a variable with another.
@@ -955,8 +968,21 @@ alias[effect:modulo_variable] = {
 ###Modulos a variable with another.
 ## scope = { any }
 alias[effect:modulo_variable] = {
+	value_set[variable] = value[variable]
+}
+
+###Modulos a variable with another.
+## scope = { any }
+alias[effect:modulo_variable] = {
 	var = value_set[variable]
 	value = variable_field_32
+}
+
+###Modulos a variable with another.
+## scope = { any }
+alias[effect:modulo_variable] = {
+	var = value_set[variable]
+	value = value[variable]
 }
 
 ###Adds the collaboration in a target country with our currently scoped country.

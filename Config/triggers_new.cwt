@@ -360,8 +360,21 @@ alias[trigger:modulo_temp_variable] = {
 ###Modulos a temp variable with another.
 ## scope = { any }
 alias[trigger:modulo_temp_variable] = {
+	value_set[variable] = value[variable]
+}
+
+###Modulos a temp variable with another.
+## scope = { any }
+alias[trigger:modulo_temp_variable] = {
 	var = value_set[variable]
 	value = variable_field_32
+}
+
+###Modulos a temp variable with another.
+## scope = { any }
+alias[trigger:modulo_temp_variable] = {
+	var = value_set[variable]
+	value = value[variable]
 }
 
 ###Check if any country with current scoped country guarantees.

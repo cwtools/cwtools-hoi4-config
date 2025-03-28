@@ -167,6 +167,10 @@ ai_template = {
 	# The role token that this role-level template entry targets. These tokens are defined by script and are targeted by the 'role_ratio' AI strategy.
 	role = value_set[ai_template_roles]
 
+	### Customize which type of front template gets assigned to
+	## cardinality = 0..1
+	front_role_override = enum[template_front_role]
+
 	# The role-level upgrade prio is used for weighted-random selection when the AI chooses which role to upgrade templates for. Set it to zero to prevent the AI from spending XP on upgrading templates for this role.
 	# Example: If three role-level templates [A, B, C] have upgrade prio [1, 2, 1] respectively, then the probabilities for upgrading each template is [25%, 50%, 25%] respectively.
 	upgrade_prio = {
@@ -457,6 +461,10 @@ enums = {
 		carrier
 		battleship
 		cruiser
+	}
+	enum[template_front_role] = {
+		defence
+		offence
 	}
 	complex_enum[ai_templates] = {
 		path = "game/common/ai_templates"

@@ -51,6 +51,10 @@ occupation_law = {
     ### main fallback modifier will be used when previous modifier is no longer active and there is no fallback_law, there must be exactly one fallback modifier. if you are lacking manpower/equipments for your current laws, fallback modifier bonuses will apply instead (will lerp to fallback and at 0 manpower you will be forced to switch)
     ## cardinality = 0..1
 	main_fallback_law = bool
+
+    ### missing garrison will now be scaling to law set as missing_garrison_law if it is set, otherwise it will use default_law as it used to
+    ## cardinality = 0..1
+    missing_garrison_law = bool 
 	
     ### applies to states if the law is selected
     ## cardinality = 0..1

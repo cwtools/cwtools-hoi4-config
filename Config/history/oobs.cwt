@@ -23,6 +23,9 @@ oob = {
 		division_names_group = <division_name>
 		## cardinality = 0..1
 		role = value[ai_template_roles]
+		### Customize which type of front template gets assigned to
+		## cardinality = 0..1
+		front_role_override = enum[template_front_role]
 		## cardinality = 0..1
 		override_model = <entity>
 		## cardinality = 0..1

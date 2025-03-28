@@ -2752,7 +2752,23 @@ alias[effect:load_focus_tree] = <focus_tree>
 ### Sets what focus tree a country uses, retains finished shared focuses.
 ## scope = country
 alias[effect:load_focus_tree] = {
-	tree = <focus_tree>
+    ### Focus tree ID. Example - german_focus
+    tree = <focus_tree>
+    ### Load focus tree progress from a tag. Supports TAG/ROOT/FROM/PREV/variable/event_target
+    ## cardinality = 0..1
+    copy_completed_from = enum[country_tags]
+    ### Load focus tree progress from a tag. Supports TAG/ROOT/FROM/PREV/variable/event_target
+    ## cardinality = 0..1
+    copy_completed_from = scope[country]
+    ### Load focus tree progress from a tag. Supports TAG/ROOT/FROM/PREV/variable/event_target
+    ## cardinality = 0..1
+    copy_completed_from = value[variable]
+    ### Load focus tree progress from a tag. Supports TAG/ROOT/FROM/PREV/variable/event_target
+    ## cardinality = 0..1
+    copy_completed_from = value[event_target]
+    ### Load focus tree progress from a tag. Supports TAG/ROOT/FROM/PREV/variable/event_target
+    ## cardinality = 0..1
+    copy_completed_from = value[global_event_target]
 	## cardinality = 0..1
 	keep_completed = bool
 }

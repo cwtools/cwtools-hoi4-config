@@ -85,10 +85,16 @@ enums = {
 		air
 	}
 
-	enum[command_cap] = {
-		@tier1
-		@tier2
-		@tier3
+	enum[command_cap_increase] = {
+		@tier1_cp_cap_increase
+		@tier2_cp_cap_increase
+		@tier3_cp_cap_increase
+	}
+
+	enum[command_power_cost] = {
+		@tier1_cp_cost
+		@tier2_cp_cost
+		@tier3_cp_cost
 	}
 
 	enum[nsb_armor_archetypes] = {

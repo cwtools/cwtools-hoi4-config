@@ -91,7 +91,7 @@ country_leader_trait = {
 	}
 	### Define how much CP max will be increased when advisor is appointed
 	## cardinality = 0..1
-	command_cap_inccrease = enum[command_cap_inccrease]
+	command_cap_increase = enum[command_cap_increase]
 	### Define how much CP will be subtracted when advisor is appointed
 	## cardinality = 0..1
 	command_power = enum[command_power_cost]

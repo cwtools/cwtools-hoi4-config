@@ -222,8 +222,22 @@ alias[trigger:has_shine_effect_on_focus] = <focus>
 alias[trigger:has_shine_effect_on_focus] = <shared_focus>
 
 alias[trigger:custom_override_tooltip] = {
+	## cardinality = 0..1
     tooltip = localisation
+	## cardinality = 0..1
     tooltip = single_alias_right[bindable_loc]
+	## cardinality = 0..1
+    tooltip = character_name|<character>
+	## cardinality = 0..1
+    tooltip = tech_effect|<technology>
+	## cardinality = 0..1
+    not_tooltip = localisation
+	## cardinality = 0..1
+    not_tooltip = single_alias_right[bindable_loc]
+	## cardinality = 0..1
+    not_tooltip = character_name|<character>
+	## cardinality = 0..1
+    not_tooltip = tech_effect|<technology>
 	## cardinality = 0..1
 	alias_name[trigger] = alias_match_left[trigger]
 }

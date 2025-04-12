@@ -89,9 +89,12 @@ country_leader_trait = {
 		enum[base_factor] = float
 		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	}
+	### Define how much CP max will be increased when advisor is appointed
+	## cardinality = 0..1
+	command_cap_increase = enum[command_cap_increase]
 	### Define how much CP will be subtracted when advisor is appointed
 	## cardinality = 0..1
-	command_cap = enum[command_cap]
+	command_power = enum[command_power_cost]
 }
 
 ## push_scope = { unit_leader character }

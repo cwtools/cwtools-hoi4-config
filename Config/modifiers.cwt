@@ -1113,7 +1113,6 @@ modifiers = {
 	army_strength_factor = country
 	choose_preferred_tactics_cost = country
 	command_abilities_cost_factor = country
-	command_cap = country
 	coordination_bonus = country
 	economy_cost_factor = country
 	exiled_government_weekly_manpower = country
@@ -1979,7 +1978,6 @@ enums = {
 		army_strength_factor
 		choose_preferred_tactics_cost
 		command_abilities_cost_factor
-		command_cap
 		coordination_bonus
 		economy_cost_factor
 		exiled_government_weekly_manpower

@@ -427,10 +427,22 @@ alias[effect:add_project_progress_ratio] = value[variable]
 ### Executes the provided effects but with a custom tooltip surpressing all tooltips from all other effects inside this block. The custom tooltip is a [bindable localization]
 ## scope = any
 alias[effect:custom_override_tooltip] = {
+	## cardinality = 0..1
     tooltip = localisation
+	## cardinality = 0..1
     tooltip = single_alias_right[bindable_loc]
+	## cardinality = 0..1
     tooltip = character_name|<character>
+	## cardinality = 0..1
     tooltip = tech_effect|<technology>
+	## cardinality = 0..1
+    not_tooltip = localisation
+	## cardinality = 0..1
+    not_tooltip = single_alias_right[bindable_loc]
+	## cardinality = 0..1
+    not_tooltip = character_name|<character>
+	## cardinality = 0..1
+    not_tooltip = tech_effect|<technology>
     ## cardinality = 1..inf
     alias_name[effect] = alias_match_left[effect]
 }

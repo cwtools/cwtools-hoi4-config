@@ -221,7 +221,7 @@ bitmapfonts = {
 		}
 	}
 	subtype[bitmapfont_override] = {
-		name = value_set[font_name]
+		name = value[font_name]
 		## cardinality = 0..1
 		path = scalar
 		## cardinality = 0..1

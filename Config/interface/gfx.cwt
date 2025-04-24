@@ -61,6 +61,18 @@ types = {
 		## type_key_filter = LineChartType
 		subtype[LineChartType] = { }
 	}
+	type[bitmapfonts] = {
+		path = "interface"
+		skip_root_key = bitmapfonts
+		path_extension = .gfx
+		name_field = "name"
+		## type_key_filter = bitmapfont
+		subtype[bitmapfont] = { }
+		## type_key_filter = bitmapfont_override
+		subtype[bitmapfont_override] = { }
+		## type_key_filter = textcolors
+		subtype[textcolors] = { }
+	}
 }
 
 spriteType = {
@@ -170,5 +182,73 @@ spriteType = {
 	subtype[LineChartType] = {
 		size = { x = int y = int }
 		linewidth = float
+	}
+}
+
+bitmapfonts = {
+	### Global text colors used in the entire game, for use in loc files ex: "§G Text Text§!"
+	subtype[textcolors] = {
+		## cardinality = 1..inf
+		scalar = {
+			## cardinality = 3..3
+			float
+		}
+	}
+	subtype[bitmapfont] = {
+		name = value_set[font_name]
+		## cardinality = 0..1
+		path = scalar
+		## cardinality = 0..1
+		fontfiles = {
+			## cardinality = 1..inf
+			scalar
+		}
+		color = scalar
+		## cardinality = 0..1
+		textcolors = {
+			## cardinality = 1..inf
+			scalar = {
+				## cardinality = 3..3
+				float
+			}
+		}
+		## cardinality = 0..1
+		border_color = scalar
+		## cardinality = 0..1
+		cursor_offset = {
+			## cardinality = 2..2
+			float			
+		}
+	}
+	subtype[bitmapfont_override] = {
+		name = value_set[font_name]
+		## cardinality = 0..1
+		path = scalar
+		## cardinality = 0..1
+		fontfiles = {
+			## cardinality = 1..inf
+			scalar
+		}
+		color = scalar
+		## cardinality = 0..1
+		textcolors = {
+			## cardinality = 1..inf
+			scalar = {
+				## cardinality = 3..3
+				float
+			}
+		}
+		## cardinality = 0..1
+		border_color = scalar
+		## cardinality = 0..1
+		languages = {
+			## cardinality = 1..inf
+			scalar
+		}
+		## cardinality = 0..1
+		cursor_offset = {
+			## cardinality = 2..2
+			float			
+		}
 	}
 }

@@ -1402,13 +1402,15 @@ alias[effect:start_civil_war] = {
 		## cardinality = ~1..inf
 		value[unit_leader_ids]
 	}
+	### Checks each unit leader, moves to the new tag if false - THIS is the character
 	## cardinality = 0..1
-	## push_scope = any
+	## push_scope = { unit_leader character }
 	keep_unit_leaders_trigger = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
+	### Checks each scientist, moves to the new tag if false - THIS is the character
 	## cardinality = 0..1
-	## push_scope = any
+	## push_scope = character
 	keep_scientists_trigger = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}

@@ -1407,6 +1407,11 @@ alias[effect:start_civil_war] = {
 	keep_unit_leaders_trigger = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
+	## cardinality = 0..1
+	## push_scope = any
+	keep_scientists_trigger = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
 	## cardinality = ~1..inf
 	alias_name[effect] = alias_match_left[effect]
 	### If true, no characters will be transferred to revolter and scripts should take care of that

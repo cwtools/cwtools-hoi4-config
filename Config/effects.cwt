@@ -1939,6 +1939,9 @@ alias[effect:create_equipment_variant] = {
 	parent_version = int
 	## cardinality = 0..1
 	role_icon_index = int
+	### Indicates which folder this design will appear in, inside the designer, if applicable
+	## cardinality = 0..1
+	history = bool
 	## cardinality = 0..1
 	allow_without_tech = bool
 	## cardinality = 0..1

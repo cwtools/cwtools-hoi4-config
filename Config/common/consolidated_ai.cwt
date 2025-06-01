@@ -311,6 +311,10 @@ ai_equipment_design_group = {
 		## cardinality = 0..1
 		visible = bool
 
+		### Indicates which folder this design will appear in, inside the designer, if applicable
+		## cardinality = 0..1
+		history = bool
+
 		## cardinality = 0..1
 		### Specifications about how a matching equipment variant should be designed.
 		target_variant = {

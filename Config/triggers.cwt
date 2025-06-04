@@ -876,12 +876,16 @@ alias[trigger:casualties] = int
 ## severity = info
 ## scope = any
 alias[trigger:custom_trigger_tooltip] = {
-	tooltip = localisation
-	tooltip = {
-		localization_key = localisation
-		INDEX = int
-	}
-	alias_name[trigger] = alias_match_left[trigger]
+	## cardinality = 0..1
+    tooltip = localisation
+	## cardinality = 0..1
+    tooltip = single_alias_right[bindable_loc]
+	## cardinality = 0..1
+    tooltip = character_name|<character>
+	## cardinality = 0..1
+    tooltip = tech_effect|<technology>
+    ## cardinality = 1..inf
+    alias_name[trigger] = alias_match_left[trigger]
 }
 
 ### Checks for amount of equipment stored.

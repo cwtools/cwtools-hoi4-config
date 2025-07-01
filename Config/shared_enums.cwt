@@ -13,6 +13,7 @@ enums = {
 		"Arms Against Tyranny"
 		"Trial of Allegiance"
 		"Gotterdammerung"
+		"Graveyard of Empires"
 	}
 
 	enum[hours_days_months] = {

@@ -449,9 +449,14 @@ alias[effect:custom_override_tooltip] = {
 single_alias[bindable_loc] = {
     localization_key = localisation
 	## cardinality = 0..inf
-    scalar = single_alias_right[bindable_loc] 
+    alias_name[bindable_loc] = alias_match_left[bindable_loc]
+}
+
+alias[bindable_loc:scalar] = scalar
+alias[bindable_loc:scalar] = {
+	localization_key = localisation
 	## cardinality = 0..inf
-    scalar = scalar
+	alias_name[bindable_loc] = alias_match_left[bindable_loc]
 }
 
 ### Complete a prototype reward option for the project in scope \nThe effect will respect the fire only once and allowed property of prototype rewards.

@@ -269,10 +269,10 @@ modifiers = {
 	modifier_army_sub_unit_light_tank_recon_speed_factor = army
 	modifier_army_sub_unit_long_range_patrol_support_attack_factor = army
 	modifier_army_sub_unit_long_range_patrol_support_defence_factor = army
-	modifier_army_sub_unit_marines_attack_factor = army
-	modifier_army_sub_unit_marines_defence_factor = army
-	modifier_army_sub_unit_marines_max_org_factor = army
-	modifier_army_sub_unit_marines_speed_factor = army
+	modifier_army_sub_unit_marine_attack_factor = army
+	modifier_army_sub_unit_marine_defence_factor = army
+	modifier_army_sub_unit_marine_max_org_factor = army
+	modifier_army_sub_unit_marine_speed_factor = army
 	modifier_army_sub_unit_military_police_attack_factor = army
 	modifier_army_sub_unit_military_police_defence_factor = army
 	modifier_army_sub_unit_military_police_max_org_factor = army
@@ -2298,10 +2298,10 @@ enums = {
 		modifier_army_sub_unit_light_tank_recon_speed_factor
 		modifier_army_sub_unit_long_range_patrol_support_attack_factor
 		modifier_army_sub_unit_long_range_patrol_support_defence_factor
-		modifier_army_sub_unit_marines_attack_factor
-		modifier_army_sub_unit_marines_defence_factor
-		modifier_army_sub_unit_marines_max_org_factor
-		modifier_army_sub_unit_marines_speed_factor
+		modifier_army_sub_unit_marine_attack_factor
+		modifier_army_sub_unit_marine_defence_factor
+		modifier_army_sub_unit_marine_max_org_factor
+		modifier_army_sub_unit_marine_speed_factor
 		modifier_army_sub_unit_military_police_attack_factor
 		modifier_army_sub_unit_military_police_defence_factor
 		modifier_army_sub_unit_military_police_max_org_factor

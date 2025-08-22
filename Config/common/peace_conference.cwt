@@ -64,14 +64,32 @@ peace_action_modifiers = {
     peace_action_type = { take_states puppet }
     peace_action_type = { take_states force_government }
     peace_action_type = { take_states liberate }
+    peace_action_type = { take_states take_navy }
     peace_action_type = { puppet force_government }
     peace_action_type = { puppet liberate }
+    peace_action_type = { puppet take_navy }
     peace_action_type = { force_government liberate }
+    peace_action_type = { force_government take_navy }
+    peace_action_type = { liberate take_navy }
+    
     peace_action_type = { take_states puppet force_government }
     peace_action_type = { take_states puppet liberate }
+    peace_action_type = { take_states puppet take_navy }
     peace_action_type = { take_states force_government liberate }
+    peace_action_type = { take_states force_government take_navy }
+    peace_action_type = { take_states liberate take_navy }
     peace_action_type = { puppet force_government liberate }
+    peace_action_type = { puppet force_government take_navy }
+    peace_action_type = { puppet liberate take_navy }
+    peace_action_type = { force_government liberate take_navy }
+    
     peace_action_type = { take_states puppet force_government liberate }
+    peace_action_type = { take_states puppet force_government take_navy }
+    peace_action_type = { take_states puppet liberate take_navy }
+    peace_action_type = { take_states force_government liberate take_navy }
+    peace_action_type = { puppet force_government liberate take_navy }
+    
+    peace_action_type = { take_states puppet force_government liberate take_navy }
     ### ROOT - Negotiator country (who is doing the negotiation)
     ### FROM - Taker country (who will be the owner after the conference)
     ### FROM.FROM - Giver country (who was the owner before the conference)
@@ -95,6 +113,7 @@ enums = {
         puppet
         force_government
         liberate
+        take_navy
     }
 }
 

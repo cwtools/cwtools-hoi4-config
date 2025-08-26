@@ -2309,18 +2309,31 @@ alias[effect:reset_province_name] = enum[provinces]
 ## scope = state
 alias[effect:reset_state_name] = yes
 
-### Creates production license.
+### Creates production license. If the selection criteria fails to match a variant no license will be created. Example: create_production_license = { target = TAG cost_factor = 1 new_prioritised = no equipment = { type = small_plane_naval_bomber_airframe version = 1 version_name = \"Do 22\" }}"
 ## scope = country
 alias[effect:create_production_license] = {
+	### Receiver of the license
 	target = scope[country]
+	### Receiver of the license
 	target = enum[country_tags]
 	equipment = {
+		### The type of the variant to select. Must be specified
 		type = <equipment.regular_equip>
+		### The type of the variant to select. Must be specified
 		type = value[equipment_variant]
+		### Optional. Default 0. Select the variant with the given version
 		## cardinality = 0..1
 		version = int
+		### Optional. Select the variant with the given name
+		## cardinality = 0..1
+		version_name = value[variant_name]
 	}
+	### Optional. Cost factor for production of the equipment
+	## cardinality = 0..1
 	cost_factor = float
+	### Optional. Default yes. Ignore 'version' (but not 'version_name') and instead select the latest variant
+	## cardinality = 0..1
+	new_prioritised = bool
 
 }
 

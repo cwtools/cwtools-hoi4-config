@@ -1952,10 +1952,8 @@ enums = {
 		state_production_speed_<building>_factor
 		state_resources_<resource>_factor
 		<technology>_cost_factor
-		<trait>_xp_gain_factor
 		production_cost_<building>_factor
 		repair_speed_<building>_factor
-		trait_<trait>_xp_gain_factor
 		unit_<unit>_design_cost_factor
 		<operation>_cost
 		<operation>_outcome

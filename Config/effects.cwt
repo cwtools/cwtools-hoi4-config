@@ -1968,7 +1968,7 @@ alias[effect:create_equipment_variant] = {
 	## cardinality = 0..1
 	icon = <spriteType>
 	## cardinality = 0..1
-	model = scalar
+	model = <entity>
 	### Who designed that equipment
 	## cardinality = 0..1
 	design_team = mio:<military_industrial_organization>

@@ -137,6 +137,8 @@ alias[effect:random_operative] = {
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
+    ## cardinality = 0..1
+    tooltip = localisation
 	alias_name[effect] = alias_match_left[effect]
 }
 
@@ -154,6 +156,8 @@ alias[effect:every_operative] = {
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
+    ## cardinality = 0..1
+    tooltip = localisation
 	alias_name[effect] = alias_match_left[effect]
 }
 
@@ -412,6 +416,8 @@ alias[effect:random_occupied_country] = {
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
+    ## cardinality = 0..1
+    tooltip = localisation
 	alias_name[effect] = alias_match_left[effect]
 }
 
@@ -490,6 +496,8 @@ alias[effect:random_country_with_original_tag] = {
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
+    ## cardinality = 0..1
+    tooltip = localisation
 	alias_name[effect] = alias_match_left[effect]
 }
 
@@ -503,6 +511,8 @@ alias[effect:random_country_division] = {
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
+    ## cardinality = 0..1
+    tooltip = localisation
 	alias_name[effect] = alias_match_left[effect]
 }
 
@@ -522,6 +532,8 @@ alias[effect:every_country_with_original_tag] = {
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
+    ## cardinality = 0..1
+    tooltip = localisation
 	alias_name[effect] = alias_match_left[effect]
 }
 
@@ -917,6 +929,8 @@ alias[effect:random_controlled_state] = {
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
+    ## cardinality = 0..1
+    tooltip = localisation
 	alias_name[effect] = alias_match_left[effect]
 }
 

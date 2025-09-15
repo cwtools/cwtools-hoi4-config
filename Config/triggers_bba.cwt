@@ -61,6 +61,8 @@ alias[trigger:division_has_majority_template] = <unit>
 alias[trigger:any_country_division] = {
     ## cardinality = 0..1
     count = int_variable_field
+	## cardinality = 0..1
+	tooltip = localisation
     ## cardinality = 1..inf
     alias_name[trigger] = alias_match_left[trigger]
 }
@@ -70,6 +72,8 @@ alias[trigger:any_country_division] = {
 alias[trigger:any_state_division] = {
     ## cardinality = 0..1
     count = int_variable_field
+	## cardinality = 0..1
+	tooltip = localisation
     ## cardinality = 1..inf
     alias_name[trigger] = alias_match_left[trigger]
 }

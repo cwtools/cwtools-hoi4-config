@@ -18,7 +18,7 @@ intelligence_agency_upgrade = {
     frame = <spriteType>
     ## cardinality = 0..1
     ### Optional, "click_default" by default.
-    sound = scalar #<soundeffect> does not properly check for voices and other misc sounds and soundefects in mods since those are dlc files
+    sound = <soundeffect>
     
     ## cardinality = 0..1
     ai_will_do = {

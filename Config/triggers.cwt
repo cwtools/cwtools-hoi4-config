@@ -285,6 +285,8 @@ alias[trigger:all_neighbor_country] = {
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
+    ## cardinality = 0..1
+    tooltip = localisation
 	alias_name[trigger] = alias_match_left[trigger]
 }
 
@@ -296,6 +298,8 @@ alias[trigger:all_country] = {
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
+    ## cardinality = 0..1
+    tooltip = localisation
 	alias_name[trigger] = alias_match_left[trigger]
 }
 
@@ -307,6 +311,8 @@ alias[trigger:all_enemy_country] = {
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
+    ## cardinality = 0..1
+    tooltip = localisation
 	alias_name[trigger] = alias_match_left[trigger]
 }
 
@@ -1224,6 +1230,8 @@ alias[trigger:all_other_country] = {
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
+    ## cardinality = 0..1
+    tooltip = localisation
 	alias_name[trigger] = alias_match_left[trigger]
 }
 

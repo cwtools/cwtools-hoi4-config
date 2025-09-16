@@ -1,0 +1,39 @@
+types = {
+    ## type_key_filter = music_station
+    type[musicstation] = {
+        path = "music"
+        path_extension = .txt
+    }
+    ## type_key_filter = music
+    type[music] = {
+        path = "music"
+        name_field = "song"
+        path_extension = .txt
+    }
+    ## type_key_filter = music
+    type[musicasset] = {
+		path = "music"
+        name_field = "name"
+		path_extension = .asset
+    }
+}
+musicasset = {
+    name = localisation
+    file = scalar
+    ## cardinality = 0..1
+    volume = float
+}
+music = {
+    song = <musicasset>
+    ## cardinality = 0..1
+    chance = {
+        ## cardinality = 0..1
+        base = float
+        ## cardinality = 0..1
+        factor = float
+        ## cardinality = 0..inf
+        ## scope = country
+        alias_name[modifier_rule] = alias_match_left[modifier_rule]
+    }
+}
+

@@ -872,12 +872,12 @@ alias[gui_animation:fade_type] = linear
 alias[gui_animation:fade_type] = accelerated
 
 # GUI Sound
-alias[gui_sound:upsound] = scalar #<soundeffect> does not properly check for voices and other misc sounds and soundefects in mods since those are dlc files
-alias[gui_sound:downsound] = scalar #<soundeffect> does not properly check for voices and other misc sounds and soundefects in mods since those are dlc files
-alias[gui_sound:show_sound] = scalar #<soundeffect> does not properly check for voices and other misc sounds and soundefects in mods since those are dlc files
-alias[gui_sound:hide_sound] = scalar #<soundeffect> does not properly check for voices and other misc sounds and soundefects in mods since those are dlc files
-alias[gui_sound:clicksound] = scalar #<soundeffect> does not properly check for voices and other misc sounds and soundefects in mods since those are dlc files
-alias[gui_sound:oversound] = scalar #<soundeffect> does not properly check for voices and other misc sounds and soundefects in mods since those are dlc files
+alias[gui_sound:upsound] = <soundeffect>
+alias[gui_sound:downsound] = <soundeffect>
+alias[gui_sound:show_sound] = <soundeffect>
+alias[gui_sound:hide_sound] = <soundeffect>
+alias[gui_sound:clicksound] = <soundeffect>
+alias[gui_sound:oversound] = <soundeffect>
 
 enums = {
     enum[animationTypes] = {

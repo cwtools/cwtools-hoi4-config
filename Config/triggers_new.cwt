@@ -383,6 +383,8 @@ alias[trigger:modulo_temp_variable] = {
 alias[trigger:any_guaranteed_country] = {
     ## cardinality = 0..1
     count = int_variable_field
+    ## cardinality = 0..1
+    tooltip = localisation
 	alias_name[trigger] = alias_match_left[trigger]
 }
 
@@ -391,6 +393,8 @@ alias[trigger:any_guaranteed_country] = {
 ## scope = { COUNTRY }
 ## push_scope = country
 alias[trigger:all_guaranteed_country] = {
+    ## cardinality = 0..1
+    tooltip = localisation
 	alias_name[trigger] = alias_match_left[trigger]
 }
 

@@ -14,6 +14,7 @@ enums = {
 		"Trial of Allegiance"
 		"Gotterdammerung"
 		"Graveyard of Empires"
+		"Expansion Pass 1: Supporter Pack"
 	}
 
 	enum[hours_days_months] = {

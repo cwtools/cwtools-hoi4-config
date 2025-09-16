@@ -1,19 +1,19 @@
 types = {
     ## type_key_filter = category
     type[soundcategory] = {
-		path = "sound"
+		path = "game/sound"
         name_field = "name"
 		path_extension = .asset
     }
     ## type_key_filter = soundeffect
     type[soundeffect] = {
-		path = "sound"
+		path = "game/sound"
         name_field = "name"
 		path_extension = .asset
     }
     ## type_key_filter = sound
     type[sound] = {
-		path = "sound"
+		path = "game/sound"
         name_field = "name"
 		path_extension = .asset
     }
@@ -21,7 +21,7 @@ types = {
 
 sound = {
     name = scalar
-    file = scalar
+    file = filepath[sound/]
     ## cardinality = 0..1
     always_load = bool
     ## cardinality = 0..1
@@ -32,13 +32,8 @@ soundeffect = {
     name = scalar
     ## cardinality = 0..1
     falloff = scalar #falloff type
-    ## cardinality = 0..inf
-    sounds = {
-        ## cardinality = 0..inf
-        sound = scalar #<sound> does not properly check for voices and other misc sounds and soundefects in mods since those are dlc files
-        ## cardinality = 0..inf
-		weighted_sound = { sound = <sound>  weight = int }
-    }
+    ## cardinality = ~1..inf
+    alias_name[soundgroup] = alias_match_left[soundgroup]
     
     ## cardinality = 0..1
     loop = bool
@@ -84,12 +79,19 @@ soundeffect = {
     ## cardinality = 0..1
 	prevent_random_repetition = bool
 }
-
+alias[soundgroup:sounds] = {
+        ## cardinality = ~1..inf
+        sound = <sound>
+}
+alias[soundgroup:sounds] = {
+        ## cardinality = ~1..inf
+		weighted_sound = { sound = <sound>  weight = int }    
+}
 soundcategory = {
     name = scalar
     soundeffects = {
         ## cardinality = ~1..inf
-        scalar
+        <soundeffect>
     }
     ## cardinality = 0..1
     compressor = {

@@ -45,7 +45,7 @@ raid = {
     ## cardinality = 0..1
     equipment_icon = <spriteType>
     ## cardinality = 0..1
-    launch_sound = scalar #<soundeffect> does not properly check for voices and other misc sounds and soundefects in mods since those are dlc files
+    launch_sound = <soundeffect>
 
     command_power = int # command power allocation cost
 
@@ -296,7 +296,7 @@ raid = {
 
 single_alias[raid_outcome] = {
     ## cardinality = 0..1
-    custom_sound = scalar #<soundeffect> does not properly check for voices and other misc sounds and soundefects in mods since those are dlc files
+    custom_sound = <soundeffect>
     
     ## cardinality = 0..inf
     visual_effect = {

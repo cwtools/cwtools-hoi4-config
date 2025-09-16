@@ -721,6 +721,8 @@ alias[effect:remove_country_leader_trait] = {
 	trait = <country_leader_trait>
 	## cardinality = 0..1
 	ideology = <ideology>
+	## cardinality = 0..1
+	ideology = enum[sub_ideology]
 }
 
 ### Set properties of a political party.

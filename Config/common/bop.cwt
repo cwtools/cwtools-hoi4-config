@@ -9,6 +9,7 @@ balance_of_power = {
     initial_value = float[-1..1]
     left_side = value[bop_side]
     right_side = value[bop_side]
+    ## cardinality = 0..1
     decision_category = <decision_category>
     ### The "middle ground"
     ## cardinality = 0..inf

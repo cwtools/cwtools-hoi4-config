@@ -4120,7 +4120,7 @@ alias[effect:add_ai_strategy] = {
 ## scope = country
 alias[effect:add_ai_strategy] = {
 	type = enum[no_id_strats]
-	value = int
+	value = float
 }
 
 ### Adds strategy entry to country AI.

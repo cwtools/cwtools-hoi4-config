@@ -204,7 +204,7 @@ alias[ai_strategy_rule:ai_strategy] = {
 }
 alias[ai_strategy_rule:ai_strategy] = {
 	type = enum[no_id_strats]
-	value = int
+	value = float
 }
 alias[ai_strategy_rule:ai_strategy] = {
 	type = enum[state_strats]

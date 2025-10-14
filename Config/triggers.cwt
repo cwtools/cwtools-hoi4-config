@@ -1591,11 +1591,7 @@ alias[trigger:alliance_naval_strength_ratio] = float
 
 ### Check value of stability 0-1. Example has_stability < 0.6.
 ## scope = country
-alias[trigger:has_stability] = float
-
-### Check value of war_support 0-1. Example has_war_support < 0.6.
-## scope = country
-alias[trigger:has_war_support] = float
+alias[trigger:has_stability] = variable_field_32
 
 ### Check value of war_support 0-1. Example has_war_support < 0.6.
 ## scope = country

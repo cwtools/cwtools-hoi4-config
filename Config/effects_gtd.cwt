@@ -446,14 +446,21 @@ alias[effect:custom_override_tooltip] = {
     ## cardinality = 1..inf
     alias_name[effect] = alias_match_left[effect]
 }
+
+### Bindable loc single alias
 single_alias[bindable_loc] = {
+	### Localisation single alias
     localization_key = localisation
 	## cardinality = 0..inf
     alias_name[bindable_loc] = alias_match_left[bindable_loc]
 }
 
+### Bindable loc singleline any = any
 alias[bindable_loc:scalar] = scalar
+
+### Bindable loc multiline
 alias[bindable_loc:scalar] = {
+	### Localisation multiline
 	localization_key = localisation
 	## cardinality = 0..inf
 	alias_name[bindable_loc] = alias_match_left[bindable_loc]

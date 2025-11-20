@@ -13,6 +13,9 @@ types = {
 state = {
 	id = int
 	name = localisation
+	### Handles ownership of unpassable states (examples - Amazonas/Sahara)
+	## cardinality = 0..1
+	force_link_ownership_to = <state>
 	## cardinality = 0..1
 	resources = {
 		## cardinality = ~1..inf
@@ -36,16 +39,8 @@ state = {
 			enum[provinces] = {
 				## cardinality = 0..inf
 				<building> = int[0..20]
-				## cardinality = 0..1
-				<building.landmark> = {
-					## cardinality = 0..1
-					allowed = {
-						alias_name[trigger] = alias_match_left[trigger]
-					}
-					level = int
-				}
-				## cardinality = 0..1
-				<building.canal> = {
+				## cardinality = 0..inf
+				<building> = {
 					## cardinality = 0..1
 					allowed = {
 						alias_name[trigger] = alias_match_left[trigger]
@@ -70,7 +65,7 @@ state = {
 			## cardinality = 0..1
 			buildings = {
 				## cardinality = 0..inf
-				<building.state> = int[0..20]
+				<building> = int[0..20]
 				## cardinality = 0..inf
 				enum[provinces] = {
 					## cardinality = 0..inf
@@ -99,5 +94,13 @@ state_category = {
 	color = {
 		## cardinality = 3..3
 		int
+	}
+	### Restrict max level of specific state/province buildings like airbases and naval bases
+	## cardinality = 0..1
+	buildings_max_level = {
+		## cardinality = 0..inf
+		<building.state> = int[0..inf]
+		## cardinality = 0..inf
+		<building.provincial> = int[0..inf]
 	}
 }

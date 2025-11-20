@@ -15,6 +15,7 @@ enums = {
 		"Gotterdammerung"
 		"Graveyard of Empires"
 		"Expansion Pass 1: Supporter Pack"
+		"No Compromise, No Surrender"
 	}
 
 	enum[hours_days_months] = {
@@ -53,6 +54,7 @@ enums = {
 		join_faction
 		request_access_to_licence_production
 		send_volunteers
+		give_state_control
 	}
 
 	enum[add_factor] = {

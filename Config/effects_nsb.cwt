@@ -100,6 +100,8 @@ alias[effect:every_character] = {
 ## push_scope = character
 alias[effect:random_character] = {
 	## cardinality = 0..1
+	visible_when_empty = bool
+	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}

@@ -67,6 +67,8 @@ ai_strategy_plan = {
 		<focus>
 		## cardinality = 0..inf
 		<shared_focus>
+		## cardinality = 0..inf
+		<joint_focus>
 	}
 
 	## cardinality = 0..1
@@ -75,6 +77,8 @@ ai_strategy_plan = {
 		<focus> = float
 		## cardinality = 0..inf
 		<shared_focus> = float
+		## cardinality = 0..inf
+		<joint_focus> = float
 	}
 
 	## cardinality = 0..1
@@ -86,10 +90,10 @@ ai_strategy_plan = {
 	## cardinality = 0..1
 	ideas = {
 		## cardinality = 0..inf
-		enum[idea_name] = int
+		enum[idea_name] = float
 
 		## cardinality = 0..inf
-		value[advisor_token] = int
+		value[advisor_token] = float
 	}
 
 	## cardinality = 0..1
@@ -113,6 +117,7 @@ alias[ai_strategy_rule:ai_strategy] = {
 	type = enum[ai_role_strats]
 	id = value[ai_template_roles]
 	id = value[ai_equipment_roles]
+	id = enum[equipment_category]
 	value = int
 }
 
@@ -249,21 +254,24 @@ alias[ai_strategy_rule:ai_strategy] = {
 alias[ai_strategy_rule:ai_strategy] = {
 	type = scorched_earth_prio
 	id = scope[country]
+	### No clue what this does in scorched_earth_prio context
+	## cardinality = 0..1
+	value = int
 	## cardinality = 0..1
 	states = {
 		## cardinality = ~1..inf
-		int
+		<state>
 	}
 }
 alias[ai_strategy_rule:ai_strategy] = {
 	type = put_unit_buffers
-	ratio = float[0..1]
+	ratio = float[0..inf]
 	## cardinality = 0..1
 	order_id = int
 	## cardinality = 0..1
 	states = {
 		## cardinality = ~1..inf
-		int
+		<state>
 	}
 	## cardinality = 0..inf
 	area = <ai_area>
@@ -276,8 +284,11 @@ alias[ai_strategy_rule:ai_strategy] = {
 	type = front_control
 	## cardinality = 0..inf
 	tag = scope[country]
+	### Vanilla uses ID with a country tag only in several spots. Treat this syntax as questionable
+	## cardinality = 0..1
+	id = scope[country]
 	## cardinality = 0..inf
-	state = int
+	state = <state>
 	## cardinality = 0..inf
 	area = <ai_area>
 	## cardinality = 0..inf
@@ -305,13 +316,16 @@ alias[ai_strategy_rule:ai_strategy] = {
 	execute_order = bool
 	## cardinality = 0..1
 	manual_attack = bool
+	### Vanilla uses value field in front_control strat only in several spots. Treat this syntax as questionable
+	## cardinality = 0..1
+	value = int
 }
 alias[ai_strategy_rule:ai_strategy] = {
 	type = enum[unit_requests]
 	## cardinality = 0..inf
 	tag = scope[country]
 	## cardinality = 0..inf
-	state = int
+	state = <state>
 	## cardinality = 0..inf
 	strategic_region = <strategic_region>
 	## cardinality = 0..inf
@@ -335,6 +349,11 @@ alias[ai_strategy_rule:ai_strategy] = {
 	value = int
 }
 alias[ai_strategy_rule:ai_strategy] = {
+	type = spent_faction_initiative_priority
+	id = enum[faction_strats_targets]
+	value = int
+}
+alias[ai_strategy_rule:ai_strategy] = {
 	type = asking_foreign_garrison
 	value = int
 	## cardinality = 0..1
@@ -347,7 +366,7 @@ alias[ai_strategy_rule:ai_strategy] = {
 	## cardinality = 0..1
 	mission_target = scope[country]
 	## cardinality = 0..inf
-	state = int
+	state = <state>
 	## cardinality = 0..1
 	priority = int
 	## cardinality = 0..1
@@ -441,6 +460,19 @@ alias[ai_strategy_rule:ai_strategy] = {
 	value = int	
 }
 
+alias[ai_strategy_rule:ai_strategy] = {
+	type = convoy_raiding_target
+	id = scope[country]
+	value = int[0..100]
+}
+
+alias[ai_strategy_rule:ai_strategy] = {
+	type = naval_blockade
+	target_country = scope[country]
+	id = <strategic_region>
+	value = int[0..100]
+}
+
 enums = {
 	enum[ai_diplo_strats] = {
 		alliance
@@ -470,6 +502,7 @@ enums = {
 		send_lend_lease_desire
 		send_volunteers_desire
 		support
+		raid_target_country
 	}
 	enum[equipment_strats] = {
 		equipment_variant_production_factor
@@ -500,7 +533,7 @@ enums = {
 		operation_equipment_priority
 		railway_gun_divisions_ratio
 		naval_invasion_focus
-		naval_invasion_supremacy_weight
+		naval_invasion_dominance_weight
 		avoid_starting_wars
 		min_wanted_supply_trucks
 		wanted_supply_trucks
@@ -509,8 +542,10 @@ enums = {
 		ai_wanted_divisions_factor
 		equipment_market_spend_factories
 		force_concentration_factor
-		raid_target_country
 		become_spymaster
+		become_head_of_crypto
+		become_head_of_operations
+		become_head_of_counter_intel
 	}
 	enum[pp_strats] = {
 		pp_spend_amount
@@ -523,6 +558,8 @@ enums = {
 		decision
 		relation
 		guarantee
+		supportive_scientist
+		become_faction_leader
 	}
 	enum[ai_xp_targets] = {
 		division_template
@@ -538,6 +575,7 @@ enums = {
 		naval_avoid_region
 		strategic_air_importance
 		strike_force_home_base
+		naval_dominance
 	}
 	enum[strat_region_strats_without_value] = {
 		strike_force_home_base
@@ -556,6 +594,7 @@ enums = {
 		role_ratio
 		build_army
 		build_airplane
+		build_ship
 	}
 	enum[building_strats] = {
 		building_target
@@ -602,5 +641,10 @@ enums = {
 	enum[research_strats] = {
 		research_tech
 		research_weight_factor
+	}
+	enum[faction_strats_targets] = {
+		unlock_faction_commander
+		unlock_doctrine_sharing
+		program
 	}
 }

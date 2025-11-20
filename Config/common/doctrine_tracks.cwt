@@ -1,0 +1,63 @@
+#### TODO - DOCUMENTATION!
+
+types = {
+	type[doctrine_track] = {
+		path = "game/common/doctrines/tracks"
+	}
+}
+
+
+### - Tracks are slots for Subdoctrines - they limit how many of them and which type can be used
+### - Grand Doctrine defines what Tracks are available and gives Milestones bonuses (tradition tree finisher bonus)
+### - Subdoctrine Rewards are singular traditions that can be unlocked by spending Mastery (Unity)
+### - Subdoctrines are Tradition Trees that can be selected depending on a track
+### Personal note - doctrine changes as Tradition Trees from Stellaris. When viewing them that way
+###
+### All a track does is say what it takes to get mastery for that track, and how much you get.
+###
+### Almost everything related to a track is handled by either the grand doctrine or the subdoctrine.
+###
+### The track script itself is very small; it is the subdoctrine that defines which track it can be assigned to and the grand doctrine that defines which tracks it contains
+###
+### - A **Milestone** derived from the grand doctrine activate once all of the rewards are unlocked
+### - A series of **Rewards** derived from the subdoctrine that will gradually unlock automatically as you gain **Mastery**
+### - A **Subdoctrine** at the root
+### Each track represents the player with further customization of their doctrines, in the form of:
+###
+### Doctrine tracks are made available to the player after they have selected a **Grand Doctrine**. 
+## replace_scope = { this = country root = country }
+doctrine_track = {
+	name = localisation
+	background = <spriteType>
+	icon = <spriteType>
+	icon_frame = <spriteType>
+	## cardinality = 0..1
+	background_offset = float
+	mastery = {
+		### - in this case, 2 times less manpower is needed to gain the same amount of mastery
+		### - multiplier = 2.0
+		### Example:
+		###
+		### Multiplies manpower contribution to mastery gain
+		## cardinality = 0..1
+		multiplier = float
+		### Which subunit categories constribute to mastery gain
+		## cardinality = 0..1
+		categories = {
+			## cardinality = ~1..inf
+			enum[unit_category]
+		}
+		### Which subunits contribute to mastery gain
+		## cardinality = 0..1
+		sub_units = {
+			## cardinality = ~1..inf
+			<unit>
+		}
+		### Subunits with this equipment category will contribute to mastery gain
+		## cardinality = 0..1
+		equipment = {
+			## cardinality = ~1..inf
+			enum[equipment_bonus_type]
+		}
+	}
+}

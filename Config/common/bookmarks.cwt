@@ -24,6 +24,11 @@ bookmark = {
 		ideology = <ideology>
 
 		## cardinality = 0..1
+		new_content = yes
+		## cardinality = 0..1
+		override_leader_portrait = <spriteType>
+
+		## cardinality = 0..1
 		available = {
 			## cardinality = ~1..inf
 			alias_name[trigger] = alias_match_left[trigger]
@@ -45,7 +50,7 @@ bookmark = {
 		}
 	}
 
-	## cardinality = ~0..1
+	## cardinality = 0..1
 	"---" = {
 		## cardinality = 0..1
 		minor = yes

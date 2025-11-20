@@ -117,7 +117,7 @@ spriteType = {
 	subtype[textSpriteType] = {
 		textureFile = filepath
 		## cardinality = 0..1
-		clicksound = click
+		clicksound = <soundeffect>
 	}
 	subtype[progressbartype] = {
 		textureFile1 = scalar

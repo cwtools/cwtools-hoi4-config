@@ -48,5 +48,14 @@ values = {
 		
 		### Array of current high command advisors
 		high_command
+
+		country_and_all_subjects
+		owned_states
+	}
+	value[arrays_compatible_with_operators] = {
+		faction_members
+		country_and_all_subjects
+		controlled_states
+		owned_states	
 	}
 }

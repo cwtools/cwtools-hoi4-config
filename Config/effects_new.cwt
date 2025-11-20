@@ -460,9 +460,21 @@ alias[effect:add_resistance_target] = {
 	## cardinality = 0..1
 	occupier = enum[country_tags]
 	## cardinality = 0..1
+	occupier = variable_field
+	## cardinality = 0..1
+	occupier = value[event_target]
+	## cardinality = 0..1
+	occupier = value[global_event_target]
+	## cardinality = 0..1
 	occupied = scope[country]
 	## cardinality = 0..1
 	occupied = enum[country_tags]
+	## cardinality = 0..1
+	occupied = variable_field
+	## cardinality = 0..1
+	occupied = value[event_target]
+	## cardinality = 0..1
+	occupied = value[global_event_target]
 }
 
 ###Removes a previously added resistance target using its id. No tooltips are generated.
@@ -581,10 +593,19 @@ alias[effect:force_enable_resistance] = {
 	clear = bool
 	occupier = scope[country]
 	occupier = enum[country_tags]
+	occupier = variable_field
+	occupier = value[event_target]
+	occupier = value[global_event_target]
 	## cardinality = 0..1
 	occupied = scope[country]
 	## cardinality = 0..1
 	occupied = enum[country_tags]
+	## cardinality = 0..1
+	occupied = variable_field
+	## cardinality = 0..1
+	occupied = value[event_target]
+	## cardinality = 0..1
+	occupied = value[global_event_target]
 }
 
 ###Force enables resistance for scoped state. The resistance will be active even if other conditions doesn't satisfy (even if it is core or resistance check trigger is false).
@@ -596,8 +617,17 @@ alias[effect:force_enable_resistance] = {
 	occupier = scope[country]
 	## cardinality = 0..1
 	occupier = enum[country_tags]
+	## cardinality = 0..1
+	occupier = variable_field
+	## cardinality = 0..1
+	occupier = value[event_target]
+	## cardinality = 0..1
+	occupier = value[global_event_target]
 	occupied = scope[country]
 	occupied = enum[country_tags]
+	occupied = variable_field
+	occupied = value[event_target]
+	occupied = value[global_event_target]
 }
 
 ###Force disables resistance for scoped state
@@ -619,10 +649,19 @@ alias[effect:force_disable_resistance] = {
 	clear = bool
 	occupier = scope[country]
 	occupier = enum[country_tags]
+	occupier = variable_field
+	occupier = value[event_target]
+	occupier = value[global_event_target]
 	## cardinality = 0..1
 	occupied = scope[country]
 	## cardinality = 0..1
 	occupied = enum[country_tags]
+	## cardinality = 0..1
+	occupied = variable_field
+	## cardinality = 0..1
+	occupied = value[event_target]
+	## cardinality = 0..1
+	occupied = value[global_event_target]
 }
 
 ###Force disables resistance for scoped state. The resistance will be active even if other conditions doesn't satisfy (even if it is core or resistance check trigger is false).
@@ -634,8 +673,17 @@ alias[effect:force_disable_resistance] = {
 	occupier = scope[country]
 	## cardinality = 0..1
 	occupier = enum[country_tags]
+	## cardinality = 0..1
+	occupier = variable_field
+	## cardinality = 0..1
+	occupier = value[event_target]
+	## cardinality = 0..1
+	occupier = value[global_event_target]
 	occupied = scope[country]
 	occupied = enum[country_tags]
+	occupied = variable_field
+	occupied = value[event_target]
+	occupied = value[global_event_target]
 }
 
 ###Force disables resistance for scoped state. The resistance will be active even if other conditions doesn't satisfy (even if it is core or resistance check trigger is false).
@@ -651,9 +699,21 @@ alias[effect:force_disable_resistance] = {
 	## cardinality = 0..1
 	occupier = enum[country_tags]
 	## cardinality = 0..1
+	occupier = variable_field
+	## cardinality = 0..1
+	occupier = value[event_target]
+	## cardinality = 0..1
+	occupier = value[global_event_target]
+	## cardinality = 0..1
 	occupied = scope[country]
 	## cardinality = 0..1
 	occupied = enum[country_tags]
+	## cardinality = 0..1
+	occupied = variable_field
+	## cardinality = 0..1
+	occupied = value[event_target]
+	## cardinality = 0..1
+	occupied = value[global_event_target]
 }
 
 ###Create an Intelligence Agency for the country, if it is not already done.

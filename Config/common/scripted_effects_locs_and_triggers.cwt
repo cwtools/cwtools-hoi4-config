@@ -43,6 +43,15 @@ scripted_loc = {
 		localization_key = scalar
 		## cardinality = 0..1
 		random_list = {
+			## cardinality = 0..1
+			### if specified, it will use this seed instead of scope seed for picking a random
+			seed = variable_field
+			## cardinality = 0..1
+			### if specified, it will use this seed instead of scope seed for picking a random
+			seed = const
+			## cardinality = 0..1
+			### if specified, it will use this seed instead of scope seed for picking a random
+			seed = random
 			## cardinality = 1..inf
 			int = {
 				alias_name[modifier_rule] = alias_match_left[modifier_rule]

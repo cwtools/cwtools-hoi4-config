@@ -119,4 +119,18 @@ links = {
         data_source = <special_project>
     }
 
+    ### Currently only for scope:faction!
+    scope_faction = {
+        prefix = scope:
+        output_scope = country
+        input_scopes = country
+        from_data = yes
+        data_source = enum[scope_faction]
+    }
+}
+
+enums = {
+	enum[scope_faction] = {
+		faction
+	}
 }

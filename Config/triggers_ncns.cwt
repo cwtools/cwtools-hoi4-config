@@ -1,0 +1,599 @@
+# markdown resolves from bottom to top, todo also make it prettier?
+### }
+### &nbsp;&nbsp;&nbsp;&nbsp;Note: extracted and buildings are mutually exclusive  
+### &nbsp;&nbsp;&nbsp;&nbsp;buildings = no # (optional, default: no) checks only amount from local buildings instead of country balance  
+### &nbsp;&nbsp;&nbsp;&nbsp;extracted = yes # (optional, default: no) checks extracted amount instead of country balance  
+### &nbsp;&nbsp;&nbsp;&nbsp;amount > 10  
+### &nbsp;&nbsp;&nbsp;&nbsp;resource = chromium  
+### &nbsp;&nbsp;&nbsp;&nbsp;}  
+### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;operators =  { country_and_all_subjects }  
+### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;game:scope  
+### &nbsp;&nbsp;&nbsp;&nbsp;collection = {  # you can also pass existing collection instead of delcaring anonymous one here
+### has_resources_in_collection = {  
+### Example:  
+### Checks for amount of resources in a given collection.	
+## scope = country
+alias[trigger:has_resources_in_collection] = {
+	### A reference to another collection that will be used as input
+	collection = collection:<collection>
+	### A reference to another collection that will be used as input
+	collection = enum[built_in_collections]
+	### Anonymous collection
+	collection = single_alias_right[anonymous_collection]
+	resource = <resource>
+	amount = int[0..inf]
+	## error_if_only_match = This is the default value and can be omitted
+	## severity = info
+	## cardinality = 0..1
+	extracted = no
+	## cardinality = 0..1
+	extracted = yes
+	## error_if_only_match = This is the default value and can be omitted
+	## severity = info
+	## cardinality = 0..1
+	buildings = no
+	## cardinality = 0..1
+	buildings = yes
+}
+
+### Example: has_doctrine = new_mobile_warfare
+### Checks if the country has a specified **Grand Doctrine** or **Subdoctrine**
+## scope = country
+alias[trigger:has_doctrine] = <grand_doctrine>
+
+### Example: has_doctrine = air_subdoctrine_escort_fighter
+### Checks if the country has a specified **Grand Doctrine** or **Subdoctrine**
+## scope = country
+alias[trigger:has_doctrine] = <subdoctrine>
+
+### Example: has_completed_subdoctrine = line_of_battle
+### Checks if the country has completed a specified **Subdoctrine**
+## scope = country
+alias[trigger:has_completed_subdoctrine] = <subdoctrine>
+
+### Example: has_subdoctrine_in_track = heavy_aircraft
+### Checks if the country has any subdoctrine in a specified **Track**
+## scope = country
+alias[trigger:has_subdoctrine_in_track] = <doctrine_track>
+
+### Example: has_completed_track = heavy_aircraft
+### Checks if the country has completed a specified **Track**
+## scope = country
+alias[trigger:has_completed_track] = <doctrine_track>
+
+### Example: has_mastery = { amount = 10 track = heavy_aircraft }
+### Checks if the country has at lease X mastery in a specified **Track**
+## scope = country
+alias[trigger:has_mastery] = {
+	amount = float
+	track = <doctrine_track>
+}
+
+### Example: has_tactic = tactic_grand_banzai_charge 
+### Checks if the country has access to a Tactic
+## scope = country
+alias[trigger:has_tactic] = <combat_tactic>
+
+### Example: can_assign_supportive_scientist_to_faction = specialization_naval
+###
+### Checks if the faction from the country in scope has a free slot for a supportive scientist for the country with the specialization type
+## scope = country
+alias[trigger:can_assign_supportive_scientist_to_faction] = <specialization>
+
+### - Another option is to use the capital state of the tag. *FROM = { is_on_same_continent_as = 111 }*
+### - Can use country scope. Example *GER = { is_on_same_continent_as = ITA }*
+### Checks if the scope state is on the same continent as the given state. 
+## scope = { country state }
+alias[trigger:is_on_same_continent_as] = scope[country]
+
+### - Another option is to use the capital state of the tag. *FROM = { is_on_same_continent_as = 111 }*
+### - Can use country scope. Example *GER = { is_on_same_continent_as = ITA }*
+### Checks if the scope state is on the same continent as the given state. 
+## scope = { country state }
+alias[trigger:is_on_same_continent_as] = enum[country_tags]
+
+### - Another option is to use the capital state of the tag. *FROM = { is_on_same_continent_as = 111 }*
+### - Can use country scope. Example *GER = { is_on_same_continent_as = ITA }*
+### Checks if the scope state is on the same continent as the given state. 
+## scope = { country state }
+alias[trigger:is_on_same_continent_as] = <state>
+
+### - Another option is to use the capital state of the tag. *FROM = { is_on_same_continent_as = 111 }*
+### - Can use country scope. Example *GER = { is_on_same_continent_as = ITA }*
+### Checks if the scope state is on the same continent as the given state. 
+## scope = { country state }
+alias[trigger:is_on_same_continent_as] = scope[state]
+
+### ```
+### }
+###		num_of_available_civilian_factories > 5
+###		}
+###			name = collection_has_more_than_10_factories
+###			operators = { limit = { num_of_civilian_factories > 10 } }
+###			input = game:all_countries
+### 	collection = {
+### any_collection_element = {
+### ```
+### Example (anonymous collection):
+### 
+### Example: *any_collection_element = { collection:my_awesome_collection is_subject_of = ROOT }*
+### 
+### Checks if the triggers are true for any element in the collection. Supports both anonymous and regular collections
+## scope = { any }
+alias[trigger:any_collection_element] = {
+	### A reference to another collection that will be used as input
+	collection = collection:<collection>
+	### A reference to another collection that will be used as input
+	collection = enum[built_in_collections]
+	### Anonymous collection
+	collection = single_alias_right[anonymous_collection]
+	alias_name[trigger] = alias_match_left[trigger]
+}
+
+### ```
+### }
+###		num_of_available_civilian_factories > 5
+###		}
+###			name = collection_has_more_than_10_factories
+###			operators = { limit = { num_of_civilian_factories > 10 } }
+###			input = game:all_countries
+### 	collection = {
+### all_collection_elements = {
+### ```
+### Example (anonymous collection):
+### 
+### Example: *all_collection_elements = { collection:my_awesome_collection is_subject_of = ROOT }*
+### 
+### Checks if the triggers are true for all of the elements in the collection. Supports both anonymous and regular collections
+## scope = { any }
+alias[trigger:all_collection_elements] = {
+	### A reference to another collection that will be used as input
+	collection = collection:<collection>
+	### A reference to another collection that will be used as input
+	collection = enum[built_in_collections]
+	### Anonymous collection
+	collection = single_alias_right[anonymous_collection]
+	alias_name[trigger] = alias_match_left[trigger]
+}
+
+### - *collection_contains = { collection = game:all_countries country = FRA }*
+### - *collection_contains = { collection = game:all_countries countries = { ENG GER } }*
+### Possible types to check for are **Countries**:
+###
+### Checks if the provided collection contains all the provided elements. Supports both anonymous and regular collections
+## scope = { any }
+alias[trigger:collection_contains] = {
+	### A reference to another collection that will be used as input
+	collection = collection:<collection>
+	### A reference to another collection that will be used as input
+	collection = enum[built_in_collections]
+	### Anonymous collection
+	collection = single_alias_right[anonymous_collection]
+	### Input country tag
+	country = scope[country]
+	### Input country tag
+	country = enum[country_tags]
+}
+
+### - *collection_contains = { collection = game:all_countries country = FRA }*
+### - *collection_contains = { collection = game:all_countries countries = { ENG GER } }*
+### Possible types to check for are **Countries**:
+###
+### Checks if the provided collection contains all the provided elements. Supports both anonymous and regular collections
+## scope = { any }
+alias[trigger:collection_contains] = {
+	### A reference to another collection that will be used as input
+	collection = collection:<collection>
+	### A reference to another collection that will be used as input
+	collection = enum[built_in_collections]
+	### Anonymous collection
+	collection = single_alias_right[anonymous_collection]
+	### Input country tags
+	countries = {
+		## cardinality = 0..inf
+		scope[country]
+		## cardinality = 0..inf
+		enum[country_tags]
+	}
+}
+
+### ```
+### }
+### 	size > 500000 # Total deployed manpower
+### 	manpower = yes
+### 	collection = collection:my_awesome_collection
+### count_in_collection = {
+### }
+###		size > 10 
+### 	buildings = { industrial_complex } # If multiple buildings are passed, their sum will be checked
+### 	collection = collection:my_awesome_collection
+### count_in_collection = {
+### }
+### 	size > 10
+### 	unit = infantry   # See script_enum_equipment_category
+### 	collection = collection:my_awesome_collection
+### count_in_collection = {
+### ```
+### - Examples:
+### - unit and building and manpower are mutually exclusive
+### - Does not support the '=' sign in comparison!
+### Checks the size of a given collection. Collection elements should be tags. Requires country scope. Supports both anonymous and regular collections
+## scope = { country }
+alias[trigger:count_in_collection] = {
+	### A reference to another collection that will be used as input
+	collection = collection:<collection>
+	### A reference to another collection that will be used as input
+	collection = enum[built_in_collections]
+	### Anonymous collection
+	collection = single_alias_right[anonymous_collection]
+	unit = enum[unit_types]
+	### Does not support '=' sign!
+	size = variable_field
+}
+
+### ```
+### }
+### 	size > 500000 # Total deployed manpower
+### 	manpower = yes
+### 	collection = collection:my_awesome_collection
+### count_in_collection = {
+### }
+###		size > 10 
+### 	buildings = { industrial_complex } # If multiple buildings are passed, their sum will be checked
+### 	collection = collection:my_awesome_collection
+### count_in_collection = {
+### }
+### 	size > 10
+### 	unit = infantry   # See script_enum_equipment_category
+### 	collection = collection:my_awesome_collection
+### count_in_collection = {
+### ```
+### - Examples:
+### - unit and building and manpower are mutually exclusive
+### - Does not support the '=' sign in comparison!
+### Checks the size of a given collection. Collection elements should be tags. Requires country scope. Supports both anonymous and regular collections
+## scope = { country }
+alias[trigger:count_in_collection] = {
+	### A reference to another collection that will be used as input
+	collection = collection:<collection>
+	### A reference to another collection that will be used as input
+	collection = enum[built_in_collections]
+	### Anonymous collection
+	collection = single_alias_right[anonymous_collection]
+	unit_category = enum[unit_category]
+	### Does not support '=' sign!
+	size = variable_field
+}
+
+### ```
+### }
+### 	size > 500000 # Total deployed manpower
+### 	manpower = yes
+### 	collection = collection:my_awesome_collection
+### count_in_collection = {
+### }
+###		size > 10 
+### 	buildings = { industrial_complex } # If multiple buildings are passed, their sum will be checked
+### 	collection = collection:my_awesome_collection
+### count_in_collection = {
+### }
+### 	size > 10
+### 	unit = infantry   # See script_enum_equipment_category
+### 	collection = collection:my_awesome_collection
+### count_in_collection = {
+### ```
+### - Examples:
+### - unit and building and manpower are mutually exclusive
+### - Does not support the '=' sign in comparison!
+### Checks the size of a given collection. Collection elements should be tags. Requires country scope. Supports both anonymous and regular collections
+## scope = { country }
+alias[trigger:count_in_collection] = {
+	### A reference to another collection that will be used as input
+	collection = collection:<collection>
+	### A reference to another collection that will be used as input
+	collection = enum[built_in_collections]
+	### Anonymous collection
+	collection = single_alias_right[anonymous_collection]
+	buildings = {
+		## cardinality = ~1..inf
+		<building>
+	}
+	### Does not support '=' sign!
+	size = variable_field
+}
+
+### ```
+### }
+### 	size > 500000 # Total deployed manpower
+### 	manpower = yes
+### 	collection = collection:my_awesome_collection
+### count_in_collection = {
+### }
+###		size > 10 
+### 	buildings = { industrial_complex } # If multiple buildings are passed, their sum will be checked
+### 	collection = collection:my_awesome_collection
+### count_in_collection = {
+### }
+### 	size > 10
+### 	unit = infantry   # See script_enum_equipment_category
+### 	collection = collection:my_awesome_collection
+### count_in_collection = {
+### ```
+### - Examples:
+### - unit and building and manpower are mutually exclusive
+### - Does not support the '=' sign in comparison!
+### Checks the size of a given collection. Collection elements should be tags. Requires country scope. Supports both anonymous and regular collections
+## scope = { country }
+alias[trigger:count_in_collection] = {
+	### A reference to another collection that will be used as input
+	collection = collection:<collection>
+	### A reference to another collection that will be used as input
+	collection = enum[built_in_collections]
+	### Anonymous collection
+	collection = single_alias_right[anonymous_collection]
+	manpower = yes
+	### Does not support '=' sign!
+	size = variable_field
+}
+
+### - Example: *collection_size = { input = collection:my_awesome_collection value > 1 }*
+### - Variables can be used
+### - Multiple comparisons are allowed: value > x value < y
+### - Supported operators: <, >, = (THIS IS NOT TRUE AS OF 1.17.0.7)
+### - Comparison is inclusive, so "value > X" actually means "value >= X" etc.
+### Compares size of a collection to a value. Supports both anonymous and regular collections
+## scope = { any }
+alias[trigger:collection_size] = {
+	### A reference to another collection that will be used as input
+	input = collection:<collection>
+	### A reference to another collection that will be used as input
+	input = enum[built_in_collections]
+	### Anonymous collection
+	input = single_alias_right[anonymous_collection]
+	### Supports multiple "value" fields. Supported operators: <, >, = (THIS IS NOT TRUE AS OF 1.17.0.7). Variables can be used
+	## cardinality = ~1..inf
+	value = variable_field
+}
+### Checks power value of current country's faction projection. Can use < or > to compare the value
+## scope = { country}
+alias[trigger:faction_power_projection] = int #TODO check values and variable support
+
+### Checkss the active faction upgrade against the specified upgrade. works with >, <, =
+## scope = { country }
+alias[trigger:faction_upgrade_level] = <faction_upgrade> #TODO check if also member upgrade
+
+### Checks influence value of current country in the faction. Can use < or > to compare the value
+## scope = { country }
+alias[trigger:faction_influence_score] = int #TODO check values and variable support
+
+### Checks influence ratio of current country in the faction
+## scope = { country }
+alias[trigger:faction_influence_ratio] = variable_field #TODO check values and variable support
+
+### Checks if the current country is in a faction with a template
+## scope = { country }
+alias[trigger:has_faction_template] = <faction_template>
+
+### Checks manifest fulfillment value of current country's faction manifest. Can use < or > to compare the value
+## scope = { country }
+alias[trigger:faction_manifest_fulfillment] = float #TODO check values and variable support
+
+### Checks influence rank in the faction of the current country. Can use < or > to compare the value
+## scope = { country }
+alias[trigger:faction_influence_rank] = int #TODO check values and variable support
+
+### Checks if the country's faction has successfully completed a goal. Supports both regular goals and manifests
+## scope = { country }
+alias[trigger:has_completed_faction_goal] = <faction_goal>
+
+### Checks if the country's faction has an active or completed goal
+## scope = { country }
+alias[trigger:has_faction_goal] = <faction_goal>
+
+### Checks fulfillment of a faction goal for the current country's faction.
+### 
+### value > X, supports > and <, can accept variables, can be repeated multiple times
+## scope = { country }
+alias[trigger:faction_goal_fulfillment] = {
+	### Supports both regular goals and manifests
+	goal = <faction_goal>
+	## cardinality = 1..inf
+	value = variable_field #TODO check possible values
+}
+
+### is country at offensive war without specific ally present
+## scope = { country }
+alias[trigger:has_offensive_war_without_friend] = scope[country]
+### is country at offensive war without specific ally present
+## scope = { country }
+alias[trigger:has_offensive_war_without_friend] = enum[country_tags]
+
+### Checks if the current country exceeds the current faction leader and its subjects in deployed manpower
+## scope = { country }
+alias[trigger:has_manpower_to_become_leader] = bool
+
+### Checks if the current country exceeds the faction leader in number of factories
+## scope = { country }
+alias[trigger:has_industry_to_become_leader] = bool
+
+### Checks if any enemy has enough naval dominance to assert control in certain strategic region.
+## scope = { country }
+alias[trigger:has_enemy_naval_control] = <strategic_region>
+
+### Checks if friendly nations and country scope together has enough naval dominance to assert control in strategic region.
+## scope = { country }
+alias[trigger:has_naval_control] = <strategic_region>
+
+### Checks if any of the provided states fulfill the specified triggers.
+###
+### The `target` supports script constants and `tooltip` supports bindable localization.
+## scope = { any }
+## push_scope = state
+alias[trigger:any_state_of] = {
+	## cardinality = 0..1
+	tooltip = localisation
+	## cardinality = 0..1
+	tooltip = single_alias_right[bindable_loc]
+	target = {
+		## cardinality = 1..inf
+		<state>
+	}
+	target = value[constant]
+	## cardinality = 0..inf
+	alias_name[trigger] = alias_match_left[trigger]
+	## push_scope = country
+	## cardinality = 0..1
+	controller = {
+		## cardinality = 1..inf
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+}
+
+### Checks if all of the provided countries fulfill the specified triggers.
+###
+### The `target` supports script constants and `tooltip` supports bindable localization.
+## scope = { any }
+## push_scope = country
+alias[trigger:all_country_of] = {
+	## cardinality = 0..1
+	tooltip = localisation
+	## cardinality = 0..1
+	tooltip = single_alias_right[bindable_loc]
+	target = {
+		## cardinality = 1..inf
+		enum[country_tags]
+	}
+	target = value[constant]
+	## cardinality = 1..inf
+	alias_name[trigger] = alias_match_left[trigger]
+}
+
+### Checks if the provided trigger is true for all countries that claims the state in scope.
+### 
+### `tooltip` supports bindable localization.
+## scope = { state }
+## push_scope = country
+alias[trigger:all_claimant] = {
+	## cardinality = 0..1
+	tooltip = localisation
+	## cardinality = 0..1
+	tooltip = single_alias_right[bindable_loc]
+	## cardinality = 1..inf
+	alias_name[trigger] = alias_match_left[trigger]
+}
+
+### Checks if any of the provided countries fulfill the specified triggers.
+###
+### The `target` supports script constants and `tooltip` supports bindable localization.
+## scope = { any }
+## push_scope = country
+alias[trigger:any_country_of] = {
+	## cardinality = 0..1
+	tooltip = localisation
+	## cardinality = 0..1
+	tooltip = single_alias_right[bindable_loc]
+	target = {
+		## cardinality = 1..inf
+		enum[country_tags]
+	}
+	target = value[constant]
+	## cardinality = 1..inf
+	alias_name[trigger] = alias_match_left[trigger]
+}
+
+### Checks if any country that has an original tag that matches any of the provided countries fulfill the specified triggers.
+### 
+### The `target` supports script constants and `tooltip` supports bindable localization.
+## scope = { any }
+## push_scope = country
+alias[trigger:any_country_with_original_tag_of] = {
+	## cardinality = 0..1
+	tooltip = localisation
+	## cardinality = 0..1
+	tooltip = single_alias_right[bindable_loc]
+	target = {
+		## cardinality = 1..inf
+		enum[country_tags]
+	}
+	target = value[constant]
+	## cardinality = 1..inf
+	alias_name[trigger] = alias_match_left[trigger]
+}
+
+### Checks if any of the provided countries (except for the current country) fulfill the specified triggers.
+###
+### The `target` supports script constants and `tooltip` supports bindable localization.
+## scope = { any }
+## push_scope = country
+alias[trigger:any_other_country_of] = {
+	## cardinality = 0..1
+	tooltip = localisation
+	## cardinality = 0..1
+	tooltip = single_alias_right[bindable_loc]
+	target = {
+		## cardinality = 1..inf
+		enum[country_tags]
+	}
+	target = value[constant]
+	## cardinality = 1..inf
+	alias_name[trigger] = alias_match_left[trigger]
+}
+
+### Checks if any country that has an original tag that matches any of the provided countries and isn't the current country fulfill the specified triggers.
+###
+### The `target` supports script constants and `tooltip` supports bindable localization.
+## scope = { any }
+## push_scope = country
+alias[trigger:any_other_country_with_original_tag_of] = {
+	## cardinality = 0..1
+	tooltip = localisation
+	## cardinality = 0..1
+	tooltip = single_alias_right[bindable_loc]
+	target = {
+		## cardinality = 1..inf
+		enum[country_tags]
+	}
+	target = value[constant]
+	## cardinality = 1..inf
+	alias_name[trigger] = alias_match_left[trigger]
+}
+
+### checks if the current unit leader is leading an army that has any division in a specific province
+## scope = { character unit_leader }
+alias[trigger:is_leading_army_in_province] = enum[provinces]
+
+### Checks if the country has reached the specified number of mastery levels (rewards) for the given subdoctrine
+## scope = { country }
+alias[trigger:has_mastery_level] = {
+	amount = int #TODO check values and variable support
+	subdoctrine = <subdoctrine>
+}
+
+### Checks if the country's faction has a specific active rule
+## scope = { country }
+alias[trigger:has_active_rule] = <faction_rule>
+
+### Whether the faction has unlocked the research
+## scope = { country }
+alias[trigger:has_faction_research_unlocked] = bool
+
+### Whether the faction has unlocked the military operations
+## scope = { country }
+alias[trigger:has_faction_military_unlocked] = bool
+
+### Checks if the current country has enough political influence to become faction leader
+## scope = { country }
+alias[trigger:has_enough_influence_for_leadership] = bool
+
+### Compares the ideology support of the country's ruling party for the ideology of the faction it wants to join
+### Example\n```\ncompare_ideology_with_faction = {\n\tvalue > 0.5\n\tleader = FROM\n}\n```\n"
+## scope = { country }
+alias[trigger:compare_ideology_with_faction] = {
+	value = float #TODO check variables and ranges
+	leader = scope[country] #todo check if vars work
+	leader = enum[country_tags]
+}
+
+### TODO - figure out what it does
+## scope = { any }
+alias[trigger:tooltip_evaluation] = eval

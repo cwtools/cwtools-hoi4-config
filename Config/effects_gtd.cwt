@@ -33,6 +33,8 @@ alias[effect:every_scientist] = {
 	## cardinality = 0..1
 	display_individual_scopes = bool
 	## cardinality = 0..1
+	visible_when_empty = bool
+	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
@@ -360,6 +362,8 @@ alias[effect:every_allied_country] = {
 	random_select_amount = int[1..inf]
 	## cardinality = 0..1
 	display_individual_scopes = bool
+	## cardinality = 0..1
+	visible_when_empty = bool
 	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]

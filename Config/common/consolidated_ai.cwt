@@ -16,6 +16,8 @@ types = {
 				<focus>
 				## cardinality = 0..inf
 				<shared_focus>
+				## cardinality = 0..inf
+				<joint_focus>
 			}
 		}
 	}
@@ -36,6 +38,9 @@ types = {
 
 			}
 		}
+	}
+	type[ai_faction_theater] = {
+		path = "game/common/ai_faction_theaters"
 	}
 }
 	# complex_enum[ai_equipment_design] = {
@@ -76,6 +81,8 @@ ai_focus = {
 			<focus>
 			## cardinality = 0..inf
 			<shared_focus>
+			## cardinality = 0..inf
+			<joint_focus>
 		}
 	}
 
@@ -404,6 +411,54 @@ ai_equipment_design_group = {
 			enum[module_categories]
 		}
 	}
+}
+
+ai_faction_theater = {
+	### Name of the theater (Loc Environment = faction leader: COUNTRY)
+	name = localisation
+	
+	### How likely AI is to create this theater
+	### SCOPE = actor : COUNTRY
+	## scope = country
+	ai_will_do = {
+		enum[base_factor] = variable_field
+		alias_name[modifier_rule] = alias_match_left[modifier_rule]
+	}
+
+	### Makes AI to abandon owned theater
+	### SCOPE = actor : COUNTRY
+	## scope = country
+	## cardinality = 0..1
+	cancel = {
+		## cardinality = ~1..inf
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	
+	### NOTE - the areas of the theater must be connected	
+	###
+	### List of strategic region IDs in this theater
+	regions = {
+		## cardinality = ~1..inf
+		<strategic_region>
+	}
+
+	### 
+	### - if the number of countries needed for the theater is less than are in this list, the remaining countries will be left not assigned to the theater.
+	### - Note, that AI will *not* try to assign every country from this list
+	### - The AI will try to assign countries going from top to bottom until theater's needs are fulfilled
+	### Priority list for countries to be assigned to the theater, if those countries are present in the faction.
+	## cardinality = 0..1
+	preferred_countries = {
+		#TODO check if this is actually how it works
+		## cardinality = ~1..inf
+		enum[country_tags]
+	}
+	
+	### - Defaults to "no"
+	### - This flag allows to override that behavior and create the theater anyway, as long as at least one region is available
+	### By default, the first region in the list of regions must be available in order for the theater to be created
+	## cardinality = 0..1
+	can_skip_first_region = bool
 }
 
 values = {

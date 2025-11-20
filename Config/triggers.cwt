@@ -457,12 +457,14 @@ alias[trigger:ships_in_area] = {
 	size = int
 }
 
-### Checks for amount of divisions, additionally of a specified type.
+### Checks for amount of divisions, additionally of a specified type
 ## scope = country
 alias[trigger:has_army_size] = {
 	size = float
 	## cardinality = 0..1
 	type = enum[land_units]
+	## cardinality = 0..1
+	unit_category = enum[unit_category]
 }
 
 ### Checks for amount of ships, additionally of a specified type, archetype, or sub unit definition. Example: has_navy_size = { size > 10 type = convoy }; has_navy_size = { size < 1 archetype = ship_hull_light }; has_navy_size = { size > 39 unit = heavy_cruiser };	has_navy_size = { size < 100 }.
@@ -750,7 +752,8 @@ alias[trigger:has_built] = {
 	value = int
 }
 
-### Checks if country has available ideas with specific traits more than limit.
+### Checks if country has available ideas with specific traits more than limit. Possibly causes crashes.
+## severity = warning
 ## scope = country
 alias[trigger:has_available_idea_with_traits] = {
 	idea = <country_leader_trait>
@@ -1125,6 +1128,7 @@ alias[trigger:has_wargoal_against] = enum[country_tags]
 alias[trigger:has_wargoal_against] = {
 	target = scope[country]
 	target = enum[country_tags]
+	## cardinality = 0..1
 	type = <wargoal>
 }
 

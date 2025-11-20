@@ -38,6 +38,8 @@ country_tag_alias = {
 			value[variable]
 			## cardinality = 0..inf
 			variable_field
+			## cardinality = 0..inf
+			scope[country]
 		}
 		## cardinality = 0..1
 		target_array = value[array]

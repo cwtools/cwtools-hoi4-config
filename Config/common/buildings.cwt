@@ -11,7 +11,7 @@ types = {
 		subtype[provincial] = {
 			level_cap = {
 				## cardinality = 1..inf
-				province_max = scalar
+				province_max = int_variable_field
 			}
 		}
 		subtype[landmark] = {
@@ -21,6 +21,10 @@ types = {
 			spawn_point = locks_spawn
 		}
 		subtype[state] = {
+			level_cap = {
+				## cardinality = 1..inf
+				state_max = int_variable_field
+			}
 		}
 	}
 	type[spawn_point] = {
@@ -51,6 +55,8 @@ building = {
 	show_on_map_meshes = int
 	## cardinality = 0..1
 	always_shown = bool
+	## cardinality = 0..1
+	drawn_at_distance = bool
 	## cardinality = 0..1
 	has_destroyed_mesh = bool
 	## cardinality = 0..1
@@ -91,6 +97,10 @@ building = {
 	radar = bool
 	## cardinality = 0..1
 	nuclear_reactor = bool
+	## cardinality = 0..1
+	naval_supply_hub = bool
+	## cardinality = 0..1
+	naval_headquarter = bool
 
 	## cardinality = 0..1
 	military_production = float
@@ -115,6 +125,15 @@ building = {
 	# Yes is default
 	## cardinality = 0..1
 	is_buildable = bool
+
+	### The only known prerequisite is building_dependency
+	## cardinality = 0..1
+	building_prerequisite = {
+		building_dependency = {
+			building = <building>
+			level = int_variable_field
+		}
+	}
 
 	# no is default
 	## cardinality = 0..1
@@ -211,6 +230,13 @@ building = {
 	# No is default
 	## cardinality = 0..1
 	disable_grow_animation = bool
+
+	### GUI elements tied to the building?
+	## cardinality = 0..1
+	modules = {
+		## cardinality = ~1..inf
+		scalar
+	}
 }
 
 spawn_point = {

@@ -1142,6 +1142,34 @@ values = {
 		
 		# end of wuw
 
+		### NCNS Variables
+
+		### total amount of resources extracted by the world
+		global_resource_extracted_total
+		### total amount of specific resource extracted by the world, resource type is defined in target global_resource_extracted@steel
+		global_resource_extracted@<resource>
+		### Checks influence ratio of current country in the faction
+		faction_influence_ratio
+		### total amount of resources extracted by the country's faction
+		faction_resource_extracted_total
+		### total amount of specific resource extracted by the country's faction, resource type is defined in target faction_resource_extracted@steel
+		faction_resource_extracted@<resource>
+		### Checks power value of current country's faction projection
+		faction_power_projection
+		### Checks influence value of current country in the faction
+		faction_influence_score
+		### Checks manifest fulfillment value of current country's faction manifest
+		faction_manifest_fulfillment
+		### Checks influence rank in the faction of the current country
+		faction_influence_rank
+		### Total constructions of naval_headquarter
+		total_constructed_naval_headquarter
+		### Total constructions of naval_supply_hub
+		total_constructed_naval_supply_hub
+		### Total produced equipment of typesupport_ship
+		total_equipment_produced_support_ship
+		### end NCNS variables
+
 		###  TO be sorted
 		### global
 		### An array of controller countries for each province. In this case, the province ID serves as the index: the controller of province 1234 is province_controllers^1234. 
@@ -1214,5 +1242,13 @@ values = {
 		## bandaid constants for variables
 		constant:<script_constant>.enum[constant_one]
 		constant:<script_constant>.enum[constant_two]
+	}
+	value[constant] = {
+		## constant hacky
+		constant:<script_constant>
+
+		## bandaid constants for variables
+		constant:<script_constant>.enum[constant_one]
+		constant:<script_constant>.enum[constant_two]		
 	}
 }

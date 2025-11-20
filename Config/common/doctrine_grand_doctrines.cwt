@@ -1,0 +1,265 @@
+#### TODO - DOCUMENTATION!
+
+types = {
+	type[grand_doctrine] = {
+		path = "game/common/doctrines/grand_doctrines"
+		subtype[land_grand_doctrine] = {
+			folder = land
+		}
+		subtype[air_grand_doctrine] = {
+			folder = air
+		}
+		subtype[naval_grand_doctrine] = {
+			folder = naval
+		}
+	}
+}
+
+### - Tracks are slots for Subdoctrines - they limit how many of them and which type can be used
+### - Grand Doctrine defines what Tracks are available and gives Milestones bonuses (tradition tree finisher bonus)
+### - Subdoctrine Rewards are singular traditions that can be unlocked by spending Mastery (Unity)
+### - Subdoctrines are Tradition Trees that can be selected depending on a track
+### Personal note - doctrine changes as Tradition Trees from Stellaris. When viewing them that way
+###
+### - For each track, the grand doctrine has a **Milestone** which is additional reward for completing that track
+### - Also, activating a grand doctrine makes available its corresponding **Subdoctrine Tracks**
+### - Activating a grand doctrine gives immediate effects, like unit stat bonuses or unlocking tactics
+### - The player can choose any available grand doctrine for that folder and activate it by paying an XP cost
+### **Grand doctrines** are at the root of each doctrine **Folder**
+## replace_scope = { this = country root = country }
+grand_doctrine = {
+	subtype[land_grand_doctrine] = {
+		folder = land
+	}
+	subtype[air_grand_doctrine] = {
+		folder = air
+	}
+	subtype[naval_grand_doctrine] = {
+		folder = naval
+	}
+
+	name = localisation
+	description = localisation
+	icon = <spriteType>
+	xp_cost = int
+	xp_type = enum[xp_type]
+
+	## cardinality = 0..1
+	available = {
+		## cardinality = ~1..inf
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+
+	## cardinality = 0..1
+	visible = {
+		## cardinality = ~1..inf
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+
+	## cardinality = 0..1
+	ai_will_do = {
+		## cardinality = ~1..1
+		enum[base_factor] = float
+		alias_name[modifier_rule] = alias_match_left[modifier_rule]
+	}
+
+	### Activating a grand doctrine makes available its corresponding **Subdoctrine Tracks**
+	###
+	### Refer to script names of tracks
+	## cardinality = 0..1
+	tracks = {
+		## cardinality = ~1..inf
+		<doctrine_track>
+	}
+
+	#### Scripting Activation Effects - Sync this between Grand Doctrines, Milestones, Subdoctrines, Rewards
+	### Any scripted effects
+	## cardinality = 0..1
+	effect = {
+		## cardinality = ~1..inf
+		alias_name[effect] = alias_match_left[effect]
+	}
+
+	### Do not use add_equipment_bonus since its effect will not remove bonus if doctrine is changed
+	###
+	### Add equipment bonuses
+	## cardinality = 0..1
+	equipment_bonus = {
+		## cardinality = 0..inf
+		enum[equipment_bonus_type] = {
+			## cardinality = 0..inf
+			enum[equipment_stat] = variable_field
+			## cardinality = 0..inf
+			enum[production_stat] = variable_field
+			## cardinality = 0..1
+			instant = bool
+		}
+		## cardinality = 0..inf
+		<equipment_group> = {
+			## cardinality = 0..inf
+			enum[equipment_stat] = variable_field
+			## cardinality = 0..inf
+			enum[production_stat] = variable_field
+			## cardinality = 0..1
+			instant = bool
+		}
+	}
+
+	### Add unit stat bonuses - unit categories
+	## cardinality = 0..inf
+	enum[unit_category] = {
+		## cardinality = 0..inf
+		alias_name[unit_stat] = alias_match_left[unit_stat]
+		alias_name[naval_stat] = alias_match_left[naval_stat]
+		alias_name[air_stat] = alias_match_left[air_stat]
+		## cardinality = 0..inf
+		battalion_mult = {
+			## cardinality = 1..inf
+			category = enum[unit_category]
+			## cardinality = 1..inf
+			alias_name[unit_stat] = alias_match_left[unit_stat]
+			## cardinality = 0..1
+			add = bool
+			## cardinality = 0..1
+			display_as_percentage = bool
+		}
+	}
+	### Add unit stat bonuses - units
+	## cardinality = 0..inf
+	<unit> = {
+		alias_name[unit_stat] = alias_match_left[unit_stat]
+		alias_name[naval_stat] = alias_match_left[naval_stat]
+		alias_name[air_stat] = alias_match_left[air_stat]
+		## cardinality = 0..inf
+		battalion_mult = {
+			## cardinality = 1..inf
+			category = enum[unit_category]
+			## cardinality = 1..inf
+			alias_name[unit_stat] = alias_match_left[unit_stat]
+			## cardinality = 0..1
+			add = bool
+			## cardinality = 0..1
+			display_as_percentage = bool
+		}
+	}
+
+	### Enabling tactics
+	## cardinality = 0..inf
+	enable_tactic = <combat_tactic>
+
+	### Country-level modifiers
+	## cardinality = 0..1
+	modifier = {
+		alias_name[modifier] = alias_match_left[modifier]
+	}
+
+	### Country-level modifiers
+	## cardinality = 0..inf
+	alias_name[modifier] = alias_match_left[modifier]
+
+	### For each track, the grand doctrine has a **Milestone** which is additional reward for completing that track
+	###
+	### Milestones rewards
+	milestones = {
+		## cardinality = ~1..inf
+		{
+			#### Scripting Activation Effects - Sync this between Grand Doctrines, Milestones, Subdoctrines, Rewards
+			### Any scripted effects
+			## cardinality = 0..1
+			effect = {
+				## cardinality = ~1..inf
+				alias_name[effect] = alias_match_left[effect]
+			}
+
+			### Do not use add_equipment_bonus since its effect will not remove bonus if doctrine is changed
+			###
+			### Add equipment bonuses
+			## cardinality = 0..1
+			equipment_bonus = {
+				## cardinality = 0..inf
+				enum[equipment_bonus_type] = {
+					## cardinality = 0..inf
+					enum[equipment_stat] = variable_field
+					## cardinality = 0..inf
+					enum[production_stat] = variable_field
+					## cardinality = 0..1
+					instant = bool
+				}
+				## cardinality = 0..inf
+				<equipment_group> = {
+					## cardinality = 0..inf
+					enum[equipment_stat] = variable_field
+					## cardinality = 0..inf
+					enum[production_stat] = variable_field
+					## cardinality = 0..1
+					instant = bool
+				}
+			}
+
+			### Add unit stat bonuses - unit categories
+			## cardinality = 0..inf
+			enum[unit_category] = {
+				## cardinality = 0..inf
+				alias_name[unit_stat] = alias_match_left[unit_stat]
+				alias_name[naval_stat] = alias_match_left[naval_stat]
+				alias_name[air_stat] = alias_match_left[air_stat]
+				## cardinality = 0..inf
+				battalion_mult = {
+					## cardinality = 1..inf
+					category = enum[unit_category]
+					## cardinality = 1..inf
+					alias_name[unit_stat] = alias_match_left[unit_stat]
+					## cardinality = 0..1
+					add = bool
+					## cardinality = 0..1
+					display_as_percentage = bool
+				}
+			}
+			### Add unit stat bonuses - units
+			## cardinality = 0..inf
+			<unit> = {
+				alias_name[unit_stat] = alias_match_left[unit_stat]
+				alias_name[naval_stat] = alias_match_left[naval_stat]
+				alias_name[air_stat] = alias_match_left[air_stat]
+				## cardinality = 0..inf
+				battalion_mult = {
+					## cardinality = 1..inf
+					category = enum[unit_category]
+					## cardinality = 1..inf
+					alias_name[unit_stat] = alias_match_left[unit_stat]
+					## cardinality = 0..1
+					add = bool
+					## cardinality = 0..1
+					display_as_percentage = bool
+				}
+			}
+
+			### Enabling tactics
+			## cardinality = 0..inf
+			enable_tactic = <combat_tactic>
+
+			### Country-level modifiers
+			## cardinality = 0..1
+			modifier = {
+				alias_name[modifier] = alias_match_left[modifier]
+			}
+
+			### Country-level modifiers
+			## cardinality = 0..inf
+			alias_name[modifier] = alias_match_left[modifier]
+		}
+	}
+}
+
+enums = {
+	enum[xp_type] = {
+		army
+		air
+		navy
+	}
+	enum[doctrine_folder] = {
+		land
+		air
+		naval
+	}
+}

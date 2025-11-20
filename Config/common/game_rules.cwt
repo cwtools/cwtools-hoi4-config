@@ -28,6 +28,8 @@ game_rule = {
 		allow_achievements = bool
 		## cardinality = 0..1
 		required_dlc = enum[dlc]
+		## cardinality = 0..1
+		exclude_dlc = enum[dlc]
 	}
 	### Specify an option with the "default" token to override the behavior of treating the first option as the default.
 	## cardinality = 0..1
@@ -40,5 +42,7 @@ game_rule = {
 		allow_achievements = bool
 		## cardinality = 0..1
 		required_dlc = enum[dlc]
+		## cardinality = 0..1
+		exclude_dlc = enum[dlc]
 	}
 }

@@ -921,6 +921,8 @@ alias[effect:set_state_flag] = {
 alias[effect:clr_state_flag] = value[state_flag]
 
 ### Create a faction of specified name.
+## error_if_only_match = 'create_faction' effect is deprecated and can cause crashes. Use 'create_faction_from_template' instead
+## severity = warning
 ## scope = country
 alias[effect:create_faction] = localisation_inline
 
@@ -1050,7 +1052,7 @@ alias[effect:build_railway] = {
 ### Starts building construction for amount of levels in specified state or province.
 ## scope = state
 alias[effect:add_building_construction] = {
-	type = <building.state>
+	type = <building>
 	level = int_variable_field
 	## cardinality = 0..1
 	instant_build = bool
@@ -1223,6 +1225,8 @@ alias[effect:every_owned_state] = {
 	## cardinality = 0..1
 	display_individual_scopes = bool
 	## cardinality = 0..1
+	visible_when_empty = bool
+	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
@@ -1306,7 +1310,7 @@ alias[effect:news_event] = <event.news_event>
 alias[effect:declare_war_on] = {
 	target = scope[country]
 	target = enum[country_tags]
-	## cardinality = ~0..1
+	## cardinality = ~1..1
 	type = <wargoal>
 	## cardinality = 0..1
 	generator = {
@@ -1360,6 +1364,9 @@ alias[effect:start_civil_war] = {
 	ruling_party = <ideology>
 	## cardinality = 0..1
 	ruling_party = variable_field
+	### Vanilla uses ROOT in multiple places, no idea how it works
+	## cardinality = 0..1
+	ruling_party = ROOT
 	### Size of breakaway and percent of equip and div going to breakaway.
 	## cardinality = 0..1
 	size = variable_field[0..1]
@@ -2051,6 +2058,8 @@ alias[effect:every_other_country] = {
 	## cardinality = 0..1
 	display_individual_scopes = bool
 	## cardinality = 0..1
+	visible_when_empty = bool
+	## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
@@ -2359,7 +2368,7 @@ alias[effect:remove_relation_modifier] = {
 ### Sets specific level of a building construction for amount of levels in specified state or province.
 ## scope = state
 alias[effect:set_building_level] = {
-	type = <building.state>
+	type = <building>
 	level = int_variable_field
 	## cardinality = 0..1
 	instant_build = yes
@@ -3158,7 +3167,7 @@ alias[effect:start_border_war] = {
 		num_provinces = int[1..100]
 		on_win = <event>
 		on_lose = <event>
-		## cardinality = ~0..1
+		## cardinality = 0..1
 		on_cancel = <event>
 		### Score for selecting a leader
 		## cardinality = 0..1
@@ -3190,7 +3199,7 @@ alias[effect:start_border_war] = {
 		num_provinces = int[1..100]
 		on_win = <event>
 		on_lose = <event>
-		## cardinality = ~0..1
+		## cardinality = 0..1
 		on_cancel = <event>
 	}
 }
@@ -4007,6 +4016,7 @@ alias[effect:add_ai_strategy] = {
 	type = enum[ai_role_strats]
 	id = value[ai_template_roles]
 	id = value[ai_equipment_roles]
+	id = enum[equipment_category]
 	value = int
 }
 
@@ -4188,10 +4198,13 @@ alias[effect:add_ai_strategy] = {
 alias[effect:add_ai_strategy] = {
 	type = scorched_earth_prio
 	id = scope[country]
+	### No clue what this does in scorched_earth_prio context
+	## cardinality = 0..1
+	value = int
 	## cardinality = 0..1
 	states = {
 		## cardinality = ~1..inf
-		int
+		<state>
 	}
 }
 
@@ -4199,13 +4212,13 @@ alias[effect:add_ai_strategy] = {
 ## scope = country
 alias[effect:add_ai_strategy] = {
 	type = put_unit_buffers
-	ratio = float[0..1]
+	ratio = float[0..inf]
 	## cardinality = 0..1
 	order_id = int
 	## cardinality = 0..1
 	states = {
 		## cardinality = ~1..inf
-		int
+		<state>
 	}
 	## cardinality = 0..inf
 	area = <ai_area>
@@ -4220,8 +4233,11 @@ alias[effect:add_ai_strategy] = {
 	type = front_control
 	## cardinality = 0..inf
 	tag = scope[country]
+	### Vanilla uses ID with a country tag onlu in several spots. Treat this syntax as questionable
+	## cardinality = 0..1
+	id = scope[country]
 	## cardinality = 0..inf
-	state = int
+	state = <state>
 	## cardinality = 0..inf
 	area = <ai_area>
 	## cardinality = 0..inf
@@ -4249,6 +4265,9 @@ alias[effect:add_ai_strategy] = {
 	execute_order = bool
 	## cardinality = 0..1
 	manual_attack = bool
+	### Vanilla uses value field in front_control strat only in several spots. Treat this syntax as questionable
+	## cardinality = 0..1
+	value = int
 }
 
 ### Adds strategy entry to country AI.
@@ -4258,7 +4277,7 @@ alias[effect:add_ai_strategy] = {
 	## cardinality = 0..inf
 	tag = scope[country]
 	## cardinality = 0..inf
-	state = int
+	state = <state>
 	## cardinality = 0..inf
 	strategic_region = <strategic_region>
 	## cardinality = 0..inf
@@ -4288,6 +4307,14 @@ alias[effect:add_ai_strategy] = {
 ### Adds strategy entry to country AI.
 ## scope = country
 alias[effect:add_ai_strategy] = {
+	type = spent_faction_initiative_priority
+	id = enum[faction_strats_targets]
+	value = int
+}
+
+### Adds strategy entry to country AI.
+## scope = country
+alias[effect:add_ai_strategy] = {
 	type = asking_foreign_garrison
 	value = int
 	## cardinality = 0..1
@@ -4303,7 +4330,7 @@ alias[effect:add_ai_strategy] = {
 	## cardinality = 0..1
 	mission_target = scope[country]
 	## cardinality = 0..inf
-	state = int
+	state = <state>
 	## cardinality = 0..1
 	priority = int
 	## cardinality = 0..1
@@ -4323,6 +4350,108 @@ alias[effect:add_ai_strategy] = {
 	operation_target = variable_field
 }
 
+### Adds strategy entry to country AI.
+## scope = country
+alias[effect:add_ai_strategy] = {
+	type = enum[market_seller_strats]
+	## cardinality = 0..1
+	equipment_type = <equipment>
+	## cardinality = 0..1
+	seller = scope[country]
+	## cardinality = 0..1
+	seller = enum[country_tags]
+	value = int
+}
+
+### Adds strategy entry to country AI.
+## scope = country
+alias[effect:add_ai_strategy] = {
+	type = force_concentration_front_factor
+	### Target a specific country. Can specify multiple.
+	## cardinality = 0..inf
+	tag = scope[country]
+	### Target a state. Can specify multiple.
+	## cardinality = 0..inf	
+	state = <state>		
+	### Target a strategic region. Can specify multiple.
+	## cardinality = 0..inf
+	strategic_region = <strategic_region>
+	### Target a specific ai area. Can specify multiple.
+	## cardinality = 0..inf
+	area = <ai_area>
+	### Trigger to check against a specific country. Scope is enemy country, FROM scope is our country.
+	## cardinality = 0..1
+	## replace_scope = { this = country root = country from = country }
+	country_trigger = {
+		## cardinality = ~1..inf
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	### # Trigger to check against a state. Scope is state. FROM scope is enemy country FROM.FROM scope is our country.
+	## cardinality = 0..1
+	## replace_scope = { this = state from = country fromfrom = country }
+	state_trigger = {
+		## cardinality = ~1..inf
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	### The strategy is enabled only if ratio of the front covered by this strategy's targets is greater than this ratio.
+	## cardinality = 0..1
+	ratio = float
+	### Factor for the normal priority. 40 means +40 %, -60 means -60 %.
+	value = int	
+}
+
+### Adds strategy entry to country AI.
+## scope = country
+alias[effect:add_ai_strategy] = {
+	type = force_concentration_target_weight
+	### Target a specific country. Can specify multiple.
+	## cardinality = 0..inf
+	tag = scope[country]
+	### Target a state. Can specify multiple.
+	## cardinality = 0..inf	
+	state = <state>		
+	### Target a strategic region. Can specify multiple.
+	## cardinality = 0..inf
+	strategic_region = <strategic_region>
+	### Target a specific ai area. Can specify multiple.
+	## cardinality = 0..inf
+	area = <ai_area>
+	### Trigger to check against a specific country. Scope is enemy country, FROM scope is our country.
+	## cardinality = 0..1
+	## replace_scope = { this = country root = country from = country }
+	country_trigger = {
+		## cardinality = ~1..inf
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	### # Trigger to check against a state. Scope is state. FROM scope is enemy country FROM.FROM scope is our country.
+	## cardinality = 0..1
+	## replace_scope = { this = state from = country fromfrom = country }
+	state_trigger = {
+		## cardinality = ~1..inf
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	### Factor for the normal priority. 40 means +40 %, -60 means -60 %.
+	value = int	
+}
+
+### Adds strategy entry to country AI.
+## scope = country
+alias[effect:add_ai_strategy] = {
+	type = convoy_raiding_target
+	id = scope[country]
+	value = int[0..100]
+}
+
+### Adds strategy entry to country AI.
+## scope = country
+alias[effect:add_ai_strategy] = {
+	type = naval_blockade
+	target_country = scope[country]
+	id = <strategic_region>
+	value = int[0..100]
+}
+
+
 ### Effect not shown in tooltips.
 ## scope = any
 alias[effect:hidden_effect] = {
@@ -4331,7 +4460,7 @@ alias[effect:hidden_effect] = {
 
 ### Adds legitimacy to scope country. Value has to be 0-100.
 ## scope = country
-alias[effect:add_legitimacy] = int[-100..100]
+alias[effect:add_legitimacy] = int_variable_field
 
 ### Kills a ideology leader and removes him completely, making the next in line the new party leader.
 ## scope = country

@@ -72,6 +72,10 @@ unit = {
 		can_exfiltrate_from_coast = bool
 		## cardinality = 0..1
 		affects_speed = bool
+		## cardinality = 0..1
+		rangers = bool
+		## cardinality = 0..1
+		is_artillery_brigade = bool
 
 		## cardinality = 0..1
 		### use this equipment for speed
@@ -95,27 +99,19 @@ unit = {
 		map_icon_category = enum[land_map_icons]
 
 		## cardinality = 0..1
-		### Cavalry.
-		cavalry = bool
-
-		## cardinality = 0..1
-		### Counts against special forces limit.
-		special_forces = bool
-
-		## cardinality = 0..1
-		### Marines ooh-rah.
 		marines = bool
-
 		## cardinality = 0..1
-		### Mountaineers.
 		mountaineers = bool
-
 		## cardinality = 0..1
-		### Paratroopers.
 		can_be_parachuted = bool
-
 		## cardinality = 0..1
 		can_exfiltrate_from_coast = bool
+		## cardinality = 0..1
+		affects_speed = bool
+		## cardinality = 0..1
+		rangers = bool
+		## cardinality = 0..1
+		is_artillery_brigade = bool
 
 		## cardinality = 0..1
 		### Use this equipment for speed.
@@ -126,9 +122,6 @@ unit = {
 			## cardinality = ~1..inf
 			enum[land_units]
 		}
-
-		## cardinality = 0..1
-		affects_speed = no
 
 		## cardinality = 0..1
 		### Blocks adding same unit types to a template.
@@ -206,6 +199,8 @@ unit = {
 		carrier_air_wing_size = int
 		## cardinality = 0..1
 		mega_carrier_air_wing_size = int
+		## cardinality = 0..1
+		submarine_carrier_air_wing_size = int
 	}
 	subtype[other] = {
 
@@ -315,7 +310,7 @@ division_name = {
 	can_use = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
-	## cardinality = ~0..1
+	## cardinality = ~1..1
 	division_types = {
 		## cardinality = ~1..inf
 		<unit>
@@ -444,6 +439,7 @@ enums = {
 		light_cruiser
 		screen_ship
 		submarine
+		support_ship
 
 		# MD Specific
 		corvette

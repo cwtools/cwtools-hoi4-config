@@ -1,0 +1,156 @@
+types = {
+	type[collection] = {
+		path = "game/common/collections"
+	}
+}
+
+
+### - FROM = PREV.FROM
+### - ROOT = PREV.ROOT
+### - PREV = previous scope, defined by the context in which the collection is used
+### - SCOPE = element of the input collection
+### Scopes for the 'limit' trigger:
+###
+### ```
+### }
+###		}
+###			limit = { has_government = communism }
+###		operators = {
+###		name = COLLECTION_WORLD_COMMUNIST_COUNTRIES # A reference to a loc key. Optional
+###		input = game:all_countries # A reference to another collection that will be used as input
+### world_communist_countries = {
+### ```
+### 
+### Example of a collection
+### 
+### - *country:faction_members* - all members of the country's faction if any, otherwise - empty collection
+### Built-in collections (Scope - Country)
+### - *game:all_states* - all states in the game
+### - *game:all_possible_countries* - all possible countries in the game
+### - *game:all_countries* - all currently existing countries in the game
+### - *game:scope* - current scope
+### - *game:empty* - an empty collection
+### Built-in collections (Scope - Any)
+###
+### - some_property = collection:my_awesome_collection # Notice the diff in prefix between inbuilt and custom collections
+### - some_property = game:all_countries # All countries in the game!
+### To reference a collection, simply write its name in the form `prefix:name`, like in the following example:
+###
+### Collections are groups of scopable objects of the same type.
+## scope = any
+collection = {
+	### A reference to another collection that will be used as input
+	input = enum[built_in_collections]
+	### A reference to another collection that will be used as input
+	input = collection:<collection>
+	### Constants - very limited support
+	input = value[constant]
+	### A reference to a loc key. Optional
+	## cardinality = 0..inf
+	name = localisation
+	### - FROM = PREV.FROM
+	### - ROOT = PREV.ROOT
+	### - PREV = previous scope, defined by the context in which the collection is used
+	### - SCOPE = element of the input collection
+	### Scopes for the 'limit' trigger:
+	### ```
+	### }
+	###		}
+	###			limit = { has_government = communism }
+	###		operators = {
+	###		name = COLLECTION_WORLD_COMMUNIST_COUNTRIES # A reference to a loc key. Optional
+	###		input = game:all_countries # A reference to another collection that will be used as input
+	### world_communist_countries = {
+	### ```
+	### Example of a collection
+	### 
+	### - *country:faction_members* - all members of the country's faction if any, otherwise - empty collection
+	### Built-in collections (Scope - Country)
+	### - *game:all_states* - all states in the game
+	### - *game:all_possible_countries* - all possible countries in the game
+	### - *game:all_countries* - all currently existing countries in the game
+	### - *game:scope* - current scope
+	### - *game:empty* - an empty collection
+	### Built-in collections (Scope - Any)
+	###
+	### - some_property = collection:my_awesome_collection # Notice the diff in prefix between inbuilt and custom collections
+	### - some_property = game:all_countries # All countries in the game!
+	### To reference a collection, simply write its name in the form `prefix:name`, like in the following example:
+	###
+	### Collections are groups of scopable objects of the same type.
+	###
+	### Conditions block for the collection. See collection documentation below
+	## cardinality = 0..1
+	operators = {
+		## cardinality = 0..inf
+		value[arrays_compatible_with_operators]
+		## cardinality = 0..1
+		limit = {
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+	}
+}
+
+single_alias[anonymous_collection] = {
+	### A reference to another collection that will be used as input
+	input = enum[built_in_collections]
+	### A reference to another collection that will be used as input
+	input = collection:<collection>
+	### Constants - very limited support
+	input = value[constant]
+	### A reference to a loc key. Optional
+	## cardinality = 0..1
+	name = localisation
+	### - FROM = PREV.FROM
+	### - ROOT = PREV.ROOT
+	### - PREV = previous scope, defined by the context in which the collection is used
+	### - SCOPE = element of the input collection
+	### Scopes for the 'limit' trigger:
+	### ```
+	### }
+	###		}
+	###			limit = { has_government = communism }
+	###		operators = {
+	###		name = COLLECTION_WORLD_COMMUNIST_COUNTRIES # A reference to a loc key. Optional
+	###		input = game:all_countries # A reference to another collection that will be used as input
+	### world_communist_countries = {
+	### ```
+	### Example of a collection
+	### 
+	### - *country:faction_members* - all members of the country's faction if any, otherwise - empty collection
+	### Built-in collections (Scope - Country)
+	### - *game:all_states* - all states in the game
+	### - *game:all_possible_countries* - all possible countries in the game
+	### - *game:all_countries* - all currently existing countries in the game
+	### - *game:scope* - current scope
+	### - *game:empty* - an empty collection
+	### Built-in collections (Scope - Any)
+	###
+	### - some_property = collection:my_awesome_collection # Notice the diff in prefix between inbuilt and custom collections
+	### - some_property = game:all_countries # All countries in the game!
+	### To reference a collection, simply write its name in the form `prefix:name`, like in the following example:
+	###
+	### Collections are groups of scopable objects of the same type.
+	###
+	### Conditions block for the collection. See collection documentation below
+	## cardinality = 0..1
+	operators = {
+		## cardinality = 0..inf
+		value[arrays_compatible_with_operators]
+		## cardinality = 0..1
+		limit = {
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+	}
+}
+
+enums = {
+	enum[built_in_collections] = {
+		game:empty
+		game:scope
+		game:all_countries
+		game:all_possible_countries
+		game:all_states
+		country:faction_members
+	}
+}

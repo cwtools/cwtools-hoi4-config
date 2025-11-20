@@ -1,0 +1,562 @@
+#### TODO - DOCUMENTATION! and validation of rules
+
+types = {
+	type[faction_goal] = {
+		path = "game/common/factions/goals"
+		subtype[manifest] = {
+			is_manifest = yes
+		}
+		## only_if_not = { manifest }
+		subtype[normal] = {
+
+		}
+	}
+	type[faction_member_upgrade] = {
+		path = "game/common/factions/member_upgrades"
+		path_strict = yes
+	}
+	type[faction_rule] = {
+		path = "game/common/factions/rules"
+		path_strict = yes
+		subtype[peace_conf_rule] = {
+			type = peace_conference_rules
+		}
+	}
+	type[faction_rule_group] = {
+		path = "game/common/factions/rules/groups"
+	}
+	type[faction_template] = {
+		path = "game/common/factions/templates"
+	}
+	type[faction_upgrade] = {
+		path = "game/common/factions/upgrades"
+		path_strict = yes
+	}
+}
+
+#CWT refuses to validate if mandatory fieds for normal goal are present
+#TODO needs to be looked at if manifest needs to be a different type or keep as subtype
+faction_goal = {
+
+	### Goal name (Loc Environment = faction + player country)
+	name = localisation
+	### Goal description (Loc Environment = faction + player country)
+	description = localisation 
+	
+	## error_if_only_match = This is the default value and can be omitted
+	## severity = info
+	## cardinality = 0..1
+	is_manifest = no
+	## cardinality = 0..1
+	is_manifest = yes
+
+	subtype[normal] = {
+		### Goal's category (short_term, medium_term or long_term)
+		category = enum[faction_goal_category]
+		
+		## cardinality = 0..1
+		## replace_scope = { ROOT = country }
+		allowed = {
+			## cardinality = ~1..inf
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+		
+		## cardinality = 0..1
+		## replace_scope = { ROOT = country }
+		visible = {
+			## cardinality = ~1..inf
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+
+		## cardinality = 0..1
+		## replace_scope = { ROOT = country }
+		available = {
+			## cardinality = ~1..inf
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+
+		### - SCOPE = faction leader: COUNTRY
+		### - NOTE if empty - the goal is never completed!
+		### Trigger - checks if goal completion condition is fulfilled
+		## replace_scope = { ROOT = country }
+		completed = {
+			## cardinality = ~1..inf
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+
+		## a categorization used by the UI to allow for filtering. UI asset will be GFX_group and the localization string will be group_FACTION_GOAL_FILTER
+		group = scalar
+
+
+		#TODO check default
+		### Automatically complete goal if the progress reaches 100%
+		## cardinality = 0..1
+		auto_complete = bool
+		
+		#TODO check if also for manifest
+		## error_if_only_match = This is the default value and can be omitted
+		## severity = info
+		## cardinality = 0..1
+		locked_goal = no
+		## cardinality = 0..1
+		locked_goal = yes
+		
+		### How likely the faction leader AI is to select this goal if there is a free slot
+		## cardinality = 0..1
+		## replace_scope = { ROOT = country }
+		ai_will_do = {
+			enum[base_factor] = variable_field
+			alias_name[modifier_rule] = alias_match_left[modifier_rule]
+		}
+
+		### - SCOPE = faction leader: COUNTRY
+		### Effect - runs once when the goal is completed
+		## replace_scope = { ROOT = country }
+		complete_effect = {
+			## cardinality = ~1..inf
+			alias_name[effect] = alias_match_left[effect]
+		}
+		
+		### - SCOPE = faction leader: COUNTRY
+		### Trigger - checks if goal should be removed from faction
+		## replace_scope = { ROOT = country }
+		## cardinality = 0..1
+		cancel = {
+			## cardinality = ~1..inf
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+
+		### - SCOPE = faction leader: COUNTRY
+		### Effect - runs once if the goal is canceled
+		## replace_scope = { ROOT = country }
+		## cardinality = 0..1
+		cancel_effect = {
+			## cardinality = ~1..inf
+			alias_name[effect] = alias_match_left[effect]
+		}
+
+		### Effect - runs once if the goal is selected, only runs if the goal is selected after game start
+		###
+		### SCOPE = faction leader: COUNTRY
+		## replace_scope = { ROOT = country }
+		## cardinality = 0..1
+		select_effect = {
+			## cardinality = ~1..inf
+			alias_name[effect] = alias_match_left[effect]			
+		}
+		### Effect - runs once if the goal is removed, only runs if the goal is removed after game start
+		###
+		### SCOPE = faction leader: COUNTRY
+		## replace_scope = { ROOT = country }
+		## cardinality = 0..1
+		remove_effect = {
+			## cardinality = ~1..inf
+			alias_name[effect] = alias_match_left[effect]
+		}
+	}
+
+
+
+	subtype[manifest] = {
+
+		### NOTE the following block is optional - for continuous goals only!
+		## cardinality = 0..1
+		progress = {
+
+			# we can mark dfifferent sections of the progress give effects like modifiers to different areas of the progress
+			# by doing: 
+			progress_sections = {
+			#  this can hold as many sections as you want and works dynamically
+			#  so you would create a new section by doing:
+			#  	SectionNameLoc = {
+			#  	Min = The start of the section ex 0.1 means that once 10% has been hit this section is active
+			#  	Max = the end of the section ex. 0.5 means that once 50% has been passed we have leave this section 
+			#  	So if Section1 has Max 0.5 and Section2 Min 0.5 both will be active
+			#	
+			#	Modifier = this holds a modifier that is applied when this section is in effect
+			#	Rule = This holds a new rule that is applied when this section is in effect
+			#	on_activate = is disabled for faction goals
+			#   on_deactivate = is disabled for faction goals
+			#	}
+			# 
+				## cardinality = ~1..inf
+				scalar = {
+					## cardinality = 0..1
+					min = float
+					## cardinality = 0..1
+					max = float
+				
+					## cardinality = 0..1
+					## replace_scope = { ROOT = country }
+					modifier = {
+						alias_name[modifier] = alias_match_left[modifier]
+					}
+				}
+			}
+		}
+
+		## cardinality = 0..1
+		ratio_progress = {
+
+			## cardinality = 0..1
+			scale = {
+				## cardinality = ~1..inf
+				alias_name[modifier] = alias_match_left[modifier]
+			}
+
+			# Is an extended version of progress
+			# The current progress value of a continuous goal is defined as the size of "completed_amount_collection"
+			# divided by the size of "completed_amount_collection"
+			#
+			# NOTE scripted collections are defined in "common/collections"
+			#
+			# For example:
+			#    total_amount_collection = game:all_countries # all countries in the game
+			#    completed_amount_collection = democratic_countries # countries with democratic government
+			#
+			# In the example above, the progress is defined as a ratio between the number of democratic countries in the world
+			# and the total number of countries in the world, the progress will be 100% if all countries become democratic and
+			# it will be 0% if none of the countries is democratic.
+			#
+			# For both collections: SCOPE = faction leader: COUNTRY
+			#
+			## cardinality = 0..1
+			total_amount_collection = collection:<collection>
+			## cardinality = 0..1
+			total_amount_collection = enum[built_in_collections]
+			## cardinality = 0..1
+			total_amount_collection = single_alias_right[anonymous_collection]
+			## cardinality = 0..1
+			completed_amount_collection = collection:<collection>
+			## cardinality = 0..1
+			completed_amount_collection = enum[built_in_collections]
+			## cardinality = 0..1
+			completed_amount_collection = single_alias_right[anonymous_collection]
+			
+			# Alternatively, both total amount and completed amount can be fixed values or variables:
+			## cardinality = 0..1
+			total_amount = variable_field
+			## cardinality = 0..1
+			completed_amount = variable_field
+
+			#TODO MAKE MUTUALLY EXCLUSIVE
+			
+			# NOTE
+			#  - 'total_amount' and 'total_amount_collection' are mutially exclusive!
+			#  - 'completed_amount' and 'completed_amount_collection' are mutially exclusive!
+
+			#Optional - defines how the ratio calculated above is mapped to the goal progress
+			#
+			# For example:
+			#
+			#    range = { max = 0.75 }
+			#
+			# Means that the goal progress is set to 100% when the ratio is equal to 0.75 or more
+			#
+			# Another example:
+			#
+			#    range = { min = 0.1 max = 0.8 }
+			#
+			# Means that:
+			#  - the goal progress is set to 0% when the ratio is less or equal to 0.1
+			#  - the goal progress is set to 100% when the ratio is more or equal to 0.8
+			#
+			# NOTES:
+			#  - both min and max are optional, by default min = 0, max = 1
+			#  - min can actually be greater than max, in which case the progress will increase as the ratio decreases and vice versa
+			#
+			## cardinality = 0..1
+			range = {
+				## cardinality = 0..1
+				min = float
+				## cardinality = 0..1
+				max = float
+			}
+			
+			## cardinality = 0..1
+			progress_sections = {
+			#  this can hold as many sections as you want and works dynamically
+			#  so you would create a new section by doing:
+			#  	SectionNameLoc = {
+			#  	Min = The start of the section ex 0.1 means that once 10% has been hit this section is active
+			#  	Max = the end of the section ex. 0.5 means that once 50% has been passed we have leave this section 
+			#  	So if Section1 has Max 0.5 and Section2 Min 0.5 both will be active
+			#	
+			#	Modifier = this holds a modifier that is applied when this section is in effect
+			#	Rule = This holds a new rule that is applied when this section is in effect
+			#	on_activate = is disabled for faction goals
+			#   on_deactivate = is disabled for faction goals
+			#	}
+			# 
+				## cardinality = ~1..inf
+				scalar = {
+					## cardinality = 0..1
+					min = float
+					## cardinality = 0..1
+					max = float
+				
+					## cardinality = 0..1
+					## replace_scope = { ROOT = country }
+					modifier = {
+						alias_name[modifier] = alias_match_left[modifier]
+					}
+				}
+			}
+		}
+
+	}
+}
+
+faction_member_upgrade = {
+	### The localization string key for the screen name while active. will override the group's name
+	## cardinality = 0..1
+	name = localisation
+
+	### the localization string key for the screen description while active. will override the group's desc
+	## cardinality = 0..1
+	desc = localisation
+
+	### The icon that will be displayed while active. will override the group's icon
+	## cardinality = 0..1
+	icon = scalar
+
+	### the amount of faction initiative that it cost to replace this upgrade with another
+	## cardinality = 0..1
+	upgrade_cost = int #TODO check if actually int and negative values
+
+	### A numerical value to dictate the boost the country gets based on the type of upgrade
+	bonus = float
+}
+
+faction_rule = {
+
+	# Type of the rule
+	#  - tells in which situation the rule is applicable
+	#  - determines which scope will be used when the rule trigger is called
+	#
+	# Can be an arbitrary token. However, there are several tokens that have a special meaning:
+	#
+	#    joining_rule - checks whether a country can join the faction
+	#        SCOPE = joining country: COUNTRY
+	#        FROM = faction leader: COUNTRY
+	#
+	#    war_declaration_rule - checks who can declare wars
+	#        SCOPE = country declaring the war: COUNTRY
+	#        FROM = target country: COUNTRY
+	#	
+	#	 call_to_war_rule - checks who can call to war
+	#         SCOPE = country calling to the war: COUNTRY
+	#         FROM = target country: COUNTRY
+	#
+	#    member_rules - checks whether a member can become government in exile
+	#        SCOPE = faction leader: COUNTRY
+	#
+	#	 change_leader_rules - checks which country can become the faction leader
+	#	 	 SCOPE = country that becomes the faction leader: COUNTRY
+	#
+	#    peace_conference_rules - is supposed to contain a list of peace_action_modifiers to apply during a peace conferences
+	#
+	# Rule name is localized with Country and Faction environment
+	#
+	type = scalar #TODO enum? or just multiple isntance of type with difference typename
+	
+
+	## cardinality = 0..1
+	## replace_scope = { ROOT = country }
+	visible = {
+		## cardinality = ~1..inf
+		alias_name[trigger] = alias_match_left[trigger]
+		# Whether the rule should show up in the list
+		#
+		# SCOPE = faction leader: COUNTRY
+	}
+
+	## cardinality = 0..1
+	## replace_scope = { ROOT = country }
+	available = {
+		## cardinality = ~1..inf
+		alias_name[trigger] = alias_match_left[trigger]
+		# Whether the rule should be available for the faction
+		# NOTE that this won't block the rule from being set with an effect!
+		#
+		# SCOPE = faction leader: COUNTRY
+	}
+
+	## cardinality = 0..1
+	## replace_scope = { ROOT = country }
+	can_remove = {
+		## cardinality = ~1..inf
+		alias_name[trigger] = alias_match_left[trigger]
+		# Whether the rule can be removed, if currently active
+		# NOTE that this won't block the rule from being removed with an effect!
+		#
+		# SCOPE = faction leader: COUNTRY
+	}
+
+	## cardinality = 0..1
+	## replace_scope = { ROOT = country }
+	trigger = {
+		## cardinality = ~1..inf
+		alias_name[trigger] = alias_match_left[trigger]
+
+		# NOTE : Scope depends on the type of the faction, see above!
+	}
+
+	## cardinality = 0..1
+	## replace_scope = { ROOT = country }
+	dismiss_member_trigger = {
+		## cardinality = ~1..inf
+		alias_name[trigger] = alias_match_left[trigger]
+
+	}
+
+	## cardinality = 0..1
+	## replace_scope = { ROOT = country }
+	government_in_exile_allowed_trigger = {
+		## cardinality = ~1..inf
+		alias_name[trigger] = alias_match_left[trigger]
+
+	}
+
+	## cardinality = 0..1
+	modifier = {
+		#TODO RULES
+		## cardinality = 0..inf
+		scalar = scalar 
+		#TODO RULES
+
+		# Any modifiers that come from having this rule active
+	}
+
+	## cardinality = 0..1
+	## replace_scope = { ROOT = country }
+	effect = {
+		## cardinality = ~1..inf
+		alias_name[effect] = alias_match_left[effect]
+	}
+
+
+	subtype[peace_conf_rule] = {
+		### A reference to a peace action modifier to apply during peace conferences
+		###
+		### Peace action modifiers can be found in "common/peace_conference/cost_modifiers"
+		###
+		### NOTE #1 : only applies when type = peace_conference_rules
+		###
+		### NOTE #2 : enable trigger will not run for the modifier - the modifier is enabled as long as the rule is active!
+		## cardinality = 0..1
+		peace_action_modifiers = {
+			## cardinality = ~1..inf
+			<peace_action_modifiers.faction>
+
+			# List of modifiers in this group
+		}
+	}
+
+	
+	## cardinality = 0..1
+	## replace_scope = { ROOT = country }
+	ai_will_do = {
+		enum[base_factor] = variable_field
+		alias_name[modifier_rule] = alias_match_left[modifier_rule]
+	}
+}
+
+faction_template = {
+
+	## cardinality = 0..1
+	name = localisation # Faction name
+
+	## cardinality = 0..1
+	icon = scalar
+
+	## cardinality = 0..1
+	## replace_scope = { ROOT = country }
+	visible = {
+		alias_name[trigger] = alias_match_left[trigger]
+		# Checks if template shows up when a new faction is created by a country
+		# If empty - the template won't show up (this allows, for example, to make faction templates that can only be created from script)
+		# 
+		# SCOPE = country creating a faction : COUNTRY
+	}
+	
+	## cardinality = 0..1
+	## replace_scope = { ROOT = country }
+	available = {
+		alias_name[trigger] = alias_match_left[trigger]
+		# Checks if template should be available to choose when a new faction is created by a country
+		# If empty - the template is always available (given that it is also visible)
+		#
+		# SCOPE = country creating a faction : COUNTRY
+	}
+
+	## cardinality = 0..1
+    can_leader_join_other_factions = bool #TODO check default
+	# a setting that allows this faction leader to join another faction
+	# if the faction leader leaves it destroys the existing faction and invite
+	# all the other faction members that are able to join to the new faction 
+
+	### Faction main goal. Faction can exist without goals, but why?
+	## cardinality = ~1..1
+	manifest = <faction_goal.manifest> # Main goal (faction manifest)
+
+	### Faction goals. Faction can exist without goals, but why?
+	## cardinality = ~1..1
+	goals = {
+		## cardinality = ~1..inf
+		<faction_goal>
+		# List of initial goals of the faction
+		# NOTE : Can be a DB reference or an inline definition
+	}
+
+	default_rules = {
+		## cardinality = ~1..inf
+		<faction_rule>
+		# List of rules to be set by default
+		# This overrides default rules defined in rule groups
+	}
+}
+
+faction_upgrade = {
+	### The localization string key for the screen name while active. will override the group's name
+	## cardinality = 0..1
+	name = localisation
+
+	### the localization string key for the screen description while active. will override the group's desc
+	## cardinality = 0..1
+	desc = localisation
+
+	### The icon that will be displayed while active. will override the group's icon
+	## cardinality = 0..1
+	icon = scalar
+
+	### the amount of faction initiative that it cost to replace this upgrade with another
+	## cardinality = 0..1
+	upgrade_cost = int #TODO check if actually int and negative values
+
+	### A numerical value to dictate the boost the country gets based on the type of upgrade
+	bonus = float
+
+
+	## cardinality = 0..1
+	## replace_scope = { ROOT = country }
+	ai_will_do = {
+		enum[base_factor] = variable_field
+		alias_name[modifier_rule] = alias_match_left[modifier_rule]
+	}
+}
+
+faction_rule_group = {
+	rules = {
+		## cardinality = ~1..inf
+		<faction_rule>		
+	}
+}
+
+enums = {
+	enum[faction_goal_category] = {
+		short_term
+		medium_term
+		long_term
+	}
+}

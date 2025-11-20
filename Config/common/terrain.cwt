@@ -40,24 +40,11 @@ terrain = {
 	}
 
 	subtype[water] = {
-		## cardinality = 0..1
-		naval_terrain = yes
 		is_water = yes
-
-		## cardinality = 0..inf
-		<unit.ship_unit> = {
-			## cardinality = 0..1
-			units = {
-				alias_name[unit_stat] = alias_match_left[unit_stat]
-			}
-			alias_name[naval_stat] = alias_match_left[naval_stat]
-		}
-		alias_name[naval_stat] = alias_match_left[unit_stat]
 	}
 
 	subtype[naval_terrain] = {
 		naval_terrain = yes
-		is_water = yes
 
 		## cardinality = 0..inf
 		<unit.ship_unit> = {
@@ -68,6 +55,10 @@ terrain = {
 			alias_name[naval_stat] = alias_match_left[naval_stat]
 		}
 		alias_name[naval_stat] = alias_match_left[unit_stat]
+
+		### Dev comment - It's, uh. Well it makes sense in math. If there's time I'll add a util function so that these numbers are game-representative.
+		## cardinality = 0..1
+		minimum_seazone_dominance = float
 	}
 
 	subtype[land] = {

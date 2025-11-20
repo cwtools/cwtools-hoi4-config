@@ -1,0 +1,34 @@
+types = {
+	type[strategic_location] = {
+		path = "game/common/strategic_locations"
+		subtype[province] = {
+			<building.provincial> = int
+		}
+		subtype[state] = {
+			<building.state> = int
+		}
+	}
+}
+
+
+### ```
+### }
+### 	}
+### 		my_strategic_region = 3258 # Province ID
+### 	strategic_location = {
+### 555 = { # State scope
+### ```
+### **Strategic locations** can be applied using strategic_location_building effect
+### ```
+### }
+### 	naval_base = -2 # Reduce naval base max level in province
+### 	coastal_fort = 2 # Coastal forts will get 2 extra max level in the province
+### my_strategic_location = { # A list of province buildings
+### ```
+### Example:
+###
+### Create a **strategic location** that contains province buildings extra max level value. Warning - this also supports some state buildings like air_base
+strategic_location = {
+	## cardinality = ~1..inf
+	<building> = int
+}

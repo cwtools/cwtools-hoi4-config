@@ -1,0 +1,278 @@
+# markdown resolves from bottom to top, todo also make it prettier?
+### }
+### &nbsp;&nbsp;&nbsp;&nbsp;cost = 15  
+### &nbsp;&nbsp;&nbsp;&nbsp;focus = focus_to_be_reduced  
+### reduce_focus_completion_cost = {  
+### Example:  
+###
+### The focus can be a uniform list or a single token.  
+### Reduce the cost needed to complete a specific focus. The cost accepts script constants.  
+## scope = country
+alias[effect:reduce_focus_completion_cost] = {
+	focus = <focus>
+	focus = <shared_focus>
+	cost = int
+}
+
+### Example: set_grand_doctrine = new_mobile_warfare
+###
+### Set **Grand Doctrine** for a country in scope.
+## scope = country
+alias[effect:set_grand_doctrine] = <grand_doctrine>
+
+### Example: set_sub_doctrine = mobile_infantry
+###
+### Activate the **Subdoctrine** for a country in scope.
+## scope = country
+alias[effect:set_sub_doctrine] = <subdoctrine>
+
+### You can mix and match track/subdoctrine/doctrine/folder triggers
+### 
+### Example: add_mastery = { amount = 50 track = infantry }
+###
+### Add the progress made within a **Track**, **Subdoctrine**, **Grand Doctrine** or **Doctrine Folder**.
+## scope = country
+alias[effect:add_mastery] = {
+	### How much progress to add to the specified **Track** or **Subdoctrine**
+	amount = float[0.01..inf]
+	### Add mastery only to a specific track
+	## cardinality = 0..1
+	track = <doctrine_track>
+	### Add mastery only to a specific subdoctrine
+	## cardinality = 0..1
+	sub_doctrine = <subdoctrine>
+	### Add mastery to all tracks inside a grand doctrine
+	## cardinality = 0..1
+	grand_doctrine = <grand_doctrine>
+	### Add mastery to all tracks of a specified folder (land/naval/air by default)
+	## cardinality = 0..1
+	folder = enum[doctrine_folder]
+}
+
+### You can mix and match track/subdoctrine/doctrine/folder triggers
+### 
+### Example: add_daily_mastery = { amount = 1 days = 60 track = infantry }
+###
+### Add daily progress made within a **Track**, **Subdoctrine**, **Grand Doctrine** or **Doctrine Folder**.
+## scope = country
+alias[effect:add_daily_mastery] = {
+	## cardinality = ~1..1
+	name = localisation
+	### How much progress to add to the specified **Track** or **Subdoctrine** daily
+	amount = float[0.01..inf]
+	### Duration of the modifier
+	days = int[1..inf]
+	### Add mastery only to a specific track
+	## cardinality = 0..1
+	track = <doctrine_track>
+	### Add mastery only to a specific subdoctrine
+	## cardinality = 0..1
+	sub_doctrine = <subdoctrine>
+	### Add mastery to all tracks inside a grand doctrine
+	## cardinality = 0..1
+	grand_doctrine = <grand_doctrine>
+	### Add mastery to all tracks of a specified folder (land/naval/air by default)
+	## cardinality = 0..1
+	folder = enum[doctrine_folder]
+}
+
+### You can mix and match track/subdoctrine/doctrine/folder triggers
+### 
+### Example: add_mastery_bonus = { bonus = 0.1 days = 60 track = infantry }
+###
+### Add % modifier for mastery income of a **Track**, **Subdoctrine**, **Grand Doctrine** or **Doctrine Folder**.
+## scope = country
+alias[effect:add_mastery_bonus] = {
+	## cardinality = ~1..1
+	name = localisation
+	### Size of a modifier. 0.1 means +10%
+	bonus = float[0.001..inf]
+	### Duration of the modifier
+	days = int[1..inf]
+	### Add mastery only to a specific track
+	## cardinality = 0..1
+	track = <doctrine_track>
+	### Add mastery only to a specific subdoctrine
+	## cardinality = 0..1
+	sub_doctrine = <subdoctrine>
+	### Add mastery to all tracks inside a grand doctrine
+	## cardinality = 0..1
+	grand_doctrine = <grand_doctrine>
+	### Add mastery to all tracks of a specified folder (land/naval/air by default)
+	## cardinality = 0..1
+	folder = enum[doctrine_folder]
+}
+
+### Example: unlock_tactic = tactic_grand_banzai_charge
+###
+### Enables specified tactic.
+## scope = country
+alias[effect:unlock_tactic] = <combat_tactic>
+
+### Example: strategic_province_location = { natural_harbor = 13071 }
+###
+### Applying the strategic location to a province
+## scope = state
+alias[effect:strategic_province_location] = {
+	## cardinality = ~1..inf
+	<strategic_location.province> = enum[provinces]
+}
+
+### Example: strategic_state_location = { favorable_approach = 12140 }
+###
+### Applying the strategic location to a state (state-wide buildings)
+## scope = state
+alias[effect:strategic_state_location] = {
+	## cardinality = ~1..inf
+	<strategic_location.state> = enum[provinces]
+}
+
+### BUGGED AS OF NCNS BETA. Add technology tree icons from a target tag, not in tech details. Can be used multiple times for the same tag
+## scope = country
+alias[effect:select_tech_tree_icon_origin] = scope[country]
+
+### BUGGED AS OF NCNS BETA - changes icons only in tech tree view, not in tech details. Add technology tree icons from a target tag. Can be used multiple times for the same tag
+## scope = country
+alias[effect:select_tech_tree_icon_origin] = enum[country_tags]
+
+### Example: add_faction_power_projection = 100
+###
+### Add x faction power projection
+## scope = country
+alias[effect:add_faction_power_projection] = int_variable_field
+
+### Adds either a resistance or compliance modifier to a state.
+###
+### Can only use modifiers from the resistance_modifiers.txt/compliance_modifiers.txt that are marked as is_dynamic = yes
+## scope = any
+alias[effect:add_state_resistance_compliance_modifier] = {
+	modifier = <resistance_compliance_modifier.dynamic_state>
+	state = <state>
+	state = scope[state]
+}
+
+### Removes either a resistance or compliance modifier to a state.
+###
+### Can only use modifiers from the resistance_modifiers.txt/compliance_modifiers.txt that are marked as is_dynamic = yes
+## scope = any
+alias[effect:remove_state_resistance_compliance_modifier] = {
+	modifier = <resistance_compliance_modifier.dynamic_state>
+	state = <state>
+	state = scope[state]
+}
+
+### Set a faction's minimal requirements for an faction member upgrade group
+## scope = country
+alias[effect:set_faction_member_upgrade_min] = {
+	upgrade = <faction_member_upgrade> #TODO check for other types maybe groups?
+}
+
+### Set either a faction upgrade or member upgrade for the specified tag
+## scope = country
+alias[effect:set_faction_upgrade] = <faction_upgrade> #TODO check for other types maybe groups?
+
+### Executes children effects on every faction member of the country's faction in scope (if country does not have a faction it will only work on itself) 
+## scope = country
+alias[effect:every_faction_member] = {
+	### Apply the effect to this number of randomly selected entities
+	## cardinality = 0..1
+	random_select_amount = int[1..inf]
+	## cardinality = 0..1
+	display_individual_scopes = bool
+	## cardinality = 0..1
+	visible_when_empty = bool
+	## cardinality = 0..1
+	limit = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	## cardinality = 0..1
+	tooltip = localisation
+	alias_name[effect] = alias_match_left[effect]
+}
+
+### Adds influence to the country in the faction
+## scope = country
+alias[effect:add_faction_influence_score] = int #TODO check if int and for variable support
+
+### Adds extra goal slots to the faction for a specific category
+## scope = country
+alias[effect:add_faction_goal_slot] = {
+	category = enum[faction_goal_category] # options: short_term, medium_term, long_term 
+	value = int #TODO check possible values and check variable support
+}
+
+### Adds influence to the country based on the given ratio of the faction's total influence
+## scope = country
+alias[effect:add_faction_influence_ratio] = variable_field 
+
+### Create a faction from a template allows for optional customization of name, icon and color.
+## scope = country
+alias[effect:create_faction_from_template] = <faction_template>
+### Create a faction from a template allows for optional customization of name, icon and color.
+## scope = country
+alias[effect:create_faction_from_template] = {
+	template = <faction_template>
+	## cardinality = 0..1
+	name = localisation
+	## cardinality = 0..1
+	icon = <spriteType>
+	## cardinality = 0..1
+	color = { #TODO find limits of float
+		## cardinality = 3..3
+		float
+	}
+}
+
+### Set a rule on the country's faction
+## scope = country
+alias[effect:set_faction_rule] = <faction_rule>
+
+### Changes current country's faction manifest, the previous manifest is removed.
+## scope = country
+alias[effect:set_faction_manifest] = <faction_goal.manifest>
+
+### Does not support manifests
+###
+### Adds a goal to the current's country faction.
+## scope = country
+alias[effect:add_faction_goal] = <faction_goal.normal>
+
+### **WARNING - DO NOT TRY TO REMOVE FACTION MANIFEST! IT WILL CRASH THE GAME**
+###
+### Remove a goal from the current's country faction.
+## scope = country
+alias[effect:remove_faction_goal] = <faction_goal.normal>
+
+### Adds Faction Initiative points to the current country's faction.
+## scope = country
+alias[effect:add_faction_initiative] = int #TODO check possible values and variable support
+
+# Push scope 'any' is required to make effect work in 'on_startup'
+### - Example *every_collection_element = { limit = { xxx } add_political_power = 1 }
+### - Some collections, like 'country:faction_members', require country scope
+### - Supports 'limit' trigger
+### Applies arbitrary effects to all elements of a collection. Supports both anonymous and regular collections
+## scope = any
+## push_scope = any
+alias[effect:every_collection_element] = {
+	### A reference to another collection that will be used as input
+	input = collection:<collection>
+	### A reference to another collection that will be used as input
+	input = enum[built_in_collections]
+	### Anonymous collection
+	input = single_alias_right[anonymous_collection]
+	## cardinality = 0..1
+	limit = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	## cardinality = 1..inf
+	alias_name[effect] = alias_match_left[effect]
+}
+ 
+### Sets wheter the current countries faction can make changes to the faction research section
+## scope = { any }
+alias[effect:set_faction_research_unlocked] = bool
+
+### Sets wheter the current countries faction can make changes to the faction research section
+## scope = { any }
+alias[effect:set_faction_military_unlocked] = bool

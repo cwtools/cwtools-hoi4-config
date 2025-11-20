@@ -112,6 +112,9 @@ scopes = {
 	Defensive = {
 		aliases = { defensive }
 	}
+	Faction = {
+		aliases = { faction }
+	}
 	"Government in Exile" = {
 		aliases = { government_in_exile }
 	}

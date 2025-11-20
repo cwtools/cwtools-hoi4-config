@@ -562,7 +562,7 @@ alias[gui:scrollbarType] = {
         quadTextureSprite = <spriteType>
         position = {x=int y=int}
         ## cardinality = 0..1
-        clicksound = click_default				
+        clicksound = <soundeffect>
     }
 }
 alias[gui:extendedScrollbarType] = {

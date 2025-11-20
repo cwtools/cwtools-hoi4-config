@@ -232,6 +232,11 @@ faction_goal = {
 			completed_amount_collection = enum[built_in_collections]
 			## cardinality = 0..1
 			completed_amount_collection = single_alias_right[anonymous_collection]
+			## cardinality = 0..1
+			completed_amount_custom_tooltip = localisation
+			## cardinality = 0..1
+			total_amount_custom_tooltip = localisation
+
 			
 			# Alternatively, both total amount and completed amount can be fixed values or variables:
 			## cardinality = 0..1

@@ -11,20 +11,6 @@
 alias[effect:reduce_focus_completion_cost] = {
 	focus = <focus>
 	focus = <shared_focus>
-	cost = int
-}
-
-# markdown resolves from bottom to top, todo also make it prettier?
-### }
-### &nbsp;&nbsp;&nbsp;&nbsp;cost = 15  
-### &nbsp;&nbsp;&nbsp;&nbsp;focus = focus_to_be_reduced  
-### reduce_focus_completion_cost = {  
-### Example:  
-###
-### The focus can be a uniform list or a single token.  
-### Reduce the cost needed to complete a specific focus. The cost accepts script constants.  
-## scope = country
-alias[effect:reduce_focus_completion_cost] = {
 	focus = {
 		## cardinality = 0..1
 		<focus>

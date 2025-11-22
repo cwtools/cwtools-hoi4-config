@@ -465,6 +465,8 @@ alias[trigger:has_army_size] = {
 	type = enum[land_units]
 	## cardinality = 0..1
 	unit_category = enum[unit_category]
+	## cardinality = 0..1
+	type = enum[equipment_category]
 }
 
 ### Checks for amount of ships, additionally of a specified type, archetype, or sub unit definition. Example: has_navy_size = { size > 10 type = convoy }; has_navy_size = { size < 1 archetype = ship_hull_light }; has_navy_size = { size > 39 unit = heavy_cruiser };	has_navy_size = { size < 100 }.

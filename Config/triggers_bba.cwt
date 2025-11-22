@@ -27,6 +27,7 @@ alias[trigger:is_power_balance_in_range] = {
 ## scope = country
 alias[trigger:power_balance_value] = {
     id = <balance_of_power>
+    ## cardinality = 1..2
     value = float[-1..1]
 }
 
@@ -34,6 +35,7 @@ alias[trigger:power_balance_value] = {
 ## scope = country
 alias[trigger:power_balance_daily_change] = {
     id = <balance_of_power>
+    ## cardinality = 1..2
     value = float[-1..1]
 }
 
@@ -41,6 +43,7 @@ alias[trigger:power_balance_daily_change] = {
 ## scope = country
 alias[trigger:power_balance_weekly_change] = {
     id = <balance_of_power>
+    ## cardinality = 1..2
     value = float[-1..1]
 }
 

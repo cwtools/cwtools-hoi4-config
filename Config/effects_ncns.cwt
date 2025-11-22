@@ -11,6 +11,12 @@
 alias[effect:reduce_focus_completion_cost] = {
 	focus = <focus>
 	focus = <shared_focus>
+	focus = {
+		## cardinality = 0..1
+		<focus>
+		## cardinality = 0..1
+		<shared_focus>
+	}
 	cost = int
 }
 

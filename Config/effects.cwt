@@ -2172,9 +2172,11 @@ alias[effect:set_autonomy] = {
 	autonomy_state = <autonomy>
 	autonomy_state = autonomy_free
 	## cardinality = 0..1
-	freedom_level = float[0..1]
+	freedom_level = variable_field
+	### Defaults to 'yes'
 	## cardinality = 0..1
 	end_wars = bool
+	### Defaults to 'yes'
 	## cardinality = 0..1
 	end_civil_wars = bool
 }
@@ -2187,25 +2189,13 @@ alias[effect:set_autonomy] = {
 	autonomous_state = <autonomy>
 	autonomous_state = autonomy_free
 	## cardinality = 0..1
-	freedom_level = float[0..1]
+	freedom_level = variable_field
+	### Defaults to 'yes'
 	## cardinality = 0..1
 	end_wars = bool
+	### Defaults to 'yes'
 	## cardinality = 0..1
 	end_civil_wars = bool
-
-}
-
-### Makes autonomy of specified level and country.
-## scope = country
-alias[effect:set_autonomy] = {
-	target = scope[country]
-	target = enum[country_tags]
-	freedom_level = float[0..1]
-	## cardinality = 0..1
-	end_wars = bool
-	## cardinality = 0..1
-	end_civil_wars = bool
-
 }
 
 ### Adds country to technology sharing group of specified name.

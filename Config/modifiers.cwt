@@ -1126,7 +1126,7 @@ modifiers = {
 	factory_energy_consumption = country
 	industrial_capacity_dockyard_powered = country
 	industrial_capacity_factory_powered = country
-	local_resources_<Resource>_factor = country
+	local_resources_<resource>_factor = country
 	naval_invasion_plan_cap = country
 	naval_invasion_prep_days = country
 	out_of_power_impact_factor = country
@@ -2184,6 +2184,7 @@ enums = {
 		military_industrial_organization_funds_gain
 		military_industrial_organization_policy_cost
 		military_industrial_organization_policy_cooldown
+		local_resources_<resource>_factor
 	}
 	enum[leader_modifiers_enum] = {
 		amphibious_invasion

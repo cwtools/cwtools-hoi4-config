@@ -102,9 +102,8 @@ alias[trigger:any_country] = {
 ### Compares a variable to a number or variable.
 ## scope = any
 alias[trigger:check_variable] = {
-	#### 1..2 is needed to support tooltips
-	## cardinality = 1..2
-	variable_field_32 = variable_field_32
+	## cardinality = 1..4
+	scalar = scalar
 	### Defaults to greater_than_or_equals.
 	## cardinality = 0..1
 	compare = enum[var_compares]
@@ -115,57 +114,10 @@ alias[trigger:check_variable] = {
 ### Compares a variable to a number or variable.
 ## scope = any
 alias[trigger:check_variable] = {
-	#### 1..2 is needed to support tooltips
-	## cardinality = 1..2
-	value[variable] = variable_field_32
-	### Defaults to greater_than_or_equals.
-	## cardinality = 0..1
-	compare = enum[var_compares]
-	## cardinality = 0..1
-	tooltip = localisation
-}
-
-### Compares a variable to a number or variable.
-## scope = any
-alias[trigger:check_variable] = {
-	#### 1..2 is needed to support tooltips
-	## cardinality = 1..2
-	variable_field_32 = enum[country_tags]
-	## cardinality = 0..1
-	tooltip = localisation
-}
-
-### Compares a variable to a number or variable.
-## scope = any
-alias[trigger:check_variable] = {
-	#### 1..2 is needed to support tooltips
-	## cardinality = 1..2
-	variable_field_32 = scope[country]
-	## cardinality = 0..1
-	tooltip = localisation
-}
-
-### Compares a variable to a number or variable.
-## scope = any
-alias[trigger:check_variable] = {
-	#### 1..2 is needed to support tooltips
-	## cardinality = 1..2
-	variable_field_32 = value[token]
-	## cardinality = 0..1
-	tooltip = localisation
-}
-
-### Compares a variable to a number or variable.
-## scope = any
-alias[trigger:check_variable] = {
-	var = value[variable]
-	var = variable_field_32
+	var = scalar
 	## error_if_only_match = You can compare variables directly, without "var" and "value"
 	## severity = info
-	value = variable_field_32
-	## error_if_only_match = You can compare variables directly, without "var" and "value"
-	## severity = info
-	value = value[variable]
+	value = scalar
 	## cardinality = 0..1
 	### Defaults to greater_than_or_equals.
 	compare = enum[var_compares]
@@ -465,6 +417,8 @@ alias[trigger:has_army_size] = {
 	type = enum[land_units]
 	## cardinality = 0..1
 	unit_category = enum[unit_category]
+	## cardinality = 0..1
+	type = enum[equipment_category]
 }
 
 ### Checks for amount of ships, additionally of a specified type, archetype, or sub unit definition. Example: has_navy_size = { size > 10 type = convoy }; has_navy_size = { size < 1 archetype = ship_hull_light }; has_navy_size = { size > 39 unit = heavy_cruiser };	has_navy_size = { size < 100 }.
@@ -899,14 +853,15 @@ alias[trigger:custom_trigger_tooltip] = {
 
 ### Checks for amount of equipment stored.
 ## scope = country
-alias[trigger:has_equipment] = { <equipment> = int_variable_field }
-
-### Checks for amount of equipment stored.
-## scope = country
-alias[trigger:has_equipment] = { value[equipment_variant] = int_variable_field }
-### Checks for amount of equipment stored.
-## scope = country
-alias[trigger:has_equipment] = { value[variable] = int_variable_field }
+alias[trigger:has_equipment] = {
+	enum[equipment_bonus_type] = int_variable_field
+	## cardinality = 0..1
+	show_current = yes
+	## error_if_only_match = This is the default value and can be omitted
+	## severity = info
+	## cardinality = 0..1
+	show_current = no
+}
 
 ### Check amount of total factories.
 ## scope = country

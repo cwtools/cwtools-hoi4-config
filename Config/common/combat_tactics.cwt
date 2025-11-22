@@ -20,6 +20,7 @@ combat_tactic = {
 	trigger = {
 		is_attacker = bool
 		phase = enum[phases]
+		phase = no
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 	## cardinality = 0..1
@@ -37,6 +38,8 @@ combat_tactic = {
 	## cardinality = 0..1
 	phase = enum[phases]
 	## cardinality = 0..1
+	phase = no
+	## cardinality = 0..1
 	display_phase = enum[phases]
 	## cardinality = 1..2
 	enum[attack_defend] = float
@@ -50,20 +53,21 @@ combat_tactic = {
 }
 
 enums = {
-	enum[phases] = {
-		no
-		close_combat
-		tactical_withdrawal
-		seize_bridge
-		hold_bridge
-		street_fighting
-
-		# MD Phase
-		main
-		city_combat
-	}
 	enum[attack_defend] = {
 		attacker
 		defender
+	}
+}
+
+enums = {
+	complex_enum[phases] = {
+		path = "game/common"
+		path_file = "combat_tactics.txt"
+		start_from_root = yes
+		name = {
+			phases = {
+				enum_name
+			}
+		}
 	}
 }

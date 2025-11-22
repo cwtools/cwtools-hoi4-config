@@ -853,14 +853,15 @@ alias[trigger:custom_trigger_tooltip] = {
 
 ### Checks for amount of equipment stored.
 ## scope = country
-alias[trigger:has_equipment] = { <equipment> = int_variable_field }
-
-### Checks for amount of equipment stored.
-## scope = country
-alias[trigger:has_equipment] = { value[equipment_variant] = int_variable_field }
-### Checks for amount of equipment stored.
-## scope = country
-alias[trigger:has_equipment] = { value[variable] = int_variable_field }
+alias[trigger:has_equipment] = {
+	enum[equipment_bonus_type] = int_variable_field
+	## cardinality = 0..1
+	show_current = yes
+	## error_if_only_match = This is the default value and can be omitted
+	## severity = info
+	## cardinality = 0..1
+	show_current = no
+}
 
 ### Check amount of total factories.
 ## scope = country

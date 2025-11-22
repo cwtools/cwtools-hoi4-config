@@ -142,6 +142,9 @@ oob = {
 							version_name = scalar
 							## cardinality = 0..1
 							creator = enum[country_tags]
+							### Defaults to 'no'
+							## cardinality = 0..1
+							create_if_missing = bool
 						}
 					}
 					## cardinality = 0..1

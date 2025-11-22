@@ -170,6 +170,13 @@ equipment = {
 	## cardinality = 0..1
 	max_military_factories = float
 
+	## cardinality = 0..1
+	modifier_stat = {
+		modifier = <static_modifier>
+		value = int
+		type = scalar
+	}
+
 	subtype[archetype_equip] = {
 		### GFX reference used to define equipment picture in land-lease.
 		picture = scalar

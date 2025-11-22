@@ -56,6 +56,8 @@ special_project = {
 		has_dlc_mtg = yes
 		## cardinality = 0..inf
 		has_dlc_nsb = yes
+		## cardinality = 0..inf
+		has_dlc_ncns = yes
 	}
 
 	### *Scope: project. FROM: country*

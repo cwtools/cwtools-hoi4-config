@@ -505,8 +505,8 @@ faction_template = {
 	## cardinality = ~1..1
 	manifest = <faction_goal.manifest> # Main goal (faction manifest)
 
-	### Faction goals. Faction can exist without goals, but why?
-	## cardinality = ~1..1
+	### Faction goals. Uses generic goals if possible
+	## cardinality = 0..1
 	goals = {
 		## cardinality = ~1..inf
 		<faction_goal>

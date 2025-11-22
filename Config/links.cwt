@@ -61,6 +61,13 @@ links = {
         data_source = <character>
     }
 
+    character_token = {
+        output_scope = character
+        input_scopes = country
+        from_data = yes
+        data_source = value[character_token]
+    }
+
     var = {
         from_data = yes
         type = both

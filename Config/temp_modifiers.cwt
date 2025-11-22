@@ -100,6 +100,7 @@ alias[unit_stat:training_time] = float
 alias[unit_stat:weight] = float
 alias[unit_stat:additional_collateral_damage] = float
 alias[unit_stat:recovery] = float
+alias[unit_stat:strength] = float
 
 #naval stats
 alias[naval_stat:anti_air_attack] = float

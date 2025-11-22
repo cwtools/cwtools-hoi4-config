@@ -1174,6 +1174,8 @@ values = {
 		### global
 		### An array of controller countries for each province. In this case, the province ID serves as the index: the controller of province 1234 is province_controllers^1234. 
 		province_controllers
+		### Same but with scoping to a specific province - returns country tag
+		province_controllers^enum[provinces]
 		### Every state that exists in the game. Array
 		states
 		### Checks turn number in PC.\nExample:\npc_turn > 20

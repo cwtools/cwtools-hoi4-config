@@ -2173,18 +2173,12 @@ alias[effect:set_autonomy] = {
 	autonomy_state = autonomy_free
 	## cardinality = 0..1
 	freedom_level = variable_field
+	### Defaults to 'yes'
 	## cardinality = 0..1
-	end_wars = no
+	end_wars = bool
+	### Defaults to 'yes'
 	## cardinality = 0..1
-	end_civil_wars = no
-	## error_if_only_match = This is the default value and can be omitted
-	## severity = info
-	## cardinality = 0..1
-	end_wars = yes
-	## error_if_only_match = This is the default value and can be omitted
-	## severity = info
-	## cardinality = 0..1
-	end_civil_wars = yes
+	end_civil_wars = bool
 }
 
 ### Makes autonomy of specified level and country.
@@ -2196,18 +2190,12 @@ alias[effect:set_autonomy] = {
 	autonomous_state = autonomy_free
 	## cardinality = 0..1
 	freedom_level = variable_field
+	### Defaults to 'yes'
 	## cardinality = 0..1
-	end_wars = no
+	end_wars = bool
+	### Defaults to 'yes'
 	## cardinality = 0..1
-	end_civil_wars = no
-	## error_if_only_match = This is the default value and can be omitted
-	## severity = info
-	## cardinality = 0..1
-	end_wars = yes
-	## error_if_only_match = This is the default value and can be omitted
-	## severity = info
-	## cardinality = 0..1
-	end_civil_wars = yes
+	end_civil_wars = bool
 }
 
 ### Adds country to technology sharing group of specified name.

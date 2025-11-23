@@ -132,34 +132,13 @@ alias[effect:capture_operative] = {
 ###Executes children effects on a random operatives that fulfils the "limit" trigger.
 ## scope = { COUNTRY OPERATION }
 ## push_scope = operative
-alias[effect:random_operative] = {
-    ## cardinality = 0..1
-	limit = {
-		alias_name[trigger] = alias_match_left[trigger]
-	}
-    ## cardinality = 0..1
-    tooltip = localisation
-	alias_name[effect] = alias_match_left[effect]
-}
+alias[effect:random_operative] = single_alias_right[random_effect_clause]
 
 
 ###Executes children effects on operatives that fulfils the "limit" trigger. tooltip=key can be added to override tooltip title
 ## scope = { COUNTRY OPERATION }
 ## push_scope = operative
-alias[effect:every_operative] = {
-	### Apply the effect to this number of randomly selected entities
-	## cardinality = 0..1
-	random_select_amount = int[1..inf]
-	## cardinality = 0..1
-	display_individual_scopes = bool
-    ## cardinality = 0..1
-	limit = {
-		alias_name[trigger] = alias_match_left[trigger]
-	}
-    ## cardinality = 0..1
-    tooltip = localisation
-	alias_name[effect] = alias_match_left[effect]
-}
+alias[effect:every_operative] = single_alias_right[every_effect_clause]
 
 
 ###Sends to target scope specified fraction of equipment.
@@ -345,20 +324,7 @@ alias[effect:teleport_armies] = {
 ###Executes children effects on every controlled state that fulfils the "limit" trigger. tooltip=key can be added to override tooltip title.
 ## scope = { COUNTRY }
 ## push_scope = state
-alias[effect:every_controlled_state] = {
-	### Apply the effect to this number of randomly selected entities
-	## cardinality = 0..1
-	random_select_amount = int[1..inf]
-	## cardinality = 0..1
-	display_individual_scopes = bool
-    ## cardinality = 0..1
-	limit = {
-		alias_name[trigger] = alias_match_left[trigger]
-	}
-	## cardinality = 0..1
-	tooltip = localisation
-	alias_name[effect] = alias_match_left[effect]
-}
+alias[effect:every_controlled_state] = single_alias_right[every_effect_clause]
 
 
 ###Sets the controller of provinces belong to a state and fulfils a condition. No tooltip is built.
@@ -411,34 +377,13 @@ alias[effect:get_sorted_scored_countries_temp] = {
 ###Executes children effects on random occupied country that fulfils the "limit" trigger.
 ## scope = { COUNTRY }
 ## push_scope = country
-alias[effect:random_occupied_country] = {
-    ## cardinality = 0..1
-	limit = {
-		alias_name[trigger] = alias_match_left[trigger]
-	}
-    ## cardinality = 0..1
-    tooltip = localisation
-	alias_name[effect] = alias_match_left[effect]
-}
+alias[effect:random_occupied_country] = single_alias_right[random_effect_clause]
 
 
 ###Executes children effects on every occupied country that fulfils the "limit" trigger. tooltip=key can be defined to override tooltip title.
 ## scope = { COUNTRY }
 ## push_scope = country
-alias[effect:every_occupied_country] = {
-	### Apply the effect to this number of randomly selected entities
-	## cardinality = 0..1
-	random_select_amount = int[1..inf]
-	## cardinality = 0..1
-	display_individual_scopes = bool
-    ## cardinality = 0..1
-	limit = {
-		alias_name[trigger] = alias_match_left[trigger]
-	}
-	## cardinality = 0..1
-	tooltip = localisation
-	alias_name[effect] = alias_match_left[effect]
-}
+alias[effect:every_occupied_country] = single_alias_right[every_effect_clause]
 
 
 ###Adds resistance target to the scoped state.
@@ -509,6 +454,8 @@ alias[effect:random_country_with_original_tag] = {
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
+	## cardinality = 0..1
+	visible_when_empty = bool
     ## cardinality = 0..1
     tooltip = localisation
 	alias_name[effect] = alias_match_left[effect]
@@ -519,15 +466,7 @@ alias[effect:random_country_with_original_tag] = {
 ### Executes children effects on a random division that full the "limit" trigger. tooltip=key can be added to override to override tooltip title
 ## scope = { COUNTRY }
 ## push_scope = unit
-alias[effect:random_country_division] = {
-	## cardinality = 0..1
-	limit = {
-		alias_name[trigger] = alias_match_left[trigger]
-	}
-    ## cardinality = 0..1
-    tooltip = localisation
-	alias_name[effect] = alias_match_left[effect]
-}
+alias[effect:random_country_division] = single_alias_right[random_effect_clause]
 
 
 ###Executes children effects on a all countries with original tag. tooltip=key can be defined to override tooltip title.
@@ -541,6 +480,8 @@ alias[effect:every_country_with_original_tag] = {
 	display_individual_scopes = bool
 	original_tag_to_check = enum[country_tags]
 	original_tag_to_check = scope[country]
+	## cardinality = 0..1
+	visible_when_empty = bool
     ## cardinality = 0..1
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]

@@ -1,21 +1,7 @@
 ###Executes children effects on MIOs that fulfils the "limit" trigger. tooltip=key can be added to override tooltip title
 ## scope = country
 ## push_scope = military_industrial_organization
-alias[effect:every_military_industrial_organization] = {
-	### Apply the effect to this number of randomly selected entities
-	## cardinality = 0..1
-	random_select_amount = int[1..inf]
-	## cardinality = 0..1
-	display_individual_scopes = bool
-	## cardinality = 0..1
-	limit = {
-		alias_name[trigger] = alias_match_left[trigger]
-	}
-    ## cardinality = 0..1
-    tooltip = localisation
-    ## cardinality = 1..inf
-    alias_name[effect] = alias_match_left[effect]
-}
+alias[effect:every_military_industrial_organization] = single_alias_right[every_effect_clause]
 
 ### Display a tooltip saying the trait is made available (aka unlocked)
 ## scope = military_industrial_organization
@@ -249,48 +235,12 @@ alias[effect:add_mio_task_capacity] = int_variable_field
 ### Executes children effects on a random Military Industrial Organisation of the country in scope, that fulfills the "limit" trigger. tooltip=key can be added to override tooltip title
 ## scope = country
 ## push_scope = military_industrial_organization
-alias[effect:random_military_industrial_organization] = {
-	## cardinality = 0..1
-	limit = {
-		alias_name[trigger] = alias_match_left[trigger]
-	}
-    ## cardinality = 0..1
-    tooltip = localisation
-	## error_if_only_match = This is the default value and can be omitted
-	## severity = info
-	## cardinality = 0..1
-    include_invisible = no
-	## cardinality = 0..1
-    include_invisible = yes
-    alias_name[effect] = alias_match_left[effect]
-}
+alias[effect:random_military_industrial_organization] = single_alias_right[random_effect_clause]
 
 ### Executes children effects on every Military Industrial Organisation (or "random_select_amount" of random MIOs if specified) of the country in scope, that fulfills the "limit" trigger. tooltip=key can be added to override tooltip title. By default the effects are only displayed once, you may display them for each matching MIO with display_individual_scopes.
 ## scope = country
 ## push_scope = military_industrial_organization
-alias[effect:every_military_industrial_organization] = {
-	## cardinality = 0..1
-	limit = {
-		alias_name[trigger] = alias_match_left[trigger]
-	}
-    ## cardinality = 0..1
-    tooltip = localisation
-    ## cardinality = 0..1
-    random_select_amount = int
-	## error_if_only_match = This is the default value and can be omitted
-	## severity = info
-	## cardinality = 0..1
-    include_invisible = no
-	## cardinality = 0..1
-    include_invisible = yes
-	## error_if_only_match = This is the default value and can be omitted
-	## severity = info
-	## cardinality = 0..1
-    display_individual_scopes = no
-	## cardinality = 0..1
-    display_individual_scopes = yes
-    alias_name[effect] = alias_match_left[effect]
-}
+alias[effect:every_military_industrial_organization] = single_alias_right[every_effect_clause]
 
 ### Give market access to x
 ## scope = country
@@ -320,32 +270,9 @@ alias[effect:cancel_purchase_contract] = yes
 ### Executes children effects on a random purchase contract of the country in scope, that fulfills the "limit" trigger. tooltip = key need to be added to override the tooltip title
 ## scope = country
 ## push_scope = purchase_contract
-alias[effect:random_purchase_contract] = {
-    ### Override the tooltip title
-    ## cardinality = 0..1
-    tooltip = localisation
-    ## cardinality = 0..1
-    limit = {
-        alias_name[trigger] = alias_match_left[trigger]
-    }
-    alias_name[effect] = alias_match_left[effect]
-}
+alias[effect:random_purchase_contract] = single_alias_right[random_effect_clause]
 
 ### Executes children effects on every purchase contract (or "random_select_amount" of random purchase contracts if specified) of the country in scope, that fulfills the "limit" trigger. tooltip = key need to be added to override the tooltip title
 ## scope = country
 ## push_scope = purchase_contract
-alias[effect:every_purchase_contract] = {
-    ### Override the tooltip title
-    ## cardinality = 0..1
-    tooltip = localisation
-	### Apply the effect to this number of randomly selected entities
-	## cardinality = 0..1
-	random_select_amount = int[1..inf]
-	## cardinality = 0..1
-	display_individual_scopes = bool
-    ## cardinality = 0..1
-    limit = {
-        alias_name[trigger] = alias_match_left[trigger]
-    }
-    alias_name[effect] = alias_match_left[effect]
-}
+alias[effect:every_purchase_contract] = single_alias_right[every_effect_clause]

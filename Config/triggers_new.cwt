@@ -170,23 +170,12 @@ alias[trigger:decryption_progress] = {
 ###Check if any any occupied meets the trigger. tooltip=key can be defined to override title.
 ## scope = { COUNTRY }
 ## push_scope = country
-alias[trigger:any_occupied_country] = {
-    ## cardinality = 0..1
-    count = int_variable_field
-	## cardinality = 0..1
-	tooltip = localisation
-	alias_name[trigger] = alias_match_left[trigger]
-}
-
+alias[trigger:any_occupied_country] = single_alias_right[any_all_trigger_clause]
 
 ###Check if all occupied countries meets the trigger. tooltip=key can be defined to override title.
 ## scope = { COUNTRY }
 ## push_scope = country
-alias[trigger:all_occupied_country] = {
-	## cardinality = 0..1
-	tooltip = localisation
-	alias_name[trigger] = alias_match_left[trigger]
-}
+alias[trigger:all_occupied_country] = single_alias_right[any_all_trigger_clause]
 
 ###Check if any country with current scope's original tag meets the trigger.
 ## scope = { any }
@@ -253,22 +242,12 @@ alias[trigger:compare_intel_with] = {
 ###Check if all operatives meets the trigger. tooltip=key can be defined to override title.
 ## scope = { COUNTRY OPERATION }
 ## push_scope = operative
-alias[trigger:all_operative_leader] = {
-	## cardinality = 0..1
-	tooltip = localisation
-	alias_name[trigger] = alias_match_left[trigger]
-}
+alias[trigger:all_operative_leader] = single_alias_right[any_all_trigger_clause]
 
 ###Check if any operatives meets the trigger. tooltip=key can be defined to override title.
 ## scope = { COUNTRY OPERATION }
 ## push_scope = operative
-alias[trigger:any_operative_leader] = {
-    ## cardinality = 0..1
-    count = int_variable_field
-	## cardinality = 0..1
-	tooltip = localisation
-	alias_name[trigger] = alias_match_left[trigger]
-}
+alias[trigger:any_operative_leader] = single_alias_right[any_all_trigger_clause]
 
 ###Checks whether the operative has the matching captured status.
 ## scope = { operative }
@@ -290,22 +269,12 @@ alias[trigger:intel_level_over] = {
 ###Check if any of the states controlled by the scope country meets the trigger. tooltip=key can be defined to override title.
 ## scope = { COUNTRY }
 ## push_scope = state
-alias[trigger:any_controlled_state] = {
-    ## cardinality = 0..1
-    count = int_variable_field
-	## cardinality = 0..1
-	tooltip = localisation
-	alias_name[trigger] = alias_match_left[trigger]
-}
+alias[trigger:any_controlled_state] = single_alias_right[any_all_trigger_clause]
 
 ###Check if all of the states controlled by the scope country meets the trigger. tooltip=key can be defined to override title.
 ## scope = { COUNTRY }
 ## push_scope = state
-alias[trigger:all_controlled_state] = {
-	## cardinality = 0..1
-	tooltip = localisation
-	alias_name[trigger] = alias_match_left[trigger]
-}
+alias[trigger:all_controlled_state] = single_alias_right[any_all_trigger_clause]
 
 ###Checks the number of operatives the country controls.
 ## scope = { COUNTRY }
@@ -380,23 +349,13 @@ alias[trigger:modulo_temp_variable] = {
 ###Check if any country with current scoped country guarantees.
 ## scope = { COUNTRY }
 ## push_scope = country
-alias[trigger:any_guaranteed_country] = {
-    ## cardinality = 0..1
-    count = int_variable_field
-    ## cardinality = 0..1
-    tooltip = localisation
-	alias_name[trigger] = alias_match_left[trigger]
-}
+alias[trigger:any_guaranteed_country] = single_alias_right[any_all_trigger_clause]
 
 
 ###Check if every country with current scoped country guarantees.
 ## scope = { COUNTRY }
 ## push_scope = country
-alias[trigger:all_guaranteed_country] = {
-    ## cardinality = 0..1
-    tooltip = localisation
-	alias_name[trigger] = alias_match_left[trigger]
-}
+alias[trigger:all_guaranteed_country] = single_alias_right[any_all_trigger_clause]
 
 ###Compares number of completed operations.
 ## scope = { COUNTRY }

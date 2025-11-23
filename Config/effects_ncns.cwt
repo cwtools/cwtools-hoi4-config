@@ -179,22 +179,7 @@ alias[effect:set_faction_upgrade] = <faction_upgrade> #TODO check for other type
 
 ### Executes children effects on every faction member of the country's faction in scope (if country does not have a faction it will only work on itself) 
 ## scope = country
-alias[effect:every_faction_member] = {
-	### Apply the effect to this number of randomly selected entities
-	## cardinality = 0..1
-	random_select_amount = int[1..inf]
-	## cardinality = 0..1
-	display_individual_scopes = bool
-	## cardinality = 0..1
-	visible_when_empty = bool
-	## cardinality = 0..1
-	limit = {
-		alias_name[trigger] = alias_match_left[trigger]
-	}
-	## cardinality = 0..1
-	tooltip = localisation
-	alias_name[effect] = alias_match_left[effect]
-}
+alias[effect:every_faction_member] = single_alias_right[every_effect_clause]
 
 ### Adds influence to the country in the faction
 ## scope = country
@@ -260,20 +245,7 @@ alias[effect:add_faction_initiative] = int #TODO check possible values and varia
 ### Applies arbitrary effects to all elements of a collection. Supports both anonymous and regular collections
 ## scope = any
 ## push_scope = any
-alias[effect:every_collection_element] = {
-	### A reference to another collection that will be used as input
-	input = collection:<collection>
-	### A reference to another collection that will be used as input
-	input = enum[built_in_collections]
-	### Anonymous collection
-	input = single_alias_right[anonymous_collection]
-	## cardinality = 0..1
-	limit = {
-		alias_name[trigger] = alias_match_left[trigger]
-	}
-	## cardinality = 1..inf
-	alias_name[effect] = alias_match_left[effect]
-}
+alias[effect:every_collection_element] = single_alias_right[every_effect_clause]
  
 ### Sets wheter the current countries faction can make changes to the faction research section
 ## scope = { any }

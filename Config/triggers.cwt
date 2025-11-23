@@ -800,10 +800,14 @@ alias[trigger:focus_progress] = {
 alias[trigger:is_puppet] = bool
 
 ### Checks if the country is puppet of specified country.
+## error_if_only_match = 'is_puppet' is often mixed up with is_subject. Verify that 'is_puppet' is the intended trigger
+## severity = info
 ## scope = country
 alias[trigger:is_puppet_of] = scope[country]
 
 ### Checks if the country is puppet of specified country.
+## error_if_only_match = 'is_puppet' is often mixed up with is_subject. Verify that 'is_puppet' is the intended trigger
+## severity = info
 ## scope = country
 alias[trigger:is_puppet_of] = enum[country_tags]
 

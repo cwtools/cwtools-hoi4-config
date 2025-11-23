@@ -245,7 +245,20 @@ alias[effect:add_faction_initiative] = int #TODO check possible values and varia
 ### Applies arbitrary effects to all elements of a collection. Supports both anonymous and regular collections
 ## scope = any
 ## push_scope = any
-alias[effect:every_collection_element] = single_alias_right[every_effect_clause]
+alias[effect:every_collection_element] = {
+	### A reference to another collection that will be used as input
+	input = collection:<collection>
+	### A reference to another collection that will be used as input
+	input = enum[built_in_collections]
+	### Anonymous collection
+	input = single_alias_right[anonymous_collection]
+	## cardinality = 0..1
+	limit = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	## cardinality = 1..inf
+	alias_name[effect] = alias_match_left[effect]
+}
  
 ### Sets wheter the current countries faction can make changes to the faction research section
 ## scope = { any }

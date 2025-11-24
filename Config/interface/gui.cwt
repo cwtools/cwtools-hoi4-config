@@ -783,6 +783,13 @@ alias[gui_localization:pdx_tooltip] = localisation
 #alias[gui_localization:pdx_tooltip] = localisation_inline
 alias[gui_localization:pdx_tooltip_delayed] = localisation
 #alias[gui_localization:pdx_tooltip_delayed] = localisation_inline
+alias[gui_localization:pdx_tooltip_anchor] = {
+    x = int
+    y = int
+    ### It is default set to yes ( to the gui object )
+    ## cardinality = 0..1
+    relative = bool
+}
 ### PDX function, use pdx_tooltip instead
 alias[gui_localization:tooltip] = localisation
 #alias[gui_localization:tooltip] = localisation_inline

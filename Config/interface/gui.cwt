@@ -526,6 +526,8 @@ alias[gui:editBoxType] = {
 	cursor = { x = int y = int }
     ## cardinality = 0..1
     is_multiline = bool
+    ## cardinality = 0..1
+    ignore_enter = bool
 }
 ### Checkbox
 alias[gui:checkboxType] = {

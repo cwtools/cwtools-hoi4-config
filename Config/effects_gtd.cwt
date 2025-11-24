@@ -422,6 +422,8 @@ alias[effect:add_unit_bonus] = {
 		alias_name[unit_stat] = alias_match_left[unit_stat]
 		alias_name[naval_stat] = alias_match_left[naval_stat]
 		alias_name[air_stat] = alias_match_left[air_stat]
+		## cardinality = 0..inf
+		battalion_mult = single_alias_right[battalion_mult]
     }
 	## cardinality = 0..inf
 	enum[unit_category] = {
@@ -429,6 +431,8 @@ alias[effect:add_unit_bonus] = {
 		alias_name[unit_stat] = alias_match_left[unit_stat]
 		alias_name[naval_stat] = alias_match_left[naval_stat]
 		alias_name[air_stat] = alias_match_left[air_stat]
+		## cardinality = 0..inf
+		battalion_mult = single_alias_right[battalion_mult]
 	}
 }
 

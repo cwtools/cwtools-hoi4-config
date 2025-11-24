@@ -52,7 +52,7 @@ alias[effect:add_mastery] = {
 	grand_doctrine = <grand_doctrine>
 	### Add mastery to all tracks of a specified folder (land/naval/air by default)
 	## cardinality = 0..1
-	folder = enum[doctrine_folder]
+	folder = enum[equipment_categories]
 }
 
 ### You can mix and match track/subdoctrine/doctrine/folder triggers
@@ -79,7 +79,7 @@ alias[effect:add_daily_mastery] = {
 	grand_doctrine = <grand_doctrine>
 	### Add mastery to all tracks of a specified folder (land/naval/air by default)
 	## cardinality = 0..1
-	folder = enum[doctrine_folder]
+	folder = enum[equipment_categories]
 }
 
 ### You can mix and match track/subdoctrine/doctrine/folder triggers
@@ -106,7 +106,7 @@ alias[effect:add_mastery_bonus] = {
 	grand_doctrine = <grand_doctrine>
 	### Add mastery to all tracks of a specified folder (land/naval/air by default)
 	## cardinality = 0..1
-	folder = enum[doctrine_folder]
+	folder = enum[equipment_categories]
 }
 
 ### Example: unlock_tactic = tactic_grand_banzai_charge

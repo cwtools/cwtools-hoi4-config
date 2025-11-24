@@ -583,12 +583,4 @@ enums = {
 		age
 		distance
 	}
-	complex_enum[particle_force] = {
-		path = "game/gfx/particles"
-		name = {
-			force = {
-				name = enum_name
-			}
-		}
-	}
 }

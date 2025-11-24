@@ -340,12 +340,6 @@ enums = {
 		transport
 		uboat
 	}
-	enum[unit_groups] = {
-		infantry
-		support
-		mobile
-		armor
-	}
 	enum[unit_types] = { # use enum[equipment_category] so updated automatically? and update here for  for seperating in other land/air/naval groups?
 		convoy
 		train

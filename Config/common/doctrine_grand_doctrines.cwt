@@ -42,7 +42,7 @@ grand_doctrine = {
 	description = localisation
 	icon = <spriteType>
 	xp_cost = int
-	xp_type = enum[xp_type]
+	xp_type = enum[experience_types]
 
 	## cardinality = 0..1
 	available = {
@@ -225,19 +225,4 @@ single_alias[battalion_mult] = {
 	add = bool
 	## cardinality = 0..1
 	display_as_percentage = bool
-}
-
-
-
-enums = {
-	enum[xp_type] = {
-		army
-		air
-		navy
-	}
-	enum[doctrine_folder] = {
-		land
-		air
-		naval
-	}
 }

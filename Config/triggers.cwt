@@ -1148,7 +1148,6 @@ alias[trigger:compare_autonomy_state] = <autonomy>
 
 ### Checks if country has specific cosmetic tag set.
 ## scope = country
-#enum[cosmetic_tag]?
 alias[trigger:has_cosmetic_tag] = value[cosmetic_tag]
 
 ### Check the number of subjects of nation.

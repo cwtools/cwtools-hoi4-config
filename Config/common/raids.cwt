@@ -408,11 +408,6 @@ enums = {
         army
         civilian
     }
-    enum[raid_unit_model] = {
-        equipment
-        transport
-        convoy
-    }
     enum[raid_starting_point] = {
         air_base
         naval_base

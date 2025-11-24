@@ -1909,7 +1909,7 @@ alias[effect:random_other_country] = single_alias_right[random_effect_clause]
 alias[effect:add_equipment_to_stockpile] = {
 	type = <equipment>
 	type = value[nsb_armor_variants]
-	type = enum[bba_air_variants]
+	type = value[bba_air_variants]
 	type = value[variable]
 	type = enum[md_unique_dupe_archetypes] 	# TODO: Remove this once we have  system for creating custom duplicate archetype things
 

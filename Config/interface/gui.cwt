@@ -965,33 +965,4 @@ enums = {
             }
         }
     }
-    complex_enum[guiElementsProperties] = {
-        path = "game/interface"
-        name = {
-            buttonType = {
-                name = enum_name
-            }
-        }
-        name = {
-            iconType = {
-                name = enum_name
-            }
-        }
-    }
-    complex_enum[guiButtons] = {
-        path = "game/interface"
-        name = {
-            buttonType = {
-                name = enum_name
-            }
-        }
-    }
-    complex_enum[guiDynamicLists] = {
-        path = "game/interface"
-        name = {
-            gridBoxType = {
-                name = enum_name
-            }
-        }
-    }
 }

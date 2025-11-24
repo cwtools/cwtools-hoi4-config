@@ -42,7 +42,7 @@ subdoctrine = {
 	description = localisation
 	icon = <spriteType>
 	xp_cost = int
-	xp_type = enum[xp_type]
+	xp_type = enum[experience_types]
 
 	## cardinality = 0..1
 	available = {

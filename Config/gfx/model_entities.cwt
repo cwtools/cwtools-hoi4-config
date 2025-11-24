@@ -294,18 +294,6 @@ enums = {
 		}
 	}
 
-	complex_enum[model_locators] = {
-		path = "gfx"
-		start_from_root = yes
-		name = {
-			entity = {
-				locator = {
-					name = enum_name
-				}
-			}
-		}
-	}
-
 	complex_enum[model_attachments] = {
 		path = "gfx"
 		start_from_root = yes

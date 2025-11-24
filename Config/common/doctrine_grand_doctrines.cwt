@@ -113,16 +113,7 @@ grand_doctrine = {
 		alias_name[naval_stat] = alias_match_left[naval_stat]
 		alias_name[air_stat] = alias_match_left[air_stat]
 		## cardinality = 0..inf
-		battalion_mult = {
-			## cardinality = 1..inf
-			category = enum[unit_category]
-			## cardinality = 1..inf
-			alias_name[unit_stat] = alias_match_left[unit_stat]
-			## cardinality = 0..1
-			add = bool
-			## cardinality = 0..1
-			display_as_percentage = bool
-		}
+		battalion_mult = single_alias_right[battalion_mult]
 	}
 	### Add unit stat bonuses - units
 	## cardinality = 0..inf
@@ -131,16 +122,7 @@ grand_doctrine = {
 		alias_name[naval_stat] = alias_match_left[naval_stat]
 		alias_name[air_stat] = alias_match_left[air_stat]
 		## cardinality = 0..inf
-		battalion_mult = {
-			## cardinality = 1..inf
-			category = enum[unit_category]
-			## cardinality = 1..inf
-			alias_name[unit_stat] = alias_match_left[unit_stat]
-			## cardinality = 0..1
-			add = bool
-			## cardinality = 0..1
-			display_as_percentage = bool
-		}
+		battalion_mult = single_alias_right[battalion_mult]
 	}
 
 	### Enabling tactics
@@ -204,16 +186,7 @@ grand_doctrine = {
 				alias_name[naval_stat] = alias_match_left[naval_stat]
 				alias_name[air_stat] = alias_match_left[air_stat]
 				## cardinality = 0..inf
-				battalion_mult = {
-					## cardinality = 1..inf
-					category = enum[unit_category]
-					## cardinality = 1..inf
-					alias_name[unit_stat] = alias_match_left[unit_stat]
-					## cardinality = 0..1
-					add = bool
-					## cardinality = 0..1
-					display_as_percentage = bool
-				}
+				battalion_mult = single_alias_right[battalion_mult]
 			}
 			### Add unit stat bonuses - units
 			## cardinality = 0..inf
@@ -222,16 +195,7 @@ grand_doctrine = {
 				alias_name[naval_stat] = alias_match_left[naval_stat]
 				alias_name[air_stat] = alias_match_left[air_stat]
 				## cardinality = 0..inf
-				battalion_mult = {
-					## cardinality = 1..inf
-					category = enum[unit_category]
-					## cardinality = 1..inf
-					alias_name[unit_stat] = alias_match_left[unit_stat]
-					## cardinality = 0..1
-					add = bool
-					## cardinality = 0..1
-					display_as_percentage = bool
-				}
+				battalion_mult = single_alias_right[battalion_mult]
 			}
 
 			### Enabling tactics
@@ -250,6 +214,20 @@ grand_doctrine = {
 		}
 	}
 }
+
+
+single_alias[battalion_mult] = {
+	## cardinality = 1..inf
+	category = enum[unit_category]
+	## cardinality = 1..inf
+	alias_name[unit_stat] = alias_match_left[unit_stat]
+	## cardinality = 0..1
+	add = bool
+	## cardinality = 0..1
+	display_as_percentage = bool
+}
+
+
 
 enums = {
 	enum[xp_type] = {

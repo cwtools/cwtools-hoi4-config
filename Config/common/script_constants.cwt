@@ -73,9 +73,4 @@ enums = {
             }
         }
     }
-    enum[constant_hack] = {
-        <script_constant>
-        <constant_one>
-        <constant_two>
-    }
 }

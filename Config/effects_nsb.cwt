@@ -1,36 +1,10 @@
 ## scope = country
 ## push_scope = state
-alias[effect:every_core_state] = {
-	### Apply the effect to this number of randomly selected entities
-	## cardinality = 0..1
-	random_select_amount = int[1..inf]
-	## cardinality = 0..1
-	display_individual_scopes = bool
-	## cardinality = 0..1
-	limit = {
-		alias_name[trigger] = alias_match_left[trigger]
-	}
-	## cardinality = 0..1
-	tooltip = localisation
-	alias_name[effect] = alias_match_left[effect]
-}
+alias[effect:every_core_state] = single_alias_right[every_effect_clause]
 
 ## scope = country
 ## push_scope = state
-alias[effect:random_core_state] = {
-	## cardinality = 0..1
-	limit = {
-		alias_name[trigger] = alias_match_left[trigger]
-	}
-	## cardinality = 0..1
-	prioritize = {
-		## cardinality = 1..inf
-		<state>
-	}
-	## cardinality = 0..1
-	tooltip = localisation
-	alias_name[effect] = alias_match_left[effect]
-}
+alias[effect:random_core_state] = single_alias_right[random_prio_state_effect_clause]
 
 ### transfers state (owns and controls) to target
 ## scope = { state }
@@ -81,34 +55,11 @@ alias[effect:uncomplete_national_focus] = {
 
 ## scope = country
 ## push_scope = character
-alias[effect:every_character] = {
-	### Apply the effect to this number of randomly selected entities
-	## cardinality = 0..1
-	random_select_amount = int[1..inf]
-	## cardinality = 0..1
-	display_individual_scopes = bool
-	## cardinality = 0..1
-	limit = {
-		alias_name[trigger] = alias_match_left[trigger]
-	}
-	## cardinality = 0..1
-	tooltip = localisation
-	alias_name[effect] = alias_match_left[effect]
-}
+alias[effect:every_character] = single_alias_right[every_effect_clause]
 
 ## scope = country
 ## push_scope = character
-alias[effect:random_character] = {
-	## cardinality = 0..1
-	visible_when_empty = bool
-	## cardinality = 0..1
-	limit = {
-		alias_name[trigger] = alias_match_left[trigger]
-	}
-	## cardinality = 0..1
-	tooltip = localisation
-	alias_name[effect] = alias_match_left[effect]
-}
+alias[effect:random_character] = single_alias_right[random_effect_clause]
 
 ## scope = { character country unit_leader }
 alias[effect:add_corps_commander_role] = {
@@ -652,52 +603,18 @@ alias[effect:set_nationality] = enum[country_tags]
 ### Executes children effects on every subject country that fulfills the "limit" trigger. tooltip=key can be defined to override tooltip title
 ## scope = { COUNTRY }
 ## push_scope = country
-alias[effect:every_subject_country] = {
-	### Apply the effect to this number of randomly selected entities
-	## cardinality = 0..1
-	random_select_amount = int[1..inf]
-	## cardinality = 0..1
-	display_individual_scopes = bool
-    ## cardinality = 0..1
-	limit = {
-		alias_name[trigger] = alias_match_left[trigger]
-	}
-	## cardinality = 0..1
-	tooltip = localisation
-	alias_name[effect] = alias_match_left[effect]
-}
+alias[effect:every_subject_country] = single_alias_right[every_effect_clause]
 
 ### Executes child effects on random subject country that fulfills the limit.
 ## scope = { COUNTRY }
 ## push_scope = country
-alias[effect:random_subject_country] = {
-    ## cardinality = 0..1
-	limit = {
-		alias_name[trigger] = alias_match_left[trigger]
-	}
-    ## cardinality = 0..1
-    tooltip = localisation
-	alias_name[effect] = alias_match_left[effect]
-}
+alias[effect:random_subject_country] = single_alias_right[random_effect_clause]
 
 
 ### Executes children effects on every country that fulfils the "limit" trigger. Difference with every_country is that it includes countries not yet present on the map. tooltip=key can be defined to override tooltip title.
 ## scope = { any }
 ## push_scope = country
-alias[effect:every_possible_country] = {
-	### Apply the effect to this number of randomly selected entities
-	## cardinality = 0..1
-	random_select_amount = int[1..inf]
-	## cardinality = 0..1
-	display_individual_scopes = bool
-    ## cardinality = 0..1
-	limit = {
-		alias_name[trigger] = alias_match_left[trigger]
-	}
-	## cardinality = 0..1
-	tooltip = localisation
-	alias_name[effect] = alias_match_left[effect]
-}
+alias[effect:every_possible_country] = single_alias_right[every_effect_clause]
 
 ### Display in tooltip every character that fulfils the "limit" trigger.
 ## scope = { COUNTRY }

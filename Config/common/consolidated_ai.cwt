@@ -30,28 +30,10 @@ types = {
 	type[ai_equipment_design_group] = {
 		path = "game/common/ai_equipment"
 	}
-	type[ai_equipment_design] = {
-		path = "game/common/ai_equipment"
-		skip_root_key = any
-		subtype[design] = {
-			target_variant = {
-
-			}
-		}
-	}
 	type[ai_faction_theater] = {
 		path = "game/common/ai_faction_theaters"
 	}
 }
-	# complex_enum[ai_equipment_design] = {
-	# 	path = "game/common/ai_equipment"
-	# 	name = {
-	# 		enum_name = {
-	# 			target_variant = {
-	# 			}
-	# 		}
-	# 	}
-	# }
 
 ai_area = {
 	## cardinality = 0..1
@@ -269,14 +251,14 @@ ai_equipment_design_group = {
 	### Exclusionary list of countries that will not use this design group.
 	## cardinality = 0..1
 	blocked_for = {
-		## cardinality = ~1..inf
+		## cardinality = 0..inf
 		enum[country_tags]
 	}
 
 	### Inclusionary list of countries that will use this design group. If this list is empty, all countries not in the block list will be allowed. If this list is not empty, only countries that are in this list and not in the blocked list will be allowed.
 	## cardinality = 0..1
 	available_for = {
-		## cardinality = ~1..inf
+		## cardinality = 0..inf
 		enum[country_tags]
 	}
 
@@ -294,7 +276,7 @@ ai_equipment_design_group = {
 
 	### One or more specifications of designs belonging to this design group.
 	## cardinality = 1..inf
-	<ai_equipment_design.design> = {
+	value_set[ai_equipment_design_option] = {
 		### Further priority for creating this design specifically or for creating or upgrading equipment to use this design.
 		priority = {
 			## cardinality = 0..1
@@ -530,15 +512,6 @@ enums = {
 		name = {
 			enum_name = {
 				target_template = {
-				}
-			}
-		}
-	}
-	complex_enum[ai_equipment_design] = {
-		path = "game/common/ai_equipment"
-		name = {
-			enum_name = {
-				target_variant = {
 				}
 			}
 		}

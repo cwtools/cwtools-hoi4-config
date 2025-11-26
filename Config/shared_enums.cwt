@@ -18,12 +18,6 @@ enums = {
 		"No Compromise, No Surrender"
 	}
 
-	enum[hours_days_months] = {
-		hours
-		days
-		months
-	}
-
 	enum[tech_bonus] = {
 		bonus
 		ahead_reduction
@@ -55,6 +49,7 @@ enums = {
 		request_access_to_licence_production
 		send_volunteers
 		give_state_control
+		air_base_access
 	}
 
 	enum[add_factor] = {
@@ -99,66 +94,6 @@ enums = {
 		@tier1_cp_cost
 		@tier2_cp_cost
 		@tier3_cp_cost
-	}
-
-	enum[nsb_armor_archetypes] = {
-		light_tank_chassis
-		medium_tank_chassis
-		heavy_tank_chassis
-		super_heavy_tank_chassis
-		modern_tank_chassis
-		amphibious_tank_chassis
-		light_tank_artillery_chassis
-		light_tank_destroyer_chassis
-		light_tank_aa_chassis
-		light_tank_amphibious_chassis
-		light_tank_flame_chassis
-		medium_tank_artillery_chassis
-		medium_tank_destroyer_chassis
-		medium_tank_aa_chassis
-		medium_tank_amphibious_chassis
-		medium_tank_flame_chassis
-		heavy_tank_artillery_chassis
-		heavy_tank_destroyer_chassis
-		heavy_tank_aa_chassis
-		heavy_tank_amphibious_chassis
-		heavy_tank_flame_chassis
-		super_heavy_tank_artillery_chassis
-		super_heavy_tank_destroyer_chassis
-		super_heavy_tank_aa_chassis
-		modern_tank_artillery_chassis
-		modern_tank_destroyer_chassis
-		modern_tank_aa_chassis
-	}
-
-	enum[bba_air_equipment] = {
-		fighter_equipment
-		cv_fighter_equipment
-		jet_fighter_equipment
-		cv_CAS_equipment
-		CAS_equipment
-		nav_bomber_equipment
-		cv_nav_bomber_equipment
-		rocket_interceptor_equipment
-		tac_bomber_equipment
-		jet_tac_bomber_equipment
-		heavy_fighter_equipment
-		strat_bomber_equipment
-		jet_strat_bomber_equipment
-		transport_plane_equipment
-		guided_missile_equipment
-		scout_plane_equipment
-		small_plane_airframe
-		cv_small_plane_airframe
-		small_plane_cas_airframe
-		cv_small_plane_cas_airframe
-		small_plane_naval_bomber_airframe
-		cv_small_plane_naval_bomber_airframe
-		medium_plane_airframe
-		medium_plane_fighter_airframe
-		medium_plane_scout_plane_airframe
-		large_plane_airframe
-		large_plane_maritime_patrol_plane_airframe
 	}
 
 	enum[md_unique_dupe_archetypes] = {

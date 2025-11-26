@@ -5,7 +5,7 @@ types = {
 		path_strict = yes
 		skip_root_key = any
 		subtype[instanced] = {
-			## cardinality = ~2..inf
+			## cardinality = ~1..inf
 			instance = {
 
 			}
@@ -21,7 +21,7 @@ types = {
 			}
 		}
 		subtype[country_leader] = {
-			## cardinality = ~2..inf
+			## cardinality = ~1..inf
 			instance = {
 				## cardinality = 1..inf
 				country_leader = {
@@ -36,7 +36,7 @@ types = {
         }
 		## only_if_not = { field_marshal navy_leader }
 		subtype[corps_commander] = {
-			## cardinality = ~2..inf
+			## cardinality = ~1..inf
 			instance = {
 				corps_commander = {
 
@@ -51,7 +51,7 @@ types = {
 		}
 		## only_if_not = { corps_commander navy_leader }
 		subtype[field_marshal] = {
-			## cardinality = ~2..inf
+			## cardinality = ~1..inf
 			instance = {
 				field_marshal = {
 				}
@@ -65,7 +65,7 @@ types = {
 		}
 		## only_if_not = { corps_commander field_marshal }
 		subtype[navy_leader] = {
-			## cardinality = ~2..inf
+			## cardinality = ~1..inf
 			instance = {
 				navy_leader = {
 				}
@@ -84,7 +84,7 @@ types = {
 			}
 		}
 		subtype[advisor] = {
-			## cardinality = ~2..inf
+			## cardinality = ~1..inf
 			instance = {
 				## cardinality = 1..inf
 				advisor = {
@@ -350,7 +350,7 @@ character = {
 	}
 	subtype[instanced] = {
 		### Character instance, for use on startup checks (i.e. has_dlc, and similar) to create alternate versions of a character, usually two
-		## cardinality = ~2..inf
+		## cardinality = ~1..inf
 		instance = {
 			## replace_scope = { this = character root = country }
 			allowed = {

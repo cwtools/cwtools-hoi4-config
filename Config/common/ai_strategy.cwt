@@ -168,7 +168,7 @@ alias[ai_strategy_rule:ai_strategy] = {
 	value = int
 }
 alias[ai_strategy_rule:ai_strategy] = {
-	type = area_priority
+	type = enum[ai_area_id_strats]
 	id = <ai_area>
 	value = int
 }
@@ -182,6 +182,11 @@ alias[ai_strategy_rule:ai_strategy] = {
 	type = enum[ai_diplo_strats]
 	target = <ai_area>
 	value = int
+}
+alias[ai_strategy_rule:ai_strategy] = {
+	type = enum[ai_diplo_strats_no_value]
+	id = enum[country_tags]
+	id = scope[country]
 }
 alias[ai_strategy_rule:ai_strategy] = {
 	type = recruit_scientist
@@ -201,6 +206,12 @@ alias[ai_strategy_rule:ai_strategy] = {
 alias[ai_strategy_rule:ai_strategy] = {
 	type = enum[strat_region_strats]
 	id = <strategic_region>
+	value = int
+}
+alias[ai_strategy_rule:add_ai_strategy] = {
+	type = naval_dominance
+	id = <strategic_region>
+	id = <ai_area>
 	value = int
 }
 alias[ai_strategy_rule:ai_strategy] = {
@@ -342,6 +353,9 @@ alias[ai_strategy_rule:ai_strategy] = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 	value = int
+	### Untested - be careful
+	## cardinality = 0..1
+	ratio = float
 }
 alias[ai_strategy_rule:ai_strategy] = {
 	type = intelligence_agency_branch_desire_factor
@@ -504,6 +518,11 @@ enums = {
 		support
 		raid_target_country
 	}
+	enum[ai_diplo_strats_no_value] = {
+		conquer
+		antagonize
+		befriend
+	}
 	enum[equipment_strats] = {
 		equipment_variant_production_factor
 		save_equipment
@@ -514,6 +533,7 @@ enums = {
 		equipment_market_for_sale_factor
 		equipment_market_min_for_sale
 		equipment_market_max_for_sale
+		equipment_market_spend_factories
 	}
 	enum[no_id_strats] = {
 		added_military_to_civilian_factory_ratio
@@ -579,6 +599,10 @@ enums = {
 	}
 	enum[strat_region_strats_without_value] = {
 		strike_force_home_base
+	}
+	enum[ai_area_id_strats] = {
+		naval_dominance
+		area_priority
 	}
 	enum[state_strats] = {
 		theatre_distribution_demand_increase

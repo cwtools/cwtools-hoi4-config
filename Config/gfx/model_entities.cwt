@@ -6,13 +6,6 @@ types = {
 		path_extension = .gfx
 		name_field = "name"
 	}
-	## type_key_filter = animation
-	type[animation_id] = {
-		skip_root_key = { objectTypes any }
-		path = "game/gfx"
-		path_extension = .gfx
-		name_field = "id"
-	}
 
 	## type_key_filter = entity
 	type[entity] = {
@@ -288,18 +281,6 @@ enums = {
 		name = {
 			entity = {
 				state = {
-					name = enum_name
-				}
-			}
-		}
-	}
-
-	complex_enum[model_locators] = {
-		path = "gfx"
-		start_from_root = yes
-		name = {
-			entity = {
-				locator = {
 					name = enum_name
 				}
 			}

@@ -116,10 +116,6 @@ scripted_map_modes = {
 
 
 enums = {
-	enum[map_modes] = {
-		name
-	}
-
 	enum[far_text_type] = {
 		none
 		country

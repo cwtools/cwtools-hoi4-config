@@ -12,31 +12,17 @@ alias[trigger:any_core_state] = {
 ###Check if all of the country's core states meet the trigger.
 ## scope = country
 ## push_scope = state
-alias[trigger:all_core_state] = {
-	## cardinality = 0..1
-	tooltip = localisation
-	alias_name[trigger] = alias_match_left[trigger]
-}
+alias[trigger:all_core_state] = single_alias_right[any_all_trigger_clause]
 
 ###Check if any subject country meets the trigger.
 ## scope = country
 ## push_scope = country
-alias[trigger:any_subject_country] = {
-    ## cardinality = 0..1
-    count = int_variable_field
-	## cardinality = 0..1
-	tooltip = localisation
-	alias_name[trigger] = alias_match_left[trigger]
-}
+alias[trigger:any_subject_country] = single_alias_right[any_all_trigger_clause]
 
 ###Check if all subject countries meet the trigger. tooltip=key can be defined to override title.
 ## scope = country
 ## push_scope = country
-alias[trigger:all_subject_countries] = {
-	## cardinality = 0..1
-	tooltip = localisation
-	alias_name[trigger] = alias_match_left[trigger]
-}
+alias[trigger:all_subject_countries] = single_alias_right[any_all_trigger_clause]
 
 ###Checks if a state contains a railway at or above the specified level.
 ## scope = any
@@ -80,22 +66,12 @@ alias[trigger:has_resources_rights] = {
 ###Check if any character meets the trigger. tooltip=key can be defined to override title.
 ## scope = country
 ## push_scope = character
-alias[trigger:any_character] = {
-    ## cardinality = 0..1
-    count = int_variable_field
-	## cardinality = 0..1
-	tooltip = localisation
-	alias_name[trigger] = alias_match_left[trigger]
-}
+alias[trigger:any_character] = single_alias_right[any_all_trigger_clause]
 
 ###Check if all characters meets the trigger. tooltip=key can be defined to override title.
 ## scope = country
 ## push_scope = character
-alias[trigger:all_character] = {
-	## cardinality = 0..1
-	tooltip = localisation
-	alias_name[trigger] = alias_match_left[trigger]
-}
+alias[trigger:all_character] = single_alias_right[any_all_trigger_clause]
 
 ###Has character flag been set. Check flag val date set and days since set.
 ## scope = { character unit_leader }
@@ -423,13 +399,7 @@ alias[trigger:has_idea] = value[variable]
 ### Check if any country that has core on the state meets the trigger.
 ## scope = state
 ## push_scope = country
-alias[trigger:any_country_with_core] = {
-    ## cardinality = 0..1
-    count = int_variable_field
-	## cardinality = 0..1
-	tooltip = localisation
-	alias_name[trigger] = alias_match_left[trigger]
-}
+alias[trigger:any_country_with_core] = single_alias_right[any_all_trigger_clause]
 
 ### Check if character has specific advisor role
 ## scope = { character unit_leader }

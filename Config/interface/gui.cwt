@@ -526,6 +526,8 @@ alias[gui:editBoxType] = {
 	cursor = { x = int y = int }
     ## cardinality = 0..1
     is_multiline = bool
+    ## cardinality = 0..1
+    ignore_enter = bool
 }
 ### Checkbox
 alias[gui:checkboxType] = {
@@ -783,6 +785,13 @@ alias[gui_localization:pdx_tooltip] = localisation
 #alias[gui_localization:pdx_tooltip] = localisation_inline
 alias[gui_localization:pdx_tooltip_delayed] = localisation
 #alias[gui_localization:pdx_tooltip_delayed] = localisation_inline
+alias[gui_localization:pdx_tooltip_anchor] = {
+    x = int
+    y = int
+    ### It is default set to yes ( to the gui object )
+    ## cardinality = 0..1
+    relative = bool
+}
 ### PDX function, use pdx_tooltip instead
 alias[gui_localization:tooltip] = localisation
 #alias[gui_localization:tooltip] = localisation_inline
@@ -870,6 +879,7 @@ alias[gui_animation:animation_time] = float
 alias[gui_animation:fade_time] = float
 alias[gui_animation:fade_type] = linear
 alias[gui_animation:fade_type] = accelerated
+alias[gui_animation:fade_delay] = float
 
 # GUI Sound
 alias[gui_sound:upsound] = <soundeffect>
@@ -952,35 +962,6 @@ enums = {
                 name = enum_name
             }
             scrollbarType = {
-                name = enum_name
-            }
-        }
-    }
-    complex_enum[guiElementsProperties] = {
-        path = "game/interface"
-        name = {
-            buttonType = {
-                name = enum_name
-            }
-        }
-        name = {
-            iconType = {
-                name = enum_name
-            }
-        }
-    }
-    complex_enum[guiButtons] = {
-        path = "game/interface"
-        name = {
-            buttonType = {
-                name = enum_name
-            }
-        }
-    }
-    complex_enum[guiDynamicLists] = {
-        path = "game/interface"
-        name = {
-            gridBoxType = {
                 name = enum_name
             }
         }

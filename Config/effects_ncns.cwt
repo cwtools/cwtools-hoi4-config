@@ -52,7 +52,7 @@ alias[effect:add_mastery] = {
 	grand_doctrine = <grand_doctrine>
 	### Add mastery to all tracks of a specified folder (land/naval/air by default)
 	## cardinality = 0..1
-	folder = enum[doctrine_folder]
+	folder = enum[equipment_categories]
 }
 
 ### You can mix and match track/subdoctrine/doctrine/folder triggers
@@ -79,7 +79,7 @@ alias[effect:add_daily_mastery] = {
 	grand_doctrine = <grand_doctrine>
 	### Add mastery to all tracks of a specified folder (land/naval/air by default)
 	## cardinality = 0..1
-	folder = enum[doctrine_folder]
+	folder = enum[equipment_categories]
 }
 
 ### You can mix and match track/subdoctrine/doctrine/folder triggers
@@ -106,7 +106,7 @@ alias[effect:add_mastery_bonus] = {
 	grand_doctrine = <grand_doctrine>
 	### Add mastery to all tracks of a specified folder (land/naval/air by default)
 	## cardinality = 0..1
-	folder = enum[doctrine_folder]
+	folder = enum[equipment_categories]
 }
 
 ### Example: unlock_tactic = tactic_grand_banzai_charge
@@ -179,22 +179,7 @@ alias[effect:set_faction_upgrade] = <faction_upgrade> #TODO check for other type
 
 ### Executes children effects on every faction member of the country's faction in scope (if country does not have a faction it will only work on itself) 
 ## scope = country
-alias[effect:every_faction_member] = {
-	### Apply the effect to this number of randomly selected entities
-	## cardinality = 0..1
-	random_select_amount = int[1..inf]
-	## cardinality = 0..1
-	display_individual_scopes = bool
-	## cardinality = 0..1
-	visible_when_empty = bool
-	## cardinality = 0..1
-	limit = {
-		alias_name[trigger] = alias_match_left[trigger]
-	}
-	## cardinality = 0..1
-	tooltip = localisation
-	alias_name[effect] = alias_match_left[effect]
-}
+alias[effect:every_faction_member] = single_alias_right[every_effect_clause]
 
 ### Adds influence to the country in the faction
 ## scope = country

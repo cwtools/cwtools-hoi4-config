@@ -128,54 +128,22 @@ alias[trigger:has_mio_policy_active] = <mio_policy>
 ### Checks if all Military Industrial Organisations of the Country in scope match the triggers. tooltip=key can be defined to override title
 ## scope = country
 ## push_scope = military_industrial_organization
-alias[trigger:all_military_industrial_organization] = {
-    ## cardinality = 0..1
-    tooltip = localisation
-	## error_if_only_match = This is the default value and can be omitted
-	## severity = info
-	## cardinality = 0..1
-    include_invisible = no
-	## cardinality = 0..1
-    include_invisible = yes
-    alias_name[trigger] = alias_match_left[trigger]
-}
+alias[trigger:all_military_industrial_organization] = single_alias_right[any_all_trigger_clause]
 
 ### Checks if at least one Military Industrial Organisation of the Country in scope matches the triggers. tooltip=key can be defined to override title
 ## scope = country
 ## push_scope = military_industrial_organization
-alias[trigger:any_military_industrial_organization] = {
-    ## cardinality = 0..1
-    count = int_variable_field
-    ## cardinality = 0..1
-    tooltip = localisation
-	## error_if_only_match = This is the default value and can be omitted
-	## severity = info
-	## cardinality = 0..1
-    include_invisible = no
-	## cardinality = 0..1
-    include_invisible = yes
-    alias_name[trigger] = alias_match_left[trigger]
-}
+alias[trigger:any_military_industrial_organization] = single_alias_right[any_all_trigger_clause]
 
 ### Checks if at least one Purchase contract of the Country in scope matches the triggers. tooltip=key can be defined to override title
 ## scope = country
 ## push_scope = purchase_contract
-alias[trigger:any_purchase_contract] = {
-    ## cardinality = 0..1
-    count = int_variable_field
-    ## cardinality = 0..1
-    tooltip = localisation
-    alias_name[trigger] = alias_match_left[trigger]
-}
+alias[trigger:any_purchase_contract] = single_alias_right[any_all_trigger_clause]
 
 ### Checks if all purchase contracts of the Country in scope matches the triggers.\ntooltip=key can be defined to override title
 ## scope = country
 ## push_scope = purchase_contract
-alias[trigger:all_purchase_contracts] = {
-    ## cardinality = 0..1
-    tooltip = localisation
-    alias_name[trigger] = alias_match_left[trigger]
-}
+alias[trigger:all_purchase_contracts] = single_alias_right[any_all_trigger_clause]
 
 ### Check if contract contains equipment category, equipment archetype or equipment
 ## scope = purchase_contract

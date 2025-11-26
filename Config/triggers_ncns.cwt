@@ -120,6 +120,7 @@ alias[trigger:is_on_same_continent_as] = scope[state]
 ### 
 ### Checks if the triggers are true for any element in the collection. Supports both anonymous and regular collections
 ## scope = { any }
+## push_scope = any
 alias[trigger:any_collection_element] = {
 	### A reference to another collection that will be used as input
 	collection = collection:<collection>
@@ -146,6 +147,7 @@ alias[trigger:any_collection_element] = {
 ### 
 ### Checks if the triggers are true for all of the elements in the collection. Supports both anonymous and regular collections
 ## scope = { any }
+## push_scope = any
 alias[trigger:all_collection_elements] = {
 	### A reference to another collection that will be used as input
 	collection = collection:<collection>
@@ -473,14 +475,7 @@ alias[trigger:all_country_of] = {
 ### `tooltip` supports bindable localization.
 ## scope = { state }
 ## push_scope = country
-alias[trigger:all_claimant] = {
-	## cardinality = 0..1
-	tooltip = localisation
-	## cardinality = 0..1
-	tooltip = single_alias_right[bindable_loc]
-	## cardinality = 1..inf
-	alias_name[trigger] = alias_match_left[trigger]
-}
+alias[trigger:all_claimant] = single_alias_right[any_all_trigger_clause]
 
 ### Checks if any of the provided countries fulfill the specified triggers.
 ###

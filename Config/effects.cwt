@@ -3823,7 +3823,7 @@ alias[effect:add_ai_strategy] = {
 ### Adds strategy entry to country AI.
 ## scope = country
 alias[effect:add_ai_strategy] = {
-	type = area_priority
+	type = enum[ai_area_id_strats]
 	id = <ai_area>
 	value = int
 }
@@ -3849,6 +3849,14 @@ alias[effect:add_ai_strategy] = {
 ### Adds strategy entry to country AI.
 ## scope = country
 alias[effect:add_ai_strategy] = {
+	type = enum[ai_diplo_strats_no_value]
+	id = enum[country_tags]
+	id = scope[country]
+}
+
+### Adds strategy entry to country AI.
+## scope = country
+alias[effect:add_ai_strategy] = {
 	type = dont_join_wars_with
 	id = enum[country_tags]
 	id = scope[country]
@@ -3864,6 +3872,15 @@ alias[effect:add_ai_strategy] = {
 alias[effect:add_ai_strategy] = {
 	type = enum[strat_region_strats]
 	id = <strategic_region>
+	value = int
+}
+
+### Adds strategy entry to country AI.
+## scope = country
+alias[effect:add_ai_strategy] = {
+	type = naval_dominance
+	id = <strategic_region>
+	id = <ai_area>
 	value = int
 }
 

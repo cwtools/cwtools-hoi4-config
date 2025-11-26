@@ -4,7 +4,7 @@ types = {
 	}
 }
 
-## replace_scope = { this = military_industrial_organization from = country }
+## replace_scope = { this = military_industrial_organization from = country root = country }
 military_industrial_organization = {
 	### If name provided, use TAG_loc_key if it exists. if not use loc_key (where TAG is the tag of the MIO owner).
 	### If localization key TAG_my_MIO_token exists - use it else use loc key my_MIO_token.

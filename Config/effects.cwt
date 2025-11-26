@@ -2045,7 +2045,7 @@ alias[effect:modify_tech_sharing_bonus] = {
 ### Adds % freedom score to the autonomy.
 ## scope = country
 alias[effect:add_autonomy_ratio] = {
-	value = float
+	value = variable_field
 	## cardinality = 0..1
 	localization = localisation
 }

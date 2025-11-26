@@ -353,6 +353,9 @@ alias[ai_strategy_rule:ai_strategy] = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 	value = int
+	### Untested - be careful
+	## cardinality = 0..1
+	ratio = float
 }
 alias[ai_strategy_rule:ai_strategy] = {
 	type = intelligence_agency_branch_desire_factor
@@ -530,6 +533,7 @@ enums = {
 		equipment_market_for_sale_factor
 		equipment_market_min_for_sale
 		equipment_market_max_for_sale
+		equipment_market_spend_factories
 	}
 	enum[no_id_strats] = {
 		added_military_to_civilian_factory_ratio

@@ -4059,6 +4059,9 @@ alias[effect:add_ai_strategy] = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 	value = int
+	### Untested - be careful
+	## cardinality = 0..1
+	ratio = float
 }
 
 ### Adds strategy entry to country AI.

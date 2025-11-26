@@ -320,7 +320,8 @@ single_alias[raid_outcome] = {
     ## cardinality = 0..inf
     visual_effect = {
         entity = <entity>
-        animation = <animation_id>
+        ### Can't be reliably validated by CWT, check error.log
+        animation = scalar
     }
 
     # Effects that should be listed as affecting the raiding country

@@ -251,14 +251,14 @@ ai_equipment_design_group = {
 	### Exclusionary list of countries that will not use this design group.
 	## cardinality = 0..1
 	blocked_for = {
-		## cardinality = ~1..inf
+		## cardinality = 0..inf
 		enum[country_tags]
 	}
 
 	### Inclusionary list of countries that will use this design group. If this list is empty, all countries not in the block list will be allowed. If this list is not empty, only countries that are in this list and not in the blocked list will be allowed.
 	## cardinality = 0..1
 	available_for = {
-		## cardinality = ~1..inf
+		## cardinality = 0..inf
 		enum[country_tags]
 	}
 

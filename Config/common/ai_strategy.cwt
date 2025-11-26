@@ -94,6 +94,9 @@ ai_strategy_plan = {
 
 		## cardinality = 0..inf
 		value[advisor_token] = float
+
+		## cardinality = 0..inf
+		<country_leader_trait> = float
 	}
 
 	## cardinality = 0..1

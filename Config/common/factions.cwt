@@ -204,6 +204,13 @@ faction_goal = {
 				alias_name[modifier] = alias_match_left[modifier]
 			}
 
+			### Scaled upwards as you approach 0% fulfillment
+			## cardinality = 0..1
+			reversed = {
+				## cardinality = ~1..inf
+				alias_name[modifier] = alias_match_left[modifier]
+			}
+
 			# Is an extended version of progress
 			# The current progress value of a continuous goal is defined as the size of "completed_amount_collection"
 			# divided by the size of "completed_amount_collection"

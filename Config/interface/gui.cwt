@@ -879,6 +879,7 @@ alias[gui_animation:animation_time] = float
 alias[gui_animation:fade_time] = float
 alias[gui_animation:fade_type] = linear
 alias[gui_animation:fade_type] = accelerated
+alias[gui_animation:fade_delay] = float
 
 # GUI Sound
 alias[gui_sound:upsound] = <soundeffect>

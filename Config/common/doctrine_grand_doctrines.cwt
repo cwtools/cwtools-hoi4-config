@@ -72,6 +72,14 @@ grand_doctrine = {
 		<doctrine_track>
 	}
 
+	### Optional: unlimited by default
+	## cardinality = 0..1
+    max_track_rows = int 
+
+	### Optional: unlimited by default
+	## cardinality = 0..1
+    max_track_columns = int #
+
 	#### Scripting Activation Effects - Sync this between Grand Doctrines, Milestones, Subdoctrines, Rewards
 	### Any scripted effects
 	## cardinality = 0..1

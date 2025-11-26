@@ -30,28 +30,10 @@ types = {
 	type[ai_equipment_design_group] = {
 		path = "game/common/ai_equipment"
 	}
-	type[ai_equipment_design] = {
-		path = "game/common/ai_equipment"
-		skip_root_key = any
-		subtype[design] = {
-			target_variant = {
-
-			}
-		}
-	}
 	type[ai_faction_theater] = {
 		path = "game/common/ai_faction_theaters"
 	}
 }
-	# complex_enum[ai_equipment_design] = {
-	# 	path = "game/common/ai_equipment"
-	# 	name = {
-	# 		enum_name = {
-	# 			target_variant = {
-	# 			}
-	# 		}
-	# 	}
-	# }
 
 ai_area = {
 	## cardinality = 0..1
@@ -294,7 +276,7 @@ ai_equipment_design_group = {
 
 	### One or more specifications of designs belonging to this design group.
 	## cardinality = 1..inf
-	<ai_equipment_design.design> = {
+	value_set[ai_equipment_design_option] = {
 		### Further priority for creating this design specifically or for creating or upgrading equipment to use this design.
 		priority = {
 			## cardinality = 0..1
@@ -530,15 +512,6 @@ enums = {
 		name = {
 			enum_name = {
 				target_template = {
-				}
-			}
-		}
-	}
-	complex_enum[ai_equipment_design] = {
-		path = "game/common/ai_equipment"
-		name = {
-			enum_name = {
-				target_variant = {
 				}
 			}
 		}

@@ -2918,6 +2918,7 @@ alias[effect:start_border_war] = {
 		## cardinality = 0..1
 		on_cancel = <event>
 		### Score for selecting a leader
+		## push_scope = unit_leader
 		## cardinality = 0..1
 		leader_score = {
 			## cardinality = 0..1

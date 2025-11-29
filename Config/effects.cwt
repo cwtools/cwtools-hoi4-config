@@ -797,12 +797,12 @@ alias[effect:add_unit_leader_trait] = <unit_leader_trait>
 alias[effect:add_namespace] = scalar
 
 ### Set owner for state.
-## error_if_only_match = This can fail to carry over the control, so it's recommended to instead use transfer_state unless transferring the ownership without transferring over the control.
+## error_if_only_match = This can fail to carry over the control. Use 'transfer_state' unless transferring ownership w/o control.
 ## severity = info
 ## scope = country
 alias[effect:set_state_owner] = scope[state]
 ### Set owner for state.
-## error_if_only_match = This can fail to carry over the control, so it's recommended to instead use transfer_state unless transferring the ownership without transferring over the control.
+## error_if_only_match = This can fail to carry over the control. Use 'transfer_state' unless transferring ownership w/o control.
 ## severity = info
 ## scope = country
 alias[effect:set_state_owner] = <state>

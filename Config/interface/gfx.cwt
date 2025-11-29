@@ -93,6 +93,7 @@ spriteType = {
 	subtype[spriteType] = {
 		textureFile = filepath
 		clicksound = <soundeffect>
+		clicksound = click
 	}
 	subtype[frameAnimatedSpriteType] = {
 		textureFile = filepath
@@ -116,6 +117,8 @@ spriteType = {
 		textureFile = filepath
 		## cardinality = 0..1
 		clicksound = <soundeffect>
+		## cardinality = 0..1
+		clicksound = click
 	}
 	subtype[progressbartype] = {
 		textureFile1 = scalar

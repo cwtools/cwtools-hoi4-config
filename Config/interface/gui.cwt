@@ -565,6 +565,8 @@ alias[gui:scrollbarType] = {
         position = {x=int y=int}
         ## cardinality = 0..1
         clicksound = <soundeffect>
+        ## cardinality = 0..1
+        clicksound = click
     }
 }
 alias[gui:extendedScrollbarType] = {

@@ -1379,6 +1379,9 @@ alias[trigger:any_province_building_level] = {
 		### Limits the province scope to provinces with a naval base
 		## cardinality = 0..1
 		limit_to_naval_base = yes
+		### Picks the first valid after reduction
+		## cardinality = 0..1
+		first = yes
 	}
 	province = {
 		## cardinality = 1..inf

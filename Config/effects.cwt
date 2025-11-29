@@ -81,6 +81,9 @@ alias[effect:add_province_modifier] = {
 		limit_to_victory_point = yes
 		## cardinality = 0..1
 		limit_to_victory_point = int
+		### Picks the first valid after reduction
+		## cardinality = 0..1
+		first = yes
 	}
 	province = {
 		## cardinality = ~1..inf
@@ -109,6 +112,9 @@ alias[effect:remove_province_modifier] = {
 		limit_to_victory_point = yes
 		## cardinality = 0..1
 		limit_to_victory_point = int
+		### Picks the first valid after reduction
+		## cardinality = 0..1
+		first = yes
 	}
 	province = {
 		## cardinality = ~1..inf
@@ -1018,6 +1024,9 @@ alias[effect:add_building_construction] = {
 		limit_to_border_country = scope[country]
 		## cardinality = 0..1
 		level = int_variable_field
+		### Picks the first valid after reduction
+		## cardinality = 0..1
+		first = yes
 	}
 	province = {
 		## cardinality = 1..inf
@@ -2212,6 +2221,9 @@ alias[effect:set_building_level] = {
 		limit_to_border = bool
 		## cardinality = 0..1
 		level = int_variable_field
+		### Picks the first valid after reduction
+		## cardinality = 0..1
+		first = yes
 	}
 	province = {
 		## cardinality = 1..inf

@@ -2244,6 +2244,10 @@ alias[trigger:has_dynamic_modifier] = {
 	scope = scope[special_project]
 }
 
+### Checks if scope has a dynamic modifier.
+## scope = { state country }
+alias[trigger:has_dynamic_modifier] = <dynamic_modifier>
+
 ### Runs a loop on for each element of an array, finds the lowest value and stores result in temp variables.
 ## scope = any
 alias[trigger:find_lowest_in_array] = {

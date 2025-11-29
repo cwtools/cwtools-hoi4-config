@@ -16,8 +16,6 @@ types = {
 				<focus>
 				## cardinality = 0..inf
 				<shared_focus>
-				## cardinality = 0..inf
-				<joint_focus>
 			}
 		}
 	}
@@ -63,8 +61,6 @@ ai_focus = {
 			<focus>
 			## cardinality = 0..inf
 			<shared_focus>
-			## cardinality = 0..inf
-			<joint_focus>
 		}
 	}
 

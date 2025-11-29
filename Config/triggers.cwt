@@ -2453,4 +2453,9 @@ single_alias[any_all_trigger_clause] = {
     alias_name[trigger] = alias_match_left[trigger]
 }
 
-
+single_alias[ai_modifier_trigger_clause] = {
+	## cardinality = ~1..inf
+	alias_name[trigger] = alias_match_left[trigger]
+	## cardinality = ~1..1
+	enum[add_factor] = float
+}

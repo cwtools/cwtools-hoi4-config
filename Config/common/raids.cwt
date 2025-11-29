@@ -75,11 +75,7 @@ raid = {
 
         base = float
         ## cardinality = 0..inf
-        modifier = {
-            factor = float
-            ## cardinality = ~1..inf
-            alias_name[trigger] = alias_match_left[trigger]
-        }
+        modifier = single_alias_right[ai_modifier_trigger_clause]
     }
 
 	## cardinality = 0..1

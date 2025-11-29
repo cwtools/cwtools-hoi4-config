@@ -103,11 +103,7 @@ special_project = {
 			base = int
 			## replace_scope = { ROOT = country this = project from = country}
 			## cardinality = ~1..inf
-			modifier = {
-				add = int
-				## cardinality = ~1..inf
-				alias_name[trigger] = alias_match_left[trigger]
-			}
+			modifier = single_alias_right[ai_modifier_trigger_clause]
 		}
 	}
 
@@ -205,14 +201,7 @@ special_project = {
 	ai_will_do = {
 		base = float
 		## cardinality = 0..inf
-		modifier = {
-			## cardinality = 0..1
-			factor = float
-			## cardinality = 0..1
-			add = float
-			## cardinality = ~1..inf
-			alias_name[trigger] = alias_match_left[trigger]
-		}
+		modifier = single_alias_right[ai_modifier_trigger_clause]
 	}
 
 	### Use other Projects' token
@@ -268,14 +257,7 @@ special_project = {
 	empty_reward_weight = {
 		base = float
 		## cardinality = 0..inf
-		modifier = {
-			## cardinality = 0..1
-			factor = float
-			## cardinality = 0..1
-			add = float
-			## cardinality = ~1..inf
-			alias_name[trigger] = alias_match_left[trigger]
-		}
+		modifier = single_alias_right[ai_modifier_trigger_clause]
 	}
 }
 
@@ -371,14 +353,7 @@ single_alias[sp_proto_reward] = {
 		## cardinality = 0..1
 		factor = float
 		## cardinality = 0..inf
-		modifier = {
-			## cardinality = 0..1
-			factor = float
-			## cardinality = 0..1
-			add = float
-			## cardinality = ~1..inf
-			alias_name[trigger] = alias_match_left[trigger]
-		}
+		modifier = single_alias_right[ai_modifier_trigger_clause]
 	}
 
 	### Repeatable - at least 1 is mandatory

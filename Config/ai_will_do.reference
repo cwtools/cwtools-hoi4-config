@@ -4,12 +4,7 @@ ai_will_do = {
 	## cardinality = 0..inf
 	enum[add_factor] = float
 	## cardinality = 0..inf
-	modifier = {
-		## cardinality = ~1..inf
-		alias_name[trigger] = alias_match_left[trigger]
-		## cardinality = ~1..1
-		enum[add_factor] = float
-	}
+	modifier = single_alias_right[ai_modifier_trigger_clause]
 }
 ai_chance = {
 	## cardinality = 0..1
@@ -17,12 +12,7 @@ ai_chance = {
 	## cardinality = 0..inf
 	enum[add_factor] = float
 	## cardinality = 0..inf
-	modifier = {
-		## cardinality = ~1..inf
-		alias_name[trigger] = alias_match_left[trigger]
-		## cardinality = ~1..1
-		enum[add_factor] = float
-	}
+	modifier = single_alias_right[ai_modifier_trigger_clause]
 }
 
 alias_name[modifier_rule] = alias_match_left[modifier_rule]

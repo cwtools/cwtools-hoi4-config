@@ -549,12 +549,7 @@ alias[effect:create_unit] = {
 		enum[add_factor] = float
 		## cardinality = 0..inf
 		## push_scope = country
-		modifier = {
-			## cardinality = ~1..inf
-			alias_name[trigger] = alias_match_left[trigger]
-			## cardinality = ~1..1
-			enum[add_factor] = float
-		}
+		modifier = single_alias_right[ai_modifier_trigger_clause]
 	}
 	## cardinality = 0..1
 	id = variable_field
@@ -2926,12 +2921,7 @@ alias[effect:start_border_war] = {
 			## cardinality = 0..inf
 			enum[add_factor] = float
 			## cardinality = 0..inf
-			modifier = {
-				## cardinality = ~1..inf
-				alias_name[trigger] = alias_match_left[trigger]
-				## cardinality = ~1..1
-				enum[add_factor] = float
-			}
+			modifier = single_alias_right[ai_modifier_trigger_clause]
 		}
 		### Dig in modifier factor (default value: 1.0)
 		## cardinality = 0..1

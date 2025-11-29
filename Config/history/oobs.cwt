@@ -53,6 +53,7 @@ oob = {
 		priority = int
 	}
 
+	## cardinality = 0..inf
 	create_colonial_division_template = {
 		subject = scope[country] # Country tag
 		division_template = {

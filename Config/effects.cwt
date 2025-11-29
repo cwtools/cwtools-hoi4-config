@@ -2312,7 +2312,7 @@ alias[effect:clr_unit_leader_flag] = value[leader_flag]
 alias[effect:demote_leader] = yes
 
 ### Retires scope unit leader.
-## scope = { character unit_leader }
+## scope = { character unit_leader operative }
 alias[effect:retire] = bool
 
 ### Add command power to country.

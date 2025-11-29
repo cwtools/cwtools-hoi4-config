@@ -88,6 +88,8 @@ focus_tree = {
 	shortcut = {
 		name = localisation
 		target = <focus>
+		### Optional parameter, if left unset will use existing zoomlevel. Warning: there's no good way for this to respect client resolution.
+		## cardinality = 0..1
 		scroll_wheel_factor = float
 		## cardinality = 0..1
 		trigger = {

@@ -529,7 +529,7 @@ alias[effect:add_trait] = {
 	## cardinality = 0..1
 	slot = value[character_advisor_slot]
 	## cardinality = 0..1
-	slot = country_leader
+	slot = enum[character_roles]
 }
 ## scope = { country character unit_leader }
 alias[effect:remove_trait] = {

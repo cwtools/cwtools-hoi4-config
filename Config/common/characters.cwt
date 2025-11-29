@@ -621,6 +621,14 @@ enums = {
 		large
 		small
 	}
+	enum[character_roles] = {
+		country_leader
+		navy_leader
+		corps_commander
+		field_marshal
+		scientist
+		advisor
+	}
 }
 
 

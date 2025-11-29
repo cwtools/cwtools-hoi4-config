@@ -46,9 +46,6 @@ alias[modifier:<special_project>_speed_factor] = float
 #placed in modifiers file
 ## scope = { country state }
 alias[modifier:<specialization>_speed_factor] = float
-#placed in modifiers file
-## scope = { country state }
-alias[modifier:enum[project_tag]_speed_factor] = float
 
 #unit stats
 alias[unit_stat:acclimatization_cold_climate_gain_factor] = float

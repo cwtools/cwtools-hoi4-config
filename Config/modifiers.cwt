@@ -836,10 +836,6 @@ modifiers = {
 	resistance_target_on_our_occupied_states = state
 	starting_compliance = state
 	state_production_speed_buildings_factor = state
-	state_repair_speed_air_base_factor = state
-	state_repair_speed_arms_factory_factor = state
-	state_repair_speed_industrial_complex_factor = state
-	state_repair_speed_infrastructure_factor = state
 	state_resources_factor = state
 	supply_factor = state
 	truck_attrition = state
@@ -1047,7 +1043,21 @@ modifiers = {
 	state_production_speed_facility_factor = state
 	<special_project>_speed_factor = country
 	<specialization>_speed_factor = country
-	enum[project_tag]_speed_factor = country
+	### hardcoded sp tag modifiers - enums are not supportedi n modifiers
+	sp_tag_aircraft_speed_factor = country
+	sp_tag_artillery_speed_factor = country
+	sp_tag_bomb_speed_factor = country
+	sp_tag_guided_bomb_speed_factor = country
+	sp_tag_helicopter_speed_factor = country
+	sp_tag_jet_speed_factor = country
+	sp_tag_nuclear_power_speed_factor = country
+	sp_tag_nuclear_warfare_speed_factor = country
+	sp_tag_radar_speed_factor = country
+	sp_tag_rocket_speed_factor = country
+	sp_tag_submarine_speed_factor = country
+	sp_tag_surface_ship_speed_factor = country
+	sp_tag_tank_speed_factor = country
+	sp_thermo_nuclear_bomb_speed_factor = country
 	<building>_max_level_terrain_limit = country
 	state_<building>_max_level_terrain_limit = state
 
@@ -1055,7 +1065,48 @@ modifiers = {
 	<ideology>_acceptance = politics
 	<ideology>_drift = politics
 	state_repair_speed_<building>_factor = state
+	### todo - ask dayshine to make enums work in modifiers
 	enum[tech_category]_cost_factor = country
+	cat_air_bombs_cost_factor = country
+	cat_air_engine_cost_factor = country
+	cat_air_guns_cost_factor = country
+	cat_anti_air_cost_factor = country
+	cat_anti_tank_cost_factor = country
+	cat_armored_cars_cost_factor = country
+	cat_base_strike_cost_factor = country
+	cat_battlefield_support_cost_factor = country
+	cat_deep_battle_cost_factor = country
+	cat_fleet_in_being_cost_factor = country
+	cat_fortification_cost_factor = country
+	cat_grand_battle_plan_cost_factor = country
+	cat_heavy_armor_cost_factor = country
+	cat_heavy_fighter_cost_factor = country
+	cat_light_armor_cost_factor = country
+	cat_marines_doctrine_cost_factor = country
+	cat_maritime_patrol_cost_factor = country
+	cat_mass_assault_cost_factor = country
+	cat_mass_mobilization_cost_factor = country
+	cat_mechanized_equipment_cost_factor = country
+	cat_medium_armor_cost_factor = country
+	cat_mobile_warfare_cost_factor = country
+	cat_mountaineers_doctrine_cost_factor = country
+	cat_operational_integrity_cost_factor = country
+	cat_paratroopers_doctrine_cost_factor = country
+	cat_production_cost_factor = country
+	cat_rangers_doctrine_cost_factor = country
+	cat_scout_plane_cost_factor = country
+	cat_ship_heavy_battery_cost_factor = country
+	cat_ship_light_battery_cost_factor = country
+	cat_ship_medium_battery_cost_factor = country
+	cat_special_forces_generic_cost_factor = country
+	cat_strategic_bomber_cost_factor = country
+	cat_strategic_destruction_cost_factor = country
+	cat_superior_firepower_cost_factor = country
+	cat_synth_oil_cost_factor = country
+	cat_synth_rubber_cost_factor = country
+	cat_torpedoes_cost_factor = country
+	cat_trade_interdiction_cost_factor = country
+
 	trait_<unit_leader_trait.gainable_trait>_xp_gain_factor = army
 	trait_<unit_leader_trait.gainable_trait>_xp_gain_factor = naval
 	trait_<unit_leader_trait.gainable_trait>_xp_gain_factor = country
@@ -1110,19 +1161,14 @@ modifiers = {
 	rangers_special_forces_contribution_factor = army
 	autonomy_manpower_share_from_subjects = autonomy
 	resources_to_overlord_factor = autonomy
-	<Doctrine>_doctrine_cost_factor = country
-	<Doctrine>_mastery_gain_factor = country
-	<Doctrine>_track_mastery_gain_factor = country
-	<IdeaCategory>_category_type_cost_factor = country
-	<IdeaGroup>_cost_factor = country
-	<ModifierStat>_factor = country
-	<ModifierStatValue>_value_factor = country
-	<Technology>_cost_factor = country
+	<grand_doctrine>_mastery_gain_factor = country
+	<doctrine_track>_track_mastery_gain_factor = country
+	<technology>_cost_factor = country
 	air_invasion_plan_cap = country
 	air_invasion_prep_days = country
 	annex_subject_cost_factor = country
 	automatic_grant_medal_chance = country
-	experience_gain_<Unit>_mission_factor = country
+	experience_gain_<unit>_mission_factor = country
 	factory_energy_consumption = country
 	industrial_capacity_dockyard_powered = country
 	industrial_capacity_factory_powered = country
@@ -1130,9 +1176,9 @@ modifiers = {
 	naval_invasion_plan_cap = country
 	naval_invasion_prep_days = country
 	out_of_power_impact_factor = country
-	production_cost_<Building>_factor = country
+	production_cost_<building>_factor = country
 	production_speed_buildings_powered_factor = country
-	repair_speed_<Building>_factor = country
+	repair_speed_<building>_factor = country
 	shore_bombardment_collateral_damage_factor = country
 	special_forces_doctrine_cost_factor = country
 	unit_medal_effectiveness = country
@@ -1147,9 +1193,9 @@ modifiers = {
 	faction_subject_contribution_gain = faction
 	intelligence_operation_speed = intelligence_agency
 	amphibious_invasion_against = naval
-	experience_gain_<Unit>_combat_factor = naval
-	experience_gain_<Unit>_mission_factor = naval
-	experience_gain_<Unit>_training_factor = naval
+	experience_gain_<unit>_combat_factor = naval
+	experience_gain_<unit>_mission_factor = naval
+	experience_gain_<unit>_training_factor = naval
 	headquarters_experience_gain_factor = naval
 	invasion_preparation_against = naval
 	max_organisation = naval
@@ -1167,8 +1213,8 @@ modifiers = {
 	navy_submarine_attack_factor_against = naval
 	navy_submarine_defence_factor_against = naval
 	spotting_chance_against = naval
-	<ModifierStat>_factor = state
-	<ModifierStatValue>_value_factor = state
+	naval_general_support_value_factor = state
+	naval_repair_support_value_factor = state
 	local_factory_energy_consumption = state
 	air_invasion_preparation = unit_leader
 	naval_critical_score_chance_factor_against = unit_leader
@@ -1178,46 +1224,6 @@ modifiers = {
 	production_speed_buildings_powered_factor = war_production
 	can_guarantee_other_ideologies = country
 	<ideology>_drift_from_guarantees = politics
-
-  ###  scriptrelated modifier stuff
-  ### no tab in front to prevent enum gen script from seeing them?
-<Trait>_xp_gain_factor = army
-trait_<Trait>_xp_gain_factor = army
-module_<EquipmentModule>_design_cost_factor = army
-unit_<Unit>_design_cost_factor = army
-<Building>_max_level_terrain_limit = country
-<CombatTactic>_preferred_weight_factor = country
-<Equipment>_design_cost_factor = country
-<SpecialProject>_speed_factor = country
-<Trait>_xp_gain_factor = country
-country_resource_<Resource> = country
-country_resource_cost_<Resource> = country
-experience_gain_<Unit>_combat_factor = country
-experience_gain_<Unit>_training_factor = country
-production_speed_<Building>_factor = country
-trait_<Trait>_xp_gain_factor = country
-module_<EquipmentModule>_design_cost_factor = country
-unit_<Unit>_design_cost_factor = country
-<Operation>_cost = intelligence_agency
-<Operation>_outcome = intelligence_agency
-<Operation>_risk = intelligence_agency
-<Trait>_xp_gain_factor = naval
-module_<EquipmentModule>_design_cost_factor = naval
-trait_<Trait>_xp_gain_factor = naval
-unit_<Unit>_design_cost_factor = naval
-<Ideology>_acceptance = politics
-<Ideology>_drift = politics
-state_<Building>_max_level_terrain_limit = state
-production_cost_max_<NavalEquipment> = naval
-<SpecialProject>_speed_factor = state
-state_resource_<Resource> = state
-state_resource_cost_<Resource> = state
-state_production_speed_<Building>_factor = state
-state_repair_speed_<Building>_factor = state
-state_resources_<Resource>_factor = state
-temporary_state_resource_<Resource> = state
-<Ideology>_drift_from_guarantees = politics
-
 
   ### the following modifers do not present in md doc (nsb patch)
 
@@ -1837,6 +1843,7 @@ enums = {
 		invasion_preparation
 		mines_planting_by_fleets_factor
 		mines_sweeping_by_fleets_factor
+		module_<module>_design_cost_factor
 		naval_accidents_chance
 		naval_attrition
 		naval_coordination
@@ -1968,10 +1975,6 @@ enums = {
 		resistance_target_on_our_occupied_states
 		starting_compliance
 		state_production_speed_buildings_factor
-		state_repair_speed_air_base_factor
-		state_repair_speed_arms_factory_factor
-		state_repair_speed_industrial_complex_factor
-		state_repair_speed_infrastructure_factor
 		state_resources_factor
 		supply_factor
 		truck_attrition
@@ -2052,20 +2055,80 @@ enums = {
 		state_production_speed_facility_factor
 		<special_project>_speed_factor
 		<specialization>_speed_factor
-		enum[project_tag]_speed_factor
+		sp_tag_aircraft_speed_factor
+		sp_tag_artillery_speed_factor
+		sp_tag_bomb_speed_factor
+		sp_tag_guided_bomb_speed_factor
+		sp_tag_helicopter_speed_factor
+		sp_tag_jet_speed_factor
+		sp_tag_nuclear_power_speed_factor
+		sp_tag_nuclear_warfare_speed_factor
+		sp_tag_radar_speed_factor
+		sp_tag_rocket_speed_factor
+		sp_tag_submarine_speed_factor
+		sp_tag_surface_ship_speed_factor
+		sp_tag_tank_speed_factor
+		sp_thermo_nuclear_bomb_speed_factor
 		<building>_max_level_terrain_limit
 		state_<building>_max_level_terrain_limit
 		<ideology>_acceptance
+		<ideology>_drift
 		state_repair_speed_<building>_factor
 		enum[tech_category]_cost_factor
+		cat_air_bombs_cost_factor
+		cat_air_engine_cost_factor
+		cat_air_guns_cost_factor
+		cat_anti_air_cost_factor
+		cat_anti_tank_cost_factor
+		cat_armored_cars_cost_factor
+		cat_base_strike_cost_factor
+		cat_battlefield_support_cost_factor
+		cat_deep_battle_cost_factor
+		cat_fleet_in_being_cost_factor
+		cat_fortification_cost_factor
+		cat_grand_battle_plan_cost_factor
+		cat_heavy_armor_cost_factor
+		cat_heavy_fighter_cost_factor
+		cat_light_armor_cost_factor
+		cat_marines_doctrine_cost_factor
+		cat_maritime_patrol_cost_factor
+		cat_mass_assault_cost_factor
+		cat_mass_mobilization_cost_factor
+		cat_mechanized_equipment_cost_factor
+		cat_medium_armor_cost_factor
+		cat_mobile_warfare_cost_factor
+		cat_mountaineers_doctrine_cost_factor
+		cat_operational_integrity_cost_factor
+		cat_paratroopers_doctrine_cost_factor
+		cat_production_cost_factor
+		cat_rangers_doctrine_cost_factor
+		cat_scout_plane_cost_factor
+		cat_ship_heavy_battery_cost_factor
+		cat_ship_light_battery_cost_factor
+		cat_ship_medium_battery_cost_factor
+		cat_special_forces_generic_cost_factor
+		cat_strategic_bomber_cost_factor
+		cat_strategic_destruction_cost_factor
+		cat_superior_firepower_cost_factor
+		cat_synth_oil_cost_factor
+		cat_synth_rubber_cost_factor
+		cat_torpedoes_cost_factor
+		cat_trade_interdiction_cost_factor
+		trait_<unit_leader_trait.gainable_trait>_xp_gain_factor
 		trait_<unit_leader_trait.gainable_trait>_xp_gain_factor
 		<unit_leader_trait.gainable_trait>_xp_gain_factor
+		<unit_leader_trait.gainable_trait>_xp_gain_factor
+		unit_<unit>_design_cost_factor
 		unit_<unit>_design_cost_factor
 		<equipment.archetype_equip>_design_cost_factor
+		<equipment.archetype_equip>_design_cost_factor
+		<duplicate_archetypes>_design_cost_factor
 		<duplicate_archetypes>_design_cost_factor
 		production_cost_max_<equipment.archetype_equip>
 		production_cost_max_<duplicate_archetypes>
 		experience_gain_<unit>_combat_factor
+		experience_gain_<unit>_combat_factor
+		experience_gain_<unit>_training_factor
 		experience_gain_<unit>_training_factor
 		<combat_tactic>_preferred_weight_factor
 		country_resource_cost_<resource>
@@ -2076,14 +2139,78 @@ enums = {
 		production_speed_<building>_factor
 		state_production_speed_<building>_factor
 		state_resources_<resource>_factor
+		army_claim_attack_factor
+		naval_critical_score_chance_factor_against
+		naval_supply_consumption_factor
+		navy_capital_ship_attack_factor_against
+		navy_screen_attack_factor_against
+		navy_submarine_attack_factor_against
+		planning_decay_rate_factor
+		air_invasion_division_cap
+		air_invasion_preparation
+		autonomy_manpower_share_from_subjects
+		resources_to_overlord_factor
+		<grand_doctrine>_mastery_gain_factor
+		<doctrine_track>_track_mastery_gain_factor
 		<technology>_cost_factor
+		air_invasion_plan_cap
+		air_invasion_prep_days
+		annex_subject_cost_factor
+		automatic_grant_medal_chance
+		experience_gain_<unit>_mission_factor
+		factory_energy_consumption
+		industrial_capacity_dockyard_powered
+		industrial_capacity_factory_powered
+		local_resources_<resource>_factor
+		naval_invasion_plan_cap
+		naval_invasion_prep_days
+		out_of_power_impact_factor
 		production_cost_<building>_factor
+		production_speed_buildings_powered_factor
 		repair_speed_<building>_factor
-		unit_<unit>_design_cost_factor
-		<operation>_cost
-		<operation>_outcome
-		<operation>_risk
-		module_<module>_design_cost_factor
+		shore_bombardment_collateral_damage_factor
+		special_forces_doctrine_cost_factor
+		unit_medal_effectiveness
+		army_claim_defence_factor
+		army_retreat_speed_factor
+		naval_supply_consumption_factor
+		navy_capital_ship_defence_factor_against
+		navy_screen_defence_factor_against
+		navy_submarine_defence_factor_against
+		faction_influence_contribution_factor
+		faction_influence_war_score_factor
+		faction_subject_contribution_gain
+		intelligence_operation_speed
+		amphibious_invasion_against
+		experience_gain_<unit>_combat_factor
+		experience_gain_<unit>_mission_factor
+		experience_gain_<unit>_training_factor
+		headquarters_experience_gain_factor
+		invasion_preparation_against
+		max_organisation
+		naval_critical_score_chance_factor_against
+		naval_hit_chance_against
+		naval_invasion_division_cap
+		naval_mission_xp_factor
+		naval_ship_recovery_chance
+		naval_ship_recovery_chance_factor
+		naval_supply_consumption_factor
+		navy_capital_ship_attack_factor_against
+		navy_capital_ship_defence_factor_against
+		navy_screen_attack_factor_against
+		navy_screen_defence_factor_against
+		navy_submarine_attack_factor_against
+		navy_submarine_defence_factor_against
+		spotting_chance_against
+		naval_general_support_value_factor
+		naval_repair_support_value_factor
+		local_factory_energy_consumption
+		industrial_capacity_dockyard_powered
+		industrial_capacity_factory_powered
+		out_of_power_impact_factor
+		production_speed_buildings_powered_factor
+		can_guarantee_other_ideologies
+		<ideology>_drift_from_guarantees
 		air_advisor_cost_factor
 		air_advisor_cost_factor
 		air_carrier_night_penalty_reduction_factor
@@ -2184,7 +2311,6 @@ enums = {
 		military_industrial_organization_funds_gain
 		military_industrial_organization_policy_cost
 		military_industrial_organization_policy_cooldown
-		local_resources_<resource>_factor
 	}
 	enum[leader_modifiers_enum] = {
 		amphibious_invasion
@@ -2307,6 +2433,8 @@ enums = {
 		submarine_attack
 		unit_leader_as_advisor_cp_cost_factor
 		wounded_chance_factor
+		air_invasion_preparation
+		naval_critical_score_chance_factor_against
 	}
 	enum[unit_modifiers_enum] = {
 		acclimatization_cold_climate_gain_factor
@@ -2486,5 +2614,12 @@ enums = {
 		<equipment.archetype_equip>_design_cost_factor
 		<duplicate_archetypes>_design_cost_factor
 		enum[sub_unit_modifiers]
+		army_claim_attack_factor
+		army_claim_defence_factor
+		army_experience_from_volunteers
+		army_retreat_speed_factor
+		modifier_army_sub_unit_category_rocket_artillery_attack_factor
+		planning_decay_rate_factor
+		rangers_special_forces_contribution_factor
 	}
 }

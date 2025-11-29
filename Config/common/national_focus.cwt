@@ -88,6 +88,8 @@ focus_tree = {
 	shortcut = {
 		name = localisation
 		target = <focus>
+		### Optional parameter, if left unset will use existing zoomlevel. Warning: there's no good way for this to respect client resolution.
+		## cardinality = 0..1
 		scroll_wheel_factor = float
 		## cardinality = 0..1
 		trigger = {
@@ -119,9 +121,6 @@ focus_tree = {
 
 		## cardinality = 0..1
 		focus = <shared_focus>
-
-		## cardinality = 0..1
-		focus = <joint_focus>
 
 		## cardinality = 0..1
 		x = int
@@ -207,9 +206,6 @@ focus_tree = {
 		## cardinality = 0..1
 		relative_position_id = <shared_focus>
 
-		## cardinality = 0..1
-		relative_position_id = <joint_focus>
-
 		### Used for focuses that can change title/desc.
 		## cardinality = 0..1
 		dynamic = yes
@@ -266,9 +262,6 @@ focus_tree = {
 
 			## cardinality = 0..inf
 			focus = <shared_focus>
-
-			## cardinality = 0..inf
-			focus = <joint_focus>
 		}
 
 		## cardinality = 0..inf
@@ -278,9 +271,6 @@ focus_tree = {
 
 			## cardinality = 0..inf
 			focus = <shared_focus>
-
-			## cardinality = 0..inf
-			focus = <joint_focus>
 		}
 
 		## cardinality = 0..1
@@ -424,9 +414,6 @@ shared_focus = {
 	## cardinality = 0..1
 	relative_position_id = <focus>
 
-	## cardinality = 0..1
-	relative_position_id = <joint_focus>
-
 	### Used for focuses that can change title/desc.
 	## cardinality = 0..1
 	dynamic = yes
@@ -483,9 +470,6 @@ shared_focus = {
 
 		## cardinality = 0..inf
 		focus = <focus>
-
-		## cardinality = 0..inf
-		focus = <joint_focus>
 	}
 
 	## cardinality = 0..inf
@@ -494,8 +478,6 @@ shared_focus = {
 		focus = <shared_focus>
 		## cardinality = 0..inf
 		focus = <focus>
-		## cardinality = 0..inf
-		focus = <joint_focus>
 	}
 
 	## cardinality = 0..1

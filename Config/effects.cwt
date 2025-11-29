@@ -81,6 +81,9 @@ alias[effect:add_province_modifier] = {
 		limit_to_victory_point = yes
 		## cardinality = 0..1
 		limit_to_victory_point = int
+		### Picks the first valid after reduction
+		## cardinality = 0..1
+		first = yes
 	}
 	province = {
 		## cardinality = ~1..inf
@@ -109,6 +112,9 @@ alias[effect:remove_province_modifier] = {
 		limit_to_victory_point = yes
 		## cardinality = 0..1
 		limit_to_victory_point = int
+		### Picks the first valid after reduction
+		## cardinality = 0..1
+		first = yes
 	}
 	province = {
 		## cardinality = ~1..inf
@@ -549,12 +555,7 @@ alias[effect:create_unit] = {
 		enum[add_factor] = float
 		## cardinality = 0..inf
 		## push_scope = country
-		modifier = {
-			## cardinality = ~1..inf
-			alias_name[trigger] = alias_match_left[trigger]
-			## cardinality = ~1..1
-			enum[add_factor] = float
-		}
+		modifier = single_alias_right[ai_modifier_trigger_clause]
 	}
 	## cardinality = 0..1
 	id = variable_field
@@ -797,12 +798,12 @@ alias[effect:add_unit_leader_trait] = <unit_leader_trait>
 alias[effect:add_namespace] = scalar
 
 ### Set owner for state.
-## error_if_only_match = This can fail to carry over the control, so it's recommended to instead use transfer_state unless transferring the ownership without transferring over the control.
+## error_if_only_match = This can fail to carry over the control. Use 'transfer_state' unless transferring ownership w/o control.
 ## severity = info
 ## scope = country
 alias[effect:set_state_owner] = scope[state]
 ### Set owner for state.
-## error_if_only_match = This can fail to carry over the control, so it's recommended to instead use transfer_state unless transferring the ownership without transferring over the control.
+## error_if_only_match = This can fail to carry over the control. Use 'transfer_state' unless transferring ownership w/o control.
 ## severity = info
 ## scope = country
 alias[effect:set_state_owner] = <state>
@@ -1023,6 +1024,9 @@ alias[effect:add_building_construction] = {
 		limit_to_border_country = scope[country]
 		## cardinality = 0..1
 		level = int_variable_field
+		### Picks the first valid after reduction
+		## cardinality = 0..1
+		first = yes
 	}
 	province = {
 		## cardinality = 1..inf
@@ -1729,7 +1733,21 @@ alias[effect:leave_faction] = bool
 ### Unlocks a focus for a country.
 ## scope = country
 alias[effect:complete_national_focus] = <focus>
+### Unlocks a focus for a country.
+## scope = country
 alias[effect:complete_national_focus] = <shared_focus>
+### Unlocks a focus for a country.
+## scope = country
+alias[effect:complete_national_focus] = {
+	focus = <focus>
+	focus = <shared_focus>
+	### Defaults to no. If yes - spawns bottom right message. If no - uses regular focus completion message
+	## cardinality = 0..1
+	use_side_message = bool
+	### Uses custom loc for - "focusname" has been completed by "originatorname"
+	## cardinality = 0..1
+	originator_name = localisation
+}
 
 ### Change partyname for an ideology in a country.
 ## scope = country
@@ -2203,6 +2221,9 @@ alias[effect:set_building_level] = {
 		limit_to_border = bool
 		## cardinality = 0..1
 		level = int_variable_field
+		### Picks the first valid after reduction
+		## cardinality = 0..1
+		first = yes
 	}
 	province = {
 		## cardinality = 1..inf
@@ -2317,7 +2338,7 @@ alias[effect:clr_unit_leader_flag] = value[leader_flag]
 alias[effect:demote_leader] = yes
 
 ### Retires scope unit leader.
-## scope = { character unit_leader }
+## scope = { character unit_leader operative }
 alias[effect:retire] = bool
 
 ### Add command power to country.
@@ -2918,6 +2939,7 @@ alias[effect:start_border_war] = {
 		## cardinality = 0..1
 		on_cancel = <event>
 		### Score for selecting a leader
+		## push_scope = unit_leader
 		## cardinality = 0..1
 		leader_score = {
 			## cardinality = 0..1
@@ -2925,12 +2947,7 @@ alias[effect:start_border_war] = {
 			## cardinality = 0..inf
 			enum[add_factor] = float
 			## cardinality = 0..inf
-			modifier = {
-				## cardinality = ~1..inf
-				alias_name[trigger] = alias_match_left[trigger]
-				## cardinality = ~1..1
-				enum[add_factor] = float
-			}
+			modifier = single_alias_right[ai_modifier_trigger_clause]
 		}
 		### Dig in modifier factor (default value: 1.0)
 		## cardinality = 0..1
@@ -4284,7 +4301,7 @@ single_alias[random_prio_state_effect_clause] = {
 	}
 	## cardinality = 0..1
 	prioritize = {
-		## cardinality = 1..inf
+		## cardinality = ~1..inf
 		<state>
 	}
 	## cardinality = 0..1

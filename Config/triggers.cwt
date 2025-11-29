@@ -1379,6 +1379,9 @@ alias[trigger:any_province_building_level] = {
 		### Limits the province scope to provinces with a naval base
 		## cardinality = 0..1
 		limit_to_naval_base = yes
+		### Picks the first valid after reduction
+		## cardinality = 0..1
+		first = yes
 	}
 	province = {
 		## cardinality = 1..inf
@@ -2244,6 +2247,10 @@ alias[trigger:has_dynamic_modifier] = {
 	scope = scope[special_project]
 }
 
+### Checks if scope has a dynamic modifier.
+## scope = { state country }
+alias[trigger:has_dynamic_modifier] = <dynamic_modifier>
+
 ### Runs a loop on for each element of an array, finds the lowest value and stores result in temp variables.
 ## scope = any
 alias[trigger:find_lowest_in_array] = {
@@ -2449,4 +2456,9 @@ single_alias[any_all_trigger_clause] = {
     alias_name[trigger] = alias_match_left[trigger]
 }
 
-
+single_alias[ai_modifier_trigger_clause] = {
+	## cardinality = ~1..inf
+	alias_name[trigger] = alias_match_left[trigger]
+	## cardinality = ~1..1
+	enum[add_factor] = float
+}

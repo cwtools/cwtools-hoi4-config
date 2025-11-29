@@ -16,8 +16,6 @@ types = {
 				<focus>
 				## cardinality = 0..inf
 				<shared_focus>
-				## cardinality = 0..inf
-				<joint_focus>
 			}
 		}
 	}
@@ -63,8 +61,6 @@ ai_focus = {
 			<focus>
 			## cardinality = 0..inf
 			<shared_focus>
-			## cardinality = 0..inf
-			<joint_focus>
 		}
 	}
 
@@ -367,10 +363,7 @@ ai_equipment_design_group = {
 				<upgrade> = {
 					enum[base_factor] = int
 					## cardinality = 0..inf
-					modifier = {
-						alias_name[trigger] = alias_match_left[trigger]
-						enum[add_factor] = int
-					}
+					modifier = single_alias_right[ai_modifier_trigger_clause]
 				}
 			}
 		}

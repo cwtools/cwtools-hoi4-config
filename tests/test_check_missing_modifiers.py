@@ -4,6 +4,11 @@ import re
 path_to_config = "Config\\modifiers.cwt"
 path_to_documentation = "Config\\script_documentation.json"
 
+FALSE_POSITIVES = [
+    '<ModifierStatValue>_value_factor',
+    'module_<EquipmentModule>_design_cost_factor',
+]
+
 
 def check_missing_modifiers():
     '''
@@ -20,9 +25,13 @@ def check_missing_modifiers():
     for modifier in documentation:
         # Static modifier
         if "name" in modifier.keys():
+            if modifier['name'] in FALSE_POSITIVES:
+                continue
             modifiers_dict[modifier['name']] = modifier['categories']
         # Dynamic modifier
         elif "groupname" in modifier.keys():
+            if modifier['groupname'] in FALSE_POSITIVES:
+                continue
             modifiers_dict[modifier['groupname']] = modifier['categories']
 
     # 2 Extract modifiers from config files

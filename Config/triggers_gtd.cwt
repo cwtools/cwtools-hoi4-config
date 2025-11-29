@@ -210,14 +210,7 @@ alias[trigger:has_contested_owner] = scope[country]
 ## scope = country
 alias[trigger:fighting_army_strength_ratio] = {
     tag = scope[country]
-	## cardinality = 0..1
-	civilian_intel = variable_field
-	## cardinality = 0..1
-	army_intel = variable_field
-	## cardinality = 0..1
-	navy_intel = variable_field
-	## cardinality = 0..1
-    airforce_intel = variable_field
+	ratio = variable_field
 }
 
 ### Checks if the country in scope has a scientist with a skill level of at least 1 in specialization.

@@ -51,7 +51,7 @@ alias[effect:OR] = { alias_name[effect] = alias_match_left[effect] }
 ## push_scope = country
 alias[effect:OVERLORD] = { alias_name[effect] = alias_match_left[effect] }
 ## scope = state
-## push_Scope = country
+## push_scope = country
 alias[effect:CONTROLLER] = { alias_name[effect] = alias_match_left[effect] }
 
 ## scope = country

@@ -896,7 +896,7 @@ alias[effect:kill_operative] = {
 alias[effect:random_controlled_state] = {
 	## cardinality = 0..1
 	prioritize = {
-		## cardinality = 1..inf
+		## cardinality = ~1..inf
 		<state>
 	}
     ## cardinality = 0..1

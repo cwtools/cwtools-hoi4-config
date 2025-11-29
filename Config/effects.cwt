@@ -1724,7 +1724,21 @@ alias[effect:leave_faction] = bool
 ### Unlocks a focus for a country.
 ## scope = country
 alias[effect:complete_national_focus] = <focus>
+### Unlocks a focus for a country.
+## scope = country
 alias[effect:complete_national_focus] = <shared_focus>
+### Unlocks a focus for a country.
+## scope = country
+alias[effect:complete_national_focus] = {
+	focus = <focus>
+	focus = <shared_focus>
+	### Defaults to no. If yes - spawns bottom right message. If no - uses regular focus completion message
+	## cardinality = 0..1
+	use_side_message = bool
+	### Uses custom loc for - "focusname" has been completed by "originatorname"
+	## cardinality = 0..1
+	originator_name = localisation
+}
 
 ### Change partyname for an ideology in a country.
 ## scope = country
@@ -4275,7 +4289,7 @@ single_alias[random_prio_state_effect_clause] = {
 	}
 	## cardinality = 0..1
 	prioritize = {
-		## cardinality = 1..inf
+		## cardinality = ~1..inf
 		<state>
 	}
 	## cardinality = 0..1

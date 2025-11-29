@@ -136,6 +136,7 @@ alias[trigger:scope_exists] = bool
 alias[trigger:equipment_cost] = {
 }
 
+### WARNING - requires sp: prefix to link to the project!
 ### Checks if the country in scope has completed the special project in input.
 ## scope = country
 alias[trigger:is_special_project_completed] = scope[special_project]

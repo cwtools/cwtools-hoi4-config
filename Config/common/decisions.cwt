@@ -554,6 +554,7 @@ decision = {
 		## cardinality = 0..1
 		## replace_scope = { this = country root = country from = state }
 		cancel_trigger = {
+			## cardinality = ~1..inf
 			alias_name[trigger] = alias_match_left[trigger]
 		}
 
@@ -581,6 +582,7 @@ decision = {
 		## cardinality = 0..1
 		## replace_scope = { root = country this = country from = state }
 		target_trigger = {
+			## cardinality = ~1..inf
 			alias_name[trigger] = alias_match_left[trigger]
 		}
 

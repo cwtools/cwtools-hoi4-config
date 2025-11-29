@@ -44,12 +44,20 @@ autonomy = {
 
 	### Decides whether or not the AI subject focuses on gaining a higher autonomy. If set to 0, AI will never gain an autonomy level through the autonomy system.
 	ai_subject_wants_higher = {
-		factor = float
+		## cardinality = ~1..1
+		enum[add_factor] = float
+		### Sets the modifier for the subject. All country modifiers can apply.
+		## cardinality = 0..1
+		modifier = single_alias_right[ai_modifier_trigger_clause]
 	}
 
 	### Decides whether or not the AI overlord focuses on gaining a lower autonomy for the subject. If set to 0, AI will never decrease the autonomy level through the autonomy system.
 	ai_overlord_wants_lower = {
-		factor = float
+		## cardinality = ~1..1
+		enum[add_factor] = float
+		### Sets the modifier for the subject. All country modifiers can apply.
+		## cardinality = 0..1
+		modifier = single_alias_right[ai_modifier_trigger_clause]
 	}
 
 	### Decides the triggers when the AI overlord garrisons the subject's territory as if it was their own land.

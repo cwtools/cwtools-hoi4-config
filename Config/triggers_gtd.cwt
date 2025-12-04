@@ -86,7 +86,8 @@ alias[trigger:any_state_in] = {
     count = int_variable_field
 	## cardinality = 0..1
     tooltip = localisation
-    array = value[variable]
+	array = value[array]
+	array = variable_field_32
 
     alias_name[trigger] = alias_match_left[trigger]
 }

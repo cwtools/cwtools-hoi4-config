@@ -122,9 +122,13 @@ building = {
 	## cardinality = 0..1
 	gun_emplacement = yes
 
-	# Yes is default
+	### Yes is default
 	## cardinality = 0..1
 	is_buildable = bool
+
+	### Defaults to no
+	## cardinality = 0..1
+	affects_energy = bool
 
 	### The only known prerequisite is building_dependency
 	## cardinality = 0..1
@@ -254,6 +258,7 @@ enums = {
 	enum[building_group] = {
 		reactors
 		special_project_facility
+		infrastructure_keystone
 	}
 	enum[state_prov] = {
 		state

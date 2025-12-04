@@ -286,6 +286,9 @@ ai_equipment_design_group = {
 		## cardinality = 0..1
 		role_icon_index = int
 
+		## cardinality = 0..1
+		design_team = <military_industrial_organization>
+
 		### List of triggers that must all be true for the design to be usable; true by default if empty or missing.
 		## cardinality = 0..1
 		enable = {
@@ -502,6 +505,7 @@ enums = {
 	}
 	complex_enum[ai_templates] = {
 		path = "game/common/ai_templates"
+		path_extension = .txt
 		name = {
 			enum_name = {
 				target_template = {

@@ -3798,6 +3798,23 @@ alias[effect:add_ai_strategy] = {
 
 ### Adds strategy entry to country AI.
 ## scope = country
+alias[effect:ai_strategy] = {
+	type = equipment_production_min_factories
+	id = enum[equipment_category]
+	id = enum[allowed_ai_type_planes]
+	value = int
+}
+
+### Adds strategy entry to country AI.
+## scope = country
+alias[effect:ai_strategy] = {
+	type = equipment_production_min_factories_archetype
+	id = <equipment.archetype_equip>
+	value = int
+}
+
+### Adds strategy entry to country AI.
+## scope = country
 alias[effect:add_ai_strategy] = {
 	type = enum[equipment_strats]
 	id = <equipment>

@@ -1239,7 +1239,7 @@ alias[effect:randomize_temp_variable] = {
 
 ###Add divisional commander xp to unit
 ## scope = { any }
-alias[effect:add_divisional_commander_xp] = int
+alias[effect:add_divisional_commander_xp] = int_variable_field
 
 enums = {
     enum[start_pc_scope_enum] = {

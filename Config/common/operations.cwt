@@ -127,6 +127,9 @@ operation = {
 		alias_keys_field[modifier]
 		## cardinality = 0..inf
 		alias_keys_field[unit_leader_modifier]
+		### hardcoded vanilla value?
+		## cardinality = 0..inf
+		operation_coup_cost
 	}
 
 	### If no operation_target is defined it will be allowed for all countries
@@ -213,8 +216,8 @@ operation = {
 		alias_name[effect] = alias_match_left[effect]
 	}
 
-	### For description purposes only. This is the effect that generates that text shown as a potential reward for completing the operation
-	## replace_scope = { THIS = country ROOT = country FROM = country FROMFROM = state }
+	### For description purposes only. This is the effect that generates that text shown as a potential reward for completing the operation - FROM = country FROMFROM = state
+	## replace_scope = { THIS = country ROOT = country FROM = any }
 	## cardinality = 0..1
 	outcome_potential = {
 		alias_name[effect] = alias_match_left[effect]
@@ -233,15 +236,15 @@ operation = {
 		alias_keys_field[unit_leader_modifier]
 	}
 
-	### Executed when the operation has completed [ once per operation ]
-	## replace_scope = { THIS = operation ROOT = country FROM = country FROMFROM = state }
+	### Executed when the operation has completed [ once per operation ] - FROM = country FROMFROM = state
+	## replace_scope = { THIS = operation ROOT = country FROM = any }
 	## cardinality = 0..1
 	outcome_execute = {
 		alias_name[effect] = alias_match_left[effect]
 	}
 
-	### Same as outcome_execute
-	## replace_scope = { THIS = operation ROOT = country FROM = country FROMFROM = state }
+	### Same as outcome_execute - FROM = country FROMFROM = state
+	## replace_scope = { THIS = operation ROOT = country FROM = any }
 	## cardinality = 0..1
 	outcome_extra_execute = {
 		alias_name[effect] = alias_match_left[effect]

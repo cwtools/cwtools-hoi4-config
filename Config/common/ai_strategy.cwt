@@ -132,6 +132,7 @@ alias[ai_strategy_rule:ai_strategy] = {
 alias[ai_strategy_rule:ai_strategy] = {
 	type = equipment_production_min_factories
 	id = enum[equipment_category]
+	id = enum[allowed_ai_type_planes]
 	value = int
 }
 alias[ai_strategy_rule:ai_strategy] = {

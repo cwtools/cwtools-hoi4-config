@@ -592,3 +592,6 @@ alias[trigger:compare_ideology_with_faction] = {
 ### TODO - figure out what it does
 ## scope = { any }
 alias[trigger:tooltip_evaluation] = eval
+
+## scope = { country }
+alias[trigger:has_any_grand_doctrine] = enum[equipment_categories]

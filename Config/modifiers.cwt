@@ -1228,6 +1228,9 @@ modifiers = {
 	can_guarantee_other_ideologies = country
 	<ideology>_drift_from_guarantees = politics
 	energy_gain_factor = country
+	energy_scale_per_trade_factory_export_factor = country
+	local_factory_energy_consumption_per_infrastructure = state
+	local_resource_gain_efficiency_per_infrastructure = state
 
   ### the following modifers do not present in md doc (nsb patch)
 

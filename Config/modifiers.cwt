@@ -1162,6 +1162,9 @@ modifiers = {
 	autonomy_manpower_share_from_subjects = autonomy
 	resources_to_overlord_factor = autonomy
 	<grand_doctrine>_mastery_gain_factor = country
+	land_mastery_gain_factor = country
+	air_mastery_gain_factor = country
+	naval_mastery_gain_factor = country
 	<doctrine_track>_track_mastery_gain_factor = country
 	<technology>_cost_factor = country
 	air_invasion_plan_cap = country
@@ -1224,6 +1227,7 @@ modifiers = {
 	production_speed_buildings_powered_factor = war_production
 	can_guarantee_other_ideologies = country
 	<ideology>_drift_from_guarantees = politics
+	energy_gain_factor = country
 
   ### the following modifers do not present in md doc (nsb patch)
 

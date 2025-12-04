@@ -3,16 +3,17 @@ types = {
     type[script_constant] = {
 		path = "game/common/script_constants"
     }
-    ## type_key_filter <> schema
-    type[constant_one] = {
-		path = "game/common/script_constants"
-        skip_root_key = yes
-    }
-    ## type_key_filter <> { any_key key data }
-    type[constant_two] = {
-		path = "game/common/script_constants"
-        skip_root_key = { any any }
-    }
+    # Commenting types for constants until re-visit of this file
+    # ## type_key_filter <> schema
+    # type[constant_one] = {
+	# 	path = "game/common/script_constants"
+    #     skip_root_key = yes
+    # }
+    # ## type_key_filter <> { any_key key data }
+    # type[constant_two] = {
+	# 	path = "game/common/script_constants"
+    #     skip_root_key = { any any }
+    # }
 }
 
 #script_constant = {   

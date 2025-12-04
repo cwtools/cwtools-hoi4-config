@@ -33,6 +33,14 @@ doctrine_track = {
 	icon_frame = <spriteType>
 	## cardinality = 0..1
 	background_offset = float
+
+	### Trigger condition for subdoctrines in this track to be selectable, and for mastery gain to be enabled (including banked mastery)
+	## cardinality = 0..1
+	active = {
+		## cardinality = ~1..inf
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+
 	mastery = {
 		### - in this case, 2 times less manpower is needed to gain the same amount of mastery
 		### - multiplier = 2.0

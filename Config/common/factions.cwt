@@ -559,6 +559,8 @@ faction_upgrade = {
 }
 
 faction_rule_group = {
+	## cardinality = 0..1
+	default_rule = <faction_rule>
 	rules = {
 		## cardinality = ~1..inf
 		<faction_rule>		

@@ -145,9 +145,10 @@ focus_tree = {
 	## cardinality = 0..1
 	alternate_icon_set = localisation
 
-	#### TODO - find a way to make id/text fields validation without duplicating focus rules
+	#### FYI - this can report missing 'text' field. This is a ghost error, caused by other errors/notifications in focus code. Fix them, and this 'text' error will disappear
 	## cardinality = 0..inf
 	focus = {
+		## cardinality = ~1..1
 		id = localisation
 
 		## cardinality = ~1..inf
@@ -367,7 +368,9 @@ focus_tree = {
 
 	## cardinality = 0..inf
 	focus = {
+		## cardinality = ~1..1
 		id = scalar
+		## cardinality = ~1..1
 		text = localisation
 
 		## cardinality = ~1..inf

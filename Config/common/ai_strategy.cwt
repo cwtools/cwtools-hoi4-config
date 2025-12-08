@@ -580,6 +580,7 @@ enums = {
 		guarantee
 		supportive_scientist
 		become_faction_leader
+		embargo
 	}
 	enum[ai_xp_targets] = {
 		division_template

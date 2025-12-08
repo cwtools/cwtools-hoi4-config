@@ -517,6 +517,8 @@ enums = {
 		send_volunteers_desire
 		support
 		raid_target_country
+		# Supports ID with country scope - not a diplo strat. To refactor later
+		garrison
 	}
 	enum[ai_diplo_strats_no_value] = {
 		conquer

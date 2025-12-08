@@ -1368,7 +1368,7 @@ alias[trigger:has_relation_modifier] = {
 alias[trigger:any_province_building_level] = {
 	province = {
 		### Sets the scope to all provinces within the state
-		## cardinality = 1..inf
+		## cardinality = 0..inf
 		all_provinces = yes
 		### Limits the province scope to only border provinces
 		## cardinality = 0..1
@@ -2020,8 +2020,7 @@ alias[trigger:game_rules_allow_achievements] = yes
 ### Checks if an element is in array.
 ## scope = any
 alias[trigger:is_in_array] = {
-	array = value[array]
-	array = variable_field_32
+	array = single_alias_right[array]
 	value = scalar
 }
 
@@ -2102,7 +2101,7 @@ alias[trigger:remove_from_temp_array] = {
 
 ### Clears the contents of a temporary array.
 ## scope = any
-alias[trigger:clear_temp_array] = value[array]
+alias[trigger:clear_temp_array] = single_alias_right[array]
 ### Clears the contents of a temporary array.
 ## scope = any
 alias[trigger:clear_temp_array] = variable_field_32
@@ -2128,11 +2127,11 @@ alias[trigger:resize_temp_array] = {
 
 ### Runs a loop on an array and check a trigger for each value, if any true returns true. Otherwise returns false.
 ## scope = any
+## push_scope = any
 alias[trigger:any_of] = {
 	## cardinality = 0..1
 	tooltip = localisation
-	array = value[array]
-	array = variable_field_32
+	array = single_alias_right[array]
 	## cardinality = 0..1
 	### Optional (default 'v') current value in array will be stored in this temp variable.
 	value = value_set[variable]
@@ -2148,8 +2147,7 @@ alias[trigger:any_of] = {
 alias[trigger:all_of] = {
 	## cardinality = 0..1
 	tooltip = localisation
-	array = value[array]
-	array = variable_field_32
+	array = single_alias_right[array]
 	## cardinality = 0..1
 	### Optional (default 'v') current value in array will be stored in this temp variable.
 	value = value_set[variable]
@@ -2170,8 +2168,7 @@ alias[trigger:has_fuel] = int_variable_field
 alias[trigger:any_of_scopes] = {
 	## cardinality = 0..1
 	tooltip = localisation
-	array = value[array]
-	array = variable_field_32
+	array = single_alias_right[array]
 	alias_name[trigger] = alias_match_left[trigger]
 }
 
@@ -2181,8 +2178,7 @@ alias[trigger:any_of_scopes] = {
 alias[trigger:all_of_scopes] = {
 	## cardinality = 0..1
 	tooltip = localisation
-	array = value[array]
-	array = variable_field_32
+	array = single_alias_right[array]
 	alias_name[trigger] = alias_match_left[trigger]
 }
 
@@ -2254,8 +2250,7 @@ alias[trigger:has_dynamic_modifier] = <dynamic_modifier>
 ### Runs a loop on for each element of an array, finds the lowest value and stores result in temp variables.
 ## scope = any
 alias[trigger:find_lowest_in_array] = {
-	array = value[array]
-	array = variable_field_32
+	array = single_alias_right[array]
 
 	## cardinality = 0..1
 	### Optional (default 'v') lowest value in array will be stored in this temp variable.
@@ -2269,8 +2264,7 @@ alias[trigger:find_lowest_in_array] = {
 ### Runs a loop on for each element of an array, finds the highest value and stores result in temp variables.
 ## scope = any
 alias[trigger:find_highest_in_array] = {
-	array = value[array]
-	array = variable_field_32
+	array = single_alias_right[array]
 
 	## cardinality = 0..1
 	### Optional (default 'v') highest value in array will be stored in this temp variable.

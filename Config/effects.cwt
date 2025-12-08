@@ -345,7 +345,7 @@ alias[effect:state_event] = <event.state_event>
 ## scope = any
 alias[effect:set_variable] = {
 	## cardinality = 1..2
-	value_set[variable] = variable_field_32
+	value_set[variable] = variable_field
 	## cardinality = 1..2
 	value_set[variable] = scope_field
 	## cardinality = 1..2
@@ -361,7 +361,7 @@ alias[effect:set_variable] = {
 ## scope = any
 alias[effect:set_variable] = {
 	var = value_set[variable]
-	value = variable_field_32
+	value = variable_field
 	value = scope_field
 	value = enum[country_tags]
 	value = value_set[token]
@@ -1005,6 +1005,7 @@ alias[effect:add_building_construction] = {
 	instant_build = bool
 	province = enum[provinces]
 	province = {
+		## cardinality = 0..1
 		all_provinces = yes
 		## cardinality = 0..1
 		limit_to_coastal = yes
@@ -1181,7 +1182,7 @@ alias[effect:declare_war_on] = {
 		<state>
 	}
 	## cardinality = 0..1
-	generator = value[array]
+	generator = single_alias_right[array]
 	## cardinality = 0..1
 	generator = scope[state]
 }
@@ -1324,7 +1325,7 @@ alias[effect:create_wargoal] = {
 	## cardinality = 0..1
 	generator = owned_states
 	## cardinality = 0..1
-	generator = value[array]
+	generator = single_alias_right[array]
 	## cardinality = 0..1
 	generator = scope[state]
 	## cardinality = 0..1
@@ -1969,6 +1970,8 @@ alias[effect:damage_building] = {
 	## cardinality = 0..1
 	province = value[variable]
 	## cardinality = 0..1
+	state = <state>
+	## cardinality = 0..1
 	repair_speed_modifier = float
 }
 ### Damages buildings in the current state.
@@ -1984,6 +1987,8 @@ alias[effect:damage_building] = {
 	province = enum[provinces]
 	## cardinality = 0..1
 	province = value[variable]
+	## cardinality = 0..1
+	state = <state>
 	## cardinality = 0..1
 	repair_speed_modifier = float
 }
@@ -2424,7 +2429,7 @@ alias[effect:global_every_army_leader] = {
 ## scope = any
 alias[effect:add_to_variable] = {
 	## cardinality = 1..2
-	value_set[variable] = variable_field_32
+	value_set[variable] = variable_field
 	## cardinality = 0..1
 	tooltip = localisation
 }
@@ -2432,7 +2437,7 @@ alias[effect:add_to_variable] = {
 ## scope = any
 alias[effect:add_to_variable] = {
 	var = value_set[variable]
-	value = variable_field_32
+	value = variable_field
 	## cardinality = 0..1
 	tooltip = localisation
 }
@@ -2449,7 +2454,7 @@ alias[effect:add_to_variable] = {
 ## scope = any
 alias[effect:subtract_from_variable] = {
 	## cardinality = 1..2
-	value_set[variable] = variable_field_32
+	value_set[variable] = variable_field
 	## cardinality = 0..1
 	tooltip = localisation
 }
@@ -2457,7 +2462,7 @@ alias[effect:subtract_from_variable] = {
 ## scope = any
 alias[effect:subtract_from_variable] = {
 	var = value_set[variable]
-	value = variable_field_32
+	value = variable_field
 	## cardinality = 0..1
 	tooltip = localisation
 }
@@ -2474,7 +2479,7 @@ alias[effect:subtract_from_variable] = {
 ## scope = any
 alias[effect:multiply_variable] = {
 	## cardinality = 1..2
-	value_set[variable] = variable_field_32
+	value_set[variable] = variable_field
 	## cardinality = 0..1
 	tooltip = localisation
 }
@@ -2482,7 +2487,7 @@ alias[effect:multiply_variable] = {
 ## scope = any
 alias[effect:multiply_variable] = {
 	var = value_set[variable]
-	value = variable_field_32
+	value = variable_field
 	## cardinality = 0..1
 	tooltip = localisation
 }
@@ -2499,7 +2504,7 @@ alias[effect:multiply_variable] = {
 ## scope = any
 alias[effect:divide_variable] = {
 	## cardinality = 1..2
-	value_set[variable] = variable_field_32
+	value_set[variable] = variable_field
 	## cardinality = 0..1
 	tooltip = localisation
 }
@@ -2507,7 +2512,7 @@ alias[effect:divide_variable] = {
 ## scope = any
 alias[effect:divide_variable] = {
 	var = value_set[variable]
-	value = variable_field_32
+	value = variable_field
 	## cardinality = 0..1
 	tooltip = localisation
 }
@@ -2522,7 +2527,7 @@ alias[effect:divide_variable] = {
 
 ### Clears a variable.
 ## scope = any
-alias[effect:clear_variable] = variable_field_32
+alias[effect:clear_variable] = variable_field
 
 ### Clears a variable.
 ## scope = any
@@ -2613,7 +2618,7 @@ alias[effect:add_to_temp_variable] = {
 ## scope = any
 alias[effect:add_to_temp_variable] = {
 	## cardinality = 1..2
-	value_set[variable] = variable_field_32
+	value_set[variable] = variable_field
 	## cardinality = 0..1
 	tooltip = localisation
 }
@@ -2624,7 +2629,7 @@ alias[effect:add_to_temp_variable] = {
 	## cardinality = 1..2
 	var = value_set[variable]
 	## cardinality = 1..2
-	value = variable_field_32
+	value = variable_field
 	## cardinality = 0..1
 	tooltip = localisation
 }
@@ -2644,7 +2649,7 @@ alias[effect:add_to_temp_variable] = {
 ## scope = any
 alias[effect:subtract_from_temp_variable] = {
 	## cardinality = 1..2
-	value_set[variable] = variable_field_32
+	value_set[variable] = variable_field
 	## cardinality = 0..1
 	tooltip = localisation
 }
@@ -2664,7 +2669,7 @@ alias[effect:subtract_from_temp_variable] = {
 	## cardinality = 1..2
 	var = value_set[variable]
 	## cardinality = 1..2
-	value = variable_field_32
+	value = variable_field
 	## cardinality = 0..1
 	tooltip = localisation
 }
@@ -2684,7 +2689,7 @@ alias[effect:subtract_from_temp_variable] = {
 ## scope = any
 alias[effect:multiply_temp_variable] = {
 	## cardinality = 1..2
-	value_set[variable] = variable_field_32
+	value_set[variable] = variable_field
 	## cardinality = 0..1
 	tooltip = localisation
 }
@@ -2704,7 +2709,7 @@ alias[effect:multiply_temp_variable] = {
 	## cardinality = 1..2
 	var = value_set[variable]
 	## cardinality = 1..2
-	value = variable_field_32
+	value = variable_field
 	## cardinality = 0..1
 	tooltip = localisation
 }
@@ -2724,7 +2729,7 @@ alias[effect:multiply_temp_variable] = {
 ## scope = any
 alias[effect:divide_temp_variable] = {
 	## cardinality = 1..2
-	value_set[variable] = variable_field_32
+	value_set[variable] = variable_field
 	## cardinality = 0..1
 	tooltip = localisation
 }
@@ -2744,7 +2749,7 @@ alias[effect:divide_temp_variable] = {
 	## cardinality = 1..2
 	var = value_set[variable]
 	## cardinality = 1..2
-	value = variable_field_32
+	value = variable_field
 	## cardinality = 0..1
 	tooltip = localisation
 }
@@ -2764,7 +2769,7 @@ alias[effect:divide_temp_variable] = {
 ## scope = any
 alias[effect:set_temp_variable] = {
 	## cardinality = 1..2
-	value_set[variable] = variable_field_32
+	value_set[variable] = variable_field
 	## cardinality = 1..2
 	value_set[variable] = scope_field
 	## cardinality = 1..2
@@ -2781,7 +2786,7 @@ alias[effect:set_temp_variable] = {
 ## scope = any
 alias[effect:set_temp_variable] = {
 	var = value_set[variable]
-	value = variable_field_32
+	value = variable_field
 	value = scope_field
 	value = enum[country_tags]
 	value = value_set[token]
@@ -3389,11 +3394,7 @@ alias[effect:remove_from_array] = {
 
 ### Clears the contents of array.
 ## scope = any
-alias[effect:clear_array] = value[array]
-
-### Clears the contents of array.
-## scope = any
-alias[effect:clear_array] = variable_field_32
+alias[effect:clear_array] = single_alias_right[array]
 
 ### Resizes array.
 ## scope = any
@@ -3402,7 +3403,7 @@ alias[effect:resize_array] = {
 	array = value_set[variable]
 	## cardinality = 0..1
 	### Optional, if not specified and array grows the new elements are set to this (default 0).
-	value = variable_field_32
+	value = variable_field
 	### If higher than old size, new elements are added to end. Otherwise last elements are removed to match to new size.
     size = int_variable_field_32
 }
@@ -3516,8 +3517,7 @@ alias[effect:resize_temp_array] = {
 ### Runs a loop on for each element of an array.
 ## scope = any
 alias[effect:for_each_loop] = {
-	array = value[array]
-	array = variable_field_32
+	array = single_alias_right[array]
 	## cardinality = 0..1
 	### Optional (default 'v') current value in array will be stored in this temp variable.
 	value = value_set[variable]
@@ -3543,8 +3543,7 @@ alias[effect:set_fuel] = int_variable_field
 ## scope = any
 ## push_scope = any
 alias[effect:for_each_scope_loop] = {
-	array = value[array]
-	array = variable_field_32
+	array = single_alias_right[array]
 	## cardinality = 0..1
 	### Optional (default 'break') set this temp variable to non zero to break the loop.
     break = scalar
@@ -3558,8 +3557,7 @@ alias[effect:for_each_scope_loop] = {
 ## scope = any
 ## push_scope = any
 alias[effect:random_scope_in_array] = {
-	array = value[array]
-	array = variable_field_32
+	array = single_alias_right[array]
 	## cardinality = 0..1
 	### Optional (default 'break') set this temp variable to non zero to break the loop.
 	break = scalar
@@ -3724,8 +3722,7 @@ alias[effect:scoped_sound_effect] = <soundeffect>
 ### Runs a loop on for each element of an array, finds the lowest value and stores result in temp variables.
 ## scope = any
 alias[effect:find_lowest_in_array] = {
-	array = value[array]
-	array = variable_field_32
+	array = single_alias_right[array]
 
 	## cardinality = 0..1
 	### Optional (default 'v') lowest value in array will be stored in this temp variable.
@@ -3739,8 +3736,7 @@ alias[effect:find_lowest_in_array] = {
 ### Runs a loop on for each element of an array, finds the highest value and stores result in temp variables.
 ## scope = any
 alias[effect:find_highest_in_array] = {
-	array = value[array]
-	array = variable_field_32
+	array = single_alias_right[array]
 
 	## cardinality = 0..1
 	### Optional (default 'v') highest value in array will be stored in this temp variable.
@@ -4075,6 +4071,8 @@ alias[effect:add_ai_strategy] = {
 	type = enum[unit_requests]
 	## cardinality = 0..inf
 	tag = scope[country]
+	## cardinality = 0..inf
+	id = scope[country]
 	## cardinality = 0..inf
 	state = <state>
 	## cardinality = 0..inf

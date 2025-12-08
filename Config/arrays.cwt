@@ -59,3 +59,6 @@ values = {
 		owned_states	
 	}
 }
+
+single_alias[array] = value[array]
+single_alias[array] = scope[country].value[array]

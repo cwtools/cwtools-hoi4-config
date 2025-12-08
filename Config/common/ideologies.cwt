@@ -57,7 +57,6 @@ ideology = {
 		rules = {
 			can_force_government = bool
 			can_puppet = bool
-			can_send_volunteers = bool
 			## cardinality = 0..20
 			enum[game_rules] = bool
 		}
@@ -121,6 +120,7 @@ enums = {
 		can_generate_female_country_leaders
 		can_access_market
 		can_use_underway_replenishment
+		can_send_volunteers
 	}
 
 	enum[ai_ideology] = {

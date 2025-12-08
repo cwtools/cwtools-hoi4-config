@@ -50,6 +50,8 @@ enums = {
 		send_volunteers
 		give_state_control
 		air_base_access
+		lend_lease
+		incoming_lend_lease
 	}
 
 	enum[add_factor] = {

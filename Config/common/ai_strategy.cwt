@@ -14,9 +14,7 @@ ai_strategy = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 	## cardinality = 0..1
-	target_array = value[array]
-	## cardinality = 0..1
-	target_array = variable_field
+	target_array = single_alias_right[array]
 	## cardinality = 0..1
 	targets = {
 		## cardinality = ~1..inf
@@ -336,6 +334,8 @@ alias[ai_strategy_rule:ai_strategy] = {
 	## cardinality = 0..inf
 	tag = scope[country]
 	## cardinality = 0..inf
+	id = scope[country]
+	## cardinality = 0..inf
 	state = <state>
 	## cardinality = 0..inf
 	strategic_region = <strategic_region>
@@ -517,6 +517,8 @@ enums = {
 		send_volunteers_desire
 		support
 		raid_target_country
+		# Supports ID with country scope - not a diplo strat. To refactor later
+		garrison
 	}
 	enum[ai_diplo_strats_no_value] = {
 		conquer
@@ -580,6 +582,7 @@ enums = {
 		guarantee
 		supportive_scientist
 		become_faction_leader
+		embargo
 	}
 	enum[ai_xp_targets] = {
 		division_template

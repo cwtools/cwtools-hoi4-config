@@ -1005,6 +1005,7 @@ alias[effect:add_building_construction] = {
 	instant_build = bool
 	province = enum[provinces]
 	province = {
+		## cardinality = 0..1
 		all_provinces = yes
 		## cardinality = 0..1
 		limit_to_coastal = yes

@@ -2127,6 +2127,7 @@ alias[trigger:resize_temp_array] = {
 
 ### Runs a loop on an array and check a trigger for each value, if any true returns true. Otherwise returns false.
 ## scope = any
+## push_scope = any
 alias[trigger:any_of] = {
 	## cardinality = 0..1
 	tooltip = localisation

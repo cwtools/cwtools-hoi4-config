@@ -1969,6 +1969,8 @@ alias[effect:damage_building] = {
 	## cardinality = 0..1
 	province = value[variable]
 	## cardinality = 0..1
+	state = <state>
+	## cardinality = 0..1
 	repair_speed_modifier = float
 }
 ### Damages buildings in the current state.
@@ -1984,6 +1986,8 @@ alias[effect:damage_building] = {
 	province = enum[provinces]
 	## cardinality = 0..1
 	province = value[variable]
+	## cardinality = 0..1
+	state = <state>
 	## cardinality = 0..1
 	repair_speed_modifier = float
 }

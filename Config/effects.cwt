@@ -1181,7 +1181,7 @@ alias[effect:declare_war_on] = {
 		<state>
 	}
 	## cardinality = 0..1
-	generator = value[array]
+	generator = single_alias_right[array]
 	## cardinality = 0..1
 	generator = scope[state]
 }
@@ -1324,7 +1324,7 @@ alias[effect:create_wargoal] = {
 	## cardinality = 0..1
 	generator = owned_states
 	## cardinality = 0..1
-	generator = value[array]
+	generator = single_alias_right[array]
 	## cardinality = 0..1
 	generator = scope[state]
 	## cardinality = 0..1
@@ -3389,11 +3389,7 @@ alias[effect:remove_from_array] = {
 
 ### Clears the contents of array.
 ## scope = any
-alias[effect:clear_array] = value[array]
-
-### Clears the contents of array.
-## scope = any
-alias[effect:clear_array] = variable_field_32
+alias[effect:clear_array] = single_alias_right[array]
 
 ### Resizes array.
 ## scope = any
@@ -3516,8 +3512,7 @@ alias[effect:resize_temp_array] = {
 ### Runs a loop on for each element of an array.
 ## scope = any
 alias[effect:for_each_loop] = {
-	array = value[array]
-	array = variable_field_32
+	array = single_alias_right[array]
 	## cardinality = 0..1
 	### Optional (default 'v') current value in array will be stored in this temp variable.
 	value = value_set[variable]
@@ -3543,8 +3538,7 @@ alias[effect:set_fuel] = int_variable_field
 ## scope = any
 ## push_scope = any
 alias[effect:for_each_scope_loop] = {
-	array = value[array]
-	array = variable_field_32
+	array = single_alias_right[array]
 	## cardinality = 0..1
 	### Optional (default 'break') set this temp variable to non zero to break the loop.
     break = scalar
@@ -3558,8 +3552,7 @@ alias[effect:for_each_scope_loop] = {
 ## scope = any
 ## push_scope = any
 alias[effect:random_scope_in_array] = {
-	array = value[array]
-	array = variable_field_32
+	array = single_alias_right[array]
 	## cardinality = 0..1
 	### Optional (default 'break') set this temp variable to non zero to break the loop.
 	break = scalar
@@ -3724,8 +3717,7 @@ alias[effect:scoped_sound_effect] = <soundeffect>
 ### Runs a loop on for each element of an array, finds the lowest value and stores result in temp variables.
 ## scope = any
 alias[effect:find_lowest_in_array] = {
-	array = value[array]
-	array = variable_field_32
+	array = single_alias_right[array]
 
 	## cardinality = 0..1
 	### Optional (default 'v') lowest value in array will be stored in this temp variable.
@@ -3739,8 +3731,7 @@ alias[effect:find_lowest_in_array] = {
 ### Runs a loop on for each element of an array, finds the highest value and stores result in temp variables.
 ## scope = any
 alias[effect:find_highest_in_array] = {
-	array = value[array]
-	array = variable_field_32
+	array = single_alias_right[array]
 
 	## cardinality = 0..1
 	### Optional (default 'v') highest value in array will be stored in this temp variable.

@@ -14,9 +14,7 @@ ai_strategy = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 	## cardinality = 0..1
-	target_array = value[array]
-	## cardinality = 0..1
-	target_array = variable_field
+	target_array = single_alias_right[array]
 	## cardinality = 0..1
 	targets = {
 		## cardinality = ~1..inf

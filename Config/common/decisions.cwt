@@ -196,9 +196,7 @@ decision_category = {
 		}
 
 		## cardinality = 0..inf
-		target_array = value[array]
-		## cardinality = 0..inf
-		target_array = variable_field
+		target_array = single_alias_right[array]
 
 		## cardinality = 0..1
 		## replace_scope = { this = country root = country from = state }
@@ -516,9 +514,7 @@ decision = {
 		alias_name[targeted_modifier_rule] = alias_match_left[targeted_modifier_rule]
 
 		## cardinality = 0..inf
-		target_array = value[array]
-		## cardinality = 0..inf
-		target_array = variable_field
+		target_array = single_alias_right[array]
 		## cardinality = 0..1
 		target_non_existing = bool
 	}
@@ -624,9 +620,7 @@ decision = {
 		alias_name[targeted_modifier_rule] = alias_match_left[targeted_modifier_rule]
 
 		## cardinality = 0..inf
-		target_array = value[array]
-		## cardinality = 0..inf
-		target_array = variable_field
+		target_array = single_alias_right[array]
 
 		## cardinality = 0..1
 		## replace_scope = { root = country this = country from = state }

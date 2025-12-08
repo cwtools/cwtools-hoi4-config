@@ -1368,7 +1368,7 @@ alias[trigger:has_relation_modifier] = {
 alias[trigger:any_province_building_level] = {
 	province = {
 		### Sets the scope to all provinces within the state
-		## cardinality = 1..inf
+		## cardinality = 0..inf
 		all_provinces = yes
 		### Limits the province scope to only border provinces
 		## cardinality = 0..1

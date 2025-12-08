@@ -86,43 +86,13 @@ alias[trigger:any_state_in] = {
     count = int_variable_field
 	## cardinality = 0..1
     tooltip = localisation
-	array = value[array]
-	array = variable_field_32
-
-    alias_name[trigger] = alias_match_left[trigger]
-}
-### check if any state in the given category meets the trigger.
-## scope = any
-## push_scope = state
-alias[trigger:any_state_in] = {
     ## cardinality = 0..1
-    count = int_variable_field
-	## cardinality = 0..1
-    tooltip = localisation
+	array = single_alias_right[array]
+    ## cardinality = 0..1
     continent = enum[continents]
-
-    alias_name[trigger] = alias_match_left[trigger]
-}
-### check if any state in the given category meets the trigger.
-## scope = any
-## push_scope = state
-alias[trigger:any_state_in] = {
     ## cardinality = 0..1
-    count = int_variable_field
-	## cardinality = 0..1
-    tooltip = localisation
     ai_area = <ai_area>
-
-    alias_name[trigger] = alias_match_left[trigger]
-}
-### check if any state in the given category meets the trigger.
-## scope = any
-## push_scope = state
-alias[trigger:any_state_in] = {
     ## cardinality = 0..1
-    count = int_variable_field
-	## cardinality = 0..1
-    tooltip = localisation
     strategic_region = <strategic_region>
 
     alias_name[trigger] = alias_match_left[trigger]

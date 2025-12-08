@@ -26,6 +26,7 @@ autonomy = {
 	peace_conference_initial_freedom = float[0..1]
 
 	### Decides how large of a portion of the subject's manpower the overlord can use in colonial divisions.
+	## cardinality = 0..1
 	manpower_influence = float[0..1]
 
 	### Sets the game rules for the subject to either yes or no.

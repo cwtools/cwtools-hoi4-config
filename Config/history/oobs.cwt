@@ -36,6 +36,7 @@ single_alias[division_template_clause] = {
 		<unit.support_unit> = {
 			## severity = warning
 			x = 0
+			## severity = warning
 			y = int[0..4]
 		}
 	}

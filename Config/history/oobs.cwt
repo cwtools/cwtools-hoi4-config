@@ -45,6 +45,10 @@ single_alias[division_template_clause] = {
 	priority = int
 	## cardinality = 0..1
 	is_fake_intel_division = bool
+	## cardinality = 0..1
+	foreign_template_tag = scope[country] # Country tag
+	## cardinality = 0..1
+	origin_type = subject
 }
 
 oob = {
@@ -124,6 +128,30 @@ oob = {
 						### Portrait(s), large (leader) and/or small (advisor)
 						## cardinality = ~1..2
 						enum[character_portrait_sizes] = scalar
+					}
+				}
+			}
+			## cardinality = 0..1
+			acclimatization = {
+				## cardinality = ~1..inf
+				enum[acclimatization_values] = variable_field
+			}
+			## cardinality = 0..1
+			army_manpower = {
+				## cardinality = 0..1
+				army_manpower_value = {
+					## cardinality = ~1..inf
+					value = {
+						tag = scope[country]
+						value = int_variable_field
+					}
+				}
+				## cardinality = 0..1
+				army_manpower_need = {
+					## cardinality = ~1..inf
+					value = {
+						tag = scope[country]
+						value = int_variable_field
 					}
 				}
 			}
@@ -422,5 +450,13 @@ oob = {
 		id = value_set[unit_leader_ids]
 		## cardinality = 0..1
 		female = bool
+	}
+}
+
+enums = {
+	enum[acclimatization_values] = {
+		cold_climate
+		hot_climate
+		max_acclimatization
 	}
 }

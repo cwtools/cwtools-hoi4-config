@@ -531,6 +531,30 @@ alias[effect:create_unit] = {
 	id = variable_field
 	## cardinality = 0..1
 	divisional_commander_xp = int
+	## cardinality = 0..1
+	acclimatization = {
+		## cardinality = ~1..inf
+		enum[acclimatization_values] = variable_field
+	}
+	## cardinality = 0..1
+	army_manpower = {
+		## cardinality = 0..1
+		army_manpower_value = {
+			## cardinality = ~1..inf
+			value = {
+				tag = scope[country]
+				value = int_variable_field
+			}
+		}
+		## cardinality = 0..1
+		army_manpower_need = {
+			## cardinality = ~1..inf
+			value = {
+				tag = scope[country]
+				value = int_variable_field
+			}
+		}
+	}
 }
 
 ### Plays sound effect.

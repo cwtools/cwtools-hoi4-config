@@ -45,7 +45,11 @@ oob = {
 		## cardinality = 0..1
 		support = {
 			## cardinality = ~1..5
-			<unit.support_unit> = { x = 0 y = int[0..4] }
+			<unit.support_unit> = {
+				## severity = warning
+				x = 0
+				y = int[0..4]
+			}
 		}
 		## cardinality = 0..1
 		template_counter = int
@@ -84,7 +88,11 @@ oob = {
 			## cardinality = 0..1
 			support = {
 				## cardinality = ~1..5
-				<unit.support_unit> = { x = 0 y = int[0..4] }
+				<unit.support_unit> = {
+					## severity = warning
+					x = 0
+					y = int[0..4]
+				}
 			}
 			## cardinality = 0..1
 			template_counter = int

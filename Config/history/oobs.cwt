@@ -135,6 +135,7 @@ oob = {
 			naval_base = enum[provinces]
 			## cardinality = ~1..inf
 			task_force = {
+				## cardinality = 0..1
 				name = scalar
 				location = enum[provinces]
 				## cardinality = 0..1

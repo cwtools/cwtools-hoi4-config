@@ -5,6 +5,48 @@ types = {
 	}
 }
 
+single_alias[division_template_clause] = {
+	name = value_set[division_template_name]
+	## cardinality = 0..1
+	division_names_group = <division_name>
+	## cardinality = 0..1
+	role = value[ai_template_roles]
+	### Customize which type of front template gets assigned to
+	## cardinality = 0..1
+	front_role_override = enum[template_front_role]
+	## cardinality = 0..1
+	override_model = <entity>
+	## cardinality = 0..1
+	template_counter = int
+	## cardinality = 0..1
+	is_locked = bool
+	## cardinality = 0..1
+	force_allow_recruiting = bool
+	## cardinality = 0..1
+	obsolete = bool
+	## cardinality = 0..1
+	division_cap = int
+	regiments = {
+		## cardinality = 0..25
+		<unit.line_unit> = { x = int[0..4] y = int[0..4] }
+	}
+	## cardinality = 0..1
+	support = {
+		## cardinality = ~1..5
+		<unit.support_unit> = {
+			## severity = warning
+			x = 0
+			y = int[0..4]
+		}
+	}
+	## cardinality = 0..1
+	template_counter = int
+	## cardinality = 0..1
+	priority = int
+	## cardinality = 0..1
+	is_fake_intel_division = bool
+}
+
 oob = {
 	## cardinality = 0..1
 	start_equipment_factor = float
@@ -17,88 +59,12 @@ oob = {
 	}
 
 	## cardinality = 0..inf
-	division_template = {
-		name = value_set[division_template_name]
-		## cardinality = 0..1
-		division_names_group = <division_name>
-		## cardinality = 0..1
-		role = value[ai_template_roles]
-		### Customize which type of front template gets assigned to
-		## cardinality = 0..1
-		front_role_override = enum[template_front_role]
-		## cardinality = 0..1
-		override_model = <entity>
-		## cardinality = 0..1
-		template_counter = int
-		## cardinality = 0..1
-		is_locked = bool
-		## cardinality = 0..1
-		force_allow_recruiting = bool
-		## cardinality = 0..1
-		obsolete = bool
-		## cardinality = 0..1
-		division_cap = int
-		regiments = {
-			## cardinality = 0..25
-			<unit.line_unit> = { x = int[0..4] y = int[0..4] }
-		}
-		## cardinality = 0..1
-		support = {
-			## cardinality = ~1..5
-			<unit.support_unit> = {
-				## severity = warning
-				x = 0
-				y = int[0..4]
-			}
-		}
-		## cardinality = 0..1
-		template_counter = int
-		## cardinality = 0..1
-		priority = int
-	}
+	division_template = single_alias_right[division_template_clause]
 
 	## cardinality = 0..inf
 	create_colonial_division_template = {
 		subject = scope[country] # Country tag
-		division_template = {
-			name = value_set[division_template_name]
-			## cardinality = 0..1
-			division_names_group = <division_name>
-			## cardinality = 0..1
-			role = value[ai_template_roles]
-			### Customize which type of front template gets assigned to
-			## cardinality = 0..1
-			front_role_override = enum[template_front_role]
-			## cardinality = 0..1
-			override_model = <entity>
-			## cardinality = 0..1
-			template_counter = int
-			## cardinality = 0..1
-			is_locked = bool
-			## cardinality = 0..1
-			force_allow_recruiting = bool
-			## cardinality = 0..1
-			obsolete = bool
-			## cardinality = 0..1
-			division_cap = int
-			regiments = {
-				## cardinality = 0..25
-				<unit.line_unit> = { x = int[0..4] y = int[0..4] }
-			}
-			## cardinality = 0..1
-			support = {
-				## cardinality = ~1..5
-				<unit.support_unit> = {
-					## severity = warning
-					x = 0
-					y = int[0..4]
-				}
-			}
-			## cardinality = 0..1
-			template_counter = int
-			## cardinality = 0..1
-			priority = int
-		}
+		division_template = single_alias_right[division_template_clause]
 	}
 
 	## cardinality = 0..inf

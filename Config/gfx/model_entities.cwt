@@ -92,7 +92,7 @@ entity = {
 	locator = {
 		name = scalar
 		position = {
-			## cardinality = 3..3
+			## cardinality = 2..3
 			float
 		}
 

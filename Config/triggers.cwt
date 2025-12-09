@@ -1369,29 +1369,29 @@ alias[trigger:any_province_building_level] = {
 	province = {
 		### Sets the scope to all provinces within the state
 		## cardinality = 0..inf
-		all_provinces = yes
+		all_provinces = bool
 		### Limits the province scope to only border provinces
 		## cardinality = 0..1
-		limit_to_border = yes
+		limit_to_border = bool
 		### Limits the province scope to only coastal provinces
 		## cardinality = 0..1
-		limit_to_coastal = yes
+		limit_to_coastal = bool
 		### Limits the province scope to provinces with a naval base
 		## cardinality = 0..1
-		limit_to_naval_base = yes
+		limit_to_naval_base = bool
 		### Picks the first valid after reduction
 		## cardinality = 0..1
-		first = yes
+		first = bool
 	}
 	province = {
 		## cardinality = 1..inf
 		id = enum[provinces]
 		## cardinality = 0..1
-		limit_to_border = yes
+		limit_to_border = bool
 		## cardinality = 0..1
-		limit_to_coastal = yes
+		limit_to_coastal = bool
 		## cardinality = 0..1
-		limit_to_naval_base = yes
+		limit_to_naval_base = bool
 	}
 	building = <building.provincial>
 	level = int

@@ -70,20 +70,20 @@ alias[effect:add_province_modifier] = {
 		<static_modifier>
 	}
 	province = {
-		all_provinces = yes
+		all_provinces = bool
 		## cardinality = 0..1
-		limit_to_coastal = yes
+		limit_to_coastal = bool
 		## cardinality = 0..1
-		limit_to_naval_base = yes
+		limit_to_naval_base = bool
 		## cardinality = 0..1
-		limit_to_border = yes
+		limit_to_border = bool
 		## cardinality = 0..1
-		limit_to_victory_point = yes
+		limit_to_victory_point = bool
 		## cardinality = 0..1
 		limit_to_victory_point = int
 		### Picks the first valid after reduction
 		## cardinality = 0..1
-		first = yes
+		first = bool
 	}
 	province = {
 		## cardinality = ~1..inf
@@ -101,20 +101,20 @@ alias[effect:remove_province_modifier] = {
 		<static_modifier>
 	}
 	province = {
-		all_provinces = yes
+		all_provinces = bool
 		## cardinality = 0..1
-		limit_to_coastal = yes
+		limit_to_coastal = bool
 		## cardinality = 0..1
-		limit_to_naval_base = yes
+		limit_to_naval_base = bool
 		## cardinality = 0..1
-		limit_to_border = yes
+		limit_to_border = bool
 		## cardinality = 0..1
-		limit_to_victory_point = yes
+		limit_to_victory_point = bool
 		## cardinality = 0..1
 		limit_to_victory_point = int
 		### Picks the first valid after reduction
 		## cardinality = 0..1
-		first = yes
+		first = bool
 	}
 	province = {
 		## cardinality = ~1..inf
@@ -964,17 +964,17 @@ alias[effect:add_building_construction] = {
 	province = enum[provinces]
 	province = {
 		## cardinality = 0..1
-		all_provinces = yes
+		all_provinces = bool
 		## cardinality = 0..1
-		limit_to_coastal = yes
+		limit_to_coastal = bool
 		## cardinality = 0..1
-		limit_to_naval_base = yes
+		limit_to_naval_base = bool
 		## cardinality = 0..1
-		limit_to_supply_node = yes
+		limit_to_supply_node = bool
 		## cardinality = 0..1
-		limit_to_border = yes
+		limit_to_border = bool
 		## cardinality = 0..1
-		limit_to_victory_point = yes
+		limit_to_victory_point = bool
 		## cardinality = 0..1
 		limit_to_victory_point = int
 		## cardinality = 0..1
@@ -985,21 +985,21 @@ alias[effect:add_building_construction] = {
 		level = int_variable_field
 		### Picks the first valid after reduction
 		## cardinality = 0..1
-		first = yes
+		first = bool
 	}
 	province = {
 		## cardinality = 1..inf
 		id = enum[provinces]
 		## cardinality = 0..1
-		limit_to_coastal = yes
+		limit_to_coastal = bool
 		## cardinality = 0..1
-		limit_to_naval_base = yes
+		limit_to_naval_base = bool
 		## cardinality = 0..1
-		limit_to_supply_node = yes
+		limit_to_supply_node = bool
 		## cardinality = 0..1
-		limit_to_border = yes
+		limit_to_border = bool
 		## cardinality = 0..1
-		limit_to_victory_point = yes
+		limit_to_victory_point = bool
 		## cardinality = 0..1
 		limit_to_victory_point = int
 		## cardinality = 0..1

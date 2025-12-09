@@ -2495,7 +2495,9 @@ alias[effect:start_border_war] = {
 		state = <state>
 		### Number of provinces we want border war to be
 		num_provinces = int[1..100]
+		## cardinality = 0..1
 		on_win = <event>
+		## cardinality = 0..1
 		on_lose = <event>
 		## cardinality = 0..1
 		on_cancel = <event>
@@ -2523,7 +2525,9 @@ alias[effect:start_border_war] = {
 		state = <state>
 		### Number of provinces we want border war to be
 		num_provinces = int[1..100]
+		## cardinality = 0..1
 		on_win = <event>
+		## cardinality = 0..1
 		on_lose = <event>
 		## cardinality = 0..1
 		on_cancel = <event>

@@ -1,11 +1,17 @@
 types = {
+	type[ideas] = {
+		path = "game/common/ideas"
+	}
+
+	## unique = yes
 	type[idea] = {
 		path = "game/common/ideas"
+		skip_root_key = { ideas any }
 	}
 }
 
 ## replace_scope = { this = country root = country }
-idea = {
+ideas = {
 	## cardinality = 0..inf
 	<idea_category.no_slot> = {
 		## cardinality = ~1..inf

@@ -108,6 +108,9 @@ links = {
         data_source = <operation>
         data_source = <technology>
         data_source = <idea>
+        data_source = <country_leader_trait>
+        data_source = <unit_leader_trait>
+        data_source = <module>
     }
 
     mio = {

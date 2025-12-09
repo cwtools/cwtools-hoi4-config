@@ -1369,29 +1369,29 @@ alias[trigger:any_province_building_level] = {
 	province = {
 		### Sets the scope to all provinces within the state
 		## cardinality = 0..inf
-		all_provinces = yes
+		all_provinces = bool
 		### Limits the province scope to only border provinces
 		## cardinality = 0..1
-		limit_to_border = yes
+		limit_to_border = bool
 		### Limits the province scope to only coastal provinces
 		## cardinality = 0..1
-		limit_to_coastal = yes
+		limit_to_coastal = bool
 		### Limits the province scope to provinces with a naval base
 		## cardinality = 0..1
-		limit_to_naval_base = yes
+		limit_to_naval_base = bool
 		### Picks the first valid after reduction
 		## cardinality = 0..1
-		first = yes
+		first = bool
 	}
 	province = {
 		## cardinality = 1..inf
 		id = enum[provinces]
 		## cardinality = 0..1
-		limit_to_border = yes
+		limit_to_border = bool
 		## cardinality = 0..1
-		limit_to_coastal = yes
+		limit_to_coastal = bool
 		## cardinality = 0..1
-		limit_to_naval_base = yes
+		limit_to_naval_base = bool
 	}
 	building = <building.provincial>
 	level = int
@@ -1559,259 +1559,6 @@ alias[trigger:has_id] = int
 ### Check if leader can select a trait.
 ## scope = { unit_leader combat }
 alias[trigger:can_select_trait] = <unit_leader_trait>
-
-### Adds a value or a variable to a temporary variable.
-## scope = any
-alias[trigger:add_to_temp_variable] = {
-	value_set[variable] = variable_field_32
-}
-
-### Adds a value or a variable to a temporary variable.
-## scope = any
-alias[trigger:add_to_temp_variable] = {
-	value_set[variable] = value[variable]
-}
-
-### Adds a value or a variable to a temporary variable.
-## scope = any
-alias[trigger:add_to_temp_variable] = {
-	var = value_set[variable]
-	value = variable_field_32
-}
-
-### Adds a value or a variable to a temporary variable.
-## scope = any
-alias[trigger:add_to_temp_variable] = {
-	var = value_set[variable]
-	value = value[variable]
-}
-
-### Subtracts a value or a variable to a temporary variable.
-## scope = any
-alias[trigger:subtract_from_temp_variable] = {
-	value_set[variable] = variable_field_32
-}
-
-### Subtracts a value or a variable to a temporary variable.
-## scope = any
-alias[trigger:subtract_from_temp_variable] = {
-	value_set[variable] = value[variable]
-}
-
-### Subtracts a value or a variable to a temporary variable.
-## scope = any
-alias[trigger:subtract_from_temp_variable] = {
-	var = value_set[variable]
-	value = variable_field_32
-}
-
-### Subtracts a value or a variable to a temporary variable.
-## scope = any
-alias[trigger:subtract_from_temp_variable] = {
-	var = value_set[variable]
-	value = value[variable]
-}
-
-### Multiplies a temporary variable by a value or another variable.
-## scope = any
-alias[trigger:multiply_temp_variable] = {
-	value_set[variable] = variable_field_32
-}
-
-### Multiplies a temporary variable by a value or another variable.
-## scope = any
-alias[trigger:multiply_temp_variable] = {
-	value_set[variable] = value[variable]
-}
-
-### Multiplies a temporary variable by a value or another variable.
-## scope = any
-alias[trigger:multiply_temp_variable] = {
-	var = value_set[variable]
-	value = variable_field_32
-}
-
-### Multiplies a temporary variable by a value or another variable.
-## scope = any
-alias[trigger:multiply_temp_variable] = {
-	var = value_set[variable]
-	value = value[variable]
-}
-
-### Divies a temporary variable by a value or another variable.
-## scope = any
-alias[trigger:divide_temp_variable] = {
-	value_set[variable] = variable_field_32
-	## cardinality = 0..1
-	tooltip = localisation
-}
-
-### Divies a temporary variable by a value or another variable.
-## scope = any
-alias[trigger:divide_temp_variable] = {
-	value_set[variable] = value[variable]
-	## cardinality = 0..1
-	tooltip = localisation
-}
-
-### Divies a temporary variable by a value or another variable.
-## scope = any
-alias[trigger:divide_temp_variable] = {
-	var = value_set[variable]
-	value = variable_field_32
-	## cardinality = 0..1
-	tooltip = localisation
-}
-
-### Divies a temporary variable by a value or another variable.
-## scope = any
-alias[trigger:divide_temp_variable] = {
-	var = value_set[variable]
-	value = value[variable]
-	## cardinality = 0..1
-	tooltip = localisation
-}
-
-### Sets a temporary variable to a value or another variable.
-## scope = any
-alias[trigger:set_temp_variable] = {
-	value_set[variable] = variable_field_32
-	value_set[variable] = scope_field
-	value_set[variable] = enum[country_tags]
-	value_set[variable] = value_set[token]
-	value_set[variable] = value[variable]
-}
-
-### Sets a temporary variable to a value or another variable.
-## scope = any
-alias[trigger:set_temp_variable] = {
-	var = value_set[variable]
-	value = variable_field_32
-	value = scope_field
-	value = enum[country_tags]
-	value = value_set[token]
-	value = value[variable]
-}
-
-### Clamps a variable between two a values or another variables.
-## scope = any
-alias[trigger:clamp_variable] = {
-	var = value_set[variable]
-	min = variable_field_32
-	max = variable_field_32
-}
-
-### Clamps a variable between two a values or another variables.
-## scope = any
-alias[trigger:clamp_variable] = {
-	var = value_set[variable]
-	min = value[variable]
-	max = variable_field_32
-}
-
-### Clamps a variable between two a values or another variables.
-## scope = any
-alias[trigger:clamp_variable] = {
-	var = value_set[variable]
-	min = variable_field_32
-	max = value[variable]
-}
-
-### Clamps a variable between two a values or another variables.
-## scope = any
-alias[trigger:clamp_variable] = {
-	var = value_set[variable]
-	min = value[variable]
-	max = value[variable]
-}
-
-### Clamps a variable between two a values or another variables.
-## scope = any
-alias[trigger:clamp_variable] = {
-	var = value_set[variable]
-	max = variable_field_32
-}
-
-### Clamps a variable between two a values or another variables.
-## scope = any
-alias[trigger:clamp_variable] = {
-	var = value_set[variable]
-	max = value[variable]
-}
-
-### Clamps a variable between two a values or another variables.
-## scope = any
-alias[trigger:clamp_variable] = {
-	var = value_set[variable]
-	min = value[variable]
-}
-
-### Clamps a variable between two a values or another variables.
-## scope = any
-alias[trigger:clamp_variable] = {
-	var = value_set[variable]
-	min = variable_field_32
-}
-
-### Clamps a temp variable between two a values or another variables.
-## scope = any
-alias[trigger:clamp_temp_variable] = {
-	var = value_set[variable]
-	min = variable_field_32
-	max = variable_field_32
-}
-
-### Clamps a temp variable between two a values or another variables.
-## scope = any
-alias[trigger:clamp_temp_variable] = {
-	var = value_set[variable]
-	min = value[variable]
-	max = variable_field_32
-}
-
-### Clamps a temp variable between two a values or another variables.
-## scope = any
-alias[trigger:clamp_temp_variable] = {
-	var = value_set[variable]
-	min = variable_field_32
-	max = value[variable]
-}
-
-### Clamps a temp variable between two a values or another variables.
-## scope = any
-alias[trigger:clamp_temp_variable] = {
-	var = value_set[variable]
-	min = value[variable]
-	max = value[variable]
-}
-
-### Clamps a variable between two a values or another variables.
-## scope = any
-alias[trigger:clamp_temp_variable] = {
-	var = value_set[variable]
-	max = value[variable]
-}
-
-### Clamps a temp variable between two a values or another variables.
-## scope = any
-alias[trigger:clamp_temp_variable] = {
-	var = value_set[variable]
-	max = variable_field_32
-}
-
-### Clamps a variable between two a values or another variables.
-## scope = any
-alias[trigger:clamp_temp_variable] = {
-	var = value_set[variable]
-	min = value[variable]
-}
-
-### Clamps a temp variable between two a values or another variables.
-## scope = any
-alias[trigger:clamp_temp_variable] = {
-	var = value_set[variable]
-	min = variable_field_32
-}
 
 ### Check amount of civilian factories available for a new project to use.
 ## scope = country
@@ -1989,14 +1736,6 @@ alias[trigger:state_strategic_value] = variable_field_32
 ### Checks for state strategic value.
 ## scope = state
 alias[trigger:state_and_terrain_strategic_value] = variable_field_32
-
-### Rounds a temporary variable.
-## scope = any
-alias[trigger:round_temp_variable] = value[variable]
-
-### Rounds a temporary variable.
-## scope = any
-alias[trigger:round_temp_variable] = variable_field_32
 
 ### Checks if the country has for subject the given country.
 ## scope = country

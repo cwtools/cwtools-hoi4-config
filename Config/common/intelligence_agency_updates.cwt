@@ -15,7 +15,7 @@ intelligence_agency_upgrade = {
     picture = <spriteType>
     ## cardinality = 0..1
     ### GFX entry of the border for the icon, without the suffixe (suffix are _available, _completed and _unavailable ) Optional, "upgrade_frame_1" by default.
-    frame = <spriteType>
+    frame = scalar
     ## cardinality = 0..1
     ### Optional, "click_default" by default.
     sound = <soundeffect>

@@ -40,7 +40,7 @@ types = {
 			}
 		}
 		subtype[military_advisor_trait] = {
-			slot = value[character_advisor_slot]
+			slot = scalar
 		}
 	}
 	type[scientist_trait] = {

@@ -1,0 +1,167 @@
+### Sets a variable to a value or another variable.
+## scope = any
+alias[effect:set_variable] = {
+	## cardinality = 1..2
+	value_set[variable] = variable_field
+	## cardinality = 1..2
+	value_set[variable] = scope_field
+	## cardinality = 1..2
+	value_set[variable] = token:<ideology>
+	## cardinality = 1..2
+	value_set[variable] = token:<ideology>_subtype
+	## cardinality = 1..2
+	value_set[variable] = token:<operation>
+	## cardinality = 1..2
+	value_set[variable] = token:<equipment>
+	## cardinality = 1..2
+	value_set[variable] = token:<technology>
+	## cardinality = 1..2
+	value_set[variable] = token:<idea>
+	## cardinality = 1..2
+	value_set[variable] = token:<country_leader_trait>
+	## cardinality = 1..2
+	value_set[variable] = token:<unit_leader_trait>
+	## cardinality = 1..2
+	value_set[variable] = token:<module>
+	## cardinality = 1..2
+	value_set[variable] = token:<building>
+	#### This exists to cull unsupported values. Values above provide some autofill
+	## cardinality = 1..2
+	value_set[variable] = scalar
+	## cardinality = 0..1
+	tooltip = localisation
+}
+### Sets a variable to a value or another variable.
+## scope = any
+alias[effect:set_variable] = {
+	var = value_set[variable]
+	value = variable_field
+	value = scope_field
+	value = token:<ideology>
+	value = token:<ideology>_subtype
+	value = token:<operation>
+	value = token:<equipment>
+	value = token:<technology>
+	value = token:<idea>
+	value = token:<country_leader_trait>
+	value = token:<unit_leader_trait>
+	value = token:<module>
+	value = token:<building>
+	#### This exists to cull unsupported values. Values above provide some autofill
+	value = scalar
+	## cardinality = 0..1
+	tooltip = localisation
+}
+
+### Adds a value or a variable to another one. Can define numerical variable with value = 0
+## scope = any
+alias[effect:add_to_variable]  = single_alias_right[set_var_equals_value_clause]
+
+### Adds a value or a variable to another one. Can define numerical variable with value = 0
+## scope = any
+alias[effect:add_to_variable] = single_alias_right[set_var_and_value_clause]
+
+### Subtracts a value or a variable to another one. Can define numerical variable with value = 0
+## scope = any
+alias[effect:subtract_from_variable] = single_alias_right[set_var_equals_value_clause]
+
+### Subtracts a value or a variable to another one. Can define numerical variable with value = 0
+## scope = any
+alias[effect:subtract_from_variable] = single_alias_right[set_var_and_value_clause]
+
+### Multiplies a variable to a value or another variable.
+## scope = any
+alias[effect:multiply_variable] = single_alias_right[var_equals_value_clause]
+
+### Multiplies a variable to a value or another variable.
+## scope = any
+alias[effect:multiply_variable] = single_alias_right[var_and_value_clause]
+
+### Divides a variable to a value or another variable.
+## scope = any
+alias[effect:divide_variable] = single_alias_right[var_equals_value_clause]
+
+### Divides a variable to a value or another variable.
+## scope = any
+alias[effect:divide_variable] = single_alias_right[var_and_value_clause]
+
+###Randomize a variable.
+## scope = { any }
+alias[effect:randomize_variable] = value_set[variable]
+
+###Randomize a variable.
+## scope = { any }
+alias[effect:randomize_variable] = {
+	var = value_set[variable]
+	distribution = uniform
+	distribution = binomial
+	## cardinality = 0..1
+	min = variable_field
+	## cardinality = 0..1
+	min = value[variable]
+	## cardinality = 0..1
+	max = variable_field
+	## cardinality = 0..1
+	max = value[variable]
+	## cardinality = 0..1
+	lambda = variable_field
+}
+
+###Modulos a variable with another.
+## scope = { any }
+alias[effect:modulo_variable] = {
+	scope[country].value[variable] = variable_field
+}
+
+###Modulos a variable with another.
+## scope = { any }
+alias[effect:modulo_variable] = {
+	var = scope[country].value[variable]
+	value = variable_field
+}
+
+###Sets a variable to a random value.
+## scope = { any }
+alias[effect:set_variable_to_random] = value_set[variable]
+
+###Sets a variable to a random value.
+## scope = { any }
+alias[effect:set_variable_to_random] = {
+	var = value_set[variable]
+	## cardinality = 0..1
+	min = variable_field
+	## cardinality = 0..1
+	min = value[variable]
+	## cardinality = 0..1
+	max = variable_field
+	## cardinality = 0..1
+	max = value[variable]
+	## cardinality = 0..1
+	integer = bool
+}
+
+### Clamps a variable between two a values or another variables.
+## scope = any
+alias[effect:clamp_variable] = {
+	var = scope[country].value[variable]
+	## cardinality = 0..1
+	min = variable_field
+	## cardinality = 0..1
+	min = value[variable]
+	## cardinality = 0..1
+	max = variable_field
+	## cardinality = 0..1
+	max = value[variable]
+}
+
+### Rounds a variable.
+## scope = any
+alias[effect:round_variable] = scope[country].value[variable]
+
+### Clears a variable. The input is NOT validated
+## scope = any
+alias[effect:clear_variable] = variable_field
+
+### Clears a variable. The input is NOT validated
+## scope = any
+alias[effect:clear_variable] = scope[country].value[variable]

@@ -676,98 +676,6 @@ alias[effect:country_lock_all_division_template] = {
 	desc = localisation
 }
 
-###Randomize a temporary variable.
-## scope = { any }
-alias[effect:randomize_temp_variable] = value_set[variable]
-
-###Randomize a temporary variable.
-## scope = { any }
-alias[effect:randomize_temp_variable] = {
-	var = value_set[variable]
-	distribution = uniform
-}
-
-###Randomize a temporary variable.
-## scope = { any }
-alias[effect:randomize_temp_variable] = {
-	var = value_set[variable]
-	distribution = binomial
-}
-
-###Randomize a temporary variable.
-## scope = { any }
-alias[effect:randomize_temp_variable] = {
-	var = value_set[variable]
-	distribution = uniform
-	min = variable_field_32
-	max = variable_field_32
-}
-
-###Randomize a temporary variable.
-## scope = { any }
-alias[effect:randomize_temp_variable] = {
-	var = value_set[variable]
-	distribution = binomial
-	min = variable_field_32
-	max = variable_field_32
-}
-
-###Randomize a temporary variable.
-## scope = { any }
-alias[effect:randomize_temp_variable] = {
-	var = value_set[variable]
-	distribution = binomial
-	## cardinality = 0..1
-	min = variable_field_32
-	lambda = variable_field_32
-}
-
-###Randomize a variable.
-## scope = { any }
-alias[effect:randomize_variable] = variable_field_32
-
-###Randomize a variable.
-## scope = { any }
-alias[effect:randomize_variable] = {
-	var = variable_field_32
-	distribution = uniform
-}
-
-###Randomize a variable.
-## scope = { any }
-alias[effect:randomize_variable] = {
-	var = variable_field_32
-	distribution = binomial
-}
-
-###Randomize a variable.
-## scope = { any }
-alias[effect:randomize_variable] = {
-	var = variable_field_32
-	distribution = uniform
-	min = variable_field_32
-	max = variable_field_32
-}
-
-###Randomize a variable.
-## scope = { any }
-alias[effect:randomize_variable] = {
-	var = variable_field_32
-	distribution = binomial
-	min = variable_field_32
-	max = variable_field_32
-}
-
-###Randomize a variable.
-## scope = { any }
-alias[effect:randomize_variable] = {
-	var = variable_field_32
-	distribution = binomial
-	## cardinality = 0..1
-	min = variable_field_32
-	lambda = variable_field_32
-}
-
 ###Harm an operative. The specified value is subject to modifiers.
 ## scope = { operative }
 alias[effect:harm_operative_leader] = variable_field
@@ -921,58 +829,6 @@ alias[effect:add_civil_war_target] = scope[country]
 ## scope = { COUNTRY }
 alias[effect:add_civil_war_target] = enum[country_tags]
 
-###Modulos a temp variable with another.
-## scope = { any }
-alias[effect:modulo_temp_variable] = {
-	value_set[variable] = variable_field_32
-}
-
-###Modulos a temp variable with another.
-## scope = { any }
-alias[effect:modulo_temp_variable] = {
-	value_set[variable] = value[variable]
-}
-
-###Mdulos a temp variable with another.
-## scope = { any }
-alias[effect:modulo_temp_variable] = {
-	var = value_set[variable]
-	value = variable_field_32
-}
-
-###Mdulos a temp variable with another.
-## scope = { any }
-alias[effect:modulo_temp_variable] = {
-	var = value_set[variable]
-	value = value[variable]
-}
-
-###Modulos a variable with another.
-## scope = { any }
-alias[effect:modulo_variable] = {
-	value_set[variable] = variable_field_32
-}
-
-###Modulos a variable with another.
-## scope = { any }
-alias[effect:modulo_variable] = {
-	value_set[variable] = value[variable]
-}
-
-###Modulos a variable with another.
-## scope = { any }
-alias[effect:modulo_variable] = {
-	var = value_set[variable]
-	value = variable_field_32
-}
-
-###Modulos a variable with another.
-## scope = { any }
-alias[effect:modulo_variable] = {
-	var = value_set[variable]
-	value = value[variable]
-}
-
 ###Adds the collaboration in a target country with our currently scoped country.
 ## scope = { COUNTRY }
 alias[effect:add_collaboration] = {
@@ -1098,38 +954,6 @@ alias[effect:set_leader_portrait] = <spriteType>
 ## scope = { character unit_leader }
 alias[effect:set_leader_description] = localisation
 
-###Sets a variable to a random value.
-## scope = { any }
-alias[effect:set_variable_to_random] = value_set[variable]
-
-###Sets a variable to a random value.
-## scope = { any }
-alias[effect:set_variable_to_random] = {
-	var = value_set[variable]
-	## cardinality = 0..1
-	min = variable_field_32
-	## cardinality = 0..1
-	max = variable_field_32
-	## cardinality = 0..1
-	integer = bool
-}
-
-###Sets a temp variable to a random value.
-## scope = { any }
-alias[effect:set_temp_variable_to_random] = value_set[variable]
-
-###Sets a temp variable to a random value.
-## scope = { any }
-alias[effect:set_temp_variable_to_random] = {
-	var = value_set[variable]
-	## cardinality = 0..1
-	min = variable_field_32
-	## cardinality = 0..1
-	max = variable_field_32
-	## cardinality = 0..1
-	integer = bool
-}
-
 ###Adds victory point to province.
 ## scope = { any }
 alias[effect:add_victory_points] = {
@@ -1190,52 +1014,6 @@ alias[effect:set_occupation_law_where_available] = <occupation_law>
 ### Sets specific occupation law where available
 ## scope = { state }
 alias[effect:set_occupation_law] = <occupation_law>
-
-###Randomize a temporary variable.
-## scope = { any }
-alias[effect:randomize_temp_variable] = variable_field
-
-###Randomize a temporary variable.
-## scope = { any }
-alias[effect:randomize_temp_variable] = {
-	var = variable_field_32
-	distribution = uniform
-}
-
-###Randomize a temporary variable.
-## scope = { any }
-alias[effect:randomize_temp_variable] = {
-	var = variable_field_32
-	distribution = binomial
-}
-
-###Randomize a temporary variable.
-## scope = { any }
-alias[effect:randomize_temp_variable] = {
-	var = variable_field_32
-	distribution = uniform
-	min = variable_field_32
-	max = variable_field_32
-}
-
-###Randomize a temporary variable.
-## scope = { any }
-alias[effect:randomize_temp_variable] = {
-	var = variable_field_32
-	distribution = binomial
-	min = variable_field_32
-	max = variable_field_32
-}
-
-###Randomize a temporary variable.
-## scope = { any }
-alias[effect:randomize_temp_variable] = {
-	var = variable_field_32
-	distribution = binomial
-	## cardinality = 0..1
-	min = variable_field_32
-	lambda = variable_field_32
-}
 
 ###Add divisional commander xp to unit
 ## scope = { any }

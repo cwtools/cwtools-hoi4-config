@@ -162,11 +162,7 @@ alias[gui:dropDownBoxType] = {
     expandButton = {
         name = value_set[gui_element_name]
         ## cardinality = 0..1
-        ### Special size version for buttons
-        size = {
-            x = int
-            y = int
-        }
+        size = single_alias_right[gui_size_coordinates]
         alias_name[gui_standard] = alias_match_left[gui_standard]
         alias_name[gui_image] = alias_match_left[gui_image]
         ## cardinality = 0..1
@@ -245,13 +241,9 @@ alias[gui:dropDownBoxType] = {
 alias[gui:buttonType] = {
     name = value_set[gui_element_name]
     ## cardinality = 0..1
-    ### Special size version for buttons
-    size = {
-        x = int
-        y = int
-    }
+    size = single_alias_right[gui_size_coordinates]
     ## cardinality = 0..1
-    borderSize = { x = int y = int }
+    borderSize = single_alias_right[gui_size_coordinates]
     alias_name[gui_standard] = alias_match_left[gui_standard]
     alias_name[gui_image] = alias_match_left[gui_image]
     ## cardinality = 0..1
@@ -298,12 +290,7 @@ alias[gui:gridBoxType] = {
 
 	## cardinality = 0..1
     ### Dimensions of slot, does not clip entries
-    slotsize = {
-        width = int
-        width = percentage_field
-        height = int
-        height = percentage_field
-    }
+    slotsize = single_alias_right[gui_size]
     ### Adds entries horizontally
     ## cardinality = 0..1
     add_horizontal = bool
@@ -358,7 +345,7 @@ alias[gui:listBoxType] = {
     ## cardinality = 0..1
     scrollbartype = enum[scrollbar_types]
     ## cardinality = 0..1
-    borderSize = { x = int y = int }
+    borderSize = single_alias_right[gui_size_coordinates]
     ## cardinality = 0..1
     offset = { x = int y = int }
     ## cardinality = 0..1
@@ -380,7 +367,7 @@ alias[gui:smoothListBoxType] = {
     ## cardinality = 0..1
     scrollbartype = enum[scrollbar_types]
     ## cardinality = 0..1
-    borderSize = { x = int y = int }
+    borderSize = single_alias_right[gui_size_coordinates]
     ## cardinality = 0..1
     offset = { x = int y = int }
     ### Will remove elements outside of size bounding box
@@ -405,12 +392,7 @@ alias[gui:iconType] = {
 alias[gui:positionType] = {
     ## cardinality = ~1..1
     name = value_set[gui_element_name]
-    position = {
-        x = int[-3840..3840]
-		x = float[-3840..3840]
-        y = int[-2160..2160]
-		y = float[-2160..2160]
-    }
+    position = single_alias_right[gui_position]
     ## cardinality = 0..1
     scale = float
 }
@@ -423,6 +405,8 @@ alias[gui:browserType] = {
     alias_name[gui_image] = alias_match_left[gui_image]
     alias_name[gui_standard] = alias_match_left[gui_standard]
     alias_name[gui_localization] = alias_match_left[gui_localization]
+    ## cardinality = 0..1
+    size = single_alias_right[gui_size_coordinates]
 }
 ###Text box
 alias[gui:instantTextBoxType] = {
@@ -450,7 +434,7 @@ alias[gui:instantTextBoxType] = {
     ## cardinality = 0..1
     #DEBUG
     ### Pixel Border
-    borderSize = { x = int y = int }
+    borderSize = single_alias_right[gui_size_coordinates]
     ## cardinality = 0..1
     #DEBUG
     ### Missing Description, need testing
@@ -497,7 +481,7 @@ alias[gui:editBoxType] = {
     ## cardinality = 0..1
     #DEBUG
     ### Pixel Border
-    borderSize = { x = int y = int }
+    borderSize = single_alias_right[gui_size_coordinates]
     ## cardinality = 0..1
     #DEBUG
     ### Missing Descriptiion, need testing
@@ -549,24 +533,26 @@ alias[gui:scrollbarType] = {
     track = scalar
     leftbutton = scalar
     rightbutton = scalar
-    size = {x=int y=int}
-    position = {x=int y=int}
+    size = single_alias_right[gui_size_coordinates]
+    position = single_alias_right[gui_position]
     priority = int			
-    borderSize = {x=int y=int}	
-    maxValue = int
-    minValue = int
-    stepSize = int
-    startValue = int
-    horizontal = int
+    borderSize = single_alias_right[gui_size_coordinates]
+    maxValue = float
+    minValue = float
+    stepSize = float
+    startValue = float
+    horizontal = float
     ## cardinality = 4..4
     guiButtonType = {
         name = value_set[gui_element_name]
         quadTextureSprite = <spriteType>
-        position = {x=int y=int}
+        position = single_alias_right[gui_position]
         ## cardinality = 0..1
         clicksound = <soundeffect>
         ## cardinality = 0..1
         clicksound = click
+        ## cardinality = 0..1
+        parent = value[gui_element_name]
     }
 }
 alias[gui:extendedScrollbarType] = {
@@ -586,10 +572,7 @@ alias[gui:extendedScrollbarType] = {
     }
     ##cardinality  = 0..1
     ###Size in px of tiling
-    tileSize = {
-        width = int
-        height = int
-    }
+    tileSize = single_alias_right[gui_size]
     ##cardinality  = 0..1
     ###Maximum value of slider
     maxValue = float
@@ -617,12 +600,7 @@ alias[gui:extendedScrollbarType] = {
     slider = {
         name = value_set[gui_element_name]
         alias_name[gui_image] = alias_match_left[gui_image]
-        position = {
-            x = int[-3840..3840]
-            x = float[-3840..3840]
-            y = int[-2160..2160]
-            y = float[-2160..2160]
-        }
+        position = single_alias_right[gui_position]
         alias_name[gui_localization] = alias_match_left[gui_localization]
     }
     ##cardinality  = 1..1
@@ -630,12 +608,7 @@ alias[gui:extendedScrollbarType] = {
     track = {
         name = value_set[gui_element_name]
         alias_name[gui_image] = alias_match_left[gui_image]
-        position = {
-            x = int[-3840..3840]
-            x = float[-3840..3840]
-            y = int[-2160..2160]
-            y = float[-2160..2160]
-        }
+        position = single_alias_right[gui_position]
 		alias_name[gui_localization] = alias_match_left[gui_localization]
     }
     ##cardinality  = 0..1
@@ -644,12 +617,7 @@ alias[gui:extendedScrollbarType] = {
         name = value_set[gui_element_name]
         alias_name[gui_image] = alias_match_left[gui_image]
         alias_name[gui_sound] = alias_match_left[gui_sound]
-        position = {
-            x = int[-3840..3840]
-            x = float[-3840..3840]
-            y = int[-2160..2160]
-            y = float[-2160..2160]
-        }
+        position = single_alias_right[gui_position]
         alias_name[gui_localization] = alias_match_left[gui_localization]
     }
     ##cardinality  = 0..1
@@ -658,12 +626,7 @@ alias[gui:extendedScrollbarType] = {
         name = value_set[gui_element_name]
         alias_name[gui_image] = alias_match_left[gui_image]
         alias_name[gui_sound] = alias_match_left[gui_sound]
-        position = {
-            x = int[-3840..3840]
-            x = float[-3840..3840]
-            y = int[-2160..2160]
-            y = float[-2160..2160]
-        }
+        position = single_alias_right[gui_position]
         alias_name[gui_localization] = alias_match_left[gui_localization]
     }
     ##cardinality  = 0..1
@@ -671,69 +634,72 @@ alias[gui:extendedScrollbarType] = {
     slider = {
         name = value_set[gui_element_name]
         alias_name[gui_image] = alias_match_left[gui_image]
-        position = {
-            x = int[-3840..3840]
-            x = float[-3840..3840]
-            y = int[-2160..2160]
-            y = float[-2160..2160]
-        }
+        position = single_alias_right[gui_position]
         alias_name[gui_localization] = alias_match_left[gui_localization]
     }
 }
 #GUI Standard Functions
 ### Position of element. Absolute in px, % of screen, or % of parent.
-alias[gui_standard:position] = {
-    x = int
+single_alias[gui_position] = {
+    ## cardinality = 0..1
+    x = float
+    ## cardinality = 0..1
     x = percentage_field
-    y = int
+    ## cardinality = 0..1
+    y = float
+    ## cardinality = 0..1
     y = percentage_field
 }
+### Position of element. Absolute in px, % of screen, or % of parent.
+alias[gui_standard:position] = single_alias_right[gui_position]
 ###Size of element. Absolute in px, % of screen, or % of parent.
-alias[gui_standard:size] = {
+single_alias[gui_size] = {
+    ## cardinality = 0..1
     width = int
+    ## cardinality = 0..1
     width = percentage_field
+    ## cardinality = 0..1
     height = int
+    ## cardinality = 0..1
     height = percentage_field
     ## cardinality = 0..1
     min = {
+        ## cardinality = 0..1
         width = int
+        ## cardinality = 0..1
         width = percentage_field
+        ## cardinality = 0..1
         height = int
+        ## cardinality = 0..1
         height = percentage_field
     }
     ## cardinality = 0..1
     max = {
+        ## cardinality = 0..1
         width = int
+        ## cardinality = 0..1
         width = percentage_field
+        ## cardinality = 0..1
         height = int
+        ## cardinality = 0..1
         height = percentage_field
     }
     ## cardinality = 0..1
     preserve_aspect_ratio = bool
+}
+single_alias[gui_size_coordinates] = {
+    ## cardinality = 0..1
+    x = float
+    ## cardinality = 0..1
+    x = percentage_field
+    ## cardinality = 0..1
+    y = float
+    ## cardinality = 0..1
+    y = percentage_field
 }
 ###Size of element. Absolute in px, % of screen, or % of parent.
-alias[gui_standard:size] = {
-    x = int
-    x = percentage_field
-    y = int
-    y = percentage_field
-    ## cardinality = 0..1
-    min = {
-        x = int
-        x = percentage_field
-        y = int
-        y = percentage_field
-    }
-    ## cardinality = 0..1
-    max = {
-        x = int
-        x = percentage_field
-        y = int
-        y = percentage_field
-    }
-    ## cardinality = 0..1
-    preserve_aspect_ratio = bool
-}
+alias[gui_standard:size] = single_alias_right[gui_size]
+alias[gui_standard:size] = single_alias_right[gui_size_coordinates]
 alias[gui_standard:margin] = {
     ## cardinality = 0..1
     top = int
@@ -788,11 +754,15 @@ alias[gui_localization:pdx_tooltip] = localisation
 alias[gui_localization:pdx_tooltip_delayed] = localisation
 #alias[gui_localization:pdx_tooltip_delayed] = localisation_inline
 alias[gui_localization:pdx_tooltip_anchor] = {
+    ## cardinality = 0..1
     x = int
+    ## cardinality = 0..1
     y = int
     ### It is default set to yes ( to the gui object )
     ## cardinality = 0..1
     relative = bool
+    ## cardinality = 0..1
+    below = bool
 }
 ### PDX function, use pdx_tooltip instead
 alias[gui_localization:tooltip] = localisation
@@ -866,14 +836,7 @@ alias[gui_animation:peek_check_top_left] = {
     y = percentage_field
 }
 ### Position returned to when peeking (size)
-alias[gui_animation:peek_check_size] = {
-    width = int
-	width = float
-    width = percentage_field
-    height = int
-	height = float
-    height = percentage_field
-}
+alias[gui_animation:peek_check_size] = single_alias_right[gui_size]
 alias[gui_animation:show_animation_type] = enum[animationTypes]
 alias[gui_animation:hide_animation_type] = enum[animationTypes]
 alias[gui_animation:animation_type] = enum[animationTypes]

@@ -100,10 +100,10 @@ spriteType = {
 	}
 	subtype[corneredTileSpriteType] = {
 		textureFile = filepath
-		borderSize = { x = int y = int }
+		borderSize = single_alias_right[gui_size_coordinates]
 		## cardinality = 0..1
 		tilingCenter = bool
-		size = { x = int y = int }
+		size = single_alias_right[gui_size_coordinates]
 		## cardinality = 0..1
 		animation_rate_spf = int
 		## cardinality = 0..1

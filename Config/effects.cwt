@@ -2926,7 +2926,9 @@ alias[effect:clear_array] = single_alias_right[array]
 ### Resizes array.
 ## scope = any
 alias[effect:resize_array] = {
+	## cardinality = 1..3
 	array = value_set[array]
+	## cardinality = 1..3
 	array = value_set[variable]
 	## cardinality = 0..1
 	### Optional, if not specified and array grows the new elements are set to this (default 0).
@@ -2938,8 +2940,13 @@ alias[effect:resize_array] = {
 ### Resizes array.
 ## scope = any
 alias[effect:resize_array] = {
+	## cardinality = 1..2
 	value_set[array] = int_variable_field_32
+	## cardinality = 1..2
 	value_set[variable] = int_variable_field_32
+	## cardinality = 0..1
+	### Optional, if not specified and array grows the new elements are set to this (default 0).
+	value = variable_field
 }
 
 ### Adds an element to a temporary array.
@@ -3415,7 +3422,9 @@ alias[effect:add_ai_strategy] = {
 ## scope = country
 alias[effect:add_ai_strategy] = {
 	type = dont_join_wars_with
+	## cardinality = 0..1
 	id = enum[country_tags]
+	## cardinality = 0..1
 	id = scope[country]
 	## cardinality = 0..1
 	target_country = enum[country_tags]

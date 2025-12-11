@@ -229,8 +229,18 @@ alias[trigger:count_in_collection] = {
 	### Anonymous collection
 	collection = single_alias_right[anonymous_collection]
 	unit = enum[unit_types]
+	unit = <unit>
+	unit = {
+		## cardinality = 0..inf
+		enum[unit_types]
+		## cardinality = 0..inf
+		<unit>
+	}
 	### Does not support '=' sign!
 	size = variable_field
+	### Check equipment ratio. 0 - 1
+	## cardinality = 0..1
+	equipment_ratio = float[0..1]
 }
 
 ### ```
@@ -263,8 +273,18 @@ alias[trigger:count_in_collection] = {
 	### Anonymous collection
 	collection = single_alias_right[anonymous_collection]
 	unit_category = enum[unit_category]
+	unit_category = <unit>
+	unit_category = {
+		## cardinality = 0..inf
+		enum[unit_category]
+		## cardinality = 0..inf
+		<unit>
+	}
 	### Does not support '=' sign!
 	size = variable_field
+	### Check equipment ratio. 0 - 1
+	## cardinality = 0..1
+	equipment_ratio = float[0..1]
 }
 
 ### ```
@@ -300,6 +320,40 @@ alias[trigger:count_in_collection] = {
 		## cardinality = ~1..inf
 		<building>
 	}
+	### Does not support '=' sign!
+	size = variable_field
+}
+
+### ```
+### }
+### 	size > 500000 # Total deployed manpower
+### 	manpower = yes
+### 	collection = collection:my_awesome_collection
+### count_in_collection = {
+### }
+###		size > 10 
+### 	buildings = { industrial_complex } # If multiple buildings are passed, their sum will be checked
+### 	collection = collection:my_awesome_collection
+### count_in_collection = {
+### }
+### 	size > 10
+### 	unit = infantry   # See script_enum_equipment_category
+### 	collection = collection:my_awesome_collection
+### count_in_collection = {
+### ```
+### - Examples:
+### - unit and building and manpower are mutually exclusive
+### - Does not support the '=' sign in comparison!
+### Checks the size of a given collection. Collection elements should be tags. Requires country scope. Supports both anonymous and regular collections
+## scope = { country }
+alias[trigger:count_in_collection] = {
+	### A reference to another collection that will be used as input
+	collection = collection:<collection>
+	### A reference to another collection that will be used as input
+	collection = enum[built_in_collections]
+	### Anonymous collection
+	collection = single_alias_right[anonymous_collection]
+	stockpile = <equipment>
 	### Does not support '=' sign!
 	size = variable_field
 }

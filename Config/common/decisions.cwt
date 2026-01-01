@@ -42,19 +42,19 @@ types = {
 			state_target = any
 		}
 		## only_if_not = { state_targeted }
-		subtype[targeted] = {
+		subtype[country_targeted] = {
 			target_trigger = {
 
 			}
 		}
 		## only_if_not = { state_targeted }
-		subtype[targeted] = {
+		subtype[country_targeted] = {
 			targets = {
 
 			}
 		}
 		## only_if_not = { state_targeted }
-		subtype[targeted] = {
+		subtype[country_targeted] = {
 			target_array = scalar
 		}
 		subtype[custom_cost] = {
@@ -69,7 +69,10 @@ types = {
 			days_mission_timeout = scalar
 		}
 		## only_if_not = { state_targeted }
-		subtype[country] = {
+		subtype[country_scope] = {
+		}
+		## only_if_not = { state_targeted country_targeted }
+		subtype[non_targeted] = {
 		}
 	}
 }
@@ -254,7 +257,7 @@ decision = {
 	## cardinality = 0..1
 	state_target = no
 
-	subtype[country] = {
+	subtype[country_scope] = {
 		### Check if this decision can be activated.
 		## cardinality = 0..1
 		## replace_scope = { this = country root = country from = country }
@@ -455,7 +458,7 @@ decision = {
 		}
 	}
 
-	subtype[targeted] = {
+	subtype[country_targeted] = {
 		## cardinality = 0..1
 		## replace_scope = { this = country root = country from = country }
 		target_trigger = {

@@ -1520,9 +1520,9 @@ alias[trigger:has_unit_leader_flag] = {
 	days = int
 }
 
-### Check if country has active selected decision.
+### Check if country has active selected decision. Does not wort with targeted decisions
 ## scope = country
-alias[trigger:has_decision] = <decision>
+alias[trigger:has_decision] = <decision.non_targeted>
 
 ### Checks if available command power is more or less that specified value.
 ## scope = country

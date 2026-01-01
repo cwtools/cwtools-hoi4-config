@@ -2617,7 +2617,7 @@ alias[effect:recall_attache] = enum[country_tags]
 alias[effect:activate_targeted_decision] = {
 	target = scope[country]
 	target = enum[country_tags]
-	decision = <decision.country>
+	decision = <decision.country_scope>
 }
 
 ### Activates targeted decisions or mission, ignoring its normal trigger conditions, cooldown and fire only once. Cannot activate if active in interface.
@@ -2630,14 +2630,10 @@ alias[effect:activate_targeted_decision] = {
 
 ### Removes targeted decisions or mission.
 ## scope = country
-alias[effect:remove_targeted_decision] = <decision>
-
-### Removes targeted decisions or mission.
-## scope = country
 alias[effect:remove_targeted_decision] = {
 	target = scope[country]
 	target = enum[country_tags]
-	decision = <decision.country>
+	decision = <decision.country_scope>
 }
 
 ### Removes targeted decisions or mission.
@@ -2663,7 +2659,7 @@ alias[effect:modify_timed_idea] = {
 
 ### Activates specified decision for scope country.
 ## scope = country
-alias[effect:activate_decision] = <decision>
+alias[effect:activate_decision] = <decision.non_targeted>
 
 ### Sets a truce between scope country and target for days duration.
 ## scope = country
@@ -2738,7 +2734,7 @@ alias[effect:finalize_border_war] = {
 
 ### Remove specified active decision for scope country - Does not run the remove_effect or put the decision on cooldown. Ignores fire_only_once.
 ## scope = country
-alias[effect:remove_decision] = <decision>
+alias[effect:remove_decision] = <decision.non_targeted>
 
 ### Swap 2 traits on current ruler.
 ## scope = country

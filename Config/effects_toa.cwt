@@ -32,4 +32,4 @@ alias[effect:remove_relation_rule_override] = {
 
 ### Removes decision on cooldown to reactivate or remove
 ## scope = country
-alias[effect:remove_decision_on_cooldown] = <decision>
+alias[effect:remove_decision_on_cooldown] = <decision.non_targeted>

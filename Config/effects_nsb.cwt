@@ -484,7 +484,6 @@ alias[effect:set_character_flag] = value_set[character_flag]
 ## scope = { character unit_leader }
 alias[effect:set_character_flag] = {
 	flag = value_set[character_flag]
-	## cardinality = 0..1
 	value = int
 	## cardinality = 0..1
 	days = int

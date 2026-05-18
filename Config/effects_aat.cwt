@@ -196,8 +196,6 @@ alias[effect:set_mio_flag] = value_set[mio_flag]
 ## scope = military_industrial_organization
 alias[effect:set_mio_flag] = {
 	flag = value_set[mio_flag]
-    ### Default - 1
-	## cardinality = 0..1
 	value = int
     ### Default = 0. if > 0, the flag will be deleted after this number of days
 	## cardinality = 0..1

@@ -609,6 +609,9 @@ shared_focus = {
 		value = <spriteType>
 	}
 	## cardinality = 0..1
+	overlay = <spriteType>
+
+	## cardinality = 0..1
 	text_icon = <focus_style>
 
 	### A cost of 1 represents a week by default. Decimals within cost are supported, and it will get rounded down to a whole day in the game. 

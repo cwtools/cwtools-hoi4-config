@@ -16,6 +16,7 @@ enums = {
 		"Graveyard of Empires"
 		"Expansion Pass 1: Supporter Pack"
 		"No Compromise, No Surrender"
+		"Peace For Our Time"
 	}
 
 	enum[tech_bonus] = {
@@ -52,6 +53,7 @@ enums = {
 		air_base_access
 		lend_lease
 		incoming_lend_lease
+		send_expeditionary_force
 	}
 
 	enum[add_factor] = {

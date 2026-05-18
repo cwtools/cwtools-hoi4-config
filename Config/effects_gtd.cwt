@@ -54,7 +54,6 @@ alias[effect:set_project_flag] =  value_set[project_flag]
 ## scope = project
 alias[effect:set_project_flag] = {
 	flag = value_set[project_flag]
-	## cardinality = 0..1
 	value = int
 	## cardinality = 0..1
 	days = int
@@ -222,7 +221,7 @@ alias[effect:add_scientist_role] = {
 			# same format as in scientist role in character DB
 			# by default all skills are at 1
 			## cardinality = ~1..inf
-			<specialization> = 2
+			<specialization> = int
 		}
 		## cardinality = 0..1
 		traits = {

@@ -60,6 +60,9 @@ ai_strategy_plan = {
 	}
 
 	## cardinality = 0..1
+	abort_when_not_enabled = bool
+
+	## cardinality = 0..1
 	ai_national_focuses = {
 		## cardinality = 0..inf
 		<focus>

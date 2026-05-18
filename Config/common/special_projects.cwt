@@ -58,6 +58,8 @@ special_project = {
 		has_dlc_nsb = yes
 		## cardinality = 0..inf
 		has_dlc_ncns = yes
+		## cardinality = 0..inf
+		has_dlc_pfot = yes
 	}
 
 	### *Scope: project. FROM: country*

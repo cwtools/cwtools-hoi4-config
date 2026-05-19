@@ -31,6 +31,18 @@ focus_inlay_window = {
 				## cardinality = ~1..inf
 				alias_name[trigger] = alias_match_left[trigger]
 			}
+			# Bugged vanilla gfx definitions, do not remove
+			## cardinality = 0..1
+			GFX_power_balance_left = {
+				## cardinality = ~1..inf
+				alias_name[trigger] = alias_match_left[trigger]
+			}
+			# Bugged vanilla gfx definitions, do not remove
+			## cardinality = 0..1
+			GFX_power_balance_right = {
+				## cardinality = ~1..inf
+				alias_name[trigger] = alias_match_left[trigger]
+			}
 			### If "yes" is set, then it will always be used. Note: "yes" is commonly the last entry in the list that acts as a default case.
 			## cardinality = 0..1
 			<spriteType> = yes

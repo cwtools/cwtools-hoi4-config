@@ -54,6 +54,10 @@ enums = {
 		lend_lease
 		incoming_lend_lease
 		send_expeditionary_force
+		request_expeditionary_forces
+		return_expeditionary_forces
+		send_attache
+		naval_blockade
 	}
 
 	enum[add_factor] = {

@@ -734,8 +734,13 @@ alias[gui_standard:vertical_scroll_step] = int
 #GUI Image
 ### Sprite for image
 alias[gui_image:spriteType] = <spriteType>
+# Bugged vanilla gfx definition, do not remove
+alias[gui_image:spriteType] = "GFX_power_balance_left"
+alias[gui_image:spriteType] = "GFX_power_balance_right"
 ### Tiliing Sprite
 alias[gui_image:quadTextureSprite] = <spriteType>
+# Bugged vanilla gfx definition, do not remove
+alias[gui_image:quadTextureSprite] = "GFX_bop_glow_effect"
 ### Image Sprite
 single_alias[gui_image:any_image_type] = {
     alias_name[gui_image:spriteType] = alias_match_left[gui_image:spriteType]

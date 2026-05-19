@@ -3355,6 +3355,7 @@ alias[effect:add_ai_strategy] = {
 alias[effect:add_ai_strategy] = {
 	type = enum[pp_strats]
 	id = enum[pp_targets]
+	id = value[character_advisor_slot]
 	value = int
 }
 

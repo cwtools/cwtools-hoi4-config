@@ -98,7 +98,7 @@ ai_strategy_plan = {
 
 	## cardinality = 0..1
 	traits = {
-		## cardinality = ~1..inf
+		## cardinality = 0..inf
 		<country_leader_trait> = int
 	}
 

@@ -2925,6 +2925,9 @@ alias[effect:resize_array] = {
 	## cardinality = 0..1
 	### Optional, if not specified and array grows the new elements are set to this (default 0).
 	value = variable_field
+	## cardinality = 0..1
+	### Optional, if not specified and array grows the new elements are set to this (default 0).
+	value = value[constant]
 	### If higher than old size, new elements are added to end. Otherwise last elements are removed to match to new size.
     size = int_variable_field_32
 }
@@ -2939,6 +2942,9 @@ alias[effect:resize_array] = {
 	## cardinality = 0..1
 	### Optional, if not specified and array grows the new elements are set to this (default 0).
 	value = variable_field
+	## cardinality = 0..1
+	### Optional, if not specified and array grows the new elements are set to this (default 0).
+	value = value[constant]
 }
 
 ### Adds an element to a temporary array.

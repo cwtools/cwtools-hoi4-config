@@ -49,6 +49,10 @@ balance_of_power = {
     side = {
         id = value_set[bop_side]
         icon = <spriteType>
+        # Bugged vanilla gfx definition, do not remove
+        icon = GFX_bop_ITA_democratic_side
+        # Bugged vanilla gfx definition, do not remove
+        icon = GFX_bop_ITA_mussolini_side
         ## cardinality = 1..inf
         range = {
             id = value_set[bop_range_id]

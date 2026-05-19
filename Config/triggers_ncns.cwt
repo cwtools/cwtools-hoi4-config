@@ -643,9 +643,93 @@ alias[trigger:compare_ideology_with_faction] = {
 	leader = enum[country_tags]
 }
 
-### TODO - figure out what it does
+## hidden_trigger
+
+# * Supported Scopes: STATE, COUNTRY, CHARACTER, COMBATANT, ACE, STRATEGIC_REGION, OPERATION, INDUSTRIAL_ORG, PURCHASE_CONTRACT, RAID_INSTANCE, SPECIAL_PROJECT, FACTION
+# * Supported Targets: THIS, ROOT, PREV, FROM, OWNER, CONTROLLER, OCCUPIED, CAPITAL
+
+
+
+# * The trigger has a side effect (e.g. temporary variables).
+# * The trigger uses random numbers (e.g. acts on a random state)
+
+# There are three possible evaluation techniques to use when computing tooltips for
+# hidden_triggers:
+
+# * `eval` - Standard evalulation of the trigger.
+# This is most likely what you need if you have a trigger that has side effects or random parts.
+# * `no_eval` - If you have no random parts or side effects, then this will give you a slightly faster computation of the tooltip.
+# * `legacy` - Previous behaviour that is similar to `eval` but a lot less predictable.
+# Using this explicitly is very likely a bug.
+
+
+#### Examples
+
+hidden_trigger = {
+    tooltip_evaluation = eval
+    set_temp_variable = { unlock_compare = 0 }            
+    all_collection_elements = {
+        collection = {
+            input = game:scope
+            operators =  { faction_members }
+        }
+        add_to_temp_variable = { unlock_compare = num_armies }
+    }
+}
+
+### ```
+### }
+###     }
+###        add_to_temp_variable = { unlock_compare = num_armies }
+###        }
+###            operators =  { faction_members }
+###            input = game:scope
+###         collection = {
+###     all_collection_elements = {
+###     set_temp_variable = { unlock_compare = 0 }  
+###     tooltip_evaluation = eval
+### hidden_trigger = {
+### ```
+### ```hidden_trigger = { tooltip_evaluation = no_eval add_political_power = 10 }```
+### Examples
+### - `legacy` - Previous behaviour that is similar to `eval` but a lot less predictable. Using this explicitly is very likely a bug
+### - `no_eval` - If you have no random parts or side effects, then this will give you a slightly faster computation of the tooltip.
+### - `eval` - Standard evalulation of the trigger. This is most likely what you need if you have a trigger that has side effects or random parts.
+### There are three possible evaluation techniques to use when computing tooltips for hidden_triggers
+### - The trigger uses random numbers (e.g. acts on a random state)
+### - The trigger has a side effect (e.g. temporary variables).
+### This might be required in the following cases:
+### The trigger can still be evaluate when generating a tooltip.
+### A hidden trigger, that will not be displayed in the tooltip.
 ## scope = { any }
 alias[trigger:tooltip_evaluation] = eval
+
+### ```
+### }
+###     }
+###        add_to_temp_variable = { unlock_compare = num_armies }
+###        }
+###            operators =  { faction_members }
+###            input = game:scope
+###         collection = {
+###     all_collection_elements = {
+###     set_temp_variable = { unlock_compare = 0 }  
+###     tooltip_evaluation = eval
+### hidden_trigger = {
+### ```
+### ```hidden_trigger = { tooltip_evaluation = no_eval add_political_power = 10 }```
+### Examples
+### - `legacy` - Previous behaviour that is similar to `eval` but a lot less predictable. Using this explicitly is very likely a bug
+### - `no_eval` - If you have no random parts or side effects, then this will give you a slightly faster computation of the tooltip.
+### - `eval` - Standard evalulation of the trigger. This is most likely what you need if you have a trigger that has side effects or random parts.
+### There are three possible evaluation techniques to use when computing tooltips for hidden_triggers
+### - The trigger uses random numbers (e.g. acts on a random state)
+### - The trigger has a side effect (e.g. temporary variables).
+### This might be required in the following cases:
+### The trigger can still be evaluate when generating a tooltip.
+### A hidden trigger, that will not be displayed in the tooltip.
+## scope = { any }
+alias[trigger:tooltip_evaluation] = no_eval
 
 ## scope = { country }
 alias[trigger:has_any_grand_doctrine] = enum[equipment_categories]

@@ -403,6 +403,8 @@ decision = {
 			alias_name[trigger] = alias_match_left[trigger]
 		}
 
+		### Controls tooltip framing on non-selectable missions. false (default): the mission is presented as something to complete, with timeout_effect labeled as "Effects if not completed". true: flips the framing so complete_effect is labeled "Effects when failed", signaling the player should avoid triggering the mission.
+		## cardinality = 0..1
 		is_good = bool
 		days_mission_timeout = int_variable_field
 
@@ -429,6 +431,8 @@ decision = {
 			alias_name[trigger] = alias_match_left[trigger]
 		}
 
+		### Controls tooltip framing on non-selectable missions. false (default): the mission is presented as something to complete, with timeout_effect labeled as "Effects if not completed". true: flips the framing so complete_effect is labeled "Effects when failed", signaling the player should avoid triggering the mission.
+		## cardinality = 0..1
 		is_good = bool
 		days_mission_timeout = int_variable_field
 

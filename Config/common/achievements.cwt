@@ -26,8 +26,8 @@ achievement = {
 		colors = {
 			## cardinality = 1..inf
 			{
-				## cardinality = 1..4
-				scalar
+				## cardinality = 3..4
+				float
 			}
 		}
 	}

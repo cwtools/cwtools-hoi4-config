@@ -19,10 +19,10 @@ types = {
 			type = { navy }
 		}
 		subtype[land_commander] = {
-			type = land
+			type = enum[land_command_type]
 		}
 		subtype[land_commander] = {
-			type = { land }
+			type = { enum[land_command_type] }
 		}
 		subtype[land_naval_commander] = {
 			type = { land navy }
@@ -321,6 +321,12 @@ enums = {
 		navy
 		land
 		operative
+	}
+	enum[land_command_type] = {
+		land
+		corps_commander
+		field_marshal
+		all
 	}
 	enum[trait_types] = {
 		assignable_terrain_trait

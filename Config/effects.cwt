@@ -2498,6 +2498,8 @@ alias[effect:start_border_war] = {
 		### Terrain modifier factor (default value: 1.0)
 		## cardinality = 0..1
 		terrain_factor = float
+		## cardinality = 0..1
+		modifier = float
 	}
 	defender = {
 		### State to start border war
@@ -2511,6 +2513,8 @@ alias[effect:start_border_war] = {
 		on_lose = <event>
 		## cardinality = 0..1
 		on_cancel = <event>
+		## cardinality = 0..1
+		modifier = float
 	}
 }
 
@@ -2522,9 +2526,9 @@ alias[effect:set_border_war_data] = {
 	defender = scope[state]
 	defender = <state>
 	## cardinality = 0..1
-	attacker_modifier = float
+	attacker_modifier = variable_field
 	## cardinality = 0..1
-	defender_modifier = float
+	defender_modifier = variable_field
 	## cardinality = 0..1
 	combat_width = int
 }

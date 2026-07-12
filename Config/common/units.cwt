@@ -133,11 +133,11 @@ unit = {
 			enum[land_units]
 		}
 
-		## cardinality = 0..1
+		## cardinality = 0..inf
 		### Blocks adding same unit types to a template.
 		same_support_type = <unit.support_unit>
 
-		## cardinality = 0..1
+		## cardinality = 0..inf
 		### Blocks adding same unit types to a template.
 		same_support_type = enum[land_units]
 

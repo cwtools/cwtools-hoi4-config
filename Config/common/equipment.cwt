@@ -505,8 +505,13 @@ module = {
 	}
 	## cardinality = 0..1
 	forbid_equipment_type_exact_match_for_category = {
-		## cardinality = ~1..inf
+		## cardinality = 0..inf
 		enum[module_categories] = enum[equipment_category]
+		## cardinality = 0..inf
+		enum[module_categories] = {
+			## cardinality = ~1..inf
+			enum[equipment_category]
+		}
 	}
 	## cardinality = 0..1
 	add_equipment_type = enum[equipment_category]

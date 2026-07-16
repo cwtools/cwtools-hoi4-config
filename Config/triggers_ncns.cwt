@@ -230,12 +230,6 @@ alias[trigger:count_in_collection] = {
 	collection = single_alias_right[anonymous_collection]
 	unit = enum[unit_types]
 	unit = <unit>
-	unit = {
-		## cardinality = 0..inf
-		enum[unit_types]
-		## cardinality = 0..inf
-		<unit>
-	}
 	### Does not support '=' sign!
 	size = variable_field
 	### Check equipment ratio. 0 - 1

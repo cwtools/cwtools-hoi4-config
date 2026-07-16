@@ -102,8 +102,7 @@ alias[mathexpr:clamp] = {
 }
 
 ### Linearly interpolates from the accumulator towards `to` by `alpha`, where alpha is clamped between 0 and 1. An alpha of 0 keeps the accumulator, 1 returns `to`.
-
-alias[mathexpr:clamp] = {
+alias[mathexpr:lerp] = {
 	to = variable_field
 	to = single_alias_right[mathexprnest]
 	alpha = variable_field

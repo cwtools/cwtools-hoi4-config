@@ -16,6 +16,7 @@ state = {
 	### Handles ownership of unpassable states (examples - Amazonas/Sahara)
 	## cardinality = 0..1
 	force_link_ownership_to = <state>
+	## cardinality = 0..1
 	impassable_ignored_links = {
 		## cardinality = ~1..inf
 		<state>

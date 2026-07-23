@@ -293,6 +293,14 @@ decision = {
 			alias_name[effect] = alias_match_left[effect]
 		}
 
+		# cancel trigger also works without days_remove
+		## cardinality = 0..1
+		## replace_scope = { this = country root = country from = country }
+		cancel_trigger = {
+			## cardinality = ~1..inf
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+
 		### The effect that is executed when the decision is removed after the days_remove timer.
 		## cardinality = 0..1
 		## replace_scope = { this = country root = country from = country }
@@ -383,13 +391,6 @@ decision = {
 	highlight_color_while_active = int
 
 	subtype[timed] = {
-		## cardinality = 0..1
-		## replace_scope = { this = country root = country from = country }
-		cancel_trigger = {
-			## cardinality = ~1..inf
-			alias_name[trigger] = alias_match_left[trigger]
-		}
-
 		###
 		## cardinality = 0..1
 		## replace_scope = { this = country root = country from = country }

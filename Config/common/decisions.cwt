@@ -78,6 +78,7 @@ types = {
 }
 
 decision_category = {
+	### Displays an icon to the left of the decision or category's name.
 	## cardinality = 0..inf
 	icon = scalar
 	## replace_scope = { this = country root = country }
@@ -88,6 +89,8 @@ decision_category = {
 			alias_name[trigger] = alias_match_left[trigger]
 		}
 	}
+
+	### Adds a picture to the description of the decision category shifting it to the left but displaying inline.
 	## cardinality = 0..1
 	picture = <spriteType>
 	## cardinality = 0..1
@@ -97,6 +100,8 @@ decision_category = {
 			alias_name[trigger] = alias_match_left[trigger]
 		}
 	}
+
+	### Changes the order in which decisions or categories are displayed from top to bottom. The default value is 1.
 	## cardinality = 0..1
 	priority = int
 	## cardinality = 0..1
@@ -107,6 +112,7 @@ decision_category = {
 		alias_name[modifier_rule] = alias_match_left[modifier_rule]
 	}
 
+	### By default, a decision category will hide itself unless a decision is visible. Setting visible_when_empty to true overrides this behavior.
 	## cardinality = 0..1
 	visible_when_empty = bool
 
@@ -139,6 +145,7 @@ decision_category = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 
+	### Displays a custom icon for a decision
 	## cardinality = 0..inf
 	custom_icon = {
 		tag = enum[country_tags]
@@ -149,6 +156,7 @@ decision_category = {
 		}
 	}
 
+	### Allows for the highlighting of states in the decision UI view when hovering over it in the selection menu.
 	## cardinality = 0..1
 	## replace_scope = { this = state root = country }
 	highlight_states = {
@@ -175,10 +183,13 @@ decision_category = {
 		## cardinality = 0..1
 		highlight_only_provinces = bool
 
+		### Sets the color of the highlighting of a state ranging from 0-3 before it is active. The default is white when this is not set.
 		## cardinality = 0..1
-		highlight_color_before_active = int
+		highlight_color_before_active = 0..
+
+		### Sets the color of the highlighting of a state ranging from 0-3 while it is active. The default is white when this is not set.
 		## cardinality = 0..1
-		highlight_color_while_active = int
+		highlight_color_while_active = 0..3
 	}
 
 	## cardinality = 0..1
@@ -274,6 +285,7 @@ decision = {
 			alias_name[trigger] = alias_match_left[trigger]
 		}
 
+		### The effect that is executed when the decision is clicked.
 		## cardinality = 0..1
 		## replace_scope = { this = country root = country from = country }
 		complete_effect = {
@@ -281,6 +293,15 @@ decision = {
 			alias_name[effect] = alias_match_left[effect]
 		}
 
+		# cancel trigger also works without days_remove
+		## cardinality = 0..1
+		## replace_scope = { this = country root = country from = country }
+		cancel_trigger = {
+			## cardinality = ~1..inf
+			alias_name[trigger] = alias_match_left[trigger]
+		}
+
+		### The effect that is executed when the decision is removed after the days_remove timer.
 		## cardinality = 0..1
 		## replace_scope = { this = country root = country from = country }
 		remove_effect = {
@@ -288,6 +309,7 @@ decision = {
 			alias_name[effect] = alias_match_left[effect]
 		}
 
+		### The effect that is executed when the decision is canceled.
 		## cardinality = 0..1
 		## replace_scope = { this = country root = country from = country }
 		cancel_effect = {
@@ -369,13 +391,7 @@ decision = {
 	highlight_color_while_active = int
 
 	subtype[timed] = {
-		## cardinality = 0..1
-		## replace_scope = { this = country root = country from = country }
-		cancel_trigger = {
-			## cardinality = ~1..inf
-			alias_name[trigger] = alias_match_left[trigger]
-		}
-
+		###
 		## cardinality = 0..1
 		## replace_scope = { this = country root = country from = country }
 		remove_trigger = {
@@ -403,6 +419,8 @@ decision = {
 			alias_name[trigger] = alias_match_left[trigger]
 		}
 
+		### Controls tooltip framing on non-selectable missions. false (default): the mission is presented as something to complete, with timeout_effect labeled as "Effects if not completed". true: flips the framing so complete_effect is labeled "Effects when failed", signaling the player should avoid triggering the mission.
+		## cardinality = 0..1
 		is_good = bool
 		days_mission_timeout = int_variable_field
 
@@ -429,6 +447,8 @@ decision = {
 			alias_name[trigger] = alias_match_left[trigger]
 		}
 
+		### Controls tooltip framing on non-selectable missions. false (default): the mission is presented as something to complete, with timeout_effect labeled as "Effects if not completed". true: flips the framing so complete_effect is labeled "Effects when failed", signaling the player should avoid triggering the mission.
+		## cardinality = 0..1
 		is_good = bool
 		days_mission_timeout = int_variable_field
 
@@ -534,6 +554,7 @@ decision = {
 	## cardinality = 0..1
 	days_re_enable = int_variable_field
 
+	### Decisions, by default, use a fixed random seed. This means that any decisions without this keyword set to true will always yield the same result whenever the decision is used.
 	## cardinality = 0..1
 	fixed_random_seed = bool
 

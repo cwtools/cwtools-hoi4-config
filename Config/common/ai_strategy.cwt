@@ -99,7 +99,7 @@ ai_strategy_plan = {
 	## cardinality = 0..1
 	traits = {
 		## cardinality = 0..inf
-		<country_leader_trait> = int
+		<country_leader_trait> = float
 	}
 
 	alias_name[ai_strategy_rule] = alias_match_left[ai_strategy_rule]

@@ -483,6 +483,13 @@ faction_template = {
 	icon = scalar
 
 	## cardinality = 0..1
+	color = {
+		## cardinality = 3..3
+		int
+		# RGB color of the faction as shown in the factions menu
+	}
+
+	## cardinality = 0..1
 	## replace_scope = { ROOT = country }
 	visible = {
 		alias_name[trigger] = alias_match_left[trigger]
@@ -521,6 +528,7 @@ faction_template = {
 		# NOTE : Can be a DB reference or an inline definition
 	}
 
+	## cardinality = 0..1
 	default_rules = {
 		## cardinality = ~1..inf
 		<faction_rule>

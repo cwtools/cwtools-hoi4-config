@@ -38,6 +38,10 @@ subdoctrine = {
 	}
 
 	track = <doctrine_track>
+	track = {
+		## cardinality = ~1..inf
+		<doctrine_track>
+	}
 	name = localisation
 	description = localisation
 	icon = <spriteType>
@@ -54,6 +58,12 @@ subdoctrine = {
 	visible = {
 		## cardinality = ~1..inf
 		alias_name[trigger] = alias_match_left[trigger]
+	}
+
+	## cardinality = 0..1
+	xor = {
+		## cardinality = ~1..inf
+		<subdoctrine>
 	}
 
 	## cardinality = 0..1
@@ -74,7 +84,7 @@ subdoctrine = {
 	### Do not use add_equipment_bonus since its effect will not remove bonus if doctrine is changed
 	###
 	### Add equipment bonuses
-	## cardinality = 0..1
+	## cardinality = 0..inf
 	equipment_bonus = {
 		## cardinality = 0..inf
 		enum[equipment_bonus_type] = {
@@ -147,7 +157,7 @@ subdoctrine = {
 			### Do not use add_equipment_bonus since its effect will not remove bonus if doctrine is changed
 			###
 			### Add equipment bonuses
-			## cardinality = 0..1
+			## cardinality = 0..inf
 			equipment_bonus = {
 				## cardinality = 0..inf
 				enum[equipment_bonus_type] = {

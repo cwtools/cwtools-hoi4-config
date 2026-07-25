@@ -23,7 +23,7 @@ alias[effect:release_captured_generals_from] = {
 	target = scope[country]
 	target = enum[country_tags]
 	## cardinality 0..1
-	province = <province> (optional)
+	province = enum[provinces]
 }
 
 
@@ -42,5 +42,5 @@ alias[effect:capture_by] = {
 	target = scope[country]
 	target = enum[country_tags]
 	## cardinality 0..1
-	province = <province> (optional)
+	province = enum[provinces]
 }

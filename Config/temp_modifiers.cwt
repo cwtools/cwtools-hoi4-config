@@ -194,6 +194,7 @@ alias[unit_leader_modifier:recon_factor_while_entrenched] = float
 alias[unit_leader_modifier:shore_bombardment_bonus] = float
 alias[unit_leader_modifier:skill_bonus_factor] = float
 alias[unit_leader_modifier:wounded_chance_factor] = float
+alias[unit_leader_modifier:<modifier_definition.unit_leader>] = float
 
 alias[unit_leader_modifier:<terrain>] = { alias_name[unit_stat] = alias_match_left[unit_stat] }
 alias[unit_leader_modifier:night] = { alias_name[unit_stat] = alias_match_left[unit_stat] }

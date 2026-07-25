@@ -7,6 +7,9 @@ types = {
 
 single_alias[division_template_clause] = {
 	name = value_set[division_template_name]
+	
+	## cardinality = 0..1
+    localization_key = localisation_inline
 	## cardinality = 0..1
 	division_names_group = <division_name>
 	## cardinality = 0..1
@@ -18,6 +21,8 @@ single_alias[division_template_clause] = {
 	override_model = <entity>
 	## cardinality = 0..1
 	template_counter = int
+	## cardinality = 0..1
+	is_army_hq = bool
 	## cardinality = 0..1
 	is_locked = bool
 	## cardinality = 0..1
@@ -37,6 +42,14 @@ single_alias[division_template_clause] = {
 			## severity = warning
 			x = 0
 			## severity = warning
+			y = int[0..4]
+		}
+	}
+	## cardinality = 0..1
+	regimental_support = {
+		## cardinality = ~1..inf
+		<unit.support_unit> = {
+			x = int[0..4]
 			y = int[0..4]
 		}
 	}

@@ -19,10 +19,10 @@ types = {
 			type = { navy }
 		}
 		subtype[land_commander] = {
-			type = land
+			type = enum[land_command_type]
 		}
 		subtype[land_commander] = {
-			type = { land }
+			type = { enum[land_command_type] }
 		}
 		subtype[land_naval_commander] = {
 			type = { land navy }
@@ -104,6 +104,14 @@ unit_leader_trait = {
 	}
 	## cardinality = 0..1
 	trait_type = enum[trait_types]
+
+	## push_scope = country
+	## cardinality = 0..1
+	country_trigger = {
+		## cardinality = ~1..inf
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+
 	subtype[land_commander] = {
 		## cardinality = 0..4
 		### Direct bonus to this skill.
@@ -137,6 +145,12 @@ unit_leader_trait = {
 		### Bonus for gaining this skill.
 		## cardinality = 0..4
 		enum[naval_leader_skill_factors] = int
+
+		## cardinality = 0..1
+		allowed_ship_equipments = {
+			## cardinality = ~1..inf
+			<equipment.naval_equip>
+		}
 	}
 	subtype[gainable_trait] = {
 		## replace_scope = { this = combat root = combat from = combat }
@@ -223,6 +237,18 @@ unit_leader_trait = {
 	trait_xp_factor = {
 		## cardinality = 1..inf
 		<unit_leader_trait> = float
+	}	
+	## cardinality = 0..1
+	## replace_scope = { ROOT = unit_leader THIS = unit_leader }
+	on_add = {
+		## cardinality = ~1..inf
+		alias_name[effect] = alias_match_left[effect]
+	}
+	## cardinality = 0..1
+	## replace_scope = { ROOT = unit_leader THIS = unit_leader }
+	on_remove = {
+		## cardinality = ~1..inf
+		alias_name[effect] = alias_match_left[effect]
 	}
 	## cardinality = 0..1
 	ai_will_do = {
@@ -324,6 +350,12 @@ enums = {
 		navy
 		land
 		operative
+	}
+	enum[land_command_type] = {
+		land
+		corps_commander
+		field_marshal
+		all
 	}
 	enum[trait_types] = {
 		assignable_terrain_trait

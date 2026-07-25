@@ -52,8 +52,10 @@ containerWindowType = {
     ###Allows clicking to reorder windows
     click_to_front = bool
     ## cardinality = 0..1
-    ###Smoothly scroll a scrollbar -- container version
+    ###Smoothly scroll a scrollbar -- container version. Accepts yes/no or a float smoothing factor.
     smooth_scrolling = bool
+    ## cardinality = 0..1
+    smooth_scrolling = float
     ##cardinality  = 0..1
     scroll_wheel_factor = float
 }
@@ -101,8 +103,10 @@ alias[gui:containerWindowType] = {
     ## cardinality = 0..1
     click_to_front = bool
     ## cardinality = 0..1
-    ###Smoothly scroll a scrollbar -- container version
+    ###Smoothly scroll a scrollbar -- container version. Accepts yes/no or a float smoothing factor.
     smooth_scrolling = bool
+    ## cardinality = 0..1
+    smooth_scrolling = float
     ##cardinality  = 0..1
     scroll_wheel_factor = float
 }
@@ -154,8 +158,10 @@ alias[gui:dropDownBoxType] = {
     ## cardinality = 0..1
     click_to_front = bool
     ## cardinality = 0..1
-    ###Smoothly scroll a scrollbar -- container version
+    ###Smoothly scroll a scrollbar -- container version. Accepts yes/no or a float smoothing factor.
     smooth_scrolling = bool
+    ## cardinality = 0..1
+    smooth_scrolling = float
     ##cardinality = 0..1
     scroll_wheel_factor = float
     ##cardinality = 0..1
@@ -231,8 +237,10 @@ alias[gui:dropDownBoxType] = {
         ## cardinality = 0..1
         click_to_front = bool
         ## cardinality = 0..1
-        ###Smoothly scroll a scrollbar -- container version
+        ###Smoothly scroll a scrollbar -- container version. Accepts yes/no or a float smoothing factor.
         smooth_scrolling = bool
+        ## cardinality = 0..1
+        smooth_scrolling = float
         ##cardinality  = 0..1
         scroll_wheel_factor = float
     }
@@ -589,7 +597,9 @@ alias[gui:extendedScrollbarType] = {
     ###Horizontal or vertical slider
     horizontal = bool
     ##cardinality  = 0..1
-    ###Smoothing percentage (reduces steps)
+    ###Smoothing percentage (reduces steps). Accepts yes/no or a float smoothing factor.
+    smooth_scrolling = bool
+    ## cardinality = 0..1
     smooth_scrolling = float
     ##cardinality  = 0..1
     clickonly = bool
@@ -737,7 +747,7 @@ alias[gui_image:spriteType] = <spriteType>
 # Bugged vanilla gfx definition, do not remove
 alias[gui_image:spriteType] = "GFX_power_balance_left"
 alias[gui_image:spriteType] = "GFX_power_balance_right"
-### Tiliing Sprite
+### Tiling Sprite
 alias[gui_image:quadTextureSprite] = <spriteType>
 # Bugged vanilla gfx definition, do not remove
 alias[gui_image:quadTextureSprite] = "GFX_bop_glow_effect"

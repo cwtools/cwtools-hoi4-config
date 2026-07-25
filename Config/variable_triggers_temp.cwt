@@ -29,8 +29,6 @@ alias[trigger:set_temp_variable] = {
 	## cardinality = 1..2
 	value_set[variable] = value_set[trashcan]
 
-	## cardinality 0..inf	
-	alias_name[mathexpr] = alias_match_left[mathexpr]
 	## cardinality = 0..1
 	tooltip = localisation
 }
@@ -55,8 +53,15 @@ alias[trigger:set_temp_variable] = {
 	#### This exists to cull unsupported values. Values above provide some autofill
 	value = scalar
 	
-	## cardinality 0..inf	
-	alias_name[mathexpr] = alias_match_left[mathexpr]
+	## cardinality = 0..1
+	tooltip = localisation
+}
+
+## scope = any
+alias[trigger:set_temp_variable] = {
+	## cardinality = 1..2
+	value_set[variable] =  single_alias_right[mathexprnest]
+
 	## cardinality = 0..1
 	tooltip = localisation
 }
@@ -64,6 +69,9 @@ alias[trigger:set_temp_variable] = {
 ### Adds a value or a variable to a temp variable. Can define numerical variable with value = 0
 ## scope = any
 alias[trigger:add_to_temp_variable] = single_alias_right[set_var_equals_value_clause]
+### Adds a value or a variable to a temp variable. Can define numerical variable with value = 0
+## scope = any
+alias[trigger:add_to_temp_variable] = single_alias_right[set_var_equals_value_clause_mathexpr]
 
 ### Adds a value or a variable to a temp variable. Can define numerical variable with value = 0
 ## scope = any
@@ -72,6 +80,9 @@ alias[trigger:add_to_temp_variable] = single_alias_right[set_var_and_value_claus
 ### Subtracts a value or a variable to a temp variable. Can define numerical variable with value = 0
 ## scope = any
 alias[trigger:subtract_from_temp_variable] = single_alias_right[set_var_equals_value_clause]
+### Subtracts a value or a variable to a temp variable. Can define numerical variable with value = 0
+## scope = any
+alias[trigger:subtract_from_temp_variable] = single_alias_right[set_var_equals_value_clause_mathexpr]
 
 ### Subtracts a value or a variable to a temp variable.
 ## scope = any
@@ -80,6 +91,9 @@ alias[trigger:subtract_from_temp_variable] = single_alias_right[set_var_and_valu
 ### Multiplies a temp variable to a value or another variable.
 ## scope = any
 alias[trigger:multiply_temp_variable] = single_alias_right[set_var_equals_value_clause]
+### Multiplies a temp variable to a value or another variable.
+## scope = any
+alias[trigger:multiply_temp_variable] = single_alias_right[set_var_equals_value_clause_mathexpr]
 
 ### Multiplies a temp variable to a value or another variable.
 ## scope = any
@@ -87,11 +101,42 @@ alias[trigger:multiply_temp_variable] = single_alias_right[set_var_and_value_cla
 
 ### Divides a temp variable to a value or another variable.
 ## scope = any
-alias[trigger:divide_temp_variable] = single_alias_right[set_var_equals_value_clause]
+alias[trigger:divide_temp_variable] = { # var_equals_value_clause
+	## cardinality = 1..2
+	scope[country].value[variable] = variable_field
+	## cardinality = 1..2
+	scope[country].value[variable] = scalar
+	## cardinality = 0..1
+	tooltip = localisation
+	### specifies the value to assign if the divisor is zero (default is zero).
+	## cardinality = 0..1
+	if_zero = float
+}
+### Divides a temp variable to a value or another variable.
+## scope = any
+alias[trigger:divide_temp_variable] = { # var_equals_value_clause_mathexpr
+	scope[country].value[variable] = single_alias_right[mathexprnest]
+	## cardinality = 0..1
+	tooltip = localisation
+	### specifies the value to assign if the divisor is zero (default is zero).
+	## cardinality = 0..1
+	if_zero = float
+}
 
 ### Divides a temp variable to a value or another variable.
 ## scope = any
-alias[trigger:divide_temp_variable] = single_alias_right[set_var_and_value_clause]
+alias[trigger:divide_temp_variable] = { # var_and_value_clause
+	var = value[variable]
+	value = variable_field
+	value = single_alias_right[mathexprnest]
+	#### This exists to cull unsupported values. Values above provide some autofill
+	value = scalar
+	## cardinality = 0..1
+	tooltip = localisation
+	### specifies the value to assign if the divisor is zero (default is zero).
+	## cardinality = 0..1
+	if_zero = float
+}
 
 ###Randomize a temporary variable.
 ## scope = { any }

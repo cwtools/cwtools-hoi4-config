@@ -1,0 +1,43 @@
+types = {
+	type[doctrine_folder] = {
+		path = "game/common/doctrines/folders"
+	}
+}
+
+### Folders are the top-level categorization of doctrines (land, air, naval, or a
+### custom folder with any name). Each Grand Doctrine belongs to one folder.
+doctrine_folder = {
+	### If this trigger evaluates to false, the folder won't be available.
+	## cardinality = 0..1
+	## replace_scope = { root = country this = country }
+	allowed = {
+		alias_name[trigger] = alias_match_left[trigger]
+	}
+	## cardinality = 0..1
+	name = localisation
+	### Which intel ledger the folder is shown in.
+	## cardinality = 0..1
+	ledger = enum[doctrine_folder_ledger]
+	### The button icon shown in the intel ledger.
+	## cardinality = 0..1
+	ledger_gfx = <spriteType>
+	### The tab button icon shown at the top of the doctrine UI.
+	## cardinality = 0..1
+	tab_gfx = <spriteType>
+	### Frame index for UI elements whose colors depend on the folder.
+	## cardinality = 0..1
+	color_frame = int
+	### The sound played when switching to this folder.
+	## cardinality = 0..1
+	sound = <soundeffect>
+}
+
+enums = {
+	enum[doctrine_folder_ledger] = {
+		army
+		navy
+		air
+		all
+		hidden
+	}
+}

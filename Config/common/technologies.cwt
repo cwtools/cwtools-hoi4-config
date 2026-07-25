@@ -69,6 +69,24 @@ technology = {
 	## cardinality = 0..inf
 	### Enables listed units.
 	enable_subunits = {
+		# Not sure if these are the only allowed limits for tech
+		# Only enabled if limit is empty or returns true
+		## cardinality = 0..1
+		limit = {
+			## cardinality = 0..inf
+			has_dlc = enum[dlc]
+			## cardinality = 0..inf
+			NOT = {
+				## cardinality = 0..inf
+				has_dlc = enum[dlc]
+			}
+			## cardinality = 0..inf
+			AND = {
+				## cardinality = 0..inf
+				has_dlc = enum[dlc]
+			}
+		}
+
 		## cardinality = ~1..inf
 		<unit>
 	}

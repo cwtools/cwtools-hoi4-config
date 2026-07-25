@@ -220,6 +220,12 @@ ai_template = {
 				<unit.line_unit> = int[0..25]
 			}
 
+			# The desired regimental support companies. The AI will try to add them to the template if allowed by research etc.
+			## cardinality = 0..1
+			regimental_support = {
+				## cardinality = 0..inf
+				<unit.support_unit> = int
+			}
 		}
 
 
@@ -264,6 +270,7 @@ ai_equipment_design_group = {
 	}
 
 	### Base priority for creating a design in this group or for creating or upgrading equipment to use one of these designs. A higher number means higher priority.
+	## cardinality = 0..1
 	priority = {
 		## cardinality = 0..1
 		enum[base_factor] = float
@@ -394,7 +401,7 @@ ai_equipment_design_group = {
 ai_faction_theater = {
 	### Name of the theater (Loc Environment = faction leader: COUNTRY)
 	name = localisation
-	
+
 	### How likely AI is to create this theater
 	### SCOPE = actor : COUNTRY
 	## scope = country
@@ -411,8 +418,8 @@ ai_faction_theater = {
 		## cardinality = ~1..inf
 		alias_name[trigger] = alias_match_left[trigger]
 	}
-	
-	### NOTE - the areas of the theater must be connected	
+
+	### NOTE - the areas of the theater must be connected
 	###
 	### List of strategic region IDs in this theater
 	regions = {
@@ -420,7 +427,7 @@ ai_faction_theater = {
 		<strategic_region>
 	}
 
-	### 
+	###
 	### - if the number of countries needed for the theater is less than are in this list, the remaining countries will be left not assigned to the theater.
 	### - Note, that AI will *not* try to assign every country from this list
 	### - The AI will try to assign countries going from top to bottom until theater's needs are fulfilled
@@ -431,7 +438,7 @@ ai_faction_theater = {
 		## cardinality = ~1..inf
 		enum[country_tags]
 	}
-	
+
 	### - Defaults to "no"
 	### - This flag allows to override that behavior and create the theater anyway, as long as at least one region is available
 	### By default, the first region in the list of regions must be available in order for the theater to be created

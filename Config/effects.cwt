@@ -411,6 +411,7 @@ alias[effect:white_peace] = {
 ### A conditional effect.
 ## scope = any
 alias[effect:if] = {
+	## severity = error
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
@@ -419,6 +420,7 @@ alias[effect:if] = {
 
 ### Use after (else_)if to check other triggers only if first if fails.
 alias[effect:else_if] = {
+	## severity = error
 	limit = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
@@ -585,6 +587,11 @@ alias[effect:add_units_to_division_template] = {
 		## cardinality = ~1..5
 		<unit.support_unit> = int[0..4]
 	}
+	## cardinality = 0..1
+	regimental_support = {
+		## cardinality = ~1..5
+		<unit.support_unit> = int[0..4]
+	}
 }
 
 ### Change the ideology of active leader.
@@ -681,7 +688,7 @@ alias[effect:remove_ideas] = {
 	<idea>
 	## cardinality = 0..inf
 	value[advisor_token]
-	## cardinality = 0..inf	
+	## cardinality = 0..inf
 	value[variable]
 }
 
@@ -1204,6 +1211,9 @@ alias[effect:start_civil_war] = {
 	### The capital of the breakaway country.
 	## cardinality = 0..1
 	capital = <state>
+	### The capital of the breakaway country.
+	## cardinality = 0..1
+	capital = value[variable]
 	### States that go to the revolter. Use "all" to include all states.
 	## cardinality = 0..1
 	states = {
@@ -1432,9 +1442,13 @@ alias[effect:send_equipment] = {
 	## cardinality = 0..1
 	type = <equipment>
 	## cardinality = 0..1
+	type = value[equipment_variant]
+	## cardinality = 0..1
 	type = value[variable]
 	## cardinality = 0..1
 	equipment = <equipment>
+	## cardinality = 0..1
+	equipment = value[equipment_variant]
 	amount = int_variable_field
 	target = scope[country]
 	target = enum[country_tags]
@@ -2213,7 +2227,7 @@ alias[effect:set_war_support] = variable_field[0..1]
 
 ### Executes children effects on random unit leader that fulfills the "limit" trigger.
 ## scope = country
-## push_scope = { unit_leader character } 
+## push_scope = { unit_leader character }
 alias[effect:random_unit_leader] = single_alias_right[random_effect_clause]
 
 
@@ -2471,6 +2485,8 @@ alias[effect:start_border_war] = {
 		### Terrain modifier factor (default value: 1.0)
 		## cardinality = 0..1
 		terrain_factor = float
+		## cardinality = 0..1
+		modifier = float
 	}
 	defender = {
 		### State to start border war
@@ -2484,6 +2500,8 @@ alias[effect:start_border_war] = {
 		on_lose = <event>
 		## cardinality = 0..1
 		on_cancel = <event>
+		## cardinality = 0..1
+		modifier = float
 	}
 }
 
@@ -2495,9 +2513,9 @@ alias[effect:set_border_war_data] = {
 	defender = scope[state]
 	defender = <state>
 	## cardinality = 0..1
-	attacker_modifier = float
+	attacker_modifier = variable_field
 	## cardinality = 0..1
-	defender_modifier = float
+	defender_modifier = variable_field
 	## cardinality = 0..1
 	combat_width = int
 }
@@ -3196,7 +3214,7 @@ alias[effect:while_loop_effect] = {
 alias[effect:meta_effect] = {
 	text = ignore_field
 	## cardinality = 1..inf
-	scalar = localisation
+	scalar = scalar
 }
 
 ### Launch nuke at a state. usage .
@@ -3679,8 +3697,8 @@ alias[effect:add_ai_strategy] = {
 	## cardinality = 0..inf
 	tag = scope[country]
 	### Target a state. Can specify multiple.
-	## cardinality = 0..inf	
-	state = <state>		
+	## cardinality = 0..inf
+	state = <state>
 	### Target a strategic region. Can specify multiple.
 	## cardinality = 0..inf
 	strategic_region = <strategic_region>
@@ -3705,7 +3723,7 @@ alias[effect:add_ai_strategy] = {
 	## cardinality = 0..1
 	ratio = float
 	### Factor for the normal priority. 40 means +40 %, -60 means -60 %.
-	value = int	
+	value = int
 }
 
 ### Adds strategy entry to country AI.
@@ -3716,8 +3734,8 @@ alias[effect:add_ai_strategy] = {
 	## cardinality = 0..inf
 	tag = scope[country]
 	### Target a state. Can specify multiple.
-	## cardinality = 0..inf	
-	state = <state>		
+	## cardinality = 0..inf
+	state = <state>
 	### Target a strategic region. Can specify multiple.
 	## cardinality = 0..inf
 	strategic_region = <strategic_region>
@@ -3739,7 +3757,7 @@ alias[effect:add_ai_strategy] = {
 		alias_name[trigger] = alias_match_left[trigger]
 	}
 	### Factor for the normal priority. 40 means +40 %, -60 means -60 %.
-	value = int	
+	value = int
 }
 
 ### Adds strategy entry to country AI.

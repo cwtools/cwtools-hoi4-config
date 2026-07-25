@@ -27,7 +27,7 @@ achievement = {
 			## cardinality = 1..inf
 			{
 				## cardinality = 1..4
-				scalar
+				float
 			}
 		}
 	}

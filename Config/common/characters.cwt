@@ -562,6 +562,8 @@ character = {
 					enum[base_factor] = variable_field
 					alias_name[modifier_rule] = alias_match_left[modifier_rule]
 				}
+				## cardinality = 0..1
+				always_show_on_actions_tooltip  = bool
 				## replace_scope = { this = character root = country }
 				## cardinality = 0..inf
 				on_add = {

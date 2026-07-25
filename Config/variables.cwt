@@ -1234,9 +1234,11 @@ values = {
 
 		### Value of a modifier stored in country/state/mio modifier, modifier token is defined in target. Example modifier@weekly_manpower.
 		modifier@enum[general_modifiers_enum]
+		modifier@enum[project_tag]_speed_factor #enum does not work inside enum so is placed here
 
 		### Value of a modifier stored in unit modifier, modifier token is defined in target. Example unit_modifier@army_attack_factor.
 		unit_modifier@enum[unit_modifiers_enum]
+		unit_modifier@enum[sub_unit_modifiers] #enum does not work inside enum so is placed here
 
 		### Value of a modifier stored in leader modifier, modifier token is defined in target. Example leader_modifier@navy_max_range.
 		leader_modifier@enum[leader_modifiers_enum]

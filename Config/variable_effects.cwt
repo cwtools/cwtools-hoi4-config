@@ -29,8 +29,6 @@ alias[effect:set_variable] = {
 	## cardinality = 1..2
 	value_set[variable] = scalar
 
-	## cardinality 0..inf	
-	alias_name[mathexpr] = alias_match_left[mathexpr]
 	## cardinality = 0..1
 	tooltip = localisation
 }
@@ -53,8 +51,13 @@ alias[effect:set_variable] = {
 	value = single_alias_right[mathexprnest]
 	#### This exists to cull unsupported values. Values above provide some autofill
 	value = scalar
-	## cardinality 0..inf	
-	alias_name[mathexpr] = alias_match_left[mathexpr]
+	## cardinality = 0..1
+	tooltip = localisation
+}
+
+alias[effect:set_variable] = {
+	## cardinality = 1..2
+	value_set[variable] = single_alias_right[mathexprnest]
 	## cardinality = 0..1
 	tooltip = localisation
 }
@@ -90,8 +93,17 @@ alias[effect:divide_variable] = { # var_equals_value_clause
 	scope[country].value[variable] = variable_field
 	## cardinality = 1..2
 	scope[country].value[variable] = scalar
-	## cardinality 0..inf	
-	alias_name[mathexpr] = alias_match_left[mathexpr]
+	## cardinality = 0..1
+	tooltip = localisation
+	### specifies the value to assign if the divisor is zero (default is zero).
+	## cardinality = 0..1
+	if_zero = float
+}
+
+### Divides a variable to a value or another variable.
+## scope = any
+alias[effect:divide_variable] = { # var_equals_value_clause_mathexpr
+	scope[country].value[variable] = single_alias_right[mathexprnest]
 	## cardinality = 0..1
 	tooltip = localisation
 	### specifies the value to assign if the divisor is zero (default is zero).
@@ -104,10 +116,9 @@ alias[effect:divide_variable] = { # var_equals_value_clause
 alias[effect:divide_variable] = { # var_and_value_clause
 	var = value[variable]
 	value = variable_field
+	value = single_alias_right[mathexprnest]
 	#### This exists to cull unsupported values. Values above provide some autofill
 	value = scalar
-	## cardinality 0..inf	
-	alias_name[mathexpr] = alias_match_left[mathexpr]
 	## cardinality = 0..1
 	tooltip = localisation
 	### specifies the value to assign if the divisor is zero (default is zero).

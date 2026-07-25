@@ -16,6 +16,9 @@ dynamic_modifier = {
 
 	## cardinality = 0..1
 	### Optional, the modifier won't apply if not enabled.
+	### Dynamic modifiers can attach to countries, states or unit leaders, so the
+	### enable/remove triggers may run in any of those scopes.
+	## push_scope = any
 	enable = {
 		## cardinality = ~1..inf
 		alias_name[trigger] = alias_match_left[trigger]
@@ -23,6 +26,7 @@ dynamic_modifier = {
 
 	## cardinality = 0..1
 	### Optional, will remove the modifier if true.
+	## push_scope = any
 	remove_trigger = {
 		## cardinality = ~1..inf
 		alias_name[trigger] = alias_match_left[trigger]

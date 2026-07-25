@@ -90,6 +90,10 @@ spriteType = {
 	alwaystransparent = bool
 	## cardinality = 0..1
 	generate_mip_maps = bool
+	## cardinality = 0..1
+	dx_offset = { x = float y = float }
+	## cardinality = 0..1
+	allwaystransparent = bool
 	subtype[spriteType] = {
 		textureFile = filepath
 		clicksound = <soundeffect>
@@ -106,8 +110,6 @@ spriteType = {
 		size = single_alias_right[gui_size_coordinates]
 		## cardinality = 0..1
 		animation_rate_spf = int
-		## cardinality = 0..1
-		allwaystransparent = bool
 	}
 	subtype[maskedShieldType] = {
 		textureFile1 = scalar
@@ -126,11 +128,11 @@ spriteType = {
 		size = { x = int y = int }
 		horizontal = bool
 		color = {
-			## cardinality = 3..3
+			## cardinality = 3..4
 			float
 		}
 		colortwo = {
-			## cardinality = 3..3
+			## cardinality = 3..4
 			float
 		}
 		steps = int

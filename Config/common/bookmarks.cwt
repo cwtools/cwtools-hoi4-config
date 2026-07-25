@@ -17,6 +17,24 @@ bookmark = {
 		## cardinality = ~0..inf
 		scalar
 	}
+
+	## cardinality = 0..1
+	sort_unplayed_first = no            # defaults to yes: countries with unplayed content are listed first
+	## cardinality = 0..1
+	include_majors_in_minor_list = no   # defaults to yes: when a filter is active, majors also show in the mini list
+	## cardinality = 0..1
+	apply_filter_to_majors = yes        # defaults to no: when yes, the major row also respects the filter (only majors matching it are shown)
+	## cardinality = 0..1
+	apply_filter_to_other_country = yes # defaults to no: by default the "other" (---) entry is always shown; when yes it respects the filter too
+	## cardinality = 0..1
+	label_order = { 					# optional: forces the label filter button order; a warning is logged for any label used by a country that is missing from this list
+		## cardinality = 0..inf
+		scalar							
+	}   
+	#                                     
+	## cardinality = 0..1
+	scrollable_country_list = yes       # defaults to no: scroll the minor list with its vertical scrollbar instead of the overflow dropdown
+	
 	## cardinality = 0..1
 	default = bool
 
@@ -32,7 +50,8 @@ bookmark = {
 			enum[dlc] 
 		}
 		ideology = <ideology>
-		version = enum[game_version]
+		## cardinality = 0..1
+		version = scalar
 
 		## cardinality = 0..1
 		label = {
@@ -80,25 +99,4 @@ bookmark = {
 		randomize_weather = 22345
 	}
 
-}
-
-enums = {
-	enum[game_version] = {
-		base_game
-		together_for_victory
-		death_or_dishonor
-		waking_the_tiger
-		man_the_guns
-		la_resistance
-		battle_for_the_bosporus
-		no_step_back
-		by_blood_alone
-		arms_against_tyranny
-		trial_of_allegiance
-		gotterdammerung
-		graveyard_of_empires
-		no_compromise_no_surrender
-		peace_for_our_time
-		thunder_at_our_gates
-	}
 }

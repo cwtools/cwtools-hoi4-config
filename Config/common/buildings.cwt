@@ -259,6 +259,7 @@ enums = {
 		reactors
 		special_project_facility
 		infrastructure_keystone
+		rocket_launchers #working, maybe it can be any value?
 	}
 	enum[state_prov] = {
 		state

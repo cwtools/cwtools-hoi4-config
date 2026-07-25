@@ -26,6 +26,9 @@ types = {
 		subtype[hidden] = {
 			hidden = yes
 		}
+		## only_if_not = hidden
+		subtype[visible] = {
+		}
 		localisation = {
 			## primary
 			title = title
@@ -36,28 +39,37 @@ types = {
 event = {
 	id = scalar
 	## cardinality = 0..inf
-	title = localisation
-	## cardinality = 0..inf
-	title = {
-		## cardinality = ~1..1
-		trigger = {
-			alias_name[trigger] = alias_match_left[trigger]
+	subtype[hidden] = { #to prevent warning for loc for events that are invisible
+		## cardinality = 0..inf
+		title = scalar
+		## cardinality = 0..inf
+		desc = scalar
+	}
+	subtype[visible] = {
+		title = localisation
+		## cardinality = 0..inf
+		title = {
+			## cardinality = ~1..1
+			trigger = {
+				alias_name[trigger] = alias_match_left[trigger]
+			}
+			text = localisation
 		}
-		text = localisation
+
+		## cardinality = 0..inf
+		desc = localisation
+		## cardinality = 0..inf
+		desc = {
+			## cardinality = ~1..1
+			trigger = {
+				alias_name[trigger] = alias_match_left[trigger]
+			}
+			text = localisation
+		}
 	}
 	## cardinality = 0..1
 	## severity = warning
 	picture = <spriteType>
-	## cardinality = 0..inf
-	desc = localisation
-	## cardinality = 0..inf
-	desc = {
-		## cardinality = ~1..1
-		trigger = {
-			alias_name[trigger] = alias_match_left[trigger]
-		}
-		text = localisation
-	}
 	## cardinality = 0..1
 	hidden = yes
 	## error_if_only_match = This is the default value and can be omitted
@@ -130,8 +142,14 @@ event = {
 	}
 	## cardinality = 0..inf
 	option = {
-		## cardinality = 0..1
-		name = localisation
+		subtype[hidden] = { #to prevent warning for loc for events that are invisible
+			## cardinality = 0..1
+			name = scalar
+		}
+		subtype[visible] = {
+			## cardinality = 0..1
+			name = localisation
+		}
 		## cardinality = 0..1
 		trigger = {
 			## cardinality = ~1..inf

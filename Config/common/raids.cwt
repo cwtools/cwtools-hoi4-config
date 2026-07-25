@@ -66,6 +66,24 @@ raid = {
         scale = float # scale of the entity, is also multiplied by the global RAID_UNIT_ENTITY_BASE_SCALE define
     }
 
+	### Optional. Drives entity animation across raid travel progress.
+	### Stages must be listed in ascending at_progress order. The highest at_progress <= current progress wins.
+	### Missing states on the loaded entity are silently skipped (so a basic-tier model can share the script with a multi-stage one).
+	### Use a single stage with at_progress = 0 to lock the entity to one state for the whole raid.
+	### Omit entirely to leave the entity on its default state for the duration of the raid.
+    ## cardinality = 0..1
+    unit_animations = {
+        ## cardinality = ~1..inf
+        stage = {
+            state = enum[model_states]
+            ## cardinality = 0..1
+            intro = enum[model_states]
+            ## cardinality = 0..1
+            at_progress = float[0..1]
+
+        }
+    }
+
     ## replace_scope = { this = country root = country FROM = country }
     ## cardinality = 0..1
     ai_will_do = {
@@ -188,6 +206,8 @@ raid = {
             alias_name[trigger] = alias_match_left[trigger]
 
         }
+        ## cardinality = 0..1
+        captured_army_leader = yes
     }
 
     # Conditions on the starting point:
@@ -351,7 +371,7 @@ single_alias[raid_outcome] = {
 
         # And also use the dynamic variables to change scope (see the variable list below)
         ## push_scope = country
-        ## cardinality = 0..1
+        ## cardinality = 0..inf
 		var:actor_country = {
             ## cardinality = ~1..inf
             alias_name[effect] = alias_match_left[effect]
@@ -367,14 +387,14 @@ single_alias[raid_outcome] = {
         alias_name[effect] = alias_match_left[effect]
 
         ## push_scope = country
-        ## cardinality = 0..1
+        ## cardinality = 0..inf
         var:victim_country = {
             ## cardinality = ~1..inf
             alias_name[effect] = alias_match_left[effect]
         }
 
         ## push_scope = state
-        ## cardinality = 0..1
+        ## cardinality = 0..inf
         var:target_state = {
             ## cardinality = ~1..inf
             alias_name[effect] = alias_match_left[effect]

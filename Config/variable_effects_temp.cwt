@@ -4,8 +4,6 @@ single_alias[set_var_equals_value_clause] = {
 	#### This exists to cull unsupported values. Values above provide some autofill
 	## cardinality = 1..2
 	value_set[variable] = scalar
-	## cardinality 0..inf	
-	alias_name[mathexpr] = alias_match_left[mathexpr]
 	## cardinality = 0..1
 	tooltip = localisation
 }
@@ -14,32 +12,39 @@ single_alias[var_equals_value_clause] = {
 	scope[country].value[variable] = variable_field
 	## cardinality = 1..2
 	scope[country].value[variable] = scalar
-	## cardinality 0..inf	
-	alias_name[mathexpr] = alias_match_left[mathexpr]
 	## cardinality = 0..1
 	tooltip = localisation
 }
 single_alias[set_var_and_value_clause] = {
 	var = value_set[variable]
 	value = variable_field
+	value = single_alias_right[mathexprnest]
 	#### This exists to cull unsupported values. Values above provide some autofill
 	value = scalar
-	## cardinality 0..inf	
-	alias_name[mathexpr] = alias_match_left[mathexpr]
 	## cardinality = 0..1
 	tooltip = localisation
 }
 single_alias[var_and_value_clause] = {
 	var = value[variable]
 	value = variable_field
+	value = single_alias_right[mathexprnest]
 	#### This exists to cull unsupported values. Values above provide some autofill
 	value = scalar
-	## cardinality 0..inf	
-	alias_name[mathexpr] = alias_match_left[mathexpr]
 	## cardinality = 0..1
 	tooltip = localisation
 }
 
+#mathexpressions hard
+single_alias[set_var_equals_value_clause_mathexpr] = {
+	value_set[variable] = single_alias_right[mathexprnest]
+	## cardinality = 0..1
+	tooltip = localisation
+}
+single_alias[var_equals_value_clause_mathexpr] = {
+	scope[country].value[variable] = single_alias_right[mathexprnest]
+	## cardinality = 0..1
+	tooltip = localisation
+}
 
 #### TEMP VARIABLE
 
@@ -74,8 +79,6 @@ alias[effect:set_temp_variable] = {
 	## cardinality = 1..2
 	value_set[variable] = scalar
 
-	## cardinality 0..inf	
-	alias_name[mathexpr] = alias_match_left[mathexpr]
 	## cardinality = 0..1
 	tooltip = localisation
 }
@@ -100,8 +103,16 @@ alias[effect:set_temp_variable] = {
 	#### This exists to cull unsupported values. Values above provide some autofill
 	value = scalar
 	
-	## cardinality 0..inf	
-	alias_name[mathexpr] = alias_match_left[mathexpr]
+	## cardinality = 0..1
+	tooltip = localisation
+}
+
+### Sets a temp variable to a value or another variable.
+## scope = any
+alias[effect:set_temp_variable] = {
+	## cardinality = 1..2
+	value_set[variable] = single_alias_right[mathexprnest]
+
 	## cardinality = 0..1
 	tooltip = localisation
 }
@@ -109,6 +120,9 @@ alias[effect:set_temp_variable] = {
 ### Adds a value or a variable to a temp variable. Can define numerical variable with value = 0
 ## scope = any
 alias[effect:add_to_temp_variable] = single_alias_right[set_var_equals_value_clause]
+### Adds a value or a variable to a temp variable. Can define numerical variable with value = 0
+## scope = any
+alias[effect:add_to_temp_variable] = single_alias_right[set_var_equals_value_clause_mathexpr]
 
 ### Adds a value or a variable to a temp variable. Can define numerical variable with value = 0
 ## scope = any
@@ -117,6 +131,9 @@ alias[effect:add_to_temp_variable] = single_alias_right[set_var_and_value_clause
 ### Subtracts a value or a variable to a temp variable. Can define numerical variable with value = 0
 ## scope = any
 alias[effect:subtract_from_temp_variable] = single_alias_right[set_var_equals_value_clause]
+### Subtracts a value or a variable to a temp variable. Can define numerical variable with value = 0
+## scope = any
+alias[effect:subtract_from_temp_variable] = single_alias_right[set_var_equals_value_clause_mathexpr]
 
 ### Subtracts a value or a variable to a temp variable.
 ## scope = any
@@ -125,6 +142,9 @@ alias[effect:subtract_from_temp_variable] = single_alias_right[set_var_and_value
 ### Multiplies a temp variable to a value or another variable.
 ## scope = any
 alias[effect:multiply_temp_variable] = single_alias_right[set_var_equals_value_clause]
+### Multiplies a temp variable to a value or another variable.
+## scope = any
+alias[effect:multiply_temp_variable] = single_alias_right[set_var_equals_value_clause_mathexpr]
 
 ### Multiplies a temp variable to a value or another variable.
 ## scope = any
@@ -132,11 +152,42 @@ alias[effect:multiply_temp_variable] = single_alias_right[set_var_and_value_clau
 
 ### Divides a temp variable to a value or another variable.
 ## scope = any
-alias[effect:divide_temp_variable] = single_alias_right[set_var_equals_value_clause]
+alias[effect:divide_temp_variable] = { # var_equals_value_clause
+	## cardinality = 1..2
+	scope[country].value[variable] = variable_field
+	## cardinality = 1..2
+	scope[country].value[variable] = scalar
+	## cardinality = 0..1
+	tooltip = localisation
+	### specifies the value to assign if the divisor is zero (default is zero).
+	## cardinality = 0..1
+	if_zero = float
+}
+### Divides a temp variable to a value or another variable.
+## scope = any
+alias[effect:divide_temp_variable] = { # var_equals_value_clause_mathexpr
+	scope[country].value[variable] = single_alias_right[mathexprnest]
+	## cardinality = 0..1
+	tooltip = localisation
+	### specifies the value to assign if the divisor is zero (default is zero).
+	## cardinality = 0..1
+	if_zero = float
+}
 
 ### Divides a temp variable to a value or another variable.
 ## scope = any
-alias[effect:divide_temp_variable] = single_alias_right[set_var_and_value_clause]
+alias[effect:divide_temp_variable] = { # var_and_value_clause
+	var = value[variable]
+	value = variable_field
+	value = single_alias_right[mathexprnest]
+	#### This exists to cull unsupported values. Values above provide some autofill
+	value = scalar
+	## cardinality = 0..1
+	tooltip = localisation
+	### specifies the value to assign if the divisor is zero (default is zero).
+	## cardinality = 0..1
+	if_zero = float
+}
 
 ###Randomize a temporary variable.
 ## scope = { any }

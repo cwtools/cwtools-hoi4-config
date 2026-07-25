@@ -25,6 +25,10 @@ alias[trigger:ROOT.capital_scope] = { alias_name[trigger] = alias_match_left[tri
 ## push_scope = state
 alias[trigger:PREV.capital_scope] = { alias_name[trigger] = alias_match_left[trigger] }
 
+## scope = country
+## push_scope = country
+alias[trigger:faction_leader] = { alias_name[effect] = alias_match_left[effect] }
+
 alias[effect:scope_field] = { alias_name[effect] = alias_match_left[effect] }
 
 alias[trigger:NOT] = {
@@ -73,6 +77,10 @@ alias[effect:ROOT.capital_scope] = { alias_name[effect] = alias_match_left[effec
 ## scope = country
 ## push_scope = state
 alias[effect:PREV.capital_scope] = { alias_name[effect] = alias_match_left[effect] }
+
+## scope = country
+## push_scope = country
+alias[effect:faction_leader] = { alias_name[effect] = alias_match_left[effect] }
 
 scopes = {
 	Country = {

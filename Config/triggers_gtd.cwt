@@ -90,8 +90,9 @@ alias[trigger:any_state_in] = {
 	array = single_alias_right[array]
     ## cardinality = 0..1
     continent = enum[continents]
+    ### Numeric index of an ai_area (see common/ai_areas), not a name.
     ## cardinality = 0..1
-    ai_area = <ai_area>
+    ai_area = int
     ## cardinality = 0..1
     strategic_region = <strategic_region>
 

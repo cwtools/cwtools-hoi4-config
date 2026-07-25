@@ -2,18 +2,21 @@ types = {
     ## type_key_filter = category
     type[soundcategory] = {
 		path = "game/sound"
+		path = "game/integrated_dlc"
         name_field = "name"
 		path_extension = .asset
     }
     ## type_key_filter = soundeffect
     type[soundeffect] = {
 		path = "game/sound"
+		path = "game/integrated_dlc"
         name_field = "name"
 		path_extension = .asset
     }
     ## type_key_filter = sound
     type[sound] = {
 		path = "game/sound"
+		path = "game/integrated_dlc"
         name_field = "name"
 		path_extension = .asset
     }

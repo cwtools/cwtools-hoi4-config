@@ -19,6 +19,11 @@ light = {
 	## cardinality = 0..1
 	alias_name[intensity] = alias_match_left[intensity]
 
+	# `intensity = 1.5, fade` binds a light animation to the intensity; the
+	# comma splits it into a bare animation-name leafvalue (vanilla map_lights).
+	## cardinality = 0..1
+	enum[light_animations]
+
 	radius = float
 	falloff = float
 	## cardinality = 0..1

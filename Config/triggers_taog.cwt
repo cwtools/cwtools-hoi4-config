@@ -62,50 +62,166 @@ alias[trigger:check_expr] = {
 
 
 # Math expression functions
+
+### Multiplies the accumulator by a value.
 alias[mathexpr:multiply] = single_alias_right[mathexprnest]
+### Multiplies the accumulator by a value.
 alias[mathexpr:multiply] = variable_field
 
+### Adds a value to the accumulator.
 alias[mathexpr:add] = single_alias_right[mathexprnest]
+### Adds a value to the accumulator.
 alias[mathexpr:add] = variable_field
 
 alias[mathexpr:subtract] = single_alias_right[mathexprnest]
+### Subtracts a value from the accumulator.
 alias[mathexpr:subtract] = variable_field
+### Subtracts a value from the accumulator.
 
+### Divides the accumulator by a value.
 alias[mathexpr:divide] = single_alias_right[mathexprnest]
+### Divides the accumulator by a value.
 alias[mathexpr:divide] = variable_field
 
 alias[mathexpr:min] = single_alias_right[mathexprnest]
+### Sets the accumulator to the minimum of itself and the value.
 alias[mathexpr:min] = variable_field
+### Sets the accumulator to the minimum of itself and the value.
 
+### Sets the accumulator to the maximum of itself and the value.
 alias[mathexpr:max] = single_alias_right[mathexprnest]
+### Sets the accumulator to the maximum of itself and the value.
 alias[mathexpr:max] = variable_field
 
+### Clamps the accumulator between a minimum and maximum bound. Note that arguments are order sensitive.
 alias[mathexpr:clamp] = {
 	min = variable_field
+	min = single_alias_right[mathexprnest]
 	max = variable_field
+	max =  single_alias_right[mathexprnest]
 }
 
+### Linearly interpolates from the accumulator towards `to` by `alpha`, where alpha is clamped between 0 and 1. An alpha of 0 keeps the accumulator, 1 returns `to`.
+alias[mathexpr:lerp] = {
+	to = variable_field
+	to = single_alias_right[mathexprnest]
+	alpha = variable_field
+	alpha =  single_alias_right[mathexprnest]
+}
+
+### Returns 1 if the accumulator is greater than the value, otherwise 0.
 alias[mathexpr:greater_than] = single_alias_right[mathexprnest]
+### Returns 1 if the accumulator is greater than the value, otherwise 0.
 alias[mathexpr:greater_than] = variable_field
 
+### Returns 1 if the accumulator is less than the value, otherwise 0.
 alias[mathexpr:less_than] = single_alias_right[mathexprnest]
+### Returns 1 if the accumulator is less than the value, otherwise 0.
 alias[mathexpr:less_than] = variable_field
 
+### Returns 1 if the accumulator is greater than or equal to the value, otherwise 0.
 alias[mathexpr:greater_than_or_equals] = single_alias_right[mathexprnest]
+### Returns 1 if the accumulator is greater than or equal to the value, otherwise 0.
 alias[mathexpr:greater_than_or_equals] = variable_field
 
+### Returns 1 if the accumulator is less than or equal to the value, otherwise 0.
 alias[mathexpr:less_than_or_equals] = single_alias_right[mathexprnest]
+### Returns 1 if the accumulator is less than or equal to the value, otherwise 0.
 alias[mathexpr:less_than_or_equals] = variable_field
 
+### Returns 1 if the accumulator equals the value, otherwise 0.
 alias[mathexpr:equals] = single_alias_right[mathexprnest]
+### Returns 1 if the accumulator equals the value, otherwise 0.
 alias[mathexpr:equals] = variable_field
 
+### Returns 1 if the accumulator does not equal the value, otherwise 0.
 alias[mathexpr:not_equals] = single_alias_right[mathexprnest]
+### Returns 1 if the accumulator does not equal the value, otherwise 0.
 alias[mathexpr:not_equals] = variable_field
 
+### Returns 1 if exactly one of the accumulator and the value is non-zero, otherwise 0.
+alias[mathexpr:not_equals] = single_alias_right[mathexprnest]
+### Returns 1 if exactly one of the accumulator and the value is non-zero, otherwise 0.
+alias[mathexpr:not_equals] = variable_field
+
+### Returns 1 if the accumulator is zero, otherwise 0.
 alias[mathexpr:round] = bool
 
+
+### Rounds the accumulator to the nearest integer.
+alias[mathexpr:round] = bool
+
+### Raises the accumulator to the given power.
+### Integer exponents are computed exactly by repeated multiplication. Fractional exponents (e.g. `pow = 0.5`) use a numerical approximation and may produce small rounding errors; follow with `round = yes` if you need an exact integer result.
+alias[mathexpr:pow] = single_alias_right[mathexprnest]
+### Raises the accumulator to the given power.
+### Integer exponents are computed exactly by repeated multiplication. Fractional exponents (e.g. `pow = 0.5`) use a numerical approximation and may produce small rounding errors; follow with `round = yes` if you need an exact integer result.
+alias[mathexpr:pow] = variable_field
+
+### Takes the root of the accumulator. The argument is the degree of the root, so 2 gives the square root, 3 the cube root and so on.
+### Note: this is a numerical approximation and may produce small rounding errors (e.g. 4.00001 instead of 4). Follow with `round = yes` if you need an exact integer result.
+alias[mathexpr:root] = single_alias_right[mathexprnest]
+### Takes the root of the accumulator. The argument is the degree of the root, so 2 gives the square root, 3 the cube root and so on.
+### Note: this is a numerical approximation and may produce small rounding errors (e.g. 4.00001 instead of 4). Follow with `round = yes` if you need an exact integer result.
+alias[mathexpr:root] = variable_field
+
+### Sets the accumulator to the remainder of dividing it by the value.
+alias[mathexpr:mod] = single_alias_right[mathexprnest]
+### Sets the accumulator to the remainder of dividing it by the value.
+alias[mathexpr:mod] = variable_field
+
+### Sets the accumulator to its logarithm in the given base.
+### Note: this is computed with a numerical approximation and may produce small rounding errors (e.g. 3.00001 instead of 3). Follow with `round = yes` if you need an exact integer result
+alias[mathexpr:log] = single_alias_right[mathexprnest]
+### Sets the accumulator to its logarithm in the given base.
+### Note: this is computed with a numerical approximation and may produce small rounding errors (e.g. 3.00001 instead of 3). Follow with `round = yes` if you need an exact integer result
+alias[mathexpr:log] = variable_field
+
+### Sets the accumulator to the sine of itself. The angle is expressed in radians.
+alias[mathexpr:sin] = bool
+
+### Sets the accumulator to the cosine of itself. The angle is expressed in radians.
+alias[mathexpr:cos] = bool
+
+### Sets the accumulator to the tangent of itself. The angle is expressed in radians.
+alias[mathexpr:tan] = bool
+
+### Sets the accumulator to the arctangent of itself. The result is expressed in radians.
+### Note: this is computed with a numerical approximation and may be off by a few hundredths of a radian. Follow with `round = yes` if you need an exact result.
+alias[mathexpr:atan] = bool
+
+### Sets the accumulator to the quadrant-aware arctangent atan2(y, x), where the accumulator is y and the value is x. The result is expressed in radians.
+###N ote: this is computed with a numerical approximation and may be off by a few hundredths of a radian; follow with `round = yes` if you need an exact result. The degenerate case atan2(0, 0) returns roughly pi/2 rather than 0.
+alias[mathexpr:atan2] = bool
+
+### Returns 1 if both the accumulator and the value are non-zero, otherwise 0.
+### Short-circuits: the value is only evaluated when the accumulator is non-zero.
+alias[mathexpr:and] = single_alias_right[mathexprnest]
+### Returns 1 if both the accumulator and the value are non-zero, otherwise 0.
+### Short-circuits: the value is only evaluated when the accumulator is non-zero.
+alias[mathexpr:and] = variable_field
+
+### Returns 1 if either the accumulator or the value is non-zero, otherwise 0.
+### Short-circuits: the value is only evaluated when the accumulator is zero.
+alias[mathexpr:or] = single_alias_right[mathexprnest]
+### Returns 1 if either the accumulator or the value is non-zero, otherwise 0.
+### Short-circuits: the value is only evaluated when the accumulator is zero.
+alias[mathexpr:or] = variable_field
+
+### Conditional statement that modifies the accumulator based on a condition.
+### Note that the limit is a math expression. It is considered true if the value is anything but 0.
 alias[mathexpr:if] = {
+	limit = {
+		value = variable_field
+		## cardinality 0..inf
+		alias_name[mathexpr] = alias_match_left[mathexpr]
+	}
+	## cardinality 1..inf
+	alias_name[mathexpr] = alias_match_left[mathexpr]
+}
+### Conditional statement that modifies the accumulator based on a condition.
+### Note that the limit is a math expression. It is considered true if the value is anything but 0.
+alias[mathexpr:else_if] = {
 	limit = {
 		value = variable_field
 		## cardinality 0..inf
@@ -118,6 +234,11 @@ alias[mathexpr:else] = {
 	## cardinality 1..inf
 	alias_name[mathexpr] = alias_match_left[mathexpr]
 }
+
+### Iterates over a named collection, applying statements to the accumulator for each element.
+### If the body is a single `and` or `or` chain it short-circuits the whole loop: iteration stops as soon
+### as the accumulator reaches 0 (for `and`) or a non-zero value (for `or`), so it stops scanning once the
+### result is decided
 alias[mathexpr:every_collection] = {
 	named_collection = <collection>
 	## cardinality 1..inf

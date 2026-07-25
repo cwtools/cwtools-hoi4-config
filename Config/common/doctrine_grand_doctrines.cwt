@@ -28,15 +28,9 @@ types = {
 ### **Grand doctrines** are at the root of each doctrine **Folder**
 ## replace_scope = { this = country root = country }
 grand_doctrine = {
-	subtype[land_grand_doctrine] = {
-		folder = land
-	}
-	subtype[air_grand_doctrine] = {
-		folder = air
-	}
-	subtype[naval_grand_doctrine] = {
-		folder = naval
-	}
+	### The doctrine folder this grand doctrine belongs to. Vanilla uses land, air or
+	### naval; mods may define custom folders (e.g. equipment, special_forces).
+	folder = <doctrine_folder>
 
 	name = localisation
 	description = localisation

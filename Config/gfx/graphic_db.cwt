@@ -21,7 +21,21 @@ graphic_db = {
                 alias_name[trigger] = alias_match_left[trigger]
             }
             ## cardinality = 0..1
+            sub_units = {
+                ## cardinality = ~1..inf
+                <unit>
+            }
+            ## cardinality = 0..1
+            cultures = { 
+                ## cardinality = ~1..inf
+                scalar #todo make complex enum for culture and culture_2d ?
+            }
+            ## cardinality = 0..1
             weight = float
+            ## cardinality = 0..1
+            models_weight = float
+            ## cardinality = 0..1
+            icons_weight = float
             ## cardinality = 0..1
             icons = {
                 ## cardinality = 0..inf

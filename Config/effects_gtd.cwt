@@ -184,17 +184,18 @@ alias[effect:complete_special_project] = {
 ### Generate a new character with a scientist role and recruit it in the country in scope.
 ## scope = country
 alias[effect:generate_scientist_character] = {
+	### optional - random portrait by default
 	## cardinality = 0..1
-    portrait = GFX_portrait # optional - random portrait by default
+    portrait = GFX_portrait
+    ### optional - accepts variable and keyword - only relevant if using random portrait - by default use country in scope
 	## cardinality = 0..1
-    portrait_tag_override = scope[country] # optional - accepts variable and keyword - only relevant if using random portrait - by default use country in scope
+    portrait_tag_override = scope[country]
+    ### optional - by default random gender
 	## cardinality = 0..1
-    gender = enum[gender] # optional - by default random gender
+    gender = enum[gender]
+    ### Set the skill level for a newly generated scientist character. Optional array, same format as in scientist role in character DB, by default all skills are at 1.
 	## cardinality = 0..1
     skills = {
-        # optional array
-        # same format as in scientist role in character DB
-        # by default all skills are at 1
 	    ## cardinality = ~1..inf
         <specialization> = int
     }
@@ -276,27 +277,16 @@ alias[effect:every_allied_country] = single_alias_right[every_effect_clause]
 ## scope = raid
 alias[effect:raid_damage_units] = {
 	## cardinality = 0..1
-    org_damage = float
+    org_damage = variable_field
 	## cardinality = 0..1
-    str_damage = float
+    str_damage = variable_field
 	## cardinality = 0..1
-    damage = float
+    damage = variable_field
 	## cardinality = 0..1
-    plane_loss = float
+    plane_loss = variable_field
 	### Ratio = yes will convert losses to % (so use floats, 1 = 100%), ratio = no instead inflicts flat dmg
-    ratio = yes
-}
-### Damage the units performing the raid in scope (the attackers inflict losses).  Damage is applied to ground units while damage to plane is defined as the amount of planes lost.\nIf 'ratio = yes', then all damage / losses are applied as a fraction of the current amount. For units, damage can be defined through one value 'damage' or separately through 'org_damage' and 'str_damage'
-## scope = raid
-alias[effect:raid_damage_units] = {
 	## cardinality = 0..1
-    plane_loss = float
-	## cardinality = 0..1
-    org_damage = float
-	## cardinality = 0..1
-    str_damage = float
-	## cardinality = 0..1
-    ratio = no
+    ratio = bool
 }
 
 ### Give experience to the units performing the raid (raid instance scope). Will give experience to any type of unit assigned to the raid, e.g. divisions or air wings. The value defines the progress towards the max level, e.g. 0.2 = gain 20% of the experience needed to reach max level. Can use either an explicit value or a variable

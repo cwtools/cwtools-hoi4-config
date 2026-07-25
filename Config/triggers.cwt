@@ -50,7 +50,8 @@ alias[trigger:difficulty] = int
 ## push_scope = country
 alias[trigger:any_neighbor_country] = single_alias_right[any_all_trigger_clause]
 
-### Check amount of resource country has.
+### Check amount of resource state or country has.
+## scope = { country state }
 alias[trigger:<resource>] = int
 
 ### Has country flag been set. Check flag val date set and days since set. Example: has_country_flag = test_flag.

@@ -14,7 +14,7 @@ types = {
 	}
 }
 
-ideology = {
+ideologies = {
 	subtype[regular] = {
 		types = {
 			## cardinality = ~1..inf

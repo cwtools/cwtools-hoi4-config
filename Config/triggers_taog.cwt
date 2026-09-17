@@ -52,6 +52,16 @@ alias[trigger:has_any_captured_general] = bool
 ## scope = character
 alias[trigger:is_promoted_from_unit] = bool
 
+### Checks whether the combat is taking place in the given strategic (naval) region, by id. Combatant scope.
+### Example : true if the battle is happening in strategic region 50
+### is_fighting_in_strategic_region = 50
+## scope = unit
+alias[trigger:is_fighting_in_strategic_region] = <strategic_region>
+
+### Checks whether the scoped general's headquarters (HQ) is physically deployed on the map.
+## scope = character
+alias[trigger:is_deployed] = bool
+
 
 ### Evaluates a math expression and returns true when the result is non-zero.
 alias[trigger:check_expr] = {

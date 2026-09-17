@@ -1160,7 +1160,17 @@ on_action = {
 	## cardinality = 0..inf
 	## replace_scope = { ROOT = character this = country FROM = country }
 	on_deployed_leader_defeated  = single_alias_right[on_action_effect]
+
+	### THIS is the admiral, From is owner country, FromFrom is the combatant
+	## cardinality = 0..inf
+	## replace_scope = { ROOT = character this = country FROM = country FROMFROM = unit }
+	on_navy_leader_won_combat = single_alias_right[on_action_effect]
+	### THIS is the admiral, From is owner country, FromFrom is the combatant
+	## cardinality = 0..inf
+	## replace_scope = { ROOT = character this = country FROM = country FROMFROM = unit }
+	on_navy_leader_lost_combat = single_alias_right[on_action_effect]
 }
+
 
 single_alias[country_event_effect] = {
 	## cardinality = 0..inf

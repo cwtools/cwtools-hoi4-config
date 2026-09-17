@@ -1227,6 +1227,8 @@ values = {
 		days_until_next_election
 		convoys_destroyed
 		avg_unit_entrenchment_ratio
+		state_deployed
+		province_deployed
 
 		# ========================
 		# MODIFIER VARIABLES

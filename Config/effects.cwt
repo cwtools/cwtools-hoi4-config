@@ -1992,6 +1992,9 @@ alias[effect:set_autonomy] = {
 	### Defaults to 'yes'
 	## cardinality = 0..1
 	end_civil_wars = bool
+	### default no. if yes, the new subject keeps its own subjects instead of releasing them
+	## cardinality = 0..1
+	keep_subjects = bool 
 }
 
 ### Makes autonomy of specified level and country.
@@ -2009,6 +2012,9 @@ alias[effect:set_autonomy] = {
 	### Defaults to 'yes'
 	## cardinality = 0..1
 	end_civil_wars = bool
+	### default no. if yes, the new subject keeps its own subjects instead of releasing them
+	## cardinality = 0..1
+	keep_subjects = bool 
 }
 
 ### Adds country to technology sharing group of specified name.

@@ -36,6 +36,3 @@ CWTools is a static code analysis tool for Paradox games. It shows potential err
 - Symbols like `/\&`, brackets not being closed and `RGB` keyword will break file validation
 - Some problems vanish upon clicking on them - see a potential workaround [here](https://github.com/cwtools/cwtools-hoi4-config/issues/75)
 - When opening vanilla in VSCode, it shows a couple thousands of problems. This is expected, vanilla is a mess
-
-## Contributing and maintenance
-We maintain the config by committing changes to KR fork first and then uploading changes here. Go to the Kaiserreich discord server and DM Pelmen323 if you'd like to contibute

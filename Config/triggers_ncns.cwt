@@ -732,8 +732,9 @@ alias[trigger:tooltip_evaluation] = eval
 ## scope = { any }
 alias[trigger:tooltip_evaluation] = no_eval
 
+### Checks if any grand doctrine is currently assigned to the given folder.
 ## scope = { country }
-alias[trigger:has_any_grand_doctrine] = enum[equipment_categories]
+alias[trigger:has_any_grand_doctrine] = <doctrine_folder>
 
 ### Returns energy fulfillment on a country scope. 0 .. 1
 ## scope = { country }

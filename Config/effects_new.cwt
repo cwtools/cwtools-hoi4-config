@@ -286,7 +286,7 @@ alias[effect:teleport_armies] = {
 	## cardinality = 0..1
 	to_state = scope[state]
 	## cardinality = 0..1
-	to_state_array = value_set[array]
+	to_state_array = value[array]
 	## cardinality = 0..1
 	to_province = enum[provinces]
 }

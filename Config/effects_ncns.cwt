@@ -31,7 +31,23 @@ alias[effect:set_grand_doctrine] = <grand_doctrine>
 ### Activate the **Subdoctrine** for a country in scope.
 ## scope = country
 alias[effect:set_sub_doctrine] = <subdoctrine>
-
+### Activate (unlock and assign) the specified subdoctrine.
+### By default, the subdoctrine is assigned to the first matching track that the system can find.
+### However, you can also specify a specific folder and track index to assign the subdoctrine to, in case
+### the same track appears in multiple folders, or multiple times in the same folder
+### folder = land # Optional, in case you need to specify the folder
+### track = 1 # Optional, in case you need to specify the track index within the folder.
+### Note that this is the track index (starting with 0) among ALL the tracks in the folder, not just the ones that match the subdoctrine.
+### So in a case where a grand doctrine has the tracks: 'infantry - armor - armor - operations', you would use
+### track = 1 to refer to the first armor track, and track = 2 to refer to the second armor track.
+## scope = country
+alias[effect:set_sub_doctrine] = {
+	set_sub_doctrine = <subdoctrine>
+	## cardinality = 0..1
+	folder = <doctrine_folder>
+	## cardinality = 0..1
+	track = int
+}
 ### You can mix and match track/subdoctrine/doctrine/folder triggers
 ### 
 ### Example: add_mastery = { amount = 50 track = infantry }

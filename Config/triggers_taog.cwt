@@ -52,6 +52,16 @@ alias[trigger:has_any_captured_general] = bool
 ## scope = character
 alias[trigger:is_promoted_from_unit] = bool
 
+### Checks whether the combat is taking place in the given strategic (naval) region, by id. Combatant scope.
+### Example : true if the battle is happening in strategic region 50
+### is_fighting_in_strategic_region = 50
+## scope = unit
+alias[trigger:is_fighting_in_strategic_region] = <strategic_region>
+
+### Checks whether the scoped general's headquarters (HQ) is physically deployed on the map.
+## scope = character
+alias[trigger:is_deployed] = bool
+
 
 ### Evaluates a math expression and returns true when the result is non-zero.
 alias[trigger:check_expr] = {
@@ -83,10 +93,10 @@ alias[mathexpr:divide] = single_alias_right[mathexprnest]
 ### Divides the accumulator by a value.
 alias[mathexpr:divide] = variable_field
 
+### Sets the accumulator to the minimum of itself and the value.
 alias[mathexpr:min] = single_alias_right[mathexprnest]
 ### Sets the accumulator to the minimum of itself and the value.
 alias[mathexpr:min] = variable_field
-### Sets the accumulator to the minimum of itself and the value.
 
 ### Sets the accumulator to the maximum of itself and the value.
 alias[mathexpr:max] = single_alias_right[mathexprnest]
@@ -192,7 +202,8 @@ alias[mathexpr:atan] = bool
 
 ### Sets the accumulator to the quadrant-aware arctangent atan2(y, x), where the accumulator is y and the value is x. The result is expressed in radians.
 ###N ote: this is computed with a numerical approximation and may be off by a few hundredths of a radian; follow with `round = yes` if you need an exact result. The degenerate case atan2(0, 0) returns roughly pi/2 rather than 0.
-alias[mathexpr:atan2] = bool
+alias[mathexpr:atan2] = single_alias_right[mathexprnest]
+alias[mathexpr:atan2] = variable_field
 
 ### Returns 1 if both the accumulator and the value are non-zero, otherwise 0.
 ### Short-circuits: the value is only evaluated when the accumulator is non-zero.

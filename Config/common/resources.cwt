@@ -5,6 +5,18 @@ types = {
 	}
 }
 
+enums = {
+	enum[resource] = {
+		oil
+		aluminium
+		rubber
+		tungsten
+		steel
+		chromium
+		coal
+	}
+}
+
 resource = {
 	### Icon frame from file.
 	icon_frame = int
